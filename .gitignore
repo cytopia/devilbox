@@ -1,0 +1,89 @@
+# Note:
+# To effectively apply the changes you will have
+# to re-index the git index (if there are already
+# commited files)
+#
+# $ git rm -r --cached .
+# $ git add .
+# $ git commit -m ".gitignore index rebuild"
+#
+
+
+######################################
+# CUSTOM
+######################################
+
+.env
+log/
+run/
+
+
+
+
+######################################
+# GENERIC
+######################################
+
+###### std ######
+.lock
+*.log
+
+###### patches/diffs ######
+*.patch
+*.diff
+*.orig
+*.rej
+
+
+######################################
+# Operating Systems
+######################################
+
+###### OSX ######
+._*
+.DS*
+.Spotlight-V100
+.Trashes
+
+###### Windows ######
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+*.shortcut
+
+######################################
+# Editors
+######################################
+
+###### Sublime ######
+*.sublime-workspace
+*.sublime-project
+
+###### Eclipse ######
+.classpath
+.buildpath
+.project
+.settings/
+
+###### Netbeans ######
+/nbproject/
+
+###### Intellij IDE ######
+.idea/
+.idea_modules/
+
+###### vim ######
+*.swp
+*.swo
+*~
+
+###### TextMate ######
+.tm_properties
+*.tmproj
+
+###### BBEdit ######
+*.bbprojectd
+*.bbproject
+

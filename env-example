@@ -1,0 +1,221 @@
+###
+###  ---------------------------------------------------
+###  D E V I L B O X   R U N - T I M E   S E T T I N G S
+###  ---------------------------------------------------
+###
+###  All the following settings are applied during
+###  $ docker-compose up
+###
+###  No need to rebuild any dockers!
+###
+
+
+###
+### Show all executed commands in each
+### docker image during docker-compose up?
+###
+### 1: Yes
+### 0: No
+DEBUG_COMPOSE_ENTRYPOINT=0
+
+
+
+################################################################################
+###
+### 1. Choose Images (Version)
+###
+################################################################################
+
+###
+### You can choose any combination of httpd, mysql or php.
+### Each of them are fully compatible between one another.
+###
+
+
+###
+### 1.1 Choose HTTP Server Image
+###
+
+#HTTPD_SERVER=apache-2.2
+HTTPD_SERVER=apache-2.4
+#HTTPD_SERVER=nginx-1
+
+
+###
+### 1.2 Choose MySQL Server Image
+###
+
+MYSQL_SERVER=mysql-5.5
+#MYSQL_SERVER=mysql-5.6
+#MYSQL_SERVER=mysql-5.7
+#MYSQL_SERVER=mariadb-5
+#MYSQL_SERVER=mariadb-10
+
+
+###
+### 1.3 Choose PHP Server Image
+###
+
+#PHP_SERVER=php-5.5
+PHP_SERVER=php-fpm-5.6
+#PHP_SERVER=php-7.0
+#PHP_SERVER=php-7.1
+#PHP_SERVER=hhvm-3
+
+
+
+###
+### 1.4 Timezone for all dockers and service config files
+###
+
+TIMEZONE=Europe/Berlin
+
+
+
+
+
+
+################################################################################
+###
+### 2. Host Settings (Your computer)
+###
+################################################################################
+
+
+##
+## Local filesystem path to www projects.
+##
+##
+HOST_PATH_TO_WWW_DOCROOTS=~/Sites
+
+##
+## Local filesystem path to mysql datadir.
+##
+## This can be an existing mysql data directory or empty.
+## If it already is a mysql data directory with content,
+## it will be mounted into the docker and used.
+##
+## If this directory is empty, a new mysql database will be
+## created.
+##
+HOST_PATH_TO_MYSQL_DATADIR=~/data/mysql6
+
+
+
+
+################################################################################
+###
+### 3. HTTP Docker Settings
+###
+################################################################################
+
+# - no options here
+
+
+
+
+################################################################################
+###
+### 4. MySQL Docker Settings
+###
+################################################################################
+
+##
+## MySQL root user password
+##
+## If $HOST_PATH_TO_MYSQL_DATADIR already contains an existing
+## mysql datadir, enter the password for the existing mysql database
+##
+## If $HOST_PATH_TO_MYSQL_DATADIR is empty, choose a new password that
+## will be applied
+##
+MYSQL_ROOT_PASSWORD=
+
+
+###
+### Custom MySQL Runtime Settings
+###
+
+MYSQL_GENERAL_LOG=1
+MYSQL_INNODB_BUFFER_POOL_SIZE=512M
+MYSQL_JOIN_BUFFER_SIZE=128M
+MYSQL_SORT_BUFFER_SIZE=2M
+MYSQL_READ_RND_BUFFER_SIZE=2M
+MYSQL_SYMBOLIC_LINKS=0
+MYSQL_SQL_MODE=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+
+
+
+
+################################################################################
+###
+### 5. PHP-FPM Docker Settings
+###
+################################################################################
+
+
+###
+### Xdebug
+###
+
+# Enable/Disable Xdebug
+PHP_XDEBUG_ENABLE=0
+
+# Your local port (your computer host [not the docker])
+# where your ide/editor is listening for xdebug connections.
+PHP_XDEBUG_REMOTE_PORT=9000
+
+# Your local IP address (your computer host [not the docker])
+# where your ide/editor is listening for xdebug connections.
+PHP_XDEBUG_REMOTE_HOST=172.20.10.2
+## TODO: Check if it works by automatically sending it to the broadcast address
+
+
+
+###
+### PHP Tweaks
+###
+
+# php.ini default setting:
+# max_execution_time = 30
+PHP_MAX_EXECUTION_TIME=90
+
+# php.ini default setting:
+# max_input_time = 60
+PHP_MAX_INPUT_TIME=90
+
+# php.ini default setting:
+# memory_limit = 128M
+PHP_MEMORY_LIMIT=256M
+
+# php.ini default setting:
+# post_max_size = 8M
+PHP_POST_MAX_SIZE=100M
+
+# php.ini default setting:
+# upload_max_filesize = 2M
+PHP_UPLOAD_MAX_FILESIZE=100M
+
+# php.ini default setting:
+# max_input_vars = 1000
+PHP_MAX_INPUT_VARS=8000
+
+
+
+
+###
+### PHP Error Handling
+###
+
+# php.ini default setting:
+# error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
+PHP_ERROR_REPORTING=E_ALL
+
+# php.ini default setting:
+# display_errors = Off
+PHP_DISPLAY_ERRORS=On
+
+# php.ini default setting:
+# track_errors = Off
+PHP_TRACK_ERRORS=On
+
