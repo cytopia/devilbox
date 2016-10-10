@@ -46,6 +46,35 @@ You can choose any combination of the following docker images during run-time:
 
 ## Pre-configured Intranet
 
+1. Homepage with host / docker information
+2. Virtual Host overview
+3. Database overview
+4. PHPinfo() page
+
+### 1. Homepage with host / docker information
+
+The homepage shows you the status of your current configured setup.
+
+* which versions are used
+* what directories are mounted
+* what other settings have been set
+
 ![Intranet Home](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/01_intranet_home.png "Intranet Home")
+
+
+### 2. Virtual Host overview
+
+This overview shows you all available virtual hosts and if they need additional configuration (on the host)
+
+Virtual Hosts are considered valid if the following requirements are met (on the host system):
+
+* `htdocs` folder/symlink exists in your project folder
+* `/etc/hosts` has a valid DNS config for your host: `127.0.0.1  <project-folder>.loc`)
+
 ![Intranet vHost](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/02_intranet_vhosts.png "Intranet Home")
+
+### 3. Database overview
+
+Shows you all the databases that are loaded
+
 ![Intranet DB](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/03_intranet_databases.png "Intranet Home")
