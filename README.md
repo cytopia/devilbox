@@ -42,3 +42,10 @@ You can choose any combination of the following docker images during run-time:
 1. Copy `env-example` to `.env`
 2. Edit `.env`
 3. `docker-compose up`
+
+
+## Pre-configured Intranet
+
+![Intranet Home](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/01_intranet_home.png "Intranet Home")
+![Intranet vHost](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/02_intranet_vhosts.png "Intranet Home")
+![Intranet DB](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/03_intranet_databases.png "Intranet Home")

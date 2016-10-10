@@ -24,27 +24,50 @@ function getDatabases() {
 	global $MYSQL_ROOT_PASS;
 	$conn = mysqli_connect($MYSQL_HOST_ADDR, 'root', $MYSQL_ROOT_PASS);
 
-	$sql = 'SELECT
-				table_schema AS db_name,
-				SUM( data_length + index_length  ) / 1024 / 1024 "MB"
+	$sql = "SELECT
+				S.SCHEMA_NAME AS 'database',
+				S.DEFAULT_COLLATION_NAME AS 'collation',
+				S.default_character_set_name AS 'charset'
 			FROM
-				information_schema.TABLES
+				information_schema.SCHEMATA AS S
 			WHERE
-				table_schema != "mysql" AND
-				table_schema != "performance_schema" AND
-				table_schema != "information_schema"
-			GROUP BY
-				table_schema
-			ORDER BY db_name;';
+				S.SCHEMA_NAME != 'mysql' AND
+				S.SCHEMA_NAME != 'performance_schema' AND
+				S.SCHEMA_NAME != 'information_schema'";
 
 	$result = mysqli_query($conn, $sql);
 	$data = array();
-	while ($row = $result->fetch_array(MYSQLI_NUM)) {
-		// name => size
-		$data[$row[0]] = $row[1];
+	while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+		$data[$row['database']] = array(
+			'charset'	=> $row['charset'],
+			'collation'	=> $row['collation'],
+			//'size'		=> $row['size'],
+		);
 	}
 	mysqli_close($conn);
 	return $data;
+}
+
+function getDBSize($db_name) {
+	global $MYSQL_HOST_ADDR;
+	global $MYSQL_ROOT_PASS;
+	$conn = mysqli_connect($MYSQL_HOST_ADDR, 'root', $MYSQL_ROOT_PASS);
+
+	$sql = "SELECT
+				SUM( T.data_length + T.index_length  ) / 1048576 AS 'size'
+			FROM
+				information_schema.TABLES AS T
+			WHERE
+				T.TABLE_SCHEMA = '".$db_name."';";
+
+	$result = mysqli_query($conn, $sql);
+	$data = array();
+	$size = 0;
+	while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+		$size = $row['size'];
+	}
+	mysqli_close($conn);
+	return $size ? $size : '0';
 }
 
 

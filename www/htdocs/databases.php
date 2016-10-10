@@ -52,14 +52,18 @@
 						<thead>
 							<tr>
 								<th>Name</th>
+								<th>Charset</th>
+								<th>Collation</th>
 								<th>Size</th>
 							</th>
 						</thead>
 						<tbody>
-							<?php foreach ($databases as $name => $size): ?>
+							<?php foreach ($databases as $name => $keys): ?>
 								<tr>
 									<td><?php echo $name;?></td>
-									<td><?php echo round($size, 1);?> MB</td>
+									<td><?php echo $keys['charset'];?></td>
+									<td><?php echo $keys['collation'];?></td>
+									<td><span class="size" id="<?php echo $name;?>"></span> MB</td>
 								</tr>
 							<?php endforeach; ?>
 						</tbody>
@@ -68,6 +72,34 @@
 			</div>
 
 		</div><!-- /.container -->
+
+
+		<script>
+		// self executing function here
+		(function() {
+			// your page initialization code here
+			// the DOM will be available here
+
+			function updateSizes(database) {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById(database).innerHTML = this.responseText;
+						console.log(this.responseText);
+					}
+				};
+				xhttp.open('GET', '_ajax_db_size.php?db=' + database, true);
+				xhttp.send();
+			}
+
+			var databases = document.getElementsByClassName('size');
+			var database;
+			for (i = 0; i < databases.length; i++) {
+				database = databases[i].getAttribute('id');
+				updateSizes(database);
+			}
+		})();
+		</script>
 
 	</body>
 </html>
