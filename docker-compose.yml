@@ -46,6 +46,11 @@ services:
             # Adjust timezone
             - TIMEZONE=${TIMEZONE}
 
+            # Enable PHP-FPM support
+            - PHP_FPM_ENABLE=1
+            - PHP_FPM_SERVER_ADDR=172.16.238.11
+            - PHP_FPM_SERVER_PORT=9000
+
             # Tell the webserver to look into this directory
             # for additional configuration files.
             #

@@ -3,7 +3,7 @@
 
 // TODO: logpath could also be passed via CMD argument
 // so this script could be more general
-$path = '/var/log/apache-2.4';
+$path = '/var/log/apache-2.2';
 $fh_timeout = 30; // 30 sek.
 
 $fd = fopen('php://stdin', 'r');
