@@ -1,5 +1,5 @@
 <?PHP
-
+$TIME_START = microtime(true);
 $MY_DIR = dirname(__FILE__);
 
 
@@ -27,5 +27,10 @@ $MYSQL_HOST_ADDR	= gethostbyname($MYSQL_HOST_NAME);
 $MYSQL_ROOT_PASS	= $ENV['MYSQL_ROOT_PASSWORD'];
 
 
+$MY_MYSQL_ERR		= NULL;
+$MY_MYSQL_LINK		= NULL;
+
 
 require $MY_DIR . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR .'functions.php';
+
+$MY_MYSQL_LINK = my_mysql_connect($MY_MYSQL_ERR);

@@ -222,12 +222,17 @@ services:
 
             # Runtime settings
             - MYSQL_GENERAL_LOG=${MYSQL_GENERAL_LOG}
+            - MYSQL_INNODB_LOG_FILE_SIZE=${MYSQL_INNODB_LOG_FILE_SIZE}
             - MYSQL_INNODB_BUFFER_POOL_SIZE=${MYSQL_INNODB_BUFFER_POOL_SIZE}
             - MYSQL_JOIN_BUFFER_SIZE=${MYSQL_JOIN_BUFFER_SIZE}
             - MYSQL_SORT_BUFFER_SIZE=${MYSQL_SORT_BUFFER_SIZE}
             - MYSQL_READ_RND_BUFFER_SIZE=${MYSQL_READ_RND_BUFFER_SIZE}
             - MYSQL_SYMBOLIC_LINKS=${MYSQL_SYMBOLIC_LINKS}
             - MYSQL_SQL_MODE=${MYSQL_SQL_MODE}
+
+            # Used for repairing
+            - MYSQL_INNODB_FORCE_RECOVERY=${MYSQL_INNODB_FORCE_RECOVERY}
+            - MYSQL_MODE=${MYSQL_MODE}
 
         ports:
             # [local-machine:]local-port:docker-port

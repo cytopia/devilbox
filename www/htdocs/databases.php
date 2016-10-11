@@ -54,6 +54,7 @@
 								<th>Name</th>
 								<th>Charset</th>
 								<th>Collation</th>
+								<th>Tables</th>
 								<th>Size</th>
 							</th>
 						</thead>
@@ -63,8 +64,10 @@
 									<td><?php echo $name;?></td>
 									<td><?php echo $keys['charset'];?></td>
 									<td><?php echo $keys['collation'];?></td>
-									<td><span class="size" id="<?php echo $name;?>"></span> MB</td>
+									<td><code><span class="table" id="table-<?php echo $name;?>">&nbsp;&nbsp;&nbsp;&nbsp;</span></code></td>
+									<td><code><span class="size" id="size-<?php echo $name;?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></code></td>
 								</tr>
+								<input type="hidden" name="database[]" class="database" value="<?php echo $name;?>" />
 							<?php endforeach; ?>
 						</tbody>
 					</table>
@@ -73,7 +76,7 @@
 
 		</div><!-- /.container -->
 
-
+		<?php require '../include/footer.php'; ?>
 		<script>
 		// self executing function here
 		(function() {
@@ -82,21 +85,59 @@
 
 			function updateSizes(database) {
 				var xhttp = new XMLHttpRequest();
+
 				xhttp.onreadystatechange = function() {
+					var fill = '';
+					var res = '';
+					var len;
+					var i;
+
 					if (this.readyState == 4 && this.status == 200) {
-						document.getElementById(database).innerHTML = this.responseText;
-						console.log(this.responseText);
+						res	= (this.responseText) == 0 ? '0sss MB' : this.responseText+' MB';
+						len		= res.length;
+						if (len < 8) {
+							for (i=len; i<8; i++) {
+								fill = '&nbsp;' + fill;
+							}
+
+						}
+						res = res.replace('sss', '&nbsp;&nbsp;&nbsp;');
+						res = fill + res;
+						document.getElementById('size-' + database).innerHTML = res;
 					}
 				};
-				xhttp.open('GET', '_ajax_db_size.php?db=' + database, true);
+				xhttp.open('GET', '_ajax_db.php?size=' + database, true);
 				xhttp.send();
 			}
 
-			var databases = document.getElementsByClassName('size');
+
+			function updateCount(database) {
+				var xhttp = new XMLHttpRequest();
+
+				xhttp.onreadystatechange = function() {
+					var fill = '';
+					var i;
+
+					if (this.readyState == 4 && this.status == 200) {
+						if (this.responseText.length < 4) {
+							for (i=this.responseText.length; i<4; i++) {
+								fill = '&nbsp;' + fill;
+							}
+						}
+						document.getElementById('table-' + database).innerHTML = fill + this.responseText;
+					}
+				};
+				xhttp.open('GET', '_ajax_db.php?table=' + database, true);
+				xhttp.send();
+			}
+
+			var databases = document.getElementsByName('database[]');
 			var database;
+
 			for (i = 0; i < databases.length; i++) {
-				database = databases[i].getAttribute('id');
+				database = databases[i].value;
 				updateSizes(database);
+				updateCount(database);
 			}
 		})();
 		</script>

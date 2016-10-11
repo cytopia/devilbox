@@ -45,7 +45,7 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<?php $vHosts = getVhosts(); ?>
+					<?php $vHosts = getVirtualHosts(); ?>
 					<?php if ($vHosts): ?>
 						<table class="table table-striped">
 							<thead>
@@ -57,43 +57,21 @@
 								</th>
 							</thead>
 							<tbody>
+								<?php
+									$totals = 70;
+									$filler = '&nbsp;';
+									for ($i=0; $i<$totals; $i++) {
+										$filler = $filler. '&nbsp;';
+									}
+								?>
 								<?php foreach ($vHosts as $vHost): ?>
-									<?php
-										$err = array();
-										$ern = 0;
-
-										if (!$vHost['htdocs']) {
-											$err[] = 'Missing <strong>htdocs</strong> directory in: <strong>'.$ENV['HOST_PATH_TO_WWW_DOCROOTS'].'/'.$vHost['name'].'/</strong>';
-											$ern++;
-										}
-										if ($vHost['dns_ok']) {
-
-											if ($vHost['dns_ip'] != '127.0.0.1') {
-												$err[] = 'Error in <strong>/etc/hosts</strong><br/>'.
-														'Found:<br/>'.
-														'<code>'.$vHost['dns_ip'].' '.$vHost['domain'].'</code><br/>'.
-														'But it should be:<br/>'.
-														'<code>127.0.0.1 '.$vHost['domain'].'</code><br/>';
-												$ern++;
-
-											}
-										} else {
-											$err[] = 'Missing entry in <strong>/etc/hosts</strong>:<br/><code>127.0.0.1 '.$vHost['domain'].'</code>';
-											$ern++;
-										}
-									?>
 									<tr>
 										<td><?php echo $vHost['name'];?></td>
 										<td><?php echo $ENV['HOST_PATH_TO_WWW_DOCROOTS'];?>/<?php echo $vHost['name'];?>/htdocs</td>
-										<?php if ($ern): ?>
-											<td colspan="2">
-												<?php echo implode('<br/>', $err); ?>
-											</td>
-										<?php else: ?>
-											<td>OK</td>
-											<td><a target="_blank" href="<?php echo $vHost['href'];?>"><?php echo $vHost['domain'];?></a></td>
-										<?php endif; ?>
+										<td id="valid-<?php echo $vHost['name'];?>">&nbsp;&nbsp;&nbsp;</td>
+										<td id="href-<?php echo $vHost['name'];?>"><?php echo $filler;?></td>
 									</tr>
+									<input type="hidden" name="vhost[]" class="vhost" value="<?php echo $vHost['name'];?>" />
 								<?php endforeach; ?>
 							</tbody>
 						</table>
@@ -107,5 +85,50 @@
 
 		</div><!-- /.container -->
 
+		<?php require '../include/footer.php'; ?>
+		<script>
+		// self executing function here
+		(function() {
+			// your page initialization code here
+			// the DOM will be available here
+
+
+			function updateStatus(vhost) {
+				var xhttp = new XMLHttpRequest();
+
+				xhttp.onreadystatechange = function() {
+					var error = '';
+					var el_valid;
+					var el_href;
+
+					if (this.readyState == 4 && this.status == 200) {
+						el_valid = document.getElementById('valid-' + vhost);
+						el_href = document.getElementById('href-' + vhost);
+						error = this.responseText;
+
+						if (error.length) {
+							el_valid.className += ' danger';
+							el_valid.innerHTML = 'ERR';
+							el_href.innerHTML = error;
+						} else {
+							el_valid.className += ' success';
+							el_valid.innerHTML = 'OK';
+							el_href.innerHTML = '<a target="_blank" href="http://'+vhost+'.loc">'+vhost+'.loc</a>';
+						}
+					}
+				};
+				xhttp.open('GET', '_ajax_vhost.php?valid=' + vhost, true);
+				xhttp.send();
+			}
+
+
+			var vhosts = document.getElementsByName('vhost[]');
+
+			for (i = 0; i < vhosts.length; i++) {
+				updateStatus(vhosts[i].value);
+			}
+
+		})();
+		</script>
 	</body>
 </html>

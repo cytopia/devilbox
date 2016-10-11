@@ -213,6 +213,13 @@ sql_mode                = <?php echo getMySQLConfig('sql-mode')."\n";?>
 
 		</div><!-- /.container -->
 
-
+		<?php require '../include/footer.php'; ?>
+		<script>
+		// self executing function here
+		(function() {
+			// your page initialization code here
+			// the DOM will be available here
+		})();
+		</script>
 	</body>
 </html>
