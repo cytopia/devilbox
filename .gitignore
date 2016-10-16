@@ -17,7 +17,19 @@
 log/
 run/
 
+# Ignore custom MySQL configs
 cfg/mysql-5.5/*.cnf
+cfg/mysql-5.6/*.cnf
+cfg/mysql-5.7/*.cnf
+cfg/mariadb-5/*.cnf
+cfg/mariadb-10/*.cnf
+
+# Ignore custom PHP-FPM configs
+cfg/php-fpm-5.4/*.ini
+cfg/php-fpm-5.5/*.ini
+cfg/php-fpm-5.6/*.ini
+cfg/php-fpm-7.0/*.ini
+cfg/php-fpm-7.1/*.ini
 
 
 
