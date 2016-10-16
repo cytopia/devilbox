@@ -167,29 +167,52 @@
 								<td class="<?php echo !$error_rem ? 'success' : 'danger';?>"><?php echo !$error_rem ? 'OK' : $error_rem;?></td>
 							</tr>
 							<tr>
-								<th>PHP custom run-time options</th>
+								<th>PHP: Custom mounted config files</th>
 								<td>
-									<pre>
-<?php /* TODO: compare with ini_get() */?>
-<?php if ($ENV['PHP_XDEBUG_ENABLE'] == 1): ?>
-xdebug.remote_enable  = <?php echo $ENV['PHP_XDEBUG_ENABLE']."\n";?>
-xdebug.remote_port    = <?php echo $ENV['PHP_XDEBUG_REMOTE_PORT']."\n";?>
-xdebug.remote_host    = <?php echo $ENV['PHP_XDEBUG_REMOTE_HOST']."\n";?>
-
-<?php endif; ?>
-max_execution_time    = <?php echo $ENV['PHP_MAX_EXECUTION_TIME']."\n";?>
-max_input_time        = <?php echo $ENV['PHP_MAX_INPUT_TIME']."\n";?>
-memory_limit          = <?php echo $ENV['PHP_MEMORY_LIMIT']."\n";?>
-post_max_size         = <?php echo $ENV['PHP_POST_MAX_SIZE']."\n";?>
-upload_max_filesize   = <?php echo $ENV['PHP_UPLOAD_MAX_FILESIZE']."\n";?>
-max_input_vars        = <?php echo $ENV['PHP_MAX_INPUT_VARS']."\n";?>
-
-error_reporting       = <?php echo $ENV['PHP_ERROR_REPORTING']."\n";?>
-display_errors        = <?php echo $ENV['PHP_DISPLAY_ERRORS']."\n";?>
-track_errors          = <?php echo $ENV['PHP_TRACK_ERRORS'];?>
-									</pre>
+									<?php
+										$files = scandir('/etc/php-custom.d');
+										foreach ($files as $file) {
+											if (preg_match('/.*\.ini$/', $file) === 1) {
+												echo $file.'<br/>';
+											}
+										}
+									?>
 								</td>
 							</tr>
+							<tr>
+								<th>PHP: Xdebug enabled</th>
+								<td>
+									<?php if ($ENV['PHP_XDEBUG_ENABLE'] == ini_get('xdebug.remote_enable')): ?>
+										<?php echo ini_get('xdebug.remote_enable') == 1 ? 'Yes' : ini_get('xdebug.remote_enable'); ?>
+									<?php else: ?>
+										<?php echo '.env file setting differs from custom php .ini file<br/>'; ?>
+										<?php echo 'Effective setting: '.ini_get('xdebug.remote_enable'); ?>
+									<?php endif; ?>
+								</td>
+							</tr>
+							<tr>
+								<th>PHP: Xdebug remote Host</th>
+								<td>
+									<?php if ($ENV['PHP_XDEBUG_REMOTE_HOST'] == ini_get('xdebug.remote_host')): ?>
+										<?php echo ini_get('xdebug.remote_host'); ?>
+									<?php else: ?>
+										<?php echo '.env file setting differs from custom php .ini file<br/>'; ?>
+										<?php echo 'Effective setting: '.ini_get('xdebug.remote_host'); ?>
+									<?php endif; ?>
+								</td>
+							</tr>
+							<tr>
+								<th>PHP: Xdebug remote Port</th>
+								<td>
+									<?php if ($ENV['PHP_XDEBUG_REMOTE_PORT'] == ini_get('xdebug.remote_port')): ?>
+										<?php echo ini_get('xdebug.remote_port'); ?>
+									<?php else: ?>
+										<?php echo '.env file setting differs from custom php .ini file<br/>'; ?>
+										<?php echo 'Effective setting: '.ini_get('xdebug.remote_port'); ?>
+									<?php endif; ?>
+								</td>
+							</tr>
+							<tr></tr>
 
 
 
