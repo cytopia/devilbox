@@ -31,7 +31,10 @@
 						<li><a href="/">Home</a></li>
 						<li><a href="/vhosts.php">Virtual Hosts</a></li>
 						<li class="active"><a href="#">Databases</a></li>
-						<li><a href="/php.php">PHP</a></li>
+						<li> | </li>
+						<li><a href="/phpinfo.php">PHP info</a></li>
+						<li><a href="/opcache.php">PHP opcache</a></li>
+						<li><a href="/mysqlinfo.php">MySQL info</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>

@@ -17,6 +17,7 @@
 log/
 run/
 
+cfg/mysql-5.5/*.cnf
 
 
 

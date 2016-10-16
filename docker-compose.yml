@@ -70,24 +70,23 @@ services:
             # ---- Format: ----
             # HOST-DIRECTORY : DOCKER-DIRECTORY
 
-
             # Custom scripts/binaries required for httpd server vhost
             # configuration to work.
             # (configured in /etc/${HTTPD_SERVER}/02-vhost-mass.conf)
-            - ./bin/${HTTPD_SERVER}:/opt/bin
+            - ./base/bin/${HTTPD_SERVER}:/opt/bin
 
             # Mount user-defined httpd configuration files
             # @see environment::CUSTOM_HTTPD_CONF_DIR for how this
             # is added in httpd server
-            - ./etc/${HTTPD_SERVER}:/etc/${HTTPD_SERVER}
+            - ./base/etc/${HTTPD_SERVER}:/etc/${HTTPD_SERVER}
+
+            # Mount custom intranet
+            # (configured in /etc/${HTTPD_SERVER}/01-vhost-default.conf)
+            - ./base/www:/var/www/default
 
             # Mount user-defined httpd log
             # @see ./etc/${HTTPD_SERVER}/*.conf for log defines
             - ./log/${HTTPD_SERVER}:/var/log/${HTTPD_SERVER}
-
-            # Mount custom intranet
-            # (configured in /etc/${HTTPD_SERVER}/01-vhost-default.conf)
-            - ./www:/var/www/default
 
             # Mount custom mass virtual hosting
             # (configured in /etc/${HTTPD_SERVER}/02-vhost-mass.conf)
@@ -180,15 +179,15 @@ services:
             # ---- Format: ----
             # HOST-DIRECTORY : DOCKER-DIRECTORY
 
+            # Mount custom intranet
+            # (configured in /etc/${HTTPD_SERVER}/01-vhost-default.conf)
+            - ./base/www:/var/www/default
+
             # Mount logs
             - ./log/${PHP_SERVER}:/var/log/php-fpm
 
             # Mount MySQL Socket directory
             - ./run/mysql:/tmp/mysql
-
-            # Mount custom intranet
-            # (configured in /etc/${HTTPD_SERVER}/01-vhost-default.conf)
-            - ./www:/var/www/default
 
             # Mount custom mass virtual hosting
             # (configured in /etc/${HTTPD_SERVER}/02-vhost-mass.conf)
@@ -222,17 +221,6 @@ services:
 
             # Runtime settings
             - MYSQL_GENERAL_LOG=${MYSQL_GENERAL_LOG}
-            - MYSQL_INNODB_LOG_FILE_SIZE=${MYSQL_INNODB_LOG_FILE_SIZE}
-            - MYSQL_INNODB_BUFFER_POOL_SIZE=${MYSQL_INNODB_BUFFER_POOL_SIZE}
-            - MYSQL_JOIN_BUFFER_SIZE=${MYSQL_JOIN_BUFFER_SIZE}
-            - MYSQL_SORT_BUFFER_SIZE=${MYSQL_SORT_BUFFER_SIZE}
-            - MYSQL_READ_RND_BUFFER_SIZE=${MYSQL_READ_RND_BUFFER_SIZE}
-            - MYSQL_SYMBOLIC_LINKS=${MYSQL_SYMBOLIC_LINKS}
-            - MYSQL_SQL_MODE=${MYSQL_SQL_MODE}
-
-            # Used for repairing
-            - MYSQL_INNODB_FORCE_RECOVERY=${MYSQL_INNODB_FORCE_RECOVERY}
-            - MYSQL_MODE=${MYSQL_MODE}
 
         ports:
             # [local-machine:]local-port:docker-port
@@ -251,6 +239,10 @@ services:
 
             # Mount MySQL Socket directory
             - ./run/mysql:/tmp/mysql
+
+            # Mount devilbox user-defined cnf files in order
+            # to overwrite the MySQL server configuration
+            - ./cfg/${MYSQL_SERVER}:/etc/mysql/conf.d
 
             # Mount MySQL Data directory
             - ${HOST_PATH_TO_MYSQL_DATADIR}:/var/lib/mysql

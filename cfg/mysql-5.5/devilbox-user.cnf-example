@@ -1,0 +1,3 @@
+[mysqld]
+slow_query_log = 1
+log_queries_not_using_indexes = 1

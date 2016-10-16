@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Executes shell commands on the PHP-FPM Host
  *
@@ -25,8 +24,10 @@ function my_exec($cmd, &$output = '')
  * @param  [type] $user [description]
  * @return [type]       [description]
  */
-function my_mysql_connect(&$err, $host = NULL, $pass = NULL, $user = NULL)
+function my_mysql_connection_test(&$err, $host = NULL, $pass = NULL, $user = NULL)
 {
+	$err = FALSE;
+
 	if ($host === NULL) {
 		$host = $GLOBALS['MYSQL_HOST_ADDR'];
 	}
@@ -37,19 +38,54 @@ function my_mysql_connect(&$err, $host = NULL, $pass = NULL, $user = NULL)
 		$user = 'root';
 	}
 
-	try {
-		$link = mysqli_connect($host, $user, $pass);
-	} catch (Exception $e) {
-		$err = $e->getMessage().': '.mysqli_connect_error();
+
+	if (!($link = @mysqli_connect($host, $user, $pass))) {
+		$err = 'Failed to connect: ' .mysqli_connect_error();
 		return FALSE;
 	}
+	mysqli_close($link);
+	return TRUE;
+}
 
-//	if (!($link = @mysqli_connect($host, $user, $pass))) {
-//		$err = mysqli_connect_error();
-//		return FALSE;
-//	}
+
+
+
+/**
+ * Connect to database
+ *
+ * @param  [type] $err  [description]
+ * @param  [type] $host [description]
+ * @param  [type] $pass [description]
+ * @param  [type] $user [description]
+ * @return [type]       [description]
+ */
+function my_mysql_connect(&$err, $pass = NULL, $user = NULL)
+{
+
+	if ($pass === NULL) {
+		$pass = $GLOBALS['MYSQL_ROOT_PASS'];
+	}
+	if ($user === NULL) {
+		$user = 'root';
+	}
+
+
+	if (!($link = @mysqli_connect('localhost', $user, $pass))) {
+		$err = 'Failed to connect: ' .mysqli_connect_error();
+		if (!($link = @mysqli_connect('127.0.0.1', $user, $pass))) {
+			$err = 'Failed to connect: ' .mysqli_connect_error();
+			if (!($link = @mysqli_connect($GLOBALS['MYSQL_HOST_ADDR'], $user, $pass))) {
+				$err = 'Failed to connect: ' .mysqli_connect_error();
+				return FALSE;
+			}
+		}
+	}
+	$err = FALSE;
 	return $link;
 }
+
+
+
 
 /**
  * Close Database connection
@@ -58,7 +94,10 @@ function my_mysql_connect(&$err, $host = NULL, $pass = NULL, $user = NULL)
  * @return [type]       [description]
  */
 function my_mysqli_close($link) {
-	return mysqli_close($link);
+	if (is_object($link)) {
+		return mysqli_close($link);
+	}
+	return FALSE;
 }
 
 
@@ -85,7 +124,9 @@ function my_mysqli_select(&$err, $link, $query, $callback = NULL)
 			$callback($row, $data);
 		}
 	} else {
-		$data[] = $row;
+		while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+			$data[] = $row;
+		}
 	}
 	mysqli_free_result($result);
 
@@ -181,7 +222,7 @@ function getTableCount($db_name) {
  * @param  [type] $key [description]
  * @return [type]      [description]
  */
-function getMySQLConfig($key) {
+function getMySQLConfigByKey($key) {
 	$key = str_replace('-', '_', $key);
 
 	$callback = function ($row, &$data) use ($key) {
@@ -200,6 +241,17 @@ function getMySQLConfig($key) {
 	}
 }
 
+function getMySQLConfig() {
+	$callback = function ($row, &$data) {
+		$key = $row['Variable_name'];
+		$val = $row['Value'];
+		$data[$key] = $val;
+	};
+
+	$sql = 'SHOW VARIABLES;';
+	return my_mysqli_select($error, $GLOBALS['MY_MYSQL_LINK'], $sql, $callback);
+
+}
 
 
 
@@ -351,7 +403,7 @@ function getHttpVersion() {
  */
 
 function getMySQLVersion() {
-	return getMySQLConfig('version_comment') . ' ' . getMySQLConfig('version');
+	return getMySQLConfigByKey('version_comment') . ' ' . getMySQLConfigByKey('version');
 }
 
 function getPHPVersion() {

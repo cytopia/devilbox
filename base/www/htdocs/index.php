@@ -31,7 +31,10 @@
 						<li class="active"><a href="#">Home</a></li>
 						<li><a href="/vhosts.php">Virtual Hosts</a></li>
 						<li><a href="/databases.php">Databases</a></li>
-						<li><a href="/php.php">PHP</a></li>
+						<li> | </li>
+						<li><a href="/phpinfo.php">PHP info</a></li>
+						<li><a href="/opcache.php">PHP opcache</a></li>
+						<li><a href="/mysqlinfo.php">MySQL info</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
@@ -58,15 +61,15 @@
 							</tr>
 							<tr>
 								<th>Webserver</th>
-								<td><?php echo getHttpVersion();?>&nbsp;&nbsp;&nbsp;(IP: <?php echo $HTTPD_HOST_ADDR;?>)</td>
+								<td><?php echo getHttpVersion();?></td>
 							</tr>
 							<tr>
 								<th>PHP</th>
-								<td><?php echo getPHPVersion(); ?>&nbsp;&nbsp;&nbsp;(IP: <?php echo $PHP_HOST_ADDR;?>)</td>
+								<td><?php echo getPHPVersion(); ?></td>
 							</tr>
 							<tr>
 								<th>MySQL Server</th>
-								<td><?php echo getMySQLVersion();?>&nbsp;&nbsp;&nbsp;(IP: <?php echo $MYSQL_HOST_ADDR;?>)</td>
+								<td><?php echo getMySQLVersion();?></td>
 							</tr>
 
 
@@ -104,29 +107,46 @@
 								<th colspan="2"><h3>[docker] HTTPD</h3></th>
 							</tr>
 							<tr>
-								<td colspan="2">--</td>
+								<th>IP Adress</th>
+								<td><?php echo $HTTPD_HOST_ADDR;?></td>
 							</tr>
 
 
 							<!-- ############################################################ -->
 							<!-- PHP Docker -->
 							<!-- ############################################################ -->
+							<?php
+							$error_loc;
+							$error_127;
+							$error_rem;
+
+							my_mysql_connection_test($error_loc, 'localhost');
+							my_mysql_connection_test($error_127, '127.0.0.1');
+							my_mysql_connection_test($error_rem);
+							?>
 							<tr>
 								<th colspan="2"><h3>[docker] PHP</h3></th>
 							</tr>
 							<tr>
+								<th>IP Adress</th>
+								<td><?php echo $PHP_HOST_ADDR;?></td>
+							</tr>							<tr>
 								<th>MySQL Remote Port forwarded to PHP Docker?</th>
 								<td><?php echo ($ENV['FORWARD_MYSQL_PORT_TO_LOCALHOST']) ? 'To: 127.0.0.1:'.$ENV['MYSQL_LOCAL_PORT'] : 'No'; ?></td>
 							</tr>
 							<tr>
 								<th>MySQL Remote Socket mounted on PHP Docker?</th>
-								<td>
+								<td class="<?php echo file_exists($ENV['MYSQL_SOCKET_PATH']) && getMySQLConfigByKey('socket') == $ENV['MYSQL_SOCKET_PATH']? 'success' : 'danger'; ?>">
 									<?php
 										if ($ENV['MOUNT_MYSQL_SOCKET_TO_LOCALDISK']) {
 											if (file_exists($ENV['MYSQL_SOCKET_PATH'])) {
-												echo 'To: '.$ENV['MYSQL_SOCKET_PATH'];
+												if (getMySQLConfigByKey('socket') == $ENV['MYSQL_SOCKET_PATH']) {
+													echo 'OK: '.$ENV['MYSQL_SOCKET_PATH'];
+												} else {
+													echo 'ERR: Mounted from mysql:'.$ENV['MYSQL_SOCKET_PATH']. ', but socket is in mysql:'.getMySQLConfigByKey('socket');
+												}
 											} else {
-												echo 'To: '.$ENV['MYSQL_SOCKET_PATH']. ' - [ERROR] no such file';
+												echo 'ERR: '.$ENV['MYSQL_SOCKET_PATH']. ' does not exist inside docker';
 											}
 										} else {
 											echo 'No';
@@ -136,15 +156,15 @@
 							</tr>
 							<tr>
 								<th>PHP-MySQL connection test: localhost</th>
-								<td><?php echo testMySQLLocalhost(); ?></td>
+								<td class="<?php echo !$error_loc ? 'success' : 'danger';?>"><?php echo !$error_loc ? 'OK' : $error_loc;?></td>
 							</tr>
 							<tr>
 								<th>PHP-MySQL connection test: 127.0.0.1</th>
-								<td><?php echo testMySQLLocalIp(); ?></td>
+								<td class="<?php echo !$error_127 ? 'success' : 'danger';?>"><?php echo !$error_127 ? 'OK' : $error_127;?></td>
 							</tr>
 							<tr>
 								<th>PHP-MySQL connection test: <?php echo $MYSQL_HOST_ADDR;?></th>
-								<td><?php echo testMySQLRemotelIp(); ?></td>
+								<td class="<?php echo !$error_rem ? 'success' : 'danger';?>"><?php echo !$error_rem ? 'OK' : $error_rem;?></td>
 							</tr>
 							<tr>
 								<th>PHP custom run-time options</th>
@@ -170,7 +190,7 @@ track_errors          = <?php echo $ENV['PHP_TRACK_ERRORS'];?>
 									</pre>
 								</td>
 							</tr>
-							<tr></tr>
+
 
 
 							<!-- ############################################################ -->
@@ -180,28 +200,20 @@ track_errors          = <?php echo $ENV['PHP_TRACK_ERRORS'];?>
 								<th colspan="2"><h3>[docker] MySQL</h3></th>
 							</tr>
 							<tr>
+								<th>IP Adress</th>
+								<td><?php echo $MYSQL_HOST_ADDR;?></td>
+							</tr>							<tr>
 								<th>MySQL root password</th>
 								<td><?php echo $MYSQL_ROOT_PASS; ?></td>
 							</tr>
 							<tr>
 								<th>MySQL socket</th>
-								<td><?php echo getMySQLConfig('socket'); ?></td>
+								<td><?php echo getMySQLConfigByKey('socket'); ?></td>
 							</tr>
 							<tr>
-								<th>MySQL custom run-time options</th>
-								<td>
-									<pre>
-general_log             = <?php echo getMySQLConfig('general-log')."\n";?>
-innodb_buffer_pool_size = <?php echo getMySQLConfig('innodb-buffer-pool-size')."\n";?>
-join_buffer_size        = <?php echo getMySQLConfig('join-buffer-size')."\n";?>
-sort_buffer_size        = <?php echo getMySQLConfig('sort-buffer-size')."\n";?>
-read_rnd_buffer_size    = <?php echo getMySQLConfig('read-rnd-buffer_size')."\n";?>
-symbolic_links          = <?php echo getMySQLConfig('symbolic-links')."\n";?>
-sql_mode                = <?php echo getMySQLConfig('sql-mode')."\n";?>
-									</pre>
-								</td>
+								<th>MySQL logging</th>
+								<td><?php echo getMySQLConfigByKey('general-log');?></td>
 							</tr>
-
 
 
 						</tbody>
