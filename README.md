@@ -19,7 +19,7 @@ You can choose any combination of the following docker images during run-time:
 |-----------|----------|-----|
 | [Apache 2.2](https://github.com/cytopia/docker-apache-2.2) | [MySQL 5.5](https://github.com/cytopia/docker-mysql-5.5) | [PHP 5.4](https://github.com/cytopia/docker-php-fpm-5.4) |
 | [Apache 2.4](https://github.com/cytopia/docker-apache-2.4) | MySQL 5.6 | [PHP 5.5](https://github.com/cytopia/docker-php-fpm-5.5) |
-| Nginx stable | MySQL 5.7  | [PHP 5.6](https://github.com/cytopia/docker-php-fpm-5.6) |
+| [Nginx stable](https://github.com/cytopia/docker-nginx-stable) | MySQL 5.7  | [PHP 5.6](https://github.com/cytopia/docker-php-fpm-5.6) |
 | Nginx mainline | MariaDB 5  | [PHP 7.0](https://github.com/cytopia/docker-php-fpm-7.0) |
 |       | MariaDB 10 | [PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
 

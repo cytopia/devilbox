@@ -37,8 +37,9 @@ DEBUG_COMPOSE_ENTRYPOINT=0
 ###
 
 #HTTPD_SERVER=apache-2.2
-HTTPD_SERVER=apache-2.4
-#HTTPD_SERVER=nginx-1
+#HTTPD_SERVER=apache-2.4
+HTTPD_SERVER=nginx-stable
+#HTTPD_SERVER=nginx-mainline
 
 
 ###
@@ -61,7 +62,6 @@ MYSQL_SERVER=mysql-5.5
 PHP_SERVER=php-fpm-5.6
 #PHP_SERVER=php-fpm-7.0
 #PHP_SERVER=php-fpm-7.1
-#PHP_SERVER=hhvm-3
 
 
 
@@ -87,7 +87,7 @@ TIMEZONE=Europe/Berlin
 ## Local filesystem path to www projects.
 ##
 ##
-HOST_PATH_TO_WWW_DOCROOTS=~/Sites
+HOST_PATH_TO_WWW_DOCROOTS=./data/www
 
 ##
 ## Local filesystem path to mysql datadir.
@@ -99,7 +99,7 @@ HOST_PATH_TO_WWW_DOCROOTS=~/Sites
 ## If this directory is empty, a new mysql database will be
 ## created.
 ##
-HOST_PATH_TO_MYSQL_DATADIR=~/data/mysql4
+HOST_PATH_TO_MYSQL_DATADIR=./data/mysql
 
 
 
@@ -138,13 +138,6 @@ MYSQL_ROOT_PASSWORD=
 ###
 
 MYSQL_GENERAL_LOG=1
-MYSQL_INNODB_BUFFER_POOL_SIZE=512M
-MYSQL_JOIN_BUFFER_SIZE=128M
-MYSQL_SORT_BUFFER_SIZE=2M
-MYSQL_READ_RND_BUFFER_SIZE=2M
-MYSQL_SYMBOLIC_LINKS=0
-MYSQL_SQL_MODE=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
-
 
 
 
@@ -169,54 +162,4 @@ PHP_XDEBUG_REMOTE_PORT=9000
 # Your local IP address (your computer host [not the docker])
 # where your ide/editor is listening for xdebug connections.
 PHP_XDEBUG_REMOTE_HOST=172.20.10.2
-## TODO: Check if it works by automatically sending it to the broadcast address
-
-
-
-###
-### PHP Tweaks
-###
-
-# php.ini default setting:
-# max_execution_time = 30
-PHP_MAX_EXECUTION_TIME=90
-
-# php.ini default setting:
-# max_input_time = 60
-PHP_MAX_INPUT_TIME=90
-
-# php.ini default setting:
-# memory_limit = 128M
-PHP_MEMORY_LIMIT=256M
-
-# php.ini default setting:
-# post_max_size = 8M
-PHP_POST_MAX_SIZE=100M
-
-# php.ini default setting:
-# upload_max_filesize = 2M
-PHP_UPLOAD_MAX_FILESIZE=100M
-
-# php.ini default setting:
-# max_input_vars = 1000
-PHP_MAX_INPUT_VARS=8000
-
-
-
-
-###
-### PHP Error Handling
-###
-
-# php.ini default setting:
-# error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
-PHP_ERROR_REPORTING=E_ALL
-
-# php.ini default setting:
-# display_errors = Off
-PHP_DISPLAY_ERRORS=On
-
-# php.ini default setting:
-# track_errors = Off
-PHP_TRACK_ERRORS=On
 
