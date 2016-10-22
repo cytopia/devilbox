@@ -1,4 +1,4 @@
-<?php require '../config.php'; ?>
+<?php $CONNECT = TRUE; require '../config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -14,11 +14,9 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<?php
-						$databases = getDatabases();
-					?>
-					<table class="table table-striped">
-						<thead class="thead-inverse">
+
+					<table class="table table-striped ">
+						<thead class="thead-inverse ">
 							<tr>
 								<th>Name</th>
 								<th>Charset</th>
@@ -28,7 +26,7 @@
 							</th>
 						</thead>
 						<tbody>
-							<?php foreach ($databases as $name => $keys): ?>
+							<?php foreach (getDatabases() as $name => $keys): ?>
 								<tr>
 									<td><?php echo $name;?></td>
 									<td><?php echo $keys['charset'];?></td>

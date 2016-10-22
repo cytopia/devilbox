@@ -1,4 +1,4 @@
-<?php require '../config.php'; ?>
+<?php $CONNECT = TRUE; require '../config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -22,7 +22,7 @@
 						<li><a target="_blank" href="https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html">https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html</a></li>
 					</ul>
 
-					<table class="table table-striped table-sm">
+					<table class="table table-striped">
 						<thead class="thead-inverse">
 							<tr>
 								<th>Variable</th>
@@ -45,12 +45,5 @@
 		</div><!-- /.container -->
 
 		<?php require '../include/footer.php'; ?>
-		<script>
-		// self executing function here
-		(function() {
-			// your page initialization code here
-			// the DOM will be available here
-		})();
-		</script>
 	</body>
 </html>

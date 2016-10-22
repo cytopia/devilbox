@@ -16,7 +16,7 @@
 				<div class="col-md-12">
 					<?php $vHosts = getVirtualHosts(); ?>
 					<?php if ($vHosts): ?>
-						<table class="table table-striped table-sm">
+						<table class="table table-striped">
 							<thead class="thead-inverse">
 								<tr>
 									<th>Project</th>

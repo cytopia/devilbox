@@ -1,4 +1,5 @@
 <?php
+$CONNECT = TRUE;
 require '../config.php';
 
 if (isset($_GET['size'])) {

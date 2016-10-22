@@ -1,4 +1,4 @@
-<?php require '../config.php'; ?>
+<?php $CONNECT = TRUE; require '../config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -39,7 +39,7 @@
 							<div class="bg-danger">
 								<div>
 									<div>
-										<?php echo getHttpVersion();?>
+										<h3><?php echo getHttpVersion();?></h3>
 									</div>
 								</div>
 							</div>
@@ -56,7 +56,7 @@
 							<div class="bg-info">
 								<div>
 									<div>
-										<?php echo getPHPVersion(); ?>
+										<h3><?php echo getPHPVersion(); ?></h3>
 									</div>
 								</div>
 							</div>
@@ -73,7 +73,7 @@
 							<div class="bg-warning">
 								<div>
 									<div>
-										<?php echo getMySQLVersion();?>
+										<h3><?php echo getMySQLVersion();?></h3>
 									</div>
 								</div>
 							</div>

@@ -33,4 +33,6 @@ $MY_MYSQL_LINK		= NULL;
 
 require $MY_DIR . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR .'functions.php';
 
-$MY_MYSQL_LINK = my_mysql_connect($MY_MYSQL_ERR);
+if (isset($CONNECT) && $CONNECT) {
+	$MY_MYSQL_LINK = my_mysql_connect($MY_MYSQL_ERR);
+}

@@ -1,5 +1,9 @@
-/* Fix tables
+/* Bootstrap overwrites
 -------------------------------------------------- */
+html, body {
+    font-size: 14px;
+}
+
 td {
 	word-break: break-all;
 }
@@ -99,3 +103,5 @@ nav.navbar {
     color: #373a3c;
     background-color: #fff;
 }
+
+
