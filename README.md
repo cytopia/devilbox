@@ -37,18 +37,6 @@ No need to install and configure different versions locally. Simply choose your 
 |       | MariaDB 10 | [PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
 
 
-<!--
-| Webserver | Database | PHP | KeyVal NoSQL | KeyDoc NoSQL | Column NoSQL |
-|-----------|----------|-----|--------------|--------------|--------------|
-| Apache 2.2 | [MySQL 5.5](https://github.com/cytopia/docker-mysql-5.5) | [PHP 5.5](https://github.com/cytopia/docker-php-fpm-5.5) | Redis | MongoDB | Cassandra |
-| [Apache 2.4](https://github.com/cytopia/docker-apache-2.4) | MySQL 5.6 | [PHP 5.6](https://github.com/cytopia/docker-php-fpm-5.6) | Memcached | Couchbase | |
-| Nginx | MySQL 5.7  | [PHP 7.0](https://github.com/cytopia/docker-php-fpm-7.0) | | | |
-| lighttpd | MariaDB 5  | [PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) | | | |
-|       | MariaDB 10 | HHVM | | | |
-|       | PostgreSQL | | | | |
-
-<sub>Not all docker categories need to be started.</sub>
--->
 ## Feature overview
 
 * Dynamically Configured Mass Virtual Hosting
@@ -70,6 +58,13 @@ The devilbox comes with a pre-configured intranet on `http://localhost`
 * MySQL Info
 * PHPMyAdmin
 * Opcache GUI
+
+
+## Contributing
+
+There is quite a lot todo and planned. If you like to contribute, view [CONTRIBUTING.md](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md).
+
+Contributors will be credited within the intranet and on the github page.
 
 
 ## Screenshots
