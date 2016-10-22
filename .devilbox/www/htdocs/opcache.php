@@ -1,3 +1,4 @@
+<?php require '../config.php'; ?>
 <?php
 
 /**
@@ -229,24 +230,15 @@ $opcache = OpCacheService::init($options);
 <!doctype html>
 <html>
 <head>
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="icon" href="favicon.ico">
-        <link href="/assets/css/custom.css" rel="stylesheet">
-
-        <title>DevilBox</title>
+    <?php require '../include/head.php'; ?>
 
 
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>OPcache statistics on <?php echo $opcache->getData('version', 'host'); ?></title>
-    <script src="//cdn.jsdelivr.net/react/15.0.1/react.min.js"></script>
-    <script src="//cdn.jsdelivr.net/react/15.0.1/react-dom.min.js"></script>
-    <script src="//code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="/vendor/react/react.min.js"></script>
+    <script src="/vendor/react/react-dom.min.js"></script>
+    <script src="/vendor/jquery/jquery-2.2.3.min.js"></script>
     <style type="text/css">
         body { font-family:sans-serif; font-size:90%; padding: 0; margin: 0 }
         nav { padding-top: 20px; }
@@ -329,30 +321,7 @@ $opcache = OpCacheService::init($options);
 </head>
 
 <body>
-        <nav class="navbar navbar-inverse navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <span class="navbar-brand" href="#">DevilBox</span>
-                </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/vhosts">Virtual Hosts</a></li>
-                        <li><a href="/databases.php">Databases</a></li>
-                        <li> | </li>
-                        <li><a href="/phpinfo.php">PHP info</a></li>
-                        <li class="active"><a href="#">PHP opcache</a></li>
-                        <li><a href="/mysqlinfo.php">MySQL info</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </nav>
+        <?php require '../include/navigation.php'; ?>
 
 
 
@@ -797,6 +766,6 @@ $opcache = OpCacheService::init($options);
     var filesObj = ReactDOM.render(React.createElement(Files, null), document.getElementById('filelist'));
     ReactDOM.render(React.createElement(Directives, null), document.getElementById('directives'));
 </script>
-
+<?php require '../include/footer.php'; ?>
 </body>
 </html>

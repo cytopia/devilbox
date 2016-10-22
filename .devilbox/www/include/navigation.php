@@ -39,6 +39,10 @@
 				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>
 			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/vendor/phpmyadmin/index.php">phpMyAdmin</a>
+			</li>
+
 		</ul>
 	</div>
 </nav>
