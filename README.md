@@ -17,7 +17,7 @@ DEVILBOX IS STILL IN AN EARLY STATE, AS NOT ALL DOCKERS ARE AVAILABLE YET AND AS
 
 [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox) [![Technology](https://img.shields.io/badge/technology-Docker-orange.svg)](https://www.docker.com/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-The devilbox is a modern and highly customizable drop-in replacement for [XAMPP](https://www.apachefriends.org). It is based on `docker-compose` with presets for all kinds of versions for webservers, database servers and php.
+The devilbox is a modern and highly customizable alternative for [XAMPP](https://www.apachefriends.org). It is based on `docker-compose` with presets for all kinds of versions for webservers, database servers and php.
 
 Configuration is not necessary, as everything is pre-setup with mass virtual hosting.
 
