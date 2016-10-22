@@ -1,13 +1,20 @@
-# ![Devilbox](https://raw.githubusercontent.com/cytopia/devilbox/master/.devilbox/www/htdocs/assets/img/devilbox_80.png) Devilbox
+# ![Devilbox](https://raw.githubusercontent.com/cytopia/devilbox/master/.devilbox/www/htdocs/assets/img/devilbox_80.png) The devilbox
 
-The devilbox is a `docker-compose` setup for your prefered LAMP/LEMP stack.
+[Usage](https://github.com/cytopia/devilbox#usage) |
+[Run-time Matrix](https://github.com/cytopia/devilbox#run-time-matrix) |
+[Features](https://github.com/cytopia/devilbox#feature-overview) |
+[Intranet](https://github.com/cytopia/devilbox#intranet-overview) |
+[Contributing](https://github.com/cytopia/devilbox#contributing) |
+[Screenshots](https://github.com/cytopia/devilbox#screenshots)
 
-It is basically a pre-configured set of the below listed docker containers including a custom intranet which gives you an overview about your projects and
- keeps track if they have been setup correctly.
+[![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox) [![Technology](https://img.shields.io/badge/technology-Docker-orange.svg)](https://www.docker.com/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-<sub>There is no need to setup Virtual Hosts for new projects, all provided webservers are pre-configured with mass-virtual hosts and are automatically linked to a PHP-FPM server of your prefered version.</sub>
+The devilbox is a modern and highly customizable drop-in replacement for [XAMPP](https://www.apachefriends.org). It is based on `docker-compose` with presets for all kinds of versions for webservers, database servers and php.
 
-## Easy usage
+Configuration is not necessary, as everything is pre-setup with mass virtual hosting.
+
+
+## Usage
 
 You are up and running in three simple steps:
 
