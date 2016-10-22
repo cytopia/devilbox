@@ -32,7 +32,7 @@
 									<td><?php echo $keys['charset'];?></td>
 									<td><?php echo $keys['collation'];?></td>
 									<td><code><span class="table" id="table-<?php echo $name;?>">&nbsp;&nbsp;&nbsp;&nbsp;</span></code></td>
-									<td><code><span class="size" id="size-<?php echo $name;?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></code></td>
+									<td><code><span class="size" id="size-<?php echo $name;?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></code></td>
 								</tr>
 								<input type="hidden" name="database[]" class="database" value="<?php echo $name;?>" />
 							<?php endforeach; ?>
@@ -63,8 +63,8 @@
 					if (this.readyState == 4 && this.status == 200) {
 						res	= (this.responseText) == 0 ? '0sss MB' : this.responseText+' MB';
 						len		= res.length;
-						if (len < 8) {
-							for (i=len; i<8; i++) {
+						if (len < 9) {
+							for (i=len; i<9; i++) {
 								fill = '&nbsp;' + fill;
 							}
 
