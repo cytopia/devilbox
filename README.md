@@ -1,11 +1,19 @@
 # ![Devilbox](https://raw.githubusercontent.com/cytopia/devilbox/master/.devilbox/www/htdocs/assets/img/devilbox_80.png) The devilbox
 
+**STABLE NOTE:** 
+
+DEVILBOX IS STILL IN AN EARLY STATE, AS NOT ALL DOCKERS ARE AVAILABLE YET AND AS IT HAS NOT BEEN FULLY TESTED ON WINDOWS AND LINUX YET.
+
+----
+
 [Usage](https://github.com/cytopia/devilbox#usage) |
 [Run-time Matrix](https://github.com/cytopia/devilbox#run-time-matrix) |
 [Features](https://github.com/cytopia/devilbox#feature-overview) |
 [Intranet](https://github.com/cytopia/devilbox#intranet-overview) |
 [Contributing](https://github.com/cytopia/devilbox#contributing) |
-[Screenshots](https://github.com/cytopia/devilbox#screenshots)
+[Screenshots](https://github.com/cytopia/devilbox#screenshots) |
+[License](https://github.com/cytopia/devilbox/blob/master/LICENSE.md) |
+[Todo](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md)
 
 [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox) [![Technology](https://img.shields.io/badge/technology-Docker-orange.svg)](https://www.docker.com/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -13,6 +21,15 @@ The devilbox is a modern and highly customizable drop-in replacement for [XAMPP]
 
 Configuration is not necessary, as everything is pre-setup with mass virtual hosting.
 
+**Supported operating systems**
+
+![Linux](https://raw.githubusercontent.com/cytopia/icons/master/64x64/linux.png) ![Windows](https://raw.githubusercontent.com/cytopia/icons/master/64x64/windows.png) ![OSX](https://raw.githubusercontent.com/cytopia/icons/master/64x64/osx.png)
+
+<sub>It might run on FreeBSD, but I don't know the status of docker-compose there.</sub>
+
+
+
+---
 
 ## Usage
 
