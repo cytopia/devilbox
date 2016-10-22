@@ -2,185 +2,174 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<meta name="author" content="">
-		<link rel="icon" href="favicon.ico">
-		<link href="/assets/css/custom.css" rel="stylesheet">
-
-		<title>DevilBox</title>
+		<?php require '../include/head.php'; ?>
 	</head>
 
 	<body>
-
-		<nav class="navbar navbar-inverse navbar-static-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<span class="navbar-brand" href="#">DevilBox</span>
-				</div>
-				<div id="navbar" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="/vhosts.php">Virtual Hosts</a></li>
-						<li><a href="/databases.php">Databases</a></li>
-						<li> | </li>
-						<li><a href="/phpinfo.php">PHP info</a></li>
-						<li><a href="/opcache.php">PHP opcache</a></li>
-						<li><a href="/mysqlinfo.php">MySQL info</a></li>
-					</ul>
-				</div><!--/.nav-collapse -->
-			</div>
-		</nav>
+		<?php require '../include/navigation.php'; ?>
 
 		<div class="container">
 
-			<h1>DevilBox Overview</h1>
+			<div class="row">
+				<div class="col-md-12">
+					<img class="float-xs-left" src="/assets/img/devilbox_80.png" />
+					<h1 class="float-xs-left text-muted">The devilbox</h1>
+				</div>
+			</div>
 			<br/>
+			<hr/>
 			<br/>
 
 			<div class="row">
 				<div class="col-md-12">
+					<h2 class="text-xs-center">Docker setup</h2>
+				</div>
+			</div>
 
-					<table class="table table-striped">
+			<br/>
+			<br/>
+
+			<div class="row">
+				<!-- ############################################################ -->
+				<!-- HTTPD Docker Circle -->
+				<!-- ############################################################ -->
+				<div class="col-md-4">
+					<div class="circles">
+						<div>
+							<div class="bg-danger">
+								<div>
+									<div>
+										<?php echo getHttpVersion();?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- ############################################################ -->
+				<!-- PHP Docker Circle -->
+				<!-- ############################################################ -->
+				<div class="col-md-4">
+					<div class="circles">
+						<div>
+							<div class="bg-info">
+								<div>
+									<div>
+										<?php echo getPHPVersion(); ?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- ############################################################ -->
+				<!-- MySQL Docker Circle-->
+				<!-- ############################################################ -->
+				<div class="col-md-4">
+					<div class="circles">
+						<div>
+							<div class="bg-warning">
+								<div>
+									<div>
+										<?php echo getMySQLVersion();?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br/><br/>
+
+
+			<div class="row">
+				<!-- ############################################################ -->
+				<!-- HTTPD Docker -->
+				<!-- ############################################################ -->
+				<div class="col-md-4">
+					<table class="table table-striped table-sm">
+						<thead class="thead-inverse">
+							<tr>
+								<th colspan="2">httpd docker</th>
+							</tr>
+						</thead>
 						<tbody>
-							<tr></tr>
-
-							<!--
-								Docker Images
-							-->
 							<tr>
-								<th colspan="2"><h3>Docker Images</h3></th>
-							</tr>
-							<tr>
-								<th>Webserver</th>
-								<td><?php echo getHttpVersion();?></td>
-							</tr>
-							<tr>
-								<th>PHP</th>
-								<td><?php echo getPHPVersion(); ?></td>
-							</tr>
-							<tr>
-								<th>MySQL Server</th>
-								<td><?php echo getMySQLVersion();?></td>
-							</tr>
-
-
-							<!--
-								Docker Host (your computer)
-							-->
-							<tr>
-								<th colspan="2"><h3>Host computer</h3></th>
-							</tr>
-							<tr>
-								<th>MySQL datadir</th>
-								<td><?php echo $ENV['HOST_PATH_TO_MYSQL_DATADIR'];?></td>
-							</tr>
-							<tr>
-								<th>MySQL socket</th>
-								<td>./run/mysql/mysql.sock</td>
-							</tr>
-							<tr>
-								<th>WWW Document Roots</th>
-								<td><?php echo $ENV['HOST_PATH_TO_WWW_DOCROOTS'];?></td>
-							</tr>
-							<tr>
-								<th>Log dir</th>
-								<td>./log</td>
-							</tr>
-							<tr></tr>
-
-
-
-
-							<!-- ############################################################ -->
-							<!-- HTTPD Docker -->
-							<!-- ############################################################ -->
-							<tr>
-								<th colspan="2"><h3>[docker] HTTPD</h3></th>
-							</tr>
-							<tr>
-								<th>IP Adress</th>
+								<th>IP Address</th>
 								<td><?php echo $HTTPD_HOST_ADDR;?></td>
 							</tr>
-
-
-							<!-- ############################################################ -->
-							<!-- PHP Docker -->
-							<!-- ############################################################ -->
-							<?php
-							$error_loc;
-							$error_127;
-							$error_rem;
-
-							my_mysql_connection_test($error_loc, 'localhost');
-							my_mysql_connection_test($error_127, '127.0.0.1');
-							my_mysql_connection_test($error_rem);
-							?>
 							<tr>
-								<th colspan="2"><h3>[docker] PHP</h3></th>
+								<th>Document Root</th>
+								<td>/shared/httpd</td>
 							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<!-- ############################################################ -->
+				<!-- PHP Docker -->
+				<!-- ############################################################ -->
+				<div class="col-md-4">
+					<table class="table table-striped table-sm">
+						<thead class="thead-inverse">
 							<tr>
-								<th>IP Adress</th>
+								<th colspan="2">php docker</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>IP Address</th>
 								<td><?php echo $PHP_HOST_ADDR;?></td>
-							</tr>							<tr>
-								<th>MySQL Remote Port forwarded to PHP Docker?</th>
-								<td><?php echo ($ENV['FORWARD_MYSQL_PORT_TO_LOCALHOST']) ? 'To: 127.0.0.1:'.$ENV['MYSQL_LOCAL_PORT'] : 'No'; ?></td>
 							</tr>
 							<tr>
-								<th>MySQL Remote Socket mounted on PHP Docker?</th>
-								<td class="<?php echo file_exists($ENV['MYSQL_SOCKET_PATH']) && getMySQLConfigByKey('socket') == $ENV['MYSQL_SOCKET_PATH']? 'success' : 'danger'; ?>">
-									<?php
-										if ($ENV['MOUNT_MYSQL_SOCKET_TO_LOCALDISK']) {
-											if (file_exists($ENV['MYSQL_SOCKET_PATH'])) {
-												if (getMySQLConfigByKey('socket') == $ENV['MYSQL_SOCKET_PATH']) {
-													echo 'OK: '.$ENV['MYSQL_SOCKET_PATH'];
-												} else {
-													echo 'ERR: Mounted from mysql:'.$ENV['MYSQL_SOCKET_PATH']. ', but socket is in mysql:'.getMySQLConfigByKey('socket');
-												}
-											} else {
-												echo 'ERR: '.$ENV['MYSQL_SOCKET_PATH']. ' does not exist inside docker';
-											}
-										} else {
-											echo 'No';
-										}
-									?>
-								</td>
+								<th>Document Root</th>
+								<td>/shared/httpd</td>
 							</tr>
 							<tr>
-								<th>PHP-MySQL connection test: localhost</th>
-								<td class="<?php echo !$error_loc ? 'success' : 'danger';?>"><?php echo !$error_loc ? 'OK' : $error_loc;?></td>
-							</tr>
-							<tr>
-								<th>PHP-MySQL connection test: 127.0.0.1</th>
-								<td class="<?php echo !$error_127 ? 'success' : 'danger';?>"><?php echo !$error_127 ? 'OK' : $error_127;?></td>
-							</tr>
-							<tr>
-								<th>PHP-MySQL connection test: <?php echo $MYSQL_HOST_ADDR;?></th>
-								<td class="<?php echo !$error_rem ? 'success' : 'danger';?>"><?php echo !$error_rem ? 'OK' : $error_rem;?></td>
-							</tr>
-							<tr>
-								<th>PHP: Custom mounted config files</th>
+								<th>Custom config</th>
 								<td>
-									<?php
-										$files = scandir('/etc/php-custom.d');
-										foreach ($files as $file) {
-											if (preg_match('/.*\.ini$/', $file) === 1) {
-												echo $file.'<br/>';
-											}
-										}
-									?>
+									<?php foreach (scandir('/etc/php-custom.d') as $file): ?>
+										<?php if (preg_match('/.*\.ini$/', $file) === 1): ?>
+											<?php echo $file.'<br/>';?>
+										<?php endif; ?>
+									<?php endforeach; ?>
 								</td>
 							</tr>
 							<tr>
-								<th>PHP: Xdebug enabled</th>
+								<?php $error; $valid = php_has_valid_mysql_socket($error); ?>
+								<th>MySQL socket</th>
+								<td class="<?php echo !$valid ? 'bg-danger' : '';?>">
+									<?php echo !$valid ? 'Error' : $ENV['MYSQL_SOCKET_PATH']; ?>
+								</td>
+							</tr>
+							<tr>
+								<?php $err; $valid = my_mysql_connection_test($err, 'localhost'); ?>
+								<th>MySQL test</th>
+								<td class="<?php echo !$valid ? 'bg-danger' : '';?>">
+									<?php echo $valid ? '<span class="bg-success">OK</span> localhost:3306' : 'Failoed: localhost:3306'; ?>
+								</td>
+							</tr>
+							<tr>
+								<?php $err; $valid = my_mysql_connection_test($err, '127.0.0.1'); ?>
+								<th>MySQL test</th>
+								<td class="<?php echo !$valid ? 'bg-danger' : '';?>">
+									<?php echo $valid ? '<span class="bg-success">OK</span> 127.0.0.1:3306' : 'Failed: 127.0.0.1:3306'; ?>
+								</td>
+							</tr>
+							<tr>
+								<?php $err; $valid = my_mysql_connection_test($err, $MYSQL_HOST_ADDR); ?>
+								<th>MySQL test</th>
+								<td class="<?php echo !$valid ? 'bg-danger' : '';?>">
+									<?php echo $valid ? '<span class="bg-success">OK</span> '.$MYSQL_HOST_ADDR.':3306' : 'Failed: '.$MYSQL_HOST_ADDR.':3306'; ?>
+								</td>
+							</tr>
+
+
+
+							<tr>
+								<th>Xdebug enabled</th>
 								<td>
 									<?php if ($ENV['PHP_XDEBUG_ENABLE'] == ini_get('xdebug.remote_enable')): ?>
 										<?php echo ini_get('xdebug.remote_enable') == 1 ? 'Yes' : ini_get('xdebug.remote_enable'); ?>
@@ -191,7 +180,7 @@
 								</td>
 							</tr>
 							<tr>
-								<th>PHP: Xdebug remote Host</th>
+								<th>Xdebug remote</th>
 								<td>
 									<?php if ($ENV['PHP_XDEBUG_REMOTE_HOST'] == ini_get('xdebug.remote_host')): ?>
 										<?php echo ini_get('xdebug.remote_host'); ?>
@@ -202,7 +191,7 @@
 								</td>
 							</tr>
 							<tr>
-								<th>PHP: Xdebug remote Port</th>
+								<th>Xdebug Port</th>
 								<td>
 									<?php if ($ENV['PHP_XDEBUG_REMOTE_PORT'] == ini_get('xdebug.remote_port')): ?>
 										<?php echo ini_get('xdebug.remote_port'); ?>
@@ -212,39 +201,142 @@
 									<?php endif; ?>
 								</td>
 							</tr>
-							<tr></tr>
 
 
 
-							<!-- ############################################################ -->
-							<!-- MySQL Docker -->
-							<!-- ############################################################ -->
+
+						</tbody>
+					</table>
+				</div>
+
+				<!-- ############################################################ -->
+				<!-- MySQL Docker -->
+				<!-- ############################################################ -->
+				<div class="col-md-4">
+					<table class="table table-striped table-sm">
+						<thead class="thead-inverse">
 							<tr>
-								<th colspan="2"><h3>[docker] MySQL</h3></th>
+								<th colspan="2">db docker</th>
 							</tr>
+						</thead>
+						<tbody>
 							<tr>
-								<th>IP Adress</th>
+								<th>IP Address</th>
 								<td><?php echo $MYSQL_HOST_ADDR;?></td>
-							</tr>							<tr>
-								<th>MySQL root password</th>
-								<td><?php echo $MYSQL_ROOT_PASS; ?></td>
 							</tr>
 							<tr>
 								<th>MySQL socket</th>
 								<td><?php echo getMySQLConfigByKey('socket'); ?></td>
 							</tr>
 							<tr>
-								<th>MySQL logging</th>
-								<td><?php echo getMySQLConfigByKey('general-log');?></td>
+								<th>MySQL datadir</th>
+								<td><?php echo getMySQLConfigByKey('datadir'); ?></td>
 							</tr>
-
-
 						</tbody>
 					</table>
+				</div>
+
+			</div>
 
 
-				</div><!-- /.col -->
-			</div><!-- /.row -->
+
+
+			<br/>
+			<br/>
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="text-xs-center">Docker to Host mounts</h2>
+				</div>
+			</div>
+			<br/>
+			<br/>
+
+
+
+
+			<div class="row">
+				<!-- ############################################################ -->
+				<!-- HTTPD Docker Mounts -->
+				<!-- ############################################################ -->
+				<div class="col-md-4">
+					<table class="table table-striped table-sm">
+						<thead class="thead-inverse">
+							<tr>
+								<th>httpd docker</th>
+								<th>host</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>Document Root</th>
+								<td><?php echo $ENV['HOST_PATH_TO_WWW_DOCROOTS'];?></td>
+							</tr>
+							<tr>
+								<th>Log directory</th>
+								<td>./log</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<!-- ############################################################ -->
+				<!-- PHP Docker Mounts -->
+				<!-- ############################################################ -->
+				<div class="col-md-4">
+					<table class="table table-striped table-sm">
+						<thead class="thead-inverse">
+							<tr>
+								<th>php docker</th>
+								<th>host</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>Document Root</th>
+								<td><?php echo $ENV['HOST_PATH_TO_WWW_DOCROOTS'];?></td>
+							</tr>
+							<tr>
+								<th>Custom config</th>
+								<td>./etc</td>
+							</tr>
+							<tr>
+								<th>Log directory</th>
+								<td>./log</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+				<!-- ############################################################ -->
+				<!-- MySQL Docker Mounts -->
+				<!-- ############################################################ -->
+				<div class="col-md-4">
+					<table class="table table-striped table-sm">
+						<thead class="thead-inverse">
+							<tr>
+								<th>db docker</th>
+								<th>host</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>MySQL datadir</th>
+								<td><?php echo $ENV['HOST_PATH_TO_MYSQL_DATADIR'];?></td>
+							</tr>
+							<tr>
+								<th>MySQL socket</th>
+								<td>./run/mysql/mysqld.sock</td>
+							</tr>
+							<tr>
+								<th>Log directory</th>
+								<td>./log</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
 
 		</div><!-- /.container -->
 

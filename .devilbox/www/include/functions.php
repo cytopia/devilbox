@@ -255,8 +255,28 @@ function getMySQLConfig() {
 
 
 
+function php_has_valid_mysql_socket(&$error) {
+	global $ENV;
 
 
+	if (!$ENV['MOUNT_MYSQL_SOCKET_TO_LOCALDISK']) {
+		$error = 'Socket mount not enabled.';
+		return FALSE;
+	}
+
+	if (!file_exists($ENV['MYSQL_SOCKET_PATH'])) {
+		$error = 'Socket file not found.';
+		return FALSE;
+	}
+
+	if (getMySQLConfigByKey('socket') != $ENV['MYSQL_SOCKET_PATH']) {
+		$error = 'Mounted from mysql:'.$ENV['MYSQL_SOCKET_PATH']. ', but socket is in mysql:'.getMySQLConfigByKey('socket');
+		return FALSE;
+	}
+
+	$error = '';
+	return TRUE;
+}
 
 
 
