@@ -1,8 +1,8 @@
 # ![Devilbox](https://raw.githubusercontent.com/cytopia/devilbox/master/.devilbox/www/htdocs/assets/img/devilbox_80.png) The devilbox
 
-**STABLE NOTE:** 
+**Note for OSX:** 
 
-DEVILBOX IS STILL IN AN EARLY STATE, AS NOT ALL DOCKERS ARE AVAILABLE YET AND AS IT HAS NOT BEEN FULLY TESTED ON WINDOWS AND LINUX YET.
+There is currently a huge annoyance with docker on OSX resulting in very slow file access, because of directory mounts. Read about the ticket here [Docker Forums #8076](https://forums.docker.com/t/file-access-in-mounted-volumes-extremely-slow-cpu-bound/8076).
 
 ----
 
