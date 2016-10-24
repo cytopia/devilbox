@@ -13,7 +13,7 @@ Contributors will be credited within the intranet and on the github page.
 
 * [ ] Add more travis checks to ensure they are always working under any condition
 * [ ] Add more dockers
-  - [ ] MySQL 5.6
+  - [X] MySQL 5.6
   - [ ] MySQL 5.7
   - [ ] MariaDB 5
   - [ ] MariaDB 10
