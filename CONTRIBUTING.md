@@ -16,7 +16,7 @@ Contributors will be credited within the intranet and on the github page.
 * [ ] Add more travis checks to ensure they are always working under any condition
 * [ ] Add more dockers
   - [X] MySQL 5.6
-  - [ ] MySQL 5.7 [#1](https://github.com/cytopia/devilbox/issues/1)
+  - [X] MySQL 5.7 [#1](https://github.com/cytopia/devilbox/issues/1)
   - [ ] MariaDB 5 [#2](https://github.com/cytopia/devilbox/issues/2)
   - [ ] MariaDB 10 [#3](https://github.com/cytopia/devilbox/issues/3)
   - [ ] LightHTTPD
