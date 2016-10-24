@@ -7,7 +7,7 @@ Contributors will be credited within the intranet and on the github page.
 
 ## General
 
-* [ ] Handle emails sent from PHP dockers
+* [ ] Handle emails sent from PHP dockers #5
   1. Add another container which is able to display mails: https://github.com/sj26/mailcatcher
   2. Proxy this webinterface into the Intranet 
 
@@ -16,9 +16,9 @@ Contributors will be credited within the intranet and on the github page.
 * [ ] Add more travis checks to ensure they are always working under any condition
 * [ ] Add more dockers
   - [X] MySQL 5.6
-  - [ ] MySQL 5.7
-  - [ ] MariaDB 5
-  - [ ] MariaDB 10
+  - [ ] MySQL 5.7 #1
+  - [ ] MariaDB 5 #2
+  - [ ] MariaDB 10 #3
   - [ ] LightHTTPD
   - [ ] HHVM
   - [ ] ...
