@@ -27,14 +27,14 @@
 					<table class="table table-striped">
 						<thead class="thead-inverse">
 							<tr>
-								<th>Variable</th>
+								<th style="word-break: normal;">Variable</th>
 								<th>Value</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php foreach (getMySQLConfig() as $key => $val): ?>
 								<tr>
-									<td><?php echo $key;?></td>
+									<td style="word-break: normal;"><?php echo $key;?></td>
 									<td><?php echo $val;?></td>
 								</tr>
 							<?php endforeach; ?>
