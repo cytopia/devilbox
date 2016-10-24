@@ -8,6 +8,8 @@ Contributors will be credited within the intranet and on the github page.
 ## General
 
 * [ ] Handle emails sent from PHP dockers
+  1. Add another container which is able to display mails: https://github.com/sj26/mailcatcher
+  2. Proxy this webinterface into the Intranet 
 
 ## Dockers
 
