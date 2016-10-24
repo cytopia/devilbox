@@ -47,6 +47,7 @@ HTTPD_SERVER=nginx-stable
 ###
 
 MYSQL_SERVER=mysql-5.5
+MYSQL_SERVER=mysql-5.6
 
 
 ###
