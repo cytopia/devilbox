@@ -7,6 +7,7 @@ There is currently a huge annoyance with docker on OSX resulting in very slow fi
 ----
 
 [Usage](https://github.com/cytopia/devilbox#usage) |
+[Video](https://github.com/cytopia/devilbox#watch-usage) |
 [Run-time Matrix](https://github.com/cytopia/devilbox#run-time-matrix) |
 [Features](https://github.com/cytopia/devilbox#feature-overview) |
 [Intranet](https://github.com/cytopia/devilbox#intranet-overview) |
@@ -45,6 +46,10 @@ $ vim .env
 # Start the dockers
 $ docker-compose up
 ```
+
+## Watch Usage
+
+[![Devilbox setup and workflow](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/devilbox_player_480.png "devilbox - setup and workflow")](https://www.youtube.com/watch?v=reyZMyt2Zzo)
 
 ## Run-time Matrix
 
