@@ -17,8 +17,10 @@ Contributors will be credited within the intranet and on the github page.
 * [ ] Add more dockers
   - [X] MySQL 5.6
   - [X] MySQL 5.7 [#1](https://github.com/cytopia/devilbox/issues/1)
-  - [ ] MariaDB 5 [#2](https://github.com/cytopia/devilbox/issues/2)
-  - [ ] MariaDB 10 [#3](https://github.com/cytopia/devilbox/issues/3)
+  - [ ] MariaDB 5.5 [#2](https://github.com/cytopia/devilbox/issues/2)
+  - [ ] MariaDB 10.0 [#3](https://github.com/cytopia/devilbox/issues/3)
+  - [ ] MariaDB 10.2 [#3](https://github.com/cytopia/devilbox/issues/6)
+  - [ ] MariaDB 10.2 [#3](https://github.com/cytopia/devilbox/issues/7)
   - [ ] LightHTTPD
   - [ ] HHVM
   - [ ] ...
