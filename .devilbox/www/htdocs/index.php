@@ -141,28 +141,28 @@
 								<?php $error; $valid = php_has_valid_mysql_socket($error); ?>
 								<th>MySQL socket</th>
 								<td class="<?php echo !$valid ? 'bg-danger' : '';?>">
-									<?php echo !$valid ? 'Error' : $ENV['MYSQL_SOCKET_PATH']; ?>
+									<?php echo !$valid ? 'Error<br/><sub>'.$error.'</sub>' : $ENV['MYSQL_SOCKET_PATH']; ?>
 								</td>
 							</tr>
 							<tr>
 								<?php $err; $valid = my_mysql_connection_test($err, 'localhost'); ?>
 								<th>MySQL test</th>
 								<td class="<?php echo !$valid ? 'bg-danger' : '';?>">
-									<?php echo $valid ? '<span class="bg-success">OK</span> localhost:3306' : 'Failoed: localhost:3306'; ?>
+									<?php echo $valid ? '<span class="bg-success">OK</span> localhost:3306' : 'Failed: localhost:3306<br/><sub>'.$err.'</sub>'; ?>
 								</td>
 							</tr>
 							<tr>
 								<?php $err; $valid = my_mysql_connection_test($err, '127.0.0.1'); ?>
 								<th>MySQL test</th>
 								<td class="<?php echo !$valid ? 'bg-danger' : '';?>">
-									<?php echo $valid ? '<span class="bg-success">OK</span> 127.0.0.1:3306' : 'Failed: 127.0.0.1:3306'; ?>
+									<?php echo $valid ? '<span class="bg-success">OK</span> 127.0.0.1:3306' : 'Failed: 127.0.0.1:3306<br/><sub>'.$err.'</sub>'; ?>
 								</td>
 							</tr>
 							<tr>
 								<?php $err; $valid = my_mysql_connection_test($err, $MYSQL_HOST_ADDR); ?>
 								<th>MySQL test</th>
 								<td class="<?php echo !$valid ? 'bg-danger' : '';?>">
-									<?php echo $valid ? '<span class="bg-success">OK</span> '.$MYSQL_HOST_ADDR.':3306' : 'Failed: '.$MYSQL_HOST_ADDR.':3306'; ?>
+									<?php echo $valid ? '<span class="bg-success">OK</span> '.$MYSQL_HOST_ADDR.':3306' : 'Failed: '.$MYSQL_HOST_ADDR.':3306<br/><sub>'.$err.'</sub>'; ?>
 								</td>
 							</tr>
 
@@ -300,6 +300,9 @@
 								<td>./etc</td>
 							</tr>
 							<tr>
+								<th>MySQL socket</th>
+								<td>./run/mysql/mysqld.sock</td>
+							</tr>							<tr>
 								<th>Log directory</th>
 								<td>./log</td>
 							</tr>

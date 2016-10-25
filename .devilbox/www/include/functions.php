@@ -112,6 +112,10 @@ function my_mysqli_close($link) {
  */
 function my_mysqli_select(&$err, $link, $query, $callback = NULL)
 {
+	if (!$link) {
+		return FALSE;
+	}
+
 	if (!($result = mysqli_query($link, $query))) {
 		$err = mysqli_error($link);
 		return FALSE;
@@ -166,7 +170,9 @@ function getDatabases() {
 				S.SCHEMA_NAME != 'performance_schema' AND
 				S.SCHEMA_NAME != 'information_schema'";
 
-	return my_mysqli_select($error, $GLOBALS['MY_MYSQL_LINK'], $sql, $callback);
+	$databases = my_mysqli_select($error, $GLOBALS['MY_MYSQL_LINK'], $sql, $callback);
+
+	return $databases ? $databases : array();
 }
 
 /**
@@ -249,8 +255,9 @@ function getMySQLConfig() {
 	};
 
 	$sql = 'SHOW VARIABLES;';
-	return my_mysqli_select($error, $GLOBALS['MY_MYSQL_LINK'], $sql, $callback);
+	$configs = my_mysqli_select($error, $GLOBALS['MY_MYSQL_LINK'], $sql, $callback);
 
+	return $configs ? $configs : array();
 }
 
 
@@ -269,10 +276,10 @@ function php_has_valid_mysql_socket(&$error) {
 		return FALSE;
 	}
 
-	if (getMySQLConfigByKey('socket') != $ENV['MYSQL_SOCKET_PATH']) {
-		$error = 'Mounted from mysql:'.$ENV['MYSQL_SOCKET_PATH']. ', but socket is in mysql:'.getMySQLConfigByKey('socket');
-		return FALSE;
-	}
+	//if (getMySQLConfigByKey('socket') != $ENV['MYSQL_SOCKET_PATH']) {
+	//	$error = 'Mounted from mysql:'.$ENV['MYSQL_SOCKET_PATH']. ', but socket is in mysql:'.getMySQLConfigByKey('socket');
+	//	return FALSE;
+	//}
 
 	$error = '';
 	return TRUE;
@@ -421,9 +428,14 @@ function getHttpVersion() {
  * Get MySQL Version
  * @return [type] [description]
  */
-
 function getMySQLVersion() {
-	return getMySQLConfigByKey('version_comment') . ' ' . getMySQLConfigByKey('version');
+	$name = getMySQLConfigByKey('version_comment');
+	$version = getMySQLConfigByKey('version');
+
+	if (!$name && !$version) {
+		return 'Unknown Version';
+	}
+	return $name . ' ' . $version;
 }
 
 function getPHPVersion() {
