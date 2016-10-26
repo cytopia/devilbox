@@ -334,21 +334,25 @@ function checkVirtualHost($vhost)
 		$error[] = 'Missing entry in <strong>/etc/hosts</strong>:<br/><code>127.0.0.1 '.$domain.'</code>';
 	}
 
+
+	// Temporarily comment out due to:
+	// https://github.com/cytopia/devilbox/issues/8
+	//
 	// 3. Check correct /etc/resolv entry
-	$dns_ip = '127.0.0.1';
-	if (isset($output[0])) {
-		$tmp = explode(' ', $output[0]);
-		if (isset($tmp[0])) {
-			$dns_ip = $tmp[0];
-		}
-	}
-	if ($dns_ip != '127.0.0.1') {
-		$error[] = 'Error in <strong>/etc/hosts</strong><br/>'.
-					'Found:<br/>'.
-					'<code>'.$dns_ip.' '.$domain.'</code><br/>'.
-					'But it should be:<br/>'.
-					'<code>127.0.0.1 '.$domain.'</code><br/>';
-	}
+	//$dns_ip = '127.0.0.1';
+	//if (isset($output[0])) {
+	//	$tmp = explode(' ', $output[0]);
+	//	if (isset($tmp[0])) {
+	//		$dns_ip = $tmp[0];
+	//	}
+	//}
+	//if ($dns_ip != '127.0.0.1') {
+	//	$error[] = 'Error in <strong>/etc/hosts</strong><br/>'.
+	//				'Found:<br/>'.
+	//				'<code>'.$dns_ip.' '.$domain.'</code><br/>'.
+	//				'But it should be:<br/>'.
+	//				'<code>127.0.0.1 '.$domain.'</code><br/>';
+	//}
 
 	if (is_array($error) && count($error)) {
 		return implode('<br/>', $error);
