@@ -18,7 +18,7 @@ Contributors will be credited within the intranet and on the github page.
   - [X] MySQL 5.6
   - [X] MySQL 5.7 [#1](https://github.com/cytopia/devilbox/issues/1)
   - [X] MariaDB 5.5 [#2](https://github.com/cytopia/devilbox/issues/2)
-  - [ ] MariaDB 10.0 [#3](https://github.com/cytopia/devilbox/issues/3)
+  - [X] MariaDB 10.0 [#3](https://github.com/cytopia/devilbox/issues/3)
   - [ ] MariaDB 10.2 [#6](https://github.com/cytopia/devilbox/issues/6)
   - [ ] MariaDB 10.2 [#7](https://github.com/cytopia/devilbox/issues/7)
   - [ ] LightHTTPD
