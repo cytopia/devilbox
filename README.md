@@ -61,6 +61,8 @@ Select your prefered setup.
 
 No need to install and configure different versions locally. Simply choose your required LAMP/LEMP stack combination during startup and it is up and running instantly.
 
+**Base stack**
+
 | Webserver | MySQL | PostgreSQL | PHP |
 |-----------|-------|------------|-----|
 | [![Build Status](https://travis-ci.org/cytopia/docker-apache-2.2.svg?branch=master)](https://travis-ci.org/cytopia/docker-apache-2.2) [Apache 2.2](https://github.com/cytopia/docker-apache-2.2) | [![Build Status](https://travis-ci.org/cytopia/docker-mysql-5.5.svg?branch=master)](https://travis-ci.org/cytopia/docker-mysql-5.5) [MySQL 5.5](https://github.com/cytopia/docker-mysql-5.5) | PostgreSQL 9.2 | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-5.4.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-5.4) [PHP 5.4](https://github.com/cytopia/docker-php-fpm-5.4) |
@@ -72,6 +74,24 @@ No need to install and configure different versions locally. Simply choose your 
 |       | MariaDB 10.2 | |
 
 <sub>**Note:** Entries without links or without build-status are not yet available, but are coming soon. See [CONTRIBUTING](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md) for tasks and upcoming features.</sub>
+
+
+**Optional NoSQL stack**
+
+| Cassandra | CouchDB | Memcached | MongoDB | Redis |
+|-----------|---------|-----------|---------|-------|
+| Cassandra 2.1 | CouchDB 1.6 | Memcached latest | MongoDB 2.6 | Redis 2.8 |
+| Cassandra 2.2 | CouchDB 2.0 |                  | MongoDB 3.0 | Redis 3.0 |
+| Cassandra 3.0 |             |                  | MongoDB 3.2 | Redis 3.2 |
+|               |             |                  | MongoDB 3.4 | Redis unstable |
+
+<!--
+**Optional cgi stack**
+
+| Go   | Perl | Python | Ruby |
+|------|------|--------|------|
+| todo | todo | todo   | todo |
+-->
 
 
 ## Feature overview
