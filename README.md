@@ -71,6 +71,7 @@ No need to install and configure different versions locally. Simply choose your 
 |       | [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.1.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.1) [MariaDB 10.1](https://github.com/cytopia/docker-mariadb-10.1) | |
 |       | MariaDB 10.2 | |
 
+<sub>**Note:** Entries without links or without build-status are not yet available, but are coming soon. See [CONTRIBUTING](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md) for tasks and upcoming features.</sub>
 
 
 ## Feature overview
