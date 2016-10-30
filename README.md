@@ -71,7 +71,7 @@ No need to install and configure different versions locally. Simply choose your 
 | [![Build Status](https://travis-ci.org/cytopia/docker-nginx-mainline.svg?branch=master)](https://travis-ci.org/cytopia/docker-nginx-mainline) [Nginx mainline](https://github.com/cytopia/docker-nginx-mainline) | [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-5.5.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-5.5) [MariaDB 5.5](https://github.com/cytopia/docker-mariadb-5.5)  | PostgreSQL 9.5 | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-7.0.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-7.0) [PHP 7.0](https://github.com/cytopia/docker-php-fpm-7.0) |
 |       | [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.0.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.0) [MariaDB 10.0](https://github.com/cytopia/docker-mariadb-10.0) | PostgreSQL 9.6 | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-7.1.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-7.1) [PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
 |       | [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.1.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.1) [MariaDB 10.1](https://github.com/cytopia/docker-mariadb-10.1) | |
-|       | MariaDB 10.2 | |
+|       | [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.2.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.2) [MariaDB 10.2](https://github.com/cytopia/docker-mariadb-10.2) | |
 
 <sub>**Note:** Entries without links or without build-status are not yet available, but are coming soon. See [CONTRIBUTING](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md) for tasks and upcoming features.</sub>
 
@@ -85,6 +85,13 @@ No need to install and configure different versions locally. Simply choose your 
 | Cassandra 3.0 |             |                  | MongoDB 3.2 | Redis 3.2 |
 |               |             |                  | MongoDB 3.4 | Redis unstable |
 
+<!--
+**Optional search stack**
+
+| Apache Solr | Elasticsearch |
+|-------------|---------------|
+| todo        |               |
+-->
 <!--
 **Optional cgi stack**
 

@@ -52,6 +52,8 @@ MYSQL_SERVER=mysql-5.5
 #MYSQL_SERVER=mysql-5.7
 #MYSQL_SERVER=mariadb-5.5
 #MYSQL_SERVER=mariadb-10.0
+#MYSQL_SERVER=mariadb-10.1
+#MYSQL_SERVER=mariadb-10.2
 
 
 
