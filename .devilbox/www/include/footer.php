@@ -9,6 +9,8 @@
 
 <?php if ($GLOBALS['MY_MYSQL_LINK']) { my_mysqli_close($GLOBALS['MY_MYSQL_LINK']); } ?>
 
+<script src="/vendor/jquery/jquery.min.js"></script>
+
 <?php /*
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/vendor/jquery/jquery.min.js"></script>

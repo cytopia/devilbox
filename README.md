@@ -4,6 +4,8 @@
 
 There is currently a huge annoyance with docker on OSX resulting in very slow file access, because of directory mounts. Read about the ticket here [Docker Forums #8076](https://forums.docker.com/t/file-access-in-mounted-volumes-extremely-slow-cpu-bound/8076).
 
+**Latest feature:** `Email support...`
+
 ----
 
 [Usage](https://github.com/cytopia/devilbox#usage) |
@@ -73,12 +75,13 @@ No need to install and configure different versions locally. Simply choose your 
 
 ## Feature overview
 
-* Dynamically Configured Mass Virtual Hosting
-* Configuration overwrites (`my.cnf`, `nginx.conf`, `httpd.conf` or `php.ini`)
-* Log files available on host computer
+* Dynamically Configured **Mass Virtual Hosting**
+* **Email** catch-all (Intercept and view all sent emails)
+* Configuration **overwrites** (`my.cnf`, `nginx.conf`, `httpd.conf` or `php.ini`)
+* **Log files** available on host computer
 * MySQL socket (available on host computer and PHP container)
 * MySQL connectivity (reachable from host computer and from PHP container via `127.0.0.1` and `localhost`)
-* Xdebug
+* **Xdebug**
 
 
 <!--
@@ -94,6 +97,7 @@ The devilbox comes with a pre-configured intranet on `http://localhost`
 
 * Virtua lHost overview
 * Database overview
+* Email overview
 * PHP Info
 * MySQL Info
 * PHPMyAdmin
@@ -136,3 +140,10 @@ Virtual Hosts are considered valid if the following requirements are met (on the
 Shows you all the databases that are loaded
 
 ![Intranet DB](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/03_intranet_databases.png "Intranet Home")
+
+
+**Email overview**
+
+Shows you all the emails that have been sent. No email will actually be sent outside, but they are all catched by one account and presented here.
+
+![Intranet Email](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/04_intranet_emails.png "Intranet Home")

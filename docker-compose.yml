@@ -147,6 +147,7 @@ services:
             - HOST_PATH_TO_WWW_DOCROOTS=${HOST_PATH_TO_WWW_DOCROOTS}
             - HOST_PATH_TO_MYSQL_DATADIR=${HOST_PATH_TO_MYSQL_DATADIR}
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - ENABLE_MAIL=1
 
         networks:
             app_net:
@@ -165,6 +166,9 @@ services:
 
             # Mount MySQL Socket directory
             - ./run/mysql:/tmp/mysql
+
+            # Mount Mail directory
+            - ./run/mail:/var/mail
 
             # Mount devilbox user-defined *.ini files in order
             # to overwrite the default PHP configuration

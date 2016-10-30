@@ -327,33 +327,31 @@ function checkVirtualHost($vhost)
 		$error[] = 'Missing <strong>htdocs</strong> directory in: <strong>'.$ENV['HOST_PATH_TO_WWW_DOCROOTS'].'/'.$vhost.'/</strong>';
 	}
 
-	// Temporarily comment out due to:
-	// https://github.com/cytopia/devilbox/issues/8
-	//
+	if ($GLOBALS['ENABLE_VHOST_DNS_CHECK']) {
+
+		// 2. Check /etc/resolv DNS entry
+		$output;
+		if (my_exec('getent hosts '.$domain, $output) !== 0) {
+			$error[] = 'Missing entry in <strong>/etc/hosts</strong>:<br/><code>127.0.0.1 '.$domain.'</code>';
+		}
 
 
-	// 2. Check /etc/resolv DNS entry
-	//$output;
-	//if (my_exec('getent hosts '.$domain, $output) !== 0) {
-	//	$error[] = 'Missing entry in <strong>/etc/hosts</strong>:<br/><code>127.0.0.1 '.$domain.'</code>';
-	//}
-
-
-	// 3. Check correct /etc/resolv entry
-	//$dns_ip = '127.0.0.1';
-	//if (isset($output[0])) {
-	//	$tmp = explode(' ', $output[0]);
-	//	if (isset($tmp[0])) {
-	//		$dns_ip = $tmp[0];
-	//	}
-	//}
-	//if ($dns_ip != '127.0.0.1') {
-	//	$error[] = 'Error in <strong>/etc/hosts</strong><br/>'.
-	//				'Found:<br/>'.
-	//				'<code>'.$dns_ip.' '.$domain.'</code><br/>'.
-	//				'But it should be:<br/>'.
-	//				'<code>127.0.0.1 '.$domain.'</code><br/>';
-	//}
+		// 3. Check correct /etc/resolv entry
+		$dns_ip = '127.0.0.1';
+		if (isset($output[0])) {
+			$tmp = explode(' ', $output[0]);
+			if (isset($tmp[0])) {
+				$dns_ip = $tmp[0];
+			}
+		}
+		if ($dns_ip != '127.0.0.1') {
+			$error[] = 'Error in <strong>/etc/hosts</strong><br/>'.
+						'Found:<br/>'.
+						'<code>'.$dns_ip.' '.$domain.'</code><br/>'.
+						'But it should be:<br/>'.
+						'<code>127.0.0.1 '.$domain.'</code><br/>';
+		}
+	}
 
 	if (is_array($error) && count($error)) {
 		return implode('<br/>', $error);

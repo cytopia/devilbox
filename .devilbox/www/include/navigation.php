@@ -24,6 +24,13 @@
 				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>
 			</li>
 
+
+			<?php $file = 'mail.php'; $name = 'Mail';?>
+			<li class="nav-item <?php echo $file == $current ? 'active' : '';?>">
+				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>
+			</li>
+
+
 			<?php $file = 'phpinfo.php'; $name = 'PHP info';?>
 			<li class="nav-item <?php echo $file == $current ? 'active' : '';?>">
 				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>

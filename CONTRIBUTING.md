@@ -7,7 +7,7 @@ Contributors will be credited within the intranet and on the github page.
 
 ## General
 
-* [ ] Handle emails sent from PHP dockers [#5](https://github.com/cytopia/devilbox/issues/5)
+* [X] Handle emails sent from PHP dockers [#5](https://github.com/cytopia/devilbox/issues/5)
   1. Add another container which is able to display mails: https://github.com/sj26/mailcatcher
   2. Proxy this webinterface into the Intranet 
 
@@ -50,7 +50,7 @@ Contributors will be credited within the intranet and on the github page.
 
 ## Intranet
 
-* [ ] View emails sent/received within PHP dockers
+* [X] View emails sent/received within PHP dockers
 * [ ] Better layout
 * [ ] Better logos
 * [ ] Try to remove as much vendor dependencies as possible

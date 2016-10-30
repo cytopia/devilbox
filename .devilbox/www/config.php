@@ -26,9 +26,14 @@ $MYSQL_HOST_NAME	= 'db';
 $MYSQL_HOST_ADDR	= gethostbyname($MYSQL_HOST_NAME);
 $MYSQL_ROOT_PASS	= $ENV['MYSQL_ROOT_PASSWORD'];
 
-
+// MySQL Connection variables
 $MY_MYSQL_ERR		= NULL;
 $MY_MYSQL_LINK		= NULL;
+
+// VirtualHost DNS check
+// Temporarily disable due to:
+// https://github.com/cytopia/devilbox/issues/8
+$ENABLE_VHOST_DNS_CHECK = FALSE;
 
 
 require $MY_DIR . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR .'functions.php';

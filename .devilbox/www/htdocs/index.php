@@ -166,6 +166,10 @@
 								</td>
 							</tr>
 
+							<tr>
+								<th>Postfix</th>
+								<td><?php echo $ENV['ENABLE_MAIL'] ? '<span class="bg-success">OK</span> Enabled'  : '<span class="bg-danger">No</span> Disabled';?></td>
+							</tr>
 
 
 							<tr>
