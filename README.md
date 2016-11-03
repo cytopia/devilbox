@@ -74,7 +74,7 @@ No need to install and configure different versions locally. Simply choose your 
 |       | [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.1.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.1) [MariaDB 10.1](https://github.com/cytopia/docker-mariadb-10.1) | |
 |       | [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.2.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.2) [MariaDB 10.2](https://github.com/cytopia/docker-mariadb-10.2) | |
 
-<sub>**Note:** Entries without links or without build-status are not yet available, but are coming soon. See [CONTRIBUTING](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md) for tasks and upcoming features.</sub>
+<sub>**Note:** Entries without links or without build-status are not yet available, but are coming soon. See [ROADMAP](https://github.com/cytopia/devilbox/issues/23) for tasks and upcoming features.</sub>
 
 
 **Optional NoSQL stack**
@@ -85,6 +85,8 @@ No need to install and configure different versions locally. Simply choose your 
 | Cassandra 2.2 | CouchDB 2.0 |                  | MongoDB 3.0 | Redis 3.0 |
 | Cassandra 3.0 |             |                  | MongoDB 3.2 | Redis 3.2 |
 |               |             |                  | MongoDB 3.4 | Redis unstable |
+
+<sub>**Note:** Entries without links or without build-status are not yet available, but are coming soon. See [ROADMAP](https://github.com/cytopia/devilbox/issues/23) for tasks and upcoming features.</sub>
 
 <!--
 **Optional search stack**
@@ -135,7 +137,7 @@ The devilbox comes with a pre-configured intranet on `http://localhost`
 
 ## Contributing
 
-There is quite a lot todo and planned. If you like to contribute, view [CONTRIBUTING.md](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md).
+There is quite a lot todo and planned. If you like to contribute, view [CONTRIBUTING.md](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md) and [ROADMAP](https://github.com/cytopia/devilbox/issues/23).
 
 Contributors will be credited within the intranet and on the github page.
 
