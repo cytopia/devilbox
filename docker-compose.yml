@@ -30,8 +30,7 @@ services:
     # HTTP
     # ----------------------------------------
     httpd:
-        #image: cytopia/${HTTPD_SERVER}:1
-        image: cytopia/${HTTPD_SERVER}
+        image: cytopia/${HTTPD_SERVER}:0.8
 
         # Manually build via `docker-compose build`
         #build:
@@ -103,8 +102,7 @@ services:
     # PHP-FPM
     # ----------------------------------------
     php:
-        #image: cytopia/${PHP_SERVER}:1
-        image: cytopia/${PHP_SERVER}
+        image: cytopia/${PHP_SERVER}:0.8
 
         # Manually build via `docker-compose build`
         #build:
@@ -191,8 +189,7 @@ services:
     # DATABASE
     # ----------------------------------------
     db:
-        #image: cytopia/${MYSQL_SERVER}:1
-        image: cytopia/${MYSQL_SERVER}
+        image: cytopia/${MYSQL_SERVER}:0.8
 
         # Manually build via `docker-compose build`
         #build:
