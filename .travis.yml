@@ -1,0 +1,62 @@
+language: python
+python:
+  - 2.7
+
+###
+### Add services
+###
+services:
+  - docker
+
+
+###
+### Global variables
+###
+env:
+  global:
+    - DEVILBOX_VERSION="0.8"
+
+
+###
+### Install
+###
+install:
+
+  # Create overview section script
+  - echo "#!/bin/sh" > /tmp/section.sh
+  - echo " echo '===================================================================================================='" >> /tmp/section.sh
+  - echo " echo '===================================================================================================='" >> /tmp/section.sh
+  - echo " echo \"= \${1}\"" >> /tmp/section.sh
+  - echo " echo '===================================================================================================='" >> /tmp/section.sh
+  - echo " echo '===================================================================================================='" >> /tmp/section.sh
+  - chmod +x /tmp/section.sh
+
+
+
+###
+### Test
+###
+script:
+  ################################################################################
+  # Pull dockers
+  ################################################################################
+  # web
+  - docker pull cytopia/apache-2.2:${DEVILBOX_VERSION}
+  - docker pull cytopia/apache-2.4:${DEVILBOX_VERSION}
+  - docker pull cytopia/nginx-stable:${DEVILBOX_VERSION}
+  - docker pull cytopia/nginx-mainline:${DEVILBOX_VERSION}
+  # php
+  - docker pull cytopia/php-fpm-5.4:${DEVILBOX_VERSION}
+  - docker pull cytopia/php-fpm-5.5:${DEVILBOX_VERSION}
+  - docker pull cytopia/php-fpm-5.6:${DEVILBOX_VERSION}
+  - docker pull cytopia/php-fpm-7.0:${DEVILBOX_VERSION}
+  - docker pull cytopia/php-fpm-7.1:${DEVILBOX_VERSION}
+  # mysql/mariadb
+  - docker pull cytopia/mysql-5.5:${DEVILBOX_VERSION}
+  - docker pull cytopia/mysql-5.6:${DEVILBOX_VERSION}
+  - docker pull cytopia/mysql-5.7:${DEVILBOX_VERSION}
+  - docker pull cytopia/mariadb-5.5:${DEVILBOX_VERSION}
+  - docker pull cytopia/mariadb-10.0:${DEVILBOX_VERSION}
+  - docker pull cytopia/mariadb-10.1:${DEVILBOX_VERSION}
+  - docker pull cytopia/mariadb-10.2:${DEVILBOX_VERSION}
+
