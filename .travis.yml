@@ -18,18 +18,18 @@ env:
 
 
 ###
+### Berfore Install
+###
+before_install:
+  - echo "Before install"
+
+###
 ### Install
 ###
 install:
-
-  # Create overview section script
-  - echo "#!/bin/sh" > /tmp/section.sh
-  - echo " echo '===================================================================================================='" >> /tmp/section.sh
-  - echo " echo '===================================================================================================='" >> /tmp/section.sh
-  - echo " echo \"= \${1}\"" >> /tmp/section.sh
-  - echo " echo '===================================================================================================='" >> /tmp/section.sh
-  - echo " echo '===================================================================================================='" >> /tmp/section.sh
-  - chmod +x /tmp/section.sh
+  # List versions
+  - docker version
+  - docker-compose version
 
 
 
@@ -38,7 +38,7 @@ install:
 ###
 script:
   ################################################################################
-  # Pull dockers
+  # Pull dockers (will move to install/before_install)
   ################################################################################
   # web
   - docker pull cytopia/apache-2.2:${DEVILBOX_VERSION}
