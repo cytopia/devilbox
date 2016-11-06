@@ -48,8 +48,11 @@ $ vim .env
 # Start the dockers
 $ docker-compose up
 ```
-[What is the `.env` file?](https://docs.docker.com/compose/env-file/)
 
+**Notes**
+
+- [What is the `.env` file?](https://docs.docker.com/compose/env-file/)
+- Checkout latest stable release: ` git checkout $(git describe --abbrev=0 --tags)`
 
 ## Video Tutorials
 
