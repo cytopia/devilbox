@@ -14,7 +14,9 @@ services:
 ###
 env:
   global:
-    - DEVILBOX_VERSION="0.8"
+    - DEVILBOX_PHP_VERSION="0.8.1"
+    - DEVILBOX_HTTPD_VERSION="0.8"
+    - DEVILBOX_MYSQL_VERSION="0.8"
 
 
 ###
@@ -40,23 +42,23 @@ script:
   ################################################################################
   # Pull dockers (will move to install/before_install)
   ################################################################################
-  # web
-  - docker pull cytopia/apache-2.2:${DEVILBOX_VERSION}
-  - docker pull cytopia/apache-2.4:${DEVILBOX_VERSION}
-  - docker pull cytopia/nginx-stable:${DEVILBOX_VERSION}
-  - docker pull cytopia/nginx-mainline:${DEVILBOX_VERSION}
   # php
-  - docker pull cytopia/php-fpm-5.4:${DEVILBOX_VERSION}
-  - docker pull cytopia/php-fpm-5.5:${DEVILBOX_VERSION}
-  - docker pull cytopia/php-fpm-5.6:${DEVILBOX_VERSION}
-  - docker pull cytopia/php-fpm-7.0:${DEVILBOX_VERSION}
-  - docker pull cytopia/php-fpm-7.1:${DEVILBOX_VERSION}
+  - docker pull cytopia/php-fpm-5.4:${DEVILBOX_PHP_VERSION}
+  - docker pull cytopia/php-fpm-5.5:${DEVILBOX_PHP_VERSION}
+  - docker pull cytopia/php-fpm-5.6:${DEVILBOX_PHP_VERSION}
+  - docker pull cytopia/php-fpm-7.0:${DEVILBOX_PHP_VERSION}
+  - docker pull cytopia/php-fpm-7.1:${DEVILBOX_PHP_VERSION}
+  # web
+  - docker pull cytopia/apache-2.2:${DEVILBOX_HTTPD_VERSION}
+  - docker pull cytopia/apache-2.4:${DEVILBOX_HTTPD_VERSION}
+  - docker pull cytopia/nginx-stable:${DEVILBOX_HTTPD_VERSION}
+  - docker pull cytopia/nginx-mainline:${DEVILBOX_HTTPD_VERSION}
   # mysql/mariadb
-  - docker pull cytopia/mysql-5.5:${DEVILBOX_VERSION}
-  - docker pull cytopia/mysql-5.6:${DEVILBOX_VERSION}
-  - docker pull cytopia/mysql-5.7:${DEVILBOX_VERSION}
-  - docker pull cytopia/mariadb-5.5:${DEVILBOX_VERSION}
-  - docker pull cytopia/mariadb-10.0:${DEVILBOX_VERSION}
-  - docker pull cytopia/mariadb-10.1:${DEVILBOX_VERSION}
-  - docker pull cytopia/mariadb-10.2:${DEVILBOX_VERSION}
+  - docker pull cytopia/mysql-5.5:${DEVILBOX_MYSQL_VERSION}
+  - docker pull cytopia/mysql-5.6:${DEVILBOX_MYSQL_VERSION}
+  - docker pull cytopia/mysql-5.7:${DEVILBOX_MYSQL_VERSION}
+  - docker pull cytopia/mariadb-5.5:${DEVILBOX_MYSQL_VERSION}
+  - docker pull cytopia/mariadb-10.0:${DEVILBOX_MYSQL_VERSION}
+  - docker pull cytopia/mariadb-10.1:${DEVILBOX_MYSQL_VERSION}
+  - docker pull cytopia/mariadb-10.2:${DEVILBOX_MYSQL_VERSION}
 
