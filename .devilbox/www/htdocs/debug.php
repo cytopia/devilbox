@@ -20,6 +20,8 @@
 					<?php $errors = $Logger->getAll(); ?>
 					<?php if ($errors === false): ?>
 						<p>Writing to logfile is not possible. Errors will be sent as mail instead. Check the mail section.</p>
+					<?php elseif (count($errors) === 0): ?>
+						<p>No errors detected.</div>
 					<?php else: ?>
 						<?php $total = count($errors); ?>
 						<table class="table table-striped">
