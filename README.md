@@ -9,13 +9,13 @@ There is currently a huge annoyance with docker on OSX resulting in very slow fi
 ----
 
 [Usage](https://github.com/cytopia/devilbox#usage) |
-[Video Tutorials](https://github.com/cytopia/devilbox#video-tutorials) |
+[Documentation](https://github.com/cytopia/devilbox#documentation) |
 [Run-time Matrix](https://github.com/cytopia/devilbox#run-time-matrix) |
 [Features](https://github.com/cytopia/devilbox#feature-overview) |
 [Intranet](https://github.com/cytopia/devilbox#intranet-overview) |
-[Contributing](https://github.com/cytopia/devilbox#contributing) |
 [Screenshots](https://github.com/cytopia/devilbox#screenshots) |
 [License](https://github.com/cytopia/devilbox/blob/master/LICENSE.md) |
+[Contributing](https://github.com/cytopia/devilbox#contributing) |
 [Todo](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md)
 
 [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox) ![Tag](https://img.shields.io/github/tag/cytopia/devilbox.svg) [![type](https://img.shields.io/badge/type-Docker-orange.svg)](https://www.docker.com/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -54,10 +54,16 @@ $ docker-compose up
 
 [What is the `.env` file?](https://docs.docker.com/compose/env-file/)
 
-## Video Tutorials
+## Documentation
+
+**Video Tutorials**
 
 [![Devilbox setup and workflow](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/devilbox_01-setup-and-workflow.png "devilbox - setup and workflow")](https://www.youtube.com/watch?v=reyZMyt2Zzo) 
 [![Devilbox email catch-all](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/devilbox_02-email-catch-all.png "devilbox - email catch-all")](https://www.youtube.com/watch?v=e-U-C5WhxGY)
+
+**Documentation**
+
+For setup, usage and examples see detailed **[Documentation](https://github.com/cytopia/devilbox/blob/master/doc/README.md)**.
 
 ## Run-time Matrix
 
@@ -106,7 +112,6 @@ No need to install and configure different versions locally. Simply choose your 
 | todo | todo | todo   | todo |
 -->
 
-
 ## Feature overview
 
 * Dynamically Configured **Mass Virtual Hosting**
@@ -137,12 +142,6 @@ The devilbox comes with a pre-configured intranet on `http://localhost`
 * PHPMyAdmin
 * Opcache GUI
 
-
-## Contributing
-
-There is quite a lot todo and planned. If you like to contribute, view [CONTRIBUTING.md](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md) and [ROADMAP](https://github.com/cytopia/devilbox/issues/23).
-
-Contributors will be credited within the intranet and on the github page.
 
 
 ## Screenshots
@@ -181,3 +180,11 @@ Shows you all the databases that are loaded
 Shows you all the emails that have been sent. No email will actually be sent outside, but they are all catched by one account and presented here.
 
 ![Intranet Email](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/04_intranet_emails.png "Intranet Home")
+
+
+## Contributing
+
+There is quite a lot todo and planned. If you like to contribute, view [CONTRIBUTING.md](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md) and [ROADMAP](https://github.com/cytopia/devilbox/issues/23).
+
+Contributors will be credited within the intranet and on the github page.
+
