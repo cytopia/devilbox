@@ -1,5 +1,14 @@
 <?php
 /**
+ * @author  cytopia
+ * @date    2016-11-06
+ *
+ * Fixed constructor name to __construct in order to be
+ * compatible with PHP >5.5
+ */
+
+
+/**
 * Class to read mbox mail files.
 *
 * PHP versions 4 and 5
@@ -190,7 +199,7 @@ class Mail_Mbox extends PEAR
      *
      * @access public
      */
-    function Mail_Mbox($file)
+    function __construct($file)
     {
         $this->_file = $file;
     }
