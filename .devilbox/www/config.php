@@ -12,7 +12,7 @@ error_reporting(-1);
 $CONF_DIR	= dirname(__FILE__);
 $INCL_DIR	= $CONF_DIR . DIRECTORY_SEPARATOR . 'include';
 $LIB_DIR	= $INCL_DIR . DIRECTORY_SEPARATOR . 'lib';
-$VEN_DIR	= $INCL_DIR . DIRECTORY_SEPARATOR . 'include';
+$VEN_DIR	= $INCL_DIR . DIRECTORY_SEPARATOR . 'vendor';
 $LOG_DIR	= dirname(dirname($CONF_DIR)) . DIRECTORY_SEPARATOR . 'log' . DIRECTORY_SEPARATOR . 'devilbox';
 
 
