@@ -4,10 +4,6 @@ html, body {
     font-size: 14px;
 }
 
-td {
-	word-break: break-word;
-}
-
 
 
 /* Sticky footer styles
@@ -111,4 +107,8 @@ nav.navbar {
 -------------------------------------------------- */
 tr.subject {
     cursor: pointer;
+}
+
+td.break-word {
+    word-break: break-word;
 }

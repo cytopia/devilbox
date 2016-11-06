@@ -16,7 +16,7 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<?php $vHosts = getVirtualHosts(); ?>
+					<?php $vHosts = $Docker->PHP_getVirtualHosts(); ?>
 					<?php if ($vHosts): ?>
 						<table class="table table-striped">
 							<thead class="thead-inverse">
@@ -38,7 +38,7 @@
 								<?php foreach ($vHosts as $vHost): ?>
 									<tr>
 										<td><?php echo $vHost['name'];?></td>
-										<td><?php echo $ENV['HOST_PATH_TO_WWW_DOCROOTS'];?>/<?php echo $vHost['name'];?>/htdocs</td>
+										<td><?php echo $Docker->getEnv('HOST_PATH_TO_WWW_DOCROOTS');?>/<?php echo $vHost['name'];?>/htdocs</td>
 										<td class="text-xs-center text-xs-small" id="valid-<?php echo $vHost['name'];?>">&nbsp;&nbsp;&nbsp;</td>
 										<td id="href-<?php echo $vHost['name'];?>"><?php echo $filler;?></td>
 									</tr>
@@ -48,8 +48,8 @@
 						</table>
 					<?php else: ?>
 						<h4>No projects here.</h4>
-						<p>Simply create a folder in <strong><?php echo $ENV['HOST_PATH_TO_WWW_DOCROOTS'];?></strong> (on your host computer - not inside the docker).</p>
-						<p><strong>Example:</strong><br/><?php echo $ENV['HOST_PATH_TO_WWW_DOCROOTS'];?>/my_project</p>
+						<p>Simply create a folder in <strong><?php echo $Docker->getEnv('HOST_PATH_TO_WWW_DOCROOTS');?></strong> (on your host computer - not inside the docker).</p>
+						<p><strong>Example:</strong><br/><?php echo $Docker->getEnv('HOST_PATH_TO_WWW_DOCROOTS');?>/my_project</p>
 					<?php endif;?>
 				</div>
 			</div>
@@ -84,7 +84,7 @@
 						} else {
 							el_valid.className += ' bg-success';
 							el_valid.innerHTML = 'OK';
-							el_href.innerHTML = '<a target="_blank" href="http://'+vhost+'.loc">'+vhost+'.loc</a>';
+							el_href.innerHTML = '<a target="_blank" href="http://'+vhost+'.<?php echo $Docker->getTld();?>">'+vhost+'.<?php echo $Docker->getTld();?></a>';
 						}
 					}
 				};

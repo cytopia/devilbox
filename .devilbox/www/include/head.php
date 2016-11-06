@@ -27,7 +27,7 @@
 
 <!-- CSS/JS -->
 <link href="/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
-<?php if (isset($FONT_AWESOME)): ?>
+<?php if (isset($FONT_AWESOME) && $FONT_AWESOME): ?>
 	<link href="/vendor/font-awesome/font-awesome.min.css" rel="stylesheet">
 <?php endif; ?>
 <link href="/assets/css/custom.css" rel="stylesheet">

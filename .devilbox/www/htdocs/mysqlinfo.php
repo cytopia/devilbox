@@ -1,4 +1,4 @@
-<?php $CONNECT = TRUE; require '../config.php'; ?>
+<?php require '../config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -27,15 +27,15 @@
 					<table class="table table-striped">
 						<thead class="thead-inverse">
 							<tr>
-								<th style="word-break: normal;">Variable</th>
+								<th>Variable</th>
 								<th>Value</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach (getMySQLConfig() as $key => $val): ?>
+							<?php foreach ($Docker->MySQL_config() as $key => $val): ?>
 								<tr>
-									<td style="word-break: normal;"><?php echo $key;?></td>
-									<td><?php echo $val;?></td>
+									<td><?php echo $key;?></td>
+									<td class="break-word"><code><?php echo $val;?></code></td>
 								</tr>
 							<?php endforeach; ?>
 						</tbody>

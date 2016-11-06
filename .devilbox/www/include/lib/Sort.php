@@ -5,13 +5,40 @@ namespace devilbox;
 class Sort
 {
 
+	/**
+	 * Default sort name
+	 * @var string
+	 */
 	private $_default_sort;
+
+	/**
+	 * Default order name
+	 * @var string
+	 */
 	private $_default_order;
 
+	/**
+	 * Array of allowed sort names
+	 * @var string[]
+	 */
 	private $_allowedSorts;
+
+	/**
+	 * Array of allowed order names
+	 * @var string[]
+	 */
 	private $_allowedOrders;
 
+	/**
+	 * Name of $_GET key for current sort
+	 * @var string
+	 */
 	private $_GET_sort;
+
+	/**
+	 * Name of $_GET key for current order
+	 * @var string
+	 */
 	private $_GET_order;
 
 
@@ -23,7 +50,7 @@ class Sort
 	 * @param mixed[] $allowedOrders Array of allowed orders
 	 * @param mixed[] $GET_sortKeys  Array of sort/order $_GET key names
 	 */
-	function __construct($defaults, $allowedSorts, $allowedOrders, $GET_sortKeys)
+	public function __construct($defaults, $allowedSorts, $allowedOrders, $GET_sortKeys)
 	{
 		// Default sort/order
 		$this->_default_sort = $defaults['sort'];

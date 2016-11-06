@@ -1,4 +1,4 @@
-<?php $CONNECT = TRUE; require '../config.php'; ?>
+<?php require '../config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -28,7 +28,7 @@
 							</th>
 						</thead>
 						<tbody>
-							<?php foreach (getDatabases() as $name => $keys): ?>
+							<?php foreach ($MySQL->getDatabases() as $name => $keys): ?>
 								<tr>
 									<td><?php echo $name;?></td>
 									<td><?php echo $keys['charset'];?></td>

@@ -1,43 +1,53 @@
 <?PHP
+// Measure time
 $TIME_START = microtime(true);
-$MY_DIR = dirname(__FILE__);
+
+// PHP Error reporting
+error_reporting(-1);
 
 
-// Translate Docker environmental variables to $ENV
-$ENV = array();
-exec('env', $output);
-foreach ($output as $var) {
-	$tmp = explode('=', $var);
-	$ENV[$tmp[0]] = $tmp[1];
-}
+//
+// Set Directories
+//
+$CONF_DIR	= dirname(__FILE__);
+$INCL_DIR	= $CONF_DIR . DIRECTORY_SEPARATOR . 'include';
+$LIB_DIR	= $INCL_DIR . DIRECTORY_SEPARATOR . 'lib';
+$VEN_DIR	= $INCL_DIR . DIRECTORY_SEPARATOR . 'include';
+$LOG_DIR	= dirname(dirname($CONF_DIR)) . DIRECTORY_SEPARATOR . 'log' . DIRECTORY_SEPARATOR . 'devilbox';
 
 
-
-// HTTPD Docker
+//
+// Set Docker addresses
+//
 $HTTPD_HOST_NAME	= 'httpd';
 $HTTPD_HOST_ADDR	= gethostbyname($HTTPD_HOST_NAME);
 
-// PHP Docker
-$PHP_HOST_NAME	= 'php';
-$PHP_HOST_ADDR	= gethostbyname($PHP_HOST_NAME);
+$PHP_HOST_NAME		= 'php';
+$PHP_HOST_ADDR		= gethostbyname($PHP_HOST_NAME);
 
-// MySQL Docker
 $MYSQL_HOST_NAME	= 'db';
 $MYSQL_HOST_ADDR	= gethostbyname($MYSQL_HOST_NAME);
-$MYSQL_ROOT_PASS	= $ENV['MYSQL_ROOT_PASSWORD'];
 
-// MySQL Connection variables
-$MY_MYSQL_ERR		= NULL;
-$MY_MYSQL_LINK		= NULL;
+
+//
+// Load files
+//
+require $LIB_DIR . DIRECTORY_SEPARATOR . 'Logger.php';
+require $LIB_DIR . DIRECTORY_SEPARATOR . 'Docker.php';
+require $LIB_DIR . DIRECTORY_SEPARATOR . 'Mysql.php';
+
+
+//
+// Instantiate Basics
+//
+$Logger	= \devilbox\Logger::getInstance();
+$Docker = \devilbox\Docker::getInstance();
+$MySQL	= \devilbox\Mysql::getInstance('root', $Docker->getEnv('MYSQL_ROOT_PASSWORD'), $MYSQL_HOST_ADDR);
+
+
+
 
 // VirtualHost DNS check
 // Temporarily disable due to:
 // https://github.com/cytopia/devilbox/issues/8
-$ENABLE_VHOST_DNS_CHECK = FALSE;
-
-
-require $MY_DIR . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR .'functions.php';
-
-if (isset($CONNECT) && $CONNECT) {
-	$MY_MYSQL_LINK = my_mysql_connect($MY_MYSQL_ERR);
-}
+$ENABLE_VHOST_DNS_CHECK = false;

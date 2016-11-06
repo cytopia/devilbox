@@ -31,7 +31,7 @@ class Mail
 	 *
 	 * @param string $mboxPath Path to mbox file.
 	 */
-	function __construct($mboxPath)
+	public function __construct($mboxPath)
 	{
 		$this->_Mbox = new \Mail_Mbox($mboxPath);
 		$this->_Mbox->open();
@@ -41,7 +41,7 @@ class Mail
 	/**
 	 * Destructor
 	 */
-	function __destruct()
+	public function __destruct()
 	{
 		$this->_Mbox->close();
 	}
