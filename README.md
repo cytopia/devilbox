@@ -39,6 +39,9 @@ Configuration is not necessary, as everything is pre-setup with mass virtual hos
 You are up and running in three simple steps:
 
 ```bash
+# (optional) check out latest stable release
+$ git checkout $(git describe --abbrev=0 --tags)
+
 # Copy the example configuration file
 $ cp env-example .env
 
@@ -49,10 +52,7 @@ $ vim .env
 $ docker-compose up
 ```
 
-**Notes**
-
-- [What is the `.env` file?](https://docs.docker.com/compose/env-file/)
-- Checkout latest stable release: ` git checkout $(git describe --abbrev=0 --tags)`
+[What is the `.env` file?](https://docs.docker.com/compose/env-file/)
 
 ## Video Tutorials
 

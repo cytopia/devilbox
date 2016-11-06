@@ -102,7 +102,7 @@ services:
     # PHP-FPM
     # ----------------------------------------
     php:
-        image: cytopia/${PHP_SERVER}:0.8
+        image: cytopia/${PHP_SERVER}:0.8.1
 
         # Manually build via `docker-compose build`
         #build:
