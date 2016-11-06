@@ -84,6 +84,10 @@ class Docker
 			$this->_env[$tmp[0]] = $tmp[1];
 		}
 
+		// Set the TLD suffix (domain ending) for virtual hosts
+		// Note: If this is changed it currently also needs to be changed
+		//       in each webserver's configuration file in .devilbox/<webserver>/02-vhost-mass.conf
+		$this->_tld = $GLOBALS['TLD_SUFFIX'];
 
 	}
 

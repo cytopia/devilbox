@@ -16,6 +16,17 @@ $VEN_DIR	= $INCL_DIR . DIRECTORY_SEPARATOR . 'include';
 $LOG_DIR	= dirname(dirname($CONF_DIR)) . DIRECTORY_SEPARATOR . 'log' . DIRECTORY_SEPARATOR . 'devilbox';
 
 
+
+/**
+ * TLD suffix for mass virtual hosts.
+ *
+ * This is currently hardcoded and must be changed here
+ * as well as in the webserver config.
+ * @var string
+ */
+$TLD_SUFFIX	= 'loc';
+
+
 //
 // Set Docker addresses
 //
