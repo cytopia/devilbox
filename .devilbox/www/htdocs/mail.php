@@ -12,16 +12,14 @@ if (isset($_GET['email']) && isset($_GET['subject']) && isset($_GET['message']))
 	exit();
 }
 
-
 //
 // Includes
 //
 require '../config.php';
-require '../include/vendor/Mail/Mbox.php';
-require '../include/vendor/Mail/mimeDecode.php';
-require '../include/lib/Mail.php';
-require '../include/lib/Sort.php';
-
+require $VEN_DIR . DIRECTORY_SEPARATOR . 'Mail' . DIRECTORY_SEPARATOR .'Mbox.php';
+require $VEN_DIR . DIRECTORY_SEPARATOR . 'Mail' . DIRECTORY_SEPARATOR .'mimeDecode.php';
+require $LIB_DIR . DIRECTORY_SEPARATOR . 'Mail.php';
+require $LIB_DIR . DIRECTORY_SEPARATOR . 'Sort.php';
 
 //
 // Setup Sort/Order
