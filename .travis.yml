@@ -14,9 +14,9 @@ services:
 ###
 env:
   global:
-    - DEVILBOX_PHP_VERSION="latest"
-    - DEVILBOX_HTTPD_VERSION="0.8"
-    - DEVILBOX_MYSQL_VERSION="0.8"
+    - DEVILBOX_PHP_VERSION="$(   grep -Eo 'image:.*PHP.*:.*' docker-compose.yml   | sed 's/.*:.*://g' )"
+    - DEVILBOX_HTTPD_VERSION="$( grep -Eo 'image:.*HTTPD.*:.*' docker-compose.yml | sed 's/.*:.*://g' )"
+    - DEVILBOX_MYSQL_VERSION="$( grep -Eo 'image:.*MYSQL.*:.*' docker-compose.yml | sed 's/.*:.*://g' )"
 
 
 ###
@@ -71,7 +71,7 @@ script:
 
 
   - cp env-example .env
-  - docker-compse up -d
+  - docker-compose up -d
   - sleep 30
   - docker-compose ps
   - docker-compose logs
