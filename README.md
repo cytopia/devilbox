@@ -4,7 +4,7 @@
 
 There is currently a huge annoyance with docker on OSX resulting in very slow file access, because of directory mounts. Read about the ticket here [Docker Forums #8076](https://forums.docker.com/t/file-access-in-mounted-volumes-extremely-slow-cpu-bound/8076).
 
-**Latest feature:** `Email support...`
+**Latest feature:** `PostgreSQL support...`
 
 ----
 
@@ -82,8 +82,6 @@ No need to install and configure different versions locally. Simply choose your 
 |       | [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.0.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.0) [MariaDB 10.0](https://github.com/cytopia/docker-mariadb-10.0) | [![Build Status](https://travis-ci.org/docker-library/postgres.svg?branch=master)](https://travis-ci.org/docker-library/postgres/branches) [PostgreSQL 9.6](https://hub.docker.com/_/postgres/) | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-7.1.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-7.1) [PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
 |       | [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.1.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.1) [MariaDB 10.1](https://github.com/cytopia/docker-mariadb-10.1) | |
 |       | [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.2.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.2) [MariaDB 10.2](https://github.com/cytopia/docker-mariadb-10.2) | |
-
-<sub>**Note:** Entries without links or without build-status are not yet available, but are coming soon. See [ROADMAP](https://github.com/cytopia/devilbox/issues/23) for tasks and upcoming features.</sub>
 
 
 **Optional NoSQL stack**
