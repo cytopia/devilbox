@@ -14,7 +14,7 @@ services:
 ###
 env:
   global:
-    - DEVILBOX_PHP_VERSION="0.8.1"
+    - DEVILBOX_PHP_VERSION="latest"
     - DEVILBOX_HTTPD_VERSION="0.8"
     - DEVILBOX_MYSQL_VERSION="0.8"
 
@@ -62,3 +62,17 @@ script:
   - docker pull cytopia/mariadb-10.1:${DEVILBOX_MYSQL_VERSION}
   - docker pull cytopia/mariadb-10.2:${DEVILBOX_MYSQL_VERSION}
 
+  # postgresql (official images)
+  - docker pull postgres:9.2
+  - docker pull postgres:9.3
+  - docker pull postgres:9.4
+  - docker pull postgres:9.5
+  - docker pull postgres:9.6
+
+
+  - cp env-example .env
+  - docker-compse up -d
+  - sleep 30
+  - docker-compose ps
+  - docker-compose logs
+  - wget http://localhost
