@@ -63,6 +63,7 @@ install:
 ### Test
 ###
 script:
+  - ps auxw
   - cp env-example .env
   - docker-compose up -d
   - sleep 30
