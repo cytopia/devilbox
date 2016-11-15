@@ -65,6 +65,11 @@ install:
 script:
   - ps auxw
   - cp env-example .env
+
+  # PostgreSQL port seems already been taken
+  - sed -i'' 's/5432/54320/g' docker-compose.yml
+
+  # Start
   - docker-compose up -d
   - sleep 30
   - docker-compose ps
