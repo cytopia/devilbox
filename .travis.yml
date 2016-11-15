@@ -26,7 +26,6 @@ before_install:
   # List versions
   - docker version
   - docker-compose version
-  - killall postgres
 
 ###
 ### Install
@@ -68,7 +67,7 @@ script:
   - cp env-example .env
 
   # PostgreSQL port seems already been taken
-  #- sed -i'' 's/5432/54320/g' docker-compose.yml
+  - sed -i'' 's/5432/54320/g' docker-compose.yml
 
   # Start
   - docker-compose up -d
