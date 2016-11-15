@@ -26,35 +26,36 @@ before_install:
   # List versions
   - docker version
   - docker-compose version
+  - killall postgres
 
 ###
 ### Install
 ###
 install:
   # php
-  - docker pull cytopia/php-fpm-5.4:${DEVILBOX_PHP_VERSION}
-  - docker pull cytopia/php-fpm-5.5:${DEVILBOX_PHP_VERSION}
-  - docker pull cytopia/php-fpm-5.6:${DEVILBOX_PHP_VERSION}
-  - docker pull cytopia/php-fpm-7.0:${DEVILBOX_PHP_VERSION}
-  - docker pull cytopia/php-fpm-7.1:${DEVILBOX_PHP_VERSION}
-  # web
-  - docker pull cytopia/apache-2.2:${DEVILBOX_HTTPD_VERSION}
-  - docker pull cytopia/apache-2.4:${DEVILBOX_HTTPD_VERSION}
-  - docker pull cytopia/nginx-stable:${DEVILBOX_HTTPD_VERSION}
-  - docker pull cytopia/nginx-mainline:${DEVILBOX_HTTPD_VERSION}
-  # mysql/mariadb
-  - docker pull cytopia/mysql-5.5:${DEVILBOX_MYSQL_VERSION}
-  - docker pull cytopia/mysql-5.6:${DEVILBOX_MYSQL_VERSION}
-  - docker pull cytopia/mysql-5.7:${DEVILBOX_MYSQL_VERSION}
-  - docker pull cytopia/mariadb-5.5:${DEVILBOX_MYSQL_VERSION}
-  - docker pull cytopia/mariadb-10.0:${DEVILBOX_MYSQL_VERSION}
-  - docker pull cytopia/mariadb-10.1:${DEVILBOX_MYSQL_VERSION}
-  - docker pull cytopia/mariadb-10.2:${DEVILBOX_MYSQL_VERSION}
-  # postgresql (official images)
-  - docker pull postgres:9.2
-  - docker pull postgres:9.3
-  - docker pull postgres:9.4
-  - docker pull postgres:9.5
+  #- docker pull cytopia/php-fpm-5.4:${DEVILBOX_PHP_VERSION}
+  #- docker pull cytopia/php-fpm-5.5:${DEVILBOX_PHP_VERSION}
+  #- docker pull cytopia/php-fpm-5.6:${DEVILBOX_PHP_VERSION}
+  #- docker pull cytopia/php-fpm-7.0:${DEVILBOX_PHP_VERSION}
+  #- docker pull cytopia/php-fpm-7.1:${DEVILBOX_PHP_VERSION}
+  ## web
+  #- docker pull cytopia/apache-2.2:${DEVILBOX_HTTPD_VERSION}
+  #- docker pull cytopia/apache-2.4:${DEVILBOX_HTTPD_VERSION}
+  #- docker pull cytopia/nginx-stable:${DEVILBOX_HTTPD_VERSION}
+  #- docker pull cytopia/nginx-mainline:${DEVILBOX_HTTPD_VERSION}
+  ## mysql/mariadb
+  #- docker pull cytopia/mysql-5.5:${DEVILBOX_MYSQL_VERSION}
+  #- docker pull cytopia/mysql-5.6:${DEVILBOX_MYSQL_VERSION}
+  #- docker pull cytopia/mysql-5.7:${DEVILBOX_MYSQL_VERSION}
+  #- docker pull cytopia/mariadb-5.5:${DEVILBOX_MYSQL_VERSION}
+  #- docker pull cytopia/mariadb-10.0:${DEVILBOX_MYSQL_VERSION}
+  #- docker pull cytopia/mariadb-10.1:${DEVILBOX_MYSQL_VERSION}
+  #- docker pull cytopia/mariadb-10.2:${DEVILBOX_MYSQL_VERSION}
+  ## postgresql (official images)
+  #- docker pull postgres:9.2
+  #- docker pull postgres:9.3
+  #- docker pull postgres:9.4
+  #- docker pull postgres:9.5
   - docker pull postgres:9.6
 
 
@@ -67,7 +68,7 @@ script:
   - cp env-example .env
 
   # PostgreSQL port seems already been taken
-  - sed -i'' 's/5432/54320/g' docker-compose.yml
+  #- sed -i'' 's/5432/54320/g' docker-compose.yml
 
   # Start
   - docker-compose up -d
