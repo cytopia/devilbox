@@ -26,6 +26,13 @@ body {
 }
 
 
+/* Generics
+-------------------------------------------------- */
+.font-small {
+    font-size: 12px;
+}
+
+
 
 /* Circle Box
 -------------------------------------------------- */
@@ -76,7 +83,7 @@ body {
 
 @media (min-width: 801px)
 {
-    .circles > div {padding: 40%;}
+    .circles > div {padding: 48%;}
 }
 
 
@@ -103,7 +110,7 @@ nav.navbar {
 
 
 
-/* mailphp;
+/* mail.php;
 -------------------------------------------------- */
 tr.subject {
     cursor: pointer;
@@ -112,3 +119,4 @@ tr.subject {
 td.break-word {
     word-break: break-word;
 }
+

@@ -10,19 +10,12 @@
 
 		<div class="container">
 
-			<h1>MySQL Info</h1>
+			<h1>PostgreSQL Info</h1>
 			<br/>
 			<br/>
 
 			<div class="row">
 				<div class="col-md-12">
-
-					<p>For reference see here:</p>
-					<ul>
-						<li><a target="_blank" href="https://dev.mysql.com/doc/refman/5.5/en/server-system-variables.html">https://dev.mysql.com/doc/refman/5.5/en/server-system-variables.html</a></li>
-						<li><a target="_blank" href="https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html">https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html</a></li>
-						<li><a target="_blank" href="https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html">https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html</a></li>
-					</ul>
 
 					<table class="table table-striped">
 						<thead class="thead-inverse">
@@ -32,7 +25,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($Docker->MySQL_config() as $key => $val): ?>
+							<?php foreach ($Docker->Postgres_config() as $key => $val): ?>
 								<tr>
 									<td><?php echo $key;?></td>
 									<td class="break-word"><code><?php echo $val;?></code></td>

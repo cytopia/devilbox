@@ -6,7 +6,7 @@
 	</head>
 
 	<body>
-		<?php require '../include/navigation.php'; ?>
+		<?php require '../include/navbar.php'; ?>
 
 		<div class="container">
 
@@ -88,7 +88,7 @@
 						}
 					}
 				};
-				xhttp.open('GET', '_ajax_vhost.php?valid=' + vhost, true);
+				xhttp.open('GET', '_ajax_callback.php?vhost=' + vhost, true);
 				xhttp.send();
 			}
 

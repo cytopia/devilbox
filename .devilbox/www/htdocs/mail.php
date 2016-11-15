@@ -37,27 +37,27 @@ $sort = $MySort->getSort();
 $order = $MySort->getOrder();
 
 // Evaluate Sorters/Orderers
-$orderDate	= '<a href="/mail.php?sort=date&order=ASC#received"><i class="fa fa-sort" aria-hidden="true"></i></a>';
-$orderTo	= '<a href="/mail.php?sort=x-original-to&order=ASC#received"><i class="fa fa-sort" aria-hidden="true"></i></a>';
-$orderSubj	= '<a href="/mail.php?sort=subject&order=ASC#received"><i class="fa fa-sort" aria-hidden="true"></i></a>';
+$orderDate	= '<a href="/mail.php?sort=date&order=ASC"><i class="fa fa-sort" aria-hidden="true"></i></a>';
+$orderTo	= '<a href="/mail.php?sort=x-original-to&order=ASC"><i class="fa fa-sort" aria-hidden="true"></i></a>';
+$orderSubj	= '<a href="/mail.php?sort=subject&order=ASC"><i class="fa fa-sort" aria-hidden="true"></i></a>';
 
 if ($sort == 'date') {
 	if ($order == 'ASC') {
-		$orderDate = '<a href="/mail.php?sort=date&order=DESC#received"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>';
+		$orderDate = '<a href="/mail.php?sort=date&order=DESC"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>';
 	} else {
-		$orderDate = '<a href="/mail.php?sort=date&order=ASC#received"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-numeric-desc" aria-hidden="true"></i> ';
+		$orderDate = '<a href="/mail.php?sort=date&order=ASC"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-numeric-desc" aria-hidden="true"></i> ';
 	}
 } else if ($sort == 'subject') {
 	if ($order == 'ASC') {
-		$orderSubj = '<a href="/mail.php?sort=subject&order=DESC#received"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>';
+		$orderSubj = '<a href="/mail.php?sort=subject&order=DESC"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>';
 	} else {
-		$orderSubj = '<a href="/mail.php?sort=subject&order=ASC#received"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>';
+		$orderSubj = '<a href="/mail.php?sort=subject&order=ASC"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>';
 	}
 } else if ($sort == 'x-original-to') {
 	if ($order == 'ASC') {
-		$orderTo = '<a href="/mail.php?sort=x-original-to&order=DESC#received"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>';
+		$orderTo = '<a href="/mail.php?sort=x-original-to&order=DESC"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>';
 	} else {
-		$orderTo = '<a href="/mail.php?sort=x-original-to&order=ASC#received"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>';
+		$orderTo = '<a href="/mail.php?sort=x-original-to&order=ASC"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>';
 	}
 }
 
@@ -80,7 +80,7 @@ $messages = $MyMbox->get($sortOrderArr);
 	</head>
 
 	<body>
-		<?php require '../include/navigation.php'; ?>
+		<?php require '../include/navbar.php'; ?>
 
 		<div class="container">
 			<h1>Mail</h1>
@@ -125,7 +125,7 @@ $messages = $MyMbox->get($sortOrderArr);
 
 			<div class="row">
 				<div class="col-md-12">
-					<h3 id="received">Received Emails</h3>
+					<h3>Received Emails</h3>
 					<br/>
 				</div>
 			</div>

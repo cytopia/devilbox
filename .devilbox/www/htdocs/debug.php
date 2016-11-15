@@ -6,7 +6,7 @@
 	</head>
 
 	<body>
-		<?php require '../include/navigation.php'; ?>
+		<?php require '../include/navbar.php'; ?>
 
 		<div class="container">
 

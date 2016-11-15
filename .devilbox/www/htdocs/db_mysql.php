@@ -6,11 +6,11 @@
 	</head>
 
 	<body>
-		<?php require '../include/navigation.php'; ?>
+		<?php require '../include/navbar.php'; ?>
 
 		<div class="container">
 
-			<h1>Databases</h1>
+			<h1>MySQL Databases</h1>
 			<br/>
 			<br/>
 
@@ -28,13 +28,17 @@
 							</th>
 						</thead>
 						<tbody>
+							<?php
+								$len_table = 4;
+								$len_size = 9;
+							?>
 							<?php foreach ($MySQL->getDatabases() as $name => $keys): ?>
 								<tr>
 									<td><?php echo $name;?></td>
 									<td><?php echo $keys['charset'];?></td>
 									<td><?php echo $keys['collation'];?></td>
-									<td><code><span class="table" id="table-<?php echo $name;?>">&nbsp;&nbsp;&nbsp;&nbsp;</span></code></td>
-									<td><code><span class="size" id="size-<?php echo $name;?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></code></td>
+									<td><code><span class="table" id="table-<?php echo $name;?>"><?php echo str_repeat('&nbsp;', $len_table);?></span></code></td>
+									<td><code><span class="size" id="size-<?php echo $name;?>"><?php echo str_repeat('&nbsp;', $len_size);?></span></code></td>
 								</tr>
 								<input type="hidden" name="database[]" class="database" value="<?php echo $name;?>" />
 							<?php endforeach; ?>
@@ -53,51 +57,40 @@
 			// your page initialization code here
 			// the DOM will be available here
 
-			function updateSizes(database) {
+			function updateData(database) {
 				var xhttp = new XMLHttpRequest();
 
 				xhttp.onreadystatechange = function() {
-					var fill = '';
-					var res = '';
-					var len;
+					var res = null;
+					var size = 0;
+					var tables = 0;
 					var i;
 
 					if (this.readyState == 4 && this.status == 200) {
-						res	= (this.responseText) == 0 ? '0sss MB' : this.responseText+' MB';
-						len		= res.length;
-						if (len < 9) {
-							for (i=len; i<9; i++) {
-								fill = '&nbsp;' + fill;
-							}
+						res = JSON.parse(this.response);
 
-						}
-						res = res.replace('sss', '&nbsp;&nbsp;&nbsp;');
-						res = fill + res;
-						document.getElementById('size-' + database).innerHTML = res;
-					}
-				};
-				xhttp.open('GET', '_ajax_db.php?size=' + database, true);
-				xhttp.send();
-			}
-
-
-			function updateCount(database) {
-				var xhttp = new XMLHttpRequest();
-
-				xhttp.onreadystatechange = function() {
-					var fill = '';
-					var i;
-
-					if (this.readyState == 4 && this.status == 200) {
-						if (this.responseText.length < 4) {
-							for (i=this.responseText.length; i<4; i++) {
-								fill = '&nbsp;' + fill;
+						// Normalize size output
+						size = res.size == 0 ? '0sss MB' : res.size + ' MB';
+						if (size.length < <?php echo $len_size;?>) {
+							for (i = size.length; i < <?php echo $len_size;?>; ++i) {
+								size = '&nbsp;' + size;
 							}
 						}
-						document.getElementById('table-' + database).innerHTML = fill + this.responseText;
+						size = size.replace('sss', '&nbsp;&nbsp;&nbsp;');
+
+						// Normalize tables output
+						tables = res.table;
+						if (tables.length < <?php echo $len_table;?>) {
+							for (i = tables.length; i < <?php echo $len_table;?>; ++i) {
+								tables = '&nbsp;' + tables;
+							}
+						}
+
+						document.getElementById('size-' + database).innerHTML = size;
+						document.getElementById('table-' + database).innerHTML = tables;
 					}
 				};
-				xhttp.open('GET', '_ajax_db.php?table=' + database, true);
+				xhttp.open('GET', '_ajax_callback.php?type=mysql&database=' + database, true);
 				xhttp.send();
 			}
 
@@ -106,8 +99,7 @@
 
 			for (i = 0; i < databases.length; i++) {
 				database = databases[i].value;
-				updateSizes(database);
-				updateCount(database);
+				updateData(database);
 			}
 		})();
 		</script>

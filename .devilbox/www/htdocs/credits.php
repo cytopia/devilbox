@@ -6,7 +6,7 @@
 	</head>
 
 	<body>
-		<?php require '../include/navigation.php'; ?>
+		<?php require '../include/navbar.php'; ?>
 
 		<div class="container">
 
@@ -56,6 +56,11 @@
 							</tr>
 						</thead>
 						<tbody>
+							<tr>
+								<td>Adminer</td>
+								<td>Apache License 2.0 or GPL 2</td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a href="https://github.com/vrana/adminer">vrana/adminer</a></td>
+							</tr>
 							<tr>
 								<td>Bootstrap</td>
 								<td>MIT</td>

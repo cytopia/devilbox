@@ -6,7 +6,7 @@
 	</head>
 
 	<body>
-		<?php require '../include/navigation.php'; ?>
+		<?php require '../include/navbar.php'; ?>
 
 		<div class="container">
 
@@ -33,7 +33,7 @@
 				<!-- ############################################################ -->
 				<!-- HTTPD Docker Circle -->
 				<!-- ############################################################ -->
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="circles">
 						<div>
 							<div class="bg-danger">
@@ -50,7 +50,7 @@
 				<!-- ############################################################ -->
 				<!-- PHP Docker Circle -->
 				<!-- ############################################################ -->
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="circles">
 						<div>
 							<div class="bg-info">
@@ -67,7 +67,7 @@
 				<!-- ############################################################ -->
 				<!-- MySQL Docker Circle-->
 				<!-- ############################################################ -->
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="circles">
 						<div>
 							<div class="bg-warning">
@@ -80,6 +80,25 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- ############################################################ -->
+				<!-- PostgreSQL Docker Circle-->
+				<!-- ############################################################ -->
+				<div class="col-md-3">
+					<div class="circles">
+						<div>
+							<div class="bg-success">
+								<div>
+									<div>
+										<h3><?php echo $Docker->Postgres_version();?></h3>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
 			</div>
 			<br/><br/>
 
@@ -88,17 +107,21 @@
 				<!-- ############################################################ -->
 				<!-- HTTPD Docker -->
 				<!-- ############################################################ -->
-				<div class="col-md-4">
-					<table class="table table-striped table-sm">
+				<div class="col-md-3">
+					<table class="table table-striped table-sm font-small">
 						<thead class="thead-inverse">
 							<tr>
-								<th colspan="2">httpd docker</th>
+								<th colspan="2">HTTPD docker</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<th>IP Address</th>
+								<th>IP</th>
 								<td><?php echo $HTTPD_HOST_ADDR;?></td>
+							</tr>
+							<tr>
+								<th>Hostname</th>
+								<td><?php echo $HTTPD_HOST_NAME;?></td>
 							</tr>
 							<tr>
 								<th>Document Root</th>
@@ -111,19 +134,22 @@
 				<!-- ############################################################ -->
 				<!-- PHP Docker -->
 				<!-- ############################################################ -->
-				<div class="col-md-4">
-					<table class="table table-striped table-sm">
+				<div class="col-md-3">
+					<table class="table table-striped table-sm font-small">
 						<thead class="thead-inverse">
 							<tr>
-								<th colspan="2">php docker</th>
+								<th colspan="2">PHP docker</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<th>IP Address</th>
+								<th>IP</th>
 								<td><?php echo $PHP_HOST_ADDR;?></td>
 							</tr>
 							<tr>
+								<th>Hostname</th>
+								<td><?php echo $PHP_HOST_NAME;?></td>
+							</tr>							<tr>
 								<th>Document Root</th>
 								<td>/shared/httpd</td>
 							</tr>
@@ -217,25 +243,69 @@
 				<!-- ############################################################ -->
 				<!-- MySQL Docker -->
 				<!-- ############################################################ -->
-				<div class="col-md-4">
-					<table class="table table-striped table-sm">
+				<div class="col-md-3">
+					<table class="table table-striped table-sm font-small">
 						<thead class="thead-inverse">
 							<tr>
-								<th colspan="2">db docker</th>
+								<th colspan="2">MySQL docker</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<th>IP Address</th>
+								<th>IP</th>
 								<td><?php echo $MYSQL_HOST_ADDR;?></td>
 							</tr>
 							<tr>
-								<th>MySQL socket</th>
+								<th>Hostname</th>
+								<td><?php echo $MYSQL_HOST_NAME;?></td>
+							</tr>
+							<tr>
+								<th>socket</th>
 								<td><?php echo $Docker->MySQL_config('socket'); ?></td>
 							</tr>
 							<tr>
-								<th>MySQL datadir</th>
+								<th>datadir</th>
 								<td><?php echo $Docker->MySQL_config('datadir'); ?></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+				<!-- ############################################################ -->
+				<!-- PostgreSQL Docker -->
+				<!-- ############################################################ -->
+				<div class="col-md-3">
+					<table class="table table-striped table-sm font-small">
+						<thead class="thead-inverse">
+							<tr>
+								<th colspan="2">PostgreSQL docker</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>IP</th>
+								<td><?php echo $POSTGRES_HOST_ADDR;?></td>
+							</tr>
+							<tr>
+								<th>Hostname</th>
+								<td><?php echo $POSTGRES_HOST_NAME;?></td>
+							</tr>
+							<tr>
+								<th>socket</th>
+								<td><?php
+									$dir = $Docker->Postgres_config('unix_socket_directory');
+									if (empty($dir)) {
+										// Postgres 9.6
+										$dir = $Docker->Postgres_config('unix_socket_directories');
+									}
+									echo $dir;
+
+								?></td>
+							</tr>
+							<tr>
+								<th>datadir</th>
+								<td><?php echo $Docker->Postgres_config('data_directory'); ?></td>
 							</tr>
 						</tbody>
 					</table>
@@ -263,11 +333,11 @@
 				<!-- ############################################################ -->
 				<!-- HTTPD Docker Mounts -->
 				<!-- ############################################################ -->
-				<div class="col-md-4">
-					<table class="table table-striped table-sm">
+				<div class="col-md-3">
+					<table class="table table-striped table-sm font-small">
 						<thead class="thead-inverse">
 							<tr>
-								<th>httpd docker</th>
+								<th>HTTPD docker</th>
 								<th>host</th>
 							</tr>
 						</thead>
@@ -287,11 +357,11 @@
 				<!-- ############################################################ -->
 				<!-- PHP Docker Mounts -->
 				<!-- ############################################################ -->
-				<div class="col-md-4">
-					<table class="table table-striped table-sm">
+				<div class="col-md-3">
+					<table class="table table-striped table-sm font-small">
 						<thead class="thead-inverse">
 							<tr>
-								<th>php docker</th>
+								<th>PHP docker</th>
 								<th>host</th>
 							</tr>
 						</thead>
@@ -319,11 +389,11 @@
 				<!-- ############################################################ -->
 				<!-- MySQL Docker Mounts -->
 				<!-- ############################################################ -->
-				<div class="col-md-4">
-					<table class="table table-striped table-sm">
+				<div class="col-md-3">
+					<table class="table table-striped table-sm font-small">
 						<thead class="thead-inverse">
 							<tr>
-								<th>db docker</th>
+								<th>MySQL docker</th>
 								<th>host</th>
 							</tr>
 						</thead>
@@ -335,6 +405,31 @@
 							<tr>
 								<th>MySQL socket</th>
 								<td>./run/mysql/mysqld.sock</td>
+							</tr>
+							<tr>
+								<th>Log directory</th>
+								<td>./log</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+				<!-- ############################################################ -->
+				<!-- PostgreSQL Docker Mounts -->
+				<!-- ############################################################ -->
+				<div class="col-md-3">
+					<table class="table table-striped table-sm font-small">
+						<thead class="thead-inverse">
+							<tr>
+								<th>Postgres docker</th>
+								<th>host</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>Postgres datadir</th>
+								<td><?php echo $Docker->getEnv('HOST_PATH_TO_POSTGRES_DATADIR');?></td>
 							</tr>
 							<tr>
 								<th>Log directory</th>
