@@ -73,10 +73,13 @@ script:
   # Start
   - docker-compose up -d
   - sleep 30
+
+  # Show info
+  - docker-compose logs
   - docker-compose ps
+
+  # Check running containers
   - if [ "$( docker-compose ps | grep -c 'Up' )" != "4" ]; then false; fi
 
-  - UP=$( docker-compose ps | grep -c 'Up' )
-  - if [ "${UP}" != "4" ]; then false; fi
-  - docker-compose logs
+  # Crawl page
   - wget http://localhost
