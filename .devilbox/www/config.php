@@ -65,4 +65,4 @@ $Postgres	= \devilbox\Postgres::getInstance($Docker->getEnv('POSTGRES_USER'), $D
 // VirtualHost DNS check
 // Temporarily disable due to:
 // https://github.com/cytopia/devilbox/issues/8
-$ENABLE_VHOST_DNS_CHECK = true;
+$ENABLE_VHOST_DNS_CHECK = false;
