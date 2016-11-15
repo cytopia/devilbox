@@ -102,7 +102,8 @@ services:
     # PHP-FPM
     # ----------------------------------------
     php:
-        image: cytopia/${PHP_SERVER}:0.8.1
+        # TODO: remove latest, once it is ready for the next release
+        image: cytopia/${PHP_SERVER}:latest
 
         # Manually build via `docker-compose build`
         #build:
@@ -124,6 +125,10 @@ services:
             - PHP_XDEBUG_REMOTE_PORT=${PHP_XDEBUG_REMOTE_PORT}
             - PHP_XDEBUG_REMOTE_HOST=${PHP_XDEBUG_REMOTE_HOST}
 
+            ##
+            ## Postfix on
+            ##
+            - ENABLE_MAIL=1
 
             ##
             ## Map remote MySQL Port to 127.0.0.1
@@ -140,12 +145,24 @@ services:
             - MYSQL_SOCKET_PATH=/tmp/mysql/mysqld.sock
 
             ##
+            ## Map remote PostgreSQL Port to 127.0.0.1
+            ##
+            # TODO
+
+            ##
+            ## Mount remote PostgreSQL socket file to local disk
+            ##
+            # TODO
+
+            ##
             ## Additional variables needed by custom intranet
             ##
             - HOST_PATH_TO_WWW_DOCROOTS=${HOST_PATH_TO_WWW_DOCROOTS}
             - HOST_PATH_TO_MYSQL_DATADIR=${HOST_PATH_TO_MYSQL_DATADIR}
+            - HOST_PATH_TO_POSTGRES_DATADIR=${HOST_PATH_TO_POSTGRES_DATADIR}
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-            - ENABLE_MAIL=1
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
         networks:
             app_net:
@@ -181,14 +198,15 @@ services:
         links:
             # ---- Format: ----
             # SERVICE [ : ALIAS]
-            - "db:database"
+            - "mysql:mariadb"
+            - "postgres:postgresql"
 
 
 
     # ----------------------------------------
     # DATABASE
     # ----------------------------------------
-    db:
+    mysql:
         image: cytopia/${MYSQL_SERVER}:0.8
 
         # Manually build via `docker-compose build`
@@ -236,6 +254,44 @@ services:
             # Mount MySQL Data directory
             - ${HOST_PATH_TO_MYSQL_DATADIR}:/var/lib/mysql
 
+
+    # ----------------------------------------
+    # POSTGRES
+    # ----------------------------------------
+    postgres:
+        image: postgres:${POSTGRES_SERVER}
+
+        # Manually build via `docker-compose build`
+        #build:
+            #context: https://github.com/cytopia/docker-${MYSQL_SERVER}.git#1
+        #    context: https://github.com/cytopia/docker-${MYSQL_SERVER}.git
+
+        environment:
+
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+            - PGDATA=/var/lib/postgresql/data/pgdata
+
+        ports:
+            # [local-machine:]local-port:docker-port
+            - "127.0.0.1:5432:5432"
+
+        networks:
+              app_net:
+                ipv4_address: 172.16.238.13
+
+        volumes:
+            # ---- Format: ----
+            # HOST-DIRECTORY : DOCKER-DIRECTORY
+
+            # Mount logs
+            - ./log/postgres-${POSTGRES_SERVER}:/var/log/postgresql
+
+            # Mount PostgreSQL Socket directory
+            - ./run/postgres:/var/run/postgresql
+
+            # Mount PostgreSQL Data directory
+            - ${HOST_PATH_TO_POSTGRES_DATADIR}:/var/lib/postgresql/data/pgdata
 
 
 ################################################################################
