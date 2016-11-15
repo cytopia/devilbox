@@ -9,6 +9,7 @@
 </nav>
 
 <script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/bootstrap.min.js"></script>
 
 <?php /*
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

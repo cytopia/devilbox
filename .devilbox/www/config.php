@@ -36,8 +36,11 @@ $HTTPD_HOST_ADDR	= gethostbyname($HTTPD_HOST_NAME);
 $PHP_HOST_NAME		= 'php';
 $PHP_HOST_ADDR		= gethostbyname($PHP_HOST_NAME);
 
-$MYSQL_HOST_NAME	= 'db';
+$MYSQL_HOST_NAME	= 'mysql';
 $MYSQL_HOST_ADDR	= gethostbyname($MYSQL_HOST_NAME);
+
+$POSTGRES_HOST_NAME	= 'postgres';
+$POSTGRES_HOST_ADDR	= gethostbyname($POSTGRES_HOST_NAME);
 
 
 //
@@ -46,19 +49,20 @@ $MYSQL_HOST_ADDR	= gethostbyname($MYSQL_HOST_NAME);
 require $LIB_DIR . DIRECTORY_SEPARATOR . 'Logger.php';
 require $LIB_DIR . DIRECTORY_SEPARATOR . 'Docker.php';
 require $LIB_DIR . DIRECTORY_SEPARATOR . 'Mysql.php';
+require $LIB_DIR . DIRECTORY_SEPARATOR . 'Postgres.php';
 
 
 //
 // Instantiate Basics
 //
-$Logger	= \devilbox\Logger::getInstance();
-$Docker = \devilbox\Docker::getInstance();
-$MySQL	= \devilbox\Mysql::getInstance('root', $Docker->getEnv('MYSQL_ROOT_PASSWORD'), $MYSQL_HOST_ADDR);
-
+$Logger		= \devilbox\Logger::getInstance();
+$Docker 	= \devilbox\Docker::getInstance();
+$MySQL		= \devilbox\Mysql::getInstance('root', $Docker->getEnv('MYSQL_ROOT_PASSWORD'), $MYSQL_HOST_ADDR);
+$Postgres	= \devilbox\Postgres::getInstance($Docker->getEnv('POSTGRES_USER'), $Docker->getEnv('POSTGRES_PASSWORD'), $POSTGRES_HOST_ADDR);
 
 
 
 // VirtualHost DNS check
 // Temporarily disable due to:
 // https://github.com/cytopia/devilbox/issues/8
-$ENABLE_VHOST_DNS_CHECK = false;
+$ENABLE_VHOST_DNS_CHECK = true;

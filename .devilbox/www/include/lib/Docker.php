@@ -108,7 +108,7 @@ class Docker
 	{
 		if (!isset($this->_env[$variable])) {
 			$Logger = \devilbox\Logger::getInstance();
-			$logger->error('Docker environment variable not found: '.$variable);
+			$Logger->error('Docker environment variable not found: '.$variable);
 			return null;
 		}
 		return $this->_env[$variable];
@@ -296,7 +296,7 @@ class Docker
 		$version = $this->MySQL_config('version');
 
 		if (!$name && !$version) {
-			return 'Unknown Version';
+			return 'Unknown MySQL version';
 		}
 		return $name . ' ' . $version;
 	}
@@ -338,6 +338,74 @@ class Docker
 			} else {
 				return $val;
 			}
+		}
+	}
+
+
+	/*********************************************************************************
+	 *
+	 * Postgres Docker functions
+	 *
+	 *********************************************************************************/
+
+	/**
+	 * Get Postgres Version.
+	 *
+	 * @return string Postgres version string.
+	 */
+	public function Postgres_version()
+	{
+		$callback = function ($row, &$data) {
+			$data = $row['version'];
+		};
+
+		$version = \devilbox\Postgres::getInstance()->select('SELECT version();', $callback);
+
+		// Extract shorthand
+		preg_match('/\w+[[:space:]]*[.0-9]+/i', $version, $matches);
+		if (isset($matches[0])) {
+			return $matches[0];
+		}
+
+		// Unknown
+		if (!$version) {
+			return 'Unknown Postgres version';
+		}
+		return $version;
+	}
+
+
+	/**
+	 * Read out PostgreSQL Server configuration by variable
+	 *
+	 * @param  string|null $key Config key name
+	 * @return string|mixed[]
+	 */
+	public function Postgres_config($key = null)
+	{
+		// Get all configs as array
+		if ($key === null) {
+			$callback = function ($row, &$data) {
+				$key = $row['name'];
+				$val = $row['setting'];
+				$data[$key] = $val;
+			};
+
+			$sql = 'SELECT name, setting FROM pg_settings;';
+			$configs = \devilbox\Postgres::getInstance()->select($sql, $callback);
+
+			return $configs ? $configs : array();
+
+		} else { // Get single config
+
+			$callback = function ($row, &$data) use ($key) {
+				$data = isset($row['setting']) ? $row['setting'] : false;
+			};
+
+			$sql = "SELECT name, setting FROM pg_settings WHERE name = '".$key."';";
+			$val = \devilbox\Postgres::getInstance()->select($sql, $callback);
+
+			return is_array($val) ? '' : $val;
 		}
 	}
 
