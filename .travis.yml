@@ -67,7 +67,8 @@ script:
   - cp env-example .env
 
   # PostgreSQL port seems already been taken
-  - sed -i'' 's/5432/54320/g' docker-compose.yml
+  - sed -i'' 's/127.0.0.1:5432/127.0.0.1:54320/g' docker-compose.yml
+  - sed -i'' 's/127.0.0.1:3306/127.0.0.1:33060/g' docker-compose.yml
 
   # Start
   - docker-compose up -d
