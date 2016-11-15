@@ -23,25 +23,14 @@ env:
 ### Berfore Install
 ###
 before_install:
-  - echo "Before install"
+  # List versions
+  - docker version
+  - docker-compose version
 
 ###
 ### Install
 ###
 install:
-  # List versions
-  - docker version
-  - docker-compose version
-
-
-
-###
-### Test
-###
-script:
-  ################################################################################
-  # Pull dockers (will move to install/before_install)
-  ################################################################################
   # php
   - docker pull cytopia/php-fpm-5.4:${DEVILBOX_PHP_VERSION}
   - docker pull cytopia/php-fpm-5.5:${DEVILBOX_PHP_VERSION}
@@ -61,7 +50,6 @@ script:
   - docker pull cytopia/mariadb-10.0:${DEVILBOX_MYSQL_VERSION}
   - docker pull cytopia/mariadb-10.1:${DEVILBOX_MYSQL_VERSION}
   - docker pull cytopia/mariadb-10.2:${DEVILBOX_MYSQL_VERSION}
-
   # postgresql (official images)
   - docker pull postgres:9.2
   - docker pull postgres:9.3
@@ -70,9 +58,18 @@ script:
   - docker pull postgres:9.6
 
 
+
+###
+### Test
+###
+script:
   - cp env-example .env
   - docker-compose up -d
   - sleep 30
   - docker-compose ps
+  - if [ "$( docker-compose ps | grep -c 'Up' )" != "4" ]; then false; fi
+
+  - UP=$( docker-compose ps | grep -c 'Up' )
+  - if [ "${UP}" != "4" ]; then false; fi
   - docker-compose logs
   - wget http://localhost
