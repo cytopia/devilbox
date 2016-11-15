@@ -55,7 +55,7 @@ install:
   #- docker pull postgres:9.3
   #- docker pull postgres:9.4
   #- docker pull postgres:9.5
-  - docker pull postgres:9.6
+  #- docker pull postgres:9.6
 
 
 
@@ -63,12 +63,18 @@ install:
 ### Test
 ###
 script:
-  - ps auxw
   - cp env-example .env
 
   # PostgreSQL port seems already been taken
   - sed -i'' 's/127.0.0.1:5432/127.0.0.1:54320/g' docker-compose.yml
   - sed -i'' 's/127.0.0.1:3306/127.0.0.1:33060/g' docker-compose.yml
+
+  - mkdir -p ~/data/mysql57
+  - mkdir -p ~/data/postgres96
+  - mkdir -p ~/Sites
+  - chmod 777 ~/data/mysql57
+  - chmod 777 ~/data/postgres96
+  - chmod 777 ~/Sites
 
   # Start
   - docker-compose up -d
