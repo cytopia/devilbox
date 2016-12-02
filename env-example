@@ -18,6 +18,21 @@
 DEBUG_COMPOSE_ENTRYPOINT=0
 
 
+###
+### At what IP address should the docker services listen
+### on the Host computer?
+###
+### The specified default should be fine for Linux and OSX (127.0.0.1:).
+### If you are on windows, you will probably have to change
+### it to the IP address of the docker machine.
+###
+### a.) Leave blank, to listen on all interfaces (no trailing color ':')
+###    LOCAL_LISTEN_ADDR=
+### b.) If an IP is specified, note the trailing colon ':'
+###    LOCAL_LISTEN_ADDR=127.0.0.1:
+###
+LOCAL_LISTEN_ADDR=127.0.0.1:
+
 
 ################################################################################
 ###

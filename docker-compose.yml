@@ -59,7 +59,7 @@ services:
         ports:
             # ---- Format: ----
             # [HOST-ADDR : ] HOST-PORT : DOCKER-PORT
-            - "127.0.0.1:80:80"
+            - "${LOCAL_LISTEN_ADDR}80:80"
 
         networks:
             app_net:
@@ -231,7 +231,7 @@ services:
 
         ports:
             # [local-machine:]local-port:docker-port
-            - "127.0.0.1:3306:3306"
+            - "${LOCAL_LISTEN_ADDR}3306:3306"
 
         networks:
               app_net:
@@ -274,7 +274,7 @@ services:
 
         ports:
             # [local-machine:]local-port:docker-port
-            - "127.0.0.1:5432:5432"
+            - "${LOCAL_LISTEN_ADDR}5432:5432"
 
         networks:
               app_net:
