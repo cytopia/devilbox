@@ -47,7 +47,7 @@
 				<a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info</a>
 				<div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
 					<?php foreach ($files as $href => $name): ?>
-					<a class="dropdown-item" href="<?php echo $href;?>"><?php echo $name;?></a>
+						<a class="dropdown-item" href="/<?php echo $href;?>"><?php echo $name;?></a>
 					<?php endforeach; ?>
 				</div>
 			</li>
@@ -55,8 +55,8 @@
 			<?php
 			// ---- Tools ---- //
 			$files = array(
-				'/vendor/phpmyadmin/index.php' => 'phpMyAdmin',
-				'/vendor/adminer/adminer/index.php' => 'Adminer',
+				'vendor/phpmyadmin/index.php' => 'phpMyAdmin',
+				'vendor/adminer/adminer/index.php' => 'Adminer',
 				'opcache.php' => 'Opcache GUI'
 			);
 			$active = (in_array($script, array_keys($files))) ? 'active' : '';
@@ -65,7 +65,7 @@
 				<a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tools</a>
 				<div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
 					<?php foreach ($files as $href => $name): ?>
-					<a class="dropdown-item" href="<?php echo $href;?>"><?php echo $name;?></a>
+					<a class="dropdown-item" href="/<?php echo $href;?>"><?php echo $name;?></a>
 					<?php endforeach; ?>
 				</div>
 			</li>
