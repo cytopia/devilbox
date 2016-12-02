@@ -104,7 +104,7 @@ TIMEZONE=Europe/Berlin
 ## Local filesystem path to www projects.
 ##
 ##
-HOST_PATH_TO_WWW_DOCROOTS=~/Sites
+HOST_PATH_TO_WWW_DOCROOTS=./data/www
 
 ##
 ## Local filesystem path to mysql/mariadb datadir.
@@ -116,7 +116,7 @@ HOST_PATH_TO_WWW_DOCROOTS=~/Sites
 ## If this directory is empty, a new mysql database will be
 ## created.
 ##
-HOST_PATH_TO_MYSQL_DATADIR=~/data/mysql57
+HOST_PATH_TO_MYSQL_DATADIR=./data/mysql57
 
 ##
 ## Local filesystem path to postgresql datadir.
@@ -128,7 +128,7 @@ HOST_PATH_TO_MYSQL_DATADIR=~/data/mysql57
 ## If this directory is empty, a new postgresql database will be
 ## created.
 ##
-HOST_PATH_TO_POSTGRES_DATADIR=~/data/postgres96
+HOST_PATH_TO_POSTGRES_DATADIR=./data/postgres96
 
 
 
