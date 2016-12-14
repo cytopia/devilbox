@@ -18,6 +18,19 @@
 DEBUG_COMPOSE_ENTRYPOINT=0
 
 
+
+###
+### Relative or absolute path to the devilbox repository.
+### (Used as a prefix for all mount paths)
+### There is no need to change this.
+###
+### The only exception is for OSX users wanting to use NFS
+### mounts instead of Filesystem mounts due to degraded performance
+### on OSX.
+###
+DEVILBOX_PATH=.
+
+
 ###
 ### At what IP address should the docker services listen
 ### on the Host computer?
