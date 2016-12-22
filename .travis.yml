@@ -14,10 +14,8 @@ services:
 ###
 env:
   global:
-    - DEVILBOX_PHP_VERSION="$(   grep -Eo 'image:.*PHP.*:.*' docker-compose.yml   | sed 's/.*:.*://g' )"
-    - DEVILBOX_HTTPD_VERSION="$( grep -Eo 'image:.*HTTPD.*:.*' docker-compose.yml | sed 's/.*:.*://g' )"
-    - DEVILBOX_MYSQL_VERSION="$( grep -Eo 'image:.*MYSQL.*:.*' docker-compose.yml | sed 's/.*:.*://g' )"
-
+    # Get .env default versions
+    - VAR=VAL
 
 ###
 ### Berfore Install
@@ -31,31 +29,7 @@ before_install:
 ### Install
 ###
 install:
-  # php
-  #- docker pull cytopia/php-fpm-5.4:${DEVILBOX_PHP_VERSION}
-  #- docker pull cytopia/php-fpm-5.5:${DEVILBOX_PHP_VERSION}
-  #- docker pull cytopia/php-fpm-5.6:${DEVILBOX_PHP_VERSION}
-  #- docker pull cytopia/php-fpm-7.0:${DEVILBOX_PHP_VERSION}
-  #- docker pull cytopia/php-fpm-7.1:${DEVILBOX_PHP_VERSION}
-  ## web
-  #- docker pull cytopia/apache-2.2:${DEVILBOX_HTTPD_VERSION}
-  #- docker pull cytopia/apache-2.4:${DEVILBOX_HTTPD_VERSION}
-  #- docker pull cytopia/nginx-stable:${DEVILBOX_HTTPD_VERSION}
-  #- docker pull cytopia/nginx-mainline:${DEVILBOX_HTTPD_VERSION}
-  ## mysql/mariadb
-  #- docker pull cytopia/mysql-5.5:${DEVILBOX_MYSQL_VERSION}
-  #- docker pull cytopia/mysql-5.6:${DEVILBOX_MYSQL_VERSION}
-  #- docker pull cytopia/mysql-5.7:${DEVILBOX_MYSQL_VERSION}
-  #- docker pull cytopia/mariadb-5.5:${DEVILBOX_MYSQL_VERSION}
-  #- docker pull cytopia/mariadb-10.0:${DEVILBOX_MYSQL_VERSION}
-  #- docker pull cytopia/mariadb-10.1:${DEVILBOX_MYSQL_VERSION}
-  #- docker pull cytopia/mariadb-10.2:${DEVILBOX_MYSQL_VERSION}
-  ## postgresql (official images)
-  #- docker pull postgres:9.2
-  #- docker pull postgres:9.3
-  #- docker pull postgres:9.4
-  #- docker pull postgres:9.5
-  #- docker pull postgres:9.6
+  - true
 
 
 
@@ -63,29 +37,4 @@ install:
 ### Test
 ###
 script:
-  - cp env-example .env
-
-  # PostgreSQL port seems already been taken
-  - sed -i'' 's/127.0.0.1:5432/127.0.0.1:54320/g' docker-compose.yml
-  - sed -i'' 's/127.0.0.1:3306/127.0.0.1:33060/g' docker-compose.yml
-
-  - mkdir -p ~/data/mysql57
-  - mkdir -p ~/data/postgres96
-  - mkdir -p ~/Sites
-  - chmod 777 ~/data/mysql57
-  - chmod 777 ~/data/postgres96
-  - chmod 777 ~/Sites
-
-  # Start
-  - docker-compose up -d
-  - sleep 30
-
-  # Show info
-  - docker-compose logs
-  - docker-compose ps
-
-  # Check running containers
-  - if [ "$( docker-compose ps | grep -c 'Up' )" != "4" ]; then false; fi
-
-  # Crawl page
-  - wget http://localhost
+  - .tests/test.sh .
