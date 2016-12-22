@@ -113,34 +113,33 @@ TIMEZONE=Europe/Berlin
 ###
 ################################################################################
 
-##
-## Local filesystem path to www projects.
-##
-##
+###
+### Local filesystem path to www projects.
+###
 HOST_PATH_TO_WWW_DOCROOTS=./data/www
 
-##
-## Local filesystem path to mysql/mariadb datadir.
-##
-## This can be an existing mysql data directory or empty.
-## If it already is a mysql data directory with content,
-## it will be mounted into the docker and used.
-##
-## If this directory is empty, a new mysql database will be
-## created.
-##
+###
+### Local filesystem path to mysql/mariadb datadir.
+###
+### This can be an existing mysql data directory or empty.
+### If it already is a mysql data directory with content,
+### it will be mounted into the docker and used.
+###
+### If this directory is empty, a new mysql database will be
+### created.
+###
 HOST_PATH_TO_MYSQL_DATADIR=./data/mysql57
 
-##
-## Local filesystem path to postgresql datadir.
-##
-## This can be an existing postgresql data directory or empty.
-## If it already is a postgresql data directory with content,
-## it will be mounted into the docker and used.
-##
-## If this directory is empty, a new postgresql database will be
-## created.
-##
+###
+### Local filesystem path to postgresql datadir.
+###
+### This can be an existing postgresql data directory or empty.
+### If it already is a postgresql data directory with content,
+### it will be mounted into the docker and used.
+###
+### If this directory is empty, a new postgresql database will be
+### created.
+###
 HOST_PATH_TO_POSTGRES_DATADIR=./data/postgres96
 
 
@@ -151,8 +150,10 @@ HOST_PATH_TO_POSTGRES_DATADIR=./data/postgres96
 ###
 ################################################################################
 
-# - no options here
-
+###
+### Expose HTTPD Port to Host
+###
+HOST_PORT_HTTPD=80
 
 
 ################################################################################
@@ -161,21 +162,26 @@ HOST_PATH_TO_POSTGRES_DATADIR=./data/postgres96
 ###
 ################################################################################
 
-##
-## MySQL root user password
-##
-## If $HOST_PATH_TO_MYSQL_DATADIR already contains an existing
-## mysql datadir, enter the password for the existing mysql database
-##
-## If $HOST_PATH_TO_MYSQL_DATADIR is empty, choose a new password that
-## will be applied
-##
+###
+### MySQL root user password
+###
+### If $HOST_PATH_TO_MYSQL_DATADIR already contains an existing
+### mysql datadir, enter the password for the existing mysql database
+###
+### If $HOST_PATH_TO_MYSQL_DATADIR is empty, choose a new password that
+### will be applied
+###
 MYSQL_ROOT_PASSWORD=
 
 ###
 ### Custom MySQL Runtime Settings
 ###
 MYSQL_GENERAL_LOG=1
+
+###
+### Expose MySQL Port to Host
+###
+HOST_PORT_MYSQL=3306
 
 
 
@@ -185,16 +191,20 @@ MYSQL_GENERAL_LOG=1
 ###
 ################################################################################
 
-##
-## PostgreSQL 'root' user name (usually postgres)
-##
+###
+### PostgreSQL 'root' user name (usually postgres)
+###
 POSTGRES_USER=postgres
 
-##
-## PostgreSQL 'root' user password
-##
+###
+### PostgreSQL 'root' user password
+###
 POSTGRES_PASSWORD=
 
+###
+### Expose MySQL Port to Host
+###
+HOST_PORT_POSTGRES=5432
 
 
 ################################################################################
