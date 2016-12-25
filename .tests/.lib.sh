@@ -100,6 +100,34 @@ get_default_mount_postgres() {
 
 ################################################################################
 #
+#  G E T   E N A B L E D
+#
+################################################################################
+
+###
+### Default enabled Docker Versions
+###
+get_enabled_version_httpd() {
+	_default="$( grep -E '^HTTPD_SERVER=' "${DEVILBOX_PATH}/.env" | sed 's/^.*=//g' )"
+	echo "${_default}"
+}
+get_enabled_version_mysql() {
+	_default="$( grep -E '^MYSQL_SERVER=' "${DEVILBOX_PATH}/.env" | sed 's/^.*=//g' )"
+	echo "${_default}"
+}
+get_enabled_version_postgres() {
+	_default="$( grep -E '^POSTGRES_SERVER=' "${DEVILBOX_PATH}/.env" | sed 's/^.*=//g' )"
+	echo "${_default}"
+}
+get_enabled_version_php() {
+	_default="$( grep -E '^PHP_SERVER=' "${DEVILBOX_PATH}/.env" | sed 's/^.*=//g' )"
+	echo "${_default}"
+}
+
+
+
+################################################################################
+#
 #  G E T   A L L  D O C K E R   V E R S I O N S
 #
 ################################################################################
@@ -230,11 +258,25 @@ devilbox_start() {
 }
 
 debilbox_test() {
+	echo ".env settings"
+	echo "------------------------------------------------------------"
+	echo "HTTPD: $(get_enabled_version_httpd)"
+	echo "PHP:   $(get_enabled_version_php)"
+	echo "MySQL: $(get_enabled_version_mysql)"
+	echo "PgSQL: $(get_enabled_version_postgres)"
+	echo
+
+	echo "http://localhost settings"
+	echo "------------------------------------------------------------"
+	curl -q localhost 2>/dev/null | grep -E '<h3>.*</h3>' | sed 's/.*<h3>//g' | sed 's/<\/h3>//g'
+	echo
+
+
 	count="$( curl -q localhost 2>/dev/null | grep -c OK )"
 	echo "${count}"
 	if [ "${count}" = "0" ]; then
 		curl localhost
-		return false
+		return 1
 	fi
 }
 

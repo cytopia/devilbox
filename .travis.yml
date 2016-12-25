@@ -26,6 +26,7 @@ before_install:
   - docker version
   - docker-compose version
   - whoami
+  - groups
 
 ###
 ### Install
