@@ -12,6 +12,65 @@ fi
 DEVILBOX_PATH="${1}"
 
 
+
+
+
+
+################################################################################
+#
+#  H E L P E R
+#
+################################################################################
+
+run() {
+	_cmd="${1}"
+	_debug="1"
+
+	_red="\033[0;31m"
+	_green="\033[0;32m"
+	_reset="\033[0m"
+	_user="$(whoami)"
+
+
+	# If 2nd argument is set and enabled, allow debug command
+	if [ "${#}" = "2" ]; then
+		if [ "${2}" = "1" ]; then
+			_debug="1"
+		fi
+	fi
+
+
+	if [ "${_debug}" = "1" ]; then
+		printf "${_red}%s \$ ${_green}${_cmd}${_reset}\n" "${_user}"
+	fi
+	sh -c "LANG=C LC_ALL=C ${_cmd}"
+}
+
+runsu() {
+	_cmd="${1}"
+	_debug="0"
+
+	_red="\033[0;31m"
+	_green="\033[0;32m"
+	_reset="\033[0m"
+	_user="$(whoami)"
+
+	# If 2nd argument is set and enabled, allow debug command
+	if [ "${#}" = "2" ]; then
+		if [ "${2}" = "1" ]; then
+			_debug="1"
+		fi
+	fi
+
+
+	if [ "${_debug}" = "1" ]; then
+		printf "${_red}%s \$ ${_green}sudo ${_cmd}${_reset}\n" "${_user}"
+	fi
+
+	sudo "LANG=C LC_ALL=C ${_cmd}"
+}
+
+
 ################################################################################
 #
 #  G E T   D E F A U L T S
@@ -182,10 +241,10 @@ comment_all_dockers() {
 
 
 	# Comment out all enabled docker versions
-	sed -i'' "s/HTTPD_SERVER=${_httpd}/#HTTPD_SERVER=${_httpd}/g" "${DEVILBOX_PATH}/.env"
-	sed -i'' "s/MYSQL_SERVER=${_mysql}/#MYSQL_SERVER=${_mysql}/g" "${DEVILBOX_PATH}/.env"
-	sed -i'' "s/POSTGRES_SERVER=${_postgres}/#POSTGRES_SERVER=${_postgres}/g" "${DEVILBOX_PATH}/.env"
-	sed -i'' "s/PHP_SERVER=${_php}/#PHP_SERVER=${_php}/g" "${DEVILBOX_PATH}/.env"
+	run "sed -i'' \"s/HTTPD_SERVER=${_httpd}/#HTTPD_SERVER=${_httpd}/g\" \"${DEVILBOX_PATH}/.env\""
+	run "sed -i'' \"s/MYSQL_SERVER=${_mysql}/#MYSQL_SERVER=${_mysql}/g\" \"${DEVILBOX_PATH}/.env\""
+	run "sed -i'' \"s/POSTGRES_SERVER=${_postgres}/#POSTGRES_SERVER=${_postgres}/g\" \"${DEVILBOX_PATH}/.env\""
+	run "sed -i'' \"s/PHP_SERVER=${_php}/#PHP_SERVER=${_php}/g\" \"${DEVILBOX_PATH}/.env\""
 }
 
 ###
@@ -193,33 +252,33 @@ comment_all_dockers() {
 ###
 enable_docker_httpd() {
 	_docker_version="${1}"
-	sed -i'' "s/#HTTPD_SERVER=${_docker_version}/HTTPD_SERVER=${_docker_version}/g" "${DEVILBOX_PATH}/.env"
+	run "sed -i'' \"s/#HTTPD_SERVER=${_docker_version}/HTTPD_SERVER=${_docker_version}/g\" \"${DEVILBOX_PATH}/.env\""
 }
 enable_docker_mysql() {
 	_docker_version="${1}"
-	sed -i'' "s/#MYSQL_SERVER=${_docker_version}/MYSQL_SERVER=${_docker_version}/g" "${DEVILBOX_PATH}/.env"
+	run "sed -i'' \"s/#MYSQL_SERVER=${_docker_version}/MYSQL_SERVER=${_docker_version}/g\" \"${DEVILBOX_PATH}/.env\""
 }
 enable_docker_postgres() {
 	_docker_version="${1}"
-	sed -i'' "s/#POSTGRES_SERVER=${_docker_version}/POSTGRES_SERVER=${_docker_version}/g" "${DEVILBOX_PATH}/.env"
+	run "sed -i'' \"s/#POSTGRES_SERVER=${_docker_version}/POSTGRES_SERVER=${_docker_version}/g\" \"${DEVILBOX_PATH}/.env\""
 }
 enable_docker_php() {
 	_docker_version="${1}"
-	sed -i'' "s/#PHP_SERVER=${_docker_version}/PHP_SERVER=${_docker_version}/g" "${DEVILBOX_PATH}/.env"
+	run "sed -i'' \"s/#PHP_SERVER=${_docker_version}/PHP_SERVER=${_docker_version}/g\" \"${DEVILBOX_PATH}/.env\""
 }
 
 
 set_host_port_httpd() {
 	_port="${1}"
-	sed -i'' "s/^HOST_PORT_HTTPD=.*/HOST_PORT_HTTPD=${_port}/" "${DEVILBOX_PATH}/.env"
+	run "sed -i'' \"s/^HOST_PORT_HTTPD=.*/HOST_PORT_HTTPD=${_port}/\" \"${DEVILBOX_PATH}/.env\""
 }
 set_host_port_mysql() {
 	_port="${1}"
-	sed -i'' "s/^HOST_PORT_MYSQL=.*/HOST_PORT_MYSQL=${_port}/" "${DEVILBOX_PATH}/.env"
+	run "sed -i'' \"s/^HOST_PORT_MYSQL=.*/HOST_PORT_MYSQL=${_port}/\" \"${DEVILBOX_PATH}/.env\""
 }
 set_host_port_pgsql() {
 	_port="${1}"
-	sed -i'' "s/^HOST_PORT_POSTGRES=.*/HOST_PORT_POSTGRES=${_port}/" "${DEVILBOX_PATH}/.env"
+	run "sed -i'' \"s/^HOST_PORT_POSTGRES=.*/HOST_PORT_POSTGRES=${_port}/\" \"${DEVILBOX_PATH}/.env\""
 }
 
 
