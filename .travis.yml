@@ -1,4 +1,5 @@
 language: python
+sudo: required
 python:
   - 2.7
 
@@ -24,6 +25,7 @@ before_install:
   # List versions
   - docker version
   - docker-compose version
+  - whoami
 
 ###
 ### Install

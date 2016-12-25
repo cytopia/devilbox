@@ -222,18 +222,6 @@ devilbox_start() {
 	enable_docker_postgres "${_pysql}"
 	enable_docker_php "${_php}"
 
-	# Stop existing dockers
-	cd "${DEVILBOX_PATH}" || exit 1
-	docker-compose down || true
-	docker-compose stop || true
-	docker-compose kill || true
-	docker-compose rm -f || true
-
-	# Delete existing data dirs
-	rm -rf "$( get_default_mount_httpd )"
-	rm -rf "$( get_default_mount_mysql )"
-	rm -rf "$( get_default_mount_postgres )"
-
 	# Run
 	docker-compose up -d
 
@@ -259,7 +247,7 @@ devilbox_stop() {
 	docker-compose rm -f || true
 
 	# Delete existing data dirs
-	rm -rf "$( get_default_mount_httpd )"
-	rm -rf "$( get_default_mount_mysql )"
-	rm -rf "$( get_default_mount_postgres )"
+	sudo rm -rf "$( get_default_mount_httpd )"
+	sudo rm -rf "$( get_default_mount_mysql )"
+	sudo rm -rf "$( get_default_mount_postgres )"
 }
