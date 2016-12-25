@@ -319,7 +319,26 @@ devilbox_start() {
 	# Wait for it to come up
 	sleep 20
 }
+devilbox_stop() {
+	# Stop existing dockers
+	cd "${DEVILBOX_PATH}" || exit 1
+	docker-compose down || true
+	docker-compose stop || true
+	docker-compose kill || true
+	docker-compose rm -f || true
 
+	# Delete existing data dirs
+	sudo rm -rf "$( get_default_mount_httpd )"
+	sudo rm -rf "$( get_default_mount_mysql )"
+	sudo rm -rf "$( get_default_mount_postgres )"
+}
+
+
+################################################################################
+#
+#   T E S T   T H E   D E V I L B O X
+#
+################################################################################
 debilbox_test() {
 	echo ".env settings"
 	echo "------------------------------------------------------------"
@@ -341,18 +360,4 @@ debilbox_test() {
 		curl localhost
 		return 1
 	fi
-}
-
-devilbox_stop() {
-	# Stop existing dockers
-	cd "${DEVILBOX_PATH}" || exit 1
-	docker-compose down || true
-	docker-compose stop || true
-	docker-compose kill || true
-	docker-compose rm -f || true
-
-	# Delete existing data dirs
-	sudo rm -rf "$( get_default_mount_httpd )"
-	sudo rm -rf "$( get_default_mount_mysql )"
-	sudo rm -rf "$( get_default_mount_postgres )"
 }
