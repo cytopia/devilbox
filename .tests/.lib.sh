@@ -290,24 +290,24 @@ set_host_port_pgsql() {
 ################################################################################
 
 devilbox_start() {
-	_httpd="$1"
-	_mysql="$2"
-	_pysql="$3"
-	_php="$4"
-	_head="$5"
+	_new_httpd="$1"
+	_new_mysql="$2"
+	_new_pysql="$3"
+	_new_php="$4"
+	_new_head="$5"
 
 	echo "################################################################################"
 	echo "#"
-	echo "# ${_head}: [HTTPD: ${_httpd} | MYSQL: ${_mysql} | PGSQL: ${_pysql} | PHP: ${_php}] "
+	echo "# ${_new_head}: [HTTPD: ${_new_httpd} | MYSQL: ${_new_mysql} | PGSQL: ${_new_pysql} | PHP: ${_new_php}] "
 	echo "#"
 	echo "################################################################################"
 
 	# Adjust .env
 	comment_all_dockers
-	enable_docker_httpd "${_httpd}"
-	enable_docker_mysql "${_mysql}"
-	enable_docker_postgres "${_pysql}"
-	enable_docker_php "${_php}"
+	enable_docker_httpd "${_new_httpd}"
+	enable_docker_mysql "${_new_mysql}"
+	enable_docker_postgres "${_new_pysql}"
+	enable_docker_php "${_new_php}"
 
 	# Run
 	docker-compose up -d
