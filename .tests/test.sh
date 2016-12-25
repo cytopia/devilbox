@@ -38,7 +38,7 @@ set_host_port_pgsql "54320"
 
 ################################################################################
 #
-#  T E S T   0 1
+#  T E S T   (HTTPD 01)
 #
 ################################################################################
 
@@ -53,7 +53,7 @@ _php="php-fpm-7.0"
 ###
 ### Go
 ###
-devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "1/5"
+devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "HTTPD (1/4): ${_httpd}"
 debilbox_test
 devilbox_stop
 
@@ -61,7 +61,7 @@ devilbox_stop
 
 ################################################################################
 #
-#  T E S T   0 2
+#  T E S T   (HTTPD 02)
 #
 ################################################################################
 
@@ -76,7 +76,7 @@ _php="php-fpm-7.0"
 ###
 ### Go
 ###
-devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "2/5"
+devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "HTTPD (2/4): ${_httpd}"
 debilbox_test
 devilbox_stop
 
@@ -84,7 +84,7 @@ devilbox_stop
 
 ################################################################################
 #
-#  T E S T   0 3
+#  T E S T   (HTTPD 03)
 #
 ################################################################################
 
@@ -99,7 +99,7 @@ _php="php-fpm-7.0"
 ###
 ### Go
 ###
-devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "3/5"
+devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "HTTPD (3/4): ${_httpd}"
 debilbox_test
 devilbox_stop
 
@@ -107,7 +107,7 @@ devilbox_stop
 
 ################################################################################
 #
-#  T E S T   0 4
+#  T E S T   (HTTPD 04)
 #
 ################################################################################
 
@@ -122,6 +122,6 @@ _php="php-fpm-7.0"
 ###
 ### Go
 ###
-devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "4/5"
+devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "HTTPD (4/4): ${_httpd}"
 debilbox_test
 devilbox_stop

@@ -296,11 +296,15 @@ devilbox_start() {
 	_new_php="$4"
 	_new_head="$5"
 
-	echo "################################################################################"
-	echo "#"
-	echo "# ${_new_head}: [HTTPD: ${_new_httpd} | MYSQL: ${_new_mysql} | PGSQL: ${_new_pysql} | PHP: ${_new_php}] "
-	echo "#"
-	echo "################################################################################"
+
+	# Print Headline
+	_blue="\033[0;34m"
+	_reset="\033[0m"
+	printf "${_blue}%s${_reset}\n" "################################################################################"
+	printf "${_blue}%s${_reset}\n" "#"
+	printf "${_blue}%s %s${_reset}\n" "#" "${_new_head}"
+	printf "${_blue}%s${_reset}\n" "#"
+	printf "${_blue}%s${_reset}\n" "################################################################################"
 
 	# Adjust .env
 	comment_all_dockers
