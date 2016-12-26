@@ -351,7 +351,9 @@ debilbox_test() {
 
 	count="$( curl -q localhost 2>/dev/null | grep -c OK )"
 	echo "${count}"
-	if [ "${count}" = "0" ]; then
+
+	# Break on OK's less or more than 4
+	if [ "${count}" != "4" ]; then
 		curl localhost
 		return 1
 	fi
