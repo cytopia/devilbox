@@ -1,7 +1,6 @@
 language: python
-sudo: required
-python:
-  - 2.7
+#python:
+#  - 2.7
 
 
 ###
@@ -10,6 +9,28 @@ python:
 os:
   - linux
   - osx
+
+
+###
+### Configure OS
+###
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+      python: 3.2
+      env: TOXENV=py32
+    # OSX 10.11
+    - os: osx
+      osx_image: xcode7.3
+      language: generic
+      env: TOXENV=py32
+    # OSX 10.12
+    - os: osx
+      osx_image: xcode8.2
+      language: generic
+      env: TOXENV=py32
 
 
 ###
@@ -23,7 +44,6 @@ services:
 ### Global variables
 ###
 env:
-  global:
   global:
     - DEVILBOX_PHP_VERSION="$(   grep -Eo 'image:.*PHP.*:.*' docker-compose.yml   | sed 's/.*:.*://g' )"
     - DEVILBOX_HTTPD_VERSION="$( grep -Eo 'image:.*HTTPD.*:.*' docker-compose.yml | sed 's/.*:.*://g' )"
@@ -39,6 +59,7 @@ before_install:
   - docker-compose version
   - whoami
   - groups
+  - uname -a
 
 
 ###
