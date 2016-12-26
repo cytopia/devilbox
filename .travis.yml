@@ -5,6 +5,14 @@ python:
 
 
 ###
+### Define Operating Systems
+###
+os:
+  - linux
+  - osx
+
+
+###
 ### Add services
 ###
 services:
