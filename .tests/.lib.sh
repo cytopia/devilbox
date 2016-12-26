@@ -313,10 +313,14 @@ devilbox_start() {
 	enable_docker_php "${_new_php}"
 
 	# Run
-	docker-compose up &
+	docker-compose up -d
 
 	# Wait for it to come up
 	sleep 20
+
+	# Show log/info
+	docker-compose logs
+	docker-compose ps
 }
 devilbox_stop() {
 	# Stop existing dockers
