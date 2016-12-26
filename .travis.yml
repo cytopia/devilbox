@@ -8,7 +8,7 @@ language: python
 ###
 os:
   - linux
-  - osx
+  #- osx
 
 
 ###
@@ -16,28 +16,29 @@ os:
 ###
 matrix:
   include:
+    # Linux
     - os: linux
       dist: trusty
       sudo: required
-      python: 3.2
-      env: TOXENV=py32
+      #python: 3.2
+      #env: TOXENV=py32
+      services:
+        - docker
     # OSX 10.11
-    - os: osx
-      osx_image: xcode7.3
-      language: generic
-      env: TOXENV=py32
+    #- os: osx
+    #  osx_image: xcode7.3
+    #  language: generic
+    #  env: TOXENV=py32
     # OSX 10.12
-    - os: osx
-      osx_image: xcode8.2
-      language: generic
-      env: TOXENV=py32
+    #- os: osx
+    #  osx_image: xcode8.2
+    #  language: generic
+    #  env: TOXENV=py32
 
 
 ###
 ### Add services
 ###
-services:
-  - docker
 
 
 ###
