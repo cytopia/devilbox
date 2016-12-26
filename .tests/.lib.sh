@@ -2,16 +2,11 @@
 
 
 if [ "${#}" != "1" ]; then
-	exit 1
-fi
-
-if [ ! -d "${1}" ]; then
+	echo "[.lib.sh] Error: Invalid number of arguments"
 	exit 1
 fi
 
 DEVILBOX_PATH="${1}"
-
-
 
 
 
