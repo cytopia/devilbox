@@ -234,17 +234,12 @@ reset_env_file() {
 ### Comment out all docker versions
 ###
 comment_all_dockers() {
-	_httpd="$( get_default_version_httpd )"
-	_mysql="$( get_default_version_mysql )"
-	_postgres="$( get_default_version_postgres )"
-	_php="$( get_default_version_php )"
-
 
 	# Comment out all enabled docker versions
-	run "sed -i'' \"s/HTTPD_SERVER=${_httpd}/#HTTPD_SERVER=${_httpd}/g\" \"${DEVILBOX_PATH}/.env\""
-	run "sed -i'' \"s/MYSQL_SERVER=${_mysql}/#MYSQL_SERVER=${_mysql}/g\" \"${DEVILBOX_PATH}/.env\""
-	run "sed -i'' \"s/POSTGRES_SERVER=${_postgres}/#POSTGRES_SERVER=${_postgres}/g\" \"${DEVILBOX_PATH}/.env\""
-	run "sed -i'' \"s/PHP_SERVER=${_php}/#PHP_SERVER=${_php}/g\" \"${DEVILBOX_PATH}/.env\""
+	run "sed -i'' \"s/^HTTPD_SERVER=/#HTTPD_SERVER=/g\" \"${DEVILBOX_PATH}/.env\""
+	run "sed -i'' \"s/^MYSQL_SERVER=/#MYSQL_SERVER=/g\" \"${DEVILBOX_PATH}/.env\""
+	run "sed -i'' \"s/^POSTGRES_SERVER=/#POSTGRES_SERVER=/g\" \"${DEVILBOX_PATH}/.env\""
+	run "sed -i'' \"s/^PHP_SERVER=/#PHP_SERVER=/g\" \"${DEVILBOX_PATH}/.env\""
 }
 
 ###

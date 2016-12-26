@@ -279,7 +279,7 @@ _php="php-fpm-7.0"
 ###
 ### Go
 ###
-devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (1/7): ${_php}"
+devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (1/7): ${_mysql}"
 debilbox_test
 devilbox_stop
 
@@ -300,7 +300,7 @@ _php="php-fpm-7.0"
 ###
 ### Go
 ###
-devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (2/7): ${_php}"
+devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (2/7): ${_mysql}"
 debilbox_test
 devilbox_stop
 
@@ -321,7 +321,7 @@ _php="php-fpm-7.0"
 ###
 ### Go
 ###
-devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (3/7): ${_php}"
+devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (3/7): ${_mysql}"
 debilbox_test
 devilbox_stop
 
@@ -342,7 +342,7 @@ _php="php-fpm-7.0"
 ###
 ### Go
 ###
-devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (4/7): ${_php}"
+devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (4/7): ${_mysql}"
 debilbox_test
 devilbox_stop
 
@@ -363,7 +363,7 @@ _php="php-fpm-7.0"
 ###
 ### Go
 ###
-devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (5/7): ${_php}"
+devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (5/7): ${_mysql}"
 debilbox_test
 devilbox_stop
 
@@ -384,7 +384,7 @@ _php="php-fpm-7.0"
 ###
 ### Go
 ###
-devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (6/7): ${_php}"
+devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (6/7): ${_mysql}"
 debilbox_test
 devilbox_stop
 
@@ -405,7 +405,7 @@ _php="php-fpm-7.0"
 ###
 ### Go
 ###
-devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (7/7): ${_php}"
+devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "MySQL (7/7): ${_mysql}"
 debilbox_test
 devilbox_stop
 
