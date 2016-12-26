@@ -77,6 +77,4 @@ before_install:
 ###
 script:
   #- .tests/test_${SERVER}.sh .
-  - echo $SERVER
-  - echo $VERSION
   - .tests/test_single.sh . "${SERVER}" "${VERSION}"

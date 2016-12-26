@@ -1,13 +1,7 @@
 #!/bin/sh -eu
 
 
-if [ "${#}" != "1" ]; then
-	echo "[.lib.sh] Error: Invalid number of arguments"
-	exit 1
-fi
-
-DEVILBOX_PATH="${1}"
-
+DEVILBOX_PATH="$( echo "${1}"| sed 's/\/*$//' )" # remove last slash(es): /
 
 
 
