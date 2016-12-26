@@ -305,7 +305,7 @@ devilbox_start() {
 	docker-compose up -d
 
 	# Wait for it to come up
-	sleep 20
+	sleep 40
 
 	# Show log/info
 	docker-compose logs

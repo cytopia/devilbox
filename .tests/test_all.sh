@@ -17,7 +17,7 @@ DEVILBOX_PATH="$( echo "${1}"| sed 's/\/*$//' )" # remove last slash(es): /
 
 # Source files
 . "${DEVILBOX_PATH}/.tests/.lib.sh" "${DEVILBOX_PATH}"
-. "${DEVILBOX_PATH}/.tests/bootstrap.sh" "${DEVILBOX_PATH}"
+
 
 
 ################################################################################
