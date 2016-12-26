@@ -16,7 +16,15 @@
 ###
 matrix:
   include:
-    # Linux
+    # Ubuntu 12.04
+    - os: linux
+      dist: precise
+      sudo: required
+      #python: 3.2
+      #env: TOXENV=py32
+      services:
+        - docker
+    # Ubuntu 14.04 LTS Server Edition 64 bit
     - os: linux
       dist: trusty
       sudo: required
