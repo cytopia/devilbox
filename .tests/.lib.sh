@@ -24,7 +24,7 @@ DEVILBOX_PATH="${1}"
 
 run() {
 	_cmd="${1}"
-	_debug="1"
+	_debug="0"
 
 	_red="\033[0;31m"
 	_green="\033[0;32m"
