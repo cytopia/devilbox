@@ -277,6 +277,10 @@ set_host_port_pgsql() {
 }
 
 
+set_debug_enable() {
+	run "sed -i'' \"s/^DEBUG_COMPOSE_ENTRYPOINT=.*/DEBUG_COMPOSE_ENTRYPOINT=1/\" \"${DEVILBOX_PATH}/.env\""
+}
+
 
 ################################################################################
 #
@@ -309,7 +313,7 @@ devilbox_start() {
 	enable_docker_php "${_new_php}"
 
 	# Run
-	docker-compose up -d
+	docker-compose up &
 
 	# Wait for it to come up
 	sleep 20
@@ -317,9 +321,9 @@ devilbox_start() {
 devilbox_stop() {
 	# Stop existing dockers
 	cd "${DEVILBOX_PATH}" || exit 1
-	docker-compose down || true
-	docker-compose stop || true
-	docker-compose kill || true
+	docker-compose down > /dev/null 2>&1 || true
+	docker-compose stop > /dev/null 2>&1 || true
+	docker-compose kill > /dev/null 2>&1 || true
 	docker-compose rm -f || true
 
 	# Delete existing data dirs
@@ -334,6 +338,8 @@ devilbox_stop() {
 #   T E S T   T H E   D E V I L B O X
 #
 ################################################################################
+
+
 debilbox_test() {
 	echo ".env settings"
 	echo "------------------------------------------------------------"
@@ -358,3 +364,4 @@ debilbox_test() {
 		return 1
 	fi
 }
+

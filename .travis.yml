@@ -1,58 +1,24 @@
-#language: python
-#python:
-#  - 2.7
+language: bash
+dist: trusty
+sudo: required
 
 
 ###
-### Define Operating Systems
+### Attach services
 ###
-#os:
-#  - linux
-#  #- osx
-
-
-###
-### Configure OS
-###
-matrix:
-  include:
-    # Ubuntu 12.04
-    - os: linux
-      dist: precise
-      sudo: required
-      #python: 3.2
-      #env: TOXENV=py32
-      services:
-        - docker
-    # Ubuntu 14.04 LTS Server Edition 64 bit
-    - os: linux
-      dist: trusty
-      sudo: required
-      #python: 3.2
-      #env: TOXENV=py32
-      services:
-        - docker
-    # OSX 10.11
-    #- os: osx
-    #  osx_image: xcode7.3
-    #  language: generic
-    #  env: TOXENV=py32
-    # OSX 10.12
-    #- os: osx
-    #  osx_image: xcode8.2
-    #  language: generic
-    #  env: TOXENV=py32
-
-
-###
-### Add services
-###
+services:
+  - docker
 
 
 ###
 ### Global variables
 ###
 env:
+  matrix:
+    - SERVER=httpd
+    - SERVER=mysql
+    - SERVER=pgsql
+    - SERVER=php
   global:
     - DEVILBOX_PHP_VERSION="$(   grep -Eo 'image:.*PHP.*:.*' docker-compose.yml   | sed 's/.*:.*://g' )"
     - DEVILBOX_HTTPD_VERSION="$( grep -Eo 'image:.*HTTPD.*:.*' docker-compose.yml | sed 's/.*:.*://g' )"
@@ -74,36 +40,36 @@ before_install:
 ###
 ### Install
 ###
-install:
-  # php
-  - docker pull cytopia/php-fpm-5.4:${DEVILBOX_PHP_VERSION}
-  - docker pull cytopia/php-fpm-5.5:${DEVILBOX_PHP_VERSION}
-  - docker pull cytopia/php-fpm-5.6:${DEVILBOX_PHP_VERSION}
-  - docker pull cytopia/php-fpm-7.0:${DEVILBOX_PHP_VERSION}
-  - docker pull cytopia/php-fpm-7.1:${DEVILBOX_PHP_VERSION}
-  # web
-  - docker pull cytopia/apache-2.2:${DEVILBOX_HTTPD_VERSION}
-  - docker pull cytopia/apache-2.4:${DEVILBOX_HTTPD_VERSION}
-  - docker pull cytopia/nginx-stable:${DEVILBOX_HTTPD_VERSION}
-  - docker pull cytopia/nginx-mainline:${DEVILBOX_HTTPD_VERSION}
-  # mysql/mariadb
-  - docker pull cytopia/mysql-5.5:${DEVILBOX_MYSQL_VERSION}
-  - docker pull cytopia/mysql-5.6:${DEVILBOX_MYSQL_VERSION}
-  - docker pull cytopia/mysql-5.7:${DEVILBOX_MYSQL_VERSION}
-  - docker pull cytopia/mariadb-5.5:${DEVILBOX_MYSQL_VERSION}
-  - docker pull cytopia/mariadb-10.0:${DEVILBOX_MYSQL_VERSION}
-  - docker pull cytopia/mariadb-10.1:${DEVILBOX_MYSQL_VERSION}
-  - docker pull cytopia/mariadb-10.2:${DEVILBOX_MYSQL_VERSION}
-  # postgresql (official images)
-  - docker pull postgres:9.2
-  - docker pull postgres:9.3
-  - docker pull postgres:9.4
-  - docker pull postgres:9.5
-  - docker pull postgres:9.6
+#install:
+#  # php
+#  - docker pull cytopia/php-fpm-5.4:${DEVILBOX_PHP_VERSION}
+#  - docker pull cytopia/php-fpm-5.5:${DEVILBOX_PHP_VERSION}
+#  - docker pull cytopia/php-fpm-5.6:${DEVILBOX_PHP_VERSION}
+#  - docker pull cytopia/php-fpm-7.0:${DEVILBOX_PHP_VERSION}
+#  - docker pull cytopia/php-fpm-7.1:${DEVILBOX_PHP_VERSION}
+#  # web
+#  - docker pull cytopia/apache-2.2:${DEVILBOX_HTTPD_VERSION}
+#  - docker pull cytopia/apache-2.4:${DEVILBOX_HTTPD_VERSION}
+#  - docker pull cytopia/nginx-stable:${DEVILBOX_HTTPD_VERSION}
+#  - docker pull cytopia/nginx-mainline:${DEVILBOX_HTTPD_VERSION}
+#  # mysql/mariadb
+#  - docker pull cytopia/mysql-5.5:${DEVILBOX_MYSQL_VERSION}
+#  - docker pull cytopia/mysql-5.6:${DEVILBOX_MYSQL_VERSION}
+#  - docker pull cytopia/mysql-5.7:${DEVILBOX_MYSQL_VERSION}
+#  - docker pull cytopia/mariadb-5.5:${DEVILBOX_MYSQL_VERSION}
+#  - docker pull cytopia/mariadb-10.0:${DEVILBOX_MYSQL_VERSION}
+#  - docker pull cytopia/mariadb-10.1:${DEVILBOX_MYSQL_VERSION}
+#  - docker pull cytopia/mariadb-10.2:${DEVILBOX_MYSQL_VERSION}
+#  # postgresql (official images)
+#  - docker pull postgres:9.2
+#  - docker pull postgres:9.3
+#  - docker pull postgres:9.4
+#  - docker pull postgres:9.5
+#  - docker pull postgres:9.6
 
 
 ###
 ### Test
 ###
 script:
-  - .tests/test.sh .
+  - .tests/test_${SERVER}.sh .
