@@ -6,9 +6,9 @@ language: python
 ###
 ### Define Operating Systems
 ###
-os:
-  - linux
-  #- osx
+#os:
+#  - linux
+#  #- osx
 
 
 ###
