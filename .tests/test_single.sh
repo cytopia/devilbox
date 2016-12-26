@@ -23,8 +23,8 @@ fi
 ### Get arguments
 ###
 DEVILBOX_PATH="$( echo "${1}"| sed 's/\/*$//' )" # remove last slash(es): /
-DEVILBOX_SERVER="${2}"
-DEVILBOX_VERSION="${3}"
+DEVILBOX_SERV="${2}" # Server
+DEVILBOX_VERS="${3}" # Version
 
 
 
@@ -69,30 +69,30 @@ set_host_port_pgsql "54320"
 ###
 _httpd="apache-2.2"
 _mysql="mariadb-10.2"
-_pysql="9.6"
+_pgsql="9.6"
 _php="php-fpm-7.0"
 
 ###
 ### Set specific version
 ###
-if [ "${DEVILBOX_SERVER}" = "httpd" ]; then
-	_httpd="${DEVILBOX_VERSION}"
-	_head="HTTPD: ${DEVILBOX_VERSION}"
-elif [ "${DEVILBOX_SERVER}" = "mysql" ]; then
-	_mysql="${DEVILBOX_VERSION}"
-	_head="MYSQL: ${DEVILBOX_VERSION}"
-elif [ "${DEVILBOX_SERVER}" = "pgsql" ]; then
-	_pgsql="${DEVILBOX_VERSION}"
-	_head="PGSQL: ${DEVILBOX_VERSION}"
-elif [ "${DEVILBOX_SERVER}" = "php" ]; then
-	_php="${DEVILBOX_VERSION}"
-	_head="PHP: ${DEVILBOX_VERSION}"
+if [ "${DEVILBOX_SERV}" = "httpd" ]; then
+	_httpd="${DEVILBOX_VERS}"
+	_head="HTTPD: ${DEVILBOX_VERS}"
+elif [ "${DEVILBOX_SERV}" = "mysql" ]; then
+	_mysql="${DEVILBOX_VERS}"
+	_head="MYSQL: ${DEVILBOX_VERS}"
+elif [ "${DEVILBOX_SERV}" = "pgsql" ]; then
+	_pgsql="${DEVILBOX_VERS}"
+	_head="PGSQL: ${DEVILBOX_VERS}"
+elif [ "${DEVILBOX_SERV}" = "php" ]; then
+	_php="${DEVILBOX_VERS}"
+	_head="PHP: ${DEVILBOX_VERS}"
 fi
 
 ###
 ### Go
 ###
-devilbox_start "${_httpd}" "${_mysql}" "${_pysql}" "${_php}" "${_head}"
+devilbox_start "${_httpd}" "${_mysql}" "${_pgsql}" "${_php}" "${_head}"
 debilbox_test
 devilbox_stop
 

@@ -15,6 +15,7 @@ services:
 ###
 env:
   matrix:
+    # Test httpd
     - SERVER=httpd VERSION=apache-2.2
     - SERVER=httpd VERSION=apache-2.4
     - SERVER=httpd VERSION=nginx-stable
@@ -22,10 +23,10 @@ env:
     #- SERVER=mysql
     #- SERVER=pgsql
     #- SERVER=php
-  global:
-    - DEVILBOX_PHP_VERSION="$(   grep -Eo 'image:.*PHP.*:.*' docker-compose.yml   | sed 's/.*:.*://g' )"
-    - DEVILBOX_HTTPD_VERSION="$( grep -Eo 'image:.*HTTPD.*:.*' docker-compose.yml | sed 's/.*:.*://g' )"
-    - DEVILBOX_MYSQL_VERSION="$( grep -Eo 'image:.*MYSQL.*:.*' docker-compose.yml | sed 's/.*:.*://g' )"
+  #global:
+  #  - DEVILBOX_PHP_VERSION="$(   grep -Eo 'image:.*PHP.*:.*' docker-compose.yml   | sed 's/.*:.*://g' )"
+  #  - DEVILBOX_HTTPD_VERSION="$( grep -Eo 'image:.*HTTPD.*:.*' docker-compose.yml | sed 's/.*:.*://g' )"
+  #  - DEVILBOX_MYSQL_VERSION="$( grep -Eo 'image:.*MYSQL.*:.*' docker-compose.yml | sed 's/.*:.*://g' )"
 
 
 ###
@@ -76,4 +77,4 @@ before_install:
 ###
 script:
   #- .tests/test_${SERVER}.sh .
-  - .tests/test_single.sh . ${SERVER} ${VERSION}
+  - .tests/test_single.sh . "${SERVER}" "${VERSION}"
