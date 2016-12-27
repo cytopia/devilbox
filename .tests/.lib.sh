@@ -60,6 +60,30 @@ runsu() {
 }
 
 
+wait_for() {
+	_time="${1}"
+	_debug="0"
+
+
+	# Sleep with debug output
+	if [ "${#}" = "2" ]; then
+		if [ "${2}" = "1" ]; then
+			printf "wait "
+			for i in $(seq 1 "${_time}"); do
+				sleep 1
+				printf "."
+			done
+			printf "\n"
+			return 0
+		fi
+	fi
+
+
+	# Sleep silently
+	sleep "${_time}"
+}
+
+
 ################################################################################
 #
 #  G E T   D E F A U L T S
@@ -305,7 +329,7 @@ devilbox_start() {
 	docker-compose up -d
 
 	# Wait for it to come up
-	sleep 40
+	wait_for 60 1
 
 	# Show log/info
 	docker-compose logs
