@@ -352,7 +352,7 @@ debilbox_test() {
 	echo "${count}"
 
 	# Break on OK's less or more than 4
-	if [ "${count}" != "4" ]; then
+	if [ "${count}" != "3" ]; then
 		curl localhost
 		return 1
 	fi
