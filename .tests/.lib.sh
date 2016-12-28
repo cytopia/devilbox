@@ -408,10 +408,10 @@ debilbox_test() {
 
 	echo "docker-compose ps"
 	echo "------------------------------------------------------------"
-	docker-compose ps || true
-	echo
-
-	if ! _test_docker_compose >/dev/null 2>&1; then
+	if _test_docker_compose >/dev/null 2>&1; then
+		echo "[OK]: All running"
+	else
+		echo "[ERR]: Broken"
 		_ret="$(( _ret + 1 ))"
 	fi
 
@@ -420,7 +420,6 @@ debilbox_test() {
 	### 3. Show Curl output
 	###
 	print_h2 "3. Test status via curl"
-
 
 	echo "Count [OK]'s on curl-ed url"
 	echo "------------------------------------------------------------"
@@ -436,7 +435,22 @@ debilbox_test() {
 	###
 	### Final return
 	###
-	return ${_ret}
+	if [ "${_ret}" != "0" ]; then
+		print_h2 "4. Error output"
+		echo "Curl"
+		echo "------------------------------------------------------------"
+		curl localhost
+		echo
+
+		echo "docker-compose ps"
+		echo "------------------------------------------------------------"
+		docker-compose ps
+		echo
+
+		return 1
+	fi
+
+	return 0
 }
 
 
@@ -444,14 +458,20 @@ debilbox_test() {
 ### Test against stopped containers
 ###
 _test_docker_compose() {
-	_broken="$( docker-compose ps | grep -ci 'Exit' )"
+
+	_broken="$( docker-compose ps | grep -c 'Exit' )"
+	_running="$( docker-compose ps | grep -c 'Up' )"
+	_total="$( docker-compose ps -q | grep -c '' )"
 
 	if [ "${_broken}" != "0" ]; then
-		docker-compose ps
 		return 1
-	else
-		return 0
 	fi
+
+	if [ "${_running}" != "${_total}" ]; then
+		return 1
+	fi
+
+	return 0
 }
 
 
