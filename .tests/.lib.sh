@@ -60,6 +60,28 @@ runsu() {
 }
 
 
+print_h1() {
+	_headline="${1}"
+
+	_blue="\033[0;34m"
+	_reset="\033[0m"
+	printf "${_blue}%s${_reset}\n" "################################################################################"
+	printf "${_blue}%s${_reset}\n" "#"
+	printf "${_blue}%s %s${_reset}\n" "#" "${_headline}"
+	printf "${_blue}%s${_reset}\n" "#"
+	printf "${_blue}%s${_reset}\n" "################################################################################"
+}
+
+print_h2() {
+	_headline="${1}"
+
+	_blue="\033[0;34m"
+	_reset="\033[0m"
+	printf "${_blue}%s${_reset}\n" "############################################################"
+	printf "${_blue}%s %s${_reset}\n" "#" "${_headline}"
+	printf "${_blue}%s${_reset}\n" "############################################################"
+}
+
 wait_for() {
 	_time="${1}"
 	_debug="0"
@@ -308,15 +330,8 @@ devilbox_start() {
 	_new_php="$4"
 	_new_head="$5"
 
-
 	# Print Headline
-	_blue="\033[0;34m"
-	_reset="\033[0m"
-	printf "${_blue}%s${_reset}\n" "################################################################################"
-	printf "${_blue}%s${_reset}\n" "#"
-	printf "${_blue}%s %s${_reset}\n" "#" "${_new_head}"
-	printf "${_blue}%s${_reset}\n" "#"
-	printf "${_blue}%s${_reset}\n" "################################################################################"
+	print_h1 "${_new_head}"
 
 	# Adjust .env
 	comment_all_dockers
@@ -333,7 +348,7 @@ devilbox_start() {
 
 	# Show log/info
 	docker-compose logs
-	docker-compose ps
+	#docker-compose ps
 }
 devilbox_stop() {
 	# Stop existing dockers
@@ -358,6 +373,16 @@ devilbox_stop() {
 
 
 debilbox_test() {
+
+	_ret=0
+	_oks=3
+
+	###
+	### 1. Show Info
+	###
+	print_h2 "1. Info"
+
+	# Show wanted versions
 	echo ".env settings"
 	echo "------------------------------------------------------------"
 	echo "HTTPD: $(get_enabled_version_httpd)"
@@ -366,19 +391,60 @@ debilbox_test() {
 	echo "PgSQL: $(get_enabled_version_postgres)"
 	echo
 
+	# Get actual versions
 	echo "http://localhost settings"
 	echo "------------------------------------------------------------"
 	curl -q localhost 2>/dev/null | grep -E '<h3>.*</h3>' | sed 's/.*<h3>//g' | sed 's/<\/h3>//g'
 	echo
 
 
+	###
+	### 2. Test docker-compose
+	###
+	print_h2 "2. docker-compose"
+
+	echo "docker-compose ps"
+	echo "------------------------------------------------------------"
+	docker-compose ps || true
+	echo
+
+	if ! _test_docker_compose >/dev/null 2>&1; then
+		_ret="$(( _ret + 1 ))"
+	fi
+
+
+	###
+	### 3. Show Curl output
+	###
+	print_h2 "3. Test status via curl"
+
 	count="$( curl -q localhost 2>/dev/null | grep -c OK )"
+
+	echo "Count [OK]'s on curl-ed url"
+	echo "------------------------------------------------------------"
 	echo "${count}"
+	echo
 
 	# Break on OK's less or more than 4
-	if [ "${count}" != "3" ]; then
+	if [ "${count}" != "${_oks}" ]; then
 		curl localhost
-		return 1
+		_ret="$(( _ret + 1 ))"
 	fi
+
+	return ${_ret}
 }
 
+
+###
+### Test against stopped containers
+###
+_test_docker_compose() {
+	_broken="$( docker-compose ps | grep -ci 'Exit' )"
+
+	if [ "${_broken}" != "0" ]; then
+		docker-compose ps
+		return 1
+	else
+		return 0
+	fi
+}
