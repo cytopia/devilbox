@@ -373,9 +373,12 @@ devilbox_stop() {
 
 
 debilbox_test() {
+	###
+	### Variables
+	###
+	_ret=0 # Final exit code
+	_oks=3 # Require this many [OK]'s on the page
 
-	_ret=0
-	_oks=3
 
 	###
 	### 1. Show Info
@@ -418,19 +421,21 @@ debilbox_test() {
 	###
 	print_h2 "3. Test status via curl"
 
-	count="$( curl -q localhost 2>/dev/null | grep -c OK )"
 
 	echo "Count [OK]'s on curl-ed url"
 	echo "------------------------------------------------------------"
-	echo "${count}"
-	echo
-
-	# Break on OK's less or more than 4
-	if [ "${count}" != "${_oks}" ]; then
-		curl localhost
+	if _cnt="$( _test_curled_oks "${_oks}" )"; then
+		echo "[OK]: ${_cnt} of ${_oks}"
+	else
+		echo "[ERR]: ${_cnt} of ${_oks}"
 		_ret="$(( _ret + 1 ))"
 	fi
+	echo
 
+
+	###
+	### Final return
+	###
 	return ${_ret}
 }
 
@@ -443,6 +448,23 @@ _test_docker_compose() {
 
 	if [ "${_broken}" != "0" ]; then
 		docker-compose ps
+		return 1
+	else
+		return 0
+	fi
+}
+
+
+###
+### Test [OK]'s found on website
+###
+_test_curled_oks() {
+	_oks="${1}"
+
+	_count="$( curl -q localhost 2>/dev/null | grep -c OK )"
+	echo "${_count}"
+
+	if [ "${_count}" != "${_oks}" ]; then
 		return 1
 	else
 		return 0
