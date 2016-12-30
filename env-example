@@ -63,8 +63,8 @@ LOCAL_LISTEN_ADDR=127.0.0.1:
 ### 1.1 Choose HTTP Server Image
 ###
 #HTTPD_SERVER=apache-2.2
-#HTTPD_SERVER=apache-2.4
-HTTPD_SERVER=nginx-stable
+HTTPD_SERVER=apache-2.4
+#HTTPD_SERVER=nginx-stable
 #HTTPD_SERVER=nginx-mainline
 
 ###
@@ -72,10 +72,10 @@ HTTPD_SERVER=nginx-stable
 ###
 #MYSQL_SERVER=mysql-5.5
 #MYSQL_SERVER=mysql-5.6
-MYSQL_SERVER=mysql-5.7
+#MYSQL_SERVER=mysql-5.7
 #MYSQL_SERVER=mariadb-5.5
 #MYSQL_SERVER=mariadb-10.0
-#MYSQL_SERVER=mariadb-10.1
+MYSQL_SERVER=mariadb-10.1
 #MYSQL_SERVER=mariadb-10.2
 
 ###
@@ -93,8 +93,8 @@ POSTGRES_SERVER=9.6
 ###
 #PHP_SERVER=php-fpm-5.4
 #PHP_SERVER=php-fpm-5.5
-PHP_SERVER=php-fpm-5.6
-#PHP_SERVER=php-fpm-7.0
+#PHP_SERVER=php-fpm-5.6
+PHP_SERVER=php-fpm-7.0
 #PHP_SERVER=php-fpm-7.1
 #PHP_SERVER=hhvm-3
 

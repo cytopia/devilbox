@@ -141,8 +141,8 @@ services:
             ##
             ## Mount remote MySQL socket file to local disk
             ##
-            #- MOUNT_MYSQL_SOCKET_TO_LOCALDISK=1
-            #- MYSQL_SOCKET_PATH=/tmp/mysql/mysqld.sock
+            - MOUNT_MYSQL_SOCKET_TO_LOCALDISK=1
+            - MYSQL_SOCKET_PATH=/tmp/mysql/mysqld.sock
 
             ##
             ## Map remote PostgreSQL Port to 127.0.0.1
@@ -180,7 +180,7 @@ services:
             - ${DEVILBOX_PATH}/log/${PHP_SERVER}:/var/log/php-fpm
 
             # Mount MySQL Socket directory
-            #- ${DEVILBOX_PATH}/run/mysql:/tmp/mysql
+            - ${DEVILBOX_PATH}/run/mysql:/tmp/mysql
 
             # Mount Mail directory
             - ${DEVILBOX_PATH}/run/mail:/var/mail
@@ -224,7 +224,7 @@ services:
 
 
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-            #- MYSQL_SOCKET_DIR=/tmp/mysql
+            - MYSQL_SOCKET_DIR=/tmp/mysql
 
             # Runtime settings
             - MYSQL_GENERAL_LOG=${MYSQL_GENERAL_LOG}
@@ -245,7 +245,7 @@ services:
             - ${DEVILBOX_PATH}/log/${MYSQL_SERVER}:/var/log/mysql
 
             # Mount MySQL Socket directory
-            #- ${DEVILBOX_PATH}/run/mysql:/tmp/mysql
+            - ${DEVILBOX_PATH}/run/mysql:/tmp/mysql
 
             # Mount devilbox user-defined cnf files in order
             # to overwrite the MySQL server configuration
