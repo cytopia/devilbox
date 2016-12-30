@@ -60,6 +60,52 @@ runsu() {
 }
 
 
+print_h1() {
+	_headline="${1}"
+
+	_blue="\033[0;34m"
+	_reset="\033[0m"
+	printf "${_blue}%s${_reset}\n" "################################################################################"
+	printf "${_blue}%s${_reset}\n" "#"
+	printf "${_blue}%s %s${_reset}\n" "#" "${_headline}"
+	printf "${_blue}%s${_reset}\n" "#"
+	printf "${_blue}%s${_reset}\n" "################################################################################"
+}
+
+print_h2() {
+	_headline="${1}"
+
+	_blue="\033[0;34m"
+	_reset="\033[0m"
+	printf "${_blue}%s${_reset}\n" "############################################################"
+	printf "${_blue}%s %s${_reset}\n" "#" "${_headline}"
+	printf "${_blue}%s${_reset}\n" "############################################################"
+}
+
+wait_for() {
+	_time="${1}"
+	_debug="0"
+
+
+	# Sleep with debug output
+	if [ "${#}" = "2" ]; then
+		if [ "${2}" = "1" ]; then
+			printf "wait "
+			for i in $(seq 1 "${_time}"); do
+				sleep 1
+				printf "."
+			done
+			printf "\n"
+			return 0
+		fi
+	fi
+
+
+	# Sleep silently
+	sleep "${_time}"
+}
+
+
 ################################################################################
 #
 #  G E T   D E F A U L T S
@@ -284,15 +330,8 @@ devilbox_start() {
 	_new_php="$4"
 	_new_head="$5"
 
-
 	# Print Headline
-	_blue="\033[0;34m"
-	_reset="\033[0m"
-	printf "${_blue}%s${_reset}\n" "################################################################################"
-	printf "${_blue}%s${_reset}\n" "#"
-	printf "${_blue}%s %s${_reset}\n" "#" "${_new_head}"
-	printf "${_blue}%s${_reset}\n" "#"
-	printf "${_blue}%s${_reset}\n" "################################################################################"
+	print_h1 "${_new_head}"
 
 	# Adjust .env
 	comment_all_dockers
@@ -305,11 +344,11 @@ devilbox_start() {
 	docker-compose up -d
 
 	# Wait for it to come up
-	sleep 40
+	wait_for 90 1
 
 	# Show log/info
 	docker-compose logs
-	docker-compose ps
+	#docker-compose ps
 }
 devilbox_stop() {
 	# Stop existing dockers
@@ -334,6 +373,19 @@ devilbox_stop() {
 
 
 debilbox_test() {
+	###
+	### Variables
+	###
+	_ret=0 # Final exit code
+	_oks=3 # Require this many [OK]'s on the page
+
+
+	###
+	### 1. Show Info
+	###
+	print_h2 "1. Info"
+
+	# Show wanted versions
 	echo ".env settings"
 	echo "------------------------------------------------------------"
 	echo "HTTPD: $(get_enabled_version_httpd)"
@@ -342,19 +394,99 @@ debilbox_test() {
 	echo "PgSQL: $(get_enabled_version_postgres)"
 	echo
 
+	# Get actual versions
 	echo "http://localhost settings"
 	echo "------------------------------------------------------------"
 	curl -q localhost 2>/dev/null | grep -E '<h3>.*</h3>' | sed 's/.*<h3>//g' | sed 's/<\/h3>//g'
 	echo
 
 
-	count="$( curl -q localhost 2>/dev/null | grep -c OK )"
-	echo "${count}"
+	###
+	### 2. Test docker-compose
+	###
+	print_h2 "2. docker-compose"
 
-	# Break on OK's less or more than 4
-	if [ "${count}" != "4" ]; then
+	echo "docker-compose ps"
+	echo "------------------------------------------------------------"
+	if _test_docker_compose >/dev/null 2>&1; then
+		echo "[OK]: All running"
+	else
+		echo "[ERR]: Broken"
+		_ret="$(( _ret + 1 ))"
+	fi
+
+
+	###
+	### 3. Show Curl output
+	###
+	print_h2 "3. Test status via curl"
+
+	echo "Count [OK]'s on curl-ed url"
+	echo "------------------------------------------------------------"
+	if _cnt="$( _test_curled_oks "${_oks}" )"; then
+		echo "[OK]: ${_cnt} of ${_oks}"
+	else
+		echo "[ERR]: ${_cnt} of ${_oks}"
+		_ret="$(( _ret + 1 ))"
+	fi
+	echo
+
+
+	###
+	### Final return
+	###
+	if [ "${_ret}" != "0" ]; then
+		print_h2 "4. Error output"
+		echo "Curl"
+		echo "------------------------------------------------------------"
 		curl localhost
+		echo
+
+		echo "docker-compose ps"
+		echo "------------------------------------------------------------"
+		docker-compose ps
+		echo
+
 		return 1
 	fi
+
+	return 0
 }
 
+
+###
+### Test against stopped containers
+###
+_test_docker_compose() {
+
+	_broken="$( docker-compose ps | grep -c 'Exit' )"
+	_running="$( docker-compose ps | grep -c 'Up' )"
+	_total="$( docker-compose ps -q | grep -c '' )"
+
+	if [ "${_broken}" != "0" ]; then
+		return 1
+	fi
+
+	if [ "${_running}" != "${_total}" ]; then
+		return 1
+	fi
+
+	return 0
+}
+
+
+###
+### Test [OK]'s found on website
+###
+_test_curled_oks() {
+	_oks="${1}"
+
+	_count="$( curl -q localhost 2>/dev/null | grep -c OK )"
+	echo "${_count}"
+
+	if [ "${_count}" != "${_oks}" ]; then
+		return 1
+	else
+		return 0
+	fi
+}
