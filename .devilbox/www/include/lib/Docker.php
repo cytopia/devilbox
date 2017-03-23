@@ -124,6 +124,26 @@ class Docker
 		return $this->_tld;
 	}
 
+	/**
+	 * Get HTTP port.
+	 *
+	 * @return string
+	 */
+	public function getPort()
+	{
+		$port = $this->getEnv('HOST_PORT_HTTPD');
+
+		if ( empty($port) ) {
+			return '';
+		}
+
+		if ( $port == 80 ) {
+			return '';
+		}
+
+		return ":$port";
+	}
+
 
 	/*********************************************************************************
 	 *
