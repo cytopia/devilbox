@@ -84,7 +84,7 @@
 						} else {
 							el_valid.className += ' bg-success';
 							el_valid.innerHTML = 'OK';
-							el_href.innerHTML = '<a target="_blank" href="http://'+vhost+'.<?php echo $Docker->getTld().$Docker->getPort();?>">'+vhost+'.<?php echo $Docker->getTld();?></a>';
+							el_href.innerHTML = '<a target="_blank" href="http://'+vhost+'.<?php echo $Docker->getTld().$Docker->getPort();?>">'+vhost+'.<?php echo $Docker->getTld().$Docker->getPort();?></a>';
 						}
 					}
 				};
