@@ -158,6 +158,7 @@ services:
             ## Additional variables needed by custom intranet
             ##
             - HOST_PATH_TO_WWW_DOCROOTS=${HOST_PATH_TO_WWW_DOCROOTS}
+            - HOST_PORT_HTTPD=${HOST_PORT_HTTPD}
             - HOST_PATH_TO_MYSQL_DATADIR=${HOST_PATH_TO_MYSQL_DATADIR}
             - HOST_PATH_TO_POSTGRES_DATADIR=${HOST_PATH_TO_POSTGRES_DATADIR}
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
