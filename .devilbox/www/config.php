@@ -42,23 +42,51 @@ $MYSQL_HOST_ADDR	= gethostbyname($MYSQL_HOST_NAME);
 $POSTGRES_HOST_NAME	= 'postgres';
 $POSTGRES_HOST_ADDR	= gethostbyname($POSTGRES_HOST_NAME);
 
+//
+// Lazy Loader
+//
+function loadClass($class) {
 
-//
-// Load files
-//
-require $LIB_DIR . DIRECTORY_SEPARATOR . 'Logger.php';
-require $LIB_DIR . DIRECTORY_SEPARATOR . 'Docker.php';
-require $LIB_DIR . DIRECTORY_SEPARATOR . 'Mysql.php';
-require $LIB_DIR . DIRECTORY_SEPARATOR . 'Postgres.php';
+	global $LIB_DIR;
+	global $MYSQL_HOST_ADDR;
+	global $POSTGRES_HOST_ADDR;
+
+	static $_LOADED_LIBS;
 
 
-//
-// Instantiate Basics
-//
-$Logger		= \devilbox\Logger::getInstance();
-$Docker 	= \devilbox\Docker::getInstance();
-$MySQL		= \devilbox\Mysql::getInstance('root', $Docker->getEnv('MYSQL_ROOT_PASSWORD'), $MYSQL_HOST_ADDR);
-$Postgres	= \devilbox\Postgres::getInstance($Docker->getEnv('POSTGRES_USER'), $Docker->getEnv('POSTGRES_PASSWORD'), $POSTGRES_HOST_ADDR);
+	if (isset($_LOADED_LIBS[$class])) {
+		return $_LOADED_LIBS[$class];
+	} else {
+		switch($class) {
+
+			case 'Logger':
+				require $LIB_DIR . DIRECTORY_SEPARATOR . $class . '.php';
+				$_LOADED_LIBS[$class] = \devilbox\Logger::getInstance();
+				break;
+
+			case 'Docker':
+				require $LIB_DIR . DIRECTORY_SEPARATOR . $class . '.php';
+				$_LOADED_LIBS[$class] = \devilbox\Docker::getInstance();
+				break;
+
+			case 'Mysql':
+				require $LIB_DIR . DIRECTORY_SEPARATOR . $class . '.php';
+				$Docker = loadClass('Docker');
+				$_LOADED_LIBS[$class] = \devilbox\Mysql::getInstance('root', $Docker->getEnv('MYSQL_ROOT_PASSWORD'), $MYSQL_HOST_ADDR);
+				break;
+
+			case 'Postgres':
+				require $LIB_DIR . DIRECTORY_SEPARATOR . $class . '.php';
+				$Docker = loadClass('Docker');
+				$_LOADED_LIBS[$class] = \devilbox\Postgres::getInstance($Docker->getEnv('POSTGRES_USER'), $Docker->getEnv('POSTGRES_PASSWORD'), $POSTGRES_HOST_ADDR);
+				break;
+
+			default:
+				exit('Class does not exist: '.$class);
+		}
+		return $_LOADED_LIBS[$class];
+	}
+}
 
 
 

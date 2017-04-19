@@ -34,7 +34,7 @@ class Postgres
 		}
 		// If current Postgres instance was unable to connect
 		if ((static::$instance->getConnectError())) {
-			\devilbox\Logger::getInstance()->error('Instance has errors:' . "\r\n" . var_export(static::$instance, true) . "\r\n");
+			loadClass('Logger')->error('Instance has errors:' . "\r\n" . var_export(static::$instance, true) . "\r\n");
 			//return null;
 		}
 		return static::$instance;
@@ -135,7 +135,7 @@ class Postgres
 		if (!$link || pg_connection_status($link) !== PGSQL_CONNECTION_OK) {
 			$this->_connect_error = 'Failed to connect to '.$user.'@'.$host;
 			$this->_connect_errno = 1;
-			\devilbox\Logger::getInstance()->error($this->_connect_error);
+			loadClass('Logger')->error($this->_connect_error);
 		} else {
 			$this->_link = $link;
 		}
@@ -171,14 +171,14 @@ class Postgres
 	public function select($query, $callback = null)
 	{
 		if (!$this->_link) {
-			\devilbox\Logger::getInstance()->error('Postgres error, link is no resource in select()');
+			loadClass('Logger')->error('Postgres error, link is no resource in select()');
 			return false;
 		}
 
 		if (!($result = pg_query($this->_link, $query))) {
 			$this->_error = 'PostgreSQL - error on result: '.pg_result_error($result)."\n" . 'query:'."\n" . $query;
 			$this->_errno = 1;
-			\devilbox\Logger::getInstance()->error($this->_error);
+			loadClass('Logger')->error($this->_error);
 			return false;
 		}
 
@@ -224,7 +224,7 @@ class Postgres
 
 		// Get schemas for each database
 		foreach ($databases as $name => &$database) {
-			$PSQL = new Postgres('postgres', \devilbox\Docker::getInstance()->getEnv('POSTGRES_PASSWORD'), $GLOBALS['POSTGRES_HOST_ADDR'], $name);
+			$PSQL = new Postgres('postgres', loadClass('Docker')->getEnv('POSTGRES_PASSWORD'), $GLOBALS['POSTGRES_HOST_ADDR'], $name);
 
 			$sql = "SELECT n.nspname AS schemas FROM pg_catalog.pg_namespace AS n WHERE n.nspname !~ '^pg_' AND n.nspname <> 'information_schema';";
 			$callback = function ($row, &$data) {
@@ -247,7 +247,7 @@ class Postgres
 	 */
 	public function getSchemaSize($database, $schema)
 	{
-		$PSQL = new Postgres('postgres', \devilbox\Docker::getInstance()->getEnv('POSTGRES_PASSWORD'), $GLOBALS['POSTGRES_HOST_ADDR'], $database);
+		$PSQL = new Postgres('postgres', loadClass('Docker')->getEnv('POSTGRES_PASSWORD'), $GLOBALS['POSTGRES_HOST_ADDR'], $database);
 		$callback = function ($row, &$data) {
 			$data = $row['size'];
 
@@ -276,7 +276,7 @@ class Postgres
 	 */
 	public function getTableCount($database, $schema)
 	{
-		$PSQL = new Postgres('postgres', \devilbox\Docker::getInstance()->getEnv('POSTGRES_PASSWORD'), $GLOBALS['POSTGRES_HOST_ADDR'], $database);
+		$PSQL = new Postgres('postgres', loadClass('Docker')->getEnv('POSTGRES_PASSWORD'), $GLOBALS['POSTGRES_HOST_ADDR'], $database);
 		$callback = function ($row, &$data) {
 			$data = $row['count'];
 		};

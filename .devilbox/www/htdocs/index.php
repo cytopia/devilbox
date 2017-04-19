@@ -1,4 +1,5 @@
 <?php require '../config.php'; ?>
+<?php $Docker = loadClass('Docker'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -162,28 +163,28 @@
 								</td>
 							</tr>
 							<tr>
-								<?php $error; $valid = $Docker->PHP_has_valid_mysql_socket($error); ?>
+								<?php $err=null; $valid = $Docker->PHP_has_valid_mysql_socket($err); ?>
 								<th>MySQL socket</th>
 								<td class="<?php echo !$valid ? 'bg-danger' : '';?>">
-									<?php echo !$valid ? 'Error<br/><sub>'.$error.'</sub>' : $Docker->getEnv('MYSQL_SOCKET_PATH'); ?>
+									<?php echo !$valid ? 'Error<br/><sub>'.$err.'</sub>' : $Docker->getEnv('MYSQL_SOCKET_PATH'); ?>
 								</td>
 							</tr>
 							<tr>
-								<?php $err; $valid = \devilbox\Mysql::testConnection($err, 'root', $Docker->getEnv('MYSQL_ROOT_PASSWORD'), 'localhost'); ?>
+								<?php $err=null; $valid = \devilbox\Mysql::testConnection($err, 'root', $Docker->getEnv('MYSQL_ROOT_PASSWORD'), 'localhost'); ?>
 								<th>MySQL test</th>
 								<td class="<?php echo !$valid ? 'bg-danger' : '';?>">
 									<?php echo $valid ? '<span class="bg-success">OK</span> localhost:3306' : 'Failed: localhost:3306<br/><sub>'.$err.'</sub>'; ?>
 								</td>
 							</tr>
 							<tr>
-								<?php $err; $valid = \devilbox\Mysql::testConnection($err, 'root', $Docker->getEnv('MYSQL_ROOT_PASSWORD'), '127.0.0.1'); ?>
+								<?php $err=null; $valid = \devilbox\Mysql::testConnection($err, 'root', $Docker->getEnv('MYSQL_ROOT_PASSWORD'), '127.0.0.1'); ?>
 								<th>MySQL test</th>
 								<td class="<?php echo !$valid ? 'bg-danger' : '';?>">
 									<?php echo $valid ? '<span class="bg-success">OK</span> 127.0.0.1:3306' : 'Failed: 127.0.0.1:3306<br/><sub>'.$err.'</sub>'; ?>
 								</td>
 							</tr>
 							<tr>
-								<?php $err; $valid = \devilbox\Mysql::testConnection($err, 'root', $Docker->getEnv('MYSQL_ROOT_PASSWORD'), $MYSQL_HOST_ADDR); ?>
+								<?php $err=null; $valid = \devilbox\Mysql::testConnection($err, 'root', $Docker->getEnv('MYSQL_ROOT_PASSWORD'), $MYSQL_HOST_ADDR); ?>
 								<th>MySQL test</th>
 								<td class="<?php echo !$valid ? 'bg-danger' : '';?>">
 									<?php echo $valid ? '<span class="bg-success">OK</span> '.$MYSQL_HOST_ADDR.':3306' : 'Failed: '.$MYSQL_HOST_ADDR.':3306<br/><sub>'.$err.'</sub>'; ?>

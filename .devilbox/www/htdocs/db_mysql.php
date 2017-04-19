@@ -1,4 +1,5 @@
 <?php require '../config.php'; ?>
+<?php $MySQL = loadClass('Mysql'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>

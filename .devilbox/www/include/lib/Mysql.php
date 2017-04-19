@@ -34,7 +34,7 @@ class Mysql
 		}
 		// If current MySQL instance was unable to connect
 		if ((static::$instance->getConnectError())) {
-			\devilbox\Logger::getInstance()->error('Instance has errors:' . "\r\n" . var_export(static::$instance, true) . "\r\n");
+			loadClass('Logger')->error('Instance has errors:' . "\r\n" . var_export(static::$instance, true) . "\r\n");
 			//return null;
 		}
 		return static::$instance;
@@ -130,7 +130,7 @@ class Mysql
 		if (mysqli_connect_errno()) {
 			$this->_connect_error = 'Failed to connect: ' .mysqli_connect_error();
 			$this->_connect_errno = mysqli_connect_errno();
-			\devilbox\Logger::getInstance()->error($this->_connect_error);
+			loadClass('Logger')->error($this->_connect_error);
 		} else {
 			$this->_link = $link;
 		}
@@ -162,14 +162,14 @@ class Mysql
 	public function select($query, $callback = null)
 	{
 		if (!$this->_link) {
-			\devilbox\Logger::getInstance()->error('MySQL error, link is no resource in select()');
+			loadClass('Logger')->error('MySQL error, link is no resource in select()');
 			return false;
 		}
 
 		if (!($result = mysqli_query($this->_link, $query))) {
 			$this->_error = mysqli_error($this->_link);
 			$this->_errno = mysqli_errno($this->_link);
-			\devilbox\Logger::getInstance()->error($this->_error);
+			loadClass('Logger')->error($this->_error);
 			return false;
 		}
 

@@ -1,4 +1,5 @@
 <?php require '../config.php'; ?>
+<?php $Docker = loadClass('Docker'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
