@@ -91,6 +91,7 @@ wait_for() {
 	if [ "${#}" = "2" ]; then
 		if [ "${2}" = "1" ]; then
 			printf "wait "
+			# shellcheck disable=SC2034
 			for i in $(seq 1 "${_time}"); do
 				sleep 1
 				printf "."
@@ -377,7 +378,7 @@ debilbox_test() {
 	### Variables
 	###
 	_ret=0 # Final exit code
-	_oks=3 # Require this many [OK]'s on the page
+	_oks=4 # Require this many [OK]'s on the page
 
 
 	###
