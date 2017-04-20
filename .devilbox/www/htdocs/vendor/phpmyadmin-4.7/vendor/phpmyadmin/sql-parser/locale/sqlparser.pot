@@ -1,0 +1,212 @@
+# phpMyAdmin SQL parser translation.
+# Copyright (C) 2015 - 2017 phpMyAdmin devel team
+# This file is distributed under the same license as the SQL parser package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SQL parser 0\n"
+"Report-Msgid-Bugs-To: translators@phpmyadmin.net\n"
+"POT-Creation-Date: 2017-01-24 10:49+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/Component.php:43 src/Component.php:63
+msgid "Not implemented yet."
+msgstr ""
+
+#: src/Components/AlterOperation.php:224 src/Statement.php:334
+msgid ""
+"A new statement was found, but no delimiter between it and the previous one."
+msgstr ""
+
+#: src/Components/AlterOperation.php:236
+msgid "Unrecognized alter operation."
+msgstr ""
+
+#: src/Components/Array2d.php:88
+#, php-format
+msgid "%1$d values were expected, but found %2$d."
+msgstr ""
+
+#: src/Components/Array2d.php:111
+msgid "An opening bracket followed by a set of values was expected."
+msgstr ""
+
+#: src/Components/ArrayObj.php:114 src/Components/CreateDefinition.php:201
+msgid "An opening bracket was expected."
+msgstr ""
+
+#: src/Components/CaseExpression.php:129 src/Components/CaseExpression.php:159
+#: src/Components/CaseExpression.php:171 src/Components/CaseExpression.php:185
+#: src/Statements/DeleteStatement.php:216
+#: src/Statements/DeleteStatement.php:232
+#: src/Statements/DeleteStatement.php:272
+#: src/Statements/DeleteStatement.php:283
+#: src/Statements/DeleteStatement.php:313
+#: src/Statements/DeleteStatement.php:324
+#: src/Statements/InsertStatement.php:189
+#: src/Statements/InsertStatement.php:217
+#: src/Statements/ReplaceStatement.php:155
+#: src/Statements/ReplaceStatement.php:183
+msgid "Unexpected keyword."
+msgstr ""
+
+#: src/Components/CaseExpression.php:194
+msgid "Unexpected end of CASE expression"
+msgstr ""
+
+#: src/Components/CreateDefinition.php:222
+msgid ""
+"A symbol name was expected! A reserved keyword can not be used as a column "
+"name without backquotes."
+msgstr ""
+
+#: src/Components/CreateDefinition.php:236
+msgid "A symbol name was expected!"
+msgstr ""
+
+#: src/Components/CreateDefinition.php:269
+msgid "A comma or a closing bracket was expected."
+msgstr ""
+
+#: src/Components/CreateDefinition.php:285
+msgid "A closing bracket was expected."
+msgstr ""
+
+#: src/Components/DataType.php:123
+msgid "Unrecognized data type."
+msgstr ""
+
+#: src/Components/Expression.php:244 src/Components/Expression.php:394
+msgid "An alias was expected."
+msgstr ""
+
+#: src/Components/Expression.php:332 src/Components/Expression.php:351
+#: src/Components/Expression.php:383
+msgid "An alias was previously found."
+msgstr ""
+
+#: src/Components/Expression.php:364
+msgid "Unexpected dot."
+msgstr ""
+
+#: src/Components/ExpressionArray.php:102
+msgid "An expression was expected."
+msgstr ""
+
+#: src/Components/Limit.php:86 src/Components/Limit.php:108
+msgid "An offset was expected."
+msgstr ""
+
+#: src/Components/OptionsArray.php:143
+#, php-format
+msgid "This option conflicts with \"%1$s\"."
+msgstr ""
+
+#: src/Components/RenameOperation.php:97
+msgid "The old name of the table was expected."
+msgstr ""
+
+#: src/Components/RenameOperation.php:107
+msgid "Keyword \"TO\" was expected."
+msgstr ""
+
+#: src/Components/RenameOperation.php:123
+msgid "The new name of the table was expected."
+msgstr ""
+
+#: src/Components/RenameOperation.php:141
+msgid "A rename operation was expected."
+msgstr ""
+
+#: src/Components/SetOperation.php:105
+msgid "Missing expression."
+msgstr ""
+
+#: src/Lexer.php:237
+msgid "Unexpected character."
+msgstr ""
+
+#: src/Lexer.php:278
+msgid "Expected whitespace(s) before delimiter."
+msgstr ""
+
+#: src/Lexer.php:296 src/Lexer.php:312
+msgid "Expected delimiter."
+msgstr ""
+
+#: src/Lexer.php:841
+#, php-format
+msgid "Ending quote %1$s was expected."
+msgstr ""
+
+#: src/Lexer.php:882
+msgid "Variable name was expected."
+msgstr ""
+
+#: src/Parser.php:423
+msgid "Unexpected beginning of statement."
+msgstr ""
+
+#: src/Parser.php:442
+msgid "Unrecognized statement type."
+msgstr ""
+
+#: src/Parser.php:527
+msgid "No transaction was previously started."
+msgstr ""
+
+#: src/Statement.php:242 src/Statements/DeleteStatement.php:241
+#: src/Statements/DeleteStatement.php:286
+#: src/Statements/InsertStatement.php:226
+#: src/Statements/InsertStatement.php:246
+#: src/Statements/ReplaceStatement.php:191
+msgid "Unexpected token."
+msgstr ""
+
+#: src/Statement.php:306
+msgid "This type of clause was previously parsed."
+msgstr ""
+
+#: src/Statement.php:366
+msgid "Unrecognized keyword."
+msgstr ""
+
+#: src/Statement.php:486
+msgid "Unexpected ordering of clauses."
+msgstr ""
+
+#: src/Statements/CreateStatement.php:375
+msgid "The name of the entity was expected."
+msgstr ""
+
+#: src/Statements/CreateStatement.php:430
+msgid "A table name was expected."
+msgstr ""
+
+#: src/Statements/CreateStatement.php:438
+msgid "At least one column definition was expected."
+msgstr ""
+
+#: src/Statements/CreateStatement.php:549
+msgid "A \"RETURNS\" keyword was expected."
+msgstr ""
+
+#: src/Statements/DeleteStatement.php:294
+msgid "This type of clause is not valid in Multi-table queries."
+msgstr ""
+
+#: tests/Lexer/LexerTest.php:19 tests/Parser/ParserTest.php:56
+msgid "error #1"
+msgstr ""
+
+#: tests/Lexer/LexerTest.php:46 tests/Parser/ParserTest.php:78
+msgid "strict error"
+msgstr ""

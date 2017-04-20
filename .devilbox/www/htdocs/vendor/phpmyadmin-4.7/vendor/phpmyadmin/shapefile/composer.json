@@ -1,0 +1,32 @@
+{
+    "name": "phpmyadmin/shapefile",
+    "description": "ESRI ShapeFile library for PHP",
+    "license": "GPL-2.0+",
+    "keywords": ["shapefile", "shp", "geo", "geospatial", "dbf", "ESRI", "shape"],
+    "homepage": "https://github.com/phpmyadmin/shapefile",
+    "authors": [
+        {
+            "name": "The phpMyAdmin Team",
+            "email": "developers@phpmyadmin.net",
+            "homepage": "https://www.phpmyadmin.net/team/"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/phpmyadmin/shapefile/issues",
+        "source": "https://github.com/phpmyadmin/shapefile"
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "suggest": {
+        "ext-dbase": "For dbf files parsing"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.2 || ~4.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpMyAdmin\\ShapeFile\\": "src"
+        }
+    }
+}

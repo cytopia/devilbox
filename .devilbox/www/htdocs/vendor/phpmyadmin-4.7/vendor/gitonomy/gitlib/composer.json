@@ -1,0 +1,42 @@
+{
+    "name": "gitonomy/gitlib",
+    "description": "Library for accessing git",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexandre Salomé",
+            "email": "alexandre.salome@gmail.com",
+            "homepage": "http://alexandre-salome.fr"
+        },
+        {
+            "name": "Julien DIDIER",
+            "email": "genzo.wm@gmail.com",
+            "homepage": "http://www.jdidier.net"
+        }
+    ],
+    "homepage": "http://gitonomy.com",
+    "autoload": {
+        "psr-4": {
+            "Gitonomy\\Git\\": "src/Gitonomy/Git/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Gitonomy\\Git\\Tests\\": "tests/Gitonomy/Git/Tests/"
+        }
+    },
+    "require": {
+        "symfony/process": "^2.3|^3.0"
+    },
+    "require-dev": {
+        "psr/log": "^1.0"
+    },
+    "suggest": {
+        "psr/log": "Add some log"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
