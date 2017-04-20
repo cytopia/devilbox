@@ -18,7 +18,7 @@
 ##
 
 
-version: '2'
+version: '2.1'
 
 
 ################################################################################
@@ -94,11 +94,6 @@ services:
 
     depends_on:
       - php
-
-    links:
-      # ---- Format: ----
-      # SERVICE [ : ALIAS]
-      - "php:php-fpm"
 
 
   # ----------------------------------------
@@ -201,13 +196,6 @@ services:
     depends_on:
       - mysql
       - postgres
-
-
-    links:
-      # ---- Format: ----
-      # SERVICE [ : ALIAS]
-      - "mysql:mariadb"
-      - "postgres:postgresql"
 
 
   # ----------------------------------------
