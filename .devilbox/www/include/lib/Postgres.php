@@ -128,7 +128,8 @@ class Postgres
 		if ($database !== null) {
 			$link = pg_pconnect('host='.$host.' dbname='.$database.' user='.$user.' password='.$pass);
 		} else {
-			$link = pg_pconnect('host='.$host.' user='.$user.' password='.$pass);
+			// NOTE: using dbname=postgres prevents HHVM from segfaulting
+			$link = pg_pconnect('host='.$host.' dbname=postgres user='.$user.' password='.$pass);
 		}
 		error_reporting(-1);
 

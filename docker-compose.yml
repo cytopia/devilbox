@@ -30,6 +30,7 @@ services:
   # HTTP
   # ----------------------------------------
   httpd:
+    # TODO: remove latest, once it is ready for the next release
     image: cytopia/${HTTPD_SERVER}:latest
 
     # Manually build via `docker-compose build`
@@ -90,6 +91,9 @@ services:
       # Mount custom mass virtual hosting
       # (configured in /etc/${HTTPD_SERVER}/02-vhost-mass.conf)
       - ${HOST_PATH_TO_WWW_DOCROOTS}:/shared/httpd:ro
+
+    depends_on:
+      - php
 
     links:
       # ---- Format: ----
@@ -194,6 +198,10 @@ services:
       # (configured in /etc/${HTTPD_SERVER}/02-vhost-mass.conf)
       - ${HOST_PATH_TO_WWW_DOCROOTS}:/shared/httpd
 
+    depends_on:
+      - mysql
+      - postgres
+
 
     links:
       # ---- Format: ----
@@ -206,6 +214,7 @@ services:
   # DATABASE
   # ----------------------------------------
   mysql:
+    # TODO: remove latest, once it is ready for the next release
     image: cytopia/${MYSQL_SERVER}:latest
 
     # Manually build via `docker-compose build`
