@@ -95,11 +95,6 @@ services:
     depends_on:
       - php
 
-    links:
-      # ---- Format: ----
-      # SERVICE [ : ALIAS]
-      - "php:php-fpm"
-
 
   # ----------------------------------------
   # PHP-FPM
@@ -184,10 +179,10 @@ services:
       - ${DEVILBOX_PATH}/log/${PHP_SERVER}:/var/log/php-fpm
 
       # Mount MySQL Socket directory
-      - ${DEVILBOX_PATH}/run/mysql:/tmp/mysql
+      - mysql_socket_volume:/tmp/mysql
 
       # Mount Mail directory
-      - ${DEVILBOX_PATH}/run/mail:/var/mail
+      #- ${DEVILBOX_PATH}/run/mail:/var/mail
 
       # Mount devilbox user-defined *.ini files in order
       # to overwrite the default PHP configuration
@@ -201,13 +196,6 @@ services:
     depends_on:
       - mysql
       - postgres
-
-
-    links:
-      # ---- Format: ----
-      # SERVICE [ : ALIAS]
-      - "mysql:mariadb"
-      - "postgres:postgresql"
 
 
   # ----------------------------------------
@@ -253,7 +241,7 @@ services:
       - ${DEVILBOX_PATH}/log/${MYSQL_SERVER}:/var/log/mysql
 
       # Mount MySQL Socket directory
-      - ${DEVILBOX_PATH}/run/mysql:/tmp/mysql
+      - mysql_socket_volume:/tmp/mysql
 
       # Mount devilbox user-defined cnf files in order
       # to overwrite the MySQL server configuration
@@ -296,10 +284,25 @@ services:
       - ${DEVILBOX_PATH}/log/postgres-${POSTGRES_SERVER}:/var/log/postgresql
 
       # Mount PostgreSQL Socket directory
-      - ${DEVILBOX_PATH}/run/postgres:/var/run/postgresql
+      - pgsql_socket_volume:/var/run/postgresql
 
       # Mount PostgreSQL Data directory
       - ${HOST_PATH_TO_POSTGRES_DATADIR}:/var/lib/postgresql/data/pgdata
+
+
+################################################################################
+# VOLUMES
+################################################################################
+volumes:
+  # Create volume for mysql socket.
+  # This removes the need to mount the socket to the host
+  # but be able to mount it to different containers (from another container)
+  mysql_socket_volume:
+
+  # Create volume for postgresql socket.
+  # This removes the need to mount the socket to the host
+  # but be able to mount it to different containers (from another container)
+  pgsql_socket_volume:
 
 
 ################################################################################
