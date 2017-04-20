@@ -376,9 +376,6 @@
 								<td>./etc</td>
 							</tr>
 							<tr>
-								<th>MySQL socket</th>
-								<td>./run/mysql/mysqld.sock</td>
-							</tr>							<tr>
 								<th>Log directory</th>
 								<td>./log</td>
 							</tr>
@@ -402,10 +399,6 @@
 							<tr>
 								<th>MySQL datadir</th>
 								<td><?php echo $Docker->getEnv('HOST_PATH_TO_MYSQL_DATADIR');?></td>
-							</tr>
-							<tr>
-								<th>MySQL socket</th>
-								<td>./run/mysql/mysqld.sock</td>
 							</tr>
 							<tr>
 								<th>Log directory</th>
