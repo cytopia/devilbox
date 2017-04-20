@@ -40,6 +40,7 @@ env:
     - SERVER=php VERSION=php-fpm-5.6
     - SERVER=php VERSION=php-fpm-7.0
     - SERVER=php VERSION=php-fpm-7.1
+    - SERVER=php VERSION=hhvm-latest
 
 
 ###
@@ -52,6 +53,16 @@ before_install:
   - whoami
   - groups
   - uname -a
+
+
+before_script:
+
+  # Disable services enabled by default
+  # http://docs.travis-ci.com/user/database-setup/#MySQL
+  - sudo /etc/init.d/mysql stop || true
+  - sudo /etc/init.d/postgresql stopA || true
+  - sudo service mysql stop || true
+  - sudo service postgresql stop || true
 
 
 ###

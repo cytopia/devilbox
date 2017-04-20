@@ -107,8 +107,7 @@ class Docker
 	public function getEnv($variable)
 	{
 		if (!isset($this->_env[$variable])) {
-			$Logger = \devilbox\Logger::getInstance();
-			$Logger->error('Docker environment variable not found: '.$variable);
+			loadClass('Logger')->error('Docker environment variable not found: '.$variable);
 			return null;
 		}
 		return $this->_env[$variable];
@@ -158,7 +157,12 @@ class Docker
 	 */
 	public function PHP_version()
 	{
-		return 'PHP ' . phpversion() .' (' . php_sapi_name().')';
+		if (defined('HHVM_VERSION')) {
+			return 'HHVM ' .HHVM_VERSION . '<br/>(PHP '.str_replace('-hhvm', '', phpversion()).')';
+			//return 'PHP ' . phpversion() . '('. HHVM_VERSION . ')';
+		} else {
+			return 'PHP ' . phpversion() .' (' . php_sapi_name().')';
+		}
 	}
 
 	/**
@@ -338,7 +342,7 @@ class Docker
 			};
 
 			$sql = 'SHOW VARIABLES;';
-			$configs = \devilbox\Mysql::getInstance()->select($sql, $callback);
+			$configs = loadClass('Mysql')->select($sql, $callback);
 
 			return $configs ? $configs : array();
 
@@ -351,7 +355,7 @@ class Docker
 			};
 
 			$sql = 'SHOW VARIABLES WHERE Variable_Name = "'.$key.'";';
-			$val = \devilbox\Mysql::getInstance()->select($sql, $callback);
+			$val = loadClass('Mysql')->select($sql, $callback);
 
 			if (is_array($val) && $val) {
 				return array_values($val)[0];
@@ -379,7 +383,7 @@ class Docker
 			$data = $row['version'];
 		};
 
-		$version = \devilbox\Postgres::getInstance()->select('SELECT version();', $callback);
+		$version = loadClass('Postgres')->select('SELECT version();', $callback);
 
 		// Extract shorthand
 		preg_match('/\w+[[:space:]]*[.0-9]+/i', $version, $matches);
@@ -412,7 +416,7 @@ class Docker
 			};
 
 			$sql = 'SELECT name, setting FROM pg_settings;';
-			$configs = \devilbox\Postgres::getInstance()->select($sql, $callback);
+			$configs = loadClass('Postgres')->select($sql, $callback);
 
 			return $configs ? $configs : array();
 
@@ -423,7 +427,7 @@ class Docker
 			};
 
 			$sql = "SELECT name, setting FROM pg_settings WHERE name = '".$key."';";
-			$val = \devilbox\Postgres::getInstance()->select($sql, $callback);
+			$val = loadClass('Postgres')->select($sql, $callback);
 
 			return is_array($val) ? '' : $val;
 		}

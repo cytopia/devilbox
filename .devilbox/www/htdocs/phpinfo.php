@@ -12,6 +12,10 @@
 
 			<div class="row">
 				<div class="col-md-12">
+					<style>
+						/* prevent hhvm phpinfo() from shrinking the width */
+						body {width: 100% !important;}
+					</style>
 					<?php phpinfo(); ?>
 				</div>
 			</div>

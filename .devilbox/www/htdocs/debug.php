@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<?php $errors = $Logger->getAll(); ?>
+					<?php $errors = loadClass('Logger')->getAll(); ?>
 					<?php if ($errors === false): ?>
 						<p>Writing to logfile is not possible. Errors will be sent as mail instead. Check the mail section.</p>
 					<?php elseif (count($errors) === 0): ?>

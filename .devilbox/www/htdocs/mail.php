@@ -1,4 +1,5 @@
 <?php
+require '../config.php';
 
 //
 // $_POST submit for sending a test email
@@ -7,7 +8,9 @@ if (isset($_GET['email']) && isset($_GET['subject']) && isset($_GET['message']))
 	$mail = $_GET['email'];
 	$subj = $_GET['subject'];
 	$mess = $_GET['message'];
-	mail($mail, $subj, $mess);
+	if (! mail($mail, $subj, $mess)) {
+		loadClass('Logger')->error('Could not send mail to: '.$mail.' | subject: '.$subject);
+	}
 	header('Location: /mail.php');
 	exit();
 }
@@ -15,7 +18,6 @@ if (isset($_GET['email']) && isset($_GET['subject']) && isset($_GET['message']))
 //
 // Includes
 //
-require '../config.php';
 require $VEN_DIR . DIRECTORY_SEPARATOR . 'Mail' . DIRECTORY_SEPARATOR .'Mbox.php';
 require $VEN_DIR . DIRECTORY_SEPARATOR . 'Mail' . DIRECTORY_SEPARATOR .'mimeDecode.php';
 require $LIB_DIR . DIRECTORY_SEPARATOR . 'Mail.php';

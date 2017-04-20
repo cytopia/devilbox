@@ -15,7 +15,7 @@
 ###
 ### 1: Yes
 ### 0: No
-DEBUG_COMPOSE_ENTRYPOINT=0
+DEBUG_COMPOSE_ENTRYPOINT=1
 
 
 
@@ -96,8 +96,7 @@ POSTGRES_SERVER=9.6
 #PHP_SERVER=php-fpm-5.6
 PHP_SERVER=php-fpm-7.0
 #PHP_SERVER=php-fpm-7.1
-#PHP_SERVER=hhvm-3
-
+#PHP_SERVER=hhvm-latest
 
 
 ###
