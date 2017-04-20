@@ -54,8 +54,15 @@
 
 			<?php
 			// ---- Tools ---- //
+			if (strpos(loadClass('Docker')->PHP_version(), 'PHP 5.4') !== false) {
+				// Support for PHP 5.4
+				$phpmyadmin = '4.0';
+			} else {
+				// works with PHP >= 5.5
+				$phpmyadmin = '4.7';
+			}
 			$files = array(
-				'vendor/phpmyadmin/index.php' => 'phpMyAdmin',
+				'vendor/phpmyadmin-'.$phpmyadmin.'/index.php' => 'phpMyAdmin',
 				'vendor/adminer/adminer/index.php' => 'Adminer',
 				'opcache.php' => 'Opcache GUI'
 			);

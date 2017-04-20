@@ -1,0 +1,20 @@
+{
+    "name": "phpmyadmin/coding-standard",
+    "description": "phpMyAdmin PHP CodeSniffer Coding Standard",
+    "keywords": ["phpcs", "CodeSniffer", "phpMyAdmin"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "The phpMyAdmin Team",
+            "email": "developers@phpmyadmin.net",
+            "homepage": "https://www.phpmyadmin.net/team/"
+        }
+    ],
+    "support" : {
+        "source": "https://github.com/phpmyadmin/coding-standard",
+        "issues": "https://github.com/phpmyadmin/coding-standard/issues"
+    },
+    "require": {
+        "squizlabs/php_codesniffer": "~2.0"
+    }
+}
