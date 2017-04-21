@@ -455,7 +455,8 @@ debilbox_test() {
 
 		echo "log files"
 		echo "------------------------------------------------------------"
-		find log -type f -exec sh -c 'echo "{}:\n-----------------"; cat "{}"; echo "\n\n"' \;
+		ls -lap log/
+		sudo find log -type f -exec sh -c 'echo "{}:\n-----------------"; cat "{}"; echo "\n\n"' \;
 
 		return 1
 
