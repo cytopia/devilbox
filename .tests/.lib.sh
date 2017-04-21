@@ -398,7 +398,7 @@ debilbox_test() {
 	# Get actual versions
 	echo "http://localhost settings"
 	echo "------------------------------------------------------------"
-	curl -q localhost 2>/dev/null | grep -E '<h3>.*</h3>' | sed 's/.*<h3>//g' | sed 's/<\/h3>//g'
+	curl -q http://localhost/index.php 2>/dev/null | grep -E '<h3>.*</h3>' | sed 's/.*<h3>//g' | sed 's/<\/h3>//g'
 	echo
 
 
@@ -440,7 +440,7 @@ debilbox_test() {
 		print_h2 "4. Error output"
 		echo "Curl"
 		echo "------------------------------------------------------------"
-		curl -vv localhost || true
+		curl -vv http://localhost/index.php || true
 		echo
 
 		echo "docker-compose ps"
@@ -494,7 +494,19 @@ _test_docker_compose() {
 _test_curled_oks() {
 	_oks="${1}"
 
-	_count="$( curl -q localhost 2>/dev/null | grep -c 'OK' || true )"
+	max="20"
+	i=0
+	while [ $i -lt $max ]; do
+		if [ "$(  curl -s -o /dev/null -w '%{http_code}' http://localhost/index.php )" != "404" ]; then
+			break;
+		fi
+		sleep 1s
+		i=$(( i + 1 ))
+	done
+
+	# sleep (in case hhvm segfaulted and needs to be restarted)
+	sleep 10
+	_count="$( curl -q http://localhost/index.php 2>/dev/null | grep -c 'OK' || true )"
 	echo "${_count}"
 
 	if [ "${_count}" != "${_oks}" ]; then
