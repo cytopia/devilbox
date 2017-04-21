@@ -398,7 +398,7 @@ debilbox_test() {
 	# Get actual versions
 	echo "http://localhost settings"
 	echo "------------------------------------------------------------"
-	curl -q localhost 2>/dev/null | grep -E '<h3>.*</h3>' | sed 's/.*<h3>//g' | sed 's/<\/h3>//g'
+	curl -q http://localhost/index.php 2>/dev/null | grep -E '<h3>.*</h3>' | sed 's/.*<h3>//g' | sed 's/<\/h3>//g'
 	echo
 
 
@@ -440,7 +440,7 @@ debilbox_test() {
 		print_h2 "4. Error output"
 		echo "Curl"
 		echo "------------------------------------------------------------"
-		curl localhost
+		curl -vv http://localhost/index.php || true
 		echo
 
 		echo "docker-compose ps"
@@ -448,7 +448,19 @@ debilbox_test() {
 		docker-compose ps
 		echo
 
+		echo "docker-compose logs"
+		echo "------------------------------------------------------------"
+		docker-compose logs
+		echo
+
+		echo "log files"
+		echo "------------------------------------------------------------"
+		ls -lap log/
+		sudo find log -type f -exec sh -c 'echo "{}:\n-----------------"; cat "{}"; echo "\n\n"' \;
+
 		return 1
+
+
 	fi
 
 	return 0
@@ -460,9 +472,9 @@ debilbox_test() {
 ###
 _test_docker_compose() {
 
-	_broken="$( docker-compose ps | grep -c 'Exit' )"
-	_running="$( docker-compose ps | grep -c 'Up' )"
-	_total="$( docker-compose ps -q | grep -c '' )"
+	_broken="$( docker-compose ps | grep -c 'Exit' || true )"
+	_running="$( docker-compose ps | grep -c 'Up' || true )"
+	_total="$( docker-compose ps -q | grep -c '' || true )"
 
 	if [ "${_broken}" != "0" ]; then
 		return 1
@@ -482,7 +494,19 @@ _test_docker_compose() {
 _test_curled_oks() {
 	_oks="${1}"
 
-	_count="$( curl -q localhost 2>/dev/null | grep -c OK )"
+	max="20"
+	i=0
+	while [ $i -lt $max ]; do
+		if [ "$(  curl -s -o /dev/null -w '%{http_code}' http://localhost/index.php )" != "404" ]; then
+			break;
+		fi
+		sleep 1s
+		i=$(( i + 1 ))
+	done
+
+	# sleep (in case hhvm segfaulted and needs to be restarted)
+	sleep 10
+	_count="$( curl -q http://localhost/index.php 2>/dev/null | grep -c 'OK' || true )"
 	echo "${_count}"
 
 	if [ "${_count}" != "${_oks}" ]; then
