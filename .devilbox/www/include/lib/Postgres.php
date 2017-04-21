@@ -55,7 +55,7 @@ class Postgres
 
 		// Silence errors and try to connect
 		error_reporting(0);
-		$link = pg_pconnect('host='.$host.' user='.$user.' password='.$pass);
+		$link = pg_connect('host='.$host.' user='.$user.' password='.$pass);
 		error_reporting(-1);
 
 		if (!$link || pg_connection_status($link) !== PGSQL_CONNECTION_OK) {
@@ -126,10 +126,10 @@ class Postgres
 		// Silence errors and try to connect
 		error_reporting(0);
 		if ($database !== null) {
-			$link = pg_pconnect('host='.$host.' dbname='.$database.' user='.$user.' password='.$pass);
+			$link = pg_connect('host='.$host.' dbname='.$database.' user='.$user.' password='.$pass);
 		} else {
 			// NOTE: using dbname=postgres prevents HHVM from segfaulting
-			$link = pg_pconnect('host='.$host.' dbname=postgres user='.$user.' password='.$pass);
+			$link = pg_connect('host='.$host.' user='.$user.' password='.$pass);
 		}
 		error_reporting(-1);
 
