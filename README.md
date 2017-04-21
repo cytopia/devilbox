@@ -8,7 +8,7 @@ Always check out the latest git tag. The master branch is experimental and likel
 
 There is currently a huge annoyance with docker on OSX resulting in very slow file access, because of directory mounts. Read about the ticket here [Docker Forums #8076](https://forums.docker.com/t/file-access-in-mounted-volumes-extremely-slow-cpu-bound/8076).
 
-**Latest feature:** `PostgreSQL support...`
+**Latest feature:** `MySQL 8.0`
 
 ----
 
