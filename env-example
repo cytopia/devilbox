@@ -63,8 +63,8 @@ LOCAL_LISTEN_ADDR=127.0.0.1:
 ### 1.1 Choose HTTP Server Image
 ###
 #HTTPD_SERVER=apache-2.2
-HTTPD_SERVER=apache-2.4
-#HTTPD_SERVER=nginx-stable
+#HTTPD_SERVER=apache-2.4
+HTTPD_SERVER=nginx-stable
 #HTTPD_SERVER=nginx-mainline
 
 ###

@@ -67,8 +67,8 @@ set_host_port_pgsql "54320"
 ###
 ### Docker default versions to use
 ###
-_httpd="apache-2.2"
-_mysql="mariadb-10.2"
+_httpd="nginx-stable"
+_mysql="mariadb-10.1"
 _pgsql="9.6"
 _php="php-fpm-7.0"
 
