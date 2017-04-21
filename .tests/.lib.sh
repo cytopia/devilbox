@@ -440,7 +440,7 @@ debilbox_test() {
 		print_h2 "4. Error output"
 		echo "Curl"
 		echo "------------------------------------------------------------"
-		curl localhost
+		curl -vv localhost || true
 		echo
 
 		echo "docker-compose ps"
@@ -472,9 +472,9 @@ debilbox_test() {
 ###
 _test_docker_compose() {
 
-	_broken="$( docker-compose ps | grep -c 'Exit' )"
-	_running="$( docker-compose ps | grep -c 'Up' )"
-	_total="$( docker-compose ps -q | grep -c '' )"
+	_broken="$( docker-compose ps | grep -c 'Exit' || true )"
+	_running="$( docker-compose ps | grep -c 'Up' || true )"
+	_total="$( docker-compose ps -q | grep -c '' || true )"
 
 	if [ "${_broken}" != "0" ]; then
 		return 1
@@ -494,7 +494,7 @@ _test_docker_compose() {
 _test_curled_oks() {
 	_oks="${1}"
 
-	_count="$( curl -q localhost 2>/dev/null | grep -c OK )"
+	_count="$( curl -q localhost 2>/dev/null | grep -c 'OK' || true )"
 	echo "${_count}"
 
 	if [ "${_count}" != "${_oks}" ]; then
