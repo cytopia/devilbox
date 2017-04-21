@@ -448,7 +448,18 @@ debilbox_test() {
 		docker-compose ps
 		echo
 
+		echo "docker-compose logs"
+		echo "------------------------------------------------------------"
+		docker-compose logs
+		echo
+
+		echo "log files"
+		echo "------------------------------------------------------------"
+		find log -type f -exec sh -c 'echo "{}:\n-----------------"; cat "{}"' \;
+
 		return 1
+
+
 	fi
 
 	return 0
