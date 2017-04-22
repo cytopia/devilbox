@@ -367,12 +367,12 @@ devilbox_start() {
 	# Show Server settings
 	echo "Enable SERVERs"
 	echo "--------------"
-	grep '^[A-Za-z0-9]*_SERVER' "${DEVILBOX_PATH}/.env"
+	grep '^[A-Za-z0-9]*_SERVER' "${DEVILBOX_PATH}/.env" | column -t -s '='
 
 	# Show all other settings
 	echo "Enable Settings"
 	echo "---------------"
-	grep -E '^[-_A-Za-z0-9]*=' "${DEVILBOX_PATH}/.env" | grep -v 'SERVER_'
+	grep -E '^[-_A-Za-z0-9]*=' "${DEVILBOX_PATH}/.env" | grep -v 'SERVER_' | column -t -s '='
 
 
 	# Run
