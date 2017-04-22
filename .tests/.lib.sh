@@ -364,6 +364,9 @@ devilbox_start() {
 		exit 1
 	fi
 
+	# Show settings
+	grep '^[A-Za-z0-9]*_SERVER' "${DEVILBOX_PATH}/.env"
+
 	# Run
 	docker-compose up -d
 
