@@ -25,8 +25,8 @@ fi
 DVL_PATH="$( echo "${1}"| sed 's/\/*$//' )" # remove last slash(es): /
 DVL_SRV1="${2}" # Server 1
 DVL_VER1="${3}" # Version 1
-DVL_SRV2="${2}" # Server 2
-DVL_VER2="${3}" # Version 2
+DVL_SRV2="${4}" # Server 2
+DVL_VER2="${5}" # Version 2
 
 
 
