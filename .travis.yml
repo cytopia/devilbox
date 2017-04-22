@@ -1,5 +1,6 @@
-language: bash
-dist: trusty
+###
+### Enable sudo (required for docker service)
+###
 sudo: required
 
 
