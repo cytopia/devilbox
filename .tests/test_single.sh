@@ -9,7 +9,7 @@
 ###
 ### Validate arguments
 ###
-if [ "${#}" != "3" ]; then
+if [ "${#}" != "5" ]; then
 	echo "Error: Invalid number of arguments"
 	exit 1
 fi
@@ -22,9 +22,11 @@ fi
 ###
 ### Get arguments
 ###
-DEVILBOX_PATH="$( echo "${1}"| sed 's/\/*$//' )" # remove last slash(es): /
-DEVILBOX_SERV="${2}" # Server
-DEVILBOX_VERS="${3}" # Version
+DVL_PATH="$( echo "${1}"| sed 's/\/*$//' )" # remove last slash(es): /
+DVL_SRV1="${2}" # Server 1
+DVL_VER1="${3}" # Version 1
+DVL_SRV2="${2}" # Server 2
+DVL_VER2="${3}" # Version 2
 
 
 
@@ -37,7 +39,7 @@ DEVILBOX_VERS="${3}" # Version
 ###
 ### Source library
 ###
-. "${DEVILBOX_PATH}/.tests/.lib.sh" "${DEVILBOX_PATH}"
+. "${DVL_PATH}/.tests/.lib.sh" "${DVL_PATH}"
 
 ###
 ### Reset .env file
@@ -64,37 +66,7 @@ set_host_port_pgsql "54320"
 #
 ################################################################################
 
-###
-### Docker default versions to use
-###
-_httpd="nginx-stable"
-_mysql="mariadb-10.1"
-_pgsql="9.6"
-_php="php-fpm-7.0"
-
-###
-### Set specific version
-###
-if [ "${DEVILBOX_SERV}" = "httpd" ]; then
-	_httpd="${DEVILBOX_VERS}"
-	_head="HTTPD: ${DEVILBOX_VERS}"
-elif [ "${DEVILBOX_SERV}" = "mysql" ]; then
-	_mysql="${DEVILBOX_VERS}"
-	_head="MYSQL: ${DEVILBOX_VERS}"
-elif [ "${DEVILBOX_SERV}" = "pgsql" ]; then
-	_pgsql="${DEVILBOX_VERS}"
-	_head="PGSQL: ${DEVILBOX_VERS}"
-elif [ "${DEVILBOX_SERV}" = "php" ]; then
-	_php="${DEVILBOX_VERS}"
-	_head="PHP: ${DEVILBOX_VERS}"
-fi
-
-###
-### Go
-###
-devilbox_start "${_httpd}" "${_mysql}" "${_pgsql}" "${_php}" "${_head}"
+devilbox_start "${DVL_SRV1}" "${DVL_VER1}" "${DVL_SRV2}" "${DVL_VER2}"
 debilbox_test
 devilbox_stop
-
-
 

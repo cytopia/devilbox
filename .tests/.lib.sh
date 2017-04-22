@@ -289,7 +289,7 @@ enable_docker_mysql() {
 	_docker_version="${1}"
 	run "sed -i'' \"s/#MYSQL_SERVER=${_docker_version}/MYSQL_SERVER=${_docker_version}/g\" \"${DEVILBOX_PATH}/.env\""
 }
-enable_docker_postgres() {
+enable_docker_pgsql() {
 	_docker_version="${1}"
 	run "sed -i'' \"s/#POSTGRES_SERVER=${_docker_version}/POSTGRES_SERVER=${_docker_version}/g\" \"${DEVILBOX_PATH}/.env\""
 }
@@ -325,21 +325,44 @@ set_debug_enable() {
 ################################################################################
 
 devilbox_start() {
-	_new_httpd="$1"
-	_new_mysql="$2"
-	_new_pysql="$3"
-	_new_php="$4"
-	_new_head="$5"
+	_srv1="${1}"
+	_ver1="${2}"
+	_srv2="${3}"
+	_ver2="${4}"
 
 	# Print Headline
-	print_h1 "${_new_head}"
+	print_h1 "${_srv1}-${_ver1} vs ${_srv2}-${_ver2}"
 
 	# Adjust .env
 	comment_all_dockers
-	enable_docker_httpd "${_new_httpd}"
-	enable_docker_mysql "${_new_mysql}"
-	enable_docker_postgres "${_new_pysql}"
-	enable_docker_php "${_new_php}"
+
+	# Enable Type 1
+	if [ "${_srv1}" = "HTTPD" ]; then
+		enable_docker_httpd "${_ver1}"
+	elif [ "${_srv1}" = "MYSQL" ]; then
+		enable_docker_mysql "${_ver1}"
+	elif [ "${_srv1}" = "PGSQL" ]; then
+		enable_docker_pgsql "${_ver1}"
+	elif [ "${_srv1}" = "PHP" ]; then
+		enable_docker_php "${_ver1}"
+	else
+		echo "Invalid server: ${_srv1}"
+		exit 1
+	fi
+
+	# Enable Type 2
+	if [ "${_srv2}" = "HTTPD" ]; then
+		enable_docker_httpd "${_ver2}"
+	elif [ "${_srv2}" = "MYSQL" ]; then
+		enable_docker_mysql "${_ver2}"
+	elif [ "${_srv2}" = "PGSQL" ]; then
+		enable_docker_pgsql "${_ver2}"
+	elif [ "${_srv2}" = "PHP" ]; then
+		enable_docker_php "${_ver1}"
+	else
+		echo "Invalid server: ${_srv2}"
+		exit 1
+	fi
 
 	# Run
 	docker-compose up -d
