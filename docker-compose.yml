@@ -243,6 +243,9 @@ services:
       # Mount MySQL Socket directory
       - mysql_socket_volume:/tmp/mysql
 
+      # Mount devilbox default overwrites
+      - ${DEVILBOX_PATH}/.devilbox/etc/${MYSQL_SERVER}:/etc/mysql/docker-default.d:ro
+
       # Mount devilbox user-defined cnf files in order
       # to overwrite the MySQL server configuration
       - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER}:/etc/mysql/conf.d:ro
