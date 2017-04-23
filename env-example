@@ -138,7 +138,12 @@ HOST_PATH_TO_WWW_DOCROOTS=./data/www
 ### If this directory is empty, a new mysql database will be
 ### created.
 ###
-HOST_PATH_TO_MYSQL_DATADIR=./data/mysql57
+### Note: Inside this path, a subdirectory with the mysql|mariadb
+###       version will be created where the actual data resides.
+###       This is to protect databases from being altered by
+###       newer or older mysql|mariadb server versions.
+###
+HOST_PATH_TO_MYSQL_DATADIR=./data/mysql
 
 ###
 ### Local filesystem path to postgresql datadir.
@@ -150,7 +155,11 @@ HOST_PATH_TO_MYSQL_DATADIR=./data/mysql57
 ### If this directory is empty, a new postgresql database will be
 ### created.
 ###
-HOST_PATH_TO_POSTGRES_DATADIR=./data/postgres96
+### Note: Inside this path, a subdirectory with the postgresql
+###       version will be created where the actual data resides.
+###       This is to protect databases from being altered by
+###       newer or older postgres server versions.
+HOST_PATH_TO_POSTGRES_DATADIR=./data/pgsql
 
 
 
