@@ -101,7 +101,17 @@ PHP_SERVER=php-fpm-7.0
 
 
 ###
-### 1.5 Timezone for all dockers and service config files
+### 1.5 Choose Redis Server Image
+###     (only for docker-compose.optional.yml)
+###     $ docker-compose -f docker-compose.optional.yml up
+###
+REDIS_SERVER=2.8
+#REDIS_SERVER=3.0
+#REDIS_SERVER=3.2
+
+
+###
+### 1.6 Timezone for all dockers and service config files
 ###
 TIMEZONE=Europe/Berlin
 
@@ -228,3 +238,16 @@ PHP_XDEBUG_REMOTE_PORT=9000
 # where your ide/editor is listening for xdebug connections.
 PHP_XDEBUG_REMOTE_HOST=172.20.10.2
 ## TODO: Check if it works by automatically sending it to the broadcast address
+
+
+
+################################################################################
+###
+### 7. Redis Docker Settings
+###
+################################################################################
+
+###
+### Expost Redis Port to Host
+###
+HOST_PORT_REDIS=6379
