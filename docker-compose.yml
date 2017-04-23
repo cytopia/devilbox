@@ -162,6 +162,11 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      # Server versions
+      - PHP_SERVER=${PHP_SERVER}
+      - HTTPD_SERVER=${HTTPD_SERVER}
+      - POSTGRES_SERVER=${POSTGRES_SERVER}
+      - MYSQL_SERVER=${MYSQL_SERVER}
 
     networks:
       app_net:
@@ -251,7 +256,7 @@ services:
       - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER}:/etc/mysql/conf.d:ro
 
       # Mount MySQL Data directory
-      - ${HOST_PATH_TO_MYSQL_DATADIR}:/var/lib/mysql
+      - ${HOST_PATH_TO_MYSQL_DATADIR}/${MYSQL_SERVER}:/var/lib/mysql
 
 
   # ----------------------------------------
@@ -290,7 +295,7 @@ services:
       - pgsql_socket_volume:/var/run/postgresql
 
       # Mount PostgreSQL Data directory
-      - ${HOST_PATH_TO_POSTGRES_DATADIR}:/var/lib/postgresql/data/pgdata
+      - ${HOST_PATH_TO_POSTGRES_DATADIR}/${POSTGRES_SERVER}:/var/lib/postgresql/data/pgdata
 
 
 ################################################################################

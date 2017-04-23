@@ -416,8 +416,12 @@
 								<td><?php echo $Docker->getEnv('HOST_PATH_TO_WWW_DOCROOTS');?></td>
 							</tr>
 							<tr>
+								<th>Custom config</th>
+								<td>./etc/<?php echo $Docker->getEnv('HTTPD_SERVER');?></td>
+							</tr>
+							<tr>
 								<th>Log directory</th>
-								<td>./log</td>
+								<td>./log/<?php echo $Docker->getEnv('HTTPD_SERVER');?></td>
 							</tr>
 						</tbody>
 					</table>
@@ -441,11 +445,11 @@
 							</tr>
 							<tr>
 								<th>Custom config</th>
-								<td>./etc</td>
+								<td>./etc/<?php echo $Docker->getEnv('PHP_SERVER');?></td>
 							</tr>
 							<tr>
 								<th>Log directory</th>
-								<td>./log</td>
+								<td>./log/<?php echo $Docker->getEnv('PHP_SERVER');?></td>
 							</tr>
 						</tbody>
 					</table>
@@ -466,11 +470,15 @@
 						<tbody>
 							<tr>
 								<th>MySQL datadir</th>
-								<td><?php echo $Docker->getEnv('HOST_PATH_TO_MYSQL_DATADIR');?></td>
+								<td><?php echo $Docker->getEnv('HOST_PATH_TO_MYSQL_DATADIR').'/'.$Docker->getEnv('MYSQL_SERVER');?></td>
+							</tr>
+							<tr>
+								<th>Custom config</th>
+								<td>./etc/<?php echo $Docker->getEnv('MYSQL_SERVER');?></td>
 							</tr>
 							<tr>
 								<th>Log directory</th>
-								<td>./log</td>
+								<td>./log/<?php echo $Docker->getEnv('MYSQL_SERVER');?></td>
 							</tr>
 						</tbody>
 					</table>
@@ -491,11 +499,11 @@
 						<tbody>
 							<tr>
 								<th>Postgres datadir</th>
-								<td><?php echo $Docker->getEnv('HOST_PATH_TO_POSTGRES_DATADIR');?></td>
+								<td><?php echo $Docker->getEnv('HOST_PATH_TO_POSTGRES_DATADIR').'/'.$Docker->getEnv('POSTGRES_SERVER');?></td>
 							</tr>
 							<tr>
 								<th>Log directory</th>
-								<td>./log</td>
+								<td>./log/postgres-<?php echo $Docker->getEnv('POSTGRES_SERVER');?></td>
 							</tr>
 						</tbody>
 					</table>
