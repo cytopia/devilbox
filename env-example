@@ -105,9 +105,9 @@ PHP_SERVER=php-fpm-7.0
 ###     (only for docker-compose.optional.yml)
 ###     $ docker-compose -f docker-compose.optional.yml up
 ###
-REDIS_SERVER=2.8
+#REDIS_SERVER=2.8
 #REDIS_SERVER=3.0
-#REDIS_SERVER=3.2
+REDIS_SERVER=3.2
 
 
 ###
