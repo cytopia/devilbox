@@ -29,6 +29,7 @@ env:
     - SERVER=mysql VERSION=mariadb-10.0
     - SERVER=mysql VERSION=mariadb-10.1
     - SERVER=mysql VERSION=mariadb-10.2
+    - SERVER=mysql VERSION=mariadb-10.3
     # Test pgsql
     - SERVER=pgsql VERSION=9.2
     - SERVER=pgsql VERSION=9.3

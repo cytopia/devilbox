@@ -78,6 +78,7 @@ HTTPD_SERVER=nginx-stable
 #MYSQL_SERVER=mariadb-10.0
 MYSQL_SERVER=mariadb-10.1
 #MYSQL_SERVER=mariadb-10.2
+#MYSQL_SERVER=mariadb-10.3
 
 ###
 ### 1.3 Choose PostgreSQL Server Image
