@@ -316,6 +316,74 @@
 
 
 
+			<!-- ################################################################################ -->
+			<!-- ### -->
+			<!-- ### OPTIONAL DOCKER CONTAINER MOUNTS-->
+			<!-- ### -->
+			<!-- ################################################################################ -->
+			<?php if ($Docker->getEnv('COMPOSE_OPTIONAL') == 1): ?>
+
+				<br/>
+				<br/>
+				<div class="row">
+					<div class="col-md-12">
+						<h2 class="text-xs-center">Additional Docker container</h2>
+					</div>
+				</div>
+				<br/>
+				<br/>
+
+
+				<div class="row">
+					<!-- ############################################################ -->
+					<!-- Redis Docker Circle -->
+					<!-- ############################################################ -->
+					<div class="col-md-3">
+						<div class="circles">
+							<div>
+								<div class="bg-danger">
+									<div>
+										<div>
+											<h3><?php echo loadClass('Redis')->getVersion();?></h3>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<br/><br/>
+
+				<div class="row">
+					<!-- ############################################################ -->
+					<!-- Redis Docker -->
+					<!-- ############################################################ -->
+					<div class="col-md-3">
+						<table class="table table-striped table-sm font-small">
+							<thead class="thead-inverse">
+								<tr>
+									<th colspan="2">Redis docker</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>IP</th>
+									<td><?php echo gethostbyname('redis');?></td>
+								</tr>
+								<tr>
+									<th>Hostname</th>
+									<td><?php echo 'redis';?></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+
+
+			<?php endif; ?>
+
 
 			<br/>
 			<br/>
@@ -434,6 +502,40 @@
 				</div>
 
 			</div>
+
+			<!-- ################################################################################ -->
+			<!-- ### -->
+			<!-- ### OPTIONAL DOCKER CONTAINER MOUNTS-->
+			<!-- ### -->
+			<!-- ################################################################################ -->
+			<?php if ($Docker->getEnv('COMPOSE_OPTIONAL') == 1): ?>
+				<div class="row">
+					<!-- ############################################################ -->
+					<!-- Redis Docker Mounts -->
+					<!-- ############################################################ -->
+					<div class="col-md-3">
+						<table class="table table-striped table-sm font-small">
+							<thead class="thead-inverse">
+								<tr>
+									<th>Redis docker</th>
+									<th>host</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>Log directory</th>
+									<td>./log</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+
+
+
+			<?php endif; ?>
+
 
 		</div><!-- /.container -->
 

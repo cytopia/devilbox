@@ -81,8 +81,17 @@ function loadClass($class) {
 				$_LOADED_LIBS[$class] = \devilbox\Postgres::getInstance($Docker->getEnv('POSTGRES_USER'), $Docker->getEnv('POSTGRES_PASSWORD'), $POSTGRES_HOST_ADDR);
 				break;
 
+			// Get optional docker classes
 			default:
-				exit('Class does not exist: '.$class);
+				// Redis
+				if ($class == 'Redis' && loadClass('Docker')->getEnv('COMPOSE_OPTIONAL') == 1) {
+					require $LIB_DIR . DIRECTORY_SEPARATOR . $class . '.php';
+					$_LOADED_LIBS[$class] = \devilbox\Redis::getInstance('redis');
+					break;
+
+				} else {
+					exit('Class does not exist: '.$class);
+				}
 		}
 		return $_LOADED_LIBS[$class];
 	}

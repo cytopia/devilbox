@@ -52,9 +52,19 @@ $ cp env-example .env
 # Edit your configuration
 $ vim .env
 
-# Start the dockers
+# Start the containers (base-stack)
 $ docker-compose up
+
+# Or instead of the above base-stack, you can also additionally load the
+# optional stack.
+# Use this command instead:
+$ docker-compose -f docker-compose.optional.yml up
 ```
+
+## Updates
+
+In case you update this repository locally on the master branch (e.g.: `git pull origin master`), make sure to repull all docker containers as they very likely have also been up updated.
+Otherwise you might run into problems.
 
 [What is the `.env` file?](https://docs.docker.com/compose/env-file/)
 
@@ -75,7 +85,14 @@ Select your prefered setup.
 
 No need to install and configure different versions locally. Simply choose your required LAMP/LEMP stack combination during startup and it is up and running instantly.
 
+**Note:** Some docker container combinations might not work well. See the overall build-matrix for possible problems: \[ [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox) \]
+
 **Base stack**
+
+If you only want to use the base stack, use `docker-compose.yml` (default):
+```shell
+$ docker-compose up
+```
 
 | Webserver | MySQL | PostgreSQL | PHP |
 |-----------|-------|------------|-----|
@@ -88,17 +105,20 @@ No need to install and configure different versions locally. Simply choose your 
 |       | [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.1.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.1) [MariaDB 10.1](https://github.com/cytopia/docker-mariadb-10.1) | |
 |       | [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.2.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.2) [MariaDB 10.2](https://github.com/cytopia/docker-mariadb-10.2) | |
 
-<sub>**Incompatible choices:**<sub><br/>
-<sub>- Apache 2.2 and HHVM do not work together</sub>
 
 **Optional NoSQL stack**
 
+In order to also use the docker containers below, use the `docker-compose.optional.yml` instead:
+```shell
+$ docker-compose -f docker-compose.optional.yml up
+```
+
 | Cassandra | CouchDB | Memcached | MongoDB | Redis |
 |-----------|---------|-----------|---------|-------|
-| Cassandra 2.1 | CouchDB 1.6 | Memcached latest | MongoDB 2.6 | Redis 2.8 |
-| Cassandra 2.2 | CouchDB 2.0 |                  | MongoDB 3.0 | Redis 3.0 |
-| Cassandra 3.0 |             |                  | MongoDB 3.2 | Redis 3.2 |
-|               |             |                  | MongoDB 3.4 | Redis unstable |
+| Cassandra 2.1 | CouchDB 1.6 | Memcached latest | MongoDB 2.6 | [![Travis CI](https://img.shields.io/travis/docker-library/redis/master.svg)](https://travis-ci.org/docker-library/redis/branches) [Redis 2.8](https://github.com/docker-library/redis) |
+| Cassandra 2.2 | CouchDB 2.0 |                  | MongoDB 3.0 | [![Travis CI](https://img.shields.io/travis/docker-library/redis/master.svg)](https://travis-ci.org/docker-library/redis/branches) [Redis 3.0](https://github.com/docker-library/redis) |
+| Cassandra 3.0 |             |                  | MongoDB 3.2 | [![Travis CI](https://img.shields.io/travis/docker-library/redis/master.svg)](https://travis-ci.org/docker-library/redis/branches) [Redis 3.2](https://github.com/docker-library/redis) |
+|               |             |                  | MongoDB 3.4 | |
 
 <sub>**Note:** Entries without links or without build-status are not yet available, but are coming soon. See [ROADMAP](https://github.com/cytopia/devilbox/issues/23) for tasks and upcoming features.</sub>
 
