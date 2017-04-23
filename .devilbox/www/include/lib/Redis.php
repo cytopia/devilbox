@@ -157,6 +157,10 @@ class Redis
 		return 'Redis '.$info['redis_version'];
 	}
 
+	public function getInfo()
+	{
+		return $this->_redis->info('all');
+	}
 
 
 	/*********************************************************************************

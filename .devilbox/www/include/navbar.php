@@ -41,6 +41,9 @@
 				'mysqlinfo.php' => 'MySQL info',
 				'postgresinfo.php' => 'PostgreSQL info'
 			);
+			if (loadClass('Docker')->getEnv('COMPOSE_OPTIONAL') == 1) {
+				$files['redisinfo.php'] = 'Redis info';
+			}
 			$active = (in_array($script, array_keys($files))) ? 'active' : '';
 			?>
 			<li class="nav-item dropdown <?php echo $active;?>">
