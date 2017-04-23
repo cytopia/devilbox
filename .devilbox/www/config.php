@@ -103,4 +103,3 @@ function loadClass($class) {
 // Temporarily disable due to:
 // https://github.com/cytopia/devilbox/issues/8
 $ENABLE_VHOST_DNS_CHECK = false;
-

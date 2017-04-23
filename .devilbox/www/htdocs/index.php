@@ -530,6 +530,8 @@
 						</table>
 					</div>
 
+				</div>
+
 
 
 			<?php endif; ?>

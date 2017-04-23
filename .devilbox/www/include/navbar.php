@@ -28,6 +28,14 @@
 				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>
 			</li>
 
+			<?php if (loadClass('Docker')->getEnv('COMPOSE_OPTIONAL') == 1): ?>
+				<?php $file = 'db_redis.php'; $name = 'Redis DB';?>
+				<li class="nav-item <?php echo $file == $current ? 'active' : '';?>">
+					<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>
+				</li>
+			<?php endif; ?>
+
+
 			<?php $file = 'mail.php'; $name = 'Emails';?>
 			<li class="nav-item <?php echo $file == $current ? 'active' : '';?>">
 				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>

@@ -162,6 +162,11 @@ class Redis
 		return $this->_redis->info('all');
 	}
 
+	public function getKeys()
+	{
+		return $this->_redis->keys('*');
+	}
+
 
 	/*********************************************************************************
 	 *
