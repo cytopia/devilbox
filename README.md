@@ -6,7 +6,7 @@ Always check out the latest git tag. The master branch is experimental and likel
 
 **Note for OSX:**
 
-There is currently a huge annoyance with docker on OSX resulting in very slow file access, because of directory mounts. Read about the ticket here [Docker Forums #8076](https://forums.docker.com/t/file-access-in-mounted-volumes-extremely-slow-cpu-bound/8076).
+There is currently a huge annoyance with Docker on OSX resulting in very slow file access, because of directory mounts. Read about the ticket here [Docker Forums #8076](https://forums.docker.com/t/file-access-in-mounted-volumes-extremely-slow-cpu-bound/8076).
 
 **Latest feature:** `MySQL 8.0`
 
@@ -24,7 +24,7 @@ There is currently a huge annoyance with docker on OSX resulting in very slow fi
 
 [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox) ![Tag](https://img.shields.io/github/tag/cytopia/devilbox.svg) [![type](https://img.shields.io/badge/type-Docker-orange.svg)](https://www.docker.com/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-The devilbox is a modern and highly customizable alternative for [XAMPP](https://www.apachefriends.org). It is based on `docker-compose` with presets for all kinds of versions for webservers, database servers and php.
+The devilbox is a modern and highly customizable alternative for [XAMPP](https://www.apachefriends.org). It is based on `docker-compose` with presets for all kinds of versions for webservers, database servers and PHP.
 
 Configuration is not necessary, as everything is pre-setup with mass virtual hosting.
 
@@ -63,7 +63,7 @@ $ docker-compose -f docker-compose.optional.yml up
 
 ## Updates
 
-In case you update this repository locally on the master branch (e.g.: `git pull origin master`), make sure to repull all docker containers as they very likely have also been up updated.
+In case you update this repository locally on the master branch (e.g.: `git pull origin master`), make sure to repull all Docker containers as they very likely have also been up updated.
 Otherwise you might run into problems.
 
 [What is the `.env` file?](https://docs.docker.com/compose/env-file/)
@@ -85,7 +85,7 @@ Select your prefered setup.
 
 No need to install and configure different versions locally. Simply choose your required LAMP/LEMP stack combination during startup and it is up and running instantly.
 
-**Note:** Some docker container combinations might not work well. See the overall build-matrix for possible problems: \[ [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox) \]
+**Note:** Some Docker container combinations might not work well. See the overall build-matrix for possible problems: \[ [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox) \]
 
 **Base stack**
 
@@ -109,7 +109,7 @@ $ docker-compose up
 
 **Optional NoSQL stack**
 
-In order to also use the docker containers below, use the `docker-compose.optional.yml` instead:
+In order to also use the Docker containers below, use the `docker-compose.optional.yml` instead:
 ```shell
 $ docker-compose -f docker-compose.optional.yml up
 ```
@@ -175,7 +175,7 @@ The devilbox comes with a pre-configured intranet on `http://localhost`
 
 ## Screenshots
 
-**Homepage with host / docker information**
+**Homepage with host / Docker information**
 
 The homepage shows you the status of your current configured setup.
 
@@ -215,5 +215,5 @@ Shows you all the emails that have been sent. No email will actually be sent out
 
 There is quite a lot todo and planned. If you like to contribute, view [CONTRIBUTING.md](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md) and [ROADMAP](https://github.com/cytopia/devilbox/issues/23).
 
-Contributors will be credited within the intranet and on the github page.
+Contributors will be credited within the intranet and on the GitHub page.
 
