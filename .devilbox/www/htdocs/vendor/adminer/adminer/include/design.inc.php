@@ -40,7 +40,10 @@ function page_header($title, $error = "", $breadcrumb = array(), $title2 = "") {
 document.body.className = document.body.className.replace(/ nojs/, ' js');
 var offlineMessage = '<?php echo js_escape(lang('You are offline.')); ?>';
 </script>
+<?php require '../../../../config.php'; ?>
+<?php error_reporting(6135); ?>
 <?php require '../../../../include/navbar.php'; ?>
+<?php error_reporting(6135); ?>
 <div id="help" class="jush-<?php echo $jush; ?> jsonly hidden" onmouseover="helpOpen = 1;" onmouseout="helpMouseout(this, event);"></div>
 
 <div id="content">

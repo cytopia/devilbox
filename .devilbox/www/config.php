@@ -47,11 +47,11 @@ $POSTGRES_HOST_ADDR	= gethostbyname($POSTGRES_HOST_NAME);
 //
 function loadClass($class) {
 
-	global $LIB_DIR;
 	global $MYSQL_HOST_ADDR;
 	global $POSTGRES_HOST_ADDR;
 
 	static $_LOADED_LIBS;
+	$LIB_DIR = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'lib';
 
 
 	if (isset($_LOADED_LIBS[$class])) {
