@@ -27,7 +27,104 @@ version: '2'
 services:
 
   # ----------------------------------------
-  # HTTP
+  # PHP-FPM
+  # ----------------------------------------
+  php:
+    # TODO: remove latest, once it is ready for the next release
+    image: cytopia/${PHP_SERVER}:latest
+
+    # Manually build via `docker-compose build`
+    #build:
+        #context: https://github.com/cytopia/docker-${PHP_SERVER}.git#1
+    #    context: https://github.com/cytopia/docker-${PHP_SERVER}.git
+
+    environment:
+
+      ##
+      ## Debug?
+      ##
+      - DEBUG_COMPOSE_ENTRYPOINT
+
+      ##
+      ## UserID and GroupID
+      ##
+      - NEW_UID
+      - NEW_GID
+
+      ##
+      ## Adjust timezone
+      ##
+      - TIMEZONE
+
+      ##
+      ## PHP Xdebug
+      ##
+      - PHP_XDEBUG_ENABLE
+      - PHP_XDEBUG_REMOTE_PORT
+      - PHP_XDEBUG_REMOTE_HOST
+
+      ##
+      ## Mail-catching
+      ##
+      - ENABLE_MAIL=1
+
+      ##
+      ## Enable 127.0.0.1 Port-forwarding
+      ##
+      - FORWARD_PORTS_TO_LOCALHOST=3306:mysql:3306,5432:pgsql:5432,6379:redis:6379
+
+      ##
+      ## Additional variables to announce to intranet/php-container
+      ##
+      # Ports
+      - HOST_PORT_HTTPD
+      # Paths
+      - HOST_PATH_HTTPD_DATADIR
+      - HOST_PATH_MYSQL_DATADIR
+      - HOST_PATH_PGSQL_DATADIR
+      # Database credentials
+      - PGSQL_ROOT_USER
+      - PGSQL_ROOT_PASSWORD
+      - MYSQL_ROOT_PASSWORD
+      # Selected Server versions
+      - PHP_SERVER
+      - HTTPD_SERVER
+      - PGSQL_SERVER
+      - MYSQL_SERVER
+      - REDIS_SERVER
+
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.11
+
+    volumes:
+      # ---- Format: ----
+      # HOST-DIRECTORY : DOCKER-DIRECTORY
+
+      # Mount custom intranet
+      # (configured in /etc/${HTTPD_SERVER}/01-vhost-default.conf)
+      - ${DEVILBOX_PATH}/.devilbox/www:/var/www/default:ro
+
+      # Mount logs
+      - ${DEVILBOX_PATH}/log/${PHP_SERVER}:/var/log/php
+
+      # Mount MySQL Socket directory
+      - mysql_socket_volume:/tmp/mysql
+
+      # Mount Mail directory
+      #- ${DEVILBOX_PATH}/run/mail:/var/mail
+
+      # Mount devilbox user-defined *.ini files in order
+      # to overwrite the default PHP configuration
+      - ${DEVILBOX_PATH}/cfg/${PHP_SERVER}:/etc/php-custom.d:ro
+
+      # Mount custom mass virtual hosting
+      # (configured in /etc/${HTTPD_SERVER}/02-vhost-mass.conf)
+      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd
+
+
+  # ----------------------------------------
+  # HTTPD
   # ----------------------------------------
   httpd:
     # TODO: remove latest, once it is ready for the next release
@@ -40,21 +137,27 @@ services:
 
     environment:
 
-      # Show all executed commands during docker entrypoint?
-      - DEBUG_COMPOSE_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
+      ##
+      ## Debug?
+      ##
+      - DEBUG_COMPOSE_ENTRYPOINT
 
-      # Adjust timezone
-      - TIMEZONE=${TIMEZONE}
+      ##
+      ## Adjust timezone
+      ##
+      - TIMEZONE
 
-      # Enable PHP-FPM support
+      ##
+      ## PHP-FPM Remote Server
+      ##
       - PHP_FPM_ENABLE=1
-      - PHP_FPM_SERVER_ADDR=172.16.238.11
+      - PHP_FPM_SERVER_ADDR=php
       - PHP_FPM_SERVER_PORT=9000
 
-      # Tell the webserver to look into this directory
-      # for additional configuration files.
-      #
-      # @see volumes:: - ./etc/${HTTPD_SERVER}:/etc/${HTTPD_SERVER}
+      ## Tell the webserver to look into this directory
+      ## for additional configuration files.
+      ##
+      ## @see volumes:: - ./etc/${HTTPD_SERVER}:/etc/${HTTPD_SERVER}
       - CUSTOM_HTTPD_CONF_DIR=/etc/${HTTPD_SERVER}
 
     ports:
@@ -90,117 +193,10 @@ services:
 
       # Mount custom mass virtual hosting
       # (configured in /etc/${HTTPD_SERVER}/02-vhost-mass.conf)
-      - ${HOST_PATH_TO_WWW_DOCROOTS}:/shared/httpd:ro
+      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:ro
 
     depends_on:
       - php
-
-
-  # ----------------------------------------
-  # PHP-FPM
-  # ----------------------------------------
-  php:
-    # TODO: remove latest, once it is ready for the next release
-    image: cytopia/${PHP_SERVER}:latest
-
-    # Manually build via `docker-compose build`
-    #build:
-        #context: https://github.com/cytopia/docker-${PHP_SERVER}.git#1
-    #    context: https://github.com/cytopia/docker-${PHP_SERVER}.git
-
-    environment:
-
-      # Show all executed commands during docker entrypoint?
-      - DEBUG_COMPOSE_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
-
-      # Adjust timezone
-      - TIMEZONE=${TIMEZONE}
-
-      ##
-      ## PHP Xdebug
-      ##
-      - PHP_XDEBUG_ENABLE=${PHP_XDEBUG_ENABLE}
-      - PHP_XDEBUG_REMOTE_PORT=${PHP_XDEBUG_REMOTE_PORT}
-      - PHP_XDEBUG_REMOTE_HOST=${PHP_XDEBUG_REMOTE_HOST}
-
-      ##
-      ## Postfix on
-      ##
-      - ENABLE_MAIL=1
-
-      ##
-      ## Map remote MySQL Port to 127.0.0.1
-      ##
-      - FORWARD_MYSQL_PORT_TO_LOCALHOST=1
-      - MYSQL_REMOTE_ADDR=172.16.238.12
-      - MYSQL_REMOTE_PORT=3306
-      - MYSQL_LOCAL_PORT=3306
-
-      ##
-      ## Mount remote MySQL socket file to local disk
-      ##
-      - MOUNT_MYSQL_SOCKET_TO_LOCALDISK=1
-      - MYSQL_SOCKET_PATH=/tmp/mysql/mysqld.sock
-
-      ##
-      ## Map remote PostgreSQL Port to 127.0.0.1
-      ##
-      # TODO
-
-      ##
-      ## Mount remote PostgreSQL socket file to local disk
-      ##
-      # TODO
-
-      ##
-      ## Additional variables needed by custom intranet
-      ##
-      - HOST_PATH_TO_WWW_DOCROOTS=${HOST_PATH_TO_WWW_DOCROOTS}
-      - HOST_PORT_HTTPD=${HOST_PORT_HTTPD}
-      - HOST_PATH_TO_MYSQL_DATADIR=${HOST_PATH_TO_MYSQL_DATADIR}
-      - HOST_PATH_TO_POSTGRES_DATADIR=${HOST_PATH_TO_POSTGRES_DATADIR}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      # Server versions
-      - PHP_SERVER=${PHP_SERVER}
-      - HTTPD_SERVER=${HTTPD_SERVER}
-      - POSTGRES_SERVER=${POSTGRES_SERVER}
-      - MYSQL_SERVER=${MYSQL_SERVER}
-
-    networks:
-      app_net:
-        ipv4_address: 172.16.238.11
-
-    volumes:
-      # ---- Format: ----
-      # HOST-DIRECTORY : DOCKER-DIRECTORY
-
-      # Mount custom intranet
-      # (configured in /etc/${HTTPD_SERVER}/01-vhost-default.conf)
-      - ${DEVILBOX_PATH}/.devilbox/www:/var/www/default:ro
-
-      # Mount logs
-      - ${DEVILBOX_PATH}/log/${PHP_SERVER}:/var/log/php-fpm
-
-      # Mount MySQL Socket directory
-      - mysql_socket_volume:/tmp/mysql
-
-      # Mount Mail directory
-      #- ${DEVILBOX_PATH}/run/mail:/var/mail
-
-      # Mount devilbox user-defined *.ini files in order
-      # to overwrite the default PHP configuration
-      - ${DEVILBOX_PATH}/cfg/${PHP_SERVER}:/etc/php-custom.d:ro
-
-
-      # Mount custom mass virtual hosting
-      # (configured in /etc/${HTTPD_SERVER}/02-vhost-mass.conf)
-      - ${HOST_PATH_TO_WWW_DOCROOTS}:/shared/httpd
-
-    depends_on:
-      - mysql
-      - postgres
 
 
   # ----------------------------------------
@@ -217,17 +213,29 @@ services:
 
     environment:
 
-      # Show all executed commands during docker entrypoint?
-      - DEBUG_COMPOSE_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
+      ##
+      ## Debug?
+      ##
+      - DEBUG_COMPOSE_ENTRYPOINT
 
-      # Adjust timezone
-      - TIMEZONE=${TIMEZONE}
+      ##
+      ## Adjust timezone
+      ##
+      - TIMEZONE
 
+      ##
+      ## Adjust Root password
+      ##
+      - MYSQL_ROOT_PASSWORD
 
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      ##
+      ## Socket directory Path
+      ##
       - MYSQL_SOCKET_DIR=/tmp/mysql
 
-      # Runtime settings
+      ##
+      ## Runtime settings
+      ##
       - MYSQL_GENERAL_LOG=${MYSQL_GENERAL_LOG}
 
     ports:
@@ -256,14 +264,17 @@ services:
       - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER}:/etc/mysql/conf.d:ro
 
       # Mount MySQL Data directory
-      - ${HOST_PATH_TO_MYSQL_DATADIR}/${MYSQL_SERVER}:/var/lib/mysql
+      - ${HOST_PATH_MYSQL_DATADIR}/${MYSQL_SERVER}:/var/lib/mysql
+    depends_on:
+      - php
+      - httpd
 
 
   # ----------------------------------------
-  # POSTGRES
+  # POSTGRESQL
   # ----------------------------------------
-  postgres:
-    image: postgres:${POSTGRES_SERVER}
+  pgsql:
+    image: postgres:${PGSQL_SERVER}
 
     # Manually build via `docker-compose build`
     #build:
@@ -272,13 +283,13 @@ services:
 
     environment:
 
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_USER=${PGSQL_ROOT_USER}
+      - POSTGRES_PASSWORD=${PGSQL_ROOT_PASSWORD}
       - PGDATA=/var/lib/postgresql/data/pgdata
 
     ports:
       # [local-machine:]local-port:docker-port
-      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_POSTGRES}:5432"
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_PGSQL}:5432"
 
     networks:
       app_net:
@@ -289,13 +300,41 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/postgres-${POSTGRES_SERVER}:/var/log/postgresql
+      - ${DEVILBOX_PATH}/log/postgres-${PGSQL_SERVER}:/var/log/postgresql
 
       # Mount PostgreSQL Socket directory
       - pgsql_socket_volume:/var/run/postgresql
 
       # Mount PostgreSQL Data directory
-      - ${HOST_PATH_TO_POSTGRES_DATADIR}/${POSTGRES_SERVER}:/var/lib/postgresql/data/pgdata
+      - ${HOST_PATH_PGSQL_DATADIR}/${PGSQL_SERVER}:/var/lib/postgresql/data/pgdata
+    depends_on:
+      - php
+      - httpd
+
+
+  # ----------------------------------------
+  # Redis
+  # ----------------------------------------
+  redis:
+    image: redis:${REDIS_SERVER}
+
+    ports:
+      # [local-machine:]local-port:docker-port
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_REDIS}:6379"
+
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.14
+
+    volumes:
+      # ---- Format: ----
+      # HOST-DIRECTORY : DOCKER-DIRECTORY
+
+      # Mount logs
+      - ${DEVILBOX_PATH}/log/redis-${REDIS_SERVER}:/var/log/redis
+    depends_on:
+      - php
+      - httpd
 
 
 ################################################################################
