@@ -23,13 +23,14 @@ It is best to use the hostnames and not to rely on the ip addresses as they migh
 
 > E.g.: When you want to setup a MySQL database connection use `mysql` or `127.0.0.1` as the hostname.
 
-| Container       | Container name  | Hostname | IP Address    |
-|-----------------|-----------------|----------|---------------|
-| Apache / Nginx  | http            | http     | 172.16.238.10 |
-| PHP / HHVM      | php             | php      | 172.16.238.11 |
-| MySQL / MariaDB | mysql           | mysql    | 172.16.238.12 |
-| PostgreSQL      | pgsql           | pgsql    | 172.16.238.13 |
-| Redis           | redis           | redis    | 172.16.238.14 |
+| Container       | Container name  | Hostname  | IP Address    |
+|-----------------|-----------------|-----------|---------------|
+| PHP / HHVM      | php             | php       | 172.16.238.10 |
+| Apache / Nginx  | http            | http      | 172.16.238.11 |
+| MySQL / MariaDB | mysql           | mysql     | 172.16.238.12 |
+| PostgreSQL      | pgsql           | pgsql     | 172.16.238.13 |
+| Redis           | redis           | redis     | 172.16.238.14 |
+| Memcahed        | memcached       | memcached | 172.16.238.15 |
 
 ### Background
 
