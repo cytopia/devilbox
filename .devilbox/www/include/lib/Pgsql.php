@@ -4,7 +4,7 @@ namespace devilbox;
 /**
  * @requires devilbox::Logger
  */
-class Postgres
+class Pgsql extends _Base implements _iBase
 {
 
 	/*********************************************************************************
@@ -27,15 +27,14 @@ class Postgres
 	 * @param string $host Host
 	 * @return object|null
 	 */
-	public static function getInstance($user = null, $pass = null, $host = null)
+	public static function getInstance($host = null, $user = null, $pass = null)
 	{
 		if (!isset(static::$instance)) {
 			static::$instance = new static($user, $pass, $host);
 		}
 		// If current Postgres instance was unable to connect
 		if ((static::$instance->getConnectError())) {
-			loadClass('Logger')->error('Instance has errors:' . "\r\n" . var_export(static::$instance, true) . "\r\n");
-			//return null;
+			//loadClass('Logger')->error('Instance has errors:' . "\r\n" . var_export(static::$instance, true) . "\r\n");
 		}
 		return static::$instance;
 	}
@@ -49,7 +48,7 @@ class Postgres
 	 * @param  string $host Postgres hostname
 	 * @return boolean
 	 */
-	public static function testConnection(&$err, $user, $pass, $host)
+	public static function testConnection(&$err, $host, $user, $pass)
 	{
 		$err = false;
 
@@ -59,7 +58,7 @@ class Postgres
 		error_reporting(-1);
 
 		if (!$link || pg_connection_status($link) !== PGSQL_CONNECTION_OK) {
-			$err = 'Failed to connect: ' .pg_last_error($link);
+			$err = 'Failed to connect';
 			return false;
 		}
 		pg_close($link);
@@ -79,31 +78,6 @@ class Postgres
 	 * @var resource|null
 	 */
 	private $_link = null;
-
-	/**
-	 * Connection error string
-	 * @var string
-	 */
-	private $_connect_error = '';
-
-	/**
-	 * Connection error code
-	 * @var integer
-	 */
-	private $_connect_errno = 0;
-
-	/**
-	 * Error string
-	 * @var string
-	 */
-	private $_error = '';
-
-
-	/**
-	 * Error code
-	 * @var integer
-	 */
-	private $_errno = 0;
 
 
 
@@ -128,21 +102,18 @@ class Postgres
 		if ($database !== null) {
 			$link = pg_connect('host='.$host.' dbname='.$database.' user='.$user.' password='.$pass);
 		} else {
-			// NOTE: using dbname=postgres prevents HHVM from segfaulting
 			$link = pg_connect('host='.$host.' user='.$user.' password='.$pass);
 		}
 		error_reporting(-1);
 
 		if (!$link || pg_connection_status($link) !== PGSQL_CONNECTION_OK) {
-			$this->_connect_error = 'Failed to connect to '.$user.'@'.$host;
-			$this->_connect_errno = 1;
-			loadClass('Logger')->error($this->_connect_error);
+			$this->setConnectError('Failed to connect to '.$user.'@'.$host);
+			$this->setConnectErrno(1);
+			//loadClass('Logger')->error($this->_connect_error);
 		} else {
 			$this->_link = $link;
 		}
 	}
-
-
 
 
 
@@ -152,7 +123,7 @@ class Postgres
 	public function __destruct()
 	{
 		if ($this->_link) {
-			pg_close($this->_link);
+			@pg_close($this->_link);
 		}
 	}
 
@@ -177,9 +148,9 @@ class Postgres
 		}
 
 		if (!($result = pg_query($this->_link, $query))) {
-			$this->_error = 'PostgreSQL - error on result: '.pg_result_error($result)."\n" . 'query:'."\n" . $query;
-			$this->_errno = 1;
-			loadClass('Logger')->error($this->_error);
+			$this->setError('PostgreSQL - error on result: '.pg_result_error($result)."\n" . 'query:'."\n" . $query);
+			$this->setErrno(1);
+			loadClass('Logger')->error($this->getError());
 			return false;
 		}
 
@@ -225,7 +196,7 @@ class Postgres
 
 		// Get schemas for each database
 		foreach ($databases as $name => &$database) {
-			$PSQL = new Postgres('postgres', loadClass('Docker')->getEnv('POSTGRES_PASSWORD'), $GLOBALS['POSTGRES_HOST_ADDR'], $name);
+			$PSQL = new Postgres('postgres', loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'), $GLOBALS['PGSQL_HOST_ADDR'], $name);
 
 			$sql = "SELECT n.nspname AS schemas FROM pg_catalog.pg_namespace AS n WHERE n.nspname !~ '^pg_' AND n.nspname <> 'information_schema';";
 			$callback = function ($row, &$data) {
@@ -248,7 +219,7 @@ class Postgres
 	 */
 	public function getSchemaSize($database, $schema)
 	{
-		$PSQL = new Postgres('postgres', loadClass('Docker')->getEnv('POSTGRES_PASSWORD'), $GLOBALS['POSTGRES_HOST_ADDR'], $database);
+		$PSQL = new Postgres('postgres', loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'), $GLOBALS['PGSQL_HOST_ADDR'], $database);
 		$callback = function ($row, &$data) {
 			$data = $row['size'];
 
@@ -277,7 +248,7 @@ class Postgres
 	 */
 	public function getTableCount($database, $schema)
 	{
-		$PSQL = new Postgres('postgres', loadClass('Docker')->getEnv('POSTGRES_PASSWORD'), $GLOBALS['POSTGRES_HOST_ADDR'], $database);
+		$PSQL = new Postgres('postgres', loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'), $GLOBALS['PGSQL_HOST_ADDR'], $database);
 		$callback = function ($row, &$data) {
 			$data = $row['count'];
 		};
@@ -297,53 +268,57 @@ class Postgres
 	}
 
 
-
-
-
-
 	/*********************************************************************************
 	 *
-	 * MySQL Error functions
+	 * Interface required functions
 	 *
 	 *********************************************************************************/
 
 	/**
-	 * Return connection error message.
+	 * Get PgSQL Name.
 	 *
-	 * @return string Error message
+	 * @return string PgSQL short name.
 	 */
-	public function getConnectError()
+	public function getName($default = 'PostgreSQL')
 	{
-		return $this->_connect_error;
+		if (!static::isAvailable('pgsql')) {
+			return $default;
+		}
+
+		$callback = function ($row, &$data) {
+			$data = $row['version'];
+		};
+
+		$name = $this->egrep('/[a-zA-Z0-9]*/', $this->select('SELECT version();', $callback));
+
+		if (!$name) {
+			loadClass('Logger')->error('Could not get PgSQL Name');
+			return $default;
+		}
+		return $name;
 	}
 
 	/**
-	 * Return connection errno code.
+	 * Get PgSQL Version.
 	 *
-	 * @return integer Error code
+	 * @return string PgSQL version.
 	 */
-	public function getConnectErrno()
+	public function getVersion()
 	{
-		return $this->_connect_errno;
-	}
+		if (!static::isAvailable('pgsql')) {
+			return '';
+		}
 
-	/**
-	 * Return error message.
-	 *
-	 * @return string Error message
-	 */
-	public function getError()
-	{
-		return $this->_error;
-	}
+		$callback = function ($row, &$data) {
+			$data = $row['version'];
+		};
 
-	/**
-	 * Return errno code.
-	 *
-	 * @return integer Error code
-	 */
-	public function getErrno()
-	{
-		return $this->_errno;
+		$version = $this->egrep('/[.0-9]+/', $this->select('SELECT version();', $callback));
+
+		if (!$version) {
+			loadClass('Logger')->error('Could not get PgSQL version');
+			return '';
+		}
+		return $version;
 	}
 }

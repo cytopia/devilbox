@@ -4,7 +4,7 @@ namespace devilbox;
 /**
  * @requires devilbox::Logger
  */
-class Mysql
+class Mysql extends _Base implements _iBase
 {
 
 	/*********************************************************************************
@@ -27,15 +27,14 @@ class Mysql
 	 * @param string $host Host
 	 * @return object|null
 	 */
-	public static function getInstance($user = null, $pass = null, $host = null)
+	public static function getInstance($host, $user, $pass)
 	{
 		if (!isset(static::$instance)) {
 			static::$instance = new static($user, $pass, $host);
 		}
 		// If current MySQL instance was unable to connect
 		if ((static::$instance->getConnectError())) {
-			loadClass('Logger')->error('Instance has errors:' . "\r\n" . var_export(static::$instance, true) . "\r\n");
-			//return null;
+		//	loadClass('Logger')->error('Instance has errors:' . "\r\n" . var_export(static::$instance, true) . "\r\n");
 		}
 		return static::$instance;
 	}
@@ -49,7 +48,7 @@ class Mysql
 	 * @param  string $host MySQL hostname
 	 * @return boolean
 	 */
-	public static function testConnection(&$err, $user, $pass, $host)
+	public static function testConnection(&$err, $host, $user, $pass)
 	{
 		$err = false;
 
@@ -80,31 +79,6 @@ class Mysql
 	 */
 	private $_link = null;
 
-	/**
-	 * Connection error string
-	 * @var string
-	 */
-	private $_connect_error = '';
-
-	/**
-	 * Connection error code
-	 * @var integer
-	 */
-	private $_connect_errno = 0;
-
-	/**
-	 * Error string
-	 * @var string
-	 */
-	private $_error = '';
-
-
-	/**
-	 * Error code
-	 * @var integer
-	 */
-	private $_errno = 0;
-
 
 
 	/*********************************************************************************
@@ -128,9 +102,9 @@ class Mysql
 		error_reporting(-1);
 
 		if (mysqli_connect_errno()) {
-			$this->_connect_error = 'Failed to connect: ' .mysqli_connect_error();
-			$this->_connect_errno = mysqli_connect_errno();
-			loadClass('Logger')->error($this->_connect_error);
+			$this->setConnectError('Failed to connect: ' .mysqli_connect_error());
+			$this->setConnectErrno(mysqli_connect_errno());
+			//loadClass('Logger')->error($this->_connect_error);
 		} else {
 			$this->_link = $link;
 		}
@@ -162,14 +136,14 @@ class Mysql
 	public function select($query, $callback = null)
 	{
 		if (!$this->_link) {
-			loadClass('Logger')->error('MySQL error, link is no resource in select()');
+			loadClass('Logger')->error('MySQL error, link is no resource in select(): '.$query);
 			return false;
 		}
 
 		if (!($result = mysqli_query($this->_link, $query))) {
-			$this->_error = mysqli_error($this->_link);
-			$this->_errno = mysqli_errno($this->_link);
-			loadClass('Logger')->error($this->_error);
+			$this->setError(mysqli_error($this->_link));
+			$this->setErrno(mysqli_errno($this->_link));
+			loadClass('Logger')->error($this->getError());
 			return false;
 		}
 
@@ -207,11 +181,7 @@ class Mysql
 					S.DEFAULT_COLLATION_NAME AS 'collation',
 					S.default_character_set_name AS 'charset'
 				FROM
-					information_schema.SCHEMATA AS S
-				 WHERE
-					S.SCHEMA_NAME != 'mysql' AND
-					S.SCHEMA_NAME != 'performance_schema' AND
-					S.SCHEMA_NAME != 'information_schema'";
+					information_schema.SCHEMATA AS S;";
 
 		$databases = $this->select($sql, $callback);
 
@@ -266,53 +236,89 @@ class Mysql
 	}
 
 
+	/**
+	 * Read out MySQL Server configuration by variable
+	 *
+	 * @param  string|null $key Config key name
+	 * @return string|mixed[]
+	 */
+	public function getConfig($key = null)
+	{
+		// Get all configs as array
+		if ($key === null) {
+			$callback = function ($row, &$data) {
+				$key = $row['Variable_name'];
+				$val = $row['Value'];
+				$data[$key] = $val;
+			};
 
+			return $this->select('SHOW VARIABLES;');
+
+		} else { // Get single config
+
+			$key = str_replace('-', '_', $key);
+
+			$callback = function ($row, &$data) use ($key) {
+				$data = isset($row['Value']) ? $row['Value'] : false;
+			};
+
+			$sql = 'SHOW VARIABLES WHERE Variable_Name = "'.$key.'";';
+			$val = $this->select($sql, $callback);
+
+			if (is_array($val) && $val) {
+				return array_values($val)[0];
+			} else {
+				return $val;
+			}
+		}
+	}
 
 
 
 	/*********************************************************************************
 	 *
-	 * MySQL Error functions
+	 * Interface required functions
 	 *
 	 *********************************************************************************/
 
 	/**
-	 * Return connection error message.
+	 * Get MySQL Name.
 	 *
-	 * @return string Error message
+	 * @return string MySQL short name.
 	 */
-	public function getConnectError()
+	public function getName($default = 'MySQL')
 	{
-		return $this->_connect_error;
+		if (!static::isAvailable('mysql')) {
+			return $default;
+		}
+
+		$name = $this->egrep('/[a-zA-Z0-9]+/', $this->getConfig('version_comment'));
+
+		if (!$name) {
+			loadClass('Logger')->error('Could not get MySQL Name');
+			return $default;
+		}
+		return $name;
 	}
 
-	/**
-	 * Return connection errno code.
-	 *
-	 * @return integer Error code
-	 */
-	public function getConnectErrno()
-	{
-		return $this->_connect_errno;
-	}
 
 	/**
-	 * Return error message.
+	 * Get MySQL Version.
 	 *
-	 * @return string Error message
+	 * @return string MySQL version.
 	 */
-	public function getError()
+	public function getVersion()
 	{
-		return $this->_error;
-	}
+		if (!static::isAvailable('mysql')) {
+			return '';
+		}
 
-	/**
-	 * Return errno code.
-	 *
-	 * @return integer Error code
-	 */
-	public function getErrno()
-	{
-		return $this->_errno;
+		$version = $this->egrep('/[.0-9]+/', $this->getConfig('version'));
+
+		if (!$version) {
+			loadClass('Logger')->error('Could not get MySQL version');
+			return '';
+		}
+		return $version;
 	}
 }

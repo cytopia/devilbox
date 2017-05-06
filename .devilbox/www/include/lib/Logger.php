@@ -154,4 +154,16 @@ class Logger
 		}
 		return false;
 	}
+
+	public function countErrors()
+	{
+		$count = 0;
+		$handle = fopen($this->_logfile, 'r');
+		while (!feof($handle)) {
+			$line = fgets($handle, 4096);
+			$count = $count + substr_count($line, PHP_EOL);
+		}
+		fclose($handle);
+		return $count;
+	}
 }

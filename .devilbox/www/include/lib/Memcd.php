@@ -4,7 +4,7 @@ namespace devilbox;
 /**
  * @requires devilbox::Logger
  */
-class Redis extends _Base implements _iBase
+class Memcd extends _Base implements _iBase
 {
 
 	/*********************************************************************************
@@ -14,8 +14,8 @@ class Redis extends _Base implements _iBase
 	 *********************************************************************************/
 
 	/**
-	 * Redis instance
-	 * @var Redis|null
+	 * Memcached instance
+	 * @var Memcached|null
 	 */
 	protected static $instance = null;
 
@@ -32,7 +32,7 @@ class Redis extends _Base implements _iBase
 		if (!isset(static::$instance)) {
 			static::$instance = new static($host);
 		}
-		// If current Redis instance was unable to connect
+		// If current Memcached instance was unable to connect
 		if (!static::$instance) {
 			//loadClass('Logger')->error('Instance has errors:' . "\r\n" . var_export(static::$instance, true) . "\r\n");
 		}
@@ -40,10 +40,10 @@ class Redis extends _Base implements _iBase
 	}
 
 	/**
-	 * Connect to Redis
+	 * Connect to Memcached
 	 *
 	 * @param  string $err  Reference to error message
-	 * @param  string $host Redis hostname
+	 * @param  string $host Memcached hostname
 	 * @return boolean
 	 */
 	public static function testConnection(&$err, $host, $user = '', $pass = '')
@@ -51,16 +51,36 @@ class Redis extends _Base implements _iBase
 		$err = false;
 
 		// Silence errors and try to connect
-		error_reporting(0);
-		$redis = new \Redis();
+		//error_reporting(-1);
+		$memcd = new \Memcached();
+		$memcd->resetServerList();
 
-		if (!$redis->connect($host, 6379)) {
-			$err = 'Failed to connect to Redis host on '.$host;
+
+		if (!$memcd->addServer($host, 11211)) {
+			$memcd->quit();
+			$err = 'Failed to connect to Memcached host on '.$host;
 			error_reporting(-1);
 			return false;
 		}
-		error_reporting(-1);
-		$redis->close();
+
+		$stats = $memcd->getStats();
+		if (!isset($stats[$host.':11211'])) {
+			$memcd->quit();
+			$err = 'Failed to connect to Memcached host on '.$host;
+			return false;
+		}
+		if (!isset($stats[$host.':11211']['pid'])) {
+			$memcd->quit();
+			$err = 'Failed to connect to Memcached host on '.$host;
+			return false;
+		}
+		if ($stats[$host.':11211']['pid'] < 1) {
+			$memcd->quit();
+			$err = 'Failed to connect to Memcached host on '.$host;
+			return false;
+		}
+
+		$memcd->quit();
 		return true;
 	}
 
@@ -73,11 +93,10 @@ class Redis extends _Base implements _iBase
 	 *********************************************************************************/
 
 	/**
-	 * Redis instance
+	 * Memcached instance
 	 * @var object|null
 	 */
-	private $_redis = null;
-
+	private $_memcached = null;
 
 
 
@@ -96,18 +115,16 @@ class Redis extends _Base implements _iBase
 	 */
 	public function __construct($host)
 	{
-		// Silence errors and try to connect
-		error_reporting(0);
-		$redis = new \Redis();
+		$memcd = new \Memcached();
+		$memcd->resetServerList();
 
-		if (!$redis->connect($host, 6379)) {
-			$this->setConnectError('Failed to connect to Redis host on '.$host);
-			$this->setConnectErrno(1);
+		if (!$memcd->addServer($host, 11211)) {
+			$this->_connect_error = 'Failed to connect to Memcached host on '.$host;
+			$this->_connect_errno = 1;
 			//loadClass('Logger')->error($this->_connect_error);
 		} else {
-			$this->_redis = $redis;
+			$this->_memcached = $memcd;
 		}
-		error_reporting(-1);
 	}
 
 	/**
@@ -115,23 +132,21 @@ class Redis extends _Base implements _iBase
 	 */
 	public function __destruct()
 	{
-		if ($this->_redis) {
-			$this->_redis->close();
+		if ($this->_memcached) {
+			$this->_memcached->quit();
 		}
 	}
 
-
-
 	/*********************************************************************************
 	 *
-	 * Redis  Select functions
+	 * Memcached  Select functions
 	 *
 	 *********************************************************************************/
 
-	public function getInfo()
+/*	public function getInfo()
 	{
-		if ($this->_redis) {
-			return $this->_redis->info('all');
+		if ($this->_memcached) {
+			return $this->_memcached->info('all');
 		} else {
 			return array();
 		}
@@ -139,14 +154,12 @@ class Redis extends _Base implements _iBase
 
 	public function getKeys()
 	{
-		if ($this->_redis) {
-			return $this->_redis->keys('*');
+		if ($this->_memcached) {
+			return $this->_memcached->keys('*');
 		} else {
 			return array();
 		}
-	}
-
-
+	}*/
 
 	/*********************************************************************************
 	 *
@@ -154,18 +167,19 @@ class Redis extends _Base implements _iBase
 	 *
 	 *********************************************************************************/
 
-	public function getName($default = 'Redis')
+	public function getName($default = 'Memcached')
 	{
 		return $default;
 	}
 
 	public function getVersion()
 	{
-		$info = $this->getInfo();
-		if (!isset($info['redis_version'])) {
-			loadClass('Logger')->error('Could not get Redis version');
+		$info = $this->_memcached->getVersion();
+		$info = array_values($info);
+		if (!isset($info[0])) {
+			loadClass('Logger')->error('Could not get Memcached version');
 			return '';
 		}
-		return $info['redis_version'];
+		return $info[0];
 	}
 }

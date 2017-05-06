@@ -150,20 +150,6 @@ class Docker
 	 *
 	 *********************************************************************************/
 
-	/**
-	 * Get PHP Version.
-	 *
-	 * @return string PHP version string
-	 */
-	public function PHP_version()
-	{
-		if (defined('HHVM_VERSION')) {
-			return 'HHVM ' .HHVM_VERSION . '<br/>(PHP '.str_replace('-hhvm', '', phpversion()).')';
-			//return 'PHP ' . phpversion() . '('. HHVM_VERSION . ')';
-		} else {
-			return 'PHP ' . phpversion() .' (' . php_sapi_name().')';
-		}
-	}
 
 	/**
 	 * Read out PHP Server configuration by variable
@@ -303,100 +289,12 @@ class Docker
 		}
 	}
 
-	/*********************************************************************************
-	 *
-	 * MySQL Docker functions
-	 *
-	 *********************************************************************************/
-
-	/**
-	 * Get MySQL Version.
-	 *
-	 * @return string MySQL version string.
-	 */
-	public function MySQL_version()
-	{
-		$name = $this->MySQL_config('version_comment');
-		$version = $this->MySQL_config('version');
-
-		if (!$name && !$version) {
-			return 'Unknown MySQL version';
-		}
-		return $name . ' ' . $version;
-	}
-
-	/**
-	 * Read out MySQL Server configuration by variable
-	 *
-	 * @param  string|null $key Config key name
-	 * @return string|mixed[]
-	 */
-	public function MySQL_config($key = null)
-	{
-		// Get all configs as array
-		if ($key === null) {
-			$callback = function ($row, &$data) {
-				$key = $row['Variable_name'];
-				$val = $row['Value'];
-				$data[$key] = $val;
-			};
-
-			$sql = 'SHOW VARIABLES;';
-			$configs = loadClass('Mysql')->select($sql, $callback);
-
-			return $configs ? $configs : array();
-
-		} else { // Get single config
-
-			$key = str_replace('-', '_', $key);
-
-			$callback = function ($row, &$data) use ($key) {
-				$data = isset($row['Value']) ? $row['Value'] : false;
-			};
-
-			$sql = 'SHOW VARIABLES WHERE Variable_Name = "'.$key.'";';
-			$val = loadClass('Mysql')->select($sql, $callback);
-
-			if (is_array($val) && $val) {
-				return array_values($val)[0];
-			} else {
-				return $val;
-			}
-		}
-	}
-
 
 	/*********************************************************************************
 	 *
 	 * Postgres Docker functions
 	 *
 	 *********************************************************************************/
-
-	/**
-	 * Get Postgres Version.
-	 *
-	 * @return string Postgres version string.
-	 */
-	public function Postgres_version()
-	{
-		$callback = function ($row, &$data) {
-			$data = $row['version'];
-		};
-
-		$version = loadClass('Postgres')->select('SELECT version();', $callback);
-
-		// Extract shorthand
-		preg_match('/\w+[[:space:]]*[.0-9]+/i', $version, $matches);
-		if (isset($matches[0])) {
-			return $matches[0];
-		}
-
-		// Unknown
-		if (!$version) {
-			return 'Unknown Postgres version';
-		}
-		return $version;
-	}
 
 
 	/**
@@ -435,26 +333,6 @@ class Docker
 
 
 
-	/*********************************************************************************
-	 *
-	 * HTTPD Docker functions
-	 *
-	 *********************************************************************************/
-
-	/**
-	 * Get HTTPD Version
-	 *
-	 * @return string HTTPD server version string.
-	 */
-	public function HTTPD_version()
-	{
-		preg_match('/\w+\/[.0-9]+/i', $_SERVER['SERVER_SOFTWARE'], $matches);
-		if (isset($matches[0])) {
-			return $matches[0];
-		} else {
-			return 'Unknown Webserver';
-		}
-	}
 
 
 
