@@ -89,9 +89,9 @@ HTTPD_SERVER=nginx-stable
 #MYSQL_SERVER=mysql-8.0
 #MYSQL_SERVER=mariadb-5.5
 #MYSQL_SERVER=mariadb-10.0
-#MYSQL_SERVER=mariadb-10.1
+MYSQL_SERVER=mariadb-10.1
 #MYSQL_SERVER=mariadb-10.2
-MYSQL_SERVER=mariadb-10.3
+#MYSQL_SERVER=mariadb-10.3
 
 
 ###
@@ -113,6 +113,16 @@ PGSQL_SERVER=9.6
 #REDIS_SERVER=2.8
 #REDIS_SERVER=3.0
 REDIS_SERVER=3.2
+
+
+###
+### 1.6 Choose Memcahced Server Image
+###     (only for docker-compose.optional.yml)
+###     $ docker-compose -f docker-compose.optional.yml up
+###
+MEMCACHED_SERVER=latest
+
+
 
 
 
@@ -287,3 +297,16 @@ HOST_PORT_PGSQL=5432
 ### Expost Redis Port to Host
 ###
 HOST_PORT_REDIS=6379
+
+
+
+################################################################################
+###
+### 8. Memcached Docker Settings
+###
+################################################################################
+
+###
+### Expost Redis Port to Host
+###
+HOST_PORT_MEMCACHED=11211
