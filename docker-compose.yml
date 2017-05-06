@@ -31,7 +31,7 @@ services:
   # ----------------------------------------
   php:
     # TODO: remove latest, once it is ready for the next release
-    image: cytopia/${PHP_SERVER}:latest
+    image: cytopia/${PHP_SERVER}:release-0.9
 
     # Manually build via `docker-compose build`
     #build:
@@ -71,14 +71,19 @@ services:
       ##
       ## Enable 127.0.0.1 Port-forwarding
       ##
-      - FORWARD_PORTS_TO_LOCALHOST=3306:mysql:3306,5432:pgsql:5432,6379:redis:6379
+      - FORWARD_PORTS_TO_LOCALHOST=3306:mysql:3306,5432:pgsql:5432,6379:redis:6379,11211:memcached:11211
 
       ##
       ## Additional variables to announce to intranet/php-container
       ##
       # Ports
+      - LOCAL_LISTEN_ADDR
       - HOST_PORT_HTTPD
-      # Paths
+      - HOST_PORT_MYSQL
+      - HOST_PORT_PGSQL
+      - HOST_PORT_REDIS
+      - HOST_PORT_MEMCACHED
+      # Data dir paths
       - HOST_PATH_HTTPD_DATADIR
       - HOST_PATH_MYSQL_DATADIR
       - HOST_PATH_PGSQL_DATADIR
@@ -92,6 +97,7 @@ services:
       - PGSQL_SERVER
       - MYSQL_SERVER
       - REDIS_SERVER
+      - MEMCACHED_SERVER
 
     networks:
       app_net:
@@ -109,7 +115,7 @@ services:
       - ${DEVILBOX_PATH}/log/${PHP_SERVER}:/var/log/php
 
       # Mount MySQL Socket directory
-      - mysql_socket_volume:/tmp/mysql
+      - vol_mysql_sock:/tmp/mysql
 
       # Mount Mail directory
       #- ${DEVILBOX_PATH}/run/mail:/var/mail
@@ -254,7 +260,7 @@ services:
       - ${DEVILBOX_PATH}/log/${MYSQL_SERVER}:/var/log/mysql
 
       # Mount MySQL Socket directory
-      - mysql_socket_volume:/tmp/mysql
+      - vol_mysql_sock:/tmp/mysql
 
       # Mount devilbox default overwrites
       - ${DEVILBOX_PATH}/.devilbox/etc/${MYSQL_SERVER}:/etc/mysql/docker-default.d:ro
@@ -265,6 +271,7 @@ services:
 
       # Mount MySQL Data directory
       - ${HOST_PATH_MYSQL_DATADIR}/${MYSQL_SERVER}:/var/lib/mysql
+
     depends_on:
       - php
       - httpd
@@ -300,13 +307,14 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/postgres-${PGSQL_SERVER}:/var/log/postgresql
+      - ${DEVILBOX_PATH}/log/pgsql-${PGSQL_SERVER}:/var/log/postgresql
 
       # Mount PostgreSQL Socket directory
-      - pgsql_socket_volume:/var/run/postgresql
+      - vol_pgsql_sock:/var/run/postgresql
 
       # Mount PostgreSQL Data directory
       - ${HOST_PATH_PGSQL_DATADIR}/${PGSQL_SERVER}:/var/lib/postgresql/data/pgdata
+
     depends_on:
       - php
       - httpd
@@ -332,6 +340,33 @@ services:
 
       # Mount logs
       - ${DEVILBOX_PATH}/log/redis-${REDIS_SERVER}:/var/log/redis
+
+    depends_on:
+      - php
+      - httpd
+
+
+  # ----------------------------------------
+  # Memcached
+  # ----------------------------------------
+  memcached:
+    image: memcached:${MEMCACHED_SERVER}
+
+    ports:
+      # [local-machine:]local-port:docker-port
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MEMCACHED}:11211"
+
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.15
+
+    volumes:
+      # ---- Format: ----
+      # HOST-DIRECTORY : DOCKER-DIRECTORY
+
+      # Mount logs
+      - ${DEVILBOX_PATH}/log/memcached-${MEMCACHED_SERVER}:/var/log/memcached
+
     depends_on:
       - php
       - httpd
@@ -344,12 +379,12 @@ volumes:
   # Create volume for mysql socket.
   # This removes the need to mount the socket to the host
   # but be able to mount it to different containers (from another container)
-  mysql_socket_volume:
+  vol_mysql_sock:
 
   # Create volume for postgresql socket.
   # This removes the need to mount the socket to the host
   # but be able to mount it to different containers (from another container)
-  pgsql_socket_volume:
+  vol_pgsql_sock:
 
 
 ################################################################################
