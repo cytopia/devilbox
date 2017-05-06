@@ -67,7 +67,7 @@ if ($sort == 'date') {
 //
 // Mbox Reader
 //
-$MyMbox = new \devilbox\Mail('/var/mail/mailtrap');
+$MyMbox = new \devilbox\Mail('/var/mail/devilbox');
 
 // If default sort is on, use NULL, so we do not have to sort the mails after retrieval,
 // because they are being read in the default sort/order anyway

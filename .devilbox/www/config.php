@@ -2,104 +2,141 @@
 // Measure time
 $TIME_START = microtime(true);
 
-// PHP Error reporting
+// Turn on all PHP errors
 error_reporting(-1);
 
+
+// Shorten DNS timeouts for gethostbyname in case DNS server is down
+putenv('RES_OPTIONS=retrans:1 retry:1 timeout:1 attempts:1');
+
+
+$DEVILBOX_VERSION = 'v0.9';
+$DEVILBOX_DATE = '2017-05-15';
+$DEVILBOX_API_PAGE = 'devilbox-api/status.json';
 
 //
 // Set Directories
 //
 $CONF_DIR	= dirname(__FILE__);
-$INCL_DIR	= $CONF_DIR . DIRECTORY_SEPARATOR . 'include';
-$LIB_DIR	= $INCL_DIR . DIRECTORY_SEPARATOR . 'lib';
-$VEN_DIR	= $INCL_DIR . DIRECTORY_SEPARATOR . 'vendor';
+$LIB_DIR	= $CONF_DIR . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR .'lib';
+$VEN_DIR	= $CONF_DIR . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR .'vendor';
 $LOG_DIR	= dirname(dirname($CONF_DIR)) . DIRECTORY_SEPARATOR . 'log' . DIRECTORY_SEPARATOR . 'devilbox';
 
 
+//
+// Load Base classes
+//
+require $LIB_DIR . DIRECTORY_SEPARATOR . 'container' . DIRECTORY_SEPARATOR .'BaseClass.php';
+require $LIB_DIR . DIRECTORY_SEPARATOR . 'container' . DIRECTORY_SEPARATOR .'BaseInterface.php';
 
-/**
- * TLD suffix for mass virtual hosts.
- *
- * This is currently hardcoded and must be changed here
- * as well as in the webserver config.
- * @var string
- */
-$TLD_SUFFIX	= 'loc';
 
 
 //
 // Set Docker addresses
 //
-$HTTPD_HOST_NAME	= 'httpd';
-$HTTPD_HOST_ADDR	= gethostbyname($HTTPD_HOST_NAME);
-
+$DNS_HOST_NAME		= 'bind';
 $PHP_HOST_NAME		= 'php';
-$PHP_HOST_ADDR		= gethostbyname($PHP_HOST_NAME);
-
+$HTTPD_HOST_NAME	= 'httpd';
 $MYSQL_HOST_NAME	= 'mysql';
-$MYSQL_HOST_ADDR	= gethostbyname($MYSQL_HOST_NAME);
+$PGSQL_HOST_NAME	= 'pgsql';
+$REDIS_HOST_NAME	= 'redis';
+$MEMCD_HOST_NAME	= 'memcached';
 
-$POSTGRES_HOST_NAME	= 'postgres';
-$POSTGRES_HOST_ADDR	= gethostbyname($POSTGRES_HOST_NAME);
 
 //
-// Lazy Loader
+// Lazy Container Loader
 //
+function loadFile($class, $base_path) {
+	static $_LOADED_FILE;
+
+	if (isset($_LOADED_FILE[$class])) {
+		return;
+	}
+
+	require $base_path . DIRECTORY_SEPARATOR . $class . '.php';
+	$_LOADED_FILE[$class] = true;
+	return;
+}
 function loadClass($class) {
 
-	global $MYSQL_HOST_ADDR;
-	global $POSTGRES_HOST_ADDR;
-
 	static $_LOADED_LIBS;
-	$LIB_DIR = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'lib';
-
 
 	if (isset($_LOADED_LIBS[$class])) {
 		return $_LOADED_LIBS[$class];
 	} else {
-		switch($class) {
 
+		$lib_dir = $GLOBALS['LIB_DIR'];
+		$cnt_dir = $GLOBALS['LIB_DIR'] . DIRECTORY_SEPARATOR . 'container';
+
+		switch($class) {
+			//
+			// Lib Classes
+			//
 			case 'Logger':
-				require $LIB_DIR . DIRECTORY_SEPARATOR . $class . '.php';
+				loadFile($class, $lib_dir);
 				$_LOADED_LIBS[$class] = \devilbox\Logger::getInstance();
 				break;
 
-			case 'Docker':
-				require $LIB_DIR . DIRECTORY_SEPARATOR . $class . '.php';
-				$_LOADED_LIBS[$class] = \devilbox\Docker::getInstance();
+			case 'Html':
+				loadFile($class, $lib_dir);
+				$_LOADED_LIBS[$class] = \devilbox\Html::getInstance();
+				break;
+
+			case 'Helper':
+				loadFile($class, $lib_dir);
+				$_LOADED_LIBS[$class] = \devilbox\Helper::getInstance();
+				break;
+
+			//
+			// Docker Container Classes
+			//
+			case 'Php':
+				loadFile($class, $cnt_dir);
+				$_LOADED_LIBS[$class] = \devilbox\Php::getInstance($GLOBALS['PHP_HOST_NAME']);
+				break;
+
+			case 'Dns':
+				loadFile($class, $cnt_dir);
+				$_LOADED_LIBS[$class] = \devilbox\Dns::getInstance($GLOBALS['DNS_HOST_NAME']);
+				break;
+
+			case 'Httpd':
+				loadFile($class, $cnt_dir);
+				$_LOADED_LIBS[$class] = \devilbox\Httpd::getInstance($GLOBALS['HTTPD_HOST_NAME']);
 				break;
 
 			case 'Mysql':
-				require $LIB_DIR . DIRECTORY_SEPARATOR . $class . '.php';
-				$Docker = loadClass('Docker');
-				$_LOADED_LIBS[$class] = \devilbox\Mysql::getInstance('root', $Docker->getEnv('MYSQL_ROOT_PASSWORD'), $MYSQL_HOST_ADDR);
+				loadFile($class, $cnt_dir);
+				$_LOADED_LIBS[$class] = \devilbox\Mysql::getInstance($GLOBALS['MYSQL_HOST_NAME'], array(
+					'user' => 'root',
+					'pass' => loadClass('Helper')->getEnv('MYSQL_ROOT_PASSWORD')
+				));
 				break;
 
-			case 'Postgres':
-				require $LIB_DIR . DIRECTORY_SEPARATOR . $class . '.php';
-				$Docker = loadClass('Docker');
-				$_LOADED_LIBS[$class] = \devilbox\Postgres::getInstance($Docker->getEnv('POSTGRES_USER'), $Docker->getEnv('POSTGRES_PASSWORD'), $POSTGRES_HOST_ADDR);
+			case 'Pgsql':
+				loadFile($class, $cnt_dir);
+				$_LOADED_LIBS[$class] = \devilbox\Pgsql::getInstance($GLOBALS['PGSQL_HOST_NAME'], array(
+					'user' => loadClass('Helper')->getEnv('PGSQL_ROOT_USER'),
+					'pass' => loadClass('Helper')->getEnv('PGSQL_ROOT_PASSWORD'),
+					'db' => 'postgres'
+				));
+				break;
+
+			case 'Redis':
+				loadFile($class, $cnt_dir);
+				$_LOADED_LIBS[$class] = \devilbox\Redis::getInstance($GLOBALS['REDIS_HOST_NAME']);
+				break;
+
+			case 'Memcd':
+				loadFile($class, $cnt_dir);
+				$_LOADED_LIBS[$class] = \devilbox\Memcd::getInstance($GLOBALS['MEMCD_HOST_NAME']);
 				break;
 
 			// Get optional docker classes
 			default:
 				// Redis
-				if ($class == 'Redis' && loadClass('Docker')->getEnv('COMPOSE_OPTIONAL') == 1) {
-					require $LIB_DIR . DIRECTORY_SEPARATOR . $class . '.php';
-					$_LOADED_LIBS[$class] = \devilbox\Redis::getInstance('redis');
-					break;
-
-				} else {
-					exit('Class does not exist: '.$class);
-				}
+				exit('Class does not exist: '.$class);
 		}
 		return $_LOADED_LIBS[$class];
 	}
 }
-
-
-
-// VirtualHost DNS check
-// Temporarily disable due to:
-// https://github.com/cytopia/devilbox/issues/8
-$ENABLE_VHOST_DNS_CHECK = false;
