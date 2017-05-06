@@ -1,5 +1,6 @@
-language: bash
-dist: trusty
+###
+### Enable sudo (required for docker service)
+###
 sudo: required
 
 
@@ -14,36 +15,149 @@ services:
 ### Global variables
 ###
 env:
+  ###
+  ### The matrix specifies 2 versions to compare against each other.
+  ### As PHP (any versoin) needs to be able to run with everything,
+  ### I am going to test any PHP version against any other service.
+  ###
   matrix:
-    # Test httpd
-    - SERVER=httpd VERSION=apache-2.2
-    - SERVER=httpd VERSION=apache-2.4
-    - SERVER=httpd VERSION=nginx-stable
-    - SERVER=httpd VERSION=nginx-mainline
-    # Test mysql
-    - SERVER=mysql VERSION=mysql-5.5
-    - SERVER=mysql VERSION=mysql-5.6
-    - SERVER=mysql VERSION=mysql-5.7
-    - SERVER=mysql VERSION=mysql-8.0
-    - SERVER=mysql VERSION=mariadb-5.5
-    - SERVER=mysql VERSION=mariadb-10.0
-    - SERVER=mysql VERSION=mariadb-10.1
-    - SERVER=mysql VERSION=mariadb-10.2
-    - SERVER=mysql VERSION=mariadb-10.3
-    # Test pgsql
-    - SERVER=pgsql VERSION=9.2
-    - SERVER=pgsql VERSION=9.3
-    - SERVER=pgsql VERSION=9.4
-    - SERVER=pgsql VERSION=9.5
-    - SERVER=pgsql VERSION=9.6
-    # Test php
-    - SERVER=php VERSION=php-fpm-5.4
-    - SERVER=php VERSION=php-fpm-5.5
-    - SERVER=php VERSION=php-fpm-5.6
-    - SERVER=php VERSION=php-fpm-7.0
-    - SERVER=php VERSION=php-fpm-7.1
-    - SERVER=php VERSION=hhvm-latest
+    ###
+    ### PHP vs WWW
+    ###
+    # PHP vs Apache 2.2
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=HTTPD VER2=apache-2.2
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=HTTPD VER2=apache-2.2
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=HTTPD VER2=apache-2.2
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=HTTPD VER2=apache-2.2
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=HTTPD VER2=apache-2.2
+    - SRV1=PHP VER1=hhvm-latest SRV2=HTTPD VER2=apache-2.2
+    # PHP vs Apache 2.4
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=HTTPD VER2=apache-2.4
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=HTTPD VER2=apache-2.4
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=HTTPD VER2=apache-2.4
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=HTTPD VER2=apache-2.4
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=HTTPD VER2=apache-2.4
+    - SRV1=PHP VER1=hhvm-latest SRV2=HTTPD VER2=apache-2.4
+    # PHP vs Nginx stable
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=HTTPD VER2=nginx-stable
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=HTTPD VER2=nginx-stable
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=HTTPD VER2=nginx-stable
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=HTTPD VER2=nginx-stable
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=HTTPD VER2=nginx-stable
+    - SRV1=PHP VER1=hhvm-latest SRV2=HTTPD VER2=nginx-stable
+    # PHP vs Nginx mainline
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=HTTPD VER2=nginx-mainline
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=HTTPD VER2=nginx-mainline
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=HTTPD VER2=nginx-mainline
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=HTTPD VER2=nginx-mainline
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=HTTPD VER2=nginx-mainline
+    - SRV1=PHP VER1=hhvm-latest SRV2=HTTPD VER2=nginx-mainline
 
+    ###
+    ### PHP vs MYSQL
+    ###
+    # PHP vs MySQL 5.5
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mysql-5.5
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mysql-5.5
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mysql-5.5
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mysql-5.5
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mysql-5.5
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mysql-5.5
+    # PHP vs MySQL 5.6
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mysql-5.6
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mysql-5.6
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mysql-5.6
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mysql-5.6
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mysql-5.6
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mysql-5.6
+    # PHP vs MySQL 5.7
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mysql-5.7
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mysql-5.7
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mysql-5.7
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mysql-5.7
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mysql-5.7
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mysql-5.7
+    # PHP vs MySQL 8.0
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mysql-8.0
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mysql-8.0
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mysql-8.0
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mysql-8.0
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mysql-8.0
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mysql-8.0
+    # PHP vs MariaDB 5.5
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mariadb-5.5
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mariadb-5.5
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mariadb-5.5
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mariadb-5.5
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mariadb-5.5
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mariadb-5.5
+    # PHP vs MariaDB 10.0
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mariadb-10.0
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mariadb-10.0
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mariadb-10.0
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mariadb-10.0
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mariadb-10.0
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mariadb-10.0
+    # PHP vs MariaDB 10.1
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mariadb-10.1
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mariadb-10.1
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mariadb-10.1
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mariadb-10.1
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mariadb-10.1
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mariadb-10.1
+    # PHP vs MariaDB 10.2
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mariadb-10.2
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mariadb-10.2
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mariadb-10.2
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mariadb-10.2
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mariadb-10.2
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mariadb-10.2
+    # PHP vs MariaDB 10.3
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mariadb-10.3
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mariadb-10.3
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mariadb-10.3
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mariadb-10.3
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mariadb-10.3
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mariadb-10.3
+
+    ###
+    ### PHP vs PostgreSQL
+    ###
+    # PHP vs PgSQL 9.2
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=PGSQL VER2=9.2
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=PGSQL VER2=9.2
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=PGSQL VER2=9.2
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=PGSQL VER2=9.2
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=PGSQL VER2=9.2
+    - SRV1=PHP VER1=hhvm-latest SRV2=PGSQL VER2=9.2
+    # PHP vs PgSQL 9.3
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=PGSQL VER2=9.3
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=PGSQL VER2=9.3
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=PGSQL VER2=9.3
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=PGSQL VER2=9.3
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=PGSQL VER2=9.3
+    - SRV1=PHP VER1=hhvm-latest SRV2=PGSQL VER2=9.3
+    # PHP vs PgSQL 9.4
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=PGSQL VER2=9.4
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=PGSQL VER2=9.4
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=PGSQL VER2=9.4
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=PGSQL VER2=9.4
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=PGSQL VER2=9.4
+    - SRV1=PHP VER1=hhvm-latest SRV2=PGSQL VER2=9.4
+    # PHP vs PgSQL 9.5
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=PGSQL VER2=9.5
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=PGSQL VER2=9.5
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=PGSQL VER2=9.5
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=PGSQL VER2=9.5
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=PGSQL VER2=9.5
+    - SRV1=PHP VER1=hhvm-latest SRV2=PGSQL VER2=9.5
+    # PHP vs PgSQL 9.6
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=PGSQL VER2=9.6
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=PGSQL VER2=9.6
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=PGSQL VER2=9.6
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=PGSQL VER2=9.6
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=PGSQL VER2=9.6
+    - SRV1=PHP VER1=hhvm-latest SRV2=PGSQL VER2=9.6
 
 ###
 ### Berfore Install
@@ -71,4 +185,4 @@ before_script:
 ### Test
 ###
 script:
-  - .tests/test_single.sh . "${SERVER}" "${VERSION}"
+  - .tests/test_single.sh . "${SRV1}" "${VER1}" "${SRV2}" "${VER2}"

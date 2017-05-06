@@ -289,7 +289,7 @@ enable_docker_mysql() {
 	_docker_version="${1}"
 	run "sed -i'' \"s/#MYSQL_SERVER=${_docker_version}/MYSQL_SERVER=${_docker_version}/g\" \"${DEVILBOX_PATH}/.env\""
 }
-enable_docker_postgres() {
+enable_docker_pgsql() {
 	_docker_version="${1}"
 	run "sed -i'' \"s/#POSTGRES_SERVER=${_docker_version}/POSTGRES_SERVER=${_docker_version}/g\" \"${DEVILBOX_PATH}/.env\""
 }
@@ -325,27 +325,95 @@ set_debug_enable() {
 ################################################################################
 
 devilbox_start() {
-	_new_httpd="$1"
-	_new_mysql="$2"
-	_new_pysql="$3"
-	_new_php="$4"
-	_new_head="$5"
+	_srv1="${1}"
+	_ver1="${2}"
+	_srv2="${3}"
+	_ver2="${4}"
+
+	# Default values for remaining servers
+	_def_php="php-fpm-7.0"
+	_def_httpd="nginx-stable"
+	_def_mysql="mariadb-10.0"
+	_def_pgsql="9.6"
+
+	# Specific enabled servers
+	_set_php=""
+	_set_httpd=""
+	_set_mysql=""
+	_set_pgsql=""
 
 	# Print Headline
-	print_h1 "${_new_head}"
+	print_h1 "${_srv1}-${_ver1} vs ${_srv2}-${_ver2}"
 
 	# Adjust .env
 	comment_all_dockers
-	enable_docker_httpd "${_new_httpd}"
-	enable_docker_mysql "${_new_mysql}"
-	enable_docker_postgres "${_new_pysql}"
-	enable_docker_php "${_new_php}"
+
+	# Enable Type 1
+	if [ "${_srv1}" = "HTTPD" ]; then
+		_set_httpd="${_ver1}"
+	elif [ "${_srv1}" = "MYSQL" ]; then
+		_set_mysql="${_ver1}"
+	elif [ "${_srv1}" = "PGSQL" ]; then
+		_set_pgsql="${_ver1}"
+	elif [ "${_srv1}" = "PHP" ]; then
+		_set_php="${_ver1}"
+	else
+		echo "Invalid server: ${_srv1}"
+		exit 1
+	fi
+
+	# Enable Type 2
+	if [ "${_srv2}" = "HTTPD" ]; then
+		_set_httpd="${_ver2}"
+	elif [ "${_srv2}" = "MYSQL" ]; then
+		_set_mysql="${_ver2}"
+	elif [ "${_srv2}" = "PGSQL" ]; then
+		_set_pgsql="${_ver2}"
+	elif [ "${_srv2}" = "PHP" ]; then
+		_set_php="${_ver2}"
+	else
+		echo "Invalid server: ${_srv2}"
+		exit 1
+	fi
+
+	# Enable remaining onces
+	if [ "${_set_php}" = "" ]; then
+		_set_php="${_def_php}"
+	fi
+	if [ "${_set_httpd}" = "" ]; then
+		_set_httpd="${_def_httpd}"
+	fi
+	if [ "${_set_mysql}" = "" ]; then
+		_set_mysql="${_def_mysql}"
+	fi
+	if [ "${_set_pgsql}" = "" ]; then
+		_set_pgsql="${_def_pgsql}"
+	fi
+
+	# Set versions in .env file
+	enable_docker_php "${_set_php}"
+	enable_docker_httpd "${_set_httpd}"
+	enable_docker_mysql "${_set_mysql}"
+	enable_docker_pgsql "${_set_pgsql}"
+
+	# Show Server settings
+	echo "Enable SERVERs"
+	echo "--------------"
+	grep '^[A-Za-z0-9]*_SERVER' "${DEVILBOX_PATH}/.env" | column -t -s '='
+	echo
+
+	# Show all other settings
+	echo "Enable Settings"
+	echo "---------------"
+	grep -E '^[-_A-Za-z0-9]*=' "${DEVILBOX_PATH}/.env" | grep -v 'SERVER_' | column -t -s '='
+	echo
+
 
 	# Run
 	docker-compose up -d
 
 	# Wait for it to come up
-	wait_for 90 1
+	wait_for 30 1
 
 	# Show log/info
 	docker-compose logs
