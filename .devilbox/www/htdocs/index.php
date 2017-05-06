@@ -440,23 +440,27 @@ function getCirle($name) {
 								<tbody>
 									<tr>
 										<th>composer</th>
-										<td>3.23</td>
+										<td><?php if (($version = loadClass('Php')->getComposerVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
 									</tr>
 									<tr>
 										<th>drush</th>
-										<td>8</td>
+										<td><?php if (($version = loadClass('Php')->getDrushVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
 									</tr>
 									<tr>
 										<th>drush-console</th>
-										<td>8</td>
+										<td><?php if (($version = loadClass('Php')->getDrushConsoleVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
 									</tr>
 									<tr>
 										<th>git</th>
-										<td>3.2</td>
+										<td><?php if (($version = loadClass('Php')->getGitVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+									</tr>
+									<tr>
+										<th>node</th>
+										<td><?php if (($version = loadClass('Php')->getNodeVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
 									</tr>
 									<tr>
 										<th>npm</th>
-										<td>3.85</td>
+										<td><?php if (($version = loadClass('Php')->getNpmVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
 									</tr>
 								</tbody>
 							</table>

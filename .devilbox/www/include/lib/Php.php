@@ -109,6 +109,48 @@ class Php extends _Base implements _iBase
 		$uid = $this->egrep('/[0-9]+/', $uid);
 		return $uid;
 	}
+	public function getGitVersion()
+	{
+		$output = null;
+		$return = $this->_exec('git --version', $output);
+
+		return $this->egrep('/[0-9.]+/', isset($output[0]) ? $output[0] : '');
+	}
+	public function getComposerVersion()
+	{
+		$output = null;
+		$return = $this->_exec('composer --version', $output);
+
+		return $this->egrep('/[0-9.]+/', isset($output[0]) ? $output[0] : '');
+	}
+	public function getDrushVersion()
+	{
+		$output = null;
+		$return = $this->_exec('drush --version', $output);
+
+		return $this->egrep('/[0-9.]+/', isset($output[0]) ? $output[0] : '');
+	}
+	public function getDrushConsoleVersion()
+	{
+		$output = null;
+		$return = $this->_exec('drush-console --version', $output);
+
+		return $this->egrep('/[0-9.]+/', isset($output[0]) ? $output[0] : '');
+	}
+	public function getNodeVersion()
+	{
+		$output = null;
+		$return = $this->_exec('node --version', $output);
+
+		return $this->egrep('/[0-9.]+/', isset($output[0]) ? $output[0] : '');
+	}
+	public function getNpmVersion()
+	{
+		$output = null;
+		$return = $this->_exec('npm --version', $output);
+
+		return $this->egrep('/[0-9.]+/', isset($output[0]) ? $output[0] : '');
+	}
 
 
 	/*********************************************************************************
