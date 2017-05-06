@@ -18,7 +18,7 @@
 ##
 
 
-version: '2'
+version: '2.1'
 
 
 ################################################################################
@@ -31,7 +31,8 @@ services:
   # ----------------------------------------
   php:
     # TODO: remove latest, once it is ready for the next release
-    image: cytopia/${PHP_SERVER}:release-0.9
+    image: cytopia/${PHP_SERVER:-php-fpm-5.4}:release-0.9
+    #image: cytopia/${PHP_SERVER:-php-fpm-7.0}:latest
 
     # Manually build via `docker-compose build`
     #build:
@@ -101,7 +102,7 @@ services:
 
     networks:
       app_net:
-        ipv4_address: 172.16.238.11
+        ipv4_address: 172.16.238.10
 
     volumes:
       # ---- Format: ----
@@ -134,7 +135,7 @@ services:
   # ----------------------------------------
   httpd:
     # TODO: remove latest, once it is ready for the next release
-    image: cytopia/${HTTPD_SERVER}:latest
+    image: cytopia/${HTTPD_SERVER:-nginx-mainline}:latest
 
     # Manually build via `docker-compose build`
     #build:
@@ -173,7 +174,7 @@ services:
 
     networks:
       app_net:
-        ipv4_address: 172.16.238.10
+        ipv4_address: 172.16.238.11
 
     volumes:
       # ---- Format: ----
@@ -210,7 +211,7 @@ services:
   # ----------------------------------------
   mysql:
     # TODO: remove latest, once it is ready for the next release
-    image: cytopia/${MYSQL_SERVER}:latest
+    image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
 
     # Manually build via `docker-compose build`
     #build:
@@ -281,7 +282,7 @@ services:
   # POSTGRESQL
   # ----------------------------------------
   pgsql:
-    image: postgres:${PGSQL_SERVER}
+    image: postgres:${PGSQL_SERVER:-9.6}
 
     # Manually build via `docker-compose build`
     #build:
@@ -324,7 +325,7 @@ services:
   # Redis
   # ----------------------------------------
   redis:
-    image: redis:${REDIS_SERVER}
+    image: redis:${REDIS_SERVER:-3.2}
 
     ports:
       # [local-machine:]local-port:docker-port
@@ -350,7 +351,7 @@ services:
   # Memcached
   # ----------------------------------------
   memcached:
-    image: memcached:${MEMCACHED_SERVER}
+    image: memcached:${MEMCACHED_SERVER:-latest}
 
     ports:
       # [local-machine:]local-port:docker-port
