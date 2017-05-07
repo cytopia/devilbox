@@ -222,7 +222,7 @@ POSTGRES_USER=postgres
 POSTGRES_PASSWORD=
 
 ###
-### Expose MySQL Port to Host
+### Expose PostgreSQL Port to Host
 ###
 HOST_PORT_POSTGRES=5432
 
