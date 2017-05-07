@@ -177,3 +177,16 @@ td.break-word {
     word-break: break-word;
 }
 
+
+/* adminer.php;
+-------------------------------------------------- */
+#menu {
+    position: absolute;
+    margin: 76px 0 0 !important;
+}
+#breadcrumb {
+    top: 60px !important;
+}
+#lang {
+    top: 53px !important;
+}

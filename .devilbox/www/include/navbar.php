@@ -80,7 +80,7 @@
 			}
 			$files = array(
 				'vendor/phpmyadmin-'.$phpmyadmin.'/index.php' => 'phpMyAdmin',
-				'vendor/adminer/adminer/index.php' => 'Adminer',
+				'vendor/adminer-4.3.1/adminer/index.php' => 'Adminer',
 				'opcache.php' => 'Opcache GUI'
 			);
 			$active = (in_array($script, array_keys($files))) ? 'active' : '';
