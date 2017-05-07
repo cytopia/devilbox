@@ -1,5 +1,5 @@
 <?php require '../config.php'; ?>
-<?php $Postgres = loadClass('Postgres'); ?>
+<?php $Postgres = loadClass('Pgsql'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>

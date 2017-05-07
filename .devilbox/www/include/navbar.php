@@ -22,34 +22,40 @@
 				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>
 			</li>
 
-			<?php $file = 'db_mysql.php'; $name = 'MySQL DB';?>
-			<li class="nav-item <?php echo $file == $current ? 'active' : '';?>">
-				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>
-			</li>
-
-			<?php $file = 'db_postgres.php'; $name = 'PostgreSQL DB';?>
-			<li class="nav-item <?php echo $file == $current ? 'active' : '';?>">
-				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>
-			</li>
-
-			<?php $file = 'db_redis.php'; $name = 'Redis DB';?>
-			<li class="nav-item <?php echo $file == $current ? 'active' : '';?>">
-				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>
-			</li>
-
 			<?php $file = 'mail.php'; $name = 'Emails';?>
 			<li class="nav-item <?php echo $file == $current ? 'active' : '';?>">
 				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>
 			</li>
 
 			<?php
+			// ---- Datbases ---- //
+			$script = $_SERVER['SCRIPT_NAME'];
+			$files = array(
+				'db_mysql.php' => 'MySQL DB',
+				'db_postgres.php' => 'PgSQL DB',
+				'db_redis.php' => 'Redis DB',
+				'db_memcd.php' => 'Memcached DB'
+			);
+			$active = (in_array($script, array_keys($files))) ? 'active' : '';
+			?>
+			<li class="nav-item dropdown <?php echo $active;?>">
+				<a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Databases</a>
+				<div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
+					<?php foreach ($files as $href => $name): ?>
+						<a class="dropdown-item" href="/<?php echo $href;?>"><?php echo $name;?></a>
+					<?php endforeach; ?>
+				</div>
+			</li>
+
+			<?php
 			// ---- Info ---- //
 			$script = $_SERVER['SCRIPT_NAME'];
 			$files = array(
-				'phpinfo.php' => 'PHP info',
-				'mysqlinfo.php' => 'MySQL info',
-				'postgresinfo.php' => 'PostgreSQL info',
-				'redisinfo.php' => 'Redis info'
+				'info_php.php' => 'PHP Info',
+				'info_mysql.php' => 'MySQL Info',
+				'info_pgsql.php' => 'PgSQL Info',
+				'info_redis.php' => 'Redis Info',
+				'info_memcd.php' => 'Memcached Info'
 			);
 			$active = (in_array($script, array_keys($files))) ? 'active' : '';
 			?>
@@ -61,6 +67,7 @@
 					<?php endforeach; ?>
 				</div>
 			</li>
+
 
 			<?php
 			// ---- Tools ---- //

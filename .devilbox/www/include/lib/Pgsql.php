@@ -196,7 +196,7 @@ class Pgsql extends _Base implements _iBase
 
 		// Get schemas for each database
 		foreach ($databases as $name => &$database) {
-			$PSQL = new Postgres('postgres', loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'), $GLOBALS['PGSQL_HOST_ADDR'], $name);
+			$PSQL = new Pgsql('postgres', loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'), $GLOBALS['PGSQL_HOST_NAME'], $name);
 
 			$sql = "SELECT n.nspname AS schemas FROM pg_catalog.pg_namespace AS n WHERE n.nspname !~ '^pg_' AND n.nspname <> 'information_schema';";
 			$callback = function ($row, &$data) {
@@ -219,7 +219,7 @@ class Pgsql extends _Base implements _iBase
 	 */
 	public function getSchemaSize($database, $schema)
 	{
-		$PSQL = new Postgres('postgres', loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'), $GLOBALS['PGSQL_HOST_ADDR'], $database);
+		$PSQL = new Pgsql('postgres', loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'), $GLOBALS['PGSQL_HOST_ADDR'], $database);
 		$callback = function ($row, &$data) {
 			$data = $row['size'];
 
@@ -248,7 +248,7 @@ class Pgsql extends _Base implements _iBase
 	 */
 	public function getTableCount($database, $schema)
 	{
-		$PSQL = new Postgres('postgres', loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'), $GLOBALS['PGSQL_HOST_ADDR'], $database);
+		$PSQL = new Pgsql('postgres', loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'), $GLOBALS['PGSQL_HOST_ADDR'], $database);
 		$callback = function ($row, &$data) {
 			$data = $row['count'];
 		};
@@ -265,6 +265,42 @@ class Pgsql extends _Base implements _iBase
 
 		$count = $PSQL->select($sql, $callback);
 		return $count ? $count : 0;
+	}
+
+
+
+	/**
+	 * Read out PostgreSQL Server configuration by variable
+	 *
+	 * @param  string|null $key Config key name
+	 * @return string|mixed[]
+	 */
+	public function getConfig($key = null)
+	{
+		// Get all configs as array
+		if ($key === null) {
+			$callback = function ($row, &$data) {
+				$key = $row['name'];
+				$val = $row['setting'];
+				$data[$key] = $val;
+			};
+
+			$sql = 'SELECT name, setting FROM pg_settings;';
+			$configs = $this->select($sql, $callback);
+
+			return $configs ? $configs : array();
+
+		} else { // Get single config
+
+			$callback = function ($row, &$data) use ($key) {
+				$data = isset($row['setting']) ? $row['setting'] : false;
+			};
+
+			$sql = "SELECT name, setting FROM pg_settings WHERE name = '".$key."';";
+			$val = $this->select($sql, $callback);
+
+			return is_array($val) ? '' : $val;
+		}
 	}
 
 

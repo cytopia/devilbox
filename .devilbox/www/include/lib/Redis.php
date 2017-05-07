@@ -105,6 +105,7 @@ class Redis extends _Base implements _iBase
 			$this->setConnectErrno(1);
 			//loadClass('Logger')->error($this->_connect_error);
 		} else {
+			$redis->set('devilbox-version', $GLOBALS['DEVILBOX_VERSION'].' ('.$GLOBALS['DEVILBOX_DATE'].')');
 			$this->_redis = $redis;
 		}
 		error_reporting(-1);
@@ -139,11 +140,14 @@ class Redis extends _Base implements _iBase
 
 	public function getKeys()
 	{
+		$store = array();
 		if ($this->_redis) {
-			return $this->_redis->keys('*');
-		} else {
-			return array();
+			$keys = $this->_redis->keys('*');
+			foreach ($keys as $key) {
+				$store[$key] = $this->_redis->get($key);
+			}
 		}
+		return $store;
 	}
 
 

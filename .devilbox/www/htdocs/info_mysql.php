@@ -1,5 +1,4 @@
 <?php require '../config.php'; ?>
-<?php $Docker = loadClass('Docker'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -33,7 +32,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($Docker->MySQL_config() as $key => $val): ?>
+							<?php foreach (loadClass('Mysql')->getConfig() as $key => $val): ?>
 								<tr>
 									<td><?php echo $key;?></td>
 									<td class="break-word"><code><?php echo $val;?></code></td>

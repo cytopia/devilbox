@@ -115,15 +115,44 @@ class Memcd extends _Base implements _iBase
 	 */
 	public function __construct($host)
 	{
-		$memcd = new \Memcached();
-		$memcd->resetServerList();
+		$memcd = new \Memcached('_devilbox');
+		$list = $memcd->getServerList();
 
-		if (!$memcd->addServer($host, 11211)) {
+		if (empty($list)) {
+			//$memcd->setOption(\Memcached::OPT_RECV_TIMEOUT, 1000);
+			//$memcd->setOption(\Memcached::OPT_SEND_TIMEOUT, 1000);
+			$memcd->setOption(\Memcached::OPT_LIBKETAMA_COMPATIBLE, true);
+			$memcd->setOption(\Memcached::OPT_BINARY_PROTOCOL, false);
+			//$memcd->setOption(\Memcached::OPT_SERVER_FAILURE_LIMIT, 50);
+			//$memcd->setOption(\Memcached::OPT_CONNECT_TIMEOUT, 500);
+			//$memcd->setOption(\Memcached::OPT_RETRY_TIMEOUT, 300);
+			//$memcd->setOption(\Memcached::OPT_REMOVE_FAILED_SERVERS, true);
+
+			$memcd->addServer($host, 11211);
+		}
+
+		$err = false;
+		$stats = $memcd->getStats();
+		if (!isset($stats[$host.':11211'])) {
+			$memcd->quit();
+			$err = 'Failed to connect to Memcached host on '.$host;
+		}
+		if (!isset($stats[$host.':11211']['pid'])) {
+			$memcd->quit();
+			$err = 'Failed to connect to Memcached host on '.$host;
+		}
+		if ($stats[$host.':11211']['pid'] < 1) {
+			$memcd->quit();
+			$err = 'Failed to connect to Memcached host on '.$host;
+		}
+
+		if ($err === false) {
+			$memcd->set('devilbox-version', $GLOBALS['DEVILBOX_VERSION'].' ('.$GLOBALS['DEVILBOX_DATE'].')');
+			$this->_memcached = $memcd;
+		} else {
 			$this->_connect_error = 'Failed to connect to Memcached host on '.$host;
 			$this->_connect_errno = 1;
 			//loadClass('Logger')->error($this->_connect_error);
-		} else {
-			$this->_memcached = $memcd;
 		}
 	}
 
@@ -143,23 +172,27 @@ class Memcd extends _Base implements _iBase
 	 *
 	 *********************************************************************************/
 
-/*	public function getInfo()
-	{
-		if ($this->_memcached) {
-			return $this->_memcached->info('all');
-		} else {
-			return array();
-		}
-	}
 
 	public function getKeys()
 	{
+		$store = array();
 		if ($this->_memcached) {
-			return $this->_memcached->keys('*');
-		} else {
-			return array();
+			if (!($keys = $this->_memcached->getAllKeys())) {
+				$keys = array();
+			}
+			$this->_memcached->getDelayed($keys);
+			$store = $this->_memcached->fetchAll();
 		}
-	}*/
+		return $store;
+	}
+
+	public function getInfo()
+	{
+		$stats = $this->_memcached->getStats();
+		return $stats;
+
+	}
+
 
 	/*********************************************************************************
 	 *

@@ -1,9 +1,4 @@
 <?php require '../config.php'; ?>
-<?php $Docker = loadClass('Docker'); ?>
-<?php if ($Docker->getEnv('COMPOSE_OPTIONAL') != 1 ) {
-	header('Location: /index.php');
-	exit(0);
-} ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -15,25 +10,25 @@
 
 		<div class="container">
 
-			<h1>Redis Info</h1>
+			<h1>Memcached Keys</h1>
 			<br/>
 			<br/>
 
 			<div class="row">
 				<div class="col-md-12">
 
-					<table class="table table-striped">
-						<thead class="thead-inverse">
+					<table class="table table-striped ">
+						<thead class="thead-inverse ">
 							<tr>
-								<th>Variable</th>
+								<th>Key</th>
 								<th>Value</th>
-							</tr>
+							</th>
 						</thead>
 						<tbody>
-							<?php foreach (loadClass('Redis')->getInfo() as $key => $val): ?>
+							<?php foreach (loadClass('Memcd')->getKeys() as $data): ?>
 								<tr>
-									<td><?php echo $key;?></td>
-									<td class="break-word"><code><?php echo $val;?></code></td>
+									<td><?php print_r($data['key']);?></td>
+									<td><?php print_r($data['value']);?></td>
 								</tr>
 							<?php endforeach; ?>
 						</tbody>
@@ -45,5 +40,6 @@
 		</div><!-- /.container -->
 
 		<?php require '../include/footer.php'; ?>
+
 	</body>
 </html>
