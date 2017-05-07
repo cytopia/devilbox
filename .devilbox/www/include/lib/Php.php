@@ -151,6 +151,10 @@ class Php extends _Base implements _iBase
 
 		return $this->egrep('/[0-9.]+/', isset($output[0]) ? $output[0] : '');
 	}
+	public function getTldSuffix()
+	{
+		return getenv('TLD_SUFFIX');
+	}
 
 
 	/*********************************************************************************

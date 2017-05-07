@@ -53,7 +53,7 @@ $connection['Httpd'][$host] = array(
 	'host' => $host,
 	'succ' => $succ
 );
-$host	= 'random.loc';
+$host	= 'random.'.loadClass('Php')->getTldSuffix();
 $succ	= \devilbox\Httpd::testConnection($error, $host);
 $connection['Httpd'][$host] = array(
 	'error' => $error,
@@ -406,7 +406,7 @@ function getCirle($name) {
 									</tr>
 									<tr>
 										<th>vHost TLD</th>
-										<td>*.loc</td>
+										<td>*.<?php echo loadClass('Php')->getTldSuffix(); ?></td>
 									</tr>
 									<tr>
 										<th>DNS</th>

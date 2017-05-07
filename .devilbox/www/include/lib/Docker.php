@@ -47,13 +47,6 @@ class Docker
 	 */
 	private $_env = array();
 
-	/**
-	 * Domain suffix.
-	 *
-	 * @var string
-	 */
-	private $_tld = 'loc';
-
 
 	/**
 	 * Document root path in PHP docker
@@ -83,12 +76,6 @@ class Docker
 			$tmp = explode('=', $var);
 			$this->_env[$tmp[0]] = $tmp[1];
 		}
-
-		// Set the TLD suffix (domain ending) for virtual hosts
-		// Note: If this is changed it currently also needs to be changed
-		//       in each webserver's configuration file in .devilbox/<webserver>/02-vhost-mass.conf
-		$this->_tld = $GLOBALS['TLD_SUFFIX'];
-
 	}
 
 
@@ -113,15 +100,6 @@ class Docker
 		return $this->_env[$variable];
 	}
 
-	/**
-	 * Get tld suffix.
-	 *
-	 * @return string
-	 */
-	public function getTld()
-	{
-		return $this->_tld;
-	}
 
 	/**
 	 * Get HTTP port.
@@ -227,8 +205,8 @@ class Docker
 
 					$vhosts[] = array(
 						'name'		=> $directory,
-						'domain'	=> $directory .'.' . $this->_tld,
-						'href'		=> 'http://' . $directory . '.' . $this->_tld
+						'domain'	=> $directory .'.' . $this->getEnv('TLD_SUFFIX'),
+						'href'		=> 'http://' . $directory . '.' . $this->getEnv('TLD_SUFFIX')
 					);
 				}
 			}
@@ -246,14 +224,14 @@ class Docker
 	{
 		$docRoot	= $this->_doc_root;
 		$htdocs		= $docRoot . DIRECTORY_SEPARATOR . $vhost . DIRECTORY_SEPARATOR . 'htdocs';
-		$domain		= $vhost . '.' . $this->_tld;
+		$domain		= $vhost . '.' . $this->getEnv('TLD_SUFFIX');
 		$url		= 'http://'.$domain;
 		$error		= array();
 
 
 		// 1. Check htdocs folder
 		if (!$this->_is_valid_dir($htdocs)) {
-			$error[] = 'Missing <strong>htdocs</strong> directory in: <strong>'.$this->getEnv('HOST_PATH_TO_WWW_DOCROOTS').'/'.$vhost.'/</strong>';
+			$error[] = 'Missing <strong>htdocs</strong> directory in: <strong>'.$this->getEnv('HOST_PATH_HTTPD_DATADIR').'/'.$vhost.'/</strong>';
 		}
 
 		if ($GLOBALS['ENABLE_VHOST_DNS_CHECK']) {

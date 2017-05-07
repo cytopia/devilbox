@@ -58,6 +58,12 @@ services:
       - TIMEZONE
 
       ##
+      ## TLD SUffix
+      ##
+      - TLD_SUFFIX=${TLD_SUFFIX:-loc}
+      - DNS_CHECK_TIMEOUT=${DNS_CHECK_TIMEOUT:-1}
+
+      ##
       ## PHP Xdebug
       ##
       - PHP_XDEBUG_ENABLE

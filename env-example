@@ -47,6 +47,38 @@ DEVILBOX_PATH=.
 LOCAL_LISTEN_ADDR=127.0.0.1:
 
 
+###
+### This is the domain suffix your projects will be made available
+### with mass-virtual-hosting.
+### It is also required for the internal DNS server to be setup.
+###
+### Note: Only ALPHA ([a-zA-Z]+) characters are supported.
+###
+### Example:
+###   TLD_SUFFIX=loc
+### Makes your project available under xxxx.loc
+###
+### Example:
+###   TLD_SUFFIX=local
+### Makes your project available under xxxx.local
+###
+TLD_SUFFIX=loc
+
+
+###
+### TLD_SUFFIX domains are checked if they are set in the
+### host computer /etc/hosts or available via attached DNS server.
+### Timeout is done on vhosts.php (intranet) via ajax calls.
+### In order to keep performance, set this to a low value.
+### DNS checks might not succeed in time on slow machines.
+### If DNS is valid, but timeout is expired, set this to a higher value.
+###
+### DNS_CHECK_TIMEOUT value is how many seconds to time out
+### Default is to timeout after 1 second (DNS_CHECK_TIMEOUT=1)
+###
+DNS_CHECK_TIMEOUT=1
+
+
 
 ################################################################################
 ###
