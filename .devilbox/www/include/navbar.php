@@ -1,5 +1,4 @@
-<?php $current = basename($_SERVER['SCRIPT_FILENAME']);?>
-
+<?php $current = basename($_SERVER['PHP_SELF']);?>
 
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +28,7 @@
 
 			<?php
 			// ---- Datbases ---- //
-			$script = $_SERVER['SCRIPT_NAME'];
+			$script = basename($_SERVER['PHP_SELF']);
 			$files = array(
 				'db_mysql.php' => 'MySQL DB',
 				'db_postgres.php' => 'PgSQL DB',
@@ -49,7 +48,7 @@
 
 			<?php
 			// ---- Info ---- //
-			$script = $_SERVER['SCRIPT_NAME'];
+			$script = basename($_SERVER['PHP_SELF']);
 			$files = array(
 				'info_php.php' => 'PHP Info',
 				'info_mysql.php' => 'MySQL Info',
@@ -78,6 +77,7 @@
 				// works with PHP >= 5.5
 				$phpmyadmin = '4.7';
 			}
+			$script = basename($_SERVER['PHP_SELF']);
 			$files = array(
 				'vendor/phpmyadmin-'.$phpmyadmin.'/index.php' => 'phpMyAdmin',
 				'vendor/adminer-4.3.1/adminer/index.php' => 'Adminer',
