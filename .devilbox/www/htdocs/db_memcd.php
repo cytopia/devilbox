@@ -1,4 +1,5 @@
 <?php require '../config.php'; ?>
+<?php $Postgres = loadClass('Memcd'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -17,22 +18,26 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<table class="table table-striped ">
-						<thead class="thead-inverse ">
-							<tr>
-								<th>Key</th>
-								<th>Value</th>
-							</th>
-						</thead>
-						<tbody>
-							<?php foreach (loadClass('Memcd')->getKeys() as $data): ?>
+					<?php if (!\devilbox\Memcd::isAvailable($GLOBALS['MEMCD_HOST_NAME'])): ?>
+						<p>Memcahed container is not running.</p>
+					<?php else: ?>
+						<table class="table table-striped ">
+							<thead class="thead-inverse ">
 								<tr>
-									<td><?php print_r($data['key']);?></td>
-									<td><?php print_r($data['value']);?></td>
-								</tr>
-							<?php endforeach; ?>
-						</tbody>
-					</table>
+									<th>Key</th>
+									<th>Value</th>
+								</th>
+							</thead>
+							<tbody>
+								<?php foreach (loadClass('Memcd')->getKeys() as $data): ?>
+									<tr>
+										<td><?php print_r($data['key']);?></td>
+										<td><?php print_r($data['value']);?></td>
+									</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					<?php endif; ?>
 
 				</div>
 			</div>

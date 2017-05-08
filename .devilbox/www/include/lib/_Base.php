@@ -12,6 +12,9 @@ class _Base
 	 *
 	 *********************************************************************************/
 
+
+	/** TODO: isAvailable (make instance) */
+
 	private static $_available = array();
 	private static $_hostname = array();
 

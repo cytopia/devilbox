@@ -18,33 +18,37 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<table class="table table-striped ">
-						<thead class="thead-inverse ">
-							<tr>
-								<th>Name</th>
-								<th>Charset</th>
-								<th>Collation</th>
-								<th>Tables</th>
-								<th>Size</th>
-							</th>
-						</thead>
-						<tbody>
-							<?php
-								$len_table = 4;
-								$len_size = 9;
-							?>
-							<?php foreach ($MySQL->getDatabases() as $name => $keys): ?>
+					<?php if (!\devilbox\Mysql::isAvailable($GLOBALS['MYSQL_HOST_NAME'])): ?>
+						<p>MySQL container is not running.</p>
+					<?php else: ?>
+						<table class="table table-striped ">
+							<thead class="thead-inverse ">
 								<tr>
-									<td><?php echo $name;?></td>
-									<td><?php echo $keys['charset'];?></td>
-									<td><?php echo $keys['collation'];?></td>
-									<td><code><span class="table" id="table-<?php echo $name;?>"><?php echo str_repeat('&nbsp;', $len_table);?></span></code></td>
-									<td><code><span class="size" id="size-<?php echo $name;?>"><?php echo str_repeat('&nbsp;', $len_size);?></span></code></td>
-								</tr>
-								<input type="hidden" name="database[]" class="database" value="<?php echo $name;?>" />
-							<?php endforeach; ?>
-						</tbody>
-					</table>
+									<th>Name</th>
+									<th>Charset</th>
+									<th>Collation</th>
+									<th>Tables</th>
+									<th>Size</th>
+								</th>
+							</thead>
+							<tbody>
+								<?php
+									$len_table = 4;
+									$len_size = 9;
+								?>
+								<?php foreach ($MySQL->getDatabases() as $name => $keys): ?>
+									<tr>
+										<td><?php echo $name;?></td>
+										<td><?php echo $keys['charset'];?></td>
+										<td><?php echo $keys['collation'];?></td>
+										<td><code><span class="table" id="table-<?php echo $name;?>"><?php echo str_repeat('&nbsp;', $len_table);?></span></code></td>
+										<td><code><span class="size" id="size-<?php echo $name;?>"><?php echo str_repeat('&nbsp;', $len_size);?></span></code></td>
+									</tr>
+									<input type="hidden" name="database[]" class="database" value="<?php echo $name;?>" />
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					<?php endif; ?>
 
 				</div>
 			</div>
