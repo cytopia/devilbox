@@ -1,5 +1,146 @@
-<?php $current = basename($_SERVER['PHP_SELF']);?>
+<?php
+$menu = array(
+	array(
+		array(
+			'name' => 'Home',
+			'path' => '/index.php'
+		),
+		array(
+			'name' => 'Virtual Hosts',
+			'path' => '/vhosts.php'
+		),
+		array(
+			'name' => 'Emails',
+			'path' => '/mail.php'
+		)
+	),
+	array(
+		'name' => 'Databases',
+		'menu' => array(
+			array(
+				'name' => 'MySQL DB',
+				'path' => '/db_mysql.php'
+			),
+			array(
+				'name' => 'PgSQL DB',
+				'path' => '/db_pgsql.php'
+			),
+			array(
+				'name' => 'Redis DB',
+				'path' => '/db_redis.php'
+			),
+			array(
+				'name' => 'Memcached DB',
+				'path' => '/db_memcd.php'
+			)
+		)
+	),
+	array(
+		'name' => 'Info',
+		'menu' => array(
+			array(
+				'name' => 'PHP Info',
+				'path' => '/info_php.php'
+			),
+			array(
+				'name' => 'MySQL Info',
+				'path' => '/info_mysql.php'
+			),
+			array(
+				'name' => 'PgSQL Info',
+				'path' => '/info_pgsql.php'
+			),
+			array(
+				'name' => 'Redis Info',
+				'path' => '/info_redis.php'
+			),
+			array(
+				'name' => 'Memcached Info',
+				'path' => '/info_memcd.php'
+			)
+		)
+	),
+	array(
+		'name' => 'Tools',
+		'menu' => array(
+			array(
+				'name' => 'phpMyAdmin',
+				'path' => (strpos(loadClass('Php')->getVersion(), '5.4') !== false) ? '/vendor/phpmyadmin-4.0/index.php' : '/vendor/phpmyadmin-4.7/index.php',
+				'target' => '_blank'
+			),
+			array(
+				'name' => 'Adminer',
+				'path' => '/vendor/adminer-4.3.1/adminer/index.php'
+			),
+			array(
+				'name' => 'Opcache GUI',
+				'path' => '/opcache.php'
+			)
+		)
+	)
+);
 
+/**
+ * Get Navigation menu
+ * @param  mixed[] $menu Menu Array
+ * @return string
+ */
+function get_menu($menu) {
+
+	$path = $_SERVER['PHP_SELF'];
+	$html = '';
+
+	foreach ($menu as $type => $elements) {
+
+		if (!isset($elements['menu'])) {
+
+			foreach ($elements as $el) {
+				if ($path == $el['path']) {
+					$class = 'active';
+					$span = '<span class="sr-only">(current)</span>';
+				} else {
+					$class = '';
+					$span = '';
+				}
+
+				$html .= '<li class="nav-item '.$class.'">';
+				$html .= 	'<a class="nav-link" href="'.$el['path'].'">'.$el['name'].' '.$span.'</a>';
+				$html .= '</li>';
+			}
+
+		} else {
+			$name = $elements['name'];
+			$class = '';
+			$id	= md5($name);
+
+
+			// Make submenu active
+			foreach ($elements['menu'] as $el) {
+				if (strpos($path, $el['path']) !== false) {
+					$class = 'active';
+					break;
+				}
+			}
+
+			$html .= '<li class="nav-item dropdown '.$class.'">';
+			$html .=	'<a class="nav-link dropdown-toggle" href="#" id="'.$id.'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+			$html .=    	$name;
+			$html .=	'</a>';
+			$html .=	'<div class="dropdown-menu" aria-labelledby="'.$id.'">';
+
+			foreach ($elements['menu'] as $el) {
+				$target = isset($el['target']) ? 'target="'.$el['target'].'"' : '';
+				$html .= '<a class="dropdown-item" '.$target.' href="'.$el['path'].'">'.$el['name'].'</a>';
+			}
+
+			$html .=	'</div>';
+			$html .= '</li>';
+		}
+	}
+
+	return $html;
+}
+?>
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -11,94 +152,11 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 
-			<?php $file = 'index.php'; $name = 'Home';?>
-			<li class="nav-item <?php echo $file == $current ? 'active' : '';?>">
-				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>
-			</li>
-
-			<?php $file = 'vhosts.php'; $name = 'Virtual Hosts';?>
-			<li class="nav-item <?php echo $file == $current ? 'active' : '';?>">
-				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>
-			</li>
-
-			<?php $file = 'mail.php'; $name = 'Emails';?>
-			<li class="nav-item <?php echo $file == $current ? 'active' : '';?>">
-				<a class="nav-link" href="<?php echo $file == $current ? '#' : '/'.$file;?>"><?php echo $name;?><?php echo $file == $current ? ' <span class="sr-only">(current)</span>' : '';?></a>
-			</li>
-
-			<?php
-			// ---- Datbases ---- //
-			$script = basename($_SERVER['PHP_SELF']);
-			$files = array(
-				'db_mysql.php' => 'MySQL DB',
-				'db_postgres.php' => 'PgSQL DB',
-				'db_redis.php' => 'Redis DB',
-				'db_memcd.php' => 'Memcached DB'
-			);
-			$active = (in_array($script, array_keys($files))) ? 'active' : '';
-			?>
-			<li class="nav-item dropdown <?php echo $active;?>">
-				<a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Databases</a>
-				<div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-					<?php foreach ($files as $href => $name): ?>
-						<a class="dropdown-item" href="/<?php echo $href;?>"><?php echo $name;?></a>
-					<?php endforeach; ?>
-				</div>
-			</li>
-
-			<?php
-			// ---- Info ---- //
-			$script = basename($_SERVER['PHP_SELF']);
-			$files = array(
-				'info_php.php' => 'PHP Info',
-				'info_mysql.php' => 'MySQL Info',
-				'info_pgsql.php' => 'PgSQL Info',
-				'info_redis.php' => 'Redis Info',
-				'info_memcd.php' => 'Memcached Info'
-			);
-			$active = (in_array($script, array_keys($files))) ? 'active' : '';
-			?>
-			<li class="nav-item dropdown <?php echo $active;?>">
-				<a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info</a>
-				<div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-					<?php foreach ($files as $href => $name): ?>
-						<a class="dropdown-item" href="/<?php echo $href;?>"><?php echo $name;?></a>
-					<?php endforeach; ?>
-				</div>
-			</li>
-
-
-			<?php
-			// ---- Tools ---- //
-			if (strpos(loadClass('Php')->getVersion(), '5.4') !== false) {
-				// Support for PHP 5.4
-				$phpmyadmin = '4.0';
-			} else {
-				// works with PHP >= 5.5
-				$phpmyadmin = '4.7';
-			}
-			$script = basename($_SERVER['PHP_SELF']);
-			$files = array(
-				'vendor/phpmyadmin-'.$phpmyadmin.'/index.php' => 'phpMyAdmin',
-				'vendor/adminer-4.3.1/adminer/index.php' => 'Adminer',
-				'opcache.php' => 'Opcache GUI'
-			);
-			$active = (in_array($script, array_keys($files))) ? 'active' : '';
-			?>
-			<li class="nav-item dropdown <?php echo $active;?>">
-				<a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tools</a>
-				<div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-					<?php foreach ($files as $href => $name): ?>
-					<a class="dropdown-item" href="/<?php echo $href;?>"><?php echo $name;?></a>
-					<?php endforeach; ?>
-				</div>
-			</li>
+			<?php echo get_menu($menu);?>
 
 		</ul>
 		<?php $errors =  loadClass('Logger')->countErrors(); ?>
 		<div class="form-inline my-2 my-lg-0">Errors: <?php echo $errors; ?></div>
 	</div>
 </nav>
-
-
 <br/>
