@@ -188,7 +188,10 @@ class Memcd extends _Base implements _iBase
 
 	public function getInfo()
 	{
-		$stats = $this->_memcached->getStats();
+		$stats = array();
+		if ($this->_memcached) {
+			$stats = $this->_memcached->getStats();
+		}
 		return $stats;
 
 	}
@@ -207,12 +210,17 @@ class Memcd extends _Base implements _iBase
 
 	public function getVersion()
 	{
-		$info = $this->_memcached->getVersion();
-		$info = array_values($info);
-		if (!isset($info[0])) {
-			loadClass('Logger')->error('Could not get Memcached version');
-			return '';
+		$version = '';
+		if ($this->_memcached) {
+			$info = $this->_memcached->getVersion();
+			$info = array_values($info);
+			if (!isset($info[0])) {
+				loadClass('Logger')->error('Could not get Memcached version');
+			} else {
+				$version = $info[0];
+			}
 		}
-		return $info[0];
+
+		return $version;
 	}
 }

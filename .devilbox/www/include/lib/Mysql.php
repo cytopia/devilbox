@@ -252,7 +252,11 @@ class Mysql extends _Base implements _iBase
 				$data[$key] = $val;
 			};
 
-			return $this->select('SHOW VARIABLES;', $callback);
+			$config = $this->select('SHOW VARIABLES;', $callback);
+			if (!$config) {
+				$config = array();
+			}
+			return $config;
 
 		} else { // Get single config
 
