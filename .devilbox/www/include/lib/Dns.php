@@ -4,7 +4,7 @@ namespace devilbox;
 /**
  * @requires devilbox::Logger
  */
-class Httpd extends _Base implements _iBase
+class Dns extends _Base implements _iBase
 {
 
 	/*********************************************************************************
@@ -14,10 +14,12 @@ class Httpd extends _Base implements _iBase
 	 *********************************************************************************/
 
 	/**
-	 * Httpd instance
-	 * @var Httpd|null
+	 * Dns instance
+	 * @var Dns|null
 	 */
 	protected static $instance = null;
+
+	private static $_available = null;
 
 	/**
 	 * Singleton Instance getter.
@@ -41,8 +43,21 @@ class Httpd extends _Base implements _iBase
 	 */
 	public static function isAvailable($hostname)
 	{
-		// Always available, otherwise you would not see any browser output.
-		return true;
+		if (self::$_available === null) {
+
+			$output = '';
+			$exit_code = -1;
+			$cmd = 'dig +time=1 +tries=1 @172.16.238.100 version.bind chaos TXT';
+			exec($cmd, $output, $exit_code);
+
+			if ($exit_code != 0) {
+				return false;
+			}
+
+			self::$_available[$hostname] = ($exit_code != 0) ? false : true;
+
+		}
+		return self::$_available;
 	}
 
 
@@ -55,22 +70,7 @@ class Httpd extends _Base implements _iBase
 	 */
 	public static function testConnection(&$err, $host, $user = '', $pass = '')
 	{
-		$err = false;
-
-		// Silence errors and try to connect
-		$url = 'http://'.$host.'/not-existing-page-which-returns-404.php';
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_NOBODY, true);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
-		curl_exec($ch);
-		$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		curl_close($ch);
-
-		if ($http_code == 0) {
-			$err = 'Failed to connect to Httpd host on '.$host;
-			return false;
-		}
-		return true;
+		return self::isAvailable($host);
 	}
 
 
@@ -106,23 +106,22 @@ class Httpd extends _Base implements _iBase
 	 *
 	 *********************************************************************************/
 
-	public function getName($default = 'Httpd')
+	public function getName($default = 'Bind')
 	{
-		$name = $this->egrep('/[a-zA-Z0-9]+/', $_SERVER['SERVER_SOFTWARE']);
-		if (!$name) {
-			loadClass('Logger')->error('Could not get Httpd name');
-			return $default;
-		}
-		return $name;
+		return $default;
 	}
 
 	public function getVersion()
 	{
-		$version = $this->egrep('/[.0-9]+/', $_SERVER['SERVER_SOFTWARE']);
-		if (!$version) {
-			loadClass('Logger')->error('Could not get Httpd version');
-			return '';
-		}
+		$output = '';
+		$exit_code = -1;
+		$cmd = 'dig +time=1 +tries=1 @172.16.238.100 version.bind chaos TXT | grep -iE "^version\.bind.*TXT"';
+
+		exec($cmd, $output, $exit_code);
+
+		$version = $this->egrep('/"[0-9.-]+.*"/', isset($output[0]) ? $output[0] : '');
+		$version = $this->egrep('/[0-9.-]+/', $version);
+		$version = $version ? $version : '';
 		return $version;
 	}
 }

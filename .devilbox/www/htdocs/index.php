@@ -12,6 +12,7 @@
  * Load required files
  *************************************************************/
 loadFile('Php');
+loadFile('Dns');
 loadFile('Httpd');
 loadFile('Mysql');
 loadFile('Pgsql');
@@ -23,12 +24,12 @@ loadFile('Memcd');
  * Get availability
  *************************************************************/
 $avail_php		= \devilbox\Php::isAvailable($GLOBALS['PHP_HOST_NAME']);
+$avail_dns		= \devilbox\Dns::isAvailable($GLOBALS['DNS_HOST_NAME']);
 $avail_httpd	= \devilbox\Httpd::isAvailable($GLOBALS['HTTPD_HOST_NAME']);
 $avail_mysql	= \devilbox\Mysql::isAvailable($GLOBALS['MYSQL_HOST_NAME']);
 $avail_pgsql	= \devilbox\Pgsql::isAvailable($GLOBALS['PGSQL_HOST_NAME']);
 $avail_redis	= \devilbox\Redis::isAvailable($GLOBALS['REDIS_HOST_NAME']);
 $avail_memcd	= \devilbox\Memcd::isAvailable($GLOBALS['MEMCD_HOST_NAME']);
-
 
 
 /*************************************************************
@@ -161,6 +162,23 @@ if ($avail_memcd) {
 	);
 }
 
+// ---- BIND ----
+if ($avail_dns) {
+	$host	= $GLOBALS['DNS_HOST_NAME'];
+	$succ	= \devilbox\Dns::testConnection($error, $host);
+	$connection['Bind'][$host] = array(
+		'error' => $error,
+		'host' => $host,
+		'succ' => $succ
+	);
+	$host	= \devilbox\Dns::getIpAddress($GLOBALS['DNS_HOST_NAME']);
+	$succ	= \devilbox\Dns::testConnection($error, $host);
+	$connection['Bind'][$host] = array(
+		'error' => $error,
+		'host' => $host,
+		'succ' => $succ
+	);
+}
 
 /*************************************************************
  * Test Health
@@ -195,17 +213,17 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 
 function getCirle($name) {
 	switch ($name) {
+		case 'dns':
+			$class = 'bg-info';
+			$version = loadClass('Dns')->getVersion();
+			$available = $GLOBALS['avail_'.$name];
+			$name = loadClass('Dns')->getName();
+			break;
 		case 'php':
 			$class = 'bg-info';
 			$version = loadClass('Php')->getVersion();
 			$available = $GLOBALS['avail_'.$name];
 			$name = loadClass('Php')->getName();
-			break;
-		case 'httpd':
-			$class = 'bg-info';
-			$version = loadClass('Httpd')->getVersion();
-			$available = $GLOBALS['avail_'.$name];
-			$name = loadClass('Httpd')->getName();
 			break;
 		case 'httpd':
 			$class = 'bg-info';
@@ -329,13 +347,13 @@ function getCirle($name) {
 						<div class="dash-box-body">
 							<div class="row">
 								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
+									<?php echo getCirle('dns'); ?>
+								</div>
+								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
 									<?php echo getCirle('php'); ?>
 								</div>
 								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
 									<?php echo getCirle('httpd'); ?>
-								</div>
-								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
-									<?php echo getCirle('dns'); ?>
 								</div>
 							</div>
 						</div>
@@ -390,6 +408,7 @@ function getCirle($name) {
 						<div class="dash-box-head"><i class="fa fa-info-circle" aria-hidden="true"></i> PHP Container Setup</div>
 						<div class="dash-box-body">
 							<table class="table table-striped table-hover table-bordered table-sm font-small">
+								<p><small>You can also enter the php container and work from inside. The following is available inside the container:</small></p>
 								<thead class="thead-inverse">
 									<tr>
 										<th colspan="2">Settings</th>
@@ -410,23 +429,45 @@ function getCirle($name) {
 									</tr>
 									<tr>
 										<th>DNS</th>
-										<td>Enabled</td>
+										<td><?php if ($avail_dns): ?>Enabled<?php else: ?><span class="text-danger">Offline</span><?php endif;?></td>
 									</tr>
 									<tr>
 										<th>Postfix</th>
-										<td>Enabled</td>
+										<td><?php echo $Docker->getEnv('ENABLE_MAIL') ? 'Enabled'  : '<span class="bg-danger">No</span> Disabled';?></td>
 									</tr>
 									<tr>
 										<th>Xdebug</th>
-										<td>Enabled</td>
+										<td>
+											<?php $Xdebug = ($Docker->getEnv('PHP_XDEBUG_ENABLE') == 0) ? '' : $Docker->getEnv('PHP_XDEBUG_ENABLE'); ?>
+											<?php if ($Xdebug == $Docker->PHP_config('xdebug.remote_enable')): ?>
+												<?php echo $Docker->PHP_config('xdebug.remote_enable') == 1 ? 'Yes' : 'No'; ?>
+											<?php else: ?>
+												<?php echo '<span class="text-danger">not installed</span>.env file setting differs from custom php .ini file</span><br/>'; ?>
+												<?php echo 'Effective setting: '.$Docker->PHP_config('xdebug.remote_enable'); ?>
+											<?php endif; ?>
+										</td>
 									</tr>
 									<tr>
 										<th>Xdebug Remote</th>
-										<td>192.168.0.215</td>
+										<td>
+											<?php if ($Docker->getEnv('PHP_XDEBUG_REMOTE_HOST') == $Docker->PHP_config('xdebug.remote_host')): ?>
+												<?php echo $Docker->PHP_config('xdebug.remote_host'); ?>
+											<?php else: ?>
+												<?php echo '<span class="text-danger">not installed</span>.env file setting differs from custom php .ini file</span><br/>'; ?>
+												<?php echo 'Effective setting: '.$Docker->PHP_config('xdebug.remote_host'); ?>
+											<?php endif; ?>
+										</td>
 									</tr>
 									<tr>
 										<th>Xdebug Port</th>
-										<td>9000</td>
+										<td>
+											<?php if ($Docker->getEnv('PHP_XDEBUG_REMOTE_PORT') == $Docker->PHP_config('xdebug.remote_port')): ?>
+												<?php echo $Docker->PHP_config('xdebug.remote_port'); ?>
+											<?php else: ?>
+												<?php echo '<span class="text-danger">not installed</span>.env file setting differs from custom php .ini file</span><br/>'; ?>
+												<?php echo 'Effective setting: '.$Docker->PHP_config('xdebug.remote_port'); ?>
+											<?php endif; ?>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -484,7 +525,7 @@ function getCirle($name) {
 								<tbody>
 									<?php foreach ($connection as $name => $docker): ?>
 										<tr>
-											<th rowspan="3" class="align-middle"><?php echo $name; ?> connect</th>
+											<th rowspan="<?php echo count($docker);?>" class="align-middle"><?php echo $name; ?> connect</th>
 											<?php $i=1; foreach ($docker as $conn): ?>
 
 											<?php if ($conn['succ']): ?>
@@ -575,6 +616,13 @@ function getCirle($name) {
 													<td><?php echo \devilbox\Memcd::getIpAddress($GLOBALS['MEMCD_HOST_NAME']); ?></td>
 												</tr>
 											<?php endif; ?>
+											<?php if ($avail_dns): ?>
+												<tr>
+													<th>bind</th>
+													<td><?php echo $GLOBALS['DNS_HOST_NAME']; ?></td>
+													<td><?php echo \devilbox\Dns::getIpAddress($GLOBALS['DNS_HOST_NAME']); ?></td>
+												</tr>
+											<?php endif; ?>
 										</tbody>
 									</table>
 								</div>
@@ -634,6 +682,16 @@ function getCirle($name) {
 													<th>memcached</th>
 													<td><?php echo loadClass('Docker')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Docker')->getEnv('HOST_PORT_MEMCACHED');?></td>
 													<td>11211</td>
+												</tr>
+											<?php endif; ?>
+											<?php if ($avail_dns): ?>
+												<tr>
+													<th>bind</th>
+													<td>
+														<?php echo loadClass('Docker')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Docker')->getEnv('HOST_PORT_BIND');?>/tcp<br/>
+														<?php echo loadClass('Docker')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Docker')->getEnv('HOST_PORT_BIND');?>/udp
+														</td>
+													<td>53/tcp<br/>53/udp</td>
 												</tr>
 											<?php endif; ?>
 										</tbody>
@@ -739,6 +797,13 @@ function getCirle($name) {
 													<td>-</td>
 												</tr>
 											<?php endif; ?>
+											<?php if ($avail_dns): ?>
+												<tr>
+													<th>bind</th>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+											<?php endif; ?>
 										</tbody>
 									</table>
 								</div>
@@ -796,6 +861,13 @@ function getCirle($name) {
 											<?php if ($avail_memcd): ?>
 												<tr>
 													<th>memcached</th>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+											<?php endif; ?>
+											<?php if ($avail_dns): ?>
+												<tr>
+													<th>bind</th>
 													<td>-</td>
 													<td>-</td>
 												</tr>
@@ -859,6 +931,13 @@ function getCirle($name) {
 													<th>memcached</th>
 													<td>./log/memcached-<?php echo loadClass('Docker')->getEnv('MEMCACHED_SERVER'); ?></td>
 													<td>/var/log/memcached</td>
+												</tr>
+											<?php endif; ?>
+											<?php if ($avail_dns): ?>
+												<tr>
+													<th>bind</th>
+													<td>-</td>
+													<td>-</td>
 												</tr>
 											<?php endif; ?>
 										</tbody>

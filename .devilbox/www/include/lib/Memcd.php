@@ -118,16 +118,18 @@ class Memcd extends _Base implements _iBase
 		$memcd = new \Memcached('_devilbox');
 		$list = $memcd->getServerList();
 
+//		if (!empty($list)) {
+//			$memcd->resetServerList();
+//		}
 		if (empty($list)) {
-			//$memcd->setOption(\Memcached::OPT_RECV_TIMEOUT, 1000);
-			//$memcd->setOption(\Memcached::OPT_SEND_TIMEOUT, 1000);
+			//$memcd->setOption(\Memcached::OPT_RECV_TIMEOUT, 100);
+			//$memcd->setOption(\Memcached::OPT_SEND_TIMEOUT, 100);
 			$memcd->setOption(\Memcached::OPT_LIBKETAMA_COMPATIBLE, true);
 			$memcd->setOption(\Memcached::OPT_BINARY_PROTOCOL, false);
 			//$memcd->setOption(\Memcached::OPT_SERVER_FAILURE_LIMIT, 50);
-			//$memcd->setOption(\Memcached::OPT_CONNECT_TIMEOUT, 500);
-			//$memcd->setOption(\Memcached::OPT_RETRY_TIMEOUT, 300);
+			//$memcd->setOption(\Memcached::OPT_CONNECT_TIMEOUT, 100);
+			//$memcd->setOption(\Memcached::OPT_RETRY_TIMEOUT, 100);
 			//$memcd->setOption(\Memcached::OPT_REMOVE_FAILED_SERVERS, true);
-
 			$memcd->addServer($host, 11211);
 		}
 
@@ -137,16 +139,16 @@ class Memcd extends _Base implements _iBase
 			$memcd->quit();
 			$err = 'Failed to connect to Memcached host on '.$host;
 		}
-		if (!isset($stats[$host.':11211']['pid'])) {
+		else if (!isset($stats[$host.':11211']['pid'])) {
 			$memcd->quit();
 			$err = 'Failed to connect to Memcached host on '.$host;
 		}
-		if ($stats[$host.':11211']['pid'] < 1) {
+		else if ($stats[$host.':11211']['pid'] < 1) {
 			$memcd->quit();
 			$err = 'Failed to connect to Memcached host on '.$host;
 		}
 
-		if ($err === false) {
+		else if ($err === false) {
 			$memcd->set('devilbox-version', $GLOBALS['DEVILBOX_VERSION'].' ('.$GLOBALS['DEVILBOX_DATE'].')');
 			$this->_memcached = $memcd;
 		} else {

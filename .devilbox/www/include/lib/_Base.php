@@ -21,7 +21,7 @@ class _Base
 	public static function isAvailable($hostname)
 	{
 		if (!isset(self::$_available[$hostname])) {
-			$ip = gethostbyname($hostname);
+			$ip = self::getIpAddress($hostname);
 			self::$_available[$hostname] = ($ip == $hostname) ? false : true;
 		}
 		return self::$_available[$hostname];
