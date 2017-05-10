@@ -20,6 +20,7 @@ This is a brief overview to get you started as quick as possible. For in-depth d
 
 
 ### Install, Configure and Start
+
 ```shell
 # Get the soures
 $ git clone https://github.com/cytopia/devilbox
@@ -35,8 +36,32 @@ $ docker-compose up
 
 ### Create projects
 
-The main folder for your projects is defined in `.env` by the variable `HOST_PATH_TO_WWW_DOCROOTS`.
-Inside this defined folder you will have to create the following directory structure:
+Inside the `.env` file you will find two important variables:
+1. `HOST_PATH_HTTPD_DATADIR`
+2. `TLD_SUFFIX`
+
+The first one defines the root path for all your projects and the second one defines your desired domain suffix (default: `loc`). Inside the `HOST_PATH_HTTPD_DATADIR` folder you will have to create the following generic directory structure: `<project-dir>/htdocs`. Files from the `htdocs` folder are then served via `http://<project-dir>.<TLD_SUFFIX>`.
+
+**TL;DR (easy)**  
+
+  - Assuming `TLD_SUFFIX` equals `loc`
+  - Assuming `HOST_PATH_HTTPD_DATADIR` equals `/shared/httpd/`
+  - Assuming desired project name equals `my-new-project`
+  - `mkdir -p /shared/httpd/my-new-project/htdocs`
+  - `echo "127.0.0.1 my-new-project.loc" | sudo tee --append /etc/hosts`
+  - `curl http://my-new-project.loc`
+  -
+
+
+**TL;DR (pro)**  
+
+  - `export project=my-new-project`
+  - `. .env`
+  - `mkdir -p ${HOST_PATH_HTTPD_DATADIR}/${project}/htdocs`
+  - `echo "127.0.0.1 ${project}.${TLD_SUFFIX}" | sudo tee --append /etc/hosts`
+  - `curl http://${project}.${TLD_SUFFIX}`
+
+Here is a more complete example for the directory structure:
 ```
   project1/
      htdocs/
@@ -57,4 +82,4 @@ You will then have to extend `/etc/hosts` with your created foldernames plus the
 127.0.0.1 my-website.com.loc
 ```
 
-Contents inside the `htdocs` folder will be server via the configured domain automatically. So in order to access project2's htdoc folder go to `http://project2.loc`
+Contents inside the `htdocs` folder will be server via the configured domain automatically. So in order to access project2's htdoc folder go to `http://project2.loc` (assuming `TLD_SUFFIX` was `loc`)
