@@ -206,6 +206,22 @@ set_debug_enable() {
 }
 
 ###
+### Alter ports
+###
+set_host_port_httpd() {
+	_port="${1}"
+	run "sed -i'' \"s/^HOST_PORT_HTTPD=.*/HOST_PORT_HTTPD=${_port}/\" \"${DEVILBOX_PATH}/.env\""
+}
+set_host_port_mysql() {
+	_port="${1}"
+	run "sed -i'' \"s/^HOST_PORT_MYSQL=.*/HOST_PORT_MYSQL=${_port}/\" \"${DEVILBOX_PATH}/.env\""
+}
+set_host_port_pgsql() {
+	_port="${1}"
+	run "sed -i'' \"s/^HOST_PORT_POSTGRES=.*/HOST_PORT_POSTGRES=${_port}/\" \"${DEVILBOX_PATH}/.env\""
+}
+
+###
 ### Eenable desired docker version
 ###
 enable_docker_httpd() {
