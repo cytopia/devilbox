@@ -529,9 +529,9 @@ function getCirle($name) {
 											<?php $i=1; foreach ($docker as $conn): ?>
 
 											<?php if ($conn['succ']): ?>
-												<?php $text = '<span class="text-success"><i class="fa fa-check-square"></i></span> '.$conn['host']; ?>
+												<?php $text = '<span class="text-success dvlbox-ok"><i class="fa fa-check-square"></i></span> '.$conn['host']; ?>
 											<?php else: ?>
-												<?php $text = '<span class="text-danger"><i class="fa fa-exclamation-triangle"></i></span> '.$conn['host'].'<br/>'.$conn['error']; ?>
+												<?php $text = '<span class="text-danger dvlbox-err"><i class="fa fa-exclamation-triangle"></i></span> '.$conn['host'].'<br/>'.$conn['error']; ?>
 											<?php endif; ?>
 
 												<?php if ($i == 1): $i++;?>
