@@ -199,6 +199,13 @@ comment_all_dockers() {
 }
 
 ###
+### Enable debug mode
+###
+set_debug_enable() {
+	run "sed -i'' \"s/^DEBUG_COMPOSE_ENTRYPOINT=.*/DEBUG_COMPOSE_ENTRYPOINT=1/\" \"${DEVILBOX_PATH}/.env\""
+}
+
+###
 ### Eenable desired docker version
 ###
 enable_docker_httpd() {
