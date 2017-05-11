@@ -113,91 +113,37 @@ wait_for() {
 #
 ################################################################################
 
-###
-### Default enabled Docker Versions
-###
-get_default_version_httpd() {
-	_default="$( grep -E '^HTTPD_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-get_default_version_mysql() {
-	_default="$( grep -E '^MYSQL_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-get_default_version_postgres() {
-	_default="$( grep -E '^POSTGRES_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-get_default_version_php() {
-	_default="$( grep -E '^PHP_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
 
 ###
-### Default enabled Host Ports
+### Get newline separated default data mount directories (from .env file)
 ###
-get_default_port_httpd() {
-	_default="$( grep -E '^HOST_PORT_HTTPD=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-get_default_port_mysql() {
-	_default="$( grep -E '^HOST_PORT_MYSQL=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-get_default_port_postgres() {
-	_default="$( grep -E '^HOST_PORT_POSTGRES=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
+get_data_mounts() {
+	_mounts="$( grep -E '^.*_DATADIR=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
+	_data=""
 
-###
-### Default enabled Host Mounts
-###
-get_default_mount_httpd() {
-	_default="$( grep -E '^HOST_PATH_TO_WWW_DOCROOTS=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	_prefix="$( echo "${_default}" | cut -c-1 )"
+	IFS='
+	'
+	for _mount in ${_mounts}; do
+		_prefix="$( echo "${_mount}" | cut -c-1 )"
 
-	# Relative path?
-	if [ "${_prefix}" = "." ]; then
-		_default="$( echo "${_default}" | sed 's/^\.//g' )" # Remove leading dot: .
-		_default="$( echo "${_default}" | sed 's/^\///' )" # Remove leading slash: /
-		echo "${DEVILBOX_PATH}/${_default}"
-	else
-		echo "${_default}"
-	fi
-}
-get_default_mount_mysql() {
-	_default="$( grep -E '^HOST_PATH_TO_MYSQL_DATADIR=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	_prefix="$( echo "${_default}" | cut -c-1 )"
+		# Relative path?
+		if [ "${_prefix}" = "." ]; then
+			_mount="$( echo "${_mount}" | sed 's/^\.//g' )" # Remove leading dot: .
+			_mount="$( echo "${_mount}" | sed 's/^\///' )" # Remove leading slash: /
+			_mount="${DEVILBOX_PATH}/${_mount}"
+		fi
 
-	# Relative path?
-	if [ "${_prefix}" = "." ]; then
-		_default="$( echo "${_default}" | sed 's/^\.//g' )" # Remove leading dot: .
-		_default="$( echo "${_default}" | sed 's/^\///' )" # Remove leading slash: /
-		echo "${DEVILBOX_PATH}/${_default}"
-	else
-		echo "${_default}"
-	fi
-}
-get_default_mount_postgres() {
-	_default="$( grep -E '^HOST_PATH_TO_POSTGRES_DATADIR=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	_prefix="$( echo "${_default}" | cut -c-1 )"
+		# newline Append
+		if [ "${_data}" = "" ]; then
+			_data="${_mount}"
+		else
+			_data="${_data}\n${_mount}"
+		fi
+	done
 
-	# Relative path?
-	if [ "${_prefix}" = "." ]; then
-		_default="$( echo "${_default}" | sed 's/^\.//g' )" # Remove leading dot: .
-		_default="$( echo "${_default}" | sed 's/^\///' )" # Remove leading slash: /
-		echo "${DEVILBOX_PATH}/${_default}"
-	else
-		echo "${_default}"
-	fi
+	echo "${_data}"
 }
 
-
-################################################################################
-#
-#  G E T   E N A B L E D
-#
-################################################################################
 
 ###
 ### Default enabled Docker Versions
@@ -220,32 +166,6 @@ get_enabled_version_php() {
 }
 
 
-
-################################################################################
-#
-#  G E T   A L L  D O C K E R   V E R S I O N S
-#
-################################################################################
-
-###
-### All Docker Versions
-###
-get_all_docker_httpd() {
-	_all="$( grep -E '^#?HTTPD_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/.*=//g' )"
-	echo "${_all}"
-}
-get_all_docker_mysql() {
-	_all="$( grep -E '^#?MYSQL_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/.*=//g' )"
-	echo "${_all}"
-}
-get_all_docker_postgres() {
-	_all="$( grep -E '^#?POSTGRES_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/.*=//g' )"
-	echo "${_all}"
-}
-get_all_docker_php() {
-	_all="$( grep -E '^#?PHP_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/.*=//g' )"
-	echo "${_all}"
-}
 
 
 ################################################################################
@@ -299,23 +219,6 @@ enable_docker_php() {
 }
 
 
-set_host_port_httpd() {
-	_port="${1}"
-	run "sed -i'' \"s/^HOST_PORT_HTTPD=.*/HOST_PORT_HTTPD=${_port}/\" \"${DEVILBOX_PATH}/.env\""
-}
-set_host_port_mysql() {
-	_port="${1}"
-	run "sed -i'' \"s/^HOST_PORT_MYSQL=.*/HOST_PORT_MYSQL=${_port}/\" \"${DEVILBOX_PATH}/.env\""
-}
-set_host_port_pgsql() {
-	_port="${1}"
-	run "sed -i'' \"s/^HOST_PORT_POSTGRES=.*/HOST_PORT_POSTGRES=${_port}/\" \"${DEVILBOX_PATH}/.env\""
-}
-
-
-set_debug_enable() {
-	run "sed -i'' \"s/^DEBUG_COMPOSE_ENTRYPOINT=.*/DEBUG_COMPOSE_ENTRYPOINT=1/\" \"${DEVILBOX_PATH}/.env\""
-}
 
 
 ################################################################################
@@ -428,9 +331,12 @@ devilbox_stop() {
 	docker-compose rm -f || true
 
 	# Delete existing data dirs
-	sudo rm -rf "$( get_default_mount_httpd )"
-	sudo rm -rf "$( get_default_mount_mysql )"
-	sudo rm -rf "$( get_default_mount_postgres )"
+	_data_dirs="$( get_data_mounts )"
+	IFS='
+	'
+	for d in ${_data_dirs}; do
+		runsu "rm -rf ${d}"
+	done
 }
 
 
