@@ -90,7 +90,6 @@ wait_for() {
 	# Sleep with debug output
 	if [ "${#}" = "2" ]; then
 		if [ "${2}" = "1" ]; then
-			printf "wait "
 			# shellcheck disable=SC2034
 			for i in $(seq 1 "${_time}"); do
 				sleep 1
@@ -362,6 +361,7 @@ debilbox_test() {
 	else
 		echo "[OK]: ${_cnt} / ${_oks} (All 'dvlbox-ok' found)"
 	fi
+	echo "[OK]: ${_cnt} / ${_oks}"
 	echo
 
 	echo "Count [ERR]'s on curl-ed url"
@@ -372,6 +372,7 @@ debilbox_test() {
 	else
 		echo "[OK]: ${_cnt} / 0 (No 'dvlbox-err' found)"
 	fi
+	echo "[ERR]: ${_cnt} / 0"
 	echo
 
 
