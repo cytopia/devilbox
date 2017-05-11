@@ -50,10 +50,6 @@ class Dns extends _Base implements _iBase
 			$cmd = 'dig +time=1 +tries=1 @172.16.238.100 version.bind chaos TXT';
 			exec($cmd, $output, $exit_code);
 
-			if ($exit_code != 0) {
-				return false;
-			}
-
 			self::$_available[$hostname] = ($exit_code != 0) ? false : true;
 
 		}
