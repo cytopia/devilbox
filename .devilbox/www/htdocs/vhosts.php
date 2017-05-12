@@ -49,8 +49,9 @@
 						</table>
 					<?php else: ?>
 						<h4>No projects here.</h4>
-						<p>Simply create a folder in <strong><?php echo $Docker->getEnv('HOST_PATH_HTTPD_DATADIR');?></strong> (on your host computer - not inside the docker).</p>
+						<p>Simply create a directory in <strong><?php echo $Docker->getEnv('HOST_PATH_HTTPD_DATADIR');?></strong> on your host computer (or in <strong>/shared/httpd</strong> inside the php container).</p>
 						<p><strong>Example:</strong><br/><?php echo $Docker->getEnv('HOST_PATH_HTTPD_DATADIR');?>/my_project</p>
+						<p>It will then be available via <strong>http://my_project.<?php echo loadClass('Php')->getTldSuffix();?></strong></p>
 					<?php endif;?>
 				</div>
 			</div>
@@ -98,7 +99,7 @@
 			function checkDns(vhost) {
 				var xhttp = new XMLHttpRequest();
 				// Timeout after 1 seconds and mark it invalid DNS
-				xhttp.timeout = <?php echo loadClass('Docker')->getEnv('DNS_CHECK_TIMEOUT');?>000;
+				xhttp.timeout = <?php echo loadClass('Docker')->getEnv('DNS_CHECK_TIMEOUT');?> * 100;
 
 				var el_valid = document.getElementById('valid-' + vhost);
 				var el_href = document.getElementById('href-' + vhost);
@@ -106,7 +107,7 @@
 
 				xhttp.onreadystatechange = function(e) {
 					if (this.readyState == 4 && this.status == 200) {
-						//clearTimeout(xmlHttpTimeout);
+						clearTimeout(xmlHttpTimeout);
 						el_valid.className += ' bg-success';
 						el_valid.innerHTML = 'OK';
 						el_href.innerHTML = '<a target="_blank" href="http://'+vhost+'.<?php echo loadClass('Php')->getTldSuffix().$Docker->getPort();?>">'+vhost+'.<?php echo loadClass('Php')->getTldSuffix().$Docker->getPort();?></a>';
@@ -125,10 +126,10 @@
 				xhttp.open('GET', 'http://'+vhost+'.<?php echo loadClass('Php')->getTldSuffix();?>', true);
 				xhttp.send();
 				// Timeout to abort in 1 second
-				//var xmlHttpTimeout=setTimeout(ajaxTimeout,20000);
-				//function ajaxTimeout(){
-				//	xhttp.abort();
-				//}
+				var xmlHttpTimeout=setTimeout(ajaxTimeout, <?php echo loadClass('Docker')->getEnv('DNS_CHECK_TIMEOUT');?>100);
+				function ajaxTimeout(){
+					xhttp.ontimeout();
+				}
 			}
 
 
