@@ -98,48 +98,48 @@
 			 */
 			function checkDns(vhost) {
 				var xhttp = new XMLHttpRequest();
-				// Timeout after 1 seconds and mark it invalid DNS
-				xhttp.timeout = <?php echo loadClass('Docker')->getEnv('DNS_CHECK_TIMEOUT');?> * 100;
 
-				var el_valid = document.getElementById('valid-' + vhost);
-				var el_href = document.getElementById('href-' + vhost);
-				var error = this.responseText;
+				// Timeout after XXX seconds and mark it invalid DNS
+				xhttp.timeout = <?php echo loadClass('Docker')->getEnv('DNS_CHECK_TIMEOUT');?>000;
 
 				xhttp.onreadystatechange = function(e) {
+					var el_valid = document.getElementById('valid-' + vhost);
+					var el_href = document.getElementById('href-' + vhost);
+					var error = this.responseText;
+
 					if (this.readyState == 4 && this.status == 200) {
 						clearTimeout(xmlHttpTimeout);
 						el_valid.className += ' bg-success';
 						el_valid.innerHTML = 'OK';
 						el_href.innerHTML = '<a target="_blank" href="http://'+vhost+'.<?php echo loadClass('Php')->getTldSuffix().$Docker->getPort();?>">'+vhost+'.<?php echo loadClass('Php')->getTldSuffix().$Docker->getPort();?></a>';
+					} else {
+						//console.log(vhost);
 					}
 				}
-				xhttp.ontimeout = function(e) {
+				xhttp.open('GET', 'http://'+vhost+'.<?php echo loadClass('Php')->getTldSuffix();?>/devilbox-api/status.json', true);
+				xhttp.send();
+				// Timeout to abort in 1 second
+				var xmlHttpTimeout=setTimeout(ajaxTimeout, <?php echo loadClass('Docker')->getEnv('DNS_CHECK_TIMEOUT');?>000);
+				function ajaxTimeout(e){
+					var el_valid = document.getElementById('valid-' + vhost);
+					var el_href = document.getElementById('href-' + vhost);
+					var error = this.responseText;
+
 					el_valid.className += ' bg-danger';
 					el_valid.innerHTML = 'ERR';
 					el_href.innerHTML = 'No DNS record found: <code>127.0.0.1 '+vhost+'.<?php echo loadClass('Php')->getTldSuffix();?></code>';
 				}
-				//xhttp.abort = function(e) {
-				//	el_valid.className += ' bg-danger';
-				//	el_valid.innerHTML = 'ERR';
-				//	el_href.innerHTML = 'No DNS record found: <code>127.0.0.1 '+vhost+'.<?php echo loadClass('Php')->getTldSuffix();?></code>';
-				//}
-				xhttp.open('GET', 'http://'+vhost+'.<?php echo loadClass('Php')->getTldSuffix();?>', true);
-				xhttp.send();
-				// Timeout to abort in 1 second
-				var xmlHttpTimeout=setTimeout(ajaxTimeout, <?php echo loadClass('Docker')->getEnv('DNS_CHECK_TIMEOUT');?>100);
-				function ajaxTimeout(){
-					xhttp.ontimeout();
-				}
-			}
 
+			}
 
 			var vhosts = document.getElementsByName('vhost[]');
 
 			for (i = 0; i < vhosts.length; i++) {
 				updateStatus(vhosts[i].value);
 			}
-
 		})();
+
+
 		</script>
 	</body>
 </html>
