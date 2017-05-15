@@ -122,6 +122,7 @@ class Helper
 		}
 
 		// New request, generic check
+		// Note the traiing dot to prevent recursive lookups
 		$ip = $this->exec('ping -c 1 '.$hostname.'. 2>/dev/null | grep -Eo \'[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\' | head -1');
 		//$ip = gethostbyname($hostname.'');
 
