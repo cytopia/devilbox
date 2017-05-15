@@ -30,33 +30,15 @@ class Httpd extends BaseClass implements BaseInterface
 
 		// 1. Check htdocs folder
 		if (!$this->_is_valid_dir($htdocs)) {
+			$error[] = 'error';
 			$error[] = 'Missing <strong>htdocs</strong> directory in: <strong>'.loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR').'/'.$vhost.'/</strong>';
 		}
 
-		if ($GLOBALS['ENABLE_VHOST_DNS_CHECK']) {
-
-			// 2. Check /etc/resolv DNS entry
-			$output;
-			if (loadClass('Helper')->exec('getent hosts '.$domain, $output) !== 0) {
-				$error[] = 'Missing entry in <strong>/etc/hosts</strong>:<br/><code>127.0.0.1 '.$domain.'</code>';
-			}
-
-
-			// 3. Check correct /etc/resolv entry
-			$dns_ip = '127.0.0.1';
-			if (isset($output[0])) {
-				$tmp = explode(' ', $output[0]);
-				if (isset($tmp[0])) {
-					$dns_ip = $tmp[0];
-				}
-			}
-			if ($dns_ip != '127.0.0.1') {
-				$error[] = 'Error in <strong>/etc/hosts</strong><br/>'.
-							'Found:<br/>'.
-							'<code>'.$dns_ip.' '.$domain.'</code><br/>'.
-							'But it should be:<br/>'.
-							'<code>127.0.0.1 '.$domain.'</code><br/>';
-			}
+		// 2. Check internal DNS server
+		$err = false;
+		if (!$this->canConnect($err, $domain)) {
+			$error[] = 'warning';
+			$error[] = 'DNS server not running.<br/>You won\'t be able to work inside the PHP container.';
 		}
 
 		if (is_array($error) && count($error)) {

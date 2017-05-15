@@ -78,10 +78,17 @@
 						el_href = document.getElementById('href-' + vhost);
 						error = this.responseText;
 
-						if (error.length) {
+						if (error.length && error.match(/^error/)) {
+							console.log(error);
 							el_valid.className += ' bg-danger';
 							el_valid.innerHTML = 'ERR';
 							el_href.innerHTML = error;
+						} else if (error.length && error.match(/^warning/)) {
+							console.log(error);
+							el_valid.className += ' bg-warning';
+							el_valid.innerHTML = 'WARN';
+							el_href.innerHTML = error.replace('warning', '');
+							checkDns(vhost);
 						} else {
 							checkDns(vhost);
 						}
@@ -109,8 +116,10 @@
 					if (this.readyState == 4 && this.status == 200) {
 						clearTimeout(xmlHttpTimeout);
 						el_valid.className += ' bg-success';
-						el_valid.innerHTML = 'OK';
-						el_href.innerHTML = '<a target="_blank" href="http://'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix().loadClass('Httpd')->getPort();?>">'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix().loadClass('Httpd')->getPort();?></a>';
+						if (el_valid.innerHTML != 'WARN') {
+							el_valid.innerHTML = 'OK';
+						}
+						el_href.innerHTML = '<a target="_blank" href="http://'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix().loadClass('Httpd')->getPort();?>">'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix().loadClass('Httpd')->getPort();?></a>' + el_href.innerHTML;
 					} else {
 						//console.log(vhost);
 					}
@@ -127,7 +136,7 @@
 
 					el_valid.className += ' bg-danger';
 					el_valid.innerHTML = 'ERR';
-					el_href.innerHTML = 'No DNS record found: <code>127.0.0.1 '+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix();?></code>';
+					el_href.innerHTML = 'No Host DNS record found. Add the following to <code>/etc/hosts</code>:<br/><code>127.0.0.1 '+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix();?></code>';
 				}
 
 			}
