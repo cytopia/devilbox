@@ -1,13 +1,12 @@
 <?php require '../config.php'; ?>
-<?php $Postgres = loadClass('Redis'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php require '../include/head.php'; ?>
+		<?php echo loadClass('Html')->getHead(); ?>
 	</head>
 
 	<body>
-		<?php require '../include/navbar.php'; ?>
+		<?php echo loadClass('Html')->getNavbar(); ?>
 
 		<div class="container">
 
@@ -18,7 +17,7 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<?php if (!\devilbox\Redis::isAvailable($GLOBALS['REDIS_HOST_NAME'])): ?>
+					<?php if (!loadClass('Redis')->isAvailable()): ?>
 						<p>Redis container is not running.</p>
 					<?php else: ?>
 						<table class="table table-striped">
@@ -44,6 +43,6 @@
 
 		</div><!-- /.container -->
 
-		<?php require '../include/footer.php'; ?>
+		<?php echo loadClass('Html')->getFooter(); ?>
 	</body>
 </html>

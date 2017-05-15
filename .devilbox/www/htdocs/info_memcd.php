@@ -1,13 +1,12 @@
 <?php require '../config.php'; ?>
-<?php $Postgres = loadClass('Memcd'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php require '../include/head.php'; ?>
+		<?php echo loadClass('Html')->getHead(); ?>
 	</head>
 
 	<body>
-		<?php require '../include/navbar.php'; ?>
+		<?php echo loadClass('Html')->getNavbar(); ?>
 
 		<div class="container">
 
@@ -18,7 +17,7 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<?php if (!\devilbox\Memcd::isAvailable($GLOBALS['MEMCD_HOST_NAME'])): ?>
+					<?php if (!loadClass('Memcd')->isAvailable()): ?>
 						<p>Memcahed container is not running.</p>
 					<?php else: ?>
 						<?php foreach (loadClass('Memcd')->getInfo() as $srv => $data): ?>
@@ -47,6 +46,6 @@
 
 		</div><!-- /.container -->
 
-		<?php require '../include/footer.php'; ?>
+		<?php echo loadClass('Html')->getFooter(); ?>
 	</body>
 </html>

@@ -4,78 +4,17 @@ namespace devilbox;
 /**
  * @requires devilbox::Logger
  */
-class Pgsql extends _Base implements _iBase
+class Pgsql extends BaseClass implements BaseInterface
 {
-
 	/*********************************************************************************
 	 *
-	 * Statics
+	 * Variables
 	 *
 	 *********************************************************************************/
 
 	/**
-	 * Postgres instance
-	 * @var Postgres|null
-	 */
-	protected static $instance = null;
-
-	/**
-	 * Singleton Instance getter.
-	 *
-	 * @param string $user Username
-	 * @param string $pass Password
-	 * @param string $host Host
-	 * @return object|null
-	 */
-	public static function getInstance($host = null, $user = null, $pass = null)
-	{
-		if (!isset(static::$instance)) {
-			static::$instance = new static($user, $pass, $host);
-		}
-		// If current Postgres instance was unable to connect
-		if ((static::$instance->getConnectError())) {
-			//loadClass('Logger')->error('Instance has errors:' . "\r\n" . var_export(static::$instance, true) . "\r\n");
-		}
-		return static::$instance;
-	}
-
-	/**
-	 * Connect to database
-	 *
-	 * @param  string $err  Reference to error message
-	 * @param  string $user Postgres username
-	 * @param  string $pass Postgres password
-	 * @param  string $host Postgres hostname
-	 * @return boolean
-	 */
-	public static function testConnection(&$err, $host, $user, $pass)
-	{
-		$err = false;
-
-		// Silence errors and try to connect
-		error_reporting(0);
-		$link = pg_connect('host='.$host.' user='.$user.' password='.$pass);
-		error_reporting(-1);
-
-		if (!$link || pg_connection_status($link) !== PGSQL_CONNECTION_OK) {
-			$err = 'Failed to connect';
-			return false;
-		}
-		pg_close($link);
-		return true;
-	}
-
-
-
-	/*********************************************************************************
-	 *
-	 * Private Variables
-	 *
-	 *********************************************************************************/
-
-	/**
-	 * Postgres Resource
-	 * @var resource|null
+	 * PgSQL connection link
+	 * @var null
 	 */
 	private $_link = null;
 
@@ -83,7 +22,7 @@ class Pgsql extends _Base implements _iBase
 
 	/*********************************************************************************
 	 *
-	 * Construct/Destructor
+	 * Constructor Overwrite
 	 *
 	 *********************************************************************************/
 
@@ -95,19 +34,25 @@ class Pgsql extends _Base implements _iBase
 	 * @param string $host     Host
 	 * @param string $database Database name
 	 */
-	public function __construct($user, $pass, $host, $database = null)
+	public function __construct($hostname, $data = array())
 	{
+		parent::__construct($hostname, $data);
+
+		$user = $data['user'];
+		$pass = $data['pass'];
+		$db = isset($data['db']) ? $data['db'] : null;
+
 		// Silence errors and try to connect
 		error_reporting(0);
-		if ($database !== null) {
-			$link = pg_connect('host='.$host.' dbname='.$database.' user='.$user.' password='.$pass);
+		if ($db !== null) {
+			$link = pg_connect('host='.$hostname.' dbname='.$db.' user='.$user.' password='.$pass);
 		} else {
-			$link = pg_connect('host='.$host.' user='.$user.' password='.$pass);
+			$link = pg_connect('host='.$hostname.' user='.$user.' password='.$pass);
 		}
 		error_reporting(-1);
 
 		if (!$link || pg_connection_status($link) !== PGSQL_CONNECTION_OK) {
-			$this->setConnectError('Failed to connect to '.$user.'@'.$host);
+			$this->setConnectError('Failed to connect to '.$user.'@'.$hostname);
 			$this->setConnectErrno(1);
 			//loadClass('Logger')->error($this->_connect_error);
 		} else {
@@ -115,21 +60,22 @@ class Pgsql extends _Base implements _iBase
 		}
 	}
 
-
-
 	/**
 	 * Destructor
 	 */
 	public function __destruct()
 	{
 		if ($this->_link) {
-			@pg_close($this->_link);
+			pg_close($this->_link);
 		}
 	}
 
+
+
+
 	/*********************************************************************************
 	 *
-	 * PostgreSQL  Select functions
+	 * Select functions
 	 *
 	 *********************************************************************************/
 
@@ -143,10 +89,9 @@ class Pgsql extends _Base implements _iBase
 	public function select($query, $callback = null)
 	{
 		if (!$this->_link) {
-			loadClass('Logger')->error('Postgres error, link is no resource in select()');
+			loadClass('Logger')->error('Postgres error, link is no resource in select(): \''.$this->_link.'\'');
 			return false;
 		}
-
 		if (!($result = pg_query($this->_link, $query))) {
 			$this->setError('PostgreSQL - error on result: '.pg_result_error($result)."\n" . 'query:'."\n" . $query);
 			$this->setErrno(1);
@@ -169,6 +114,7 @@ class Pgsql extends _Base implements _iBase
 
 		return $data;
 	}
+
 
 	/**
 	 * Get all PostgreSQL Databases.
@@ -196,9 +142,17 @@ class Pgsql extends _Base implements _iBase
 
 		// Get schemas for each database
 		foreach ($databases as $name => &$database) {
-			$PSQL = new Pgsql('postgres', loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'), $GLOBALS['PGSQL_HOST_NAME'], $name);
+			$PSQL = new Pgsql(
+				$this->getIpAddress(),
+				array(
+					'user' => loadClass('Helper')->getEnv('PGSQL_ROOT_USER'),
+					'pass' => loadClass('Helper')->getEnv('PGSQL_ROOT_PASSWORD'),
+					'db' => $name
+				)
+			);
 
-			$sql = "SELECT n.nspname AS schemas FROM pg_catalog.pg_namespace AS n WHERE n.nspname !~ '^pg_' AND n.nspname <> 'information_schema';";
+			//$sql = "SELECT n.nspname AS schemas FROM pg_catalog.pg_namespace AS n WHERE n.nspname !~ '^pg_' AND n.nspname <> 'information_schema';";
+			$sql = "SELECT n.nspname AS schemas FROM pg_catalog.pg_namespace AS n;";
 			$callback = function ($row, &$data) {
 				$data[$row['schemas']] = array();
 			};
@@ -219,7 +173,15 @@ class Pgsql extends _Base implements _iBase
 	 */
 	public function getSchemaSize($database, $schema)
 	{
-		$PSQL = new Pgsql('postgres', loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'), $GLOBALS['PGSQL_HOST_ADDR'], $database);
+		$PSQL = new Pgsql(
+			$this->getIpAddress(),
+			array(
+				'user' => loadClass('Helper')->getEnv('PGSQL_ROOT_USER'),
+				'pass' => loadClass('Helper')->getEnv('PGSQL_ROOT_PASSWORD'),
+				'db' => $database
+			)
+		);
+
 		$callback = function ($row, &$data) {
 			$data = $row['size'];
 
@@ -239,6 +201,7 @@ class Pgsql extends _Base implements _iBase
 		return $size ? $size : 0;
 	}
 
+
 	/**
 	 * Get Number of Tables per Schema
 	 *
@@ -248,7 +211,15 @@ class Pgsql extends _Base implements _iBase
 	 */
 	public function getTableCount($database, $schema)
 	{
-		$PSQL = new Pgsql('postgres', loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'), $GLOBALS['PGSQL_HOST_ADDR'], $database);
+		$PSQL = new Pgsql(
+			$this->getIpAddress(),
+			array(
+				'user' => loadClass('Helper')->getEnv('PGSQL_ROOT_USER'),
+				'pass' => loadClass('Helper')->getEnv('PGSQL_ROOT_PASSWORD'),
+				'db' => $database
+			)
+		);
+
 		$callback = function ($row, &$data) {
 			$data = $row['count'];
 		};
@@ -266,7 +237,6 @@ class Pgsql extends _Base implements _iBase
 		$count = $PSQL->select($sql, $callback);
 		return $count ? $count : 0;
 	}
-
 
 
 	/**
@@ -310,14 +280,51 @@ class Pgsql extends _Base implements _iBase
 	 *
 	 *********************************************************************************/
 
-	/**
-	 * Get PgSQL Name.
-	 *
-	 * @return string PgSQL short name.
-	 */
+	private $_can_connect = array();
+	private $_can_connect_err = array();
+
+	private $_name = null;
+	private $_version = null;
+
+	public function canConnect(&$err, $hostname, $data = array())
+	{
+		$err = false;
+
+		// Return if already cached
+		if (isset($this->_can_connect[$hostname])) {
+			// Assume error for unset error message
+			$err = isset($this->_can_connect_err[$hostname]) ? $this->_can_connect_err[$hostname] : true;
+			return $this->_can_connect[$hostname];
+		}
+
+		// Silence errors and try to connect
+		error_reporting(0);
+		$link = pg_connect('host='.$hostname.' user='.$data['user'].' password='.$data['pass']);
+		error_reporting(-1);
+
+		if (!$link || pg_connection_status($link) !== PGSQL_CONNECTION_OK) {
+			$err = 'Failed to connect to host: '.$hostname;
+			$this->_can_connect[$hostname] = false;
+		} else {
+			$this->_can_connect[$hostname] = true;
+		}
+		if ($link) {
+			pg_close($link);
+		}
+
+		$this->_can_connect_err[$hostname] = $err;
+		return $this->_can_connect[$hostname];
+	}
+
 	public function getName($default = 'PostgreSQL')
 	{
-		if (!static::isAvailable('pgsql')) {
+		// Return if already cached
+		if ($this->_name !== null) {
+			return $this->_name;
+		}
+
+		// Return default if not available
+		if (!$this->isAvailable()) {
 			return $default;
 		}
 
@@ -325,36 +332,44 @@ class Pgsql extends _Base implements _iBase
 			$data = $row['version'];
 		};
 
-		$name = $this->egrep('/[a-zA-Z0-9]*/', $this->select('SELECT version();', $callback));
+		$name = loadClass('Helper')->egrep('/[a-zA-Z0-9]*/', $this->select('SELECT version();', $callback));
 
 		if (!$name) {
 			loadClass('Logger')->error('Could not get PgSQL Name');
-			return $default;
+			$this->_name = $default;
+		} else {
+			$this->_name = $name;
 		}
-		return $name;
+
+		return $this->_name;
 	}
 
-	/**
-	 * Get PgSQL Version.
-	 *
-	 * @return string PgSQL version.
-	 */
 	public function getVersion()
 	{
-		if (!static::isAvailable('pgsql')) {
-			return '';
+		// Return if already cached
+		if ($this->_version !== null) {
+			return $this->_version;
+		}
+
+		// Return empty if not available
+		if (!$this->isAvailable()) {
+			$this->_version = '';
+			return $this->_version;
 		}
 
 		$callback = function ($row, &$data) {
 			$data = $row['version'];
 		};
 
-		$version = $this->egrep('/[.0-9]+/', $this->select('SELECT version();', $callback));
+		$version = loadClass('Helper')->egrep('/[.0-9]+/', $this->select('SELECT version();', $callback));
 
 		if (!$version) {
 			loadClass('Logger')->error('Could not get PgSQL version');
-			return '';
+			$this->_version = '';
+		} else {
+			$this->_version = $version;
 		}
-		return $version;
+
+		return $this->_version;
 	}
 }

@@ -1,5 +1,4 @@
 <?php require '../config.php'; ?>
-<?php $Docker = loadClass('Docker'); ?>
 <?php
 
 /*********************************************************************************
@@ -8,28 +7,17 @@
  *
  *********************************************************************************/
 
-/*************************************************************
- * Load required files
- *************************************************************/
-loadFile('Php');
-loadFile('Dns');
-loadFile('Httpd');
-loadFile('Mysql');
-loadFile('Pgsql');
-loadFile('Redis');
-loadFile('Memcd');
-
 
 /*************************************************************
  * Get availability
  *************************************************************/
-$avail_php		= \devilbox\Php::isAvailable($GLOBALS['PHP_HOST_NAME']);
-$avail_dns		= \devilbox\Dns::isAvailable($GLOBALS['DNS_HOST_NAME']);
-$avail_httpd	= \devilbox\Httpd::isAvailable($GLOBALS['HTTPD_HOST_NAME']);
-$avail_mysql	= \devilbox\Mysql::isAvailable($GLOBALS['MYSQL_HOST_NAME']);
-$avail_pgsql	= \devilbox\Pgsql::isAvailable($GLOBALS['PGSQL_HOST_NAME']);
-$avail_redis	= \devilbox\Redis::isAvailable($GLOBALS['REDIS_HOST_NAME']);
-$avail_memcd	= \devilbox\Memcd::isAvailable($GLOBALS['MEMCD_HOST_NAME']);
+$avail_php		= loadClass('Php')->isAvailable();
+$avail_dns		= loadClass('Dns')->isAvailable();
+$avail_httpd	= loadClass('Httpd')->isAvailable();
+$avail_mysql	= loadClass('Mysql')->isAvailable();
+$avail_pgsql	= loadClass('Pgsql')->isAvailable();
+$avail_redis	= loadClass('Redis')->isAvailable();
+$avail_memcd	= loadClass('Memcd')->isAvailable();
 
 
 /*************************************************************
@@ -39,23 +27,23 @@ $avail_memcd	= \devilbox\Memcd::isAvailable($GLOBALS['MEMCD_HOST_NAME']);
 $connection = array();
 $error	= null;
 
-// ---- HTTPD ----
+// ---- HTTPD (required) ----
 $host	= $GLOBALS['HTTPD_HOST_NAME'];
-$succ	= \devilbox\Httpd::testConnection($error, $host);
+$succ	= loadClass('Httpd')->canConnect($error, $host);
 $connection['Httpd'][$host] = array(
 	'error' => $error,
 	'host' => $host,
 	'succ' => $succ
 );
-$host	= \devilbox\Httpd::getIpAddress($GLOBALS['HTTPD_HOST_NAME']);
-$succ	= \devilbox\Httpd::testConnection($error, $host);
+$host	= loadClass('Httpd')->getIpAddress();
+$succ	= loadClass('Httpd')->canConnect($error, $host);
 $connection['Httpd'][$host] = array(
 	'error' => $error,
 	'host' => $host,
 	'succ' => $succ
 );
-$host	= 'random.'.loadClass('Php')->getTldSuffix();
-$succ	= \devilbox\Httpd::testConnection($error, $host);
+$host	= 'random.'.loadClass('Httpd')->getTldSuffix();
+$succ	= loadClass('Httpd')->canConnect($error, $host);
 $connection['Httpd'][$host] = array(
 	'error' => $error,
 	'host' => $host,
@@ -65,21 +53,21 @@ $connection['Httpd'][$host] = array(
 // ---- MYSQL ----
 if ($avail_mysql) {
 	$host	= $GLOBALS['MYSQL_HOST_NAME'];
-	$succ	= \devilbox\Mysql::testConnection($error, $host, 'root', loadClass('Docker')->getEnv('MYSQL_ROOT_PASSWORD'));
+	$succ	= loadClass('Mysql')->canConnect($error, $host, array('user' => 'root', 'pass' => loadClass('Helper')->getEnv('MYSQL_ROOT_PASSWORD')));
 	$connection['MySQL'][$host] = array(
 		'error' => $error,
 		'host' => $host,
 		'succ' => $succ
 	);
-	$host	= \devilbox\Mysql::getIpAddress($GLOBALS['MYSQL_HOST_NAME']);
-	$succ	= \devilbox\Mysql::testConnection($error, $host, 'root', loadClass('Docker')->getEnv('MYSQL_ROOT_PASSWORD'));
+	$host	= loadClass('Mysql')->getIpAddress();
+	$succ	= loadClass('Mysql')->canConnect($error, $host, array('user' => 'root', 'pass' => loadClass('Helper')->getEnv('MYSQL_ROOT_PASSWORD')));
 	$connection['MySQL'][$host] = array(
 		'error' => $error,
 		'host' => $host,
 		'succ' => $succ
 	);
 	$host	= '127.0.0.1';
-	$succ	= \devilbox\Mysql::testConnection($error, $host, 'root', loadClass('Docker')->getEnv('MYSQL_ROOT_PASSWORD'));
+	$succ	= loadClass('Mysql')->canConnect($error, $host, array('user' => 'root', 'pass' => loadClass('Helper')->getEnv('MYSQL_ROOT_PASSWORD')));
 	$connection['MySQL'][$host] = array(
 		'error' => $error,
 		'host' => $host,
@@ -90,21 +78,21 @@ if ($avail_mysql) {
 // ---- PGSQL ----
 if ($avail_pgsql) {
 	$host	= $GLOBALS['PGSQL_HOST_NAME'];
-	$succ	= \devilbox\Pgsql::testConnection($error, $host, loadClass('Docker')->getEnv('PGSQL_ROOT_USER'), loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'));
+	$succ	= loadClass('Pgsql')->canConnect($error, $host, array('user' => loadClass('Helper')->getEnv('PGSQL_ROOT_USER'), 'pass' => loadClass('Helper')->getEnv('PGSQL_ROOT_PASSWORD')));
 	$connection['PgSQL'][$host] = array(
 		'error' => $error,
 		'host' => $host,
 		'succ' => $succ
 	);
-	$host	= \devilbox\Pgsql::getIpAddress($GLOBALS['PGSQL_HOST_NAME']);
-	$succ	= \devilbox\Pgsql::testConnection($error, $host, loadClass('Docker')->getEnv('PGSQL_ROOT_USER'), loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'));
+	$host	= loadClass('Pgsql')->getIpAddress();
+	$succ	= loadClass('Pgsql')->canConnect($error, $host, array('user' => loadClass('Helper')->getEnv('PGSQL_ROOT_USER'), 'pass' => loadClass('Helper')->getEnv('PGSQL_ROOT_PASSWORD')));
 	$connection['PgSQL'][$host] = array(
 		'error' => $error,
 		'host' => $host,
 		'succ' => $succ
 	);
 	$host	= '127.0.0.1';
-	$succ	= \devilbox\Pgsql::testConnection($error, $host, loadClass('Docker')->getEnv('PGSQL_ROOT_USER'), loadClass('Docker')->getEnv('PGSQL_ROOT_PASSWORD'));
+	$succ	= loadClass('Pgsql')->canConnect($error, $host, array('user' => loadClass('Helper')->getEnv('PGSQL_ROOT_USER'), 'pass' => loadClass('Helper')->getEnv('PGSQL_ROOT_PASSWORD')));
 	$connection['PgSQL'][$host] = array(
 		'error' => $error,
 		'host' => $host,
@@ -115,21 +103,21 @@ if ($avail_pgsql) {
 // ---- REDIS ----
 if ($avail_redis) {
 	$host	= $GLOBALS['REDIS_HOST_NAME'];
-	$succ	= \devilbox\Redis::testConnection($error, $host);
+	$succ	= loadClass('Redis')->canConnect($error, $host);
 	$connection['Redis'][$host] = array(
 		'error' => $error,
 		'host' => $host,
 		'succ' => $succ
 	);
-	$host	= \devilbox\Redis::getIpAddress($GLOBALS['REDIS_HOST_NAME']);
-	$succ	= \devilbox\Redis::testConnection($error, $host);
+	$host	= loadClass('Redis')->getIpAddress();
+	$succ	= loadClass('Redis')->canConnect($error, $host);
 	$connection['Redis'][$host] = array(
 		'error' => $error,
 		'host' => $host,
 		'succ' => $succ
 	);
 	$host	= '127.0.0.1';
-	$succ	= \devilbox\Redis::testConnection($error, $host);
+	$succ	= loadClass('Redis')->canConnect($error, $host);
 	$connection['Redis'][$host] = array(
 		'error' => $error,
 		'host' => $host,
@@ -140,21 +128,21 @@ if ($avail_redis) {
 // ---- MEMCACHED ----
 if ($avail_memcd) {
 	$host	= $GLOBALS['MEMCD_HOST_NAME'];
-	$succ	= \devilbox\Memcd::testConnection($error, $host);
+	$succ	= loadClass('Memcd')->canConnect($error, $host);
 	$connection['Memcached'][$host] = array(
 		'error' => $error,
 		'host' => $host,
 		'succ' => $succ
 	);
-	$host	= \devilbox\Memcd::getIpAddress($GLOBALS['MEMCD_HOST_NAME']);
-	$succ	= \devilbox\Memcd::testConnection($error, $host);
+	$host	= loadClass('Memcd')->getIpAddress();
+	$succ	= loadClass('Memcd')->canConnect($error, $host);
 	$connection['Memcached'][$host] = array(
 		'error' => $error,
 		'host' => $host,
 		'succ' => $succ
 	);
 	$host	= '127.0.0.1';
-	$succ	= \devilbox\Memcd::testConnection($error, $host);
+	$succ	= loadClass('Memcd')->canConnect($error, $host);
 	$connection['Memcached'][$host] = array(
 		'error' => $error,
 		'host' => $host,
@@ -162,23 +150,22 @@ if ($avail_memcd) {
 	);
 }
 
-// ---- BIND ----
-if ($avail_dns) {
-	$host	= $GLOBALS['DNS_HOST_NAME'];
-	$succ	= \devilbox\Dns::testConnection($error, $host);
-	$connection['Bind'][$host] = array(
-		'error' => $error,
-		'host' => $host,
-		'succ' => $succ
-	);
-	$host	= \devilbox\Dns::getIpAddress($GLOBALS['DNS_HOST_NAME']);
-	$succ	= \devilbox\Dns::testConnection($error, $host);
-	$connection['Bind'][$host] = array(
-		'error' => $error,
-		'host' => $host,
-		'succ' => $succ
-	);
-}
+// ---- BIND (required)----
+$host	= $GLOBALS['DNS_HOST_NAME'];
+$succ	= loadClass('Dns')->canConnect($error, $host);
+$connection['Bind'][$host] = array(
+	'error' => $error,
+	'host' => $host,
+	'succ' => $succ
+);
+$host	= loadClass('Dns')->getIpAddress();
+$succ	= loadClass('Dns')->canConnect($error, $host);
+$connection['Bind'][$host] = array(
+	'error' => $error,
+	'host' => $host,
+	'succ' => $succ
+);
+
 
 /*************************************************************
  * Test Health
@@ -197,107 +184,20 @@ foreach ($connection as $docker) {
 $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 
 
-
-
-
-
-
-
-
-
-/*********************************************************************************
- *
- * F U N C T I O N S
- *
- *********************************************************************************/
-
-function getCirle($name) {
-	switch ($name) {
-		case 'dns':
-			$class = 'bg-info';
-			$version = loadClass('Dns')->getVersion();
-			$available = $GLOBALS['avail_'.$name];
-			$name = loadClass('Dns')->getName();
-			break;
-		case 'php':
-			$class = 'bg-info';
-			$version = loadClass('Php')->getVersion();
-			$available = $GLOBALS['avail_'.$name];
-			$name = loadClass('Php')->getName();
-			break;
-		case 'httpd':
-			$class = 'bg-info';
-			$version = loadClass('Httpd')->getVersion();
-			$available = $GLOBALS['avail_'.$name];
-			$name = loadClass('Httpd')->getName();
-			break;
-		case 'mysql':
-			$class = 'bg-warning';
-			$version = loadClass('Mysql')->getVersion();
-			$available = $GLOBALS['avail_'.$name];
-			$name = loadClass('Mysql')->getName();
-			break;
-		case 'pgsql':
-			$class = 'bg-warning';
-			$version = loadClass('Pgsql')->getVersion();
-			$available = $GLOBALS['avail_'.$name];
-			$name = loadClass('Pgsql')->getName();
-			break;
-		case 'redis':
-			$class = 'bg-danger';
-			$version = loadClass('Redis')->getVersion();
-			$available = $GLOBALS['avail_'.$name];
-			$name = loadClass('Redis')->getName();
-			break;
-		case 'memcd':
-			$class = 'bg-danger';
-			$version = loadClass('Memcd')->getVersion();
-			$available = $GLOBALS['avail_'.$name];
-			$name = loadClass('Memcd')->getName();
-			break;
-		default:
-			$available = false;
-			$version = '';
-			break;
-	}
-
-	$style = 'color:black;';
-	$version = '('.$version.')';
-	if (!$available) {
-		$class = '';
-		$style = 'background-color:gray;';
-		$version = '&nbsp;';
-	}
-	$circle = '<div class="circles">'.
-				'<div>'.
-					'<div class="'.$class.'" style="'.$style.'">'.
-						'<div>'.
-							'<div><br/><strong>'.$name.'</strong><br/><small style="color:#333333">'.$version.'</small></div>'.
-						'</div>'.
-					'</div>'.
-				'</div>'.
-			'</div>';
-	return $circle;
-}
-
-
-
-
 /*********************************************************************************
  *
  * H T M L
  *
  *********************************************************************************/
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php $FONT_AWESOME = TRUE; require '../include/head.php'; ?>
+		<?php echo loadClass('Html')->getHead(true); ?>
 	</head>
 
 	<body style="background: #1f1f1f;">
-		<?php require '../include/navbar.php'; ?>
+		<?php echo loadClass('Html')->getNavbar(); ?>
 
 
 		<div class="container">
@@ -347,13 +247,13 @@ function getCirle($name) {
 						<div class="dash-box-body">
 							<div class="row">
 								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
-									<?php echo getCirle('dns'); ?>
+									<?php echo loadClass('Html')->getCirle('dns'); ?>
 								</div>
 								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
-									<?php echo getCirle('php'); ?>
+									<?php echo loadClass('Html')->getCirle('php'); ?>
 								</div>
 								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
-									<?php echo getCirle('httpd'); ?>
+									<?php echo loadClass('Html')->getCirle('httpd'); ?>
 								</div>
 							</div>
 						</div>
@@ -366,10 +266,10 @@ function getCirle($name) {
 						<div class="dash-box-body">
 							<div class="row">
 								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
-									<?php echo getCirle('mysql'); ?>
+									<?php echo loadClass('Html')->getCirle('mysql'); ?>
 								</div>
 								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
-									<?php echo getCirle('pgsql'); ?>
+									<?php echo loadClass('Html')->getCirle('pgsql'); ?>
 								</div>
 							</div>
 						</div>
@@ -382,13 +282,13 @@ function getCirle($name) {
 						<div class="dash-box-body">
 							<div class="row">
 								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
-									<?php echo getCirle('redis'); ?>
+									<?php echo loadClass('Html')->getCirle('redis'); ?>
 								</div>
 								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
-									<?php echo getCirle('memcd'); ?>
+									<?php echo loadClass('Html')->getCirle('memcd'); ?>
 								</div>
 								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
-									<?php echo getCirle('mongodb'); ?>
+									<?php echo loadClass('Html')->getCirle('mongodb'); ?>
 								</div>
 							</div>
 						</div>
@@ -425,7 +325,7 @@ function getCirle($name) {
 									</tr>
 									<tr>
 										<th>vHost TLD</th>
-										<td>*.<?php echo loadClass('Php')->getTldSuffix(); ?></td>
+										<td>*.<?php echo loadClass('Httpd')->getTldSuffix(); ?></td>
 									</tr>
 									<tr>
 										<th>DNS</th>
@@ -433,39 +333,39 @@ function getCirle($name) {
 									</tr>
 									<tr>
 										<th>Postfix</th>
-										<td><?php echo $Docker->getEnv('ENABLE_MAIL') ? 'Enabled'  : '<span class="bg-danger">No</span> Disabled';?></td>
+										<td><?php echo loadClass('Helper')->getEnv('ENABLE_MAIL') ? 'Enabled'  : '<span class="bg-danger">No</span> Disabled';?></td>
 									</tr>
 									<tr>
 										<th>Xdebug</th>
 										<td>
-											<?php $Xdebug = ($Docker->getEnv('PHP_XDEBUG_ENABLE') == 0) ? '' : $Docker->getEnv('PHP_XDEBUG_ENABLE'); ?>
-											<?php if ($Xdebug == $Docker->PHP_config('xdebug.remote_enable')): ?>
-												<?php echo $Docker->PHP_config('xdebug.remote_enable') == 1 ? 'Yes' : 'No'; ?>
+											<?php $Xdebug = (loadClass('Helper')->getEnv('PHP_XDEBUG_ENABLE') == 0) ? '' : loadClass('Helper')->getEnv('PHP_XDEBUG_ENABLE'); ?>
+											<?php if ($Xdebug == loadClass('Php')->getConfig('xdebug.remote_enable')): ?>
+												<?php echo loadClass('Php')->getConfig('xdebug.remote_enable') == 1 ? 'Yes' : 'No'; ?>
 											<?php else: ?>
 												<?php echo '<span class="text-danger">not installed</span>.env file setting differs from custom php .ini file</span><br/>'; ?>
-												<?php echo 'Effective setting: '.$Docker->PHP_config('xdebug.remote_enable'); ?>
+												<?php echo 'Effective setting: '.loadClass('Php')->getConfig('xdebug.remote_enable'); ?>
 											<?php endif; ?>
 										</td>
 									</tr>
 									<tr>
 										<th>Xdebug Remote</th>
 										<td>
-											<?php if ($Docker->getEnv('PHP_XDEBUG_REMOTE_HOST') == $Docker->PHP_config('xdebug.remote_host')): ?>
-												<?php echo $Docker->PHP_config('xdebug.remote_host'); ?>
+											<?php if (loadClass('Helper')->getEnv('PHP_XDEBUG_REMOTE_HOST') == loadClass('Php')->getConfig('xdebug.remote_host')): ?>
+												<?php echo loadClass('Php')->getConfig('xdebug.remote_host'); ?>
 											<?php else: ?>
 												<?php echo '<span class="text-danger">not installed</span>.env file setting differs from custom php .ini file</span><br/>'; ?>
-												<?php echo 'Effective setting: '.$Docker->PHP_config('xdebug.remote_host'); ?>
+												<?php echo 'Effective setting: '.loadClass('Php')->getConfig('xdebug.remote_host'); ?>
 											<?php endif; ?>
 										</td>
 									</tr>
 									<tr>
 										<th>Xdebug Port</th>
 										<td>
-											<?php if ($Docker->getEnv('PHP_XDEBUG_REMOTE_PORT') == $Docker->PHP_config('xdebug.remote_port')): ?>
-												<?php echo $Docker->PHP_config('xdebug.remote_port'); ?>
+											<?php if (loadClass('Helper')->getEnv('PHP_XDEBUG_REMOTE_PORT') == loadClass('Php')->getConfig('xdebug.remote_port')): ?>
+												<?php echo loadClass('Php')->getConfig('xdebug.remote_port'); ?>
 											<?php else: ?>
 												<?php echo '<span class="text-danger">not installed</span>.env file setting differs from custom php .ini file</span><br/>'; ?>
-												<?php echo 'Effective setting: '.$Docker->PHP_config('xdebug.remote_port'); ?>
+												<?php echo 'Effective setting: '.loadClass('Php')->getConfig('xdebug.remote_port'); ?>
 											<?php endif; ?>
 										</td>
 									</tr>
@@ -581,46 +481,46 @@ function getCirle($name) {
 											<tr>
 												<th>php</th>
 												<td><?php echo $GLOBALS['PHP_HOST_NAME']; ?></td>
-												<td><?php echo \devilbox\Php::getIpAddress($GLOBALS['PHP_HOST_NAME']); ?></td>
+												<td><?php echo loadClass('Php')->getIpAddress(); ?></td>
 											</tr>
 											<tr>
 												<th>httpd</th>
 												<td><?php echo $GLOBALS['HTTPD_HOST_NAME']; ?></td>
-												<td><?php echo \devilbox\Httpd::getIpAddress($GLOBALS['HTTPD_HOST_NAME']); ?></td>
+												<td><?php echo loadClass('Httpd')->getIpAddress(); ?></td>
 											</tr>
 											<?php if ($avail_mysql): ?>
 												<tr>
 													<th>mysql</th>
 													<td><?php echo $GLOBALS['MYSQL_HOST_NAME']; ?></td>
-													<td><?php echo \devilbox\Mysql::getIpAddress($GLOBALS['MYSQL_HOST_NAME']); ?></td>
+													<td><?php echo loadClass('Mysql')->getIpAddress(); ?></td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_pgsql): ?>
 												<tr>
 													<th>pgsql</th>
 													<td><?php echo $GLOBALS['PGSQL_HOST_NAME']; ?></td>
-													<td><?php echo \devilbox\Pgsql::getIpAddress($GLOBALS['PGSQL_HOST_NAME']); ?></td>
+													<td><?php echo loadClass('Pgsql')->getIpAddress(); ?></td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_redis): ?>
 												<tr>
 													<th>redis</th>
 													<td><?php echo $GLOBALS['REDIS_HOST_NAME']; ?></td>
-													<td><?php echo \devilbox\Redis::getIpAddress($GLOBALS['REDIS_HOST_NAME']); ?></td>
+													<td><?php echo loadClass('Redis')->getIpAddress(); ?></td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_memcd): ?>
 												<tr>
 													<th>memcached</th>
 													<td><?php echo $GLOBALS['MEMCD_HOST_NAME']; ?></td>
-													<td><?php echo \devilbox\Memcd::getIpAddress($GLOBALS['MEMCD_HOST_NAME']); ?></td>
+													<td><?php echo loadClass('Memcd')->getIpAddress(); ?></td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_dns): ?>
 												<tr>
 													<th>bind</th>
 													<td><?php echo $GLOBALS['DNS_HOST_NAME']; ?></td>
-													<td><?php echo \devilbox\Dns::getIpAddress($GLOBALS['DNS_HOST_NAME']); ?></td>
+													<td><?php echo loadClass('Dns')->getIpAddress(); ?></td>
 												</tr>
 											<?php endif; ?>
 										</tbody>
@@ -653,34 +553,34 @@ function getCirle($name) {
 											</tr>
 											<tr>
 												<th>httpd</th>
-												<td><?php echo loadClass('Docker')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Docker')->getEnv('HOST_PORT_HTTPD');?></td>
+												<td><?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_HTTPD');?></td>
 												<td>80</td>
 											</tr>
 											<?php if ($avail_mysql): ?>
 												<tr>
 													<th>mysql</th>
-													<td><?php echo loadClass('Docker')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Docker')->getEnv('HOST_PORT_MYSQL');?></td>
+													<td><?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_MYSQL');?></td>
 													<td>3306</td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_pgsql): ?>
 												<tr>
 													<th>pgsql</th>
-													<td><?php echo loadClass('Docker')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Docker')->getEnv('HOST_PORT_PGSQL');?></td>
+													<td><?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_PGSQL');?></td>
 													<td>5432</td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_redis): ?>
 												<tr>
 													<th>redis</th>
-													<td><?php echo loadClass('Docker')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Docker')->getEnv('HOST_PORT_REDIS');?></td>
+													<td><?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_REDIS');?></td>
 													<td>6379</td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_memcd): ?>
 												<tr>
 													<th>memcached</th>
-													<td><?php echo loadClass('Docker')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Docker')->getEnv('HOST_PORT_MEMCACHED');?></td>
+													<td><?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_MEMCACHED');?></td>
 													<td>11211</td>
 												</tr>
 											<?php endif; ?>
@@ -688,8 +588,8 @@ function getCirle($name) {
 												<tr>
 													<th>bind</th>
 													<td>
-														<?php echo loadClass('Docker')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Docker')->getEnv('HOST_PORT_BIND');?>/tcp<br/>
-														<?php echo loadClass('Docker')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Docker')->getEnv('HOST_PORT_BIND');?>/udp
+														<?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_BIND');?>/tcp<br/>
+														<?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_BIND');?>/udp
 														</td>
 													<td>53/tcp<br/>53/udp</td>
 												</tr>
@@ -761,25 +661,25 @@ function getCirle($name) {
 										<tbody>
 											<tr>
 												<th>php</th>
-													<td><?php echo loadClass('Docker')->getEnv('HOST_PATH_HTTPD_DATADIR'); ?></td>
+													<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR'); ?></td>
 												<td>/shared/httpd</td>
 											</tr>
 											<tr>
 												<th>httpd</th>
-													<td><?php echo loadClass('Docker')->getEnv('HOST_PATH_HTTPD_DATADIR'); ?></td>
+													<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR'); ?></td>
 												<td>/shared/httpd</td>
 											</tr>
 											<?php if ($avail_mysql): ?>
 												<tr>
 													<th>mysql</th>
-													<td><?php echo loadClass('Docker')->getEnv('HOST_PATH_MYSQL_DATADIR').'/'.loadClass('Docker')->getEnv('MYSQL_SERVER'); ?></td>
+													<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_MYSQL_DATADIR').'/'.loadClass('Helper')->getEnv('MYSQL_SERVER'); ?></td>
 													<td>/var/lib/mysql</td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_pgsql): ?>
 												<tr>
 													<th>pgsql</th>
-													<td><?php echo loadClass('Docker')->getEnv('HOST_PATH_PGSQL_DATADIR').'/'.loadClass('Docker')->getEnv('PGSQL_SERVER'); ?></td>
+													<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_PGSQL_DATADIR').'/'.loadClass('Helper')->getEnv('PGSQL_SERVER'); ?></td>
 													<td>/var/lib/postgresql/data/pgdata</td>
 												</tr>
 											<?php endif; ?>
@@ -829,7 +729,7 @@ function getCirle($name) {
 										<tbody>
 											<tr>
 												<th>php</th>
-												<td>./cfg/<?php echo loadClass('Docker')->getEnv('PHP_SERVER'); ?></td>
+												<td>./cfg/<?php echo loadClass('Helper')->getEnv('PHP_SERVER'); ?></td>
 												<td>/etc/php-custom.d</td>
 											</tr>
 											<tr>
@@ -840,7 +740,7 @@ function getCirle($name) {
 											<?php if ($avail_mysql): ?>
 												<tr>
 													<th>mysql</th>
-													<td>./cfg/<?php echo loadClass('Docker')->getEnv('MYSQL_SERVER'); ?></td>
+													<td>./cfg/<?php echo loadClass('Helper')->getEnv('MYSQL_SERVER'); ?></td>
 													<td>/etc/mysql/conf.d</td>
 												</tr>
 											<?php endif; ?>
@@ -897,39 +797,39 @@ function getCirle($name) {
 										<tbody>
 											<tr>
 												<th>php</th>
-												<td>./log/<?php echo loadClass('Docker')->getEnv('PHP_SERVER'); ?></td>
+												<td>./log/<?php echo loadClass('Helper')->getEnv('PHP_SERVER'); ?></td>
 												<td>/var/log/php</td>
 											</tr>
 											<tr>
 												<th>httpd</th>
-												<td>./log/<?php echo loadClass('Docker')->getEnv('HTTPD_SERVER'); ?></td>
-												<td>/var/log/<?php echo loadClass('Docker')->getEnv('HTTPD_SERVER'); ?></td>
+												<td>./log/<?php echo loadClass('Helper')->getEnv('HTTPD_SERVER'); ?></td>
+												<td>/var/log/<?php echo loadClass('Helper')->getEnv('HTTPD_SERVER'); ?></td>
 											</tr>
 											<?php if ($avail_mysql): ?>
 												<tr>
 													<th>mysql</th>
-													<td>./log/<?php echo loadClass('Docker')->getEnv('MYSQL_SERVER'); ?></td>
+													<td>./log/<?php echo loadClass('Helper')->getEnv('MYSQL_SERVER'); ?></td>
 													<td>/var/log/mysql</td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_pgsql): ?>
 												<tr>
 													<th>pgsql</th>
-													<td>./log/pgsql-<?php echo loadClass('Docker')->getEnv('PGSQL_SERVER'); ?></td>
+													<td>./log/pgsql-<?php echo loadClass('Helper')->getEnv('PGSQL_SERVER'); ?></td>
 													<td>/var/log/postgresql</td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_redis): ?>
 												<tr>
 													<th>redis</th>
-													<td>./log/redis-<?php echo loadClass('Docker')->getEnv('REDIS_SERVER'); ?></td>
+													<td>./log/redis-<?php echo loadClass('Helper')->getEnv('REDIS_SERVER'); ?></td>
 													<td>/var/log/redis</td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_memcd): ?>
 												<tr>
 													<th>memcached</th>
-													<td>./log/memcached-<?php echo loadClass('Docker')->getEnv('MEMCACHED_SERVER'); ?></td>
+													<td>./log/memcached-<?php echo loadClass('Helper')->getEnv('MEMCACHED_SERVER'); ?></td>
 													<td>/var/log/memcached</td>
 												</tr>
 											<?php endif; ?>
@@ -954,7 +854,7 @@ function getCirle($name) {
 
 		</div><!-- /.container -->
 
-		<?php require '../include/footer.php'; ?>
+		<?php echo loadClass('Html')->getFooter(); ?>
 		<script>
 		// self executing function here
 		(function() {

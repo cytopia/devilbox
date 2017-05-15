@@ -1,13 +1,12 @@
 <?php require '../config.php'; ?>
-<?php $Postgres = loadClass('Memcd'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php require '../include/head.php'; ?>
+		<?php echo loadClass('Html')->getHead(); ?>
 	</head>
 
 	<body>
-		<?php require '../include/navbar.php'; ?>
+		<?php echo loadClass('Html')->getNavbar(); ?>
 
 		<div class="container">
 
@@ -18,8 +17,8 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<?php if (!\devilbox\Memcd::isAvailable($GLOBALS['MEMCD_HOST_NAME'])): ?>
-						<p>Memcahed container is not running.</p>
+					<?php if (!loadClass('Memcd')->isAvailable()): ?>
+						<p>Memcached container is not running.</p>
 					<?php else: ?>
 						<table class="table table-striped ">
 							<thead class="thead-inverse ">
@@ -44,7 +43,6 @@
 
 		</div><!-- /.container -->
 
-		<?php require '../include/footer.php'; ?>
-
+		<?php echo loadClass('Html')->getFooter(); ?>
 	</body>
 </html>

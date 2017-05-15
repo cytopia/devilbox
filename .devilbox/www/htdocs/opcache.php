@@ -230,7 +230,7 @@ $opcache = OpCacheService::init($options);
 <!doctype html>
 <html>
 <head>
-    <?php require '../include/head.php'; ?>
+    <?php echo loadClass('Html')->getHead(); /* devilbox edit */ ?>
 
 
     <meta charset="UTF-8"/>
@@ -321,7 +321,7 @@ $opcache = OpCacheService::init($options);
 </head>
 
 <body>
-<?php require '../include/navbar.php'; ?>
+<?php echo loadClass('Html')->getNavbar(); /* devilbox edit */?>
 
 
 
@@ -766,6 +766,6 @@ $opcache = OpCacheService::init($options);
     var filesObj = ReactDOM.render(React.createElement(Files, null), document.getElementById('filelist'));
     ReactDOM.render(React.createElement(Directives, null), document.getElementById('directives'));
 </script>
-<?php require '../include/footer.php'; ?>
+<?php echo loadClass('Html')->getFooter(); /* devilbox edit */?>
 </body>
 </html>

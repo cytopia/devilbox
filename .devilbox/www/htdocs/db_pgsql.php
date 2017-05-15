@@ -1,13 +1,17 @@
 <?php require '../config.php'; ?>
-<?php $Postgres = loadClass('Pgsql'); ?>
+<?php
+// Also required for JS calls (see bottom of this page)
+$len_table = 4;
+$len_size = 9;
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php require '../include/head.php'; ?>
+		<?php echo loadClass('Html')->getHead(); ?>
 	</head>
 
 	<body>
-		<?php require '../include/navbar.php'; ?>
+		<?php echo loadClass('Html')->getNavbar(); ?>
 
 		<div class="container">
 
@@ -18,7 +22,7 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<?php if (!\devilbox\Pgsql::isAvailable($GLOBALS['PGSQL_HOST_NAME'])): ?>
+					<?php if (!loadClass('Pgsql')->isAvailable()): ?>
 						<p>PgSQL container is not running.</p>
 					<?php else: ?>
 						<table class="table table-striped ">
@@ -32,11 +36,7 @@
 								</th>
 							</thead>
 							<tbody>
-								<?php
-									$len_table = 4;
-									$len_size = 9;
-								?>
-								<?php foreach ($Postgres->getDatabases() as $name => $database): ?>
+								<?php foreach (loadClass('Pgsql')->getDatabases() as $name => $database): ?>
 									<tr class="table-info">
 										<th>
 											<?php echo $name;?>
@@ -65,7 +65,7 @@
 
 		</div><!-- /.container -->
 
-		<?php require '../include/footer.php'; ?>
+		<?php echo loadClass('Html')->getFooter(); ?>
 		<script>
 		// self executing function here
 		(function() {

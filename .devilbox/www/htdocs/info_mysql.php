@@ -1,13 +1,12 @@
 <?php require '../config.php'; ?>
-<?php $MySQL = loadClass('Mysql'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php require '../include/head.php'; ?>
+		<?php echo loadClass('Html')->getHead(); ?>
 	</head>
 
 	<body>
-		<?php require '../include/navbar.php'; ?>
+		<?php echo loadClass('Html')->getNavbar(); ?>
 
 		<div class="container">
 
@@ -18,7 +17,7 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<?php if (!\devilbox\Mysql::isAvailable($GLOBALS['MYSQL_HOST_NAME'])): ?>
+					<?php if (!loadClass('Mysql')->isAvailable()): ?>
 						<p>MySQL container is not running.</p>
 					<?php else: ?>
 						<p>For reference see here:</p>
@@ -51,6 +50,6 @@
 
 		</div><!-- /.container -->
 
-		<?php require '../include/footer.php'; ?>
+		<?php echo loadClass('Html')->getFooter(); ?>
 	</body>
 </html>

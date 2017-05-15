@@ -1,13 +1,17 @@
 <?php require '../config.php'; ?>
-<?php $MySQL = loadClass('Mysql'); ?>
+<?php
+// Also required for JS calls (see bottom of this page)
+$len_table = 4;
+$len_size = 9;
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php require '../include/head.php'; ?>
+		<?php echo loadClass('Html')->getHead(); ?>
 	</head>
 
 	<body>
-		<?php require '../include/navbar.php'; ?>
+		<?php echo loadClass('Html')->getNavbar(); ?>
 
 		<div class="container">
 
@@ -18,7 +22,7 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<?php if (!\devilbox\Mysql::isAvailable($GLOBALS['MYSQL_HOST_NAME'])): ?>
+					<?php if (!loadClass('Mysql')->isAvailable()): ?>
 						<p>MySQL container is not running.</p>
 					<?php else: ?>
 						<table class="table table-striped ">
@@ -32,11 +36,7 @@
 								</th>
 							</thead>
 							<tbody>
-								<?php
-									$len_table = 4;
-									$len_size = 9;
-								?>
-								<?php foreach ($MySQL->getDatabases() as $name => $keys): ?>
+								<?php foreach (loadClass('Mysql')->getDatabases() as $name => $keys): ?>
 									<tr>
 										<td><?php echo $name;?></td>
 										<td><?php echo $keys['charset'];?></td>
@@ -55,7 +55,7 @@
 
 		</div><!-- /.container -->
 
-		<?php require '../include/footer.php'; ?>
+		<?php echo loadClass('Html')->getFooter(); ?>
 		<script>
 		// self executing function here
 		(function() {

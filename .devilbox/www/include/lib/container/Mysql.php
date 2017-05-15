@@ -4,78 +4,18 @@ namespace devilbox;
 /**
  * @requires devilbox::Logger
  */
-class Mysql extends _Base implements _iBase
+class Mysql extends BaseClass implements BaseInterface
 {
 
 	/*********************************************************************************
 	 *
-	 * Statics
+	 * Variables
 	 *
 	 *********************************************************************************/
 
 	/**
-	 * Mysql instance
-	 * @var Mysql|null
-	 */
-	protected static $instance = null;
-
-	/**
-	 * Singleton Instance getter.
-	 *
-	 * @param string $user Username
-	 * @param string $pass Password
-	 * @param string $host Host
-	 * @return object|null
-	 */
-	public static function getInstance($host, $user, $pass)
-	{
-		if (!isset(static::$instance)) {
-			static::$instance = new static($user, $pass, $host);
-		}
-		// If current MySQL instance was unable to connect
-		if ((static::$instance->getConnectError())) {
-		//	loadClass('Logger')->error('Instance has errors:' . "\r\n" . var_export(static::$instance, true) . "\r\n");
-		}
-		return static::$instance;
-	}
-
-	/**
-	 * Connect to database
-	 *
-	 * @param  string $err  Reference to error message
-	 * @param  string $user MySQL username
-	 * @param  string $pass MySQL password
-	 * @param  string $host MySQL hostname
-	 * @return boolean
-	 */
-	public static function testConnection(&$err, $host, $user, $pass)
-	{
-		$err = false;
-
-		// Silence errors and try to connect
-		error_reporting(0);
-		$link = mysqli_connect($host, $user, $pass);
-		error_reporting(-1);
-
-		if (mysqli_connect_errno()) {
-			$err = 'Failed to connect: ' .mysqli_connect_error();
-			return false;
-		}
-		mysqli_close($link);
-		return true;
-	}
-
-
-
-	/*********************************************************************************
-	 *
-	 * Private Variables
-	 *
-	 *********************************************************************************/
-
-	/**
-	 * MySQL Resource
-	 * @var resource|null
+	 * MySQL connection link
+	 * @var null
 	 */
 	private $_link = null;
 
@@ -83,22 +23,21 @@ class Mysql extends _Base implements _iBase
 
 	/*********************************************************************************
 	 *
-	 * Construct/Destructor
+	 * Constructor Overwrite
 	 *
 	 *********************************************************************************/
 
-	/**
-	 * Use singleton getInstance() instead.
-	 *
-	 * @param string $user Username
-	 * @param string $pass Password
-	 * @param string $host Host
-	 */
-	public function __construct($user, $pass, $host)
+	public function __construct($hostname, $data = array())
 	{
+		parent::__construct($hostname, $data);
+
+		$user = $data['user'];
+		$pass = $data['pass'];
+
+
 		// Silence errors and try to connect
 		error_reporting(0);
-		$link = mysqli_connect($host, $user, $pass);
+		$link = mysqli_connect($hostname, $user, $pass);
 		error_reporting(-1);
 
 		if (mysqli_connect_errno()) {
@@ -110,9 +49,6 @@ class Mysql extends _Base implements _iBase
 		}
 	}
 
-	/**
-	 * Destructor
-	 */
 	public function __destruct()
 	{
 		if ($this->_link) {
@@ -120,9 +56,10 @@ class Mysql extends _Base implements _iBase
 		}
 	}
 
+
 	/*********************************************************************************
 	 *
-	 * MySQL  Select functions
+	 * Select Functions
 	 *
 	 *********************************************************************************/
 
@@ -285,44 +222,89 @@ class Mysql extends _Base implements _iBase
 	 *
 	 *********************************************************************************/
 
-	/**
-	 * Get MySQL Name.
-	 *
-	 * @return string MySQL short name.
-	 */
+	private $_can_connect = array();
+	private $_can_connect_err = array();
+
+	private $_name = null;
+	private $_version = null;
+
+	public function canConnect(&$err, $hostname, $data = array())
+	{
+		$err = false;
+
+		// Return if already cached
+		if (isset($this->_can_connect[$hostname])) {
+			// Assume error for unset error message
+			$err = isset($this->_can_connect_err[$hostname]) ? $this->_can_connect_err[$hostname] : true;
+			return $this->_can_connect[$hostname];
+		}
+
+		// Silence errors and try to connect
+		error_reporting(0);
+		$link = mysqli_connect($hostname, $data['user'], $data['pass']);
+		error_reporting(-1);
+
+		if (mysqli_connect_errno()) {
+			$err = 'Failed to connect: ' .mysqli_connect_error();
+			$this->_can_connect[$hostname] = false;
+		} else {
+			$this->_can_connect[$hostname] = true;
+		}
+
+		if ($link) {
+			mysqli_close($link);
+		}
+
+		$this->_can_connect_err[$hostname] = $err;
+		return $this->_can_connect[$hostname];
+	}
+
 	public function getName($default = 'MySQL')
 	{
-		if (!static::isAvailable('mysql')) {
+		// Return if already cached
+		if ($this->_name !== null) {
+			return $this->_name;
+		}
+
+		// Return default if not available
+		if (!$this->isAvailable()) {
 			return $default;
 		}
 
-		$name = $this->egrep('/[a-zA-Z0-9]+/', $this->getConfig('version_comment'));
+		$name = loadClass('Helper')->egrep('/[a-zA-Z0-9]+/', $this->getConfig('version_comment'));
 
 		if (!$name) {
 			loadClass('Logger')->error('Could not get MySQL Name');
-			return $default;
+			$this->_name = $default;
+		} else {
+			$this->_name = $name;
 		}
-		return $name;
+
+		return $this->_name;
 	}
 
-
-	/**
-	 * Get MySQL Version.
-	 *
-	 * @return string MySQL version.
-	 */
 	public function getVersion()
 	{
-		if (!static::isAvailable('mysql')) {
-			return '';
+		// Return if already cached
+		if ($this->_version !== null) {
+			return $this->_version;
 		}
 
-		$version = $this->egrep('/[.0-9]+/', $this->getConfig('version'));
+		// Return empty if not available
+		if (!$this->isAvailable()) {
+			$this->_version = '';
+			return $this->_version;
+		}
+
+		$version = loadClass('Helper')->egrep('/[.0-9]+/', $this->getConfig('version'));
 
 		if (!$version) {
-			loadClass('Logger')->error('Could not get MySQL version');
-			return '';
+			loadClass('Logger')->error('Could not get MySQL Version');
+			$this->_version = '';
+		} else {
+			$this->_version = $version;
 		}
-		return $version;
+
+		return $this->_version;
 	}
 }

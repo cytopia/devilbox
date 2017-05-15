@@ -4,68 +4,8 @@ namespace devilbox;
 /**
  * @requires devilbox::Logger
  */
-class Redis extends _Base implements _iBase
+class Redis extends BaseClass implements BaseInterface
 {
-
-	/*********************************************************************************
-	 *
-	 * Statics
-	 *
-	 *********************************************************************************/
-
-	/**
-	 * Redis instance
-	 * @var Redis|null
-	 */
-	protected static $instance = null;
-
-	/**
-	 * Singleton Instance getter.
-	 *
-	 * @param string $user Username
-	 * @param string $pass Password
-	 * @param string $host Host
-	 * @return object|null
-	 */
-	public static function getInstance($host, $user = null, $pass = null)
-	{
-		if (!isset(static::$instance)) {
-			static::$instance = new static($host);
-		}
-		// If current Redis instance was unable to connect
-		if (!static::$instance) {
-			//loadClass('Logger')->error('Instance has errors:' . "\r\n" . var_export(static::$instance, true) . "\r\n");
-		}
-		return static::$instance;
-	}
-
-	/**
-	 * Connect to Redis
-	 *
-	 * @param  string $err  Reference to error message
-	 * @param  string $host Redis hostname
-	 * @return boolean
-	 */
-	public static function testConnection(&$err, $host, $user = '', $pass = '')
-	{
-		$err = false;
-
-		// Silence errors and try to connect
-		error_reporting(0);
-		$redis = new \Redis();
-
-		if (!$redis->connect($host, 6379)) {
-			$err = 'Failed to connect to Redis host on '.$host;
-			error_reporting(-1);
-			return false;
-		}
-		error_reporting(-1);
-		$redis->close();
-		return true;
-	}
-
-
-
 	/*********************************************************************************
 	 *
 	 * Private Variables
@@ -80,10 +20,9 @@ class Redis extends _Base implements _iBase
 
 
 
-
 	/*********************************************************************************
 	 *
-	 * Construct/Destructor
+	 * Constructor Overwrite
 	 *
 	 *********************************************************************************/
 
@@ -94,14 +33,16 @@ class Redis extends _Base implements _iBase
 	 * @param string $pass Password
 	 * @param string $host Host
 	 */
-	public function __construct($host)
+	public function __construct($hostname, $data = array())
 	{
+		parent::__construct($hostname, $data);
+
 		// Silence errors and try to connect
 		error_reporting(0);
 		$redis = new \Redis();
 
-		if (!$redis->connect($host, 6379)) {
-			$this->setConnectError('Failed to connect to Redis host on '.$host);
+		if (!$redis->connect($hostname, 6379)) {
+			$this->setConnectError('Failed to connect to Redis host on '.$hostname);
 			$this->setConnectErrno(1);
 			//loadClass('Logger')->error($this->_connect_error);
 		} else {
@@ -125,7 +66,7 @@ class Redis extends _Base implements _iBase
 
 	/*********************************************************************************
 	 *
-	 * Redis  Select functions
+	 * Select functions
 	 *
 	 *********************************************************************************/
 
@@ -158,6 +99,41 @@ class Redis extends _Base implements _iBase
 	 *
 	 *********************************************************************************/
 
+	private $_can_connect = array();
+	private $_can_connect_err = array();
+
+	private $_name = null;
+	private $_version = null;
+
+	public function canConnect(&$err, $hostname, $data = array())
+	{
+		$err = false;
+
+		// Return if already cached
+		if (isset($this->_can_connect[$hostname])) {
+			// Assume error for unset error message
+			$err = isset($this->_can_connect_err[$hostname]) ? $this->_can_connect_err[$hostname] : true;
+			return $this->_can_connect[$hostname];
+		}
+
+		// Silence errors and try to connect
+		//error_reporting(0);
+		$redis = new \Redis();
+
+		if (!$redis->connect($hostname, 6379)) {
+			$err = 'Failed to connect to Redis host on '.$hostname;
+			$this->_can_connect[$hostname] = false;
+		} else {
+			$this->_can_connect[$hostname] = true;
+		}
+		//error_reporting(-1);
+
+		$redis->close();
+
+		$this->_can_connect_err[$hostname] = $err;
+		return $this->_can_connect[$hostname];
+	}
+
 	public function getName($default = 'Redis')
 	{
 		return $default;
@@ -165,11 +141,25 @@ class Redis extends _Base implements _iBase
 
 	public function getVersion()
 	{
+		// Return if already cached
+		if ($this->_version !== null) {
+			return $this->_version;
+		}
+
+		// Return empty if not available
+		if (!$this->isAvailable()) {
+			$this->_version = '';
+			return $this->_version;
+		}
+
 		$info = $this->getInfo();
 		if (!isset($info['redis_version'])) {
 			loadClass('Logger')->error('Could not get Redis version');
-			return '';
+			$this->_version = '';
+		} else {
+			$this->_version = $info['redis_version'];
 		}
-		return $info['redis_version'];
+
+		return $this->_version;
 	}
 }
