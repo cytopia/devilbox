@@ -61,8 +61,7 @@ services:
   # PHP-FPM
   # ----------------------------------------
   php:
-    # TODO: remove latest, once it is ready for the next release
-    #image: cytopia/${PHP_SERVER:-php-fpm-5.4}:latest
+    #image: cytopia/${PHP_SERVER:-php-fpm-7.0}:latest
     image: cytopia/${PHP_SERVER:-php-fpm-7.0}:release-0.9
     restart: always
 
@@ -180,8 +179,8 @@ services:
   # HTTPD
   # ----------------------------------------
   httpd:
-    # TODO: remove latest, once it is ready for the next release
-    image: cytopia/${HTTPD_SERVER:-nginx-mainline}:latest
+    #image: cytopia/${HTTPD_SERVER:-nginx-stable}:latest
+    image: cytopia/${HTTPD_SERVER:-nginx-stable}:release-0.9
     restart: always
 
     # Manually build via `docker-compose build`

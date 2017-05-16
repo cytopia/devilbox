@@ -48,6 +48,10 @@ class Html
 			'name' => 'Info',
 			'menu' => array(
 				array(
+					'name' => 'Httpd Info',
+					'path' => '/info_httpd.php'
+				),
+				array(
 					'name' => 'PHP Info',
 					'path' => '/info_php.php'
 				),
