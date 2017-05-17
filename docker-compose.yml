@@ -158,9 +158,6 @@ services:
       # Mount logs
       - ${DEVILBOX_PATH}/log/${PHP_SERVER}:/var/log/php
 
-      # Mount MySQL Socket directory
-      - vol_mysql_sock:/tmp/mysql
-
       # Mount Mail directory
       #- ${DEVILBOX_PATH}/run/mail:/var/mail
 
@@ -307,15 +304,12 @@ services:
       # Mount logs
       - ${DEVILBOX_PATH}/log/${MYSQL_SERVER}:/var/log/mysql
 
-      # Mount MySQL Socket directory
-      - vol_mysql_sock:/tmp/mysql
-
       # Mount devilbox default overwrites
-      - ${DEVILBOX_PATH}/.devilbox/etc/${MYSQL_SERVER}:/etc/mysql/docker-default.d
+      - ${DEVILBOX_PATH}/.devilbox/etc/${MYSQL_SERVER}:/etc/mysql/conf.d:ro
 
       # Mount devilbox user-defined cnf files in order
       # to overwrite the MySQL server configuration
-      - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER}:/etc/mysql/conf.d:ro
+      - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER}:/etc/mysql/docker-default.d:ro
 
       # Mount MySQL Data directory
       - ${HOST_PATH_MYSQL_DATADIR}/${MYSQL_SERVER}:/var/lib/mysql
@@ -357,9 +351,6 @@ services:
 
       # Mount logs
       - ${DEVILBOX_PATH}/log/pgsql-${PGSQL_SERVER}:/var/log/postgresql
-
-      # Mount PostgreSQL Socket directory
-      - vol_pgsql_sock:/var/run/postgresql
 
       # Mount PostgreSQL Data directory
       - ${HOST_PATH_PGSQL_DATADIR}/${PGSQL_SERVER}:/var/lib/postgresql/data/pgdata
@@ -422,21 +413,6 @@ services:
       - bind
       - php
       - httpd
-
-
-################################################################################
-# VOLUMES
-################################################################################
-volumes:
-  # Create volume for mysql socket.
-  # This removes the need to mount the socket to the host
-  # but be able to mount it to different containers (from another container)
-  vol_mysql_sock:
-
-  # Create volume for postgresql socket.
-  # This removes the need to mount the socket to the host
-  # but be able to mount it to different containers (from another container)
-  vol_pgsql_sock:
 
 
 ################################################################################

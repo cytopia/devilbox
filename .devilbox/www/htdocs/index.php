@@ -531,7 +531,8 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 					</div>
 				</div>
 
-				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 col-margin">
+
+				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 offset-lg-4 offset-md-0 offset-sm-0 col-margin">
 					<div class="dash-box">
 						<div class="dash-box-head"><i class="fa fa-wrench" aria-hidden="true"></i> Ports</div>
 						<div class="dash-box-body">
@@ -601,48 +602,6 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 						</div>
 					</div>
 				</div>
-
-				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 col-margin">
-					<div class="dash-box">
-						<div class="dash-box-head"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Socket volumes</div>
-						<div class="dash-box-body">
-							<div class="row">
-								<div class="container">
-									<table class="table table-striped table-hover table-bordered table-sm font-small">
-										<thead class="thead-inverse">
-											<tr>
-												<th>Host Volume</th>
-												<th>Docker</th>
-												<th>Docker path</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td rowspan="2" class="align-middle">vol_mysql_sock</td>
-												<th>php</th>
-												<td>/tmp/mysql</td>
-											</tr>
-											<tr>
-												<td>mysql</td>
-												<td>/tmp/mysql</td>
-											</tr>
-											<tr>
-												<td rowspan="2" class="align-middle">vol_pqsql_sock</td>
-												<th>php</th>
-												<td>-</td>
-											</tr>
-											<tr>
-												<td>pgsql</td>
-												<td>/var/run/postgresql</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
 
 				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 col-margin">
 					<div class="dash-box">
