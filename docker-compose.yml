@@ -254,8 +254,8 @@ services:
   # DATABASE
   # ----------------------------------------
   mysql:
-    # TODO: remove latest, once it is ready for the next release
-    image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
+    #image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
+    image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:release-0.9
 
     # Manually build via `docker-compose build`
     #build:
