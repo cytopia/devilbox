@@ -67,6 +67,6 @@ set_host_port_pgsql "5432"
 ################################################################################
 
 devilbox_start "${DVL_SRV1}" "${DVL_VER1}" "${DVL_SRV2}" "${DVL_VER2}"
-debilbox_show
-debilbox_test
+devilbox_show
+devilbox_test
 devilbox_stop
