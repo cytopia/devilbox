@@ -1,5 +1,6 @@
-language: bash
-dist: trusty
+###
+### Enable sudo (required for docker service)
+###
 sudo: required
 
 
@@ -14,63 +15,169 @@ services:
 ### Global variables
 ###
 env:
+  ###
+  ### The matrix specifies 2 versions to compare against each other.
+  ### As PHP (any versoin) needs to be able to run with everything,
+  ### I am going to test any PHP version against any other service.
+  ###
   matrix:
-    # Test httpd
-    - SERVER=httpd VERSION=apache-2.2     DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=httpd VERSION=apache-2.4     DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=httpd VERSION=nginx-stable   DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=httpd VERSION=nginx-mainline DOCKER_COMPOSE_VERSION=1.13.0
-    # Test mysql
-    - SERVER=mysql VERSION=mysql-5.5    DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=mysql VERSION=mysql-5.6    DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=mysql VERSION=mysql-5.7    DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=mysql VERSION=mysql-8.0    DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=mysql VERSION=mariadb-5.5  DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=mysql VERSION=mariadb-10.0 DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=mysql VERSION=mariadb-10.1 DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=mysql VERSION=mariadb-10.2 DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=mysql VERSION=mariadb-10.3 DOCKER_COMPOSE_VERSION=1.13.0
-    # Test pgsql
-    - SERVER=pgsql VERSION=9.2 DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=pgsql VERSION=9.3 DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=pgsql VERSION=9.4 DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=pgsql VERSION=9.5 DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=pgsql VERSION=9.6 DOCKER_COMPOSE_VERSION=1.13.0
-    # Test php
-    - SERVER=php VERSION=php-fpm-5.4 DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=php VERSION=php-fpm-5.5 DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=php VERSION=php-fpm-5.6 DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=php VERSION=php-fpm-7.0 DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=php VERSION=php-fpm-7.1 DOCKER_COMPOSE_VERSION=1.13.0
-    - SERVER=php VERSION=hhvm-latest DOCKER_COMPOSE_VERSION=1.13.0
+    ###
+    ### PHP vs WWW
+    ###
+    # PHP vs Apache 2.2
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=HTTPD VER2=apache-2.2
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=HTTPD VER2=apache-2.2
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=HTTPD VER2=apache-2.2
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=HTTPD VER2=apache-2.2
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=HTTPD VER2=apache-2.2
+    - SRV1=PHP VER1=hhvm-latest SRV2=HTTPD VER2=apache-2.2
+    # PHP vs Apache 2.4
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=HTTPD VER2=apache-2.4
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=HTTPD VER2=apache-2.4
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=HTTPD VER2=apache-2.4
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=HTTPD VER2=apache-2.4
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=HTTPD VER2=apache-2.4
+    - SRV1=PHP VER1=hhvm-latest SRV2=HTTPD VER2=apache-2.4
+    # PHP vs Nginx stable
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=HTTPD VER2=nginx-stable
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=HTTPD VER2=nginx-stable
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=HTTPD VER2=nginx-stable
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=HTTPD VER2=nginx-stable
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=HTTPD VER2=nginx-stable
+    - SRV1=PHP VER1=hhvm-latest SRV2=HTTPD VER2=nginx-stable
+    # PHP vs Nginx mainline
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=HTTPD VER2=nginx-mainline
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=HTTPD VER2=nginx-mainline
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=HTTPD VER2=nginx-mainline
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=HTTPD VER2=nginx-mainline
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=HTTPD VER2=nginx-mainline
+    - SRV1=PHP VER1=hhvm-latest SRV2=HTTPD VER2=nginx-mainline
+
+    ###
+    ### PHP vs MYSQL
+    ###
+    # PHP vs MySQL 5.5
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mysql-5.5
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mysql-5.5
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mysql-5.5
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mysql-5.5
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mysql-5.5
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mysql-5.5
+    # PHP vs MySQL 5.6
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mysql-5.6
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mysql-5.6
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mysql-5.6
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mysql-5.6
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mysql-5.6
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mysql-5.6
+    # PHP vs MySQL 5.7
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mysql-5.7
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mysql-5.7
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mysql-5.7
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mysql-5.7
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mysql-5.7
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mysql-5.7
+    # PHP vs MySQL 8.0
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mysql-8.0
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mysql-8.0
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mysql-8.0
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mysql-8.0
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mysql-8.0
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mysql-8.0
+    # PHP vs MariaDB 5.5
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mariadb-5.5
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mariadb-5.5
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mariadb-5.5
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mariadb-5.5
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mariadb-5.5
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mariadb-5.5
+    # PHP vs MariaDB 10.0
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mariadb-10.0
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mariadb-10.0
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mariadb-10.0
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mariadb-10.0
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mariadb-10.0
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mariadb-10.0
+    # PHP vs MariaDB 10.1
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mariadb-10.1
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mariadb-10.1
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mariadb-10.1
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mariadb-10.1
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mariadb-10.1
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mariadb-10.1
+    # PHP vs MariaDB 10.2
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mariadb-10.2
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mariadb-10.2
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mariadb-10.2
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mariadb-10.2
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mariadb-10.2
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mariadb-10.2
+    # PHP vs MariaDB 10.3
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=MYSQL VER2=mariadb-10.3
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=MYSQL VER2=mariadb-10.3
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=MYSQL VER2=mariadb-10.3
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=MYSQL VER2=mariadb-10.3
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=MYSQL VER2=mariadb-10.3
+    - SRV1=PHP VER1=hhvm-latest SRV2=MYSQL VER2=mariadb-10.3
+
+    ###
+    ### PHP vs PostgreSQL
+    ###
+    # PHP vs PgSQL 9.2
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=PGSQL VER2=9.2
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=PGSQL VER2=9.2
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=PGSQL VER2=9.2
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=PGSQL VER2=9.2
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=PGSQL VER2=9.2
+    - SRV1=PHP VER1=hhvm-latest SRV2=PGSQL VER2=9.2
+    # PHP vs PgSQL 9.3
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=PGSQL VER2=9.3
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=PGSQL VER2=9.3
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=PGSQL VER2=9.3
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=PGSQL VER2=9.3
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=PGSQL VER2=9.3
+    - SRV1=PHP VER1=hhvm-latest SRV2=PGSQL VER2=9.3
+    # PHP vs PgSQL 9.4
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=PGSQL VER2=9.4
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=PGSQL VER2=9.4
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=PGSQL VER2=9.4
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=PGSQL VER2=9.4
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=PGSQL VER2=9.4
+    - SRV1=PHP VER1=hhvm-latest SRV2=PGSQL VER2=9.4
+    # PHP vs PgSQL 9.5
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=PGSQL VER2=9.5
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=PGSQL VER2=9.5
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=PGSQL VER2=9.5
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=PGSQL VER2=9.5
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=PGSQL VER2=9.5
+    - SRV1=PHP VER1=hhvm-latest SRV2=PGSQL VER2=9.5
+    # PHP vs PgSQL 9.6
+    - SRV1=PHP VER1=php-fpm-5.4 SRV2=PGSQL VER2=9.6
+    - SRV1=PHP VER1=php-fpm-5.5 SRV2=PGSQL VER2=9.6
+    - SRV1=PHP VER1=php-fpm-5.6 SRV2=PGSQL VER2=9.6
+    - SRV1=PHP VER1=php-fpm-7.0 SRV2=PGSQL VER2=9.6
+    - SRV1=PHP VER1=php-fpm-7.1 SRV2=PGSQL VER2=9.6
+    - SRV1=PHP VER1=hhvm-latest SRV2=PGSQL VER2=9.6
 
 
 ###
 ### Berfore Install
 ###
 before_install:
-  # List info
-  - whoami
-  - groups
-  - uname -a
-  # List versions
-  - docker version
-  - docker-compose version
   # Get newer docker version
   - sudo apt-get update
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
   # Get newer docker-compose version
   - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  # List versions again
-  - docker version
-  - docker-compose version
 
 
+###
+### Before Script
+###
 before_script:
-
   # Disable services enabled by default
   # http://docs.travis-ci.com/user/database-setup/#MySQL
   - sudo /etc/init.d/mysql stop || true
@@ -83,4 +190,4 @@ before_script:
 ### Test
 ###
 script:
-  - .tests/test_single.sh . "${SERVER}" "${VERSION}"
+  - .tests/test_single.sh . "${SRV1}" "${VER1}" "${SRV2}" "${VER2}"
