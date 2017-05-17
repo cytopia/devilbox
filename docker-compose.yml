@@ -311,7 +311,7 @@ services:
       - vol_mysql_sock:/tmp/mysql
 
       # Mount devilbox default overwrites
-      - ${DEVILBOX_PATH}/.devilbox/etc/${MYSQL_SERVER}:/etc/mysql/docker-default.d:ro
+      - ${DEVILBOX_PATH}/.devilbox/etc/${MYSQL_SERVER}:/etc/mysql/docker-default.d
 
       # Mount devilbox user-defined cnf files in order
       # to overwrite the MySQL server configuration
