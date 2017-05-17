@@ -238,7 +238,7 @@ $opcache = OpCacheService::init($options);
     <title>OPcache statistics on <?php echo $opcache->getData('version', 'host'); ?></title>
     <script src="/vendor/react/react.min.js"></script>
     <script src="/vendor/react/react-dom.min.js"></script>
-    <script src="/vendor/jquery/jquery-3.1.1.slim.min.js"></script>
+    <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
     <style type="text/css">
         body { font-family:sans-serif; font-size:90%; padding: 0; margin: 0 }
         nav { padding-top: 20px; }
