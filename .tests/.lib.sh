@@ -378,6 +378,96 @@ devilbox_show() {
 #
 ################################################################################
 
+debilbox_test() {
+	###
+	### Variables
+	###
+	_ret=0 # Final exit code
+	_oks=17 # Require this many [OK]'s on the page
+
+
+
+
+	###
+	### 2. Test docker-compose
+	###
+	print_h2 "docker-compose"
+
+	echo "docker-compose ps"
+	echo "------------------------------------------------------------"
+	if _test_docker_compose >/dev/null 2>&1; then
+		echo "[OK]: All running"
+	else
+		echo "[ERR]: Broken"
+		_ret="$(( _ret + 1 ))"
+	fi
+
+
+	###
+	### 3. Show Curl output
+	###
+	print_h2 "3. Test status via curl"
+
+	echo "Count [OK]'s on curl-ed url"
+	echo "------------------------------------------------------------"
+	if ! _cnt="$( _test_curled_oks "${_oks}" )"; then
+		_ret="$(( _ret + 1 ))"
+		echo "[ERR]: ${_cnt} / ${_oks} (Not all 'dvlbox-ok' found)"
+	else
+		echo "[OK]: ${_cnt} / ${_oks} (All 'dvlbox-ok' found)"
+	fi
+	echo
+
+	echo "Count [ERR]'s on curl-ed url"
+	echo "------------------------------------------------------------"
+	if ! _cnt="$( _test_curled_err )"; then
+		_ret="$(( _ret + 1 ))"
+		echo "[ERR]: ${_cnt} / 0 (Found some 'dvlbox-err')"
+	else
+		echo "[OK]: ${_cnt} / 0 (No 'dvlbox-err' found)"
+	fi
+	echo
+
+
+	###
+	### Final return
+	###
+	if [ "${_ret}" != "0" ]; then
+		print_h2 "4. Error output"
+		echo "Curl"
+		echo "------------------------------------------------------------"
+		curl -vv http://localhost/index.php || true
+		echo
+
+		echo "docker-compose ps"
+		echo "------------------------------------------------------------"
+		docker-compose ps
+		echo
+
+		echo "docker-compose logs"
+		echo "------------------------------------------------------------"
+		docker-compose logs
+		echo
+
+		echo "log files"
+		echo "------------------------------------------------------------"
+		ls -lap log/
+		sudo find log -type f -exec sh -c 'echo "{}:\n-----------------"; cat "{}"; echo "\n\n"' \;
+
+		return 1
+	fi
+
+	return 0
+}
+
+
+
+################################################################################
+#
+#   T E S T I N G   H E L P E R S
+#
+################################################################################
+
 ###
 ### Test against stopped containers
 ###
