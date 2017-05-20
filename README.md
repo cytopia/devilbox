@@ -1,23 +1,22 @@
 # ![Devilbox](https://raw.githubusercontent.com/cytopia/devilbox/master/.devilbox/www/htdocs/assets/img/devilbox_80.png) The devilbox
 
 
-[Usage](https://github.com/cytopia/devilbox#usage) |
-[Documentation](https://github.com/cytopia/devilbox#documentation) |
-[Run-time Matrix](https://github.com/cytopia/devilbox#run-time-matrix) |
-[Features](https://github.com/cytopia/devilbox#feature-overview) |
-[Intranet](https://github.com/cytopia/devilbox#intranet-overview) |
-[Screenshots](https://github.com/cytopia/devilbox#screenshots) |
-[License](https://github.com/cytopia/devilbox/blob/master/LICENSE.md) |
-[Contributing](https://github.com/cytopia/devilbox#contributing) |
-[Todo](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md)
+[Usage](#usage) |
+[Features](#feature-overview) |
+[Documentation](#documentation) |
+[Run-time Matrix](#run-time-matrix) |
+[Intranet](#intranet-overview) |
+[Screenshots](#screenshots) |
+[License](#license) |
+[Contributing](#contributing) |
 
 ![Devilbox](doc/img/devilbox-dash.png)
 
 [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox) ![Tag](https://img.shields.io/github/tag/cytopia/devilbox.svg) [![type](https://img.shields.io/badge/type-Docker-orange.svg)](https://www.docker.com/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-The devilbox is a modern and highly customizable alternative for [XAMPP](https://www.apachefriends.org). It is based on `docker-compose` with presets for all kinds of versions for webservers, database servers and php.
+The devilbox is a modern and highly customizable alternative for *[XAMPP](https://www.apachefriends.org)* with a few additional feature on top. It is based on `docker-compose` with presets for all kinds of versions for webservers, database servers, php and more.
 
-Configuration is not necessary, as everything is pre-setup with mass virtual hosting.
+Configuration is not necessary, as everything is pre-setup with mass virtual hosting and auto-dns.
 
 **Supported operating systems**
 
@@ -29,7 +28,9 @@ Configuration is not necessary, as everything is pre-setup with mass virtual hos
 
 ---
 
-## Quick start
+## Usage
+
+### Quick start
 
 You are up and running in three simple steps:
 
@@ -44,7 +45,10 @@ $ vim .env
 $ docker-compose up
 ```
 
-## Selective start
+### Selective start
+
+The above will start all containers, you can however also just start the containers you actually need. This is achieved by simply specifying them in the docker-compose command. Here are a few examples to get you started.
+
 ```
 $ docker-compose up httpd php mysql redis
 ```
@@ -87,12 +91,12 @@ The devilbox has everything setup for you. The only thing you will have to insta
 
 ### Video Tutorials
 
-[![Devilbox setup and workflow](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/devilbox_01-setup-and-workflow.png "devilbox - setup and workflow")](https://www.youtube.com/watch?v=reyZMyt2Zzo) 
-[![Devilbox email catch-all](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/devilbox_02-email-catch-all.png "devilbox - email catch-all")](https://www.youtube.com/watch?v=e-U-C5WhxGY)
+[![Devilbox setup and workflow](doc/img/devilbox_01-setup-and-workflow.png "devilbox - setup and workflow")](https://www.youtube.com/watch?v=reyZMyt2Zzo) 
+[![Devilbox email catch-all](doc/img/devilbox_02-email-catch-all.png "devilbox - email catch-all")](https://www.youtube.com/watch?v=e-U-C5WhxGY)
 
 ### Documentation
 
-For setup, usage and examples see detailed **[Documentation](https://github.com/cytopia/devilbox/blob/master/doc/README.md)**.
+For setup, usage and examples see detailed **[Documentation](doc/README.md)**.
 
 ## Run-time Matrix
 
@@ -167,62 +171,65 @@ No need to install and configure different versions locally. Simply choose your 
 
 ## Intranet overview
 
-The devilbox comes with a pre-configured intranet on `http://localhost`
+The devilbox comes with a pre-configured intranet on `http://localhost`. It will not only show you, your chosen configuration, but also validate the status of your configuration, such as *Do DNS records exists (on host and container)*, *are directories properly set-up*. Additionally it provides external tools to let you interact with databases and emails.
 
-* Virtual Host overview
-* MySQL Database overview
-* PostgreSQL Database overview
-* Email overview
-* PHP Info
-* MySQL Info
-* PostgreSQL Info
-* phpMyAdmin
-* Adminer
-* Opcache GUI
-
+* **Virtual Host overview** (validates directories and DNS)
+* **Database overview** (MySQL, PgSQL, Redis, Memcache, ...)
+* **Email overview**
+* **Info pages** (Httpd, MySQL, PgSQL, Redis, Memcache, ...)
+* **[phpMyAdmin](https://www.phpmyadmin.net)**
+* **[Adminer](https://www.adminer.org)**
+* **[OpcacheGUI](https://github.com/PeeHaa/OpCacheGUI)**
 
 
 ## Screenshots
 
-**Homepage with host / docker information**
+### Homepage with host / docker information
 
 The homepage shows you the status of your current configured setup.
 
 * which versions are used
 * what directories are mounted
+* where does DNS point to
 * what other settings have been set
+* did any errors occur?
 
-![Intranet Home](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/01_intranet_home.png "Intranet Home")
+![Intranet Home](doc/img/01_intranet_home.png "Intranet Home")
 
 
-**Virtual Host overview**
+### Virtual Host overview
 
 This overview shows you all available virtual hosts and if they need additional configuration (on the host)
 
 Virtual Hosts are considered valid if the following requirements are met (on the host system):
 
 * `htdocs` folder/symlink exists in your project folder
-* `/etc/hosts` has a valid DNS config for your host: `127.0.0.1  <project-folder>.loc`)
+* `/etc/hosts` has a valid DNS config for your host: `127.0.0.1  <project-folder>.<TLD_SUFFIX>` (alternatively the bundle BIND server can be attached to your host-computer).
 
-![Intranet vHost](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/02_intranet_vhosts.png "Intranet Home")
+![Intranet vHost](doc/img/02_intranet_vhosts.png "Intranet Home")
 
-**Database overview**
+### Database overview
 
 Shows you all the databases that are loaded
 
-![Intranet DB](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/03_intranet_databases.png "Intranet Home")
+![Intranet DB](doc/img/03_intranet_databases.png "Intranet Home")
 
 
-**Email overview**
+### Email overview
 
 Shows you all the emails that have been sent. No email will actually be sent outside, but they are all catched by one account and presented here.
 
-![Intranet Email](https://raw.githubusercontent.com/cytopia/devilbox/master/doc/img/04_intranet_emails.png "Intranet Home")
+![Intranet Email](doc/img/04_intranet_emails.png "Intranet Home")
+
+
+## License
+
+[MIT License](LICENSE.md)
 
 
 ## Contributing
 
-There is quite a lot todo and planned. If you like to contribute, view [CONTRIBUTING.md](https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md) and [ROADMAP](https://github.com/cytopia/devilbox/issues/23).
+There is quite a lot todo and planned. If you like to contribute, view [CONTRIBUTING.md](CONTRIBUTING.md) and [ROADMAP](https://github.com/cytopia/devilbox/issues/23).
 
 Contributors will be credited within the intranet and on the github page.
 
