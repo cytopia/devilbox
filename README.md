@@ -35,7 +35,7 @@ Configuration is not necessary, as everything is pre-setup with mass virtual hos
 You are up and running in three simple steps:
 
 ```shell
-# Copy the example configuration file
+# Create docker-compose environment file
 $ cp env-example .env
 
 # Edit your configuration
@@ -49,21 +49,49 @@ $ docker-compose up
 
 The above will start all containers, you can however also just start the containers you actually need. This is achieved by simply specifying them in the docker-compose command. Here are a few examples to get you started.
 
-```
+```shell
 $ docker-compose up httpd php mysql redis
 ```
 ![Devilbox](doc/img/devilbox-dash-01.png)
 
 
-```
+```shell
 $ docker-compose up httpd php mysql pgsql redis memcd
 ```
 ![Devilbox](doc/img/devilbox-dash-02.png)
 
-```
+```shell
 $ docker-compose up httpd php pgsql memcd
 ```
 ![Devilbox](doc/img/devilbox-dash-03.png)
+
+### Run different versions
+
+Every single attachable container comes with many different versions (see **[runtime-matrix](#run-time-matrix)** below). In order to select the desired version for a container, simply edit the `.env` file and uncomment the version of choice.
+
+The following example shows how to set Memcached to version `1.4.28`:
+```shell
+$ vim .env
+
+...
+#MEMCD_SERVER=1.4.21
+#MEMCD_SERVER=1.4.22
+#MEMCD_SERVER=1.4.23
+#MEMCD_SERVER=1.4.24
+#MEMCD_SERVER=1.4.25
+#MEMCD_SERVER=1.4.26
+#MEMCD_SERVER=1.4.27
+MEMCD_SERVER=1.4.28
+#MEMCD_SERVER=1.4.29
+#MEMCD_SERVER=1.4.30
+#MEMCD_SERVER=1.4.31
+#MEMCD_SERVER=1.4.32
+#MEMCD_SERVER=1.4.33
+#MEMCD_SERVER=1.4.34
+#MEMCD_SERVER=1.4.35
+#MEMCD_SERVER=1.4.36
+#MEMCD_SERVER=latest
+```
 
 
 ## Feature overview

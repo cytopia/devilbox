@@ -1,4 +1,4 @@
-# Configuration
+# Devilbox Documentation
 
 [Home](https://github.com/cytopia/devilbox) |
 [Overview](README.md) |

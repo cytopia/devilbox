@@ -1,4 +1,4 @@
-# Documentation
+# Devilbox Documentation
 
 [Home](https://github.com/cytopia/devilbox) |
 [Overview](README.md) |
@@ -54,3 +54,5 @@ All output that is produced to stdout or stderr by the started service will be a
 ```shell
 docker-compose logs -f
 ```
+
+Docker logs are currently only being used to display the initial startup including the chosen settings. All other logging is written to file and mounted to the docker host.

@@ -1,4 +1,4 @@
-# Documentation
+# Devilbox Documentation
 
 [Home](https://github.com/cytopia/devilbox) |
 Overview |
@@ -14,7 +14,7 @@ Overview |
 
 ----
 
-## Documentation Overview
+## Overview
 
 This is a brief overview to get you started as quick as possible. For in-depth documentation use the navigation above.
 
