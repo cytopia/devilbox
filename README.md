@@ -93,6 +93,20 @@ MEMCD_SERVER=1.4.28
 #MEMCD_SERVER=latest
 ```
 
+### Enter the container
+
+You can also work directly inside the php container if you need to run tools such as `drush`, `drupal-console`, `composer`, `node` etc. Simply use the prepared scripts in the base directory to enter:
+```shell
+# Enter as user devilbox (normal operation / development)
+$ ./bash.sh
+
+# Enter as root user (do root stuff)
+$ ./root_bash.sh
+```
+
+Your projects can be found in `/shared/httpd`. DNS records are automatically available inside the php container. Also every other service will be available on `127.0.0.1` inside the php container (tricky socat port-forwarding).
+
+
 
 ## Feature overview
 

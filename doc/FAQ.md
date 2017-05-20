@@ -32,4 +32,6 @@ This is just a pre-caution. Imagine they would link to the same datadir. You sta
 
 See: *Why are mounted MySQL data directories separated by version?*
 
-**Why do the user/group permissions of log/ or cfg/ directories show 1000?**
+**Why do the user/group permissions of log/ or cfg/ directories show 1001?**
+
+Uid and Gid are set to 1000 by default. You can alter them to match the uid/gid of your current user. Open the `.env` file and change the sections `NEW_UID` and `NEW_GID`. When you start up the devilbox, the php-container will use these values for its user.
