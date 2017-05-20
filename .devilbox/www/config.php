@@ -40,7 +40,7 @@ $HTTPD_HOST_NAME	= 'httpd';
 $MYSQL_HOST_NAME	= 'mysql';
 $PGSQL_HOST_NAME	= 'pgsql';
 $REDIS_HOST_NAME	= 'redis';
-$MEMCD_HOST_NAME	= 'memcached';
+$MEMCD_HOST_NAME	= 'memcd';
 
 
 //

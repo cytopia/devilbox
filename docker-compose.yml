@@ -109,7 +109,7 @@ services:
       ##
       ## Enable 127.0.0.1 Port-forwarding
       ##
-      - FORWARD_PORTS_TO_LOCALHOST=3306:mysql:3306,5432:pgsql:5432,6379:redis:6379,11211:memcached:11211
+      - FORWARD_PORTS_TO_LOCALHOST=3306:mysql:3306,5432:pgsql:5432,6379:redis:6379,11211:memcd:11211
 
       ##
       ## Additional variables to announce to intranet/php-container
@@ -121,7 +121,7 @@ services:
       - HOST_PORT_MYSQL
       - HOST_PORT_PGSQL
       - HOST_PORT_REDIS
-      - HOST_PORT_MEMCACHED
+      - HOST_PORT_MEMCD
       # Data dir paths
       - HOST_PATH_HTTPD_DATADIR
       - HOST_PATH_MYSQL_DATADIR
@@ -136,7 +136,7 @@ services:
       - PGSQL_SERVER
       - MYSQL_SERVER
       - REDIS_SERVER
-      - MEMCACHED_SERVER
+      - MEMCD_SERVER
 
     networks:
       app_net:
@@ -391,12 +391,12 @@ services:
   # ----------------------------------------
   # Memcached
   # ----------------------------------------
-  memcached:
-    image: memcached:${MEMCACHED_SERVER:-latest}
+  memcd:
+    image: memcached:${MEMCD_SERVER:-latest}
 
     ports:
       # [local-machine:]local-port:docker-port
-      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MEMCACHED}:11211"
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MEMCD}:11211"
 
     networks:
       app_net:
@@ -407,7 +407,7 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/memcached-${MEMCACHED_SERVER}:/var/log/memcached
+      - ${DEVILBOX_PATH}/log/memcd-${MEMCD_SERVER}:/var/log/memcd
 
     depends_on:
       - bind

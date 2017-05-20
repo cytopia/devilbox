@@ -581,7 +581,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 											<?php if ($avail_memcd): ?>
 												<tr>
 													<th>memcached</th>
-													<td><?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_MEMCACHED');?></td>
+													<td><?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_MEMCD');?></td>
 													<td>11211</td>
 												</tr>
 											<?php endif; ?>
@@ -788,7 +788,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 											<?php if ($avail_memcd): ?>
 												<tr>
 													<th>memcached</th>
-													<td>./log/memcached-<?php echo loadClass('Helper')->getEnv('MEMCACHED_SERVER'); ?></td>
+													<td>./log/memcached-<?php echo loadClass('Helper')->getEnv('MEMCD_SERVER'); ?></td>
 													<td>/var/log/memcached</td>
 												</tr>
 											<?php endif; ?>
