@@ -41,18 +41,19 @@ Each service has a `<SERVICE_NAME>_SERVER` variable with a corresponding version
 It is important to leave at least one version uncomment, otherwise the start-up will lead to errors. Use the following variable to control which version will be loaded:
 
 * **`PHP_SERVER`**
-* **`HTTP_SERVER`**
+* **`HTTPD_SERVER`**
 * **`MYSQL_SERVER`**
 * **`PGSQL_SERVER`**
 * **`REDIS_SERVER`**
+* **`MEMCD_SERVER`**
 
 #### 1.2 Data directories
 
 There are a few pre-configured data directories to make storage persistent across container restarts:
 
-* *`HOST_PATH_TO_WWW_DOCROOTS`*
-* *`HOST_PATH_TO_MYSQL_DATADIR`*
-* *`HOST_PATH_TO_POSTGRES_DATADIR`*
+* *`HOST_PATH_HTTPD_DATADIR`*
+* *`HOST_PATH_MYSQL_DATADIR`*
+* *`HOST_PATH_PGSQL_DATADIR`*
 
 The values by default point to relative directories inside the devilbox repository. You can however also point them to different locations (relative or absolute)
 

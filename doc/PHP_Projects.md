@@ -19,8 +19,9 @@ PHP Projects |
 
 ### TL;DR
 
-1. Create folder `${HOST_PATH_TO_MYSQL_DATADIR}/my-project/htdocs
-2. Expand docker host `/etc/hosts` with `127.0.0.1 my-project.loc`
+1. Create folder `${HOST_PATH_HTTPD_DATADIR}/my-project/htdocs`
+2. Set `${TLD_SUFFIX}` in the `.env` file (example: `loc`)
+2. Expand docker host `/etc/hosts` with `127.0.0.1 my-project.loc` or attach included DNS server to your host and stop worrying about DNS
 3. Browse `http://my-project.loc`
 
 
@@ -28,16 +29,29 @@ PHP Projects |
 
 As an example, we are going to add two projects.
 
-**Prerequisites**
+**Prerequisites (dir)**
 
 For this case let's assume your www root folder points to `~/www`. This means your projects will reside on your host computer in your home directory under www.
 
-In order to achive this set `HOST_PATH_TO_WWW_DOCROOTS=~/www` in the `.env` file (If this file does not yet exist, copy `env-example` to `.env`).
+In order to achive this set `HOST_PATH_HTTPD_DATADIR=~/www` in the `.env` file (If this file does not yet exist, copy `env-example` to `.env`).
 
 `.env`:
 ```
 ...
-HOST_PATH_TO_WWW_DOCROOTS=~/www
+HOST_PATH_HTTPD_DATADIR=~/www
+...
+```
+
+**Prerequisites (domain suffix)**
+
+Let's also assume that you have chosen `*.loc` as you projects `TLD_SUFFIX` Domain
+
+In order to achive this set `TLD_SUFFIX=loc` in the `.env` file (If this file does not yet exist, copy `env-example` to `.env`).
+
+`.env`:
+```
+...
+TLD_SUFFIX=loc
 ...
 ```
 
