@@ -95,10 +95,10 @@ DNS_CHECK_TIMEOUT=1
 ###
 ### 1.1 Choose PHP Server Image
 ###
-PHP_SERVER=php-fpm-5.4
+#PHP_SERVER=php-fpm-5.4
 #PHP_SERVER=php-fpm-5.5
 #PHP_SERVER=php-fpm-5.6
-#PHP_SERVER=php-fpm-7.0
+PHP_SERVER=php-fpm-7.0
 #PHP_SERVER=php-fpm-7.1
 #PHP_SERVER=hhvm-latest
 
