@@ -144,6 +144,19 @@ The devilbox has everything setup for you. The only thing you will have to insta
 
 For setup, usage and examples see detailed **[Documentation](doc/README.md)**.
 
+| Documentaion                          | Description |
+|---------------------------------------|-------------|
+| [Overview](doc/README.md)             | General overview |
+| [Configuration](doc/Configuration.md) | How to configure the devilbox |
+| [Usage](doc/Usage.md)                 | How to use the devilbox |
+| [Updating](doc/Updating.md)           | How to update |
+| [Info](doc/Info.md)                   | Technical information |
+| [PHP Projects](doc/PHP_Projects.md)   | How to manage projects |
+| [Emails](doc/Emails.md)               | How email catching works |
+| [Logs](doc/Logs.md)                   | How to view log files |
+| [Intranet](doc/Intranet.md)           | The built-in intranet |
+| [FAQ](doc/FAQ.md)                     | Frequently asked questions |
+
 ## Run-time Matrix
 
 Select your prefered version. (By editing the **`.env`** file)
