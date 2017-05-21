@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php require '../include/head.php'; ?>
+		<?php echo loadClass('Html')->getHead(); ?>
 	</head>
 
 	<body>
-		<?php require '../include/navbar.php'; ?>
+		<?php echo loadClass('Html')->getNavbar(); ?>
 
 		<div class="container">
 
@@ -17,8 +17,8 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<?php $errors = loadClass('Logger')->getAll(); ?>
-					<?php if ($errors === false): ?>
+				<?php $errors = loadClass('Logger')->getAll(); ?>
+				<?php if ($errors === false): ?>
 						<p>Writing to logfile is not possible. Errors will be sent as mail instead. Check the mail section.</p>
 					<?php elseif (count($errors) === 0): ?>
 						<p>No errors detected.</div>
@@ -28,14 +28,29 @@
 							<thead class="thead-inverse">
 								<tr>
 									<th>#</th>
+									<th>date</th>
 									<th>Errors (<?php echo $total;?>)</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php for ($i=($total-1); $i>=0; --$i): ?>
 									<tr>
-										<td><?php echo ($i+1);?></td>
-										<td><code><?php echo $errors[$i];?></code></td>
+										<th><?php echo ($i+1);?></th>
+										<th><code><?php echo $errors[$i]['date'];?></code></th>
+										<th><code><?php echo $errors[$i]['head'];?></code></th>
+										<?php if (isset($errors[$i]['body'])): ?>
+											</tr>
+											<tr>
+												<td colspan="3">
+												<?php
+													$dump = implode('', $errors[$i]['body']);
+													//$dump = str_replace("=&gt;</font> \n", '=&gt;</font>', $dump);
+
+												?>
+													<code><?php echo $dump; ?></code>
+												</td>
+											</tr>
+										<?php endif; ?>
 									</tr>
 								<?php endfor; ?>
 							</tbody>
@@ -47,6 +62,6 @@
 
 		</div><!-- /.container -->
 
-		<?php require '../include/footer.php'; ?>
+		<?php echo loadClass('Html')->getFooter(); ?>
 	</body>
 </html>

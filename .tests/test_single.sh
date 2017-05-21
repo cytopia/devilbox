@@ -55,8 +55,8 @@ set_debug_enable
 ### Alter host ports
 ###
 set_host_port_httpd "80"
-set_host_port_mysql "33060"
-set_host_port_pgsql "54320"
+set_host_port_mysql "3306"
+set_host_port_pgsql "5432"
 
 
 
@@ -67,6 +67,6 @@ set_host_port_pgsql "54320"
 ################################################################################
 
 devilbox_start "${DVL_SRV1}" "${DVL_VER1}" "${DVL_SRV2}" "${DVL_VER2}"
-debilbox_test
+devilbox_show
+devilbox_test
 devilbox_stop
-

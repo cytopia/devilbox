@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php $FONT_AWESOME = TRUE; require '../include/head.php'; ?>
+		<?php echo loadClass('Html')->getHead(true); ?>
 	</head>
 
 	<body>
-		<?php require '../include/navbar.php'; ?>
+		<?php echo loadClass('Html')->getNavbar(); ?>
 
 		<div class="container">
 
@@ -92,11 +92,8 @@
 
 			</div>
 
-
-
-
 		</div><!-- /.container -->
 
-		<?php require '../include/footer.php'; ?>
+		<?php echo loadClass('Html')->getFooter(); ?>
 	</body>
 </html>

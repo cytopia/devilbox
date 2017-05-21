@@ -1,13 +1,12 @@
 <?php require '../config.php'; ?>
-<?php $Docker = loadClass('Docker'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php require '../include/head.php'; ?>
+		<?php echo loadClass('Html')->getHead(); ?>
 	</head>
 
 	<body>
-		<?php require '../include/navbar.php'; ?>
+		<?php echo loadClass('Html')->getNavbar(); ?>
 
 		<div class="container">
 
@@ -17,7 +16,7 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<?php $vHosts = $Docker->PHP_getVirtualHosts(); ?>
+					<?php $vHosts = loadClass('Httpd')->getVirtualHosts(); ?>
 					<?php if ($vHosts): ?>
 						<table class="table table-striped">
 							<thead class="thead-inverse">
@@ -39,7 +38,7 @@
 								<?php foreach ($vHosts as $vHost): ?>
 									<tr>
 										<td><?php echo $vHost['name'];?></td>
-										<td><?php echo $Docker->getEnv('HOST_PATH_TO_WWW_DOCROOTS');?>/<?php echo $vHost['name'];?>/htdocs</td>
+										<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR');?>/<?php echo $vHost['name'];?>/htdocs</td>
 										<td class="text-xs-center text-xs-small" id="valid-<?php echo $vHost['name'];?>">&nbsp;&nbsp;&nbsp;</td>
 										<td id="href-<?php echo $vHost['name'];?>"><?php echo $filler;?></td>
 									</tr>
@@ -49,15 +48,16 @@
 						</table>
 					<?php else: ?>
 						<h4>No projects here.</h4>
-						<p>Simply create a folder in <strong><?php echo $Docker->getEnv('HOST_PATH_TO_WWW_DOCROOTS');?></strong> (on your host computer - not inside the docker).</p>
-						<p><strong>Example:</strong><br/><?php echo $Docker->getEnv('HOST_PATH_TO_WWW_DOCROOTS');?>/my_project</p>
+						<p>Simply create a directory in <strong><?php echo loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR');?></strong> on your host computer (or in <strong>/shared/httpd</strong> inside the php container).</p>
+						<p><strong>Example:</strong><br/><?php echo loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR');?>/my_project</p>
+						<p>It will then be available via <strong>http://my_project.<?php echo loadClass('Httpd')->getTldSuffix();?></strong></p>
 					<?php endif;?>
 				</div>
 			</div>
 
 		</div><!-- /.container -->
 
-		<?php require '../include/footer.php'; ?>
+		<?php echo loadClass('Html')->getFooter(); ?>
 		<script>
 		// self executing function here
 		(function() {
@@ -78,14 +78,19 @@
 						el_href = document.getElementById('href-' + vhost);
 						error = this.responseText;
 
-						if (error.length) {
+						if (error.length && error.match(/^error/)) {
+							console.log(error);
 							el_valid.className += ' bg-danger';
 							el_valid.innerHTML = 'ERR';
 							el_href.innerHTML = error;
+						} else if (error.length && error.match(/^warning/)) {
+							console.log(error);
+							el_valid.className += ' bg-warning';
+							el_valid.innerHTML = 'WARN';
+							el_href.innerHTML = error.replace('warning', '');
+							checkDns(vhost);
 						} else {
-							el_valid.className += ' bg-success';
-							el_valid.innerHTML = 'OK';
-							el_href.innerHTML = '<a target="_blank" href="http://'+vhost+'.<?php echo $Docker->getTld().$Docker->getPort();?>">'+vhost+'.<?php echo $Docker->getTld().$Docker->getPort();?></a>';
+							checkDns(vhost);
 						}
 					}
 				};
@@ -93,14 +98,57 @@
 				xhttp.send();
 			}
 
+			/**
+			 * Check if DNS record is set in /etc/hosts (or via attached DNS server)
+			 * for TLD_SUFFIX
+			 */
+			function checkDns(vhost) {
+				var xhttp = new XMLHttpRequest();
+
+				// Timeout after XXX seconds and mark it invalid DNS
+				xhttp.timeout = <?php echo loadClass('Helper')->getEnv('DNS_CHECK_TIMEOUT');?>000;
+
+				xhttp.onreadystatechange = function(e) {
+					var el_valid = document.getElementById('valid-' + vhost);
+					var el_href = document.getElementById('href-' + vhost);
+					var error = this.responseText;
+
+					if (this.readyState == 4 && this.status == 200) {
+						clearTimeout(xmlHttpTimeout);
+						el_valid.className += ' bg-success';
+						if (el_valid.innerHTML != 'WARN') {
+							el_valid.innerHTML = 'OK';
+						}
+						el_href.innerHTML = '<a target="_blank" href="http://'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix().loadClass('Httpd')->getPort();?>">'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix().loadClass('Httpd')->getPort();?></a>' + el_href.innerHTML;
+					} else {
+						//console.log(vhost);
+					}
+				}
+				xhttp.open('GET', 'http://'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix();?>/devilbox-api/status.json', true);
+				xhttp.send();
+
+				// Timeout to abort in 1 second
+				var xmlHttpTimeout = setTimeout(ajaxTimeout, <?php echo loadClass('Helper')->getEnv('DNS_CHECK_TIMEOUT');?>000);
+				function ajaxTimeout(e) {
+					var el_valid = document.getElementById('valid-' + vhost);
+					var el_href = document.getElementById('href-' + vhost);
+					var error = this.responseText;
+
+					el_valid.className += ' bg-danger';
+					el_valid.innerHTML = 'ERR';
+					el_href.innerHTML = 'No Host DNS record found. Add the following to <code>/etc/hosts</code>:<br/><code>127.0.0.1 '+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix();?></code>';
+				}
+
+			}
 
 			var vhosts = document.getElementsByName('vhost[]');
 
 			for (i = 0; i < vhosts.length; i++) {
 				updateStatus(vhosts[i].value);
 			}
-
 		})();
+
+
 		</script>
 	</body>
 </html>

@@ -9,6 +9,7 @@
 ###  No need to rebuild any dockers!
 ###
 
+
 ###
 ### Show all executed commands in each
 ### docker image during docker-compose up?
@@ -16,7 +17,6 @@
 ### 1: Yes
 ### 0: No
 DEBUG_COMPOSE_ENTRYPOINT=1
-
 
 
 ###
@@ -47,6 +47,39 @@ DEVILBOX_PATH=.
 LOCAL_LISTEN_ADDR=127.0.0.1:
 
 
+###
+### This is the domain suffix your projects will be made available
+### with mass-virtual-hosting.
+### It is also required for the internal DNS server to be setup.
+###
+### Note: Only ALPHA ([a-zA-Z]+) characters are supported.
+###
+### Example:
+###   TLD_SUFFIX=loc
+### Makes your project available under xxxx.loc
+###
+### Example:
+###   TLD_SUFFIX=local
+### Makes your project available under xxxx.local
+###
+TLD_SUFFIX=loc
+
+
+###
+### TLD_SUFFIX domains are checked if they are set in the
+### host computer /etc/hosts or available via attached DNS server.
+### Timeout is done on vhosts.php (intranet) via ajax calls.
+### In order to keep performance, set this to a low value.
+### DNS checks might not succeed in time on slow machines.
+### If DNS is valid, but timeout is expired, set this to a higher value.
+###
+### DNS_CHECK_TIMEOUT value is how many seconds to time out
+### Default is to timeout after 1 second (DNS_CHECK_TIMEOUT=1)
+###
+DNS_CHECK_TIMEOUT=1
+
+
+
 ################################################################################
 ###
 ### 1. Choose Images (Version)
@@ -60,15 +93,27 @@ LOCAL_LISTEN_ADDR=127.0.0.1:
 
 
 ###
-### 1.1 Choose HTTP Server Image
+### 1.1 Choose PHP Server Image
+###
+#PHP_SERVER=php-fpm-5.4
+#PHP_SERVER=php-fpm-5.5
+#PHP_SERVER=php-fpm-5.6
+PHP_SERVER=php-fpm-7.0
+#PHP_SERVER=php-fpm-7.1
+#PHP_SERVER=hhvm-latest
+
+
+###
+### 1.2 Choose HTTPD Server Image
 ###
 #HTTPD_SERVER=apache-2.2
 #HTTPD_SERVER=apache-2.4
 HTTPD_SERVER=nginx-stable
 #HTTPD_SERVER=nginx-mainline
 
+
 ###
-### 1.2 Choose MySQL Server Image
+### 1.3 Choose MySQL Server Image
 ###
 #MYSQL_SERVER=mysql-5.5
 #MYSQL_SERVER=mysql-5.6
@@ -80,25 +125,16 @@ MYSQL_SERVER=mariadb-10.1
 #MYSQL_SERVER=mariadb-10.2
 #MYSQL_SERVER=mariadb-10.3
 
-###
-### 1.3 Choose PostgreSQL Server Image
-###
-#POSTGRES_SERVER=9.1
-#POSTGRES_SERVER=9.2
-#POSTGRES_SERVER=9.3
-#POSTGRES_SERVER=9.4
-#POSTGRES_SERVER=9.5
-POSTGRES_SERVER=9.6
 
 ###
-### 1.4 Choose PHP Server Image
+### 1.4 Choose PostgreSQL Server Image
 ###
-#PHP_SERVER=php-fpm-5.4
-#PHP_SERVER=php-fpm-5.5
-#PHP_SERVER=php-fpm-5.6
-PHP_SERVER=php-fpm-7.0
-#PHP_SERVER=php-fpm-7.1
-#PHP_SERVER=hhvm-latest
+#PGSQL_SERVER=9.1
+#PGSQL_SERVER=9.2
+#PGSQL_SERVER=9.3
+#PGSQL_SERVER=9.4
+#PGSQL_SERVER=9.5
+PGSQL_SERVER=9.6
 
 
 ###
@@ -112,9 +148,29 @@ REDIS_SERVER=3.2
 
 
 ###
-### 1.6 Timezone for all dockers and service config files
+### 1.6 Choose Memcahced Server Image
+###     (only for docker-compose.optional.yml)
+###     $ docker-compose -f docker-compose.optional.yml up
 ###
-TIMEZONE=Europe/Berlin
+MEMCD_SERVER=1.4.21
+#MEMCD_SERVER=1.4.22
+#MEMCD_SERVER=1.4.23
+#MEMCD_SERVER=1.4.24
+#MEMCD_SERVER=1.4.25
+#MEMCD_SERVER=1.4.26
+#MEMCD_SERVER=1.4.27
+#MEMCD_SERVER=1.4.28
+#MEMCD_SERVER=1.4.29
+#MEMCD_SERVER=1.4.30
+#MEMCD_SERVER=1.4.31
+#MEMCD_SERVER=1.4.32
+#MEMCD_SERVER=1.4.33
+#MEMCD_SERVER=1.4.34
+#MEMCD_SERVER=1.4.35
+#MEMCD_SERVER=1.4.36
+#MEMCD_SERVER=latest
+
+
 
 
 
@@ -127,7 +183,7 @@ TIMEZONE=Europe/Berlin
 ###
 ### Local filesystem path to www projects.
 ###
-HOST_PATH_TO_WWW_DOCROOTS=./data/www
+HOST_PATH_HTTPD_DATADIR=./data/www
 
 ###
 ### Local filesystem path to mysql/mariadb datadir.
@@ -144,7 +200,8 @@ HOST_PATH_TO_WWW_DOCROOTS=./data/www
 ###       This is to protect databases from being altered by
 ###       newer or older mysql|mariadb server versions.
 ###
-HOST_PATH_TO_MYSQL_DATADIR=./data/mysql
+HOST_PATH_MYSQL_DATADIR=./data/mysql
+
 
 ###
 ### Local filesystem path to postgresql datadir.
@@ -160,13 +217,62 @@ HOST_PATH_TO_MYSQL_DATADIR=./data/mysql
 ###       version will be created where the actual data resides.
 ###       This is to protect databases from being altered by
 ###       newer or older postgres server versions.
-HOST_PATH_TO_POSTGRES_DATADIR=./data/pgsql
+HOST_PATH_PGSQL_DATADIR=./data/pgsql
 
 
 
 ################################################################################
 ###
-### 3. HTTP Docker Settings
+### 3. GENERAL DOCKER CONTAINER SETTINGS
+###
+################################################################################
+
+###
+### Set your user id and group id
+###
+### This should be changed to the value of your local
+### users uid and gid
+###
+### Type `id` on the terminal to find out your values
+###
+NEW_UID=1000
+NEW_GID=1000
+
+
+###
+### Timezone for all dockers and service config files
+###
+TIMEZONE=Europe/Berlin
+
+
+
+################################################################################
+###
+### 3. PHP Docker Settings
+###
+################################################################################
+
+###
+### Xdebug
+###
+
+# Enable/Disable Xdebug
+PHP_XDEBUG_ENABLE=1
+
+# Your local port (your computer host [not the docker])
+# where your ide/editor is listening for xdebug connections.
+PHP_XDEBUG_REMOTE_PORT=9000
+
+# Your local IP address (your computer host [not the docker])
+# where your ide/editor is listening for xdebug connections.
+PHP_XDEBUG_REMOTE_HOST=192.168.0.215
+## TODO: Check if it works by automatically sending it to the broadcast address
+
+
+
+################################################################################
+###
+### 4. HTTPD Docker Settings
 ###
 ################################################################################
 
@@ -176,9 +282,10 @@ HOST_PATH_TO_POSTGRES_DATADIR=./data/pgsql
 HOST_PORT_HTTPD=80
 
 
+
 ################################################################################
 ###
-### 4. MySQL Docker Settings
+### 5. MySQL Docker Settings
 ###
 ################################################################################
 
@@ -207,47 +314,24 @@ HOST_PORT_MYSQL=3306
 
 ################################################################################
 ###
-### 5. PostgreSQL Docker Settings
+### 6. PostgreSQL Docker Settings
 ###
 ################################################################################
 
 ###
 ### PostgreSQL 'root' user name (usually postgres)
 ###
-POSTGRES_USER=postgres
+PGSQL_ROOT_USER=postgres
 
 ###
 ### PostgreSQL 'root' user password
 ###
-POSTGRES_PASSWORD=
+PGSQL_ROOT_PASSWORD=
 
 ###
 ### Expose PostgreSQL Port to Host
 ###
-HOST_PORT_POSTGRES=5432
-
-
-################################################################################
-###
-### 6. PHP-FPM Docker Settings
-###
-################################################################################
-
-###
-### Xdebug
-###
-
-# Enable/Disable Xdebug
-PHP_XDEBUG_ENABLE=1
-
-# Your local port (your computer host [not the docker])
-# where your ide/editor is listening for xdebug connections.
-PHP_XDEBUG_REMOTE_PORT=9000
-
-# Your local IP address (your computer host [not the docker])
-# where your ide/editor is listening for xdebug connections.
-PHP_XDEBUG_REMOTE_HOST=172.20.10.2
-## TODO: Check if it works by automatically sending it to the broadcast address
+HOST_PORT_PGSQL=5432
 
 
 
@@ -261,3 +345,28 @@ PHP_XDEBUG_REMOTE_HOST=172.20.10.2
 ### Expost Redis Port to Host
 ###
 HOST_PORT_REDIS=6379
+
+
+
+################################################################################
+###
+### 8. Memcached Docker Settings
+###
+################################################################################
+
+###
+### Expost Memcached Port to Host
+###
+HOST_PORT_MEMCD=11211
+
+
+################################################################################
+###
+### 9. Bind Docker Settings
+###
+################################################################################
+
+###
+### Expost Bind Port to Host
+###
+HOST_PORT_BIND=53

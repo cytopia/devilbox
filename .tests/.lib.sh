@@ -56,9 +56,8 @@ runsu() {
 		printf "${_red}%s \$ ${_green}sudo ${_cmd}${_reset}\n" "${_user}"
 	fi
 
-	sudo "LANG=C LC_ALL=C ${_cmd}"
+	eval "sudo LANG=C LC_ALL=C ${_cmd}"
 }
-
 
 print_h1() {
 	_headline="${1}"
@@ -114,138 +113,44 @@ wait_for() {
 ################################################################################
 
 ###
-### Default enabled Docker Versions
+### Get newline separated default data mount directories (from .env file)
 ###
-get_default_version_httpd() {
-	_default="$( grep -E '^HTTPD_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-get_default_version_mysql() {
-	_default="$( grep -E '^MYSQL_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-get_default_version_postgres() {
-	_default="$( grep -E '^POSTGRES_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-get_default_version_php() {
-	_default="$( grep -E '^PHP_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
+get_data_mounts() {
+	_mounts="$( grep -E '^.*_DATADIR=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
+	_data=""
+
+	IFS='
+	'
+	for _mount in ${_mounts}; do
+		_prefix="$( echo "${_mount}" | cut -c-1 )"
+
+		# Relative path?
+		if [ "${_prefix}" = "." ]; then
+			_mount="$( echo "${_mount}" | sed 's/^\.//g' )" # Remove leading dot: .
+			_mount="$( echo "${_mount}" | sed 's/^\///' )" # Remove leading slash: /
+			_mount="${DEVILBOX_PATH}/${_mount}"
+		fi
+
+		# newline Append
+		if [ "${_data}" = "" ]; then
+			_data="${_mount}"
+		else
+			_data="${_data}\n${_mount}"
+		fi
+	done
+
+	echo "${_data}"
 }
 
-###
-### Default enabled Host Ports
-###
-get_default_port_httpd() {
-	_default="$( grep -E '^HOST_PORT_HTTPD=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-get_default_port_mysql() {
-	_default="$( grep -E '^HOST_PORT_MYSQL=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-get_default_port_postgres() {
-	_default="$( grep -E '^HOST_PORT_POSTGRES=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-
-###
-### Default enabled Host Mounts
-###
-get_default_mount_httpd() {
-	_default="$( grep -E '^HOST_PATH_TO_WWW_DOCROOTS=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	_prefix="$( echo "${_default}" | cut -c-1 )"
-
-	# Relative path?
-	if [ "${_prefix}" = "." ]; then
-		_default="$( echo "${_default}" | sed 's/^\.//g' )" # Remove leading dot: .
-		_default="$( echo "${_default}" | sed 's/^\///' )" # Remove leading slash: /
-		echo "${DEVILBOX_PATH}/${_default}"
-	else
-		echo "${_default}"
-	fi
-}
-get_default_mount_mysql() {
-	_default="$( grep -E '^HOST_PATH_TO_MYSQL_DATADIR=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	_prefix="$( echo "${_default}" | cut -c-1 )"
-
-	# Relative path?
-	if [ "${_prefix}" = "." ]; then
-		_default="$( echo "${_default}" | sed 's/^\.//g' )" # Remove leading dot: .
-		_default="$( echo "${_default}" | sed 's/^\///' )" # Remove leading slash: /
-		echo "${DEVILBOX_PATH}/${_default}"
-	else
-		echo "${_default}"
-	fi
-}
-get_default_mount_postgres() {
-	_default="$( grep -E '^HOST_PATH_TO_POSTGRES_DATADIR=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
-	_prefix="$( echo "${_default}" | cut -c-1 )"
-
-	# Relative path?
-	if [ "${_prefix}" = "." ]; then
-		_default="$( echo "${_default}" | sed 's/^\.//g' )" # Remove leading dot: .
-		_default="$( echo "${_default}" | sed 's/^\///' )" # Remove leading slash: /
-		echo "${DEVILBOX_PATH}/${_default}"
-	else
-		echo "${_default}"
-	fi
-}
-
-
-################################################################################
-#
-#  G E T   E N A B L E D
-#
-################################################################################
 
 ###
 ### Default enabled Docker Versions
 ###
-get_enabled_version_httpd() {
-	_default="$( grep -E '^HTTPD_SERVER=' "${DEVILBOX_PATH}/.env" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-get_enabled_version_mysql() {
-	_default="$( grep -E '^MYSQL_SERVER=' "${DEVILBOX_PATH}/.env" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-get_enabled_version_postgres() {
-	_default="$( grep -E '^POSTGRES_SERVER=' "${DEVILBOX_PATH}/.env" | sed 's/^.*=//g' )"
-	echo "${_default}"
-}
-get_enabled_version_php() {
-	_default="$( grep -E '^PHP_SERVER=' "${DEVILBOX_PATH}/.env" | sed 's/^.*=//g' )"
-	echo "${_default}"
+get_enabled_versions() {
+	 grep -E '^[A-Z]+_SERVER=' "${DEVILBOX_PATH}/.env" | sed 's/_SERVER=/\t/g'
+
 }
 
-
-
-################################################################################
-#
-#  G E T   A L L  D O C K E R   V E R S I O N S
-#
-################################################################################
-
-###
-### All Docker Versions
-###
-get_all_docker_httpd() {
-	_all="$( grep -E '^#?HTTPD_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/.*=//g' )"
-	echo "${_all}"
-}
-get_all_docker_mysql() {
-	_all="$( grep -E '^#?MYSQL_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/.*=//g' )"
-	echo "${_all}"
-}
-get_all_docker_postgres() {
-	_all="$( grep -E '^#?POSTGRES_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/.*=//g' )"
-	echo "${_all}"
-}
-get_all_docker_php() {
-	_all="$( grep -E '^#?PHP_SERVER=' "${DEVILBOX_PATH}/env-example" | sed 's/.*=//g' )"
-	echo "${_all}"
-}
 
 
 ################################################################################
@@ -274,8 +179,31 @@ comment_all_dockers() {
 	# Comment out all enabled docker versions
 	run "sed -i'' \"s/^HTTPD_SERVER=/#HTTPD_SERVER=/g\" \"${DEVILBOX_PATH}/.env\""
 	run "sed -i'' \"s/^MYSQL_SERVER=/#MYSQL_SERVER=/g\" \"${DEVILBOX_PATH}/.env\""
-	run "sed -i'' \"s/^POSTGRES_SERVER=/#POSTGRES_SERVER=/g\" \"${DEVILBOX_PATH}/.env\""
+	run "sed -i'' \"s/^PGSQL_SERVER=/#PGSQL_SERVER=/g\" \"${DEVILBOX_PATH}/.env\""
 	run "sed -i'' \"s/^PHP_SERVER=/#PHP_SERVER=/g\" \"${DEVILBOX_PATH}/.env\""
+}
+
+###
+### Enable debug mode
+###
+set_debug_enable() {
+	run "sed -i'' \"s/^DEBUG_COMPOSE_ENTRYPOINT=.*/DEBUG_COMPOSE_ENTRYPOINT=1/\" \"${DEVILBOX_PATH}/.env\""
+}
+
+###
+### Alter ports
+###
+set_host_port_httpd() {
+	_port="${1}"
+	run "sed -i'' \"s/^HOST_PORT_HTTPD=.*/HOST_PORT_HTTPD=${_port}/\" \"${DEVILBOX_PATH}/.env\""
+}
+set_host_port_mysql() {
+	_port="${1}"
+	run "sed -i'' \"s/^HOST_PORT_MYSQL=.*/HOST_PORT_MYSQL=${_port}/\" \"${DEVILBOX_PATH}/.env\""
+}
+set_host_port_pgsql() {
+	_port="${1}"
+	run "sed -i'' \"s/^HOST_PORT_PGSQL=.*/HOST_PORT_PGSQL=${_port}/\" \"${DEVILBOX_PATH}/.env\""
 }
 
 ###
@@ -291,31 +219,13 @@ enable_docker_mysql() {
 }
 enable_docker_pgsql() {
 	_docker_version="${1}"
-	run "sed -i'' \"s/#POSTGRES_SERVER=${_docker_version}/POSTGRES_SERVER=${_docker_version}/g\" \"${DEVILBOX_PATH}/.env\""
+	run "sed -i'' \"s/#PGSQL_SERVER=${_docker_version}/PGSQL_SERVER=${_docker_version}/g\" \"${DEVILBOX_PATH}/.env\""
 }
 enable_docker_php() {
 	_docker_version="${1}"
 	run "sed -i'' \"s/#PHP_SERVER=${_docker_version}/PHP_SERVER=${_docker_version}/g\" \"${DEVILBOX_PATH}/.env\""
 }
 
-
-set_host_port_httpd() {
-	_port="${1}"
-	run "sed -i'' \"s/^HOST_PORT_HTTPD=.*/HOST_PORT_HTTPD=${_port}/\" \"${DEVILBOX_PATH}/.env\""
-}
-set_host_port_mysql() {
-	_port="${1}"
-	run "sed -i'' \"s/^HOST_PORT_MYSQL=.*/HOST_PORT_MYSQL=${_port}/\" \"${DEVILBOX_PATH}/.env\""
-}
-set_host_port_pgsql() {
-	_port="${1}"
-	run "sed -i'' \"s/^HOST_PORT_POSTGRES=.*/HOST_PORT_POSTGRES=${_port}/\" \"${DEVILBOX_PATH}/.env\""
-}
-
-
-set_debug_enable() {
-	run "sed -i'' \"s/^DEBUG_COMPOSE_ENTRYPOINT=.*/DEBUG_COMPOSE_ENTRYPOINT=1/\" \"${DEVILBOX_PATH}/.env\""
-}
 
 
 ################################################################################
@@ -341,12 +251,6 @@ devilbox_start() {
 	_set_httpd=""
 	_set_mysql=""
 	_set_pgsql=""
-
-	# Print Headline
-	print_h1 "${_srv1}-${_ver1} vs ${_srv2}-${_ver2}"
-
-	# Adjust .env
-	comment_all_dockers
 
 	# Enable Type 1
 	if [ "${_srv1}" = "HTTPD" ]; then
@@ -390,35 +294,41 @@ devilbox_start() {
 		_set_pgsql="${_def_pgsql}"
 	fi
 
+
+	# Print Headline
+	print_h1 "${_srv1}-${_ver1} vs ${_srv2}-${_ver2}"
+
+	# Adjust .env
+	comment_all_dockers
+
 	# Set versions in .env file
 	enable_docker_php "${_set_php}"
 	enable_docker_httpd "${_set_httpd}"
 	enable_docker_mysql "${_set_mysql}"
 	enable_docker_pgsql "${_set_pgsql}"
 
-	# Show Server settings
-	echo "Enable SERVERs"
-	echo "--------------"
-	grep '^[A-Za-z0-9]*_SERVER' "${DEVILBOX_PATH}/.env" | column -t -s '='
-	echo
-
-	# Show all other settings
-	echo "Enable Settings"
-	echo "---------------"
-	grep -E '^[-_A-Za-z0-9]*=' "${DEVILBOX_PATH}/.env" | grep -v 'SERVER_' | column -t -s '='
-	echo
-
-
 	# Run
 	docker-compose up -d
 
-	# Wait for it to come up
-	wait_for 30 1
+	# Wait for http to return 200
+	printf "wait "
+	_max="90"
+	# shellcheck disable=SC2034
+	for i in $(seq 1 "${_max}"); do
+		if [ "$(  curl --connect-timeout 1 --max-time 1 -s -o /dev/null -w '%{http_code}' http://localhost/index.php )" = "200" ]; then
+			break;
+		fi
+		sleep 1
+		printf "."
+	done
+	printf "\n"
 
-	# Show log/info
-	docker-compose logs
-	#docker-compose ps
+	# Wait another 30 sec for databases to come up
+	wait_for 30 1
+	echo
+
 }
+
 devilbox_stop() {
 	# Stop existing dockers
 	cd "${DEVILBOX_PATH}" || exit 1
@@ -428,10 +338,38 @@ devilbox_stop() {
 	docker-compose rm -f || true
 
 	# Delete existing data dirs
-	sudo rm -rf "$( get_default_mount_httpd )"
-	sudo rm -rf "$( get_default_mount_mysql )"
-	sudo rm -rf "$( get_default_mount_postgres )"
+	_data_dirs="$( get_data_mounts )"
+	IFS='
+	'
+	for d in ${_data_dirs}; do
+		runsu "rm -rf ${d}" "1"
+	done
 }
+
+devilbox_show() {
+	###
+	### 1. Show Info
+	###
+	print_h2 "Info"
+
+	# Show wanted versions
+	echo "[Wanted] .env settings"
+	echo "------------------------------------------------------------"
+	get_enabled_versions
+	echo
+
+	# Get actual versions
+	echo "[Actual] http://localhost settings"
+	echo "------------------------------------------------------------"
+	curl -q http://localhost/index.php 2>/dev/null | \
+        grep -E 'circles' | \
+        grep -oE '<strong.*strong>.*\(.*\)' | \
+        sed 's/<strong>//g' | \
+        sed 's/<\/strong>.*(/\t/g' | \
+        sed 's/)//g'
+	echo
+}
+
 
 
 ################################################################################
@@ -440,40 +378,20 @@ devilbox_stop() {
 #
 ################################################################################
 
-
-debilbox_test() {
+devilbox_test() {
 	###
 	### Variables
 	###
 	_ret=0 # Final exit code
-	_oks=4 # Require this many [OK]'s on the page
+	_oks=17 # Require this many [OK]'s on the page
 
 
-	###
-	### 1. Show Info
-	###
-	print_h2 "1. Info"
-
-	# Show wanted versions
-	echo ".env settings"
-	echo "------------------------------------------------------------"
-	echo "HTTPD: $(get_enabled_version_httpd)"
-	echo "PHP:   $(get_enabled_version_php)"
-	echo "MySQL: $(get_enabled_version_mysql)"
-	echo "PgSQL: $(get_enabled_version_postgres)"
-	echo
-
-	# Get actual versions
-	echo "http://localhost settings"
-	echo "------------------------------------------------------------"
-	curl -q http://localhost/index.php 2>/dev/null | grep -E '<h3>.*</h3>' | sed 's/.*<h3>//g' | sed 's/<\/h3>//g'
-	echo
 
 
 	###
 	### 2. Test docker-compose
 	###
-	print_h2 "2. docker-compose"
+	print_h2 "docker-compose"
 
 	echo "docker-compose ps"
 	echo "------------------------------------------------------------"
@@ -492,11 +410,21 @@ debilbox_test() {
 
 	echo "Count [OK]'s on curl-ed url"
 	echo "------------------------------------------------------------"
-	if _cnt="$( _test_curled_oks "${_oks}" )"; then
-		echo "[OK]: ${_cnt} of ${_oks}"
-	else
-		echo "[ERR]: ${_cnt} of ${_oks}"
+	if ! _cnt="$( _test_curled_oks "${_oks}" )"; then
 		_ret="$(( _ret + 1 ))"
+		echo "[ERR]: ${_cnt} / ${_oks} (Not all 'dvlbox-ok' found)"
+	else
+		echo "[OK]: ${_cnt} / ${_oks} (All 'dvlbox-ok' found)"
+	fi
+	echo
+
+	echo "Count [ERR]'s on curl-ed url"
+	echo "------------------------------------------------------------"
+	if ! _cnt="$( _test_curled_err )"; then
+		_ret="$(( _ret + 1 ))"
+		echo "[ERR]: ${_cnt} / 0 (Found some 'dvlbox-err')"
+	else
+		echo "[OK]: ${_cnt} / 0 (No 'dvlbox-err' found)"
 	fi
 	echo
 
@@ -527,13 +455,18 @@ debilbox_test() {
 		sudo find log -type f -exec sh -c 'echo "{}:\n-----------------"; cat "{}"; echo "\n\n"' \;
 
 		return 1
-
-
 	fi
 
 	return 0
 }
 
+
+
+################################################################################
+#
+#   T E S T I N G   H E L P E R S
+#
+################################################################################
 
 ###
 ### Test against stopped containers
@@ -561,23 +494,28 @@ _test_docker_compose() {
 ###
 _test_curled_oks() {
 	_oks="${1}"
+	_find_ok="dvlbox-ok"
 
-	max="20"
-	i=0
-	while [ $i -lt $max ]; do
-		if [ "$(  curl -s -o /dev/null -w '%{http_code}' http://localhost/index.php )" != "404" ]; then
-			break;
-		fi
-		sleep 1s
-		i=$(( i + 1 ))
-	done
-
-	# sleep (in case hhvm segfaulted and needs to be restarted)
-	sleep 10
-	_count="$( curl -q http://localhost/index.php 2>/dev/null | grep -c 'OK' || true )"
+	_count="$( curl -q http://localhost/index.php 2>/dev/null | grep -c "${_find_ok}" || true )"
 	echo "${_count}"
 
 	if [ "${_count}" != "${_oks}" ]; then
+		return 1
+	else
+		return 0
+	fi
+}
+
+###
+### Test [ERR]'s found on website
+###
+_test_curled_err() {
+	_find_err="dvlbox-err"
+
+	_count="$( curl -q http://localhost/index.php 2>/dev/null | grep -c "${_find_err}" || true )"
+	echo "${_count}"
+
+	if [ "${_count}" != "0" ]; then
 		return 1
 	else
 		return 0

@@ -98,6 +98,7 @@ $RECYCLE.BIN/
 ###### vim ######
 *.swp
 *.swo
+*.swn
 *~
 
 ###### TextMate ######

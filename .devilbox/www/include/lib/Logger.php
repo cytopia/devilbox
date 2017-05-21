@@ -14,6 +14,8 @@ namespace devilbox;
 class Logger
 {
 
+	private $_record_separator = "====================\n";
+
 	/*********************************************************************************
 	 *
 	 * Statics
@@ -21,10 +23,10 @@ class Logger
 	 *********************************************************************************/
 
 	/**
-	 * Mysql instance
-	 * @var Mysql|null
+	 * Logger instance
+	 * @var Logger|null
 	 */
-	protected static $instance = null;
+	private static $_instance = null;
 
 
 	/**
@@ -34,10 +36,10 @@ class Logger
 	 */
 	public static function getInstance()
 	{
-		if (!isset(static::$instance)) {
-			static::$instance = new static();
+		if (self::$_instance === null) {
+			self::$_instance = new self();
 		}
-		return static::$instance;
+		return self::$_instance;
 	}
 
 
@@ -120,15 +122,30 @@ class Logger
 	 */
 	public function error($message)
 	{
-		$mail_body = $message."\r\n";
+		ob_start();
+		$backtrace = debug_backtrace();
+		// Remove current (first) trace from array
+		for ($i=1; $i<count($backtrace); $i++) {
+			$backtrace[$i-1] = $backtrace[$i];
+		}
+		var_dump($backtrace);
+		$body = ob_get_contents();
+		ob_end_clean();
+
+		if ($body) {
+			$mail_body = $message."\r\n".$body."\r\n";
+		} else {
+			$mail_body = $message."\r\n";
+		}
 
 		if (!$this->_fp) {
 			return mail('apache@localhost', 'devilbox error', $mail_body);
 		}
 
-		$message = date('Y-m-d H:i') . "\n" . $message;
-		$message = str_replace("\n", '<br/>', $message);
-		$message = $message . "\n";
+		$message = date('Y-m-d H:i') . "\n" .
+						$message. "\n" .
+						$body . "\n" .
+						$this->_record_separator;
 
 		if (fwrite($this->_fp, $message) === false) {
 			return mail('apache@localhost', 'devilbox error', $mail_body);
@@ -145,13 +162,46 @@ class Logger
 	{
 		$lines = array();
 
-		if ($this->_fp) {
-			rewind($this->_fp);
-			while (($buffer = fgets($this->_fp)) !== false) {
-				$lines[] = $buffer;
+		$pos = 0;
+		$num = 0;
+
+		$handle = fopen($this->_logfile, 'r');
+		if ($handle) {
+			while (($buffer = fgets($handle)) !== false) {
+				if ($pos == 0) {
+					$lines[$num]['date'] = $buffer;
+					$pos++;
+				} else if ($pos == 1) {
+					$lines[$num]['head'] = $buffer;
+					$pos++;
+				} else {
+					// New entry
+					if (substr_count($buffer, $this->_record_separator)) {
+						$num++;
+						$pos = 0;
+						continue;
+					// Still current entry, but body part
+					} else {
+						$lines[$num]['body'][] = $buffer;
+					}
+				}
 			}
-			return $lines;
 		}
-		return false;
+		fclose($handle);
+		return $lines;
+	}
+
+	public function countErrors()
+	{
+		$count = 0;
+		$handle = fopen($this->_logfile, 'r');
+		while (!feof($handle)) {
+			$line = fgets($handle);
+			if (substr_count($line, $this->_record_separator)) {
+				$count++;
+			}
+		}
+		fclose($handle);
+		return $count;
 	}
 }

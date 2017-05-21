@@ -1,82 +1,87 @@
-# Documentation
+# Devilbox Documentation
 
-## Adding projects
+[Home](https://github.com/cytopia/devilbox) |
+Overview |
+[Configuration](Configuration.md) |
+[Usage](Usage.md) |
+[Updating](Updating.md) |
+[Info](Info.md) |
+[PHP Projects](PHP_Projects.md) |
+[Emails](Emails.md) |
+[Logs](Logs.md) |
+[Intranet](Intranet.md) |
+[FAQ](FAQ.md)
 
-As an example, we are going to add two projects.
+----
 
-**Prerequisites**
+## Overview
 
-For this case let's assume your www root folder points to `~/www`. This means your projects will reside on your host computer in your home directory under www.
+![Devilbox](img/devilbox-dash.png)
 
-In order to achive this set `HOST_PATH_TO_WWW_DOCROOTS=~/www` in the `.env` file (If this file does not yet exist, copy `env-example` to `.env`).
+This is a brief overview to get you started as quick as possible. For in-depth documentation use the navigation above.
 
-`.env`:
-```
-...
-HOST_PATH_TO_WWW_DOCROOTS=~/www
-...
-```
 
-**Desired Projects**
-
-| Project name | Document Root | URL |
-|--------------|---------------|-----|
-| devilbox     | ~/www/devilbox/htdocs | http://devilbox.loc |
-| foo.bar      | ~/www/foo.bar/htdocs | http://foo.bar.loc |
-
-`htdocs` can either be a folder or a symlink to a folder.
-
-**Project: devilbox**
-
-Setup projects folder and an `index.php` (on your host computer)
+### Install, Configure and Start
 
 ```shell
-$ mkdir -p ~/www/devilbox/htdocs
-$ vim ~/devilbox/htdocs/index.php
+# Get the soures
+$ git clone https://github.com/cytopia/devilbox
+$ cd devilbox
+
+# Create and customize the config file
+$ cp env-example .env
+$ vim .env
+
+# Start your container
+$ docker-compose up
 ```
 
-```php
-<?php
-echo 'hello world';
-?>
+### Create projects
+
+Inside the `.env` file you will find two important variables:
+1. `HOST_PATH_HTTPD_DATADIR`
+2. `TLD_SUFFIX`
+
+The first one defines the root path for all your projects and the second one defines your desired domain suffix (default: `loc`). Inside the `HOST_PATH_HTTPD_DATADIR` folder you will have to create the following generic directory structure: `<project-dir>/htdocs`. Files from the `htdocs` folder are then served via `http://<project-dir>.<TLD_SUFFIX>`.
+
+**TL;DR (easy)**  
+
+  - Assuming `TLD_SUFFIX` equals `loc`
+  - Assuming `HOST_PATH_HTTPD_DATADIR` equals `/shared/httpd/`
+  - Assuming desired project name equals `my-new-project`
+  - `mkdir -p /shared/httpd/my-new-project/htdocs`
+  - `echo "127.0.0.1 my-new-project.loc" | sudo tee --append /etc/hosts`
+  - `curl http://my-new-project.loc`
+  -
+
+
+**TL;DR (pro)**  
+
+  - `export project=my-new-project`
+  - `. .env`
+  - `mkdir -p ${HOST_PATH_HTTPD_DATADIR}/${project}/htdocs`
+  - `echo "127.0.0.1 ${project}.${TLD_SUFFIX}" | sudo tee --append /etc/hosts`
+  - `curl http://${project}.${TLD_SUFFIX}`
+
+Here is a more complete example for the directory structure:
+```
+  project1/
+     htdocs/
+  project2/
+     htdocs/
+  some-random-name/
+     htdocs  -> ./some-dir/              # <-- symlinks are also possible
+	 some-dir/
+  my-website.com/
+     htdocs  -> /shared/httpd/site.com/  # <-- symlinks are also possible
 ```
 
-Adjust your local (host computer) `/etc/hosts` and point `devilbox.loc` to your localhost address `127.0.0.1`
-
-```shell
-$ sudo vim /etc/hosts
+You will then have to extend `/etc/hosts` with your created foldernames plus the tld suffix:
 ```
-```shell
-127.0.0.1 devilbox.loc
-```
-
-
-**Project: foo.bar**
-
-Setup projects folder and use existing github project to serve.
-
-```shell
-$ mkdir -p ~/www/foo.bar
-$ cd ~/www/foo.bar
-
-# Use an existing github project as your document root
-$ git clone https://github.com/<user>/<some-project>
-
-# Symlink the project to htdocs
-$ ln -s <some-project> htdocs
-
-$ ls -l
-drwxr-xr-x 4 cytopia 1286676289  136 Oct 30 14:24 <some-project>/
-lrwxr-xr-x 1 cytopia 1286676289  549 Nov  6 15:13 htdocs -> <some-project>/
+127.0.0.1 project1.loc
+127.0.0.1 project2.loc
+127.0.0.1 some-random-name.loc
+127.0.0.1 my-website.com.loc
 ```
 
-
-Adjust your local (host computer) `/etc/hosts` and point `foo.bar.loc` to your localhost address `127.0.0.1`
-
-```shell
-$ sudo vim /etc/hosts
-```
-```shell
-127.0.0.1 foo.bar.loc
-```
-
+Contents inside the `htdocs` folder will be server via the configured domain automatically. So in order to access project2's htdoc folder go to `http://project2.loc` (assuming `TLD_SUFFIX` was `loc`)

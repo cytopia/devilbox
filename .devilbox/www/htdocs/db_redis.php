@@ -1,16 +1,12 @@
 <?php require '../config.php'; ?>
-<?php if (loadClass('Docker')->getEnv('COMPOSE_OPTIONAL') != 1) {
-	header('Location: /index.php');
-	exit(0);
-} ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php require '../include/head.php'; ?>
+		<?php echo loadClass('Html')->getHead(); ?>
 	</head>
 
 	<body>
-		<?php require '../include/navbar.php'; ?>
+		<?php echo loadClass('Html')->getNavbar(); ?>
 
 		<div class="container">
 
@@ -21,29 +17,32 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<table class="table table-striped ">
-						<thead class="thead-inverse ">
-							<tr>
-								<th>Key</th>
-								<th>Value</th>
-							</th>
-						</thead>
-						<tbody>
-							<?php foreach (loadClass('Redis')->getKeys() as $key => $value): ?>
+					<?php if (!loadClass('Redis')->isAvailable()): ?>
+						<p>Redis container is not running.</p>
+					<?php else: ?>
+						<table class="table table-striped ">
+							<thead class="thead-inverse ">
 								<tr>
-									<td><?php echo $key;?></td>
-									<td><?php print_r($value);?></td>
-								</tr>
-							<?php endforeach; ?>
-						</tbody>
-					</table>
+									<th>Key</th>
+									<th>Value</th>
+								</th>
+							</thead>
+							<tbody>
+								<?php foreach (loadClass('Redis')->getKeys() as $key => $value): ?>
+									<tr>
+										<td><?php echo $key;?></td>
+										<td><?php print_r($value);?></td>
+									</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					<?php endif; ?>
 
 				</div>
 			</div>
 
 		</div><!-- /.container -->
 
-		<?php require '../include/footer.php'; ?>
-
+		<?php echo loadClass('Html')->getFooter(); ?>
 	</body>
 </html>

@@ -230,7 +230,7 @@ $opcache = OpCacheService::init($options);
 <!doctype html>
 <html>
 <head>
-    <?php require '../include/head.php'; ?>
+    <?php echo loadClass('Html')->getHead(); /* devilbox edit */ ?>
 
 
     <meta charset="UTF-8"/>
@@ -238,7 +238,7 @@ $opcache = OpCacheService::init($options);
     <title>OPcache statistics on <?php echo $opcache->getData('version', 'host'); ?></title>
     <script src="/vendor/react/react.min.js"></script>
     <script src="/vendor/react/react-dom.min.js"></script>
-    <script src="/vendor/jquery/jquery-2.2.3.min.js"></script>
+    <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
     <style type="text/css">
         body { font-family:sans-serif; font-size:90%; padding: 0; margin: 0 }
         nav { padding-top: 20px; }
@@ -321,7 +321,7 @@ $opcache = OpCacheService::init($options);
 </head>
 
 <body>
-<?php require '../include/navbar.php'; ?>
+<?php echo loadClass('Html')->getNavbar(); /* devilbox edit */?>
 
 
 
@@ -766,6 +766,6 @@ $opcache = OpCacheService::init($options);
     var filesObj = ReactDOM.render(React.createElement(Files, null), document.getElementById('filelist'));
     ReactDOM.render(React.createElement(Directives, null), document.getElementById('directives'));
 </script>
-<?php require '../include/footer.php'; ?>
+<?php echo loadClass('Html')->getFooter(); /* devilbox edit */?>
 </body>
 </html>
