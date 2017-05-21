@@ -16,6 +16,8 @@ Overview |
 
 ## Overview
 
+![Devilbox](img/devilbox-dash.png)
+
 This is a brief overview to get you started as quick as possible. For in-depth documentation use the navigation above.
 
 

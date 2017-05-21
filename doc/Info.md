@@ -31,7 +31,7 @@ It is best to use the hostnames and not to rely on the ip addresses as they migh
 | MySQL / MariaDB | mysql           | mysql     | 172.16.238.12  |
 | PostgreSQL      | pgsql           | pgsql     | 172.16.238.13  |
 | Redis           | redis           | redis     | 172.16.238.14  |
-| Memcahed        | memcd           | memcd     | 172.16.238.15  |
+| Memcached       | memcd           | memcd     | 172.16.238.15  |
 
 ### Background
 
@@ -46,7 +46,7 @@ The PHP container is using [socat](https://linux.die.net/man/1/socat) to
 1. forward the remote mysql port `3306` (on the mysql container) to its own `127.0.0.1:3306`
 2. forward the remote pgsql port `5432` (on the mysql container) to its own `127.0.0.1:5432`
 3. forward the remote redis port `6379` (on the mysql container) to its own `127.0.0.1:6379`
-3. forward the remote mecahced port `11211` (on the memcd container) to its own `127.0.0.1:11211`
+3. forward the remote memcached port `11211` (on the memcd container) to its own `127.0.0.1:11211`
 
 
 #### Background - Docker Host

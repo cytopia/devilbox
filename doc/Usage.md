@@ -98,13 +98,13 @@ The `php` container (which might also have hhvm installed, depending on your ver
 
 > **Note:** If you also have php installed locally on your host machine (and it is the php version of your choice), there is no need to enter the php container, just execute all the required commands on your project dir.
 
-To enter the php container, type the following:
+To enter the php container, type the following in the devilbox root directory:
 ```shel
-$ docker-compose exec --user apache php env TERM=xterm bash -l
+$ ./bash.sh
 ```
-You can alternatively also just execute the bundled script `enter.sh`
+You can alternatively also enter as root:
 ```
-$ ./enter.sh
+$ ./root_bash.sh
 ```
 
 #### 3.2 Find your project files
