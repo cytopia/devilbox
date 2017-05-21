@@ -235,8 +235,8 @@ HOST_PATH_PGSQL_DATADIR=./data/pgsql
 ###
 ### Type `id` on the terminal to find out your values
 ###
-NEW_UID=1001
-NEW_GID=1001
+NEW_UID=1000
+NEW_GID=1000
 
 
 ###
