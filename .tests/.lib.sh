@@ -383,7 +383,7 @@ devilbox_test() {
 	### Variables
 	###
 	_ret=0 # Final exit code
-	_oks=17 # Require this many [OK]'s on the page
+	_oks=20 # Require this many [OK]'s on the page
 
 
 

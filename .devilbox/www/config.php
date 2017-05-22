@@ -10,7 +10,7 @@ error_reporting(-1);
 putenv('RES_OPTIONS=retrans:1 retry:1 timeout:1 attempts:1');
 
 
-$DEVILBOX_VERSION = 'v0.9';
+$DEVILBOX_VERSION = 'v0.10';
 $DEVILBOX_DATE = '2017-05-20';
 $DEVILBOX_API_PAGE = 'devilbox-api/status.json';
 
@@ -41,6 +41,7 @@ $MYSQL_HOST_NAME	= 'mysql';
 $PGSQL_HOST_NAME	= 'pgsql';
 $REDIS_HOST_NAME	= 'redis';
 $MEMCD_HOST_NAME	= 'memcd';
+$MONGO_HOST_NAME	= 'mongo';
 
 
 //
@@ -130,6 +131,11 @@ function loadClass($class) {
 			case 'Memcd':
 				loadFile($class, $cnt_dir);
 				$_LOADED_LIBS[$class] = \devilbox\Memcd::getInstance($GLOBALS['MEMCD_HOST_NAME']);
+				break;
+
+			case 'Mongo':
+				loadFile($class, $cnt_dir);
+				$_LOADED_LIBS[$class] = \devilbox\Mongo::getInstance($GLOBALS['MONGO_HOST_NAME']);
 				break;
 
 			// Get optional docker classes

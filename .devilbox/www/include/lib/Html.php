@@ -35,6 +35,10 @@ class Html
 					'path' => '/db_pgsql.php'
 				),
 				array(
+					'name' => 'MongoDB DB',
+					'path' => '/db_mongo.php'
+				),
+				array(
 					'name' => 'Redis DB',
 					'path' => '/db_redis.php'
 				),
@@ -62,6 +66,10 @@ class Html
 				array(
 					'name' => 'PgSQL Info',
 					'path' => '/info_pgsql.php'
+				),
+				array(
+					'name' => 'MongoDB Info',
+					'path' => '/info_mongo.php'
 				),
 				array(
 					'name' => 'Redis Info',
@@ -270,6 +278,12 @@ HTML;
 				$version = loadClass('Memcd')->getVersion();
 				$available = loadClass('Memcd')->isAvailable();
 				$name = loadClass('Memcd')->getName();
+				break;
+			case 'mongo':
+				$class = 'bg-danger';
+				$version = loadClass('Mongo')->getVersion();
+				$available = loadClass('Mongo')->isAvailable();
+				$name = loadClass('Mongo')->getName();
 				break;
 			default:
 				$available = false;

@@ -18,6 +18,7 @@ $avail_mysql	= loadClass('Mysql')->isAvailable();
 $avail_pgsql	= loadClass('Pgsql')->isAvailable();
 $avail_redis	= loadClass('Redis')->isAvailable();
 $avail_memcd	= loadClass('Memcd')->isAvailable();
+$avail_mongo	= loadClass('Mongo')->isAvailable();
 
 
 /*************************************************************
@@ -149,6 +150,32 @@ if ($avail_memcd) {
 		'succ' => $succ
 	);
 }
+
+// ---- MONGO ----
+if ($avail_mongo) {
+	$host	= $GLOBALS['MONGO_HOST_NAME'];
+	$succ	= loadClass('Mongo')->canConnect($error, $host);
+	$connection['MongoDB'][$host] = array(
+		'error' => $error,
+		'host' => $host,
+		'succ' => $succ
+	);
+	$host	= loadClass('Mongo')->getIpAddress();
+	$succ	= loadClass('Mongo')->canConnect($error, $host);
+	$connection['MongoDB'][$host] = array(
+		'error' => $error,
+		'host' => $host,
+		'succ' => $succ
+	);
+	$host	= '127.0.0.1';
+	$succ	= loadClass('Mongo')->canConnect($error, $host);
+	$connection['MongoDB'][$host] = array(
+		'error' => $error,
+		'host' => $host,
+		'succ' => $succ
+	);
+}
+
 
 // ---- BIND (required)----
 $host	= $GLOBALS['DNS_HOST_NAME'];
@@ -288,7 +315,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 									<?php echo loadClass('Html')->getCirle('memcd'); ?>
 								</div>
 								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
-									<?php echo loadClass('Html')->getCirle('mongodb'); ?>
+									<?php echo loadClass('Html')->getCirle('mongo'); ?>
 								</div>
 							</div>
 						</div>
@@ -516,6 +543,13 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 													<td><?php echo loadClass('Memcd')->getIpAddress(); ?></td>
 												</tr>
 											<?php endif; ?>
+											<?php if ($avail_mongo): ?>
+												<tr>
+													<th>mongo</th>
+													<td><?php echo $GLOBALS['MONGO_HOST_NAME']; ?></td>
+													<td><?php echo loadClass('Mongo')->getIpAddress(); ?></td>
+												</tr>
+											<?php endif; ?>
 											<?php if ($avail_dns): ?>
 												<tr>
 													<th>bind</th>
@@ -583,6 +617,13 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 													<th>memcached</th>
 													<td><?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_MEMCD');?></td>
 													<td>11211</td>
+												</tr>
+											<?php endif; ?>
+											<?php if ($avail_mongo): ?>
+												<tr>
+													<th>mongo</th>
+													<td><?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_MONGO');?></td>
+													<td>27017</td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_dns): ?>
@@ -656,6 +697,13 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 													<td>-</td>
 												</tr>
 											<?php endif; ?>
+											<?php if ($avail_mongo): ?>
+												<tr>
+													<th>mongo</th>
+													<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_MONGO_DATADIR'); ?></td>
+													<td>/data/db</td>
+												</tr>
+											<?php endif; ?>
 											<?php if ($avail_dns): ?>
 												<tr>
 													<th>bind</th>
@@ -720,6 +768,13 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 											<?php if ($avail_memcd): ?>
 												<tr>
 													<th>memcached</th>
+													<td>-</td>
+													<td>-</td>
+												</tr>
+											<?php endif; ?>
+											<?php if ($avail_mongo): ?>
+												<tr>
+													<th>mongo</th>
 													<td>-</td>
 													<td>-</td>
 												</tr>
@@ -790,6 +845,13 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 													<th>memcached</th>
 													<td>./log/memcached-<?php echo loadClass('Helper')->getEnv('MEMCD_SERVER'); ?></td>
 													<td>/var/log/memcached</td>
+												</tr>
+											<?php endif; ?>
+											<?php if ($avail_mongo): ?>
+												<tr>
+													<th>mongo</th>
+													<td>-</td>
+													<td>-</td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_dns): ?>
