@@ -84,6 +84,11 @@ class Mongo extends BaseClass implements BaseInterface
 	 *********************************************************************************/
 
 
+	/**
+	 * Execute MongoDB command and return iteratable
+	 * @param  array      $command Command
+	 * @return iteratable
+	 */
 	private function command($command)
 	{
 		$cmd = new \MongoDB\Driver\Command($command);
@@ -98,10 +103,6 @@ class Mongo extends BaseClass implements BaseInterface
 		}
 
 		return array();
-	}
-
-	private function query($query)
-	{
 	}
 
 
@@ -122,7 +123,6 @@ class Mongo extends BaseClass implements BaseInterface
 				);
 			}
 		}
-
 
 		return $databases;
 	}
