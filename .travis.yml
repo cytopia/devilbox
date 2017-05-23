@@ -190,9 +190,14 @@ before_script:
   - sudo /etc/init.d/mysql      stop || true
   - sudo /etc/init.d/postgresql stop || true
   - sudo /etc/init.d/memcached  stop || true
+  - sudo /etc/init.d/redis      stop || true
+  - sudo /etc/init.d/mongodb    stop || true
+
   - sudo service mysql      stop || true
   - sudo service postgresql stop || true
   - sudo service memcached  stop || true
+  - sudo service redis      stop || true
+  - sudo service mongodb    stop || true
   - netstat -tulpn
 
 

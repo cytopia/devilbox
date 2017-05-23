@@ -307,8 +307,27 @@ devilbox_start() {
 	enable_docker_mysql "${_set_mysql}"
 	enable_docker_pgsql "${_set_pgsql}"
 
-	# Run
-	docker-compose up -d
+	# Make sure to pull until success
+	ret=1
+	while [ "${ret}" != "0" ]; do
+		if ! docker-compose pull; then
+			ret=1
+		else
+			ret=0
+		fi
+	done
+
+	# Make sure to start until success
+	ret=1
+	while [ "${ret}" != "0" ]; do
+		if ! docker-compose up -d; then
+			ret=1
+			# Stop it and try again
+			devilbox_stop
+		else
+			ret=0
+		fi
+	done
 
 	# Wait for http to return 200
 	printf "wait "
