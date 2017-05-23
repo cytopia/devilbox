@@ -196,10 +196,11 @@ No need to install and configure different versions locally. Simply choose your 
 
 | Cassandra | CouchDB | Memcached | MongoDB | Redis |
 |-----------|---------|-----------|---------|-------|
-| Cassandra 2.1 | CouchDB 1.6 | [![Travis CI](https://img.shields.io/travis/docker-library/memcached/master.svg)](https://travis-ci.org/docker-library/memcached/branches) Memcached latest | MongoDB 2.6 | [![Travis CI](https://img.shields.io/travis/docker-library/redis/master.svg)](https://travis-ci.org/docker-library/redis/branches) [Redis 2.8](https://github.com/docker-library/redis) |
-| Cassandra 2.2 | CouchDB 2.0 |                  | MongoDB 3.0 | [![Travis CI](https://img.shields.io/travis/docker-library/redis/master.svg)](https://travis-ci.org/docker-library/redis/branches) [Redis 3.0](https://github.com/docker-library/redis) |
-| Cassandra 3.0 |             |                  | MongoDB 3.2 | [![Travis CI](https://img.shields.io/travis/docker-library/redis/master.svg)](https://travis-ci.org/docker-library/redis/branches) [Redis 3.2](https://github.com/docker-library/redis) |
-|               |             |                  | MongoDB 3.4 | |
+| Cassandra 2.1 | CouchDB 1.6 | [![Travis CI](https://travis-ci.org/docker-library/memcached.svg?branch=master)](https://travis-ci.org/docker-library/memcached) [latest](https://github.com/docker-library/memcached) | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [2.8](https://github.com/docker-library/mongo) | [![Travis CI](https://travis-ci.org/docker-library/redis.svg?branch=master)](https://travis-ci.org/docker-library/redis) [2.8](https://github.com/docker-library/redis) |
+| Cassandra 2.2 | CouchDB 2.0 |                  | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [3.0](https://github.com/docker-library/mongo) | [![Travis CI](https://travis-ci.org/docker-library/redis.svg?branch=master)](https://travis-ci.org/docker-library/redis) [3.0](https://github.com/docker-library/redis) |
+| Cassandra 3.0 |             |                  | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [3.2](https://github.com/docker-library/mongo) | [![Travis CI](https://travis-ci.org/docker-library/redis.svg?branch=master)](https://travis-ci.org/docker-library/redis) [3.2](https://github.com/docker-library/redis) |
+|               |             |                  | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [3.4](https://github.com/docker-library/mongo) | |
+| | | | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [3.5](https://github.com/docker-library/mongo) | |
 
 <sub>**Note:** Entries without links or without build-status are planned, but not yet available. See [ROADMAP](https://github.com/cytopia/devilbox/issues/23) for tasks and upcoming features.</sub>
 
