@@ -7,8 +7,8 @@
 [Run-time Matrix](#run-time-matrix) |
 [Intranet](#intranet-overview) |
 [Screenshots](#screenshots) |
-[License](#license) |
 [Contributing](#contributing) |
+[License](#license)
 
 ![Devilbox](doc/img/devilbox-dash.png)
 
@@ -282,14 +282,19 @@ Shows you all the emails that have been sent. No email will actually be sent out
 ![Intranet Email](doc/img/04_intranet_emails.png "Intranet Home")
 
 
+## Contributing
+
+Contributers are welcome in any way.
+
+First of all, if you like the project, please **do star it**. Starring is an important measurement to see the number of active users and better allows me to organize my time and effort I can put into this project.
+
+Secondly, please **do report all bugs**. This will not only help you get your problem fixed, but also help others as they might encounter the same.
+
+And last but not least, you can also get actively involved. **Do clone the project** and start improving whatever you think is useful. There is quite a lot todo and planned. If you like to contribute, view [CONTRIBUTING.md](CONTRIBUTING.md) and [ROADMAP](https://github.com/cytopia/devilbox/issues/23).
+
+Major contributors will be credited within the intranet and on the github page.
+
+
 ## License
 
 [MIT License](LICENSE.md)
-
-
-## Contributing
-
-There is quite a lot todo and planned. If you like to contribute, view [CONTRIBUTING.md](CONTRIBUTING.md) and [ROADMAP](https://github.com/cytopia/devilbox/issues/23).
-
-Contributors will be credited within the intranet and on the github page.
-
