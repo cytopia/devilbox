@@ -397,21 +397,19 @@ devilbox_stop() {
 devilbox_print_errors() {
 	_url="${1}"
 
-	print_h1 "Error output"
-
-	print_h2 "Curl"
+	print_h2 "[ERROR] Curl"
 	curl -vv "${_url}" || true
 	echo
 
-	print_h2 "docker-compose ps"
+	print_h2 "[ERROR] docker-compose ps"
 	docker-compose ps
 	echo
 
-	print_h2 "docker-compose logs"
+	print_h2 "[ERROR] docker-compose logs"
 	docker-compose logs
 	echo
 
-	print_h2 "log files"
+	print_h2 "[ERROR] log files"
 	ls -lap log/
 	sudo find log -type f -exec sh -c 'echo "{}:\n-----------------"; cat "{}"; echo "\n\n"' \;
 }
@@ -452,8 +450,10 @@ devilbox_test_url() {
 	_count="$( curl -q "${_url}" 2>/dev/null | grep -c "${_pattern}" || true )"
 
 	if [ "${_count}" != "${_number}" ]; then
+		echo "[ERR]: Found ${_count}/${_number} of '${_pattern}'"
 		return 1
-	else
-		return 0
 	fi
+
+	echo "[OK]: Found ${_count}/${_number} of '${_pattern}'"
+	return 0
 }

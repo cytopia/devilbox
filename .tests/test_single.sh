@@ -74,19 +74,18 @@ DEF_PGSQL="9.6"
 #
 ################################################################################
 
-# Print Headline
-print_h1 "Configuration: ${DVL_SRV1}-${DVL_VER1} vs ${DVL_SRV2}-${DVL_VER2}"
-
 
 ###
 ### Configure
 ###
+print_h1 "Configuration: ${DVL_SRV1}-${DVL_VER1} vs ${DVL_SRV2}-${DVL_VER2}"
 devilbox_configure "${DVL_SRV1}" "${DVL_VER1}" "${DVL_SRV2}" "${DVL_VER2}" "${DEF_PHP}" "${DEF_HTTPD}" "${DEF_MYSQL}" "${DEF_PGSQL}"
 
 
 ###
 ### Download and run
 ###
+print_h1 "Downloading and Run"
 devilbox_pull
 devilbox_start
 devilbox_show
@@ -98,27 +97,19 @@ devilbox_show
 print_h1 "Testing"
 
 print_h2 "docker-compose"
-if devilbox_test_compose; then
-	echo "[OK]: all container running"
-else
+if ! devilbox_test_compose; then
 	devilbox_print_errors "http://localhost/index.php"
 	exit 1
 fi
 
-print_h2 "Testing 'dvlbox-ok: index.php"
-if devilbox_test_url "http://localhost/index.php" "dvlbox-ok" "20"; then
-	echo "[OK]: All 'dvlbox-ok' found"
-else
-	echo "[ERR]: Not all 'dvlbox-ok' found"
+print_h2 "Testing 'dvlbox-ok': index.php"
+if ! devilbox_test_url "http://localhost/index.php" "dvlbox-ok" "20"; then
 	devilbox_print_errors "http://localhost/index.php"
 	exit 1
 fi
 
-print_h2 "Testing 'dvlbox-err: index.php"
-if devilbox_test_url "http://localhost/index.php" "dvlbox-err" "0"; then
-	echo "[OK]: No 'dvlbox-err' found"
-else
-	echo "[ERR]: 'dvlbox-err' found"
+print_h2 "Testing 'dvlbox-err': index.php"
+if ! devilbox_test_url "http://localhost/index.php" "dvlbox-err" "0"; then
 	devilbox_print_errors "http://localhost/index.php"
 	exit 1
 fi
@@ -127,4 +118,5 @@ fi
 ###
 ### Stop
 ###
+print_h1 "Shutdown and exit"
 devilbox_stop
