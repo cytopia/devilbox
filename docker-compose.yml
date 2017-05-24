@@ -31,12 +31,14 @@ services:
   # Bind (DNS Server)
   # ----------------------------------------
   bind:
-    image: cytopia/bind:latest
+    #image: cytopia/bind:latest
+    image: cytopia/bind:release-0.10
     restart: always
     ports:
       # [local-machine:]local-port:docker-port
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND}:53"
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND}/udp:53/udp"
+
     environment:
       ##
       ## Debug?
@@ -48,6 +50,7 @@ services:
       ##
       - WILDCARD_DOMAIN=${TLD_SUFFIX:-loc}
       - WILDCARD_ADDRESS=172.16.238.11
+      - BIND_DNS_RESOLVER=${BIND_DNS_RESOLVER:-8.8.8.8,8.8.4.4}
 
     dns:
       - 127.0.0.1

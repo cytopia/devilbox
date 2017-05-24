@@ -401,3 +401,9 @@ HOST_PORT_MONGO=27017
 ### Expose Bind Port to Host
 ###
 HOST_PORT_BIND=53
+
+###
+### Add comma separated DNS server from which you want to receive DNS
+### You can also add DNS servers from your LAN (if any are available)
+###
+BIND_DNS_RESOLVER=8.8.8.8,8.8.4.4
