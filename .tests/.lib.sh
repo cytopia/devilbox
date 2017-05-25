@@ -143,15 +143,6 @@ get_data_mounts() {
 }
 
 
-###
-### Default enabled Docker Versions
-###
-get_enabled_versions() {
-	 grep -E '^[A-Z]+_SERVER=' "${DEVILBOX_PATH}/.env" | sed 's/_SERVER=/\t/g'
-
-}
-
-
 
 ################################################################################
 #
@@ -305,6 +296,11 @@ devilbox_configure() {
 }
 
 
+devilbox_configured_settings() {
+	 grep -E '^[A-Z]+_SERVER=' "${DEVILBOX_PATH}/.env" | sed 's/_SERVER=/\t/g'
+}
+
+
 devilbox_pull() {
 	# Make sure to pull until success
 	ret=1
@@ -351,28 +347,13 @@ devilbox_start() {
 }
 
 
-devilbox_show() {
-	###
-	### 1. Show Info
-	###
-	print_h2 "Info"
-
-	# Show wanted versions
-	echo "[Wanted] .env settings"
-	echo "------------------------------------------------------------"
-	get_enabled_versions
-	echo
-
-	# Get actual versions
-	echo "[Actual] http://localhost settings"
-	echo "------------------------------------------------------------"
+devilbox_print_actual_settings() {
 	curl -q http://localhost/index.php 2>/dev/null | \
         grep -E 'circles' | \
         grep -oE '<strong.*strong>.*\(.*\)' | \
         sed 's/<strong>//g' | \
         sed 's/<\/strong>.*(/\t/g' | \
         sed 's/)//g'
-	echo
 }
 
 

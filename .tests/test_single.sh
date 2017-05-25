@@ -79,16 +79,27 @@ DEF_PGSQL="9.6"
 ### Configure
 ###
 print_h1 "Configuration: ${DVL_SRV1}-${DVL_VER1} vs ${DVL_SRV2}-${DVL_VER2}"
+
+print_h2 "Enabled settings in .env"
 devilbox_configure "${DVL_SRV1}" "${DVL_VER1}" "${DVL_SRV2}" "${DVL_VER2}" "${DEF_PHP}" "${DEF_HTTPD}" "${DEF_MYSQL}" "${DEF_PGSQL}"
+devilbox_configured_settings
+
 
 
 ###
 ### Download and run
 ###
-print_h1 "Downloading and Run"
+print_h1 "Startup Devilbox"
+
+print_h2 "Download"
 devilbox_pull
+
+print_h2 "Run"
 devilbox_start
-devilbox_show
+
+print_h2 "Actual settings from index.php"
+devilbox_print_actual_settings
+
 
 
 ###
@@ -113,6 +124,7 @@ if ! devilbox_test_url "http://localhost/index.php" "dvlbox-err" "0"; then
 	devilbox_print_errors "http://localhost/index.php"
 	exit 1
 fi
+
 
 
 ###
