@@ -74,6 +74,19 @@ DEF_PGSQL="9.6"
 #
 ################################################################################
 
+###
+### Docker Host settings
+###
+print_h1 "Docker Host settings"
+
+print_h2 "Listening services"
+run "netstat -tulpn"
+
+print_h2 "Docker version"
+run "docker --version"
+run "docker-compose --version"
+
+
 
 ###
 ### Configure
