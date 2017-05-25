@@ -32,7 +32,7 @@ services:
   # ----------------------------------------
   bind:
     #image: cytopia/bind:latest
-    image: cytopia/bind:release-0.10
+    image: cytopia/bind:0.10
     restart: always
     ports:
       # [local-machine:]local-port:docker-port
