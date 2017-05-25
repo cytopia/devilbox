@@ -356,7 +356,7 @@ devilbox_print_actual_settings() {
         sed 's/)//g' )"
 
 		IFS='
-		'
+'
 		for v in ${VERSIONS}; do
 			service="$( echo "${v}" | awk '{print $1}' )"
 			version="$( echo "${v}" | awk '{print $2}' )"
