@@ -348,12 +348,20 @@ devilbox_start() {
 
 
 devilbox_print_actual_settings() {
-	curl -q http://localhost/index.php 2>/dev/null | \
+	VERSIONS="$( curl -q http://localhost/index.php 2>/dev/null | \
         grep -E 'circles' | \
         grep -oE '<strong.*strong>.*\(.*\)' | \
         sed 's/<strong>//g' | \
         sed 's/<\/strong>.*(/\t/g' | \
-        sed 's/)//g'
+        sed 's/)//g' )"
+
+		IFS='
+		'
+		for v in ${VERSIONS}; do
+			service="$( echo "${v}" | awk '{print $1}' )"
+			version="$( echo "${v}" | awk '{print $2}' )"
+			printf "%-15s%s\n" "${service}" "${version}"
+		done
 }
 
 
