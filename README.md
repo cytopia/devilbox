@@ -7,10 +7,10 @@
 [Run-time Matrix](#run-time-matrix) |
 [Intranet](#intranet-overview) |
 [Screenshots](#screenshots) |
-[License](#license) |
 [Contributing](#contributing) |
+[License](#license)
 
-![Devilbox](doc/img/devilbox-dash.png)
+![Devilbox](docs/img/devilbox-dash.png)
 
 [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox) ![Tag](https://img.shields.io/github/tag/cytopia/devilbox.svg) [![type](https://img.shields.io/badge/type-Docker-orange.svg)](https://www.docker.com/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -52,18 +52,18 @@ The above will start all containers, you can however also just start the contain
 ```shell
 $ docker-compose up httpd php mysql redis
 ```
-![Devilbox](doc/img/devilbox-dash-01.png)
+![Devilbox](docs/img/devilbox-dash-01.png)
 
 
 ```shell
 $ docker-compose up httpd php mysql pgsql redis memcd
 ```
-![Devilbox](doc/img/devilbox-dash-02.png)
+![Devilbox](docs/img/devilbox-dash-02.png)
 
 ```shell
 $ docker-compose up httpd php pgsql memcd
 ```
-![Devilbox](doc/img/devilbox-dash-03.png)
+![Devilbox](docs/img/devilbox-dash-03.png)
 
 ### Run different versions
 
@@ -137,25 +137,25 @@ The devilbox has everything setup for you. The only thing you will have to insta
 
 ### Video Tutorials
 
-[![Devilbox setup and workflow](doc/img/devilbox_01-setup-and-workflow.png "devilbox - setup and workflow")](https://www.youtube.com/watch?v=reyZMyt2Zzo) 
-[![Devilbox email catch-all](doc/img/devilbox_02-email-catch-all.png "devilbox - email catch-all")](https://www.youtube.com/watch?v=e-U-C5WhxGY)
+[![Devilbox setup and workflow](docs/img/devilbox_01-setup-and-workflow.png "devilbox - setup and workflow")](https://www.youtube.com/watch?v=reyZMyt2Zzo) 
+[![Devilbox email catch-all](docs/img/devilbox_02-email-catch-all.png "devilbox - email catch-all")](https://www.youtube.com/watch?v=e-U-C5WhxGY)
 
 ### Documentation
 
-For setup, usage and examples see detailed **[Documentation](doc/README.md)**.
+For setup, usage and examples see detailed **[Documentation](docs/README.md)**.
 
 | Documentaion                          | Description |
 |---------------------------------------|-------------|
-| [Overview](doc/README.md)             | General overview |
-| [Configuration](doc/Configuration.md) | How to configure the devilbox |
-| [Usage](doc/Usage.md)                 | How to use the devilbox |
-| [Updating](doc/Updating.md)           | How to update |
-| [Info](doc/Info.md)                   | Technical information |
-| [PHP Projects](doc/PHP_Projects.md)   | How to manage projects |
-| [Emails](doc/Emails.md)               | How email catching works |
-| [Logs](doc/Logs.md)                   | How to view log files |
-| [Intranet](doc/Intranet.md)           | The built-in intranet |
-| [FAQ](doc/FAQ.md)                     | Frequently asked questions |
+| [Overview](docs/README.md)             | General overview |
+| [Configuration](docs/Configuration.md) | How to configure the devilbox |
+| [Usage](docs/Usage.md)                 | How to use the devilbox |
+| [Updating](docs/Updating.md)           | How to update |
+| [Info](docs/Info.md)                   | Technical information |
+| [PHP Projects](docs/PHP_Projects.md)   | How to manage projects |
+| [Emails](docs/Emails.md)               | How email catching works |
+| [Logs](docs/Logs.md)                   | How to view log files |
+| [Intranet](docs/Intranet.md)           | The built-in intranet |
+| [FAQ](docs/FAQ.md)                     | Frequently asked questions |
 
 ## Run-time Matrix
 
@@ -196,10 +196,11 @@ No need to install and configure different versions locally. Simply choose your 
 
 | Cassandra | CouchDB | Memcached | MongoDB | Redis |
 |-----------|---------|-----------|---------|-------|
-| Cassandra 2.1 | CouchDB 1.6 | [![Travis CI](https://img.shields.io/travis/docker-library/memcached/master.svg)](https://travis-ci.org/docker-library/memcached/branches) Memcached latest | MongoDB 2.6 | [![Travis CI](https://img.shields.io/travis/docker-library/redis/master.svg)](https://travis-ci.org/docker-library/redis/branches) [Redis 2.8](https://github.com/docker-library/redis) |
-| Cassandra 2.2 | CouchDB 2.0 |                  | MongoDB 3.0 | [![Travis CI](https://img.shields.io/travis/docker-library/redis/master.svg)](https://travis-ci.org/docker-library/redis/branches) [Redis 3.0](https://github.com/docker-library/redis) |
-| Cassandra 3.0 |             |                  | MongoDB 3.2 | [![Travis CI](https://img.shields.io/travis/docker-library/redis/master.svg)](https://travis-ci.org/docker-library/redis/branches) [Redis 3.2](https://github.com/docker-library/redis) |
-|               |             |                  | MongoDB 3.4 | |
+| Cassandra 2.1 | CouchDB 1.6 | [![Travis CI](https://travis-ci.org/docker-library/memcached.svg?branch=master)](https://travis-ci.org/docker-library/memcached) [latest](https://github.com/docker-library/memcached) | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [2.8](https://github.com/docker-library/mongo) | [![Travis CI](https://travis-ci.org/docker-library/redis.svg?branch=master)](https://travis-ci.org/docker-library/redis) [2.8](https://github.com/docker-library/redis) |
+| Cassandra 2.2 | CouchDB 2.0 |                  | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [3.0](https://github.com/docker-library/mongo) | [![Travis CI](https://travis-ci.org/docker-library/redis.svg?branch=master)](https://travis-ci.org/docker-library/redis) [3.0](https://github.com/docker-library/redis) |
+| Cassandra 3.0 |             |                  | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [3.2](https://github.com/docker-library/mongo) | [![Travis CI](https://travis-ci.org/docker-library/redis.svg?branch=master)](https://travis-ci.org/docker-library/redis) [3.2](https://github.com/docker-library/redis) |
+|               |             |                  | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [3.4](https://github.com/docker-library/mongo) | |
+| | | | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [3.5](https://github.com/docker-library/mongo) | |
 
 <sub>**Note:** Entries without links or without build-status are planned, but not yet available. See [ROADMAP](https://github.com/cytopia/devilbox/issues/23) for tasks and upcoming features.</sub>
 
@@ -253,7 +254,7 @@ The homepage shows you the status of your current configured setup.
 * what other settings have been set
 * did any errors occur?
 
-![Intranet Home](doc/img/01_intranet_home.png "Intranet Home")
+![Intranet Home](docs/img/01_intranet_home.png "Intranet Home")
 
 
 ### Virtual Host overview
@@ -265,30 +266,35 @@ Virtual Hosts are considered valid if the following requirements are met (on the
 * `htdocs` folder/symlink exists in your project folder
 * `/etc/hosts` has a valid DNS config for your host: `127.0.0.1  <project-folder>.<TLD_SUFFIX>` (alternatively the bundle BIND server can be attached to your host-computer).
 
-![Intranet vHost](doc/img/02_intranet_vhosts.png "Intranet Home")
+![Intranet vHost](docs/img/02_intranet_vhosts.png "Intranet Home")
 
 ### Database overview
 
 Shows you all the databases that are loaded
 
-![Intranet DB](doc/img/03_intranet_databases.png "Intranet Home")
+![Intranet DB](docs/img/03_intranet_databases.png "Intranet Home")
 
 
 ### Email overview
 
 Shows you all the emails that have been sent. No email will actually be sent outside, but they are all catched by one account and presented here.
 
-![Intranet Email](doc/img/04_intranet_emails.png "Intranet Home")
+![Intranet Email](docs/img/04_intranet_emails.png "Intranet Home")
+
+
+## Contributing
+
+Contributers are welcome in any way.
+
+First of all, if you like the project, please **do star it**. Starring is an important measurement to see the number of active users and better allows me to organize my time and effort I can put into this project.
+
+Secondly, please **do report all bugs**. This will not only help you get your problem fixed, but also help others as they might encounter the same.
+
+And last but not least, you can also get actively involved. **Do clone the project** and start improving whatever you think is useful. There is quite a lot todo and planned. If you like to contribute, view [CONTRIBUTING.md](CONTRIBUTING.md) and [ROADMAP](https://github.com/cytopia/devilbox/issues/23).
+
+Major contributors will be credited within the intranet and on the github page.
 
 
 ## License
 
 [MIT License](LICENSE.md)
-
-
-## Contributing
-
-There is quite a lot todo and planned. If you like to contribute, view [CONTRIBUTING.md](CONTRIBUTING.md) and [ROADMAP](https://github.com/cytopia/devilbox/issues/23).
-
-Contributors will be credited within the intranet and on the github page.
-

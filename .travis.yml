@@ -172,13 +172,12 @@ matrix:
 ###
 before_install:
   # Get newer docker version
-  - sudo apt-get update
-  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
+  - max=20; i=0; while [ $i -lt $max ]; do if sudo apt-get update; then break; else i=$((i+1)); fi done
+  - max=20; i=0; while [ $i -lt $max ]; do if sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine; then break; else i=$((i+1)); fi done
   # Get newer docker-compose version
-  - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
+  - sudo mv -f docker-compose /usr/local/bin
 
 
 ###
@@ -190,9 +189,14 @@ before_script:
   - sudo /etc/init.d/mysql      stop || true
   - sudo /etc/init.d/postgresql stop || true
   - sudo /etc/init.d/memcached  stop || true
+  - sudo /etc/init.d/redis      stop || true
+  - sudo /etc/init.d/mongodb    stop || true
+
   - sudo service mysql      stop || true
   - sudo service postgresql stop || true
   - sudo service memcached  stop || true
+  - sudo service redis      stop || true
+  - sudo service mongodb    stop || true
   - netstat -tulpn
 
 

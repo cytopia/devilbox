@@ -143,15 +143,6 @@ get_data_mounts() {
 }
 
 
-###
-### Default enabled Docker Versions
-###
-get_enabled_versions() {
-	 grep -E '^[A-Z]+_SERVER=' "${DEVILBOX_PATH}/.env" | sed 's/_SERVER=/\t/g'
-
-}
-
-
 
 ################################################################################
 #
@@ -234,17 +225,17 @@ enable_docker_php() {
 #
 ################################################################################
 
-devilbox_start() {
+devilbox_configure() {
 	_srv1="${1}"
 	_ver1="${2}"
 	_srv2="${3}"
 	_ver2="${4}"
 
 	# Default values for remaining servers
-	_def_php="php-fpm-7.0"
-	_def_httpd="nginx-stable"
-	_def_mysql="mariadb-10.0"
-	_def_pgsql="9.6"
+	_def_php="${5}"
+	_def_httpd="${6}"
+	_def_mysql="${7}"
+	_def_pgsql="${8}"
 
 	# Specific enabled servers
 	_set_php=""
@@ -294,10 +285,6 @@ devilbox_start() {
 		_set_pgsql="${_def_pgsql}"
 	fi
 
-
-	# Print Headline
-	print_h1 "${_srv1}-${_ver1} vs ${_srv2}-${_ver2}"
-
 	# Adjust .env
 	comment_all_dockers
 
@@ -306,16 +293,46 @@ devilbox_start() {
 	enable_docker_httpd "${_set_httpd}"
 	enable_docker_mysql "${_set_mysql}"
 	enable_docker_pgsql "${_set_pgsql}"
+}
 
-	# Run
-	docker-compose up -d
+
+devilbox_configured_settings() {
+	 grep -E '^[A-Z]+_SERVER=' "${DEVILBOX_PATH}/.env" | sed 's/_SERVER=/\t/g'
+}
+
+
+devilbox_pull() {
+	# Make sure to pull until success
+	ret=1
+	while [ "${ret}" != "0" ]; do
+		if ! docker-compose pull; then
+			ret=1
+		else
+			ret=0
+		fi
+	done
+}
+
+
+devilbox_start() {
+	# Make sure to start until success
+	ret=1
+	while [ "${ret}" != "0" ]; do
+		if ! docker-compose up -d; then
+			ret=1
+			# Stop it and try again
+			devilbox_stop
+		else
+			ret=0
+		fi
+	done
 
 	# Wait for http to return 200
 	printf "wait "
 	_max="90"
 	# shellcheck disable=SC2034
 	for i in $(seq 1 "${_max}"); do
-		if [ "$(  curl --connect-timeout 1 --max-time 1 -s -o /dev/null -w '%{http_code}' http://localhost/index.php )" = "200" ]; then
+		if [ "$(  curl --connect-timeout 1 --max-time 1 -s -o /dev/null -w '%{http_code}' http://127.0.0.1/index.php )" = "200" ]; then
 			break;
 		fi
 		sleep 1
@@ -328,6 +345,25 @@ devilbox_start() {
 	echo
 
 }
+
+
+devilbox_print_actual_settings() {
+	VERSIONS="$( curl -q http://127.0.0.1/index.php 2>/dev/null | \
+        grep -E 'circles' | \
+        grep -oE '<strong.*strong>.*\(.*\)' | \
+        sed 's/<strong>//g' | \
+        sed 's/<\/strong>.*(/\t/g' | \
+        sed 's/)//g' )"
+
+		IFS='
+'
+		for v in ${VERSIONS}; do
+			service="$( echo "${v}" | awk '{print $1}' )"
+			version="$( echo "${v}" | awk '{print $2}' )"
+			printf "%-15s%s\n" "${service}" "${version}"
+		done
+}
+
 
 devilbox_stop() {
 	# Stop existing dockers
@@ -346,31 +382,26 @@ devilbox_stop() {
 	done
 }
 
-devilbox_show() {
-	###
-	### 1. Show Info
-	###
-	print_h2 "Info"
 
-	# Show wanted versions
-	echo "[Wanted] .env settings"
-	echo "------------------------------------------------------------"
-	get_enabled_versions
+devilbox_print_errors() {
+	_url="${1}"
+
+	print_h2 "[ERROR] Curl"
+	curl -vv "${_url}" || true
 	echo
 
-	# Get actual versions
-	echo "[Actual] http://localhost settings"
-	echo "------------------------------------------------------------"
-	curl -q http://localhost/index.php 2>/dev/null | \
-        grep -E 'circles' | \
-        grep -oE '<strong.*strong>.*\(.*\)' | \
-        sed 's/<strong>//g' | \
-        sed 's/<\/strong>.*(/\t/g' | \
-        sed 's/)//g'
+	print_h2 "[ERROR] docker-compose ps"
+	docker-compose ps
 	echo
+
+	print_h2 "[ERROR] docker-compose logs"
+	docker-compose logs
+	echo
+
+	print_h2 "[ERROR] log files"
+	ls -lap log/
+	sudo find log -type f -exec sh -c 'echo "{}:\n-----------------"; cat "{}"; echo "\n\n"' \;
 }
-
-
 
 ################################################################################
 #
@@ -378,146 +409,40 @@ devilbox_show() {
 #
 ################################################################################
 
-devilbox_test() {
-	###
-	### Variables
-	###
-	_ret=0 # Final exit code
-	_oks=17 # Require this many [OK]'s on the page
-
-
-
-
-	###
-	### 2. Test docker-compose
-	###
-	print_h2 "docker-compose"
-
-	echo "docker-compose ps"
-	echo "------------------------------------------------------------"
-	if _test_docker_compose >/dev/null 2>&1; then
-		echo "[OK]: All running"
-	else
-		echo "[ERR]: Broken"
-		_ret="$(( _ret + 1 ))"
-	fi
-
-
-	###
-	### 3. Show Curl output
-	###
-	print_h2 "3. Test status via curl"
-
-	echo "Count [OK]'s on curl-ed url"
-	echo "------------------------------------------------------------"
-	if ! _cnt="$( _test_curled_oks "${_oks}" )"; then
-		_ret="$(( _ret + 1 ))"
-		echo "[ERR]: ${_cnt} / ${_oks} (Not all 'dvlbox-ok' found)"
-	else
-		echo "[OK]: ${_cnt} / ${_oks} (All 'dvlbox-ok' found)"
-	fi
-	echo
-
-	echo "Count [ERR]'s on curl-ed url"
-	echo "------------------------------------------------------------"
-	if ! _cnt="$( _test_curled_err )"; then
-		_ret="$(( _ret + 1 ))"
-		echo "[ERR]: ${_cnt} / 0 (Found some 'dvlbox-err')"
-	else
-		echo "[OK]: ${_cnt} / 0 (No 'dvlbox-err' found)"
-	fi
-	echo
-
-
-	###
-	### Final return
-	###
-	if [ "${_ret}" != "0" ]; then
-		print_h2 "4. Error output"
-		echo "Curl"
-		echo "------------------------------------------------------------"
-		curl -vv http://localhost/index.php || true
-		echo
-
-		echo "docker-compose ps"
-		echo "------------------------------------------------------------"
-		docker-compose ps
-		echo
-
-		echo "docker-compose logs"
-		echo "------------------------------------------------------------"
-		docker-compose logs
-		echo
-
-		echo "log files"
-		echo "------------------------------------------------------------"
-		ls -lap log/
-		sudo find log -type f -exec sh -c 'echo "{}:\n-----------------"; cat "{}"; echo "\n\n"' \;
-
-		return 1
-	fi
-
-	return 0
-}
-
-
-
-################################################################################
-#
-#   T E S T I N G   H E L P E R S
-#
-################################################################################
-
-###
-### Test against stopped containers
-###
-_test_docker_compose() {
+devilbox_test_compose() {
 
 	_broken="$( docker-compose ps | grep -c 'Exit' || true )"
 	_running="$( docker-compose ps | grep -c 'Up' || true )"
 	_total="$( docker-compose ps -q | grep -c '' || true )"
 
 	if [ "${_broken}" != "0" ]; then
+		echo "[ERR]: Broken: ${_broken} broken container"
 		return 1
 	fi
 
 	if [ "${_running}" != "${_total}" ]; then
+		echo "[ERR]: Broken: ${_running} / ${_total} container running"
 		return 1
 	fi
 
+	echo "[OK]: All running"
 	return 0
 }
 
 
-###
-### Test [OK]'s found on website
-###
-_test_curled_oks() {
-	_oks="${1}"
-	_find_ok="dvlbox-ok"
+devilbox_test_url() {
+	# Variables
+	_url="${1}"
+	_pattern="${2}"
+	_number="${3}"
 
-	_count="$( curl -q http://localhost/index.php 2>/dev/null | grep -c "${_find_ok}" || true )"
-	echo "${_count}"
+	_count="$( curl -q "${_url}" 2>/dev/null | grep -c "${_pattern}" || true )"
 
-	if [ "${_count}" != "${_oks}" ]; then
+	if [ "${_count}" != "${_number}" ]; then
+		echo "[ERR]: Found ${_count}/${_number} of '${_pattern}'"
 		return 1
-	else
-		return 0
 	fi
-}
 
-###
-### Test [ERR]'s found on website
-###
-_test_curled_err() {
-	_find_err="dvlbox-err"
-
-	_count="$( curl -q http://localhost/index.php 2>/dev/null | grep -c "${_find_err}" || true )"
-	echo "${_count}"
-
-	if [ "${_count}" != "0" ]; then
-		return 1
-	else
-		return 0
-	fi
+	echo "[OK]: Found ${_count}/${_number} of '${_pattern}'"
+	return 0
 }

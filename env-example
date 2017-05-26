@@ -16,7 +16,7 @@
 ###
 ### 1: Yes
 ### 0: No
-DEBUG_COMPOSE_ENTRYPOINT=1
+DEBUG_COMPOSE_ENTRYPOINT=0
 
 
 ###
@@ -79,6 +79,24 @@ TLD_SUFFIX=loc
 DNS_CHECK_TIMEOUT=1
 
 
+###
+### Set your user id and group id
+###
+### This should be changed to the value of your local
+### users uid and gid
+###
+### Type `id` on the terminal to find out your values
+###
+NEW_UID=1000
+NEW_GID=1000
+
+
+###
+### Timezone for all dockers and service config files
+###
+TIMEZONE=Europe/Berlin
+
+
 
 ################################################################################
 ###
@@ -139,8 +157,6 @@ PGSQL_SERVER=9.6
 
 ###
 ### 1.5 Choose Redis Server Image
-###     (only for docker-compose.optional.yml)
-###     $ docker-compose -f docker-compose.optional.yml up
 ###
 #REDIS_SERVER=2.8
 #REDIS_SERVER=3.0
@@ -148,9 +164,7 @@ REDIS_SERVER=3.2
 
 
 ###
-### 1.6 Choose Memcahced Server Image
-###     (only for docker-compose.optional.yml)
-###     $ docker-compose -f docker-compose.optional.yml up
+### 1.6 Choose Memcached Server Image
 ###
 MEMCD_SERVER=1.4.21
 #MEMCD_SERVER=1.4.22
@@ -171,6 +185,14 @@ MEMCD_SERVER=1.4.21
 #MEMCD_SERVER=latest
 
 
+###
+### 1.7 Choose Mongo Server Image
+###
+#MONGO_SERVER=2.8
+#MONGO_SERVER=3.0
+#MONGO_SERVER=3.2
+MONGO_SERVER=3.4
+#MONGO_SERVER=3.5
 
 
 
@@ -220,29 +242,17 @@ HOST_PATH_MYSQL_DATADIR=./data/mysql
 HOST_PATH_PGSQL_DATADIR=./data/pgsql
 
 
-
-################################################################################
 ###
-### 3. GENERAL DOCKER CONTAINER SETTINGS
+### Local filesystem path to mongodb datadir.
 ###
-################################################################################
-
+### This can be an existing mongodb data directory or empty.
+### If it already is a mongodb data directory with content,
+### it will be mounted into the docker and used.
 ###
-### Set your user id and group id
+### If this directory is empty, a new mongodb database will be
+### created.
 ###
-### This should be changed to the value of your local
-### users uid and gid
-###
-### Type `id` on the terminal to find out your values
-###
-NEW_UID=1000
-NEW_GID=1000
-
-
-###
-### Timezone for all dockers and service config files
-###
-TIMEZONE=Europe/Berlin
+HOST_PATH_MONGO_DATADIR=./data/mongo
 
 
 
@@ -342,7 +352,7 @@ HOST_PORT_PGSQL=5432
 ################################################################################
 
 ###
-### Expost Redis Port to Host
+### Expose Redis Port to Host
 ###
 HOST_PORT_REDIS=6379
 
@@ -355,18 +365,38 @@ HOST_PORT_REDIS=6379
 ################################################################################
 
 ###
-### Expost Memcached Port to Host
+### Expose Memcached Port to Host
 ###
 HOST_PORT_MEMCD=11211
 
 
+
 ################################################################################
 ###
-### 9. Bind Docker Settings
+### 9. MongoDB Docker Settings
 ###
 ################################################################################
 
 ###
-### Expost Bind Port to Host
+### Expose MongoDB Port to Host
+###
+HOST_PORT_MONGO=27017
+
+
+
+################################################################################
+###
+### 10. Bind Docker Settings
+###
+################################################################################
+
+###
+### Expose Bind Port to Host
 ###
 HOST_PORT_BIND=53
+
+###
+### Add comma separated DNS server from which you want to receive DNS
+### You can also add DNS servers from your LAN (if any are available)
+###
+BIND_DNS_RESOLVER=8.8.8.8,8.8.4.4
