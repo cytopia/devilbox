@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="PhpUnitXmlParser.php">
+    <totals>
+      <lines total="122" comments="49" code="73" executable="41" executed="38" percent="92.68%"/>
+      <methods count="6" tested="5" percent="83.33%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="PhpUnitXmlParser" start="16" executable="41" executed="38" crap="11.05">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Codacy\Coverage\Parser"/>
+      <method name="setDirOfFileXmls" signature="setDirOfFileXmls($dir)" start="32" end="34" crap="1" executable="2" executed="2" coverage="100"/>
+      <method name="getDirOfFileXmls" signature="getDirOfFileXmls()" start="39" end="41" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="makeReport" signature="makeReport()" start="43" end="70" crap="3.04" executable="19" executed="16" coverage="84.210526315789"/>
+      <method name="getLineCoverage" signature="getLineCoverage(\SimpleXMLElement $node)" start="77" end="91" crap="4" executable="11" executed="11" coverage="100"/>
+      <method name="getTotalFromPercent" signature="getTotalFromPercent(\SimpleXMLElement $percent)" start="98" end="103" crap="1" executable="3" executed="3" coverage="100"/>
+      <method name="getRelativePath" signature="getRelativePath(\SimpleXMLElement $fileName)" start="112" end="122" crap="1" executable="5" executed="5" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="33">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="34">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="40">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="46">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="48">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="49">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="50">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="51">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="53">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="54">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="56">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="57">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="58">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="64">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="65">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="66">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="67">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="68">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="69">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="79">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="80">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="81">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="82">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="83">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="84">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="85">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="86">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="87">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="88">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="90">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="100">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="101">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="102">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="115">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="116">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="118">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="120">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="121">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

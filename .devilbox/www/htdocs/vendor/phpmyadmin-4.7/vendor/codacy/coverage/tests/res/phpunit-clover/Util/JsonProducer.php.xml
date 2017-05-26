@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="JsonProducer.php">
+    <totals>
+      <lines total="82" comments="41" code="41" executable="17" executed="17" percent="100.00%"/>
+      <methods count="3" tested="3" percent="100.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="1" percent="100.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="JsonProducer" start="12" executable="17" executed="17" crap="4">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Codacy\Coverage\Util"/>
+      <method name="setParser" signature="setParser(IParser $parser)" start="23" end="26" crap="1" executable="2" executed="2" coverage="100"/>
+      <method name="makeReport" signature="makeReport()" start="32" end="35" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="makeJson" signature="makeJson()" start="60" end="82" crap="2" executable="14" executed="14" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="25">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="26">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="34">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="62">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="63">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="64">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="66">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="67">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="69">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="70">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="71">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="72">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="73">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="75">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="76">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="78">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="81">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

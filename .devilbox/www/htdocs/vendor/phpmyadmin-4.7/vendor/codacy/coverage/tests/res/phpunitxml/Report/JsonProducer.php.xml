@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="JsonProducer.php">
+    <totals>
+      <lines total="61" comments="21" code="40" executable="17" executed="17" percent="100.00%"/>
+      <methods count="3" tested="3" percent="100.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="1" percent="100.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="JsonProducer" start="13" executable="17" executed="17" crap="4">
+      <package full="Codacy" name="Codacy" sub="" category=""/>
+      <namespace name="Codacy\Coverage\Report"/>
+      <method name="setParser" signature="setParser(IParser $parser)" start="24" end="27" crap="1" executable="2" executed="2" coverage="100"/>
+      <method name="makeReport" signature="makeReport()" start="33" end="36" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="makeJson" signature="makeJson()" start="42" end="61" crap="2" executable="14" executed="14" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="26">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="27">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="35">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="44">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="45">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="46">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="48">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="49">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="51">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="52">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="53">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="54">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="55">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="57">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="58">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="59">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="60">
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

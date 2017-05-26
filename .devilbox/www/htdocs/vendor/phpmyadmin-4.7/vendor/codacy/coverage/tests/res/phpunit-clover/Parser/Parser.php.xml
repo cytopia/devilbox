@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="Parser.php">
+    <totals>
+      <lines total="57" comments="24" code="33" executable="11" executed="11" percent="100.00%"/>
+      <methods count="1" tested="1" percent="100.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="1" percent="100.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="XMLParser" start="21" executable="11" executed="11" crap="3">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Codacy\Coverage\Parser"/>
+      <method name="__construct" signature="__construct($path, $rootDir = null)" start="40" end="55" crap="3" executable="11" executed="11" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="42">
+        <covered by="CloverParserTest::testThrowsExceptionOnWrongPath"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testThrowsExceptionOnWrongPath"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="43">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="44">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="45">
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="46">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="48">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="49">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="50">
+        <covered by="CloverParserTest::testThrowsExceptionOnWrongPath"/>
+        <covered by="PhpUnitXmlParserTest::testThrowsExceptionOnWrongPath"/>
+      </line>
+      <line nr="52">
+        <covered by="CloverParserTest::testThrowsExceptionOnWrongPath"/>
+        <covered by="PhpUnitXmlParserTest::testThrowsExceptionOnWrongPath"/>
+      </line>
+      <line nr="53">
+        <covered by="CloverParserTest::testThrowsExceptionOnWrongPath"/>
+        <covered by="PhpUnitXmlParserTest::testThrowsExceptionOnWrongPath"/>
+      </line>
+      <line nr="55">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

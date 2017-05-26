@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1425059542">
+    <project timestamp="1425059542">
+        <package name="Codacy\Coverage\Parser">
+            <file name="/home/jacke/Desktop/codacy-php/src/Codacy/Coverage/Parser/CloverParser.php">
+                <class name="CloverParser" namespace="Codacy\Coverage\Parser">
+                    <metrics methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="45"
+                             coveredstatements="43" elements="51" coveredelements="48"/>
+                </class>
+                <line num="22" type="method" name="makeReport" crap="1" count="3"/>
+                <line num="24" type="stmt" count="3"/>
+                <line num="25" type="stmt" count="3"/>
+                <line num="26" type="stmt" count="3"/>
+                <line num="27" type="stmt" count="3"/>
+                <line num="28" type="stmt" count="3"/>
+                <line num="29" type="stmt" count="3"/>
+                <line num="30" type="stmt" count="3"/>
+                <line num="31" type="stmt" count="3"/>
+                <line num="41" type="method" name="makeFileReports" crap="3" count="3"/>
+                <line num="43" type="stmt" count="3"/>
+                <line num="49" type="stmt" count="3"/>
+                <line num="51" type="stmt" count="1"/>
+                <line num="52" type="stmt" count="1"/>
+                <line num="53" type="stmt" count="3"/>
+                <line num="54" type="stmt" count="2"/>
+                <line num="55" type="stmt" count="2"/>
+                <line num="56" type="stmt" count="3"/>
+                <line num="65" type="method" name="makeFileReportsFromFiles" crap="3.03" count="3"/>
+                <line num="67" type="stmt" count="3"/>
+                <line num="69" type="stmt" count="3"/>
+                <line num="70" type="stmt" count="3"/>
+                <line num="71" type="stmt" count="3"/>
+                <line num="72" type="stmt" count="0"/>
+                <line num="73" type="stmt" count="0"/>
+                <line num="74" type="stmt" count="3"/>
+                <line num="76" type="stmt" count="3"/>
+                <line num="77" type="stmt" count="3"/>
+                <line num="78" type="stmt" count="3"/>
+                <line num="79" type="stmt" count="3"/>
+                <line num="80" type="stmt" count="3"/>
+                <line num="81" type="stmt" count="3"/>
+                <line num="90" type="method" name="makeFileReportsFromPackages" crap="2" count="2"/>
+                <line num="93" type="stmt" count="2"/>
+                <line num="94" type="stmt" count="2"/>
+                <line num="95" type="stmt" count="2"/>
+                <line num="96" type="stmt" count="2"/>
+                <line num="105" type="method" name="getLineCoverage" crap="4" count="3"/>
+                <line num="107" type="stmt" count="3"/>
+                <line num="108" type="stmt" count="3"/>
+                <line num="109" type="stmt" count="3"/>
+                <line num="111" type="stmt" count="3"/>
+                <line num="112" type="stmt" count="3"/>
+                <line num="113" type="stmt" count="3"/>
+                <line num="114" type="stmt" count="3"/>
+                <line num="115" type="stmt" count="3"/>
+                <line num="116" type="stmt" count="3"/>
+                <line num="117" type="stmt" count="3"/>
+                <line num="127" type="method" name="getRelativePath" crap="1" count="3"/>
+                <line num="129" type="stmt" count="3"/>
+                <line num="130" type="stmt" count="3"/>
+                <metrics loc="131" ncloc="75" classes="1" methods="6" coveredmethods="5" conditionals="0"
+                         coveredconditionals="0" statements="45" coveredstatements="43" elements="51"
+                         coveredelements="48"/>
+            </file>
+            <file name="/home/jacke/Desktop/codacy-php/src/Codacy/Coverage/Parser/Parser.php">
+                <class name="XMLParser" namespace="Codacy\Coverage\Parser">
+                    <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11"
+                             coveredstatements="11" elements="12" coveredelements="12"/>
+                </class>
+                <line num="40" type="method" name="__construct" crap="3" count="6"/>
+                <line num="42" type="stmt" count="6"/>
+                <line num="43" type="stmt" count="4"/>
+                <line num="44" type="stmt" count="1"/>
+                <line num="45" type="stmt" count="1"/>
+                <line num="46" type="stmt" count="3"/>
+                <line num="48" type="stmt" count="4"/>
+                <line num="49" type="stmt" count="4"/>
+                <line num="50" type="stmt" count="2"/>
+                <line num="52" type="stmt" count="2"/>
+                <line num="53" type="stmt" count="2"/>
+                <line num="55" type="stmt" count="4"/>
+                <metrics loc="57" ncloc="33" classes="1" methods="1" coveredmethods="1" conditionals="0"
+                         coveredconditionals="0" statements="11" coveredstatements="11" elements="12"
+                         coveredelements="12"/>
+            </file>
+            <file name="/home/jacke/Desktop/codacy-php/src/Codacy/Coverage/Parser/PhpUnitXmlParser.php">
+                <class name="PhpUnitXmlParser" namespace="Codacy\Coverage\Parser">
+                    <metrics methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="41"
+                             coveredstatements="38" elements="47" coveredelements="43"/>
+                </class>
+                <line num="32" type="method" name="setDirOfFileXmls" crap="1" count="2"/>
+                <line num="33" type="stmt" count="2"/>
+                <line num="34" type="stmt" count="2"/>
+                <line num="39" type="method" name="getDirOfFileXmls" crap="1" count="2"/>
+                <line num="40" type="stmt" count="2"/>
+                <line num="43" type="method" name="makeReport" crap="3.04" count="2"/>
+                <line num="46" type="stmt" count="2"/>
+                <line num="48" type="stmt" count="2"/>
+                <line num="49" type="stmt" count="2"/>
+                <line num="50" type="stmt" count="2"/>
+                <line num="51" type="stmt" count="2"/>
+                <line num="53" type="stmt" count="2"/>
+                <line num="54" type="stmt" count="2"/>
+                <line num="56" type="stmt" count="2"/>
+                <line num="57" type="stmt" count="2"/>
+                <line num="58" type="stmt" count="2"/>
+                <line num="59" type="stmt" count="0"/>
+                <line num="60" type="stmt" count="0"/>
+                <line num="61" type="stmt" count="0"/>
+                <line num="64" type="stmt" count="2"/>
+                <line num="65" type="stmt" count="2"/>
+                <line num="66" type="stmt" count="2"/>
+                <line num="67" type="stmt" count="2"/>
+                <line num="68" type="stmt" count="2"/>
+                <line num="69" type="stmt" count="2"/>
+                <line num="77" type="method" name="getLineCoverage" crap="4" count="2"/>
+                <line num="79" type="stmt" count="2"/>
+                <line num="80" type="stmt" count="2"/>
+                <line num="81" type="stmt" count="2"/>
+                <line num="82" type="stmt" count="2"/>
+                <line num="83" type="stmt" count="2"/>
+                <line num="84" type="stmt" count="2"/>
+                <line num="85" type="stmt" count="2"/>
+                <line num="86" type="stmt" count="2"/>
+                <line num="87" type="stmt" count="2"/>
+                <line num="88" type="stmt" count="2"/>
+                <line num="90" type="stmt" count="2"/>
+                <line num="98" type="method" name="getTotalFromPercent" crap="1" count="2"/>
+                <line num="100" type="stmt" count="2"/>
+                <line num="101" type="stmt" count="2"/>
+                <line num="102" type="stmt" count="2"/>
+                <line num="112" type="method" name="getRelativePath" crap="1" count="2"/>
+                <line num="115" type="stmt" count="2"/>
+                <line num="116" type="stmt" count="2"/>
+                <line num="118" type="stmt" count="2"/>
+                <line num="120" type="stmt" count="2"/>
+                <line num="121" type="stmt" count="2"/>
+                <metrics loc="122" ncloc="73" classes="1" methods="6" coveredmethods="5" conditionals="0"
+                         coveredconditionals="0" statements="41" coveredstatements="38" elements="47"
+                         coveredelements="43"/>
+            </file>
+        </package>
+        <package name="Codacy\Coverage\Report">
+            <file name="/home/jacke/Desktop/codacy-php/src/Codacy/Coverage/Report/CoverageReport.php">
+                <class name="CoverageReport" namespace="Codacy\Coverage\Report">
+                    <metrics methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5"
+                             coveredstatements="5" elements="8" coveredelements="8"/>
+                </class>
+                <line num="27" type="method" name="__construct" crap="1" count="4"/>
+                <line num="29" type="stmt" count="4"/>
+                <line num="30" type="stmt" count="4"/>
+                <line num="31" type="stmt" count="4"/>
+                <line num="36" type="method" name="getTotal" crap="1" count="4"/>
+                <line num="38" type="stmt" count="4"/>
+                <line num="44" type="method" name="getFileReports" crap="1" count="4"/>
+                <line num="46" type="stmt" count="4"/>
+                <metrics loc="47" ncloc="25" classes="1" methods="3" coveredmethods="3" conditionals="0"
+                         coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
+            </file>
+            <file name="/home/jacke/Desktop/codacy-php/src/Codacy/Coverage/Report/FileReport.php">
+                <class name="FileReport" namespace="Codacy\Coverage\Report">
+                    <metrics methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="7"
+                             coveredstatements="7" elements="11" coveredelements="11"/>
+                </class>
+                <line num="33" type="method" name="__construct" crap="1" count="4"/>
+                <line num="35" type="stmt" count="4"/>
+                <line num="36" type="stmt" count="4"/>
+                <line num="37" type="stmt" count="4"/>
+                <line num="38" type="stmt" count="4"/>
+                <line num="43" type="method" name="getTotal" crap="1" count="4"/>
+                <line num="45" type="stmt" count="4"/>
+                <line num="51" type="method" name="getFileName" crap="1" count="4"/>
+                <line num="53" type="stmt" count="4"/>
+                <line num="59" type="method" name="getLineCoverage" crap="1" count="4"/>
+                <line num="61" type="stmt" count="4"/>
+                <metrics loc="62" ncloc="33" classes="1" methods="4" coveredmethods="4" conditionals="0"
+                         coveredconditionals="0" statements="7" coveredstatements="7" elements="11"
+                         coveredelements="11"/>
+            </file>
+        </package>
+        <package name="Codacy\Coverage\Util">
+            <file name="/home/jacke/Desktop/codacy-php/src/Codacy/Coverage/Util/GitClient.php">
+                <class name="GitClient" namespace="Codacy\Coverage\Util">
+                    <metrics methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9"
+                             coveredstatements="6" elements="11" coveredelements="7"/>
+                </class>
+                <line num="23" type="method" name="__construct" crap="2.31" count="1"/>
+                <line num="25" type="stmt" count="1"/>
+                <line num="26" type="stmt" count="1"/>
+                <line num="27" type="stmt" count="1"/>
+                <line num="28" type="stmt" count="0"/>
+                <line num="30" type="stmt" count="0"/>
+                <line num="31" type="stmt" count="0"/>
+                <line num="34" type="stmt" count="1"/>
+                <line num="39" type="method" name="getHashOfLatestCommit" crap="1" count="1"/>
+                <line num="41" type="stmt" count="1"/>
+                <line num="42" type="stmt" count="1"/>
+                <metrics loc="45" ncloc="31" classes="1" methods="2" coveredmethods="1" conditionals="0"
+                         coveredconditionals="0" statements="9" coveredstatements="6" elements="11"
+                         coveredelements="7"/>
+            </file>
+            <file name="/home/jacke/Desktop/codacy-php/src/Codacy/Coverage/Util/JsonProducer.php">
+                <class name="JsonProducer" namespace="Codacy\Coverage\Util">
+                    <metrics methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="17"
+                             coveredstatements="17" elements="20" coveredelements="20"/>
+                </class>
+                <line num="23" type="method" name="setParser" crap="1" count="1"/>
+                <line num="25" type="stmt" count="1"/>
+                <line num="26" type="stmt" count="1"/>
+                <line num="32" type="method" name="makeReport" crap="1" count="1"/>
+                <line num="34" type="stmt" count="1"/>
+                <line num="60" type="method" name="makeJson" crap="2" count="1"/>
+                <line num="62" type="stmt" count="1"/>
+                <line num="63" type="stmt" count="1"/>
+                <line num="64" type="stmt" count="1"/>
+                <line num="66" type="stmt" count="1"/>
+                <line num="67" type="stmt" count="1"/>
+                <line num="69" type="stmt" count="1"/>
+                <line num="70" type="stmt" count="1"/>
+                <line num="71" type="stmt" count="1"/>
+                <line num="72" type="stmt" count="1"/>
+                <line num="73" type="stmt" count="1"/>
+                <line num="75" type="stmt" count="1"/>
+                <line num="76" type="stmt" count="1"/>
+                <line num="78" type="stmt" count="1"/>
+                <line num="81" type="stmt" count="1"/>
+                <metrics loc="82" ncloc="41" classes="1" methods="3" coveredmethods="3" conditionals="0"
+                         coveredconditionals="0" statements="17" coveredstatements="17" elements="20"
+                         coveredelements="20"/>
+            </file>
+            <file name="/home/jacke/Desktop/codacy-php/src/Codacy/Coverage/Util/EmptyFile.php">
+                <class name="EmptyFile" namespace="Codacy\Coverage\Util">
+                    <metrics methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17"
+                             coveredstatements="0" elements="20" coveredelements="0"/>
+                </class>
+                <metrics loc="82" ncloc="41" classes="1" methods="3" coveredmethods="0" conditionals="0"
+                         coveredconditionals="0" statements="17" coveredstatements="0" elements="20"
+                         coveredelements="0"/>
+            </file>
+        </package>
+        <metrics files="7" loc="546" ncloc="311" classes="7" methods="25" coveredmethods="22" conditionals="0"
+                 coveredconditionals="0" statements="135" coveredstatements="127" elements="160" coveredelements="149"/>
+    </project>
+</coverage>

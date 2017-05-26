@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="GitClient.php">
+    <totals>
+      <lines total="45" comments="14" code="31" executable="9" executed="6" percent="66.67%"/>
+      <methods count="2" tested="1" percent="50.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="GitClient" start="12" executable="9" executed="6" crap="3.33">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Codacy\Coverage\Util"/>
+      <method name="__construct" signature="__construct($path)" start="23" end="34" crap="2.31" executable="7" executed="4" coverage="57.142857142857"/>
+      <method name="getHashOfLatestCommit" signature="getHashOfLatestCommit()" start="39" end="43" crap="1" executable="2" executed="2" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="25">
+        <covered by="GitClientTest::testGetHashOfLastCommit"/>
+      </line>
+      <line nr="26">
+        <covered by="GitClientTest::testGetHashOfLastCommit"/>
+      </line>
+      <line nr="27">
+        <covered by="GitClientTest::testGetHashOfLastCommit"/>
+      </line>
+      <line nr="34">
+        <covered by="GitClientTest::testGetHashOfLastCommit"/>
+      </line>
+      <line nr="41">
+        <covered by="GitClientTest::testGetHashOfLastCommit"/>
+      </line>
+      <line nr="42">
+        <covered by="GitClientTest::testGetHashOfLastCommit"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

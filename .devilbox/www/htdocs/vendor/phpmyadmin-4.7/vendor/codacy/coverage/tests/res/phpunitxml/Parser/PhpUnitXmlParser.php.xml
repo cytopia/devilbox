@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="PhpUnitXmlParser.php">
+    <totals>
+      <lines total="104" comments="42" code="62" executable="34" executed="32" percent="94.12%"/>
+      <methods count="4" tested="3" percent="75.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="PhpUnitXmlParser" start="18" executable="34" executed="32" crap="8.01">
+      <package full="Codacy" name="Codacy" sub="" category=""/>
+      <namespace name="Codacy\Coverage\Parser"/>
+      <method name="makeReport" signature="makeReport()" start="30" end="58" crap="3.01" executable="18" executed="16" coverage="88.888888888889"/>
+      <method name="_getLineCoverage" signature="_getLineCoverage(\SimpleXMLElement $node)" start="65" end="77" crap="3" executable="9" executed="9" coverage="100"/>
+      <method name="_getTotalFromPercent" signature="_getTotalFromPercent(\SimpleXMLElement $percent)" start="84" end="89" crap="1" executable="3" executed="3" coverage="100"/>
+      <method name="_getRelativePath" signature="_getRelativePath(\SimpleXMLElement $fileName)" start="97" end="104" crap="1" executable="4" executed="4" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="33">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="34">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="35">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="36">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="38">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="39">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="42">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="43">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="44">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="51">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="52">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="53">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="54">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="55">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="56">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="57">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="67">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="68">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="70">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="71">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="72">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="73">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="74">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="75">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="76">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="86">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="87">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="88">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="99">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="100">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="102">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="103">
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

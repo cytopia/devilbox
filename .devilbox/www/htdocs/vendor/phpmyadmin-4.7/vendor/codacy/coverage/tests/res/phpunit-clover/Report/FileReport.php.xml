@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="FileReport.php">
+    <totals>
+      <lines total="62" comments="29" code="33" executable="7" executed="7" percent="100.00%"/>
+      <methods count="4" tested="4" percent="100.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="1" percent="100.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="FileReport" start="11" executable="7" executed="7" crap="4">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Codacy\Coverage\Report"/>
+      <method name="__construct" signature="__construct($total, $fileName, $lineCoverage)" start="33" end="38" crap="1" executable="4" executed="4" coverage="100"/>
+      <method name="getTotal" signature="getTotal()" start="43" end="46" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getFileName" signature="getFileName()" start="51" end="54" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getLineCoverage" signature="getLineCoverage()" start="59" end="62" crap="1" executable="1" executed="1" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="35">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="36">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="37">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="38">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="45">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="53">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+      <line nr="61">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>
