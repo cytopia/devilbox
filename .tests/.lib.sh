@@ -332,7 +332,7 @@ devilbox_start() {
 	_max="90"
 	# shellcheck disable=SC2034
 	for i in $(seq 1 "${_max}"); do
-		if [ "$(  curl --connect-timeout 1 --max-time 1 -s -o /dev/null -w '%{http_code}' http://localhost/index.php )" = "200" ]; then
+		if [ "$(  curl --connect-timeout 1 --max-time 1 -s -o /dev/null -w '%{http_code}' http://127.0.0.1/index.php )" = "200" ]; then
 			break;
 		fi
 		sleep 1
@@ -348,7 +348,7 @@ devilbox_start() {
 
 
 devilbox_print_actual_settings() {
-	VERSIONS="$( curl -q http://localhost/index.php 2>/dev/null | \
+	VERSIONS="$( curl -q http://127.0.0.1/index.php 2>/dev/null | \
         grep -E 'circles' | \
         grep -oE '<strong.*strong>.*\(.*\)' | \
         sed 's/<strong>//g' | \
