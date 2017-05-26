@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="CoverageReport.php">
+    <totals>
+      <lines total="48" comments="23" code="25" executable="5" executed="5" percent="100.00%"/>
+      <methods count="3" tested="3" percent="100.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="1" percent="100.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="CoverageReport" start="12" executable="5" executed="5" crap="3">
+      <package full="Codacy" name="Codacy" sub="" category=""/>
+      <namespace name="Codacy\Coverage\Report"/>
+      <method name="__construct" signature="__construct($total, $fileReports)" start="28" end="32" crap="1" executable="3" executed="3" coverage="100"/>
+      <method name="getTotal" signature="getTotal()" start="37" end="40" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getFileReports" signature="getFileReports()" start="45" end="48" crap="1" executable="1" executed="1" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="30">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="31">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="32">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="39">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="47">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

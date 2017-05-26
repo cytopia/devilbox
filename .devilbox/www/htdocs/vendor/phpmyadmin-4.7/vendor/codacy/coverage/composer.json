@@ -1,0 +1,27 @@
+{
+  "name": "codacy/coverage",
+  "description": "Sends PHP test coverage information to Codacy.",
+  "homepage": "https://github.com/codacy/php-codacy-coverage",
+  "type": "library",
+  "require": {
+    "php": ">=5.3.3",
+    "gitonomy/gitlib": "~0.1",
+    "symfony/console": "~2.5|~3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.5"
+  },
+  "bin": ["bin/codacycoverage"],
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jakob Pupke",
+      "email": "jakob.pupke@gmail.com"
+    }
+  ]
+}

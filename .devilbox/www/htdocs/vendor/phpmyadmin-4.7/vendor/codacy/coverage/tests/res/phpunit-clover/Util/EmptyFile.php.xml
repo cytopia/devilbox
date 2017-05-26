@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+    <file name="EmptyFile.php">
+        <totals>
+            <lines total="45" comments="14" code="31" executable="9" executed="0" percent=""/>
+            <methods count="2" tested="0" percent=""/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent=""/>
+            <traits count="0" tested="0" percent=""/>
+        </totals>
+        <class name="EmptyFile" start="12" executable="9" executed="0" crap="3.33">
+            <package full="" name="" sub="" category=""/>
+            <namespace name="Codacy\Coverage\Util"/>
+        </class>
+        <coverage>
+        </coverage>
+    </file>
+</phpunit>

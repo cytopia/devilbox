@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="Api.php">
+    <totals>
+      <lines total="46" comments="11" code="35" executable="22" executed="0" percent="0.00%"/>
+      <methods count="1" tested="0" percent="0.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="ApiClient" start="9" executable="22" executed="0" crap="12">
+      <package full="Codacy" name="Codacy" sub="" category=""/>
+      <namespace name="Codacy\Coverage\Api"/>
+      <method name="postData" signature="postData($url, $data)" start="18" end="46" crap="12" executable="22" executed="0" coverage="0"/>
+    </class>
+  </file>
+</phpunit>

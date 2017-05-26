@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="CloverParser.php">
+    <totals>
+      <lines total="131" comments="56" code="75" executable="45" executed="43" percent="95.56%"/>
+      <methods count="6" tested="5" percent="83.33%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="CloverParser" start="14" executable="45" executed="43" crap="14">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Codacy\Coverage\Parser"/>
+      <method name="makeReport" signature="makeReport()" start="22" end="32" crap="1" executable="8" executed="8" coverage="100"/>
+      <method name="makeFileReports" signature="makeFileReports(\SimpleXMLElement $node)" start="41" end="57" crap="3" executable="8" executed="8" coverage="100"/>
+      <method name="makeFileReportsFromFiles" signature="makeFileReportsFromFiles(\SimpleXMLElement $node, $fileReports)" start="65" end="82" crap="3.03" executable="13" executed="11" coverage="84.615384615385"/>
+      <method name="makeFileReportsFromPackages" signature="makeFileReportsFromPackages(\SimpleXMLElement $node, $fileReports)" start="90" end="97" crap="2" executable="4" executed="4" coverage="100"/>
+      <method name="getLineCoverage" signature="getLineCoverage(\SimpleXMLElement $node)" start="105" end="118" crap="4" executable="10" executed="10" coverage="100"/>
+      <method name="getRelativePath" signature="getRelativePath(\SimpleXMLElement $fileName)" start="127" end="131" crap="1" executable="2" executed="2" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="24">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="25">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="26">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="27">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="28">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="29">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="30">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="31">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="43">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="49">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="51">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+      </line>
+      <line nr="52">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+      </line>
+      <line nr="53">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="54">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="55">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="56">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="67">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="69">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="70">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="71">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="74">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="76">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="77">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="78">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="79">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="80">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="81">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="93">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="94">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="95">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="96">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="107">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="108">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="109">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="111">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="112">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="113">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="114">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="115">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="116">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="117">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="129">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+      <line nr="130">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+    <project name="/home/jacke/Desktop/codacy-php/src/Codacy/Coverage">
+        <tests>
+            <test name="CloverParserTest::testThrowsExceptionOnWrongPath" result="0" status="PASSED"/>
+            <test name="CloverParserTest::testCanParseCloverXmlWithoutProject" result="0" status="PASSED"/>
+            <test name="CloverParserTest::testCanParseCloverXmlWithProject" result="0" status="PASSED"/>
+            <test name="Codacy\Coverage\Parser\ParserTest::testParsersProduceSameResult" result="0" status="PASSED"/>
+            <test name="PhpUnitXmlParserTest::testThrowsExceptionOnWrongPath" result="0" status="PASSED"/>
+            <test name="PhpUnitXmlParserTest::testCanParsePhpUnitXmlReport" result="0" status="PASSED"/>
+            <test name="GitClientTest::testGetHashOfLastCommit" result="0" status="PASSED"/>
+        </tests>
+        <directory name="/home/jacke/Desktop/codacy-php/src/Codacy/Coverage">
+            <totals>
+                <lines total="546" comments="235" code="311" executable="135" executed="127" percent="94.07%"/>
+                <methods count="25" tested="22" percent="88.00%"/>
+                <functions count="0" tested="0" percent=""/>
+                <classes count="7" tested="4" percent="57.14%"/>
+                <traits count="0" tested="0" percent=""/>
+            </totals>
+            <directory name="Parser">
+                <totals>
+                    <lines total="310" comments="129" code="181" executable="97" executed="92" percent="94.85%"/>
+                    <methods count="13" tested="11" percent="84.62%"/>
+                    <functions count="0" tested="0" percent=""/>
+                    <classes count="3" tested="1" percent="33.33%"/>
+                    <traits count="0" tested="0" percent=""/>
+                </totals>
+                <file name="CloverParser.php" href="Parser/CloverParser.php.xml">
+                    <totals>
+                        <lines total="131" comments="56" code="75" executable="45" executed="43" percent="95.56%"/>
+                        <methods count="6" tested="5" percent="83.33%"/>
+                        <functions count="0" tested="0" percent=""/>
+                        <classes count="1" tested="0" percent="0.00%"/>
+                        <traits count="0" tested="0" percent=""/>
+                    </totals>
+                </file>
+                <file name="Parser.php" href="Parser/Parser.php.xml">
+                    <totals>
+                        <lines total="57" comments="24" code="33" executable="11" executed="11" percent="100.00%"/>
+                        <methods count="1" tested="1" percent="100.00%"/>
+                        <functions count="0" tested="0" percent=""/>
+                        <classes count="1" tested="1" percent="100.00%"/>
+                        <traits count="0" tested="0" percent=""/>
+                    </totals>
+                </file>
+                <file name="PhpUnitXmlParser.php" href="Parser/PhpUnitXmlParser.php.xml">
+                    <totals>
+                        <lines total="122" comments="49" code="73" executable="41" executed="38" percent="92.68%"/>
+                        <methods count="6" tested="5" percent="83.33%"/>
+                        <functions count="0" tested="0" percent=""/>
+                        <classes count="1" tested="0" percent="0.00%"/>
+                        <traits count="0" tested="0" percent=""/>
+                    </totals>
+                </file>
+            </directory>
+            <file name="CloverParser.php" href="Parser/CloverParser.php.xml">
+                <totals>
+                    <lines total="131" comments="56" code="75" executable="45" executed="43" percent="95.56%"/>
+                    <methods count="6" tested="5" percent="83.33%"/>
+                    <functions count="0" tested="0" percent=""/>
+                    <classes count="1" tested="0" percent="0.00%"/>
+                    <traits count="0" tested="0" percent=""/>
+                </totals>
+            </file>
+            <file name="Parser.php" href="Parser/Parser.php.xml">
+                <totals>
+                    <lines total="57" comments="24" code="33" executable="11" executed="11" percent="100.00%"/>
+                    <methods count="1" tested="1" percent="100.00%"/>
+                    <functions count="0" tested="0" percent=""/>
+                    <classes count="1" tested="1" percent="100.00%"/>
+                    <traits count="0" tested="0" percent=""/>
+                </totals>
+            </file>
+            <file name="PhpUnitXmlParser.php" href="Parser/PhpUnitXmlParser.php.xml">
+                <totals>
+                    <lines total="122" comments="49" code="73" executable="41" executed="38" percent="92.68%"/>
+                    <methods count="6" tested="5" percent="83.33%"/>
+                    <functions count="0" tested="0" percent=""/>
+                    <classes count="1" tested="0" percent="0.00%"/>
+                    <traits count="0" tested="0" percent=""/>
+                </totals>
+            </file>
+            <directory name="Report">
+                <totals>
+                    <lines total="109" comments="51" code="58" executable="12" executed="12" percent="100.00%"/>
+                    <methods count="7" tested="7" percent="100.00%"/>
+                    <functions count="0" tested="0" percent=""/>
+                    <classes count="2" tested="2" percent="100.00%"/>
+                    <traits count="0" tested="0" percent=""/>
+                </totals>
+                <file name="CoverageReport.php" href="Report/CoverageReport.php.xml">
+                    <totals>
+                        <lines total="47" comments="22" code="25" executable="5" executed="5" percent="100.00%"/>
+                        <methods count="3" tested="3" percent="100.00%"/>
+                        <functions count="0" tested="0" percent=""/>
+                        <classes count="1" tested="1" percent="100.00%"/>
+                        <traits count="0" tested="0" percent=""/>
+                    </totals>
+                </file>
+                <file name="FileReport.php" href="Report/FileReport.php.xml">
+                    <totals>
+                        <lines total="62" comments="29" code="33" executable="7" executed="7" percent="100.00%"/>
+                        <methods count="4" tested="4" percent="100.00%"/>
+                        <functions count="0" tested="0" percent=""/>
+                        <classes count="1" tested="1" percent="100.00%"/>
+                        <traits count="0" tested="0" percent=""/>
+                    </totals>
+                </file>
+            </directory>
+            <file name="CoverageReport.php" href="Report/CoverageReport.php.xml">
+                <totals>
+                    <lines total="47" comments="22" code="25" executable="5" executed="5" percent="100.00%"/>
+                    <methods count="3" tested="3" percent="100.00%"/>
+                    <functions count="0" tested="0" percent=""/>
+                    <classes count="1" tested="1" percent="100.00%"/>
+                    <traits count="0" tested="0" percent=""/>
+                </totals>
+            </file>
+            <file name="FileReport.php" href="Report/FileReport.php.xml">
+                <totals>
+                    <lines total="62" comments="29" code="33" executable="7" executed="7" percent="100.00%"/>
+                    <methods count="4" tested="4" percent="100.00%"/>
+                    <functions count="0" tested="0" percent=""/>
+                    <classes count="1" tested="1" percent="100.00%"/>
+                    <traits count="0" tested="0" percent=""/>
+                </totals>
+            </file>
+            <directory name="Util">
+                <totals>
+                    <lines total="127" comments="55" code="72" executable="26" executed="23" percent="88.46%"/>
+                    <methods count="5" tested="4" percent="80.00%"/>
+                    <functions count="0" tested="0" percent=""/>
+                    <classes count="2" tested="1" percent="50.00%"/>
+                    <traits count="0" tested="0" percent=""/>
+                </totals>
+                <file name="GitClient.php" href="Util/GitClient.php.xml">
+                    <totals>
+                        <lines total="45" comments="14" code="31" executable="9" executed="6" percent="66.67%"/>
+                        <methods count="2" tested="1" percent="50.00%"/>
+                        <functions count="0" tested="0" percent=""/>
+                        <classes count="1" tested="0" percent="0.00%"/>
+                        <traits count="0" tested="0" percent=""/>
+                    </totals>
+                </file>
+                <file name="JsonProducer.php" href="Util/JsonProducer.php.xml">
+                    <totals>
+                        <lines total="82" comments="41" code="41" executable="17" executed="17" percent="100.00%"/>
+                        <methods count="3" tested="3" percent="100.00%"/>
+                        <functions count="0" tested="0" percent=""/>
+                        <classes count="1" tested="1" percent="100.00%"/>
+                        <traits count="0" tested="0" percent=""/>
+                    </totals>
+                </file>
+            </directory>
+            <file name="GitClient.php" href="Util/GitClient.php.xml">
+                <totals>
+                    <lines total="45" comments="14" code="31" executable="9" executed="6" percent="66.67%"/>
+                    <methods count="2" tested="1" percent="50.00%"/>
+                    <functions count="0" tested="0" percent=""/>
+                    <classes count="1" tested="0" percent="0.00%"/>
+                    <traits count="0" tested="0" percent=""/>
+                </totals>
+            </file>
+            <file name="JsonProducer.php" href="Util/JsonProducer.php.xml">
+                <totals>
+                    <lines total="82" comments="41" code="41" executable="17" executed="17" percent="100.00%"/>
+                    <methods count="3" tested="3" percent="100.00%"/>
+                    <functions count="0" tested="0" percent=""/>
+                    <classes count="1" tested="1" percent="100.00%"/>
+                    <traits count="0" tested="0" percent=""/>
+                </totals>
+            </file>
+            <file name="EmptyFile.php" href="Util/EmptyFile.php.xml">
+                <totals>
+                    <lines total="82" comments="41" code="41" executable="17" executed="0" percent=""/>
+                    <methods count="3" tested="0" percent=""/>
+                    <functions count="0" tested="0" percent=""/>
+                    <classes count="1" tested="0" percent=""/>
+                    <traits count="0" tested="0" percent=""/>
+                </totals>
+            </file>
+        </directory>
+    </project>
+</phpunit>

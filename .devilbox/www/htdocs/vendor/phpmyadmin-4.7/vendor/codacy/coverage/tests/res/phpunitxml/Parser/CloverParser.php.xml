@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="CloverParser.php">
+    <totals>
+      <lines total="134" comments="60" code="74" executable="44" executed="42" percent="95.45%"/>
+      <methods count="6" tested="5" percent="83.33%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="CloverParser" start="16" executable="44" executed="42" crap="14">
+      <package full="Codacy" name="Codacy" sub="" category=""/>
+      <namespace name="Codacy\Coverage\Parser"/>
+      <method name="makeReport" signature="makeReport()" start="25" end="35" crap="1" executable="8" executed="8" coverage="100"/>
+      <method name="_makeFileReports" signature="_makeFileReports(\SimpleXMLElement $node)" start="44" end="60" crap="3" executable="8" executed="8" coverage="100"/>
+      <method name="_makeFileReportsFromFiles" signature="_makeFileReportsFromFiles(\SimpleXMLElement $node, $fileReports)" start="68" end="85" crap="3.03" executable="13" executed="11" coverage="84.615384615385"/>
+      <method name="_makeFileReportsFromPackages" signature="_makeFileReportsFromPackages(\SimpleXMLElement $node, $fileReports)" start="93" end="100" crap="2" executable="4" executed="4" coverage="100"/>
+      <method name="_getLineCoverage" signature="_getLineCoverage(\SimpleXMLElement $node)" start="108" end="121" crap="4" executable="9" executed="9" coverage="100"/>
+      <method name="_getRelativePath" signature="_getRelativePath(\SimpleXMLElement $fileName)" start="130" end="134" crap="1" executable="2" executed="2" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="27">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="28">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="29">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="30">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="31">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="32">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="33">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="34">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="46">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="52">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="54">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+      </line>
+      <line nr="55">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+      </line>
+      <line nr="56">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="57">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="58">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="59">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="70">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="72">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="73">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="74">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="77">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="79">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="80">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="81">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="82">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="83">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="84">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="96">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="97">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="98">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="99">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="110">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="111">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="113">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="115">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="116">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="117">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="118">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="119">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="120">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="132">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+      <line nr="133">
+        <covered by="CloverParserTest::testCanParseCloverXmlWithoutProject"/>
+        <covered by="CloverParserTest::testCanParseCloverXmlWithProject"/>
+        <covered by="JsonProducerTest::testCanProduceCorrectJson"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>
