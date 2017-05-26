@@ -16,7 +16,7 @@
 ###
 ### 1: Yes
 ### 0: No
-DEBUG_COMPOSE_ENTRYPOINT=1
+DEBUG_COMPOSE_ENTRYPOINT=0
 
 
 ###
@@ -77,6 +77,24 @@ TLD_SUFFIX=loc
 ### Default is to timeout after 1 second (DNS_CHECK_TIMEOUT=1)
 ###
 DNS_CHECK_TIMEOUT=1
+
+
+###
+### Set your user id and group id
+###
+### This should be changed to the value of your local
+### users uid and gid
+###
+### Type `id` on the terminal to find out your values
+###
+NEW_UID=1000
+NEW_GID=1000
+
+
+###
+### Timezone for all dockers and service config files
+###
+TIMEZONE=Europe/Berlin
 
 
 
@@ -238,33 +256,6 @@ HOST_PATH_MONGO_DATADIR=./data/mongo
 
 
 
-
-
-################################################################################
-###
-### 3. GENERAL DOCKER CONTAINER SETTINGS
-###
-################################################################################
-
-###
-### Set your user id and group id
-###
-### This should be changed to the value of your local
-### users uid and gid
-###
-### Type `id` on the terminal to find out your values
-###
-NEW_UID=1000
-NEW_GID=1000
-
-
-###
-### Timezone for all dockers and service config files
-###
-TIMEZONE=Europe/Berlin
-
-
-
 ################################################################################
 ###
 ### 3. PHP Docker Settings
@@ -379,6 +370,7 @@ HOST_PORT_REDIS=6379
 HOST_PORT_MEMCD=11211
 
 
+
 ################################################################################
 ###
 ### 9. MongoDB Docker Settings
@@ -389,6 +381,7 @@ HOST_PORT_MEMCD=11211
 ### Expose MongoDB Port to Host
 ###
 HOST_PORT_MONGO=27017
+
 
 
 ################################################################################
