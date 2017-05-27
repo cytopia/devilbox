@@ -1,4 +1,2 @@
 theme: jekyll-theme-slate
-kramdown:
-   input: GFM
-   hard_wrap: false
+google_analytics: UA-51797082-4
