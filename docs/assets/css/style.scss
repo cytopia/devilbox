@@ -1,0 +1,46 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.inner {
+	max-width: 850px;
+	position: relative;
+	padding: 20px 10px;
+	margin: 0 auto;
+}
+#header_wrap {
+	background-image: url('/assets/img/devilbox-dash.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100%;
+}
+h1, h2, h3 {
+	text-align: center;
+}
+h2, h3 {
+	margin-top:30px;
+}
+
+
+table {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.center {
+	text-align: center;
+}
+img.battery {
+	/*border: 1px solid black;*/
+	border-radius: 15px;
+}
+
+/* remove gh pages link */
+footer.inner p {
+	display: none;
+}
+footer.inner p.copyright {
+	display: block;
+}
