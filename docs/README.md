@@ -45,14 +45,89 @@ $ docker-compose up
 
 <p class="center">Choose your required daemons and select a version. Any combination is possible.<br/>This will allow you, to always exactly simulate your production environment locally during development.</p>
 
-| Apache | Nginx   | PHP  | MySQL | MariaDB | PgSQL | Redis | Memcached | MongoDB |
-|------- |---------|------|------ |---------|-------|-------|-----------|---------|
-| 2.2    | stable  | 5.4  | 5.5   | 5.5     | 9.1   | 2.8   | 1.4.21    | 2.8     |
-| 2.4    | mainline| 5.5  | 5.6   | 10.0    | 9.2   | 3.0   | 1.4.22    | 3.0     |
-|        |         | 5.6  | 5.7   | 10.1    | 9.3   | 3.2   | 1.4.23    | 3.2     |
-|        |         | 7.0  | 8.0   | 10.2    | 9.4   |       | ...       | 3.4     |
-|        |         | 7.1  |       | 10.3    | 9.5   |       | 1.4.36    | 3.5     |
-|        |         | HHVM |       |         | 9.6   |       | latest    |         |
+<table>
+  <thead>
+    <tr>
+      <th>Apache</th>
+      <th>Nginx</th>
+      <th>PHP</th>
+      <th>MySQL</th>
+      <th>MariaDB</th>
+      <th>PgSQL</th>
+      <th>Redis</th>
+      <th>Memcached</th>
+      <th>MongoDB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a target="_blank" title="Apache 2.2"       href="https://github.com/cytopia/docker-apache-2.2">2.2</a></td>
+      <td><a target="_blank" title="Nginx stable"     href="https://github.com/cytopia/docker-nginx-stable">stable</a></td>
+      <td><a target="_blank" title="PHP 5.4"          href="https://github.com/cytopia/docker-php-fpm-5.4">5.4</a></td>
+      <td><a target="_blank" title="MySQL 5.5"        href="https://github.com/cytopia/docker-mysql-5.5">5.5</a></td>
+      <td><a target="_blank" title="MariaDB 5.5"      href="https://github.com/cytopia/docker-mariadb-5.5">5.5</a></td>
+      <td><a target="_blank" title="PgSQL 9.1"        href="https://github.com/docker-library/postgres">9.1</a></td>
+      <td><a target="_blank" title="Redis 2.8"        href="https://github.com/docker-library/redis">2.8</a></td>
+      <td><a target="_blank" title="Memcached 1.4.21" href="https://github.com/docker-library/memcached">1.4.21</a></td>
+      <td><a target="_blank" title="MongoDB 2.8"      href="https://github.com/docker-library/mongo">2.8</a></td>
+    </tr>
+    <tr>
+      <td><a target="_blank" title="Apache 2.4"       href="https://github.com/cytopia/docker-apache-2.4">2.4</a></td>
+      <td><a target="_blank" title="Nginx mainline"   href="https://github.com/cytopia/docker-nginx-mainline">mainline</a></td>
+      <td><a target="_blank" title="PHP 5.5"          href="https://github.com/cytopia/docker-php-fpm-5.5">5.5</a></td>
+      <td><a target="_blank" title="MySQL 5.6"        href="https://github.com/cytopia/docker-mysql-5.6">5.6</a></td>
+      <td><a target="_blank" title="MariaDB 10.0"     href="https://github.com/cytopia/docker-mariadb-10.0">10.0</a></td>
+      <td><a target="_blank" title="PgSQL 9.2"        href="https://github.com/docker-library/postgres">9.2</a></td>
+      <td><a target="_blank" title="Redis 3.0"        href="https://github.com/docker-library/redis">3.0</a></td>
+      <td><a target="_blank" title="Memcached 1.4.22" href="https://github.com/docker-library/memcached">1.4.22</a></td>
+      <td><a target="_blank" title="MongoDB 3.0"      href="https://github.com/docker-library/mongo">3.0</a></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><a target="_blank" title="PHP 5.6"          href="https://github.com/cytopia/docker-php-fpm-5.6">5.6</a></td>
+      <td><a target="_blank" title="MySQL 5.7"        href="https://github.com/cytopia/docker-mysql-5.7">5.7</a></td>
+      <td><a target="_blank" title="MariaDB 10.1"     href="https://github.com/cytopia/docker-mariadb-10.1">10.1</a></td>
+      <td><a target="_blank" title="PgSQL 9.3"        href="https://github.com/docker-library/postgres">9.3</a></td>
+      <td><a target="_blank" title="Redis 3.2"        href="https://github.com/docker-library/redis">3.2</a></td>
+      <td><a target="_blank" title="Memcached 1.4.23" href="https://github.com/docker-library/memcached">1.4.23</a></td>
+      <td><a target="_blank" title="MongoDB 3.2"      href="https://github.com/docker-library/mongo">3.2</a></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><a target="_blank" title="PHP 7.0"          href="https://github.com/cytopia/docker-php-fpm-7.0">7.0</a></td>
+      <td><a target="_blank" title="MySQL 8.0"        href="https://github.com/cytopia/docker-mysql-8.0">8.0</a></td>
+      <td><a target="_blank" title="MariaDB 10.2"     href="https://github.com/cytopia/docker-mariadb-10.2">10.2</a></td>
+      <td><a target="_blank" title="PgSQL 9.4"        href="https://github.com/docker-library/postgres">9.4</a></td>
+      <td></td>
+      <td>...</td>
+      <td><a target="_blank" title="MongoDB 3.4"      href="https://github.com/docker-library/mongo">3.4</a></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><a target="_blank" title="PHP 7.1"          href="https://github.com/cytopia/docker-php-fpm-7.1">7.1</a></td>
+      <td></td>
+      <td><a target="_blank" title="MariaDB 10.3"     href="https://github.com/cytopia/docker-mariadb-10.3">10.3</a></td>
+      <td><a target="_blank" title="PgSQL 9.5"        href="https://github.com/docker-library/postgres">9.5</a></td>
+      <td></td>
+      <td><a target="_blank" title="Memcached 1.4.36" href="https://github.com/docker-library/memcached">1.4.36</a></td>
+      <td><a target="_blank" title="MongoDB 3.5"      href="https://github.com/docker-library/mongo">3.5</a></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><a target="_blank" title="HHVM"             href="https://github.com/cytopia/docker-hhvm-latest">HHVM</a></td>
+      <td></td>
+      <td></td>
+      <td><a target="_blank" title="PgSQL 9.6"        href="https://github.com/docker-library/postgres">9.6</a></td>
+      <td></td>
+      <td><a target="_blank" title="Memcached latest" href="https://github.com/docker-library/memcached">latest</a></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 
 ### Run only what you need
@@ -81,6 +156,42 @@ $ docker-compose stop mysql
 </div>
 
 
+### PHP Modules
+
+<div class="center">
+  <p>The devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks. There will however be slight differences between the versions and especially with HHVM. To see the exact bundled modules for each version visit the corresponding docker repositories on Github:</p>
+
+  <img class="battery" style="height:64px;" title="PHP" alt="PHP" src="img/logos/php.png" />
+  <img class="battery" style="height:64px;" title="HHVM" alt="HHVM" src="img/logos/hhvm.png" />
+
+  <p>
+  <strong><a target="_blank" title="PHP 5.4" href="https://github.com/cytopia/docker-php-fpm-5.4">PHP 5.4</a></strong> |
+  <strong><a target="_blank" title="PHP 5.5" href="https://github.com/cytopia/docker-php-fpm-5.5">PHP 5.5</a></strong> |
+  <strong><a target="_blank" title="PHP 5.6" href="https://github.com/cytopia/docker-php-fpm-5.5">PHP 5.6</a></strong> |
+  <strong><a target="_blank" title="PHP 7.0" href="https://github.com/cytopia/docker-php-fpm-5.5">PHP 7.0</a></strong> |
+  <strong><a target="_blank" title="PHP 7.1" href="https://github.com/cytopia/docker-php-fpm-5.5">PHP 7.1</a></strong> |
+  <strong><a target="_blank" title="HHVM" href="https://github.com/cytopia/docker-hhvm-latest">HHVM</a></strong>
+  </p>
+<p>apc, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dom, ereg, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, magickwand, mbstring, mcrypt, memcache, memcached, mhash, mongodb, msgpack, mysql, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, soap, sockets, SPL, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib</p>
+</div>
+
+
+### Email catch-all
+
+<div class="center">
+  <img class="battery" style="height:64px;" title="Email catch-all" alt="Email catch-all" src="img/logos/email.png"/>
+  <p>The built-in postfix mailserver is configured to automatically intercept all outgoing emails. This is an important measurement during development to make sure not to accidentally send out real emails. Instead you will be able to see all sent emails in the included intranet mail view. See Intranet section below.</p>
+</div>
+
+
+### Auto-DNS
+
+<div class="center">
+  <img class="battery" style="height:64px;" title="Auto-DNS" alt="Auto-DNS" src="img/logos/dns.png" />
+  <p>Creating a new project just requires you to create a new folder on the filesystem. As you probalby don't want to bother with editing your /etc/hosts file everytime, the built-in DNS server will automatically provide the correct DNS records for every project.</p>
+</div>
+
+
 ### Batteries included
 
 <p class="center">No need to download external tools. Everything is bundled, up-to-date and available inside the containers.</p>
@@ -88,9 +199,7 @@ $ docker-compose stop mysql
 <div class="center">
   <a target="_blank" title="phpMyAdmin" href="https://www.phpmyadmin.net"><img class="battery" style="height:64px;" src="img/logos/phpmyadmin.png" alt="Devilbox"/></a>
   <a target="_blank" title="Adminer" href="https://www.adminer.org"><img class="battery" style="height:64px;" src="img/logos/adminer.png" alt="Devilbox"/></a>
-  <a target="_blank" title="OpCache GUI" href="https://github.com/amnuts/opcache-gui"><img class="battery" style="height:64px;" src="img/logos/opcachegui.png" alt="Devilbox"/></a>
-  <a target="_blank" title="Email catch-all" href="#"><img class="battery" style="height:64px;" src="img/logos/email.png" alt="Devilbox"/></a>
-  <a target="_blank" title="DNS resolver" href="#"><img class="battery" style="height:64px;" src="img/logos/dns.png" alt="Devilbox"/></a>
+  <a target="_blank" title="OpCache GUI" href="https://github.com/amnuts/opcache-gui"><img class="battery" style="height:64px;" src="img/logos/opcachegui.png" alt="Devilbox"/></a> 
   <br/> 
   <a target="_blank" title="Composer" href="https://getcomposer.org"><img class="battery" style="height:64px;" src="img/logos/composer.png" alt="Devilbox"/></a>
   <a target="_blank" title="Drush" href="https://www.drupal.org/project/drush"><img class="battery" style="height:64px;" src="img/logos/drush.png" alt="Devilbox"/></a>
@@ -122,6 +231,7 @@ $ docker-compose stop mysql
 <div class="center">
   Container Health | DNS Status | Available vHosts | Emails | Databases | Effective Configuration<br/>
   <img alt="" title="" src="img/02_intranet_vhosts.png "/>
+  <img alt="" title="" src="img/04_intranet_emails.png "/>
 </div>
 
 
@@ -138,7 +248,7 @@ $ docker-compose stop mysql
 $ docker-compose pull
 ```
 
-<p class="center">However, if a new minor version (PHP for example) has just been released and you want to use it right away with the devilbox, you can simply *git clone* the docker repository and rebuild the container. Each container repository contains a shell script for easy building.</p>
+<p class="center">However, if a new minor version (PHP for example) has just been released and you want to use it right away, you can simply *git clone* the docker repository and rebuild the container. Each container repository contains a shell script for easy building.</p>
 
 ```shell
 # Download PHP 7.1 repository
@@ -157,3 +267,26 @@ $ ./build/docker-rebuild.sh
 </div>
 
 <p class="center">In order to make sure everything always runs stable and as expected, the devilbox makes heavy use of integration tests. You can head over to <a target="_blank" href="https://travis-ci.org/cytopia/devilbox">Travis-CI</a> and have a look at stable and nightly builds.</p>
+
+
+### Contribute
+
+<div class="center">
+  <p>Contributers are welcome in any way.</p>
+  
+  <p>First of all, if you like the project, please <a href="https://github.com/cytopia/devilbox">do star it</a>. Starring is an important measurement to see the number of active users and better allows me to organize my time and effort I can put into this project.</p>
+  
+  <p>You can also get actively involved. <a href="https://github.com/cytopia/devilbox">Do clone the project</a> and start improving whatever you think is useful. There is quite a lot todo and planned. If you like to contribute, view <a href="https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> and <a href="https://github.com/cytopia/devilbox/issues/23">ROADMAP</a>.</p>
+  
+  <p>Major contributors will be credited within the intranet and on the github page.</p>
+</div>
+
+
+### License
+
+<div class="center">
+  <p>MIT License</p>
+  <p>Copyright (c) 2016 cytopia</p>
+</div>
+
+
