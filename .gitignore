@@ -39,12 +39,6 @@
 /cfg/php-fpm-7.1/*.ini
 /cfg/hhvm-latest/*.ini
 
-# gh-pages
-docs/Gemfile
-docs/Gemfile.lock
-docs/_site/
-docs/view-page.sh
-
 
 ######################################
 # GENERIC
