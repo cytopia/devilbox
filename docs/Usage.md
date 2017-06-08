@@ -1,20 +1,61 @@
 # Devilbox Documentation
 
-[Home](https://github.com/cytopia/devilbox) |
-[Overview](README.md) |
-[Configuration](Configuration.md) |
+|
+**Overview** |
+**Installing** |
+**Updating** |
+**Configuration** |
 Usage |
-[Updating](Updating.md) |
-[Info](Info.md) |
-[PHP Projects](PHP_Projects.md) |
-[Emails](Emails.md) |
-[Logs](Logs.md) |
-[Intranet](Intranet.md) |
-[FAQ](FAQ.md)
+[**Examples**](Examples.md) |
+**Technical** |
+[**FAQ**](FAQ.md) |
 
-----
+---
 
 ## Usage
+
+1. [Start and Stop](#1-start-and-stop)
+  1. [Normal Start](#1-1-normal-start)
+  2. [Background Start](#)
+  3. [Selective Start](#)
+  4. [Normal Stop](#)
+  5. [Selective Stop](#)
+  6. [Attach/Detach during run-time](#)
+2. [Work inside the PHP container](#)
+  1. [As devilbox user](#)
+  2. [As root user](#)
+  3. [Available tools](#)
+  4. [Available URLs](#)
+3. [Creating Projects](#)
+  1. Creating projects on the docker host
+  2. Creating projects from within the PHP container
+4. [DNS](#)
+  1. [/etc/hosts](#)
+  2. [Auto-DNS](#)
+5. [Intranet](#)
+6. [Emails](#)
+7. [Log files](#)
+
+---
+
+### 1. Start and Stop
+
+Starting and stopping containers is done via docker-compose. If you have never worked with it before, have a look at their documentation for an [overview](https://docs.docker.com/compose/reference/overview/), [up](https://docs.docker.com/compose/reference/up/) and [stop](https://docs.docker.com/compose/reference/stop/)
+
+#### 1.1 Normal Start
+
+The normal start will bring up all container defined in *docker-compose.yml* and will stay in forground making it possible to stop them via Ctrl+c.
+
+```shell
+$ docker-compose up
+```
+
+#### 1.2 Background Start
+#### 1.3 Selective Start
+#### 1.4 Normal Stop
+#### 1.5  Selective stop
+#### 1.6  Attach/Detach during run-time
+### 2. Creating Projects
 
 This section is about how to start, stop, view and enter (all or a selection of some) containers. If you want to know how to choose the container type version (e.g. which mysql version or which php version) refer to the **[Configuration](Configuration.md)** section.
 

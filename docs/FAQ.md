@@ -1,18 +1,16 @@
 # Devilbox Documentation
 
-[Home](https://github.com/cytopia/devilbox) |
-[Overview](README.md) |
-[Configuration](Configuration.md) |
-[Usage](Usage.md) |
-[Updating](Updating.md) |
-[Info](Info.md) |
-[PHP Projects](PHP_Projects.md) |
-[Emails](Emails.md) |
-[Logs](Logs.md) |
-[Intranet](Intranet.md) |
-FAQ
+|
+**Overview** |
+**Installing** |
+**Updating** |
+**Configuration** |
+[**Usage**](Usage.md) |
+[**Examples**](Examples.md) |
+**Technical** |
+FAQ |
 
-----
+---
 
 ## FAQ
 
