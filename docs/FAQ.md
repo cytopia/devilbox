@@ -1,14 +1,14 @@
 # Devilbox Documentation
 
-|
-[**Overview**](README.md) |
+**[Overview](README.md)** |
 **Installing** |
 **Updating** |
 **Configuration** |
-[**Usage**](Usage.md) |
-[**Examples**](Examples.md) |
+**[Usage](Usage.md)** |
+**[Examples](Examples.md)** |
 **Technical** |
-FAQ |
+**[Hacking](Hacking.md)** |
+**FAQ**
 
 ---
 
@@ -33,3 +33,12 @@ See: *Why are mounted MySQL data directories separated by version?*
 **Why do the user/group permissions of log/ or cfg/ directories show 1000?**
 
 Uid and Gid are set to 1000 by default. You can alter them to match the uid/gid of your current user. Open the `.env` file and change the sections `NEW_UID` and `NEW_GID`. When you start up the devilbox, the php-container will use these values for its user.
+
+**Can I not just comment out the service in the `.env` file?**
+
+No, don't do this. This will lead to unexpected behaviour (different versions will be loaded).
+The `.env` file allows you to configure the devilbox, but not to start services selectively.
+
+**Are there any required services that must/will always be started?**
+
+Yes. `http` and `php` will automatically always be started (due to dependencies inside `docker-compose.yml`) if you specify them or not.
