@@ -1,14 +1,14 @@
 # Devilbox Documentation
 
-|
-Overview |
+**Overview** |
 **Installing** |
 **Updating** |
 **Configuration** |
-[**Usage**](Usage.md) |
-[**Examples**](Examples.md) |
+**[Usage](Usage.md)** |
+**[Examples](Examples.md)** |
 **Technical** |
-[**FAQ**](FAQ.md) |
+**[Hacking](Hacking.md)** |
+**[FAQ](FAQ.md)**
 
 ---
 
@@ -28,10 +28,8 @@ The devilbox runs on all major operating systems. Below you can quickly check th
 
 |             | ![linux][lin-logo]   | ![windows][win-logo]      | ![osx][osx-logo]     |
 |-------------|----------------------|---------------------------|----------------------|
-| **Version** | normal               | [Docker for Windows][d4w] | [Docker dor Mac][d4m]|
-| **Issues**  | [here][lin-issues]   | [here][win-issues]        | [here][osx-issues]   |
-
-**Note:** There is also the deprecated [Docker Toolbox][dtb] (for Windows and OSX). It is however not recommended to use with the devilbox.
+| **Docker Version** | normal               | [Docker for Windows][d4w] | [Docker dor Mac][d4m]|
+| **Current Issues**  | [here][lin-issues]   | [here][win-issues]        | [here][osx-issues]   |
 
 [win-logo]: https://raw.githubusercontent.com/cytopia/icons/master/64x64/windows.png
 [lin-logo]: https://raw.githubusercontent.com/cytopia/icons/master/64x64/linux.png
@@ -46,6 +44,7 @@ The devilbox runs on all major operating systems. Below you can quickly check th
 
 ### 2. Requirements
 
+* **Internet connection** - only required during initial setup for cloning the devilbox repository and pulling the required docker container. Afterwards you can always work offline.
 * [Docker Engine 1.12.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
 * [Docker Compose 1.6.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-2)
 * On Windows use [Docker for Windows][d4w] (not tested on [Docker Toolbox][dtb])
@@ -64,7 +63,7 @@ If you have never worked with docker/docker-compose before, you should check up 
 | **Installing**          | How to install docker, docker-compose and the devilbox |
 | **Updating**            | Update best practise |
 | **Configuration**       | How to configure the devilbox, switch versions (PHP, MySQL, PgSQL, ...)  and how to set custom options (php.ini, my.cnf, httpd.conf, ...) |
-| **[Usage](Usage.md)**   | How to create projects, Email and DNS usage, tools (`composer`, `npm`, `node`, `drush`, ...), entering the container, Log files, Xdebug, ...|
+| **[Usage](Usage.md)**   | How to create projects, Email and DNS usage, tools (`composer`, `npm`, `node`, `drush`, ...), entering the container, Log files, Xdebug, Backups, Intranet, ...|
 | **[Examples](Examples.md)** | Some project examples for popular CMS/Frameworks. How to setup Wordpress, Drupal, Yii, ... |
 | **Technical**            | Technical background information |
 | **[FAQ](FAQ.md)**        | Questions and Troubleshooting |

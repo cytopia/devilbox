@@ -1,14 +1,14 @@
 # Devilbox Documentation
 
-|
-**Overview** |
+**[Overview](README.md)** |
 **Installing** |
 **Updating** |
 **Configuration** |
-Usage |
-[**Examples**](Examples.md) |
+**Usage** |
+**[Examples](Examples.md)** |
 **Technical** |
-[**FAQ**](FAQ.md) |
+**[Hacking](Hacking.md)** |
+**[FAQ](FAQ.md)**
 
 ---
 
@@ -27,14 +27,17 @@ Usage |
   3. [Available tools](#)
   4. [Available URLs](#)
 3. [Creating Projects](#)
-  1. Creating projects on the docker host
-  2. Creating projects from within the PHP container
-4. [DNS](#)
+  1. [Creating projects on the docker host](#)
+  2. [Creating projects from inside the PHP container](#)
+4. [Backups](#)
+  1. [Backup MySQL database](#)
+  2. [Backup PgSQL database](#)
+5. [DNS](#)
   1. [/etc/hosts](#)
   2. [Auto-DNS](#)
-5. [Intranet](#)
-6. [Emails](#)
-7. [Log files](#)
+6. [Intranet](#)
+7. [Emails](#)
+8. [Log files](#)
 
 ---
 
@@ -154,19 +157,3 @@ The `php` container mounts your project files (the path of `HOST_PATH_TO_WWW_DOC
 
 So enter the container as described above and once inside the `php` container cd into `/shared/httpd`.
 
-----
-
-### Hints
-
-**A. How do I know the name of the container I can start?**
-
-Refer to the **[Info](Info.md)** section or look it up in the `docker-compose.yml` file.
-
-**B. Can I not just comment out the service in the `.env` file?**
-
-No, don't do this. This will lead to unexpected behaviour (different versions will be loaded).
-The `.env` file allows you to configure the devilbox, but not to start services selectively.
-
-**C. Are there any required services that must/will always be started?**
-
-Yes. `http` and `php` will automatically always be started (due to dependencies inside `docker-compose.yml`) if you specify them or not.
