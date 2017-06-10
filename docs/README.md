@@ -6,7 +6,7 @@
 **Configuration** |
 **[Usage](Usage.md)** |
 **[Examples](Examples.md)** |
-**Technical** |
+**[Technical](Technical.md)** |
 **[Hacking](Hacking.md)** |
 **[FAQ](FAQ.md)**
 
@@ -66,6 +66,7 @@ If you have never worked with docker/docker-compose before, you should check up 
 | **[Usage](Usage.md)**   | How to create projects, Email and DNS usage, tools (`composer`, `npm`, `node`, `drush`, ...), entering the container, Log files, Xdebug, Backups, Intranet, ...|
 | **[Examples](Examples.md)** | Some project examples for popular CMS/Frameworks. How to setup Wordpress, Drupal, Yii, ... |
 | **Technical**            | Technical background information |
+| **[Hacking](Hacking.md)**| How to extend the devilbox with your own docker container |
 | **[FAQ](FAQ.md)**        | Questions and Troubleshooting |
 
 
@@ -75,6 +76,3 @@ Have a look at youtube to see all the features in action.
 
 [![Devilbox setup and workflow](img/devilbox_01-setup-and-workflow.png "devilbox - setup and workflow")](https://www.youtube.com/watch?v=reyZMyt2Zzo) 
 [![Devilbox email catch-all](img/devilbox_02-email-catch-all.png "devilbox - email catch-all")](https://www.youtube.com/watch?v=e-U-C5WhxGY)
-
-
-

@@ -6,7 +6,7 @@
 **Configuration** |
 **Usage** |
 **[Examples](Examples.md)** |
-**Technical** |
+**[Technical](Technical.md)** |
 **[Hacking](Hacking.md)** |
 **[FAQ](FAQ.md)**
 
