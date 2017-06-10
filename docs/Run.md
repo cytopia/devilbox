@@ -25,6 +25,10 @@
 3. [Attach/Detach during run-time](#3-attach-detach-during-run-time)
   1. [Attach during run-time](#3-1-attach-during-run-time)
   2. [Detach during run-time](#3-2-detach-during-run-time)
+4. [Docker logs](#4-docker-logs)
+  1. [All logs](#4-1-all-logs)
+  1. [Specific logs](#4-2-specific-logs)
+  1. [Tail logs](#4-3-tail-logs)
 
 
 ---
@@ -63,7 +67,7 @@ $ docker-compose up httpd php bind mysql
 $ docker-compose up -d httpd php bind mysql
 ```
 
-**Note:** `httpd`, `php` and `bind` are base container that will **always** be started if specified or not. (Defined by `depends_on` in `docker-compose.yml`). So the above could also be achieved by simply specifying `mysql` only.
+**Start Note:** `httpd`, `php` and `bind` are base container that will **always** be started if specified or not. (Defined by `depends_on` in `docker-compose.yml`). So the above could also be achieved by simply specifying `mysql` only.
 
 ```shell
 # Foreground
@@ -72,6 +76,8 @@ $ docker-compose up mysql
 # Background
 $ docker-compose up -d mysql
 ```
+
+**Log Note:** When you do not specify httpd, php and bind in foreground start, their docker-logs will not be shown and you will have to explicitly use `docker-compose logs` to view their stdout/stderr output. Refer to the Log section below.
 
 ##### 1.3.2 Starting httpd, php, bind, pgsql and redis
 
@@ -83,7 +89,7 @@ $ docker-compose up httpd php bind pgsql redis
 $ docker-compose up -d httpd php bind pgsql redis
 ```
 
-**Note:** `httpd`, `php` and `bind` are base container that will **always** be started if specified or not. (Defined by `depends_on` in `docker-compose.yml`). So the above could also be achieved by simply specifying `pgsql` and `redis` only.
+**Start Note:** `httpd`, `php` and `bind` are base container that will **always** be started if specified or not. (Defined by `depends_on` in `docker-compose.yml`). So the above could also be achieved by simply specifying `pgsql` and `redis` only.
 
 ```shell
 # Foreground
@@ -92,6 +98,8 @@ $ docker-compose up pgsql redis
 # Background
 $ docker-compose up -d pgsql redis
 ```
+**Log Note:** When you do not specify httpd, php and bind in foreground start, their docker-logs will not be shown and you will have to explicitly use `docker-compose logs` to view their stdout/stderr output. Refer to the Log section below.
+
 
 ### 2. Stop the devilbox
 
@@ -131,3 +139,32 @@ You can also stop specific containers during runtime if they are not needed anym
 ```shell
 $ docker-compose stop redis
 ```
+
+### 4. Docker Logs
+
+Services started in background mode (`-d`) or those that were started as dependencies (`http` and `php`) will always only log to docker logs and not to stdout/stderr.
+
+#### 4.1 All logs
+
+In order to view logs of all started containers type:
+
+```shell
+$ docker-compose logs
+```
+
+#### 4.2 Specific logs
+
+In order to view logs of a specific container, name it explicitly:
+
+```shell
+$ docker-compose logs redis
+```
+
+#### 4.3 Tail logs
+
+There is also a version similar to `tail -f` to keep logs updated all the time.
+
+```shell
+$ docker-compose logs -f
+```
+
