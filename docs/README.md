@@ -4,6 +4,7 @@
 **Installing** |
 **Updating** |
 **Configuration** |
+**[Run](Run.md)** |
 **[Usage](Usage.md)** |
 **[Examples](Examples.md)** |
 **[Technical](Technical.md)** |
@@ -93,6 +94,7 @@ If you have never worked with docker/docker-compose before, you should check up 
 | **Installing**          | How to install docker, docker-compose and the devilbox |
 | **Updating**            | Update best practise |
 | **Configuration**       | How to configure the devilbox, switch versions (PHP, MySQL, PgSQL, ...)  and how to set custom options (php.ini, my.cnf, httpd.conf, ...) |
+| **[Run](Run.md)**       | How to operate the devilbox, start and stop all or only required Docker container. |
 | **[Usage](Usage.md)**   | How to create projects, Email and DNS usage, tools (`composer`, `npm`, `node`, `drush`, ...), entering the container, Log files, Xdebug, Backups, Intranet, ...|
 | **[Examples](Examples.md)** | Some project examples for popular CMS/Frameworks. How to setup Wordpress, Drupal, Yii, ... |
 | **Technical**            | Technical background information |

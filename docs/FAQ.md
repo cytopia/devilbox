@@ -4,6 +4,7 @@
 **Installing** |
 **Updating** |
 **Configuration** |
+**[Run](Run.md)** |
 **[Usage](Usage.md)** |
 **[Examples](Examples.md)** |
 **[Technical](Technical.md)** |
@@ -42,3 +43,13 @@ The `.env` file allows you to configure the devilbox, but not to start services 
 **Are there any required services that must/will always be started?**
 
 Yes. `http` and `php` will automatically always be started (due to dependencies inside `docker-compose.yml`) if you specify them or not.
+
+**What PHP Modules are available?**
+
+**Can I add other PHP Modules?**
+
+**Can I change php.ini?**
+
+**Can I change my.cnf?**
+
+**Can I switch HHVM between PHP 5.6 and PHP 7 mode?**

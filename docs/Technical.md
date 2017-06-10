@@ -4,6 +4,7 @@
 **Installing** |
 **Updating** |
 **Configuration** |
+**[Run](Run.md)** |
 **[Usage](Usage.md)** |
 **[Examples](Examples.md)** |
 **Technical** |
