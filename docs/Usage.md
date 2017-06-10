@@ -4,6 +4,7 @@
 **Installing** |
 **Updating** |
 **Configuration** |
+**[Run](Run.md)** |
 **Usage** |
 **[Examples](Examples.md)** |
 **[Technical](Technical.md)** |
@@ -43,21 +44,87 @@
 
 ### 1. Start and Stop
 
-Starting and stopping containers is done via docker-compose. If you have never worked with it before, have a look at their documentation for an [overview](https://docs.docker.com/compose/reference/overview/), [up](https://docs.docker.com/compose/reference/up/) and [stop](https://docs.docker.com/compose/reference/stop/)
+Starting and stopping containers is done via docker-compose. If you have never worked with it before, have a look at their documentation for an [overview](https://docs.docker.com/compose/reference/overview/), [up](https://docs.docker.com/compose/reference/up/) and [stop](https://docs.docker.com/compose/reference/stop/) commands.
 
 #### 1.1 Normal Start
 
-The normal start will bring up all container defined in *docker-compose.yml* and will stay in forground making it possible to stop them via Ctrl+c.
+The normal start will bring up **all** container defined in *docker-compose.yml* and will stay in forground making it possible to stop them via Ctrl+c.
 
 ```shell
 $ docker-compose up
 ```
 
 #### 1.2 Background Start
+
+Instead of having the docker-compose run stay in foreground, you can also send it to the background by adding `-d` as an argument. The following will bring up **all** container and send docker-compose to background.
+
+```shell
+$ docker-compose up -d
+```
+
 #### 1.3 Selective Start
+
+There is no need to always bring up **all** container, if you just need a few at the moment. In order to do so, simply specify the container by name that you actually need.
+
+##### 1.3.1 Starting httpd, php, bind and mysql
+
+```shell
+# Foreground
+$ docker-compose up httpd php bind mysql
+
+# Background
+$ docker-compose up -d httpd php bind mysql
+```
+
+**Note:** `httpd`, `php` and `bind` are base container that will **always** be started if specified or not. (Defined by `depends_on` in `docker-compose.yml`). So the above could also be achieved by simply specifying `mysql` only.
+
+```shell
+# Foreground
+$ docker-compose up mysql
+
+# Background
+$ docker-compose up -d mysql
+```
+
+##### 1.3.2 Starting httpd, php, bind, pgsql and redis
+
+```shell
+# Foreground
+$ docker-compose up httpd php bind pgsql redis
+
+# Background
+$ docker-compose up -d httpd php bind pgsql redis
+```
+
+**Note:** `httpd`, `php` and `bind` are base container that will **always** be started if specified or not. (Defined by `depends_on` in `docker-compose.yml`). So the above could also be achieved by simply specifying `pgsql` and `redis` only.
+
+```shell
+# Foreground
+$ docker-compose up pgsql redis
+
+# Background
+$ docker-compose up -d pgsql redis
+```
+
 #### 1.4 Normal Stop
-#### 1.5  Selective stop
-#### 1.6  Attach/Detach during run-time
+
+1. If you started up docker compose in foreground mode (without `-d`), you can hit `ctrl+c` to gracefull stop or **twice** `ctrl+c` to kill the running containers.<br/>**Note:** Automatically started containers that were not specified (such as `http` or `php`) will have to be stopped manually via `docker-compose down` afterwards.
+2. If you started up docker compose in background mode (with `-d`), go back to the devilbox directory (where the `docker-compose.yml` file resides and type `docker-compose down` to gracefully stop or `docker-compose kill` to kill them immediately.
+
+Best pracice would be to start the container in the background (with `-d`) and use `docker compose down` to gracefully stop all of them.
+
+#### 1.5 Selective stop
+
+You can also stop specific containers during runtime if they are not needed anymore. You might have started httpd, php, bind, mysql and redis and decided that redis was not needed. So go ahead and remove redis from the running container stack.
+
+```shell
+$ docker-compose stop redis
+```
+
+#### 1.6 Attach/Detach during run-time
+
+
+
 ### 2. Creating Projects
 
 This section is about how to start, stop, view and enter (all or a selection of some) containers. If you want to know how to choose the container type version (e.g. which mysql version or which php version) refer to the **[Configuration](Configuration.md)** section.
@@ -66,66 +133,7 @@ This section is about how to start, stop, view and enter (all or a selection of 
 
 **Assumption:** All `docker-compose` commands must be executed within the devilbox root directory, where the `docker-compose.yml` file resides.
 
-### 1. Start and Stop
-
-#### 1.1 Start all container
-
-```shell
-$ docker-compose up
-```
-
-This will bring up **all containers** defined in `docker-compose.yml`.
-
-However, you will probably not need all of the defined services and especially on slow machines you only want to start what you really need. This is possible as well.
-
-#### 1.2 Start selected container
-
-In order to only start the services you actually need, you must specify them with the docker-compose command.
-
-**Note:** The `http` and `php` container will automatically be started and must not be explicitly specified. (If not specified, their log output will also not go to stderr/stdout, but instead to docker logs)
-
-```shell
-# Only start HTTP and PHP
-$ docker-compose up http php
-
-# Start HTTP, PHP and Redis
-$ docker-compose up redis
-
-# Start HTTP, PHP and MySQL
-$ docker-compose up mysql
-
-# Start HTTP, PHP, PostgreSQL and Memcache
-$ docker-compose up pgsql memcache
-```
-I think you get the idea.
-
-#### 1.3 Start in background
-
-You can also run the docker compose command in the background and close your terminal after startup. To do so simply add the `-d` flag:
-
-```shell
-$ docker-compose up -d
-```
-Or in case of selectively starting
-```shell
-$ docker-compose up -d mysql
-```
-
-#### 1.4 Stop container
-
-1. If you started up docker compose in foreground mode (without `-d`), you can hit `ctrl+c` to gracefull stop or **twice** `ctrl+c` to kill the running containers.<br/>**Note:** Automatically started containers that were not specified (such as `http` or `php`) will have to be stopped manually via `docker-compose down` afterwards.
-2. If you started up docker compose in background mode (with `-d`), go back to the devilbox directory (where the `docker-compose.yml` file resides and type `docker-compose down` to gracefully stop or `docker-compose kill` to kill them immediately.
-
-Best pracice would be to start the container in the background (with `-d`) and use `docker compose down` to gracefully stop all of them.
-
-### 2. Container Info
-
-#### 2.1 List running container
-
-Inside the devilbox directory enter the following command to get a list of the started/running container:
-```shell
-$ docker-compose ps
-```
+``
 
 #### 2.2 Show container stdout/stderr output
 
