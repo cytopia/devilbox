@@ -3,28 +3,21 @@
 **[Overview](README.md)** |
 **[Install](Install.md)** |
 **[Update](Update.md)** |
-**[Configure](Configure.md)** |
+**Configure** |
 **[Run](Run.md)** |
 **[Usage](Usage.md)** |
 **[Backups](Backups.md)** |
-**Examples** |
+**[Examples](Examples.md)** |
 **[Technical](Technical.md)** |
 **[Hacking](Hacking.md)** |
 **[FAQ](FAQ.md)**
 
 ---
 
-## Examples
+## Configure
 
-1. [Setup Wordpress](#1-setup-wordpress)
-2. [Setup Drupal](#2-setup-drupal)
-3. [Setup Yii](#3-setup-yii)
+1. TODO
 
 ---
 
-### 1. Setup Wordpress
-
-### 2. Setup Drupal
-
-### 3. Setup Yii
-
+### 1. TODO
