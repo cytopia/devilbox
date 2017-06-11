@@ -1,11 +1,12 @@
 # Devilbox Documentation
 
 **[Overview](README.md)** |
-**Installing** |
-**Updating** |
-**Configuration** |
+**[Install](Install.md)** |
+**[Update](Update.md)** |
+**[Configure](Configure.md)** |
 **Run** |
 **[Usage](Usage.md)** |
+**[Backups](Backups.md)** |
 **[Examples](Examples.md)** |
 **[Technical](Technical.md)** |
 **[Hacking](Hacking.md)** |
@@ -36,6 +37,8 @@
 ### 1. Start the devilbox
 
 Starting and stopping containers is done via docker-compose. If you have never worked with it before, have a look at their documentation for an [overview](https://docs.docker.com/compose/reference/overview/), [up](https://docs.docker.com/compose/reference/up/) and [stop](https://docs.docker.com/compose/reference/stop/) commands.
+
+By starting up the devilbox all attached containers will send their stdout and stderr to docker logs (foreground or background), you can increase/decrease the containers startup verbosity by configuring the `.env` file. See [Configure](Configure.md) for how to change that behavior.
 
 #### 1.1 Foreground Start
 
@@ -112,6 +115,14 @@ If you started up docker compose in foreground mode (without `-d`), you can hit 
 #### 2.2 Background stop
 
 If you started up docker compose in background mode (with `-d`), go back to the devilbox directory (where the `docker-compose.yml` file resides and type `docker-compose down` to gracefully stop or `docker-compose kill` to kill them immediately.
+
+```shell
+# Gracefully shutdown everything
+$ docker-compose down
+
+# Kill everything immediately
+$ docker-compose kill
+```
 
 Best pracice would be to start the container in the background (with `-d`) and use `docker compose down` to gracefully stop all of them.
 

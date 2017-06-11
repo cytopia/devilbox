@@ -1,11 +1,12 @@
 # Devilbox Documentation
 
 **Overview** |
-**Installing** |
-**Updating** |
-**Configuration** |
+**[Install](Install.md)** |
+**[Update](Update.md)** |
+**[Configure](Configure.md)** |
 **[Run](Run.md)** |
 **[Usage](Usage.md)** |
+**[Backups](Backups.md)** |
 **[Examples](Examples.md)** |
 **[Technical](Technical.md)** |
 **[Hacking](Hacking.md)** |
@@ -21,17 +22,18 @@
 4. [Docker documentation](#4-docker-documentation)
 5. [Devilbox documentation](#5-devilbox-documentation)
 6. [Video Tutorials](#6-video-tutorials)
-7. [Supported Frameworks and CMS](#7-supported-frameworks-and-cms)
+7. [Available PHP Modules](#7-available-php-modules)
+8. [Supported Frameworks and CMS](#8-supported-frameworks-and-cms)
 
 ---
 
 ### 1. Main idea
 
-The devilbox allows you to have an unlimitted number of projects ready without having to install any external software and without having to configure any virtual hosts.
+The devilbox allows you to have an unlimitted number of projects ready without having to install any external software and without having to configure any virtual hosts. As well as providing a very flexible development stack that you can run offline. (Internet is only required to initially pull docker container).
 
 The only thing you will have to do is to create a new folder on the filesystem and your virtual host is ready to be served with your custom domain.
 
-The default project catch-all domain is `*.dev` (can be changed). Let's see an example:
+The default project catch-all domain is `*.dev` (see [Configure](Configure.md) for how to change it). Let's view an example:
 
 ```shell
 # Inside your main project folder
@@ -110,7 +112,22 @@ Have a look at youtube to see some the features in action.
 [![Devilbox email catch-all](img/devilbox_02-email-catch-all.png "devilbox - email catch-all")](https://www.youtube.com/watch?v=e-U-C5WhxGY)
 
 
-### 7. Supported Frameworks and CMS
+### 7. Available PHP Modules
+
+The devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks.
+
+*apc, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dom, ereg, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, magickwand, mbstring, mcrypt, memcache, memcached, mhash, mongodb, msgpack, mysql, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, soap, sockets, SPL, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib*
+
+There will however be slight differences between the versions and especially with HHVM. To see the exact bundled modules for each version visit the corresponding docker repositories on Github:
+
+[PHP 5.4](https://github.com/cytopia/docker-php-fpm-5.4) |
+[PHP 5.5](https://github.com/cytopia/docker-php-fpm-5.5) |
+[PHP 5.6](https://github.com/cytopia/docker-php-fpm-5.6) |
+[PHP 7.0](https://github.com/cytopia/docker-php-fpm-7.0) |
+[PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
+[HHVM](https://github.com/cytopia/docker-hhvm-latest)
+
+### 8. Supported Frameworks and CMS
 
 As far as tested there are no limitations and you can use any Framework or CMS just as you would on your live environment. Below are a few examples of extensively tested Frameworks and CMS:
 
