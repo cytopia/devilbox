@@ -1,16 +1,17 @@
 # Devilbox Documentation
 
-**[Overview](README.md)** |
-**Install** |
-**[Update](Update.md)** |
-**[Configure](Configure.md)** |
-**[Run](Run.md)** |
-**[Usage](Usage.md)** |
-**[Backups](Backups.md)** |
-**[Examples](Examples.md)** |
-**[Technical](Technical.md)** |
-**[Hacking](Hacking.md)** |
-**[FAQ](FAQ.md)**
+[Overview](README.d) |
+[Quickstart](Quickstart.md) |
+Install |
+[Update](Update.md) |
+[Configure](Configure.md) |
+[Run](Run.md) |
+[Usage](Usage.md) |
+[Backups](Backups.md) |
+[Examples](Examples.md) |
+[Technical](Technical.md) |
+[Hacking](Hacking.md) |
+[FAQ](FAQ.md)
 
 ---
 
@@ -26,7 +27,7 @@
 
 ---
 
-### 1. Install Docker
+## 1. Install Docker
 
 Only requirement for the devilbox is to have docker and docker-compose installed, everything else is bundled and provided within the Docker container.
 
@@ -46,7 +47,7 @@ Refer to the official [Docker for Mac documentation](https://docs.docker.com/doc
 
 **Note:** You should install the [Native Mac Docker](https://docs.docker.com/docker-for-mac/install/) and not the [Docker Toolbox](https://docs.docker.com/toolbox/overview/).
 
-### 2. Install Devilbox
+## 2. Install Devilbox
 
 Just clone the devilbox repository and copy the configuration file.
 

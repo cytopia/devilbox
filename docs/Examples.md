@@ -1,16 +1,17 @@
 # Devilbox Documentation
 
-**[Overview](README.md)** |
-**[Install](Install.md)** |
-**[Update](Update.md)** |
-**[Configure](Configure.md)** |
-**[Run](Run.md)** |
-**[Usage](Usage.md)** |
-**[Backups](Backups.md)** |
-**Examples** |
-**[Technical](Technical.md)** |
-**[Hacking](Hacking.md)** |
-**[FAQ](FAQ.md)**
+[Overview](README.d) |
+[Quickstart](Quickstart.md) |
+[Install](Install.md) |
+[Update](Update.md) |
+[Configure](Configure.md) |
+[Run](Run.md) |
+[Usage](Usage.md) |
+[Backups](Backups.md) |
+Examples |
+[Technical](Technical.md) |
+[Hacking](Hacking.md) |
+[FAQ](FAQ.md)
 
 ---
 
@@ -22,9 +23,9 @@
 
 ---
 
-### 1. Setup Wordpress
+## 1. Setup Wordpress
 
-### 2. Setup Drupal
+## 2. Setup Drupal
 
-### 3. Setup Yii
+## 3. Setup Yii
 

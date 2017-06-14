@@ -1,16 +1,17 @@
 # Devilbox Documentation
 
-**[Overview](README.md)** |
-**[Install](Install.md)** |
-**[Update](Update.md)** |
-**[Configure](Configure.md)** |
-**[Run](Run.md)** |
-**[Usage](Usage.md)** |
-**Backups** |
-**[Examples](Examples.md)** |
-**[Technical](Technical.md)** |
-**[Hacking](Hacking.md)** |
-**[FAQ](FAQ.md)**
+[Overview](README.d) |
+[Quickstart](Quickstart.md) |
+[Install](Install.md) |
+[Update](Update.md) |
+[Configure](Configure.md) |
+[Run](Run.md) |
+[Usage](Usage.md) |
+Backups |
+[Examples](Examples.md) |
+[Technical](Technical.md) |
+[Hacking](Hacking.md) |
+[FAQ](FAQ.md)
 
 ---
 
@@ -25,12 +26,12 @@
 
 ---
 
-### 1. MySQL
+## 1. MySQL
 
 #### 1.1 MySQL Database Backup
 #### 1.2 MySQL Database Restore
 
-### 2. PostgreSQL
+## 2. PostgreSQL
 
 #### 2.1 PostgreSQL Database Backup
 #### 2.2 PostgreSQL Database Restore

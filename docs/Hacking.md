@@ -1,16 +1,17 @@
 # Devilbox Documentation
 
-**[Overview](README.md)** |
-**[Install](Install.md)** |
-**[Update](Update.md)** |
-**[Configure](Configure.md)** |
-**[Run](Run.md)** |
-**[Usage](Usage.md)** |
-**[Backups](Backups.md)** |
-**[Examples](Examples.md)** |
-**[Technical](Technical.md)** |
-**Hacking** |
-**[FAQ](FAQ.md)**
+[Overview](README.d) |
+[Quickstart](Quickstart.md) |
+[Install](Install.md) |
+[Update](Update.md) |
+[Configure](Configure.md) |
+[Run](Run.md) |
+[Usage](Usage.md) |
+[Backups](Backups.md) |
+[Examples](Examples.md) |
+[Technical](Technical.md) |
+Hacking |
+[FAQ](FAQ.md)
 
 ---
 
@@ -28,7 +29,7 @@
 
 ---
 
-### 1. Rebuilding bundled Docker container
+## 1. Rebuilding bundled Docker container
 
 The devilbox Docker container are rebuild frequently and pushed to [dockerhub](https://hub.docker.com/r/cytopia/). However there might be cases in which you want to rebuild right away in order to use a new minor version of a tool inside the container.
 
@@ -69,7 +70,7 @@ If your devilbox git repository is checkout out on the `master` branch, then all
 
 
 
-### 2. Customizing the bundled Docker container
+## 2. Customizing the bundled Docker container
 
 Customizing a Docker container is almost as simple as rebuilding it.
 
@@ -80,7 +81,7 @@ Customizing a Docker container is almost as simple as rebuilding it.
 5. Read the rebuild section above to apply necessary steps
 
 
-### 3. Adding your own Docker container
+## 3. Adding your own Docker container
 
 You can add your custom docker container including its configuration to `docker-compose.yml`.
 

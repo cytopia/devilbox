@@ -1,16 +1,17 @@
 # Devilbox Documentation
 
-**[Overview](README.md)** |
-**[Install](Install.md)** |
-**[Update](Update.md)** |
-**[Configure](Configure.md)** |
-**Run** |
-**[Usage](Usage.md)** |
-**[Backups](Backups.md)** |
-**[Examples](Examples.md)** |
-**[Technical](Technical.md)** |
-**[Hacking](Hacking.md)** |
-**[FAQ](FAQ.md)**
+[Overview](README.d) |
+[Quickstart](Quickstart.md) |
+[Install](Install.md) |
+[Update](Update.md) |
+[Configure](Configure.md) |
+Run |
+[Usage](Usage.md) |
+[Backups](Backups.md) |
+[Examples](Examples.md) |
+[Technical](Technical.md) |
+[Hacking](Hacking.md) |
+[FAQ](FAQ.md)
 
 ---
 
@@ -34,7 +35,7 @@
 
 ---
 
-### 1. Start the devilbox
+## 1. Start the devilbox
 
 Starting and stopping containers is done via docker-compose. If you have never worked with it before, have a look at their documentation for an [overview](https://docs.docker.com/compose/reference/overview/), [up](https://docs.docker.com/compose/reference/up/) and [stop](https://docs.docker.com/compose/reference/stop/) commands.
 
@@ -104,7 +105,7 @@ $ docker-compose up -d pgsql redis
 **Log Note:** When you do not specify httpd, php and bind in foreground start, their docker-logs will not be shown and you will have to explicitly use `docker-compose logs` to view their stdout/stderr output. Refer to the Log section below.
 
 
-### 2. Stop the devilbox
+## 2. Stop the devilbox
 
 #### 2.1 Foreground stop
 
@@ -126,7 +127,7 @@ $ docker-compose kill
 
 Best pracice would be to start the container in the background (with `-d`) and use `docker compose down` to gracefully stop all of them.
 
-### 3. Attach/Detach during run-time
+## 3. Attach/Detach during run-time
 
 #### 3.1 Attach during run-time
 
@@ -151,7 +152,7 @@ You can also stop specific containers during runtime if they are not needed anym
 $ docker-compose stop redis
 ```
 
-### 4. Docker Logs
+## 4. Docker Logs
 
 Services started in background mode (`-d`) or those that were started as dependencies (`http` and `php`) will always only log to docker logs and not to stdout/stderr.
 
