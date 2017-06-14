@@ -1,16 +1,17 @@
 # Devilbox Documentation
 
-**[Overview](README.md)** |
-**[Install](Install.md)** |
-**[Update](Update.md)** |
-**[Configure](Configure.md)** |
-**[Run](Run.md)** |
-**[Usage](Usage.md)** |
-**[Backups](Backups.md)** |
-**[Examples](Examples.md)** |
-**[Technical](Technical.md)** |
-**[Hacking](Hacking.md)** |
-**FAQ**
+[Overview](README.d) |
+[Quickstart](Quickstart.md) |
+[Install](Install.md) |
+[Update](Update.md) |
+[Configure](Configure.md) |
+[Run](Run.md) |
+[Usage](Usage.md) |
+[Backups](Backups.md) |
+[Examples](Examples.md) |
+[Technical](Technical.md) |
+[Hacking](Hacking.md) |
+FAQ
 
 ---
 

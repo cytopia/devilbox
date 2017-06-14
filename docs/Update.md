@@ -1,16 +1,17 @@
 # Devilbox Documentation
 
-**[Overview](README.md)** |
-**[Install](Install.md)** |
-**Update** |
-**[Configure](Configure.md)** |
-**[Run](Run.md)** |
-**[Usage](Usage.md)** |
-**[Backups](Backups.md)** |
-**[Examples](Examples.md)** |
-**[Technical](Technical.md)** |
-**[Hacking](Hacking.md)** |
-**[FAQ](FAQ.md)**
+[Overview](README.d) |
+[Quickstart](Quickstart.md) |
+[Install](Install.md) |
+Update |
+[Configure](Configure.md) |
+[Run](Run.md) |
+[Usage](Usage.md) |
+[Backups](Backups.md) |
+[Examples](Examples.md) |
+[Technical](Technical.md) |
+[Hacking](Hacking.md) |
+[FAQ](FAQ.md)
 
 ---
 
@@ -25,21 +26,31 @@
 
 ---
 
-### 1. TL;DR
+## 1. TL;DR
 
 Shutdown, update and startup.
 
 ```shell
+# Stop container and update git
 $ docker-compose down
+$ git fetch --all
 $ git pull origin master
+
+# Check for changes
 $ vimdiff .env env-example
+
+# Pull all available container
+$ ./update-docker.sh
+# Or just pull currently enabled versions in .env
 $ docker-compose pull
+
+# Ready and run
 $ docker-compose up
 ```
 
 Do not forget to read: [Pull new Docker container (Important!)](#4-pull-new-docker-container-important-)
 
-### 2. Git tag vs master branch
+## 2. Git tag vs master branch
 
 #### 2.1 Git tag
 
@@ -57,6 +68,20 @@ $ grep '^[[:space:]]*image:' docker-compose.yml
 That means within your current git tag, you will not receive any Docker container updates, because the devilbox is bound to specific Docker tagged versions.
 
 When a new devilbox tag is released, the `docker-compose.yml` file will have new Docker tags. There is no manuall action required. If you start up the devilbox for the first time, it will see that the container with those tags are not available locally and automatically start downloading them.
+
+So the update procedure is as follows:
+
+```shell
+$ git fetch --all
+$ git checkout "$(git describe --abbrev=0 --tags)"
+```
+
+
+**Note:** If you want to pre-download all available versions for later offline-usage, run the `update-docker.sh` script.
+
+```shell
+$ ./update-docker.sh
+```
 
 #### 2.2 Git master branch
 
@@ -76,11 +101,18 @@ When you update the devilbox repository by `git pull origin master`, the Docker 
 So the update procedure is as follows:
 
 ```shell
+$ git fetch --all
 $ git pull origin master
 $ docker-compose pull
 ```
 
-### 3. Compare .env file
+**Note:** If you want to pre-download all available versions for later offline-usage, run the `update-docker.sh` script.
+
+```shell
+$ ./update-docker.sh
+```
+
+## 3. Compare .env file
 
 New devilbox releases will most likeley receive new or improved functionality and features and therefore will have an altered `env-example` file. (This is an example configuration file which holds all current configuration options).
 The effective configuration for docker-compose is stored in the `.env` file. However, the `.env` file is ignored by git, so that you can do changes without setting the git state dirty.
@@ -93,7 +125,7 @@ $ vimdiff .env env-example
 
 Make sure to transfer all new options from `env-example` to your current `.env` file.
 
-### 4. Pull new Docker container (Important!)
+## 4. Pull new Docker container (Important!)
 
 As described above, for git master branch updates you will always have to pull new Docker container. **However, there is something very important to keep in mind:**
 
@@ -113,4 +145,8 @@ image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
 
 As you can see, the Docker container names are variablized. If you updated `php-fpm-5.4:latest`, you still have to update `php-fpm-5.5:latest` (and all others) as they were not yet enabled/visible in `docker-compose.yml`.
 
-If there is anything unclear about this behaviour, open an **[Issue on Github](https://github.com/cytopia/devilbox/issues)**.
+So instead of pulling everything manually, use the bundled update script to do that for all available Docker container. That will also allow you to work offline, as every available docker image will be download in their latest version.
+
+```shell
+$ ./update-docker.sh
+```

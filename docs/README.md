@@ -1,33 +1,35 @@
 # Devilbox Documentation
 
-**Overview** |
-**[Install](Install.md)** |
-**[Update](Update.md)** |
-**[Configure](Configure.md)** |
-**[Run](Run.md)** |
-**[Usage](Usage.md)** |
-**[Backups](Backups.md)** |
-**[Examples](Examples.md)** |
-**[Technical](Technical.md)** |
-**[Hacking](Hacking.md)** |
-**[FAQ](FAQ.md)**
+Overview |
+[Quickstart](Quickstart.md) |
+[Install](Install.md) |
+[Update](Update.md) |
+[Configure](Configure.md) |
+[Run](Run.md) |
+[Usage](Usage.md) |
+[Backups](Backups.md) |
+[Examples](Examples.md) |
+[Technical](Technical.md) |
+[Hacking](Hacking.md) |
+[FAQ](FAQ.md)
 
 ---
 
 ## Overview
 
 1. [Main idea](#1-main-idea)
-2. [Supported Host OS](#2-supported-host-os)
-3. [Requirements](#3-requirements)
-4. [Docker documentation](#4-docker-documentation)
-5. [Devilbox documentation](#5-devilbox-documentation)
-6. [Video Tutorials](#6-video-tutorials)
-7. [Available PHP Modules](#7-available-php-modules)
-8. [Supported Frameworks and CMS](#8-supported-frameworks-and-cms)
+2. [Features](#2-features)
+3. [Supported Host OS](#3-supported-host-os)
+4. [Requirements](#4-requirements)
+5. [Docker documentation](#5-docker-documentation)
+6. [Devilbox documentation](#6-devilbox-documentation)
+7. [Video Tutorials](#7-video-tutorials)
+8. [Available PHP Modules](#8-available-php-modules)
+9. [Supported Frameworks and CMS](#9-supported-frameworks-and-cms)
 
 ---
 
-### 1. Main idea
+## 1. Main idea
 
 The devilbox allows you to have an unlimitted number of projects ready without having to install any external software and without having to configure any virtual hosts. As well as providing a very flexible development stack that you can run offline. (Internet is only required to initially pull docker container).
 
@@ -55,7 +57,39 @@ By having the above folders, the devilbox will automatically be able to serve th
 
 New folders can be created, deleted and removed during run-time and corresponding virtual hosts will be available instantly without having to restart anything.
 
-### 2. Supported Host OS
+## 2. Features
+
+| Feature | Description |
+|---------|-------------|
+| **Internet** | |
+| No always-on | Internet connection is only required during initial setup or update (to pull containers), afterwards you can always work offline. |
+| **Projects** | |
+| Unlimitted Projects | Add as many Projects as you need. |
+| Auto VirtualHosts | New VirtualHosts are added instantly without a restart or reload. Just create a new directory and you are ready to go. |
+| Auto DNS | Use the built-in DNS server to stop worrying about `/etc/hosts` setup per project. |
+| Email catch-all | All outgoing emails are intercepted and stored locally. Use the intranet to view any sent email. |
+| Custom VirtualHost domains | Whatever project domain you desire: `*.dev`, `*.loc`, `*.local` or even subdomains like `*.sub.example` - you can adjust it to your needs. |
+| **Run** | |
+| Selective start | Run only the Docker container you actually need. |
+| Version choice  | Use your development stack with whatever version combination needed. |
+| Stack choice  | Attach SQL or NoSQL container and use Nginx or Apache to simulate your live env. |
+| Log files | Log files are available for each chosen version. |
+| **Configuration** | |
+| HHVM | You can choose between PHP 5.6 and PHP 7 mode for HHVM |
+| php.ini | You an overwrite PHP settings for each PHP version. |
+| my.cnf | You an overwrite MySQL settings for each MySQL version. |
+| **Intranet** | |
+| phpMyAdmin | Manage your MySQL databases here. |
+| Adminer | Manage your SQL and NoSQL databases here. |
+| OpCacheGUI | Visualize the state of opcache usage. |
+| EmailGUI | See all sent emails at a glance |
+| **Docker Tools**|
+| Work inside container | You can completely work inside the PHP container and use all bundled tools in order to keep your host system clean. |
+| **Hacking** |
+| Add custom container | You can add any other Docker container to `docker-compose.yml` and start using them in your development stack. |
+
+
+## 3. Supported Host OS
 
 The devilbox runs on all major operating systems. Below you can quickly check the recommended docker versions and current issues per OS.
 
@@ -75,7 +109,7 @@ The devilbox runs on all major operating systems. Below you can quickly check th
 [osx-issues]: https://github.com/cytopia/devilbox/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22host%3Aosx%22
 
 
-### 3. Requirements
+## 4. Requirements
 
 * **Internet connection** - only required during initial setup for cloning the devilbox repository and pulling the required docker container. Afterwards you can always work offline.
 * [Docker Engine 1.12.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
@@ -84,12 +118,12 @@ The devilbox runs on all major operating systems. Below you can quickly check th
 * On OSX use [Docker for Mac][d4m] (not tested on [Docker Toolbox][dtb])
 
 
-### 4. Docker documentation
+## 5. Docker documentation
 
 If you have never worked with docker/docker-compose before, you should check up on their documentation to get you started: [docker docs](https://docs.docker.com/).
 
 
-### 5. Devilbox documentation
+## 6. Devilbox documentation
 
 | Topic                   | Description |
 |-------------------------|-------------|
@@ -104,7 +138,7 @@ If you have never worked with docker/docker-compose before, you should check up 
 | **[FAQ](FAQ.md)**        | Questions and Troubleshooting |
 
 
-### 6. Video Tutorials
+## 7. Video Tutorials
 
 Have a look at youtube to see some the features in action.
 
@@ -112,7 +146,7 @@ Have a look at youtube to see some the features in action.
 [![Devilbox email catch-all](img/devilbox_02-email-catch-all.png "devilbox - email catch-all")](https://www.youtube.com/watch?v=e-U-C5WhxGY)
 
 
-### 7. Available PHP Modules
+## 8. Available PHP Modules
 
 The devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks.
 
@@ -127,7 +161,7 @@ There will however be slight differences between the versions and especially wit
 [PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
 [HHVM](https://github.com/cytopia/docker-hhvm-latest)
 
-### 8. Supported Frameworks and CMS
+## 9. Supported Frameworks and CMS
 
 As far as tested there are no limitations and you can use any Framework or CMS just as you would on your live environment. Below are a few examples of extensively tested Frameworks and CMS:
 
