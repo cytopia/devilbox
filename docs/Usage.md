@@ -1,6 +1,6 @@
 # Devilbox Documentation
 
-[Overview](README.d) |
+[Overview](README.md) |
 [Quickstart](Quickstart.md) |
 [Install](Install.md) |
 [Update](Update.md) |
@@ -23,24 +23,24 @@ Usage |
   2. [As root user](#2-2-as-root-user)
   3. [Available tools](#2-3-available-tools)
   4. [Available URLs](#2-4-available-urls)
-3. [Creating new Projects](#3-creating-new-projects)
-  1. [How does it work?](#3-1-)
-  2. [Directory structure explained](#3-2-)
-  3. [Creating new Projects](#3-3-)
-    1. [From Docker Host](#3-3-1-)
-    2. [From inside the PHP container](#3-3-2-)
-    3. [Using symlinks](#3-3-3-)
-  4. [Adding DNS records](#3-4-)
-    1. [/etc/hosts](#3-4-1-)
-    2. [Auto-DNS](#3-4-2-)
-4. [Switching container versions](#5-switching-container-versions)
+3. [Managing Projects explained](#3-managing-projects-explained)
+  1. [How does it work?](#3-1-how-does-it-work-)
+  2. [Directory structure explained](#3-2-directory-structure-explained)
+4. [Creating new Projects](#4-creating-new-projetcs)
+  1. [From Docker Host](#4-1-from-docker-host)
+  2. [From inside the PHP container](#4-2-from-inside-the-php-container)
+  3. [Using symlinks](#4-3-using-symlinks)
+  4. [Adding DNS records](#4-4-adding-dns-record)
+    1. [/etc/hosts](#4-4-1-etc-hosts)
+    2. [Auto-DNS](#4-4-2-auto-dns)
+5. [Switching container versions](#5-switching-container-versions)
   1. [Httpd versions](#5-1-httpd-versions)
   2. [PHP versions](#5-2-php-versions)
   2. [SQL versions](#5-3-sql-versions)
   3. [NoSQL versions](#5-4-nosql-versions)
-5. [Emails](#6-emails)
-6. [Log files](#7-log-files)
-7. [Intranet](#8-intranet)
+6. [Emails](#6-emails)
+7. [Log files](#7-log-files)
+8. [Intranet](#8-intranet)
   1. [Overview](#8-1-overview)
   2. [vHosts](#8-2-vhosts)
   3. [Tools](#8-3-tools)
@@ -132,7 +132,7 @@ Your projects will be available by the same URL as they are available from your 
 
 For example, by doing `curl http://project1.dev` from either your host computer or from inside the PHP container will return the same URL.
 
-## 3. Creating new Projects
+## 3. Managing Projects explained
 [![Devilbox setup and workflow](img/devilbox_01-setup-and-workflow.png "devilbox - setup and workflow")](https://www.youtube.com/watch?v=reyZMyt2Zzo) 
 
 #### 3.1 How does it work?
@@ -175,9 +175,11 @@ In order to make the following examples easier let's work with some assumed defa
 The VirtualHost directory make a new VirtualHost available under the specified URL. However the actual files that will be served are always expected to be in a subfolder called `htdocs/`. By having an additional sub-directory for the Document root you are able to store non-www files inside the project folder and even **symlink** you www dir to htdocs.
 
 
-#### 3.3 Creating new Projetcs
+## 4. Creating new Projetcs
 
-##### 3.3.1 From Docker host
+This is a general overview about creating projects. If you want to see some real examples how to setup **Wordpress**, **Drupal**, **CakePHP**, **Yii**, **Symfony** and others, visit the [Example Section](Examples.md).
+
+#### 4.1 From Docker host
 
 The following will create a VirtualHost for `http://project1.local`.
 
@@ -190,7 +192,7 @@ $ mkdir project1/htdocs
 
 <sub>If you want to know how to change the TLD_SUFFIX `local` to something else, refer to [Configure](Configure.md).</sub>
 
-##### 3.3.2 From inside the PHP container
+#### 4.2 From inside the PHP container
 
 If you prefer to work directly inside the PHP Docker container, you can do the same. The following will create a VirtualHost for `http://project1.local`.
 
@@ -202,7 +204,7 @@ $ mkdir project1/htdocs
 
 <sub>If you want to know how to go into the PHP container, check the section above **2. Work inside the PHP container**.</sub>
 
-##### 3.3.3 Using symlinks
+#### 4.3 Using symlinks
 
 Instead of creating a **htdocs/** folder explicitly, you can also make a symlink by the same name. This is required as some frameworks have nested www folders.
 
@@ -220,11 +222,11 @@ drwxrwxr-x 2 cytopia 4096 Jun 14 08:29 cakephp
 lrwxrwxrwx 1 cytopia   11 Jun 14 08:29 htdocs -> cakephp/app/webroot/
 ```
 
-#### 3.4 Adding DNS record
+#### 4.4 Adding DNS record
 
 In order to actually visit the newly created project in your browser, there must be a DNS entry pointing to the webserver's listening IP address. This can either be done automatically by a DNS server or you can do it manually for each project by editing your `/etc/hosts` file every time you create a new project.
 
-##### 3.4.1 /etc/hosts
+##### 4.4.1 /etc/hosts
 
 If you have not setup Auto-DNS, you will need to create your own DNS records for every project. Let's assume your `TLD_SUFFIX` is set to `local`.
 
@@ -235,23 +237,89 @@ If you have not setup Auto-DNS, you will need to create your own DNS records for
 | playground     | `127.0.0.1 playground.local`  |
 
 
-##### 3.4.2 Auto-DNS
+##### 4.4.2 Auto-DNS
 
 When using the devilbox built-in DNS server, there is nothing to do. DNS catch-all records for your `TLD_SUFFIX` exist and will always point to `127.0.0.1`. See [Configure](Configure.md) for how to setup Auto-DNS.
 
 
-## 4. Switching container versions
-#### 4.1 Httpd versions
-#### 4.2 PHP versions
-#### 4.3 SQL versions
-#### 4.4 NoSQL versions
+## 5. Switching container versions
 
-## 5. Emails
+Being able to combine all kinds of different container version is one of the main goals of the devilbox. Changing the versions is kept simple and consistent for all container.
 
-## 5. Log files
+1. Open the `.env` file in your favorite editor
+2. Find the `*_SERVER=` block for the container to change the version
+3. Comment all lines you do not want to activate
+4. Uncomment the one line you want to use.
+5. Restart the devilbox for the changes to take effect
 
-## 6. Intranet
-#### 6.1 Overview
-#### 6.2 vHosts
-#### 6.3 Tools
+<sub>Be aware that if multiple lines are uncommented, the last one takes effect.</sub>
 
+#### 5.1 Httpd versions
+
+1. Open the `.env` file in your favorite editor
+2. Find the `HTTPD_SERVER=` block
+
+You can choose between Apache and Nginx in different version. All of them are configured to work the same, there is nothing to worry about when changing them.
+
+
+#### 5.2 PHP versions
+
+1. Open the `.env` file in your favorite editor
+2. Find the `PHP_SERVER=` block
+
+You can choose between different PHP versions and HHVM.
+
+**Important:** Keep in mind that if you have a custom php.ini config at `./cfg/php-*/`, it is only effective for one version. Custom php configurations are separted per version.
+
+#### 5.3 SQL versions
+
+1. Open the `.env` file in your favorite editor
+2. Find the `MYSQL_SERVER=` or `PGSQL_SERVER=`  block
+
+**Important:** Each version has a different data directory. This is a security precautions. Imagine you startup MySQL 5.5 for the first time. New databases will be created. Now you startup MySQL 8. All existing databases would be upgraded to work flawlessly with MySQL 8, however this is not downwards compatible. So by startup up MySQL 5.5 again, it would say the database is corrupt.
+
+#### 5.4 NoSQL versions
+
+1. Open the `.env` file in your favorite editor
+2. Find the `MONGO_SERVER=`, 'MEMCD_SERVER=`  or `REDIS_SERVER=`  block
+
+There is nothing to pay attention to here.
+
+## 6. Emails
+
+All your projects can send emails to whatever recipient. You do not have to worry that they will actually being sent. Each PHP container runs a local postfix mailserver that intercepts all outgoing mails and puts them all in the local devilbox user mail account.
+
+In order to view sent emails open up the devilbox intranet http://localhost/mail.php. There you can also test email sending and verify that they really stay locally.
+
+## 7. Log files
+
+Log files are available on the Host system and separated per service version. See `./log/` (inside devilbox git directory) for all log files.
+
+## 8. Intranet
+
+The devilbox bundled intranet is not required for project management or creation, however it offers a few useful tools.
+
+#### 8.1 Overview
+
+The overview page presents you the current state of the running stack and any errors it might have encountered.
+
+http://localhost
+
+#### 8.2 vHosts
+
+The vHost page shows you all available projects and any configuation errors that need to be resolved. Errors could be: missing `htdocs/` folder and incorrect DNS settings. So make sure to first visit this page if any of your vHost does not work.
+
+http://localhost/vhosts.php
+
+#### 8.3 Tools
+
+The intranet also offers a few common as well as self-made tools. These include:
+
+* phpMyAdmin
+* Adminer
+* Mail viewer
+* OpCacheGUI
+* SQL/NoSQL database viewer
+* Info pages (showing detailed configurations for the attached container)
+
+If you are interested in doing database backups, either use phpMyAdmin or Adminer. You can however also use the PHP container itself. Read more about this on [Backups](Backups.md)

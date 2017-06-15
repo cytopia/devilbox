@@ -1,6 +1,6 @@
 # Devilbox Documentation
 
-[Overview](README.d) |
+[Overview](README.md) |
 [Quickstart](Quickstart.md) |
 [Install](Install.md) |
 [Update](Update.md) |
@@ -67,5 +67,4 @@ Configure |
 
 ## 1. Overview
 
-To give you a brief overview about all available settings have a look at the following tags:
 

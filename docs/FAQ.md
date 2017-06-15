@@ -1,6 +1,6 @@
 # Devilbox Documentation
 
-[Overview](README.d) |
+[Overview](README.md) |
 [Quickstart](Quickstart.md) |
 [Install](Install.md) |
 [Update](Update.md) |
@@ -48,10 +48,32 @@ Yes. `http` and `php` will automatically always be started (due to dependencies 
 
 **What PHP Modules are available?**
 
+The devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks.
+
+*apc, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dom, ereg, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, magickwand, mbstring, mcrypt, memcache, memcached, mhash, mongodb, msgpack, mysql, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, soap, sockets, SPL, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib*
+
+There will however be slight differences between the versions and especially with HHVM. To see the exact bundled modules for each version visit the corresponding docker repositories on Github:
+
+[PHP 5.4](https://github.com/cytopia/docker-php-fpm-5.4) |
+[PHP 5.5](https://github.com/cytopia/docker-php-fpm-5.5) |
+[PHP 5.6](https://github.com/cytopia/docker-php-fpm-5.6) |
+[PHP 7.0](https://github.com/cytopia/docker-php-fpm-7.0) |
+[PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
+[HHVM](https://github.com/cytopia/docker-hhvm-latest)
+
+
 **Can I add other PHP Modules?**
+
+Yes, if there are any PHP modules you require that are not yet available in the PHP Docker container, you can install it during run-time, or create your own container. See [Hacking](Hacking.md) for more informatino.
 
 **Can I change php.ini?**
 
+Yes, php.ini directives can be changes on a per PHP version base. Go to `./cfg/` inside devilbox git diretory. There you will find configuration directories for each php version. Just put a \*.ini file there and restart the devilbox.
+
 **Can I change my.cnf?**
 
+Yes, my.cnf directives can be changes on a per MySQL version base. Go to `./cfg/` inside devilbox git diretory. There you will find configuration directories for each MySQL version. Just put a \*.cnf file there and restart the devilbox.
+
 **Can I switch HHVM between PHP 5.6 and PHP 7 mode?**
+
+Yes, this can be done by adding a \*.ini file to `./cfg/hhvm-latest/` with the following content: `hhvm.php7.all = 0` to disable PHP 7. The default is to use PHP 7 mode.
