@@ -1,6 +1,6 @@
 # Devilbox Documentation
 
-[Overview](README.d) |
+[Overview](README.md) |
 [Quickstart](Quickstart.md) |
 [Install](Install.md) |
 [Update](Update.md) |
