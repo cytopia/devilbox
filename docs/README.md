@@ -1,292 +1,172 @@
-# Devilbox
+# Devilbox Documentation
 
-| **Overview** | **Installing** | **Updating** | **Configuration** | **Usage** | **Technical** | **FAQ** |
+Overview |
+[Quickstart](Quickstart.md) |
+[Install](Install.md) |
+[Update](Update.md) |
+[Configure](Configure.md) |
+[Run](Run.md) |
+[Usage](Usage.md) |
+[Backups](Backups.md) |
+[Examples](Examples.md) |
+[Technical](Technical.md) |
+[Hacking](Hacking.md) |
+[FAQ](FAQ.md)
 
 ---
 
+## Overview
 
-### Dockerized LAMP/MEAN stack
+1. [Main idea](#1-main-idea)
+2. [Features](#2-features)
+3. [Supported Host OS](#3-supported-host-os)
+4. [Requirements](#4-requirements)
+5. [Docker documentation](#5-docker-documentation)
+6. [Devilbox documentation](#6-devilbox-documentation)
+7. [Video Tutorials](#7-video-tutorials)
+8. [Available PHP Modules](#8-available-php-modules)
+9. [Supported Frameworks and CMS](#9-supported-frameworks-and-cms)
 
-<p class="center">The devilbox is a modern and highly customisable LAMP and MEAN stack replacement based purely on docker and docker-compose running on all major platforms. It supports an unlimited number of projects for which vhosts and DNS records are created automatically. Email catch-all and popular development tools will be at your service as well.</p>
+---
 
-<img src="img/devilbox-dash.png" alt="Devilbox" style="max-width:100%"/>
+## 1. Main idea
 
+The devilbox allows you to have an unlimitted number of projects ready without having to install any external software and without having to configure any virtual hosts. As well as providing a very flexible development stack that you can run offline. (Internet is only required to initially pull docker container).
 
-### Supported Host OS
+The only thing you will have to do is to create a new folder on the filesystem and your virtual host is ready to be served with your custom domain.
 
-<p class="center">Don't worry about switching computers. The devilbox will run on all major operating systems.</p>
-
-<div class="center">
-  <img class="battery" style="height:64px;" title="Linux support" alt="Linux support" src="https://raw.githubusercontent.com/cytopia/icons/master/64x64/linux.png" />
-  <img class="battery" style="height:64px;" title="OSX support" alt="OSX support" src="https://raw.githubusercontent.com/cytopia/icons/master/64x64/osx.png" />
-  <img class="battery" style="height:64px;" title="Windows support" alt="Windows support" src="https://raw.githubusercontent.com/cytopia/icons/master/64x64/windows.png" />
-</div>
-
-
-### Install, Configure and Start
-
-<p class="center">Your whole development stack is up and running in a few simple steps.</p>
-
-```shell
-# Get the soures
-$ git clone https://github.com/cytopia/devilbox
-$ cd devilbox
-
-# Create and customize the config file
-$ cp env-example .env
-$ vim .env
-
-# Start your daemons
-$ docker-compose up
-```
-
-
-### Run exactly what you need
-
-<p class="center">Choose your required daemons and select a version. Any combination is possible.<br/>This will allow you, to always exactly simulate your production environment locally during development.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Apache</th>
-      <th>Nginx</th>
-      <th>PHP</th>
-      <th>MySQL</th>
-      <th>MariaDB</th>
-      <th>PgSQL</th>
-      <th>Redis</th>
-      <th>Memcached</th>
-      <th>MongoDB</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a target="_blank" title="Apache 2.2"       href="https://github.com/cytopia/docker-apache-2.2">2.2</a></td>
-      <td><a target="_blank" title="Nginx stable"     href="https://github.com/cytopia/docker-nginx-stable">stable</a></td>
-      <td><a target="_blank" title="PHP 5.4"          href="https://github.com/cytopia/docker-php-fpm-5.4">5.4</a></td>
-      <td><a target="_blank" title="MySQL 5.5"        href="https://github.com/cytopia/docker-mysql-5.5">5.5</a></td>
-      <td><a target="_blank" title="MariaDB 5.5"      href="https://github.com/cytopia/docker-mariadb-5.5">5.5</a></td>
-      <td><a target="_blank" title="PgSQL 9.1"        href="https://github.com/docker-library/postgres">9.1</a></td>
-      <td><a target="_blank" title="Redis 2.8"        href="https://github.com/docker-library/redis">2.8</a></td>
-      <td><a target="_blank" title="Memcached 1.4.21" href="https://github.com/docker-library/memcached">1.4.21</a></td>
-      <td><a target="_blank" title="MongoDB 2.8"      href="https://github.com/docker-library/mongo">2.8</a></td>
-    </tr>
-    <tr>
-      <td><a target="_blank" title="Apache 2.4"       href="https://github.com/cytopia/docker-apache-2.4">2.4</a></td>
-      <td><a target="_blank" title="Nginx mainline"   href="https://github.com/cytopia/docker-nginx-mainline">mainline</a></td>
-      <td><a target="_blank" title="PHP 5.5"          href="https://github.com/cytopia/docker-php-fpm-5.5">5.5</a></td>
-      <td><a target="_blank" title="MySQL 5.6"        href="https://github.com/cytopia/docker-mysql-5.6">5.6</a></td>
-      <td><a target="_blank" title="MariaDB 10.0"     href="https://github.com/cytopia/docker-mariadb-10.0">10.0</a></td>
-      <td><a target="_blank" title="PgSQL 9.2"        href="https://github.com/docker-library/postgres">9.2</a></td>
-      <td><a target="_blank" title="Redis 3.0"        href="https://github.com/docker-library/redis">3.0</a></td>
-      <td><a target="_blank" title="Memcached 1.4.22" href="https://github.com/docker-library/memcached">1.4.22</a></td>
-      <td><a target="_blank" title="MongoDB 3.0"      href="https://github.com/docker-library/mongo">3.0</a></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td><a target="_blank" title="PHP 5.6"          href="https://github.com/cytopia/docker-php-fpm-5.6">5.6</a></td>
-      <td><a target="_blank" title="MySQL 5.7"        href="https://github.com/cytopia/docker-mysql-5.7">5.7</a></td>
-      <td><a target="_blank" title="MariaDB 10.1"     href="https://github.com/cytopia/docker-mariadb-10.1">10.1</a></td>
-      <td><a target="_blank" title="PgSQL 9.3"        href="https://github.com/docker-library/postgres">9.3</a></td>
-      <td><a target="_blank" title="Redis 3.2"        href="https://github.com/docker-library/redis">3.2</a></td>
-      <td><a target="_blank" title="Memcached 1.4.23" href="https://github.com/docker-library/memcached">1.4.23</a></td>
-      <td><a target="_blank" title="MongoDB 3.2"      href="https://github.com/docker-library/mongo">3.2</a></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td><a target="_blank" title="PHP 7.0"          href="https://github.com/cytopia/docker-php-fpm-7.0">7.0</a></td>
-      <td><a target="_blank" title="MySQL 8.0"        href="https://github.com/cytopia/docker-mysql-8.0">8.0</a></td>
-      <td><a target="_blank" title="MariaDB 10.2"     href="https://github.com/cytopia/docker-mariadb-10.2">10.2</a></td>
-      <td><a target="_blank" title="PgSQL 9.4"        href="https://github.com/docker-library/postgres">9.4</a></td>
-      <td></td>
-      <td>...</td>
-      <td><a target="_blank" title="MongoDB 3.4"      href="https://github.com/docker-library/mongo">3.4</a></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td><a target="_blank" title="PHP 7.1"          href="https://github.com/cytopia/docker-php-fpm-7.1">7.1</a></td>
-      <td></td>
-      <td><a target="_blank" title="MariaDB 10.3"     href="https://github.com/cytopia/docker-mariadb-10.3">10.3</a></td>
-      <td><a target="_blank" title="PgSQL 9.5"        href="https://github.com/docker-library/postgres">9.5</a></td>
-      <td></td>
-      <td><a target="_blank" title="Memcached 1.4.36" href="https://github.com/docker-library/memcached">1.4.36</a></td>
-      <td><a target="_blank" title="MongoDB 3.5"      href="https://github.com/docker-library/mongo">3.5</a></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td><a target="_blank" title="HHVM"             href="https://github.com/cytopia/docker-hhvm-latest">HHVM</a></td>
-      <td></td>
-      <td></td>
-      <td><a target="_blank" title="PgSQL 9.6"        href="https://github.com/docker-library/postgres">9.6</a></td>
-      <td></td>
-      <td><a target="_blank" title="Memcached latest" href="https://github.com/docker-library/memcached">latest</a></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
-
-### Run only what you need
-
-<p class="center">You are not forced to load the whole stack everytime. Only bring up what you really need.<br/>It is also possible to add or remove daemons while the stack is already running.</p>
+The default project catch-all domain is `*.dev` (see [Configure](Configure.md) for how to change it). Let's view an example:
 
 ```shell
-# Load traditional lamp stack only
-$ docker-compose up httpd php mysql
-
-# Add redis to the running stack
-$ docker-compose up redis
-
-# Stop MySQL from the current stack
-$ docker-compose stop mysql
+# Inside your main project folder
+$ ls -l
+drwxr-xr-x 3 cytopia 4096 Jun 10 13:10 my-drupal
+drwxr-xr-x 3 cytopia 4096 Jun 10 13:10 my-wordpress
+drwxr-xr-x 3 cytopia 4096 Jun 10 13:10 project1
+drwxr-xr-x 3 cytopia 4096 Jun 10 13:10 project2
+drwxr-xr-x 3 cytopia 4096 Jun 10 13:10 yii-test
 ```
 
+By having the above folders, the devilbox will automatically be able to serve the following vhosts:
 
-### Introduction Videos
+* http://my-drupal.dev
+* http://my-wordpress.dev
+* http://project1.dev
+* http://project2.dev
+* http://yii-test.dev
 
-<p class="center">Head over to youtube for a quick introduction and see for yourself how easily new projects can be created.</p>
+New folders can be created, deleted and removed during run-time and corresponding virtual hosts will be available instantly without having to restart anything.
 
-<div class="center">
-  <a target="_blank" href="https://www.youtube.com/watch?v=reyZMyt2Zzo" alt="Devilbox introduction video" title="Devilbox introduction video"><img src="img/devilbox_01-setup-and-workflow.png" /></a>
-  <a target="_blank" href="https://www.youtube.com/watch?v=e-U-C5WhxGY" alt="Devilbox Email catch-all introduction" title="Devilbox Email catch-all introduction"><img src="img/devilbox_02-email-catch-all.png" /></a>
-</div>
+## 2. Features
 
-
-### PHP Modules
-
-<div class="center">
-  <p>The devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks. There will however be slight differences between the versions and especially with HHVM. To see the exact bundled modules for each version visit the corresponding docker repositories on Github:</p>
-
-  <img class="battery" style="height:64px;" title="PHP" alt="PHP" src="img/logos/php.png" />
-  <img class="battery" style="height:64px;" title="HHVM" alt="HHVM" src="img/logos/hhvm.png" />
-
-  <p>
-  <strong><a target="_blank" title="PHP 5.4" href="https://github.com/cytopia/docker-php-fpm-5.4">PHP 5.4</a></strong> |
-  <strong><a target="_blank" title="PHP 5.5" href="https://github.com/cytopia/docker-php-fpm-5.5">PHP 5.5</a></strong> |
-  <strong><a target="_blank" title="PHP 5.6" href="https://github.com/cytopia/docker-php-fpm-5.5">PHP 5.6</a></strong> |
-  <strong><a target="_blank" title="PHP 7.0" href="https://github.com/cytopia/docker-php-fpm-5.5">PHP 7.0</a></strong> |
-  <strong><a target="_blank" title="PHP 7.1" href="https://github.com/cytopia/docker-php-fpm-5.5">PHP 7.1</a></strong> |
-  <strong><a target="_blank" title="HHVM" href="https://github.com/cytopia/docker-hhvm-latest">HHVM</a></strong>
-  </p>
-<p>apc, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dom, ereg, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, magickwand, mbstring, mcrypt, memcache, memcached, mhash, mongodb, msgpack, mysql, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, soap, sockets, SPL, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib</p>
-</div>
-
-
-### Email catch-all
-
-<div class="center">
-  <img class="battery" style="height:64px;" title="Email catch-all" alt="Email catch-all" src="img/logos/email.png"/>
-  <p>The built-in postfix mailserver is configured to automatically intercept all outgoing emails. This is an important measurement during development to make sure not to accidentally send out real emails. Instead you will be able to see all sent emails in the included intranet mail view. See Intranet section below.</p>
-</div>
-
-
-### Auto-DNS
-
-<div class="center">
-  <img class="battery" style="height:64px;" title="Auto-DNS" alt="Auto-DNS" src="img/logos/dns.png" />
-  <p>Creating a new project just requires you to create a new folder on the filesystem. As you probalby don't want to bother with editing your /etc/hosts file everytime, the built-in DNS server will automatically provide the correct DNS records for every project.</p>
-</div>
+| Feature | Description |
+|---------|-------------|
+| **Internet** | |
+| No always-on | Internet connection is only required during initial setup or update (to pull containers), afterwards you can always work offline. |
+| **Projects** | |
+| Unlimitted Projects | Add as many Projects as you need. |
+| Auto VirtualHosts | New VirtualHosts are added instantly without a restart or reload. Just create a new directory and you are ready to go. |
+| Auto DNS | Use the built-in DNS server to stop worrying about `/etc/hosts` setup per project. |
+| Email catch-all | All outgoing emails are intercepted and stored locally. Use the intranet to view any sent email. |
+| Custom VirtualHost domains | Whatever project domain you desire: `*.dev`, `*.loc`, `*.local` or even subdomains like `*.sub.example` - you can adjust it to your needs. |
+| **Run** | |
+| Selective start | Run only the Docker container you actually need. |
+| Version choice  | Use your development stack with whatever version combination needed. |
+| Stack choice  | Attach SQL or NoSQL container and use Nginx or Apache to simulate your live env. |
+| Log files | Log files are available for each chosen version. |
+| **Configuration** | |
+| HHVM | You can choose between PHP 5.6 and PHP 7 mode for HHVM |
+| php.ini | You an overwrite PHP settings for each PHP version. |
+| my.cnf | You an overwrite MySQL settings for each MySQL version. |
+| **Intranet** | |
+| phpMyAdmin | Manage your MySQL databases here. |
+| Adminer | Manage your SQL and NoSQL databases here. |
+| OpCacheGUI | Visualize the state of opcache usage. |
+| EmailGUI | See all sent emails at a glance |
+| **Docker Tools**|
+| Work inside container | You can completely work inside the PHP container and use all bundled tools in order to keep your host system clean. |
+| **Hacking** |
+| Add custom container | You can add any other Docker container to `docker-compose.yml` and start using them in your development stack. |
 
 
-### Batteries included
+## 3. Supported Host OS
 
-<p class="center">No need to download external tools. Everything is bundled, up-to-date and available inside the containers.</p>
+The devilbox runs on all major operating systems. Below you can quickly check the recommended docker versions and current issues per OS.
 
-<div class="center">
-  <a target="_blank" title="phpMyAdmin" href="https://www.phpmyadmin.net"><img class="battery" style="height:64px;" src="img/logos/phpmyadmin.png" alt="Devilbox"/></a>
-  <a target="_blank" title="Adminer" href="https://www.adminer.org"><img class="battery" style="height:64px;" src="img/logos/adminer.png" alt="Devilbox"/></a>
-  <a target="_blank" title="OpCache GUI" href="https://github.com/amnuts/opcache-gui"><img class="battery" style="height:64px;" src="img/logos/opcachegui.png" alt="Devilbox"/></a> 
-  <br/> 
-  <a target="_blank" title="Composer" href="https://getcomposer.org"><img class="battery" style="height:64px;" src="img/logos/composer.png" alt="Devilbox"/></a>
-  <a target="_blank" title="Drush" href="https://www.drupal.org/project/drush"><img class="battery" style="height:64px;" src="img/logos/drush.png" alt="Devilbox"/></a>
-  <a target="_blank" title="Drupal Console" href="https://drupalconsole.com"><img class="battery" style="height:64px;" src="img/logos/drupal-console.png" alt="Devilbox"/></a>
-  <a target="_blank" title="NodeJS" href="https://nodejs.org"><img class="battery" style="height:64px;" src="img/logos/nodejs.png" alt="Devilbox"/></a>
-  <a target="_blank" title="WP-CLI" href="https://wp-cli.org"><img class="battery" style="height:64px;" src="img/logos/wp-cli.png" alt="Devilbox"/></a>
-  <a target="_blank" title="NPM" href="https://www.npmjs.com"><img class="battery" style="height:64px;" src="img/logos/npm.png" alt="Devilbox"/></a>
-  <a target="_blank" title="Git" href="https://git-scm.com"><img class="battery" style="height:64px;" src="img/logos/git.png" alt="Devilbox"/></a>
-</div>
+|             | ![linux][lin-logo]   | ![windows][win-logo]      | ![osx][osx-logo]     |
+|-------------|----------------------|---------------------------|----------------------|
+| **Docker Version** | normal               | [Docker for Windows][d4w] | [Docker dor Mac][d4m]|
+| **Current Issues**  | [here][lin-issues]   | [here][win-issues]        | [here][osx-issues]   |
 
-
-### Supported Frameworks and CMS
-
-<p class="center">There is nothing special about the devilbox, so any framework or CMS that will work with normal LAMP/MEAN stacks will work here as well. However in order to make double sure, a few popular applications have been explicitly tested.</p>
-
-<div class="center">
-  <a target="_blank" title="CakePHP" href="https://cakephp.org" ><img alt="CakePHP" class="battery" style="height:64px;" src="img/logos/cake.png" /></a>
-  <a target="_blank" title="Drupal" href="https://www.drupal.org/" ><img alt="Drupal" class="battery" style="height:64px;" src="img/logos/drupal.png" /></a>
-  <a target="_blank" title="PhalconPHP" href="https://phalconphp.com" ><img alt="PhalconPHP" class="battery" style="height:64px;" src="img/logos/phalcon.png" /></a>
-  <a target="_blank" title="Wordpress" href="https://wordpress.org" ><img alt="Wordpress" class="battery" style="height:64px;" src="img/logos/wordpress.png" /></a>
-  <a target="_blank" title="Yii" href="http://www.yiiframework.com" ><img alt="Yii" class="battery" style="height:64px;" src="img/logos/yii.png" /></a>
-</div>
+[win-logo]: https://raw.githubusercontent.com/cytopia/icons/master/64x64/windows.png
+[lin-logo]: https://raw.githubusercontent.com/cytopia/icons/master/64x64/linux.png
+[osx-logo]: https://raw.githubusercontent.com/cytopia/icons/master/64x64/osx.png
+[d4w]: https://docs.docker.com/docker-for-windows/install/
+[d4m]: https://docs.docker.com/docker-for-mac/install/
+[dtb]: https://docs.docker.com/toolbox/overview/
+[win-issues]: https://github.com/cytopia/devilbox/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22host%3Awindows%22
+[lin-issues]: https://github.com/cytopia/devilbox/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22host%3Alinux%22
+[osx-issues]: https://github.com/cytopia/devilbox/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22host%3Aosx%22
 
 
-### Devilbox Intranet
+## 4. Requirements
 
-<p class="center">Once the devilbox is up and running, you can visit the bundled intranet on <a target="_blank" href="http://localhost">http://localhost</a>.<br/>The intranet is not just a simple dash, it provides many useful tools:</p>
-
-<div class="center">
-  Container Health | DNS Status | Available vHosts | Emails | Databases | Effective Configuration<br/>
-  <img alt="" title="" src="img/02_intranet_vhosts.png "/>
-  <img alt="" title="" src="img/04_intranet_emails.png "/>
-</div>
+* **Internet connection** - only required during initial setup for cloning the devilbox repository and pulling the required docker container. Afterwards you can always work offline.
+* [Docker Engine 1.12.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
+* [Docker Compose 1.6.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-2)
+* On Windows use [Docker for Windows][d4w] (not tested on [Docker Toolbox][dtb])
+* On OSX use [Docker for Mac][d4m] (not tested on [Docker Toolbox][dtb])
 
 
-### Security
+## 5. Docker documentation
 
-<p class="center">Be aware that the docker service is running with root privileges on your system (like any other webserver for example). The devilbox is using a mix of official docker images and custom images. All integrated containers are available on <a target="_blank" href="https://github.com/cytopia/devilbox#run-time-matrix">Github</a> and can be reviewed at any time.</p>
-
-
-### Up-to-dateness
-
-<p class="center">Docker containers are pushed to <a target="_blank" href="https://hub.docker.com/r/cytopia">Docker Hub</a> frequently.<br/>It should be enough for you to pull updated images on a regeular basis.</p>
-
-```shell
-$ docker-compose pull
-```
-
-<p class="center">However, if a new minor version (PHP for example) has just been released and you want to use it right away, you can simply *git clone* the docker repository and rebuild the container. Each container repository contains a shell script for easy building.</p>
-
-```shell
-# Download PHP 7.1 repository
-$ git clone https://github.com/cytopia/docker-php-fpm-7.1
-
-# Rebuild the container in order to get the latest minor/patch version
-$ cd docker-php-fpm-7.1
-$ ./build/docker-rebuild.sh
-```
+If you have never worked with docker/docker-compose before, you should check up on their documentation to get you started: [docker docs](https://docs.docker.com/).
 
 
-### Integration Tests
+## 6. Devilbox documentation
 
-<div class="center">
-  <a target="_blank" href="https://travis-ci.org/cytopia/devilbox"><img src="https://travis-ci.org/cytopia/devilbox.svg?branch=master" /></a>
-</div>
-
-<p class="center">In order to make sure everything always runs stable and as expected, the devilbox makes heavy use of integration tests. You can head over to <a target="_blank" href="https://travis-ci.org/cytopia/devilbox">Travis-CI</a> and have a look at stable and nightly builds.</p>
-
-
-### Contribute
-
-<div class="center">
-  <p>Contributers are welcome in any way.</p>
-  
-  <p>First of all, if you like the project, please <a href="https://github.com/cytopia/devilbox">do star it</a>. Starring is an important measurement to see the number of active users and better allows me to organize my time and effort I can put into this project.</p>
-  
-  <p>You can also get actively involved. <a href="https://github.com/cytopia/devilbox">Do clone the project</a> and start improving whatever you think is useful. There is quite a lot todo and planned. If you like to contribute, view <a href="https://github.com/cytopia/devilbox/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> and <a href="https://github.com/cytopia/devilbox/issues/23">ROADMAP</a>.</p>
-  
-  <p>Major contributors will be credited within the intranet and on the github page.</p>
-</div>
+| Topic                   | Description |
+|-------------------------|-------------|
+| **Installing**          | How to install docker, docker-compose and the devilbox |
+| **Updating**            | Update best practise |
+| **Configuration**       | How to configure the devilbox, switch versions (PHP, MySQL, PgSQL, ...)  and how to set custom options (php.ini, my.cnf, httpd.conf, ...) |
+| **[Run](Run.md)**       | How to operate the devilbox, start and stop all or only required Docker container. |
+| **[Usage](Usage.md)**   | How to create projects, Email and DNS usage, tools (`composer`, `npm`, `node`, `drush`, ...), entering the container, Log files, Xdebug, Backups, Intranet, ...|
+| **[Examples](Examples.md)** | Some project examples for popular CMS/Frameworks. How to setup Wordpress, Drupal, Yii, ... |
+| **Technical**            | Technical background information |
+| **[Hacking](Hacking.md)**| How to extend the devilbox with your own docker container |
+| **[FAQ](FAQ.md)**        | Questions and Troubleshooting |
 
 
-### License
+## 7. Video Tutorials
 
-<div class="center">
-  <p>MIT License</p>
-  <p>Copyright (c) 2016 cytopia</p>
-</div>
+Have a look at youtube to see some the features in action.
+
+[![Devilbox setup and workflow](img/devilbox_01-setup-and-workflow.png "devilbox - setup and workflow")](https://www.youtube.com/watch?v=reyZMyt2Zzo) 
+[![Devilbox email catch-all](img/devilbox_02-email-catch-all.png "devilbox - email catch-all")](https://www.youtube.com/watch?v=e-U-C5WhxGY)
 
 
+## 8. Available PHP Modules
+
+The devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks.
+
+*apc, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dom, ereg, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, magickwand, mbstring, mcrypt, memcache, memcached, mhash, mongodb, msgpack, mysql, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, soap, sockets, SPL, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib*
+
+There will however be slight differences between the versions and especially with HHVM. To see the exact bundled modules for each version visit the corresponding docker repositories on Github:
+
+[PHP 5.4](https://github.com/cytopia/docker-php-fpm-5.4) |
+[PHP 5.5](https://github.com/cytopia/docker-php-fpm-5.5) |
+[PHP 5.6](https://github.com/cytopia/docker-php-fpm-5.6) |
+[PHP 7.0](https://github.com/cytopia/docker-php-fpm-7.0) |
+[PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
+[HHVM](https://github.com/cytopia/docker-hhvm-latest)
+
+## 9. Supported Frameworks and CMS
+
+As far as tested there are no limitations and you can use any Framework or CMS just as you would on your live environment. Below are a few examples of extensively tested Frameworks and CMS:
+
+![CakePHP](img/logos/cake.png)
+![Drupal](img/logos/drupal.png)
+![Phalcon](img/logos/phalcon.png)
+![Wordpress](img/logos/wordpress.png)
+![Yii](img/logos/yii.png)
