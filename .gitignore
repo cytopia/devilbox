@@ -20,6 +20,7 @@
 /.env
 /log/[a-z0-9-]*
 /data/
+/backups/
 
 # Ignore custom MySQL configs
 /cfg/mysql-5.5/*.cnf
@@ -98,6 +99,7 @@ $RECYCLE.BIN/
 *.swp
 *.swo
 *.swn
+*.swm
 *~
 
 ###### TextMate ######
