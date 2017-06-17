@@ -65,7 +65,7 @@ services:
   # ----------------------------------------
   php:
     #image: cytopia/${PHP_SERVER:-php-fpm-7.0}:latest
-    image: cytopia/${PHP_SERVER:-php-fpm-7.0}:0.10
+    image: cytopia/${PHP_SERVER:-php-fpm-7.0}:release-0.11
     restart: always
 
     # Manually build via `docker-compose build`
@@ -113,6 +113,13 @@ services:
       ## Enable 127.0.0.1 Port-forwarding
       ##
       - FORWARD_PORTS_TO_LOCALHOST=3306:mysql:3306,5432:pgsql:5432,6379:redis:6379,11211:memcd:11211,27017:mongo:27017
+
+      ##
+      ## MySQL Backups
+      ##
+      - MYSQL_BACKUP_USER=root
+      - MYSQL_BACKUP_PASS=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_BACKUP_HOST=mysql
 
       ##
       ## Additional variables to announce to intranet/php-container
@@ -166,6 +173,9 @@ services:
 
       # Mount Mail directory
       #- ${DEVILBOX_PATH}/run/mail:/var/mail
+
+      # Mount DB Backup directory
+      - ${DEVILBOX_PATH}/backups:/shared/backups
 
       # Mount devilbox user-defined *.ini files in order
       # to overwrite the default PHP configuration
