@@ -17,6 +17,10 @@ Usage |
 
 ## Usage
 
+1. [Mounted directories](#1-mounted-directories)
+
+Mounted directories are the bridge between the container and your host computer.
+
 1. [Work on the Docker host](#1-work-on-the-docker-host)
 2. [Work inside the PHP container](#2-work-inside-the-php-container)
   1. [As devilbox user](#2-1-as-devilbox-user)
@@ -40,6 +44,8 @@ Usage |
   3. [NoSQL versions](#5-4-nosql-versions)
 6. [Emails](#6-emails)
 7. [Log files](#7-log-files)
+  1. [Mounted logs](#7-1-mounted-logs)
+  2. [Docker logs](#7-2-docker-logs)
 8. [Intranet](#8-intranet)
   1. [Overview](#8-1-overview)
   2. [vHosts](#8-2-vhosts)
@@ -254,6 +260,8 @@ Being able to combine all kinds of different container version is one of the mai
 
 <sub>Be aware that if multiple lines are uncommented, the last one takes effect.</sub>
 
+For an in-depth explanation about how to configure each service, you should have a look at [Configure](Configure.md).
+
 #### 5.1 Httpd versions
 
 1. Open the `.env` file in your favorite editor
@@ -293,7 +301,45 @@ In order to view sent emails open up the devilbox intranet http://localhost/mail
 
 ## 7. Log files
 
-Log files are available on the Host system and separated per service version. See `./log/` (inside devilbox git directory) for all log files.
+#### 7.1 Mounted logs
+
+Log files are available on the Host system and separated per service version. See `./log/` (inside devilbox git directory). The `./log/` folder itself will contain subdirectories in the form `<service>-<version>` which will then hold all available log files.
+
+**Example:**
+
+```
+log/
+  apache-2.2/
+    access_log
+    error_log
+    localhost-access.log
+    localhost-error.log
+    other-error.log
+  apache-2.4/
+    access_log
+    error_log
+    localhost-access.log
+    localhost-error.log
+    other-error.log
+  mariadb-10.3/
+    error.log
+    query.log
+    slow.log
+  php-fpm-7.0/
+    php-fpm.err
+    www-access.log
+    www-error.log
+```
+
+#### 7.2 Docker logs
+
+All output printed to stdout or stderr by the started services will be available in `docker logs`. In order to view them constantly in a terminal session use:
+
+```shell
+docker-compose logs -f
+```
+
+Docker logs are currently only being used to display the initial startup including the chosen settings. All other logging is written to file and mounted to the docker host.
 
 ## 8. Intranet
 

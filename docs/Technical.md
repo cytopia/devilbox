@@ -87,7 +87,7 @@ The following container can be reached from the Docker host via the following me
 
 | Container       | IP Address | Port  |
 |-----------------|------------|-------|
-| DNS             | 127.0.0.1  |    53 |
+| DNS             | 127.0.0.1  |  1053 |
 | PHP / HHVM      | -          |  9000 |
 | Apache / Nginx  | 127.0.0.1  |    80 |
 | MySQL / MariaDB | 127.0.0.1  |  3306 |

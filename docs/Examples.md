@@ -25,7 +25,6 @@ Examples |
 
 ---
 
-
 ## 1. Setup CakePHP
 
 ## 2. Setup Drupal

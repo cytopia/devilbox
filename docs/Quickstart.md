@@ -28,6 +28,9 @@ Quickstart |
   1. [Run all](#4-1-run-all)
   2. [Run selection](#4-2-run-selection)
 5. [Project setup](#5-project-setup)
+  1. [General setup](#5-1-general-setup)
+  2. [Specific Frameworks](#5-2-specific-frameworks)
+6. [Enter the PHP Docker container](#6-enter-the-php-docker-container)
 
 ---
 
@@ -97,6 +100,8 @@ $ docker-compose up -d httpd php mysql redis
 
 ## 5. Project setup
 
+#### 5.1 General setup
+
 **Assumption:**
 
 1. HOST_PATH_TO_HTTPD_DATADIR=**./data/www**
@@ -128,3 +133,38 @@ $ ls -l
 drwxrwxr-x 2 cytopia 4096 Jun 14 08:29 cakephp
 lrwxrwxrwx 1 cytopia   11 Jun 14 08:29 htdocs -> cakephp/app/webroot/
 ```
+
+#### 5.2 Specific Frameworks
+
+Some frameworks use a deep nested directory to serve their actual www data such as:
+
+```shell
+<project>/cake/app/webroot
+```
+
+instead of
+```shell
+<project>/htdocs
+```
+
+You can easily achieve this by symlinking this folder to `htdocs`:
+
+```shell
+$ ls -l <project>/
+drwxrwxr-x 2 cytopia 4096 Jun 14 08:29 cakephp
+lrwxrwxrwx 1 cytopia   11 Jun 14 08:29 htdocs -> cakephp/app/webroot/
+```
+
+See [Examples](Examples.md) for more info about how to setup different frameworks.
+
+
+## 6. Enter the PHP Docker container
+
+The PHP Docker container is your workhorse which has many tools pre-installed and you can do every task inside instead of doing it on the docker host. Entering the container is done via a shipped script:
+
+```shell
+host> ./bash.sh
+devilbox@php-7.0.19 in /shared/httpd $
+```
+
+See [Usage](Usage.md) for a detailed explanation.
