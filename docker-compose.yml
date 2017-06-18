@@ -449,8 +449,8 @@ services:
       # ---- Format: ----
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
-      # Mount MySQL Data directory
-      - ${HOST_PATH_MONGO_DATADIR}:/data/db
+      # Mount MongoDB Data directory
+      - ${HOST_PATH_MONGO_DATADIR}/${MONGO_SERVER}:/data/db
 
     depends_on:
       - bind
