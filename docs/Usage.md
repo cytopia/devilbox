@@ -117,7 +117,14 @@ root@php-7.0.19 in /shared/httpd $
 
 For your convenience a few selected tools have been pre-installed in their current version that you can use for your daily development tasks. Some of them are:
 
-*composer, drush, drupal-console, git, node, npm*
+*[composer](https://getcomposer.org)*,
+*[drush](http://www.drush.org)*,
+*[drupal-console](https://drupalconsole.com)*,
+*[git](https://git-scm.com)*,
+*[mysqldump-secure](https://mysqldump-secure.org)*,
+*[node](https://nodejs.org)*,
+*[npm](https://www.npmjs.com)*,
+*[wp-cli](https://wp-cli.org)*
 
 The complete list of tools including their version can be found at the PHP docker containers git repository Readme:
 

@@ -35,12 +35,17 @@ Backups |
   2. [PostgreSQL Database Restore](#3-1-postgresql-database-restore)
     1. [psql](#3-2-1-psql)
     2. [Adminer](#3-2-2-adminer)
+4. [MongoDB](#4-mongodb)
+  1. [MongoDB Database Backup](#4-1-mongodb-database-backup)
+    1. [mongodump](#4-1-1-mongodump)
+  2. [MongoDB Database Restore](#4-1-mongodb-database-restore)
+    1. [mongorestore](#4-2-1-mongorestore)
 
 ---
 
 ## 1. Info
 
-Backup and restore will be necessary when you are going to change MySQL or PostgreSQL versions. Each version has its own data directory and different versions do not pick up the databases from another version.
+Backup and restore will be necessary when you are going to change MySQL, PostgreSQL or MongoDB versions. Each version has its own data directory and different versions do not pick up the databases from another version.
 
 **Example**
 
@@ -51,9 +56,12 @@ Backup and restore will be necessary when you are going to change MySQL or Postg
 
 ./data/pgsql/9.5
 ./data/pgsql/9.6
+
+./data/mongo/3.2
+./data/mongo/3.4
 ```
 
-This is necessary as later MySQL and PostgreSQL versions will upgrade the databases making it unusable for older versions.
+This is necessary as later MySQL, PostgreSQL and MongoDB versions will upgrade the databases making it unusable for older versions.
 
 So before you change to a new database version you will have to make a backup and restore the backup in the new version.
 
@@ -330,3 +338,38 @@ devilbox@php-7.1.6 in /shared/httpd $ tar xzOf /shared/backups/pgsql/my_db_name.
 ##### 3.2.2 Adminer
 
 **[Adminer](https://www.adminer.org)** supports importing of plain (`*.sql`) or gzipped compressed (`*.sql.gz`) files out-of-the-box. Simply select the compressed or uncompressed file and press `Execute` in the Web interface.
+
+
+## 4. MongoDB
+
+#### 4.1 MongoDB Database Backup
+
+##### 4.1.1 mongodump
+
+**[mongodump](https://docs.mongodb.com/manual/reference/program/mongodump/)** is bundled with each PHP/HHVM container and ready to use. To backup all MongoDB databases follow the below listed example:
+
+```shell
+# Enter the Container
+host> ./bash.sh
+
+# Start the dump into /shared/backups/mongo
+devilbox@php-7.1.6 in /shared/httpd $ mongodump --out /shared/backups/mongo
+```
+
+To find out more about the configuration and options of mongodump, visit its project page under: [https://docs.mongodb.com/manual/reference/program/mongodump/](https://docs.mongodb.com/manual/reference/program/mongodump/).
+
+#### 4.2 MongoDB Database Restore
+
+##### 4.2.1 mongorestore
+
+**[mongorestore](https://docs.mongodb.com/manual/reference/program/mongorestore/)** is bundled with each PHP/HHVM container and ready to use. To restore all MongoDB databases follow the below listed example:
+
+```shell
+# Enter the Container
+host> ./bash.sh
+
+# Start the restore/import from /shared/backups/mongo
+devilbox@php-7.1.6 in /shared/httpd $ mongorestore /shared/backups/mongo
+```
+
+To find out more about the configuration and options of mongorestore, visit its project page under: [https://docs.mongodb.com/manual/reference/program/mongorestore/](https://docs.mongodb.com/manual/reference/program/mongorestore/).
