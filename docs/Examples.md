@@ -20,9 +20,11 @@ Examples |
 1. [Introduction](#1-introduction)
 2. [Setup CakePHP](#2-setup-cakephp)
 3. [Setup Drupal](#3-setup-drupal)
-4. [Setup Symfony](#4-setup-symfony)
-5. [Setup Wordpress](#5-setup-wordpress)
-6. [Setup Yii](#6-setup-yii)
+4. [Setup Phalcon](#4-setup-phalcon)
+5. [Setup Symfony](#5-setup-symfony)
+6. [Setup Wordpress](#6-setup-wordpress)
+7. [Setup Yii](#7-setup-yii)
+8. [Setup Zend](#8-setup-zend)
 
 ---
 
@@ -32,7 +34,7 @@ The devilbox provides popular tools for setting up and managing major frameworks
 
 | Binary     | Tool name         | Framework/CMS      |
 |------------|-------------------|--------------------|
-| `composer` | [composer](https://getcomposer.org)      | CakePHPi, Symfony, Yii and others |
+| `composer` | [composer](https://getcomposer.org)      | CakePHPi, Symfony, Yii, Zend and others |
 | `drush`    | [drush](http://www.drush.org/)           | Drupal             |
 | `drupal`   | [drupal-consol](https://drupalconsole.com) | Drupal           |
 | `git`      | [git](https://git-scm.com) | Everything available on github and other git servers |
@@ -160,7 +162,51 @@ Open your browser at http://my-drupal.local and follow the Drupal installation s
 
 **Note:** For MySQL host choose `127.0.0.1`.
 
-## 4. Setup Symfony
+## 4. Setup Phalcon
+
+The following configuration will be used:
+
+| Project name | VirtualHost directory | Database   | TLD_SUFFIX | Url |
+|--------------|-----------------------|------------|------------|-----|
+| my-phalcon   | /shared/httpd/my-phalcon | -       | local      | http://my-phalcon.local |
+
+It will be ready in six simple steps:
+
+1. Enter the PHP container
+2. Create a new VirtualHost directory
+3. Install Phalcon via `phalcon`
+4. Symlink public directory
+5. Setup DNS record
+6. Visit http://my-phalcon.local in your browser
+
+```shell
+# 1. Enter the PHP container
+host> ./bash.sh
+
+# 2. Create a new VirtualHost directory
+devilbox@php-7.0.20 in /shared/httpd $ mkdir my-phalcon
+
+# 3. Install Phalcon via phalcon
+devilbox@php-7.0.20 in /shared/httpd $ cd my-phalcon
+devilbox@php-7.0.20 in /shared/httpd $ phalcon project phalconphp
+
+# 4. Symlink public directory
+devilbox@php-7.0.20 in /shared/httpd $ ln -s phalconphp/public htdocs
+```
+
+**5. DNS record**
+
+If you do not have auto-DNS configured, you will need to add the following line to your Host computer's `/etc/hosts`:
+```shell
+127.0.0.1 my-phalcon.local
+```
+
+**7. Open your browser**
+
+Open your browser at http://my-phalcon.local
+
+
+## 5. Setup Symfony
 
 The following configuration will be used:
 
@@ -206,9 +252,10 @@ If you do not have auto-DNS configured, you will need to add the following line 
 
 **7. Open your browser**
 
-Open your browser at http://my-symfony.local/app.php
+Open your browser at http://my-symfony.local
 
-## 5. Setup Wordpress
+
+## 6. Setup Wordpress
 
 The following configuration will be used:
 
@@ -251,7 +298,8 @@ If you do not have auto-DNS configured, you will need to add the following line 
 
 Open your browser at http://my-wp.local
 
-## 6. Setup Yii
+
+## 7. Setup Yii
 
 The following configuration will be used:
 
@@ -293,3 +341,47 @@ If you do not have auto-DNS configured, you will need to add the following line 
 **6. Open your browser**
 
 Open your browser at http://my-yii.local
+
+
+## 8. Setup Zend
+
+The following configuration will be used:
+
+| Project name | VirtualHost directory | Database   | TLD_SUFFIX | Url |
+|--------------|-----------------------|------------|------------|-----|
+| my-zend      | /shared/httpd/my-zend | -          | local      | http://my-zend.local |
+
+It will be ready in six simple steps:
+
+1. Enter the PHP container
+2. Create a new VirtualHost directory
+3. Install Zendframework via `composer`
+4. Symlink public directory
+5. Setup DNS record
+6. Visit http://my-zend.local in your browser
+
+```shell
+# 1. Enter the PHP container
+host> ./bash.sh
+
+# 2. Create a new VirtualHost directory
+devilbox@php-7.0.20 in /shared/httpd $ mkdir my-zend
+
+# 3. Install Zendframework via composer
+devilbox@php-7.0.20 in /shared/httpd $ cd my-zend
+devilbox@php-7.0.20 in /shared/httpd $ composer create-project --prefer-dist zendframework/skeleton-application zend
+
+# 4. Symlink public directory
+devilbox@php-7.0.20 in /shared/httpd $ ln -s zend/public htdocs
+```
+
+**5. DNS record**
+
+If you do not have auto-DNS configured, you will need to add the following line to your Host computer's `/etc/hosts`:
+```shell
+127.0.0.1 my-zend.local
+```
+
+**7. Open your browser**
+
+Open your browser at http://my-zend.local
