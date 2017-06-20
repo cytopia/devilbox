@@ -36,8 +36,8 @@ services:
     restart: always
     ports:
       # [local-machine:]local-port:docker-port
-      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND}:53"
-      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND}/udp:53/udp"
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND:-1053}:53"
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND:-1053}:53/udp"
 
     environment:
       ##
