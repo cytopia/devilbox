@@ -36,7 +36,8 @@ The devilbox provides popular tools for setting up and managing major frameworks
 | `drush`    | [drush](http://www.drush.org/)           | Drupal             |
 | `drupal`   | [drupal-consol](https://drupalconsole.com) | Drupal           |
 | `git`      | [git](https://git-scm.com) | Everything available on github and other git servers |
-| `symfony`  | [symfony installer](https://github.com/symfony/symfony-installer) | Symfony            |
+| `phalcon`  | [phalcon devtools](https://github.com/phalcon/phalcon-devtools) | Phalcon         |
+| `symfony`  | [symfony installer](https://github.com/symfony/symfony-installer) | Symfony       |
 | `wp`       | [wp-cli](https://wp-cli.org/)            | Wordpress          |
 
 
@@ -173,8 +174,9 @@ It will be ready in six simple steps:
 2. Create a new VirtualHost directory
 3. Install Symfony via `symfony`
 4. Symlink web directory
-5. Setup DNS record
-6. Visit http://my-symfony.local/app.php in your browser
+5. Enable Symfony prod (app.php)
+6. Setup DNS record
+7. Visit http://my-symfony.local in your browser
 
 ```shell
 # 1. Enter the PHP container
@@ -189,16 +191,20 @@ devilbox@php-7.0.20 in /shared/httpd $ symfony new symfony
 
 # 4. Symlink web directory
 devilbox@php-7.0.20 in /shared/httpd $ ln -s symfony/web htdocs
+
+# 5. Enable Symfony production (app.php)
+devilbox@php-7.0.20 in /shared/httpd $ cd symfony/web
+devilbox@php-7.0.20 in /shared/httpd $ ln -s app.php index.php
 ```
 
-**5. DNS record**
+**6. DNS record**
 
 If you do not have auto-DNS configured, you will need to add the following line to your Host computer's `/etc/hosts`:
 ```shell
 127.0.0.1 my-symfony.local
 ```
 
-**6. Open your browser**
+**7. Open your browser**
 
 Open your browser at http://my-symfony.local/app.php
 

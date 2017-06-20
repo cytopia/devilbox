@@ -23,6 +23,7 @@ Update |
   2. [Git master branch](#2-2-git-master-branch)
 3. [Compare .env file](#3-compare-env-file)
 4. [Pull new Docker container (Important!)](#4-pull-new-docker-container-important-)
+5. [Remove anonymous volumes](#5-remove-anonymous-volumes)
 
 ---
 
@@ -31,8 +32,9 @@ Update |
 Shutdown, update and startup.
 
 ```shell
-# Stop container and update git
+# Stop container, remove deprecated volumes and update git
 $ docker-compose down
+$ docker-compose rm
 $ git fetch --all
 $ git pull origin master
 
@@ -149,4 +151,12 @@ So instead of pulling everything manually, use the bundled update script to do t
 
 ```shell
 $ ./update-docker.sh
+```
+
+## 5. Remove anonymous volumes
+
+The devilbox is not yet at a feature-ready stable release and volumes mounts might change from release to release until version 1.0 will be released. This can cause errors during startup. To solve those issues after updating, you should remove all anonymouse volumes with the following command:
+
+```shell
+$ docker-compose rm
 ```

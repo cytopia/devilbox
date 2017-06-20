@@ -109,6 +109,10 @@ The devilbox runs on all major operating systems. Below you can quickly check th
 [osx-issues]: https://github.com/cytopia/devilbox/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22host%3Aosx%22
 
 
+**How about FreeBSD?**
+
+The devilbox has not been tested on FreeBSD yet. Current milestones include to make it rock-solid on the above listed operating systems. However, if you want it to run on FreeBSD open up an issue on Github and you will receive support making it work on FreeBSD.
+
 ## 4. Requirements
 
 * **Internet connection** - only required during initial setup for cloning the devilbox repository and pulling the required docker container. Afterwards you can always work offline.

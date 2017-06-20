@@ -48,6 +48,7 @@ $ cp env-example .env
 
 ```shell
 $ docker-compose stop
+$ docker-compose rm
 $ git fetch --all
 $ git checkout "$(git describe --abbrev=0 --tags)"
 ```
@@ -56,6 +57,7 @@ $ git checkout "$(git describe --abbrev=0 --tags)"
 
 ```shell
 $ docker-compose stop
+$ docker-compose rm
 $ git fetch --all
 $ git pull origin master
 $ ./update-docker.sh
