@@ -7,6 +7,7 @@ Overview |
 [Configure](Configure.md) |
 [Run](Run.md) |
 [Usage](Usage.md) |
+[OS](OS.md) |
 [Backups](Backups.md) |
 [Examples](Examples.md) |
 [Technical](Technical.md) |
@@ -137,6 +138,7 @@ If you have never worked with docker/docker-compose before, you should check up 
 | **[Configure](Configure.md)**   | How to configure the devilbox, switch versions (PHP, MySQL, PgSQL, ...)  and how to set custom options (php.ini, my.cnf, httpd.conf, ...) |
 | **[Run](Run.md)**               | How to operate the devilbox, start and stop all or only required Docker container. |
 | **[Usage](Usage.md)**           | How to create projects, Email and DNS usage, tools (`composer`, `npm`, `node`, `drush`, ...), entering the container, Log files, Xdebug, Backups, Intranet, ...|
+| **[OS](OS.md)**                 | Operating System differences between Linux, Windows and OSX. |
 | **[Backups](Backups.md)**       | How to backup and restore your databases for different versions. |
 | **[Examples](Examples.md)**     | Some project examples for popular CMS/Frameworks. How to setup Wordpress, Drupal, Yii, ... |
 | **[Technical](Technical.md)**   | Technical background information |

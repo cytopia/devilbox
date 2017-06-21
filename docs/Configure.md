@@ -7,6 +7,7 @@
 Configure |
 [Run](Run.md) |
 [Usage](Usage.md) |
+[OS](OS.md) |
 [Backups](Backups.md) |
 [Examples](Examples.md) |
 [Technical](Technical.md) |
@@ -28,12 +29,12 @@ Configure |
 4. [Container settings]()
   1. [General]()
     1. [Timezone]()
+    2. [User id]()
+	3. [Group id]()
   2. [PHP / HHVM]()
-    1. [User id]()
-	2. [Group id]()
-	3. [Xdebug]()
-	4. [php.ini]()
-	5. [HHVM]()
+	1. [Xdebug]()
+	2. [php.ini]()
+	3. [HHVM]()
   3. [Webserver]()
     1. [Host port]()
   4. [MySQL]()
@@ -66,7 +67,9 @@ Configure |
 ---
 
 ## 1. Overview
+
 ## 2. Devilbox general settings
+
 #### 2.1 Verbosity
 
 | `.env` file variable name | Default | Note |
@@ -97,6 +100,7 @@ In case it is not `127.0.0.1` (because you are using a VirtualBox Docker setup) 
 1. When you remove it completely, it will listen on all interfaces.
 2. When you use specific address, you must add a **`:`** at the end.
 
+You can for example change it to `0.0.0.0:` or make it empty in order to listen on all interfaces. This enables it for other people inside your network to access the devilbox. Or you can even install the devilbox on a different computer and access it remotely.
 
 ## 3. Project settings
 
@@ -127,21 +131,145 @@ The above examples should make it clear enough.
 
 This is the file system path on your host computer which will hold the Project Folders.
 
+
 ## 4. Container settings
+
 #### 4.1 General
+
 ##### 4.1.1 Timezone
 
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| TIMEZONE                  | `Europe/Berlin`| Set timezone of the Docker container |
+
+Use this variable to control the timezone of the container. 
+
+**Note:** This currently only works on the devilbox self-provided container:
+
+* DNS
+* MySQL/MariaDB
+* PHP/HHVM
+* Apache/Nginx
+
+The official container do not support this setting.
+
+##### 4.1.1 User id
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| NEW_UID                   | `1000`| Change the Docker containers user id (uid) |
+
+This setting is used to change the user id of the PHP/HHVM container to the one you specify. As you will work insisde the PHP/HHVM container, you will have to set it to the same user id of your Host computers user id. It will make sure that files created inside the container have the same access permissions as outside the container.
+
+To find out your user id, type the following on your Host system:
+```shell
+$ id
+```
+
+**Note:** If your Host computers user id and the containers user id do not match, files will have different access rights inside and outside which might result in permission errors like `access denied`. So make sure to set this value.
+
+**Note:** Files created by the webserver such as uploads, tmp and cache files are still created by the webservers user id and you will probably have to `chmod` them. This issues will be addressed shortly and you will also be able to change the uid/gid of the webserver in the next devilbox release.
+
+##### 4.1.2 Group id
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| NEW_GID                   | `1000`| Change the Docker containers group id (gid) |
+
+This setting is used to change the group id of the PHP/HHVM container to the one you specify. As you will work insisde the PHP/HHVM container, you will have to set it to the same group id of your Host computers group id. It will make sure that files created inside the container have the same access permissions as outside the container.
+
+To find out your group id, type the following on your Host system:
+```shell
+$ id
+```
+
+**Note:** If your Host computers group id and the containers group id do not match, files will have different access rights inside and outside which might result in permission errors like `access denied`. So make sure to set this value.
+
+**Note:** Files created by the webserver such as uploads, tmp and cache files are still created by the webservers group id and you will probably have to `chmod` them. This issues will be addressed shortly and you will also be able to change the uid/gid of the webserver in the next devilbox release.
 
 #### 4.2 PHP / HHVM
-##### 4.2.1 User id
-##### 4.2.2 Group id
-##### 4.2.3 Xdebug
-##### 4.2.4 php.ini
-##### 4.2.5 HHVM
+
+##### 4.2.1 Xdebug
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| PHP_XDEBUG_ENABLE         | `1` | Enable Xdebug for PHP |
+| PHP_XDEBUG_REMOTE_PORT    | `9000` | PHP Xdebugs remote port - where your editor/IDE is receiving Xdebug data |
+| PHP_XDEBUG_REMOTE_HOST    | `192.168.0.215` | PHP Xdebugs remote IP address - where your editor/IDE is listening for Xdebug connections (Make sure to change this to the IP of your Docker Host |
+
+Xdebug is turned on by default and also using the official Xdebug default port. The only thing you will have to adjust is the Xdebug remote host address so that your editor/IDE can actually receive Xdebug data.
+
+##### 4.2.2 php.ini
+
+`php.ini` settings can be configured for each PHP/HHVM version separately. Container-based configuration is done inside the `./cfg/` directory.
+
+```shell
+$ ls -l ./cfg/ | grep -E 'php|hhvm'
+drwxrwxr-x 2 cytopia 4096 Jun 21 08:47 hhvm-latest/
+drwxrwxr-x 2 cytopia 4096 Jun 21 08:43 php-fpm-5.4/
+drwxrwxr-x 2 cytopia 4096 Jun 21 08:43 php-fpm-5.5/
+drwxrwxr-x 2 cytopia 4096 Jun 21 08:43 php-fpm-5.6/
+drwxrwxr-x 2 cytopia 4096 Jun 21 08:44 php-fpm-7.0/
+drwxrwxr-x 2 cytopia 4096 Jun 21 08:44 php-fpm-7.1/
+drwxrwxr-x 2 cytopia 4096 Jun 21 08:44 php-fpm-7.2/
+```
+
+Each of the above folders will hold an example configuration file named `devilbox-custom.ini-example` which shows some example settings but will **not have** any effect yet. Only files ending by **`.ini`** will be sourced and applied, so you must copy it (or create a new file) to something that ends by `*.ini`.
+
+In order to edit settings for PHP 5.6, go into that folder, copy the example file and adjust ist:
+
+```shell
+# Copy to file ending by *.ini
+$ cd cfg/php-fpm-5.6
+$ cp devilbox-custom.ini-example devilbox-custom.ini
+
+# Edit settings
+$ vi devilbox-custom.ini
+```
+
+Change will take effect after restarting the devilbox.
+
+##### 4.2.3 HHVM
+
+HHVM can just be configured as all other PHP versions. However it has a special option to change between **PHP-5.6** mode and **PHP-7** mode. This example is addressed in `cfg/hhvm-latest/devilbox.ini-example`.
+
+```shell
+$ cat cfg/hhvm-latest/devilbox.ini-example
+```
+```ini
+; Use PHP 5.6 or PHP 7 mode for HHVM
+; PHP 5.6 Mode
+;hhvm.php7.all = 0
+; PHP 7 Mode (default)
+;hhvm.php7.all = 1
+```
+
+By default, HHVM is using **PHP-7** mode, you can change this setting to **PHP-5.6** by enabling `hhvm.php7.all = 0`.
+
+**Note:** You must then also copy the file to something that ends by `*.ini`.
+
 #### 4.3 Webserver
+
 ##### 4.3.1 Host port
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HOST_PORT_HTTPD           | `80`| Host computer listening port for the webserver (Apache or Nginx) |
+
+By default the webserver will listen on port 80 (on your Host computer). You can change this to any other port (in case port 80 is already taken).
+
+If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
+
 #### 4.4 MySQL
+
 ##### 4.4.1 Root password
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| MYSQL_ROOT_PASSWORD | `` | Root user password for MySQL |
+
+If you start a MySQL container for the first time, it will setup MySQL itself with the specified password. If you do change the root password to something else, make sure to also set it accordingly in `.env`, otherwise the devilbox will not be able to connect to MySQL and will not be able to display information inside the bundled intranet.
+
 ##### 4.4.2 General Log
 ##### 4.4.3 Host port
 ##### 4.4.4 Data path

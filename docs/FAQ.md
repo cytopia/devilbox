@@ -7,6 +7,7 @@
 [Configure](Configure.md) |
 [Run](Run.md) |
 [Usage](Usage.md) |
+[OS](OS.md) |
 [Backups](Backups.md) |
 [Examples](Examples.md) |
 [Technical](Technical.md) |
@@ -17,6 +18,9 @@ FAQ
 
 ## FAQ
 
+**Are there any differences between Linux, Windows and OSX?**
+
+Yes, have a look at **[OS](OS.md)** to read up about the differences.
 
 **Why are mounted MySQL data directories separated by version?**
 
@@ -33,6 +37,10 @@ See: *Why are mounted MySQL data directories separated by version?*
 **Why do the user/group permissions of log/ or cfg/ directories show 1000?**
 
 Uid and Gid are set to 1000 by default. You can alter them to match the uid/gid of your current user. Open the `.env` file and change the sections `NEW_UID` and `NEW_GID`. When you start up the devilbox, the php-container will use these values for its user.
+
+**Can I change the MySQL root password?**
+
+Yes, you can change the password of the MySQL root user. If you do so, you must also set the new password in your `.env` file. See [Configure](Configure.md) for how to change the values.
 
 **Can I not just comment out the service in the `.env` file?**
 
