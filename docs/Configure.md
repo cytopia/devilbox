@@ -308,10 +308,44 @@ drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.0/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.1/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.2/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.3/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysqp-5.5/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysqp-5.6/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysqp-5.7/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysqp-8.0/
 ```
 
-
 ##### 4.4.5 my.cnf
+
+`my.cnf` settings can be configured for each MySQL/MariaDB version separately. Container-based configuration is done inside the `./cfg/` directory.
+
+```shell
+$ ls -l ./cfg/ | grep -E 'mysql|maria'
+drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 mariadb-10.0/
+drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 mariadb-10.1/
+drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 mariadb-10.2/
+drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 mariadb-10.3/
+drwxrwxr-x 2 cytopia 4096 Jun 13 13:18 mysql-5.5/
+drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 mysql-5.6/
+drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 mysql-5.7/
+drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 mysql-8.0/
+```
+
+Each of the above folders will hold an example configuration file named `devilbox-custom.cnf-example` which shows some example settings but will **not have** any effect yet. Only files ending by **`.cnf`** will be sourced and applied, so you must copy it (or create a new file) to something that ends by `*.cnf`.
+
+In order to edit settings for MySQL 5.5, go into that folder, copy the example file and adjust ist:
+
+```shell
+# Copy to file ending by *.ini
+$ cd cfg/mysql-5.5
+$ cp devilbox-custom.cnf-example devilbox-custom.cnf
+
+# Edit settings
+$ vi devilbox-custom.cnf
+```
+
+Change will take effect after restarting the devilbox.
+
+
 #### 4.5 PostgreSQL
 ##### 4.5.1 Root user
 ##### 4.5.2 Root password
