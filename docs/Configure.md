@@ -61,7 +61,7 @@ Configure |
 5. [Intranet settings]()
   1. [DNS check timeout]()
 6. [Host computer]()
-  1. [DNS]()
+  1. [Auto-DNS]()
   2. [/etc/hosts/]()
 
 ---
@@ -271,29 +271,125 @@ If you also want to change the listening address (default: 127.0.0.1) to somethi
 If you start a MySQL container for the first time, it will setup MySQL itself with the specified password. If you do change the root password to something else, make sure to also set it accordingly in `.env`, otherwise the devilbox will not be able to connect to MySQL and will not be able to display information inside the bundled intranet.
 
 ##### 4.4.2 General Log
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| MYSQL_GENERAL_LOG | `1` | Turn on or off MySQL general query log |
+
+https://dev.mysql.com/doc/refman/5.7/en/query-log.html:
+> The general query log is a general record of what mysqld is doing. The server writes information to this log when clients connect or disconnect, and it logs each SQL statement received from clients. The general query log can be very useful when you suspect an error in a client and want to know exactly what the client sent to mysqld.
+
+This logging behavior is turned on by default in order to provide all information during development. Set it to `0` to turn it off.
+
 ##### 4.4.3 Host port
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HOST_PORT_MYSQL           | `3306`| Host computer listening port for the MySQL server (MySQL or MariaDB) |
+
+By default the MySQL server will listen on port 3306 (on your Host computer). You can change this to any other port (in case port 3306 is already taken).
+
+If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
+
 ##### 4.4.4 Data path
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HOST_PATH_MYSQL_DATADIR   | `./data/mysql`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory. |
+
+This is the file system path on your host computer which will hold the MySQL data.
+
+**Note:** A sub directory will be created inside this path for each MySQL version. This separation is there to make sure that higher versions do not upgrade the database irrevocably. (e.g.: MySQL 8.0 can read data from MySQL 5.5, but not the other way round).
+
+The automatic folder structure will look something like this:
+```shell
+$ ls -l ./data/mysql/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.0/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.1/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.2/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.3/
+```
+
+
 ##### 4.4.5 my.cnf
 #### 4.5 PostgreSQL
 ##### 4.5.1 Root user
 ##### 4.5.2 Root password
 ##### 4.5.3 Host port
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HOST_PORT_PGSQL           | `5432`| Host computer listening port for the PostgreSQL server |
+
+By default the PostgreSQL server will listen on port 5432 (on your Host computer). You can change this to any other port (in case port 5432 is already taken).
+
+If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
+
 ##### 4.5.4 Data path
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HOST_PATH_PGSQL_DATADIR   | `./data/pgsql`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory. |
+
 #### 4.6 Redis
+
 ##### 4.6.1 Host port
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HOST_PORT_REDIS           | `6379`| Host computer listening port for the Redis server |
+
+By default the Redis server will listen on port 6379 (on your Host computer). You can change this to any other port (in case port 6379 is already taken).
+
+If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
+
 #### 4.7 Memcached
+
 ##### 4.7.1 Host port
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HOST_PORT_MEMCD           | `11211`| Host computer listening port for the Memcached server |
+
+By default the Memcached server will listen on port 11211 (on your Host computer). You can change this to any other port (in case port 11211 is already taken).
+
+If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
+
 #### 4.8 MongoDB
+
 ##### 4.8.1 Host port
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HOST_PORT_MONGO           | `27017`| Host computer listening port for the MongoDB server |
+
+By default the Memcached server will listen on port 27017 (on your Host computer). You can change this to any other port (in case port 27017 is already taken).
+
+If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
+
 ##### 4.8.2 Data path
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HOST_PATH_MONGO_DATADIR   | `./data/mongo`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory. |
+
+
+
 #### 4.9 Bind
 ##### 4.9.1 Upstream resolver
 ##### 4.9.2 Host port
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HOST_PORT_BIND           | `1053`| Host computer listening port for the Bind DNS server |
+
+By default the Bind DNS server will listen on port 1053 (on your Host computer). You can change this to any other port (in case port 1053 is already taken)
+
+If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
+
 ## 5. Intranet settings
 #### 5.1 DNS check timeout
 ## 6. Host computer
-#### 6.1 DNS
+#### 6.1 Auto-DNS
 #### 6.2 /etc/hosts/
-
-
 
