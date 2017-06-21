@@ -345,10 +345,28 @@ $ vi devilbox-custom.cnf
 
 Change will take effect after restarting the devilbox.
 
-
 #### 4.5 PostgreSQL
+
 ##### 4.5.1 Root user
-##### 4.5.2 Root password
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| PGSQL_ROOT_USER | `postgres` | Root username for PostgreSQL |
+
+If you start a PostgreSQL  container for the first time, it will setup PostgreSQL itself with a specified username and password. If you do change the root username or password to something else, make sure to also set it accordingly in `.env`, otherwise the devilbox will not be able to connect to PostgreSQL and will not be able to display information inside the bundled intranet.
+
+See also: Root password
+
+S##### 4.5.2 Root password
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| PGSQL_ROOT_PASSWORD | `` | Root user password for PostgreSQL |
+
+If you start a PostgreSQL  container for the first time, it will setup PostgreSQL itself with a specified username and password. If you do change the root username or password to something else, make sure to also set it accordingly in `.env`, otherwise the devilbox will not be able to connect to PostgreSQL and will not be able to display information inside the bundled intranet.
+
+See also: Root user
+
 ##### 4.5.3 Host port
 
 | `.env` file variable name | Default | Note |
@@ -407,10 +425,18 @@ If you also want to change the listening address (default: 127.0.0.1) to somethi
 |---------------------------|---------|------|
 | HOST_PATH_MONGO_DATADIR   | `./data/mongo`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory. |
 
-
-
 #### 4.9 Bind
+
 ##### 4.9.1 Upstream resolver
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| BIND_DNS_RESOLVER         | `8.8.8.8,8.8.4.4`   | Comma separated list of IP addresses of DNS servers. By default using Google's DNS server as they are pretty fast. |
+
+The devilbox is using its own DNS server internally (your host computer can also use it for Auto-DNS) in order to resolve custom project domains defined by `TLD_SUFFIX`. To also be able to reach the internet from within the Container there must be some kind of upstream DNS server to ask for queries.
+
+If you don't trust the Google DNS server, then set it to something else. If you already have a DNS server inside your LAN and also want your custom DNS (if any) to be available inside the containers, set the value to its IP address.
+
 ##### 4.9.2 Host port
 
 | `.env` file variable name | Default | Note |
@@ -421,8 +447,19 @@ By default the Bind DNS server will listen on port 1053 (on your Host computer).
 
 If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
 
+
 ## 5. Intranet settings
+
 #### 5.1 DNS check timeout
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| DNS_CHECK_TIMEOUT         | `1`     | DNS timeout in seconds for unresolvable Domains |
+
+`TLD_SUFFIX` domains are checked if they are set in the host computer /etc/hosts or available via attached DNS server. Timeout is done on vhosts.php (intranet) via ajax calls. In order to keep performance, set this to a low value. DNS checks might not succeed in time on slow machines. If DNS is valid, but timeout is expired, set this to a higher value.
+
+`DNS_CHECK_TIMEOUT` value is how many seconds to time out.
+
 ## 6. Host computer
 #### 6.1 Auto-DNS
 #### 6.2 /etc/hosts/
