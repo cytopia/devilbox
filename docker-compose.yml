@@ -65,7 +65,7 @@ services:
   # ----------------------------------------
   php:
     #image: cytopia/${PHP_SERVER:-php-fpm-7.0}:latest
-    image: cytopia/${PHP_SERVER:-php-fpm-7.0}:release-0.11
+    image: cytopia/${PHP_SERVER:-php-fpm-7.0}:0.11
     restart: always
 
     # Manually build via `docker-compose build`
