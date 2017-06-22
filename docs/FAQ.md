@@ -66,7 +66,6 @@ There will however be slight differences between the versions and especially wit
 [PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
 [HHVM](https://github.com/cytopia/docker-hhvm-latest)
 
-
 **Can I add other PHP Modules?**
 
 Yes, if there are any PHP modules you require that are not yet available in the PHP Docker container, you can install it during run-time, or create your own container. See [Hacking](Hacking.md) for more informatino.

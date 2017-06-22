@@ -18,55 +18,138 @@ Configure |
 
 ## Configure
 
-1. [Overview]()
-2. [Devilbox general settings](#1-devilbox-general-settings)
-  1. [Verbosity]()
-  2. [Devilbox base path]()
-  3. [Host computer listening address]()
-3. [Project settings]()
-  1. [Project domain]()
-  2. [Project path]()
-4. [Container settings]()
-  1. [General]()
-    1. [Timezone]()
-    2. [User id]()
-	3. [Group id]()
-  2. [PHP / HHVM]()
-	1. [Xdebug]()
-	2. [php.ini]()
-	3. [HHVM]()
-  3. [Webserver]()
-    1. [Host port]()
-  4. [MySQL]()
-    1. [Root password]()
-	2. [General Log]()
-	3. [Host port]()
-    4. [Data path]()
-    5. [my.cnf]()
-  5. [PostgreSQL]()
-    1. [Root user]()
-	2. [Root password]()
-	3. [Host port]()
-    4. [Data path]()
-  6. [Redis]()
-    1. [Host port]()
-  7. [Memcached]()
-    1. [Host port]()
-  8. [MongoDB]()
-    1. [Host port]()
-    2. [Data path]()
-  9. [Bind]()
-    1. [Upstream resolver]()
-    2. [Host port]()
-5. [Intranet settings]()
-  1. [DNS check timeout]()
-6. [Host computer]()
-  1. [Auto-DNS]()
-  2. [/etc/hosts/]()
+1. [Overview](#1-overview)
+  1. [The devilbox `.env` file](#1-1-the-devilbox-env-file)
+  2. [The devilbox `cfg/` directory](#1-2-the-devilbox-cfg-directory)
+  3. [The operating system `hosts` file](#1-3-the-operating-system-hosts-file)
+  4. [The operating system `resolv.conf` file](#1-4-the-operating-system-resolv-conf-file)
+2. [Devilbox general settings](#2-devilbox-general-settings)
+  1. [Verbosity](#2-1-verbosity)
+  2. [Devilbox base path](#2-2-devilbox-base-path)
+  3. [Host computer listening address](#2-3-host-computer-listening-address)
+3. [Project settings](#3-project-settings)
+  1. [Project domain](#3-1-project-domain)
+  2. [Project path](#3-2-project-path)
+4. [Container settings](#4-container-settings)
+  1. [General](#4-1-general)
+    1. [Timezone](#4-1-1-timezone)
+    2. [User id](#4-1-1-user-id)
+	3. [Group id](#4-1-2-group-id)
+  2. [PHP / HHVM](#4-2-php-hhvm)
+	1. [Select PHP version](#4-2-1-select-php-version)
+	2. [Xdebug](#4-2-2-xdebug)
+	3. [php.ini](#4-2-3-php-ini)
+	4. [HHVM](#4-2-4-hhvm)
+  3. [Apache / Nginx](#4-3-apache-nginx)
+	1. [Select Httpd version](#4-3-1-select-httpd-version)
+    2. [Host port](#4-3-2-host-port)
+  4. [MySQL](#4-4-mysql)
+	1. [Select MySQL version](#4-4-1-select-mysql-version)
+    2. [Root password](#4-4-2-root-password)
+	3. [General Log](#4-4-3-general-log)
+	4. [Host port](#4-4-4-host-port)
+    5. [Data path](#4-4-5-data-path)
+    6. [my.cnf](#4-4-6-my-cnf)
+  5. [PostgreSQL](#4-5-postgresql)
+	1. [Select PostgreSQL version](#4-5-1-select-postgresql-version)
+    2. [Root user](#4-5-2-root-user)
+	3. [Root password](#4-5-3-root-password)
+	4. [Host port](#4-5-4-host-port)
+    5. [Data path](#4-5-5-data-path)
+  6. [Redis](#4-6-redis)
+	1. [Select Redis version](#4-6-1-select-redis-version)
+    2. [Host port](#4-6-2-host-port)
+  7. [Memcached](#4-7-memcached)
+	1. [Select Memcached version](#4-7-1-select-memcached-version)
+    2. [Host port](#4-7-2-host-port)
+  8. [MongoDB](#4-8-mongodb)
+	1. [Select MongoDB version](#4-8-1-select-mongodb-version)
+    2. [Host port](#4-8-2-host-port)
+    3. [Data path](#4-8-3-data-path)
+  9. [Bind](#4-9-bind)
+    1. [Upstream resolver](#4-9-1-upstream-resolver)
+    2. [Host port](#4-9-2-host-port)
+5. [Intranet settings](#5-intranet-settings)
+  1. [DNS check timeout](#5-1-dns-check-timeout)
+6. [Host computer](#6-host-computer)
+  1. [/etc/hosts](#6-1-etc-hosts)
+  2. [Auto-DNS](#6-2-auto-dns)
 
 ---
 
 ## 1. Overview
+
+There are only four things you can configure on your host computer.
+
+#### 1.1 The devilbox `.env` file
+
+All docker-compose configuration is done inside the `.env` file which simply defines key-value variables parsed to `docker-compose.yml`.
+
+First thing to do after cloning this repository is creating this file from the `env-example`:
+
+```shell
+$ cp env-example .env
+```
+
+When you update the devilbox git directory, you should always check if `env-example` introduces new configuration options. You can do that by comparing the `env-example` file with your current `.env` file.
+
+```shell
+$ vimdiff env-example .env
+```
+
+You can get more information here:
+
+> [What is the `.env` file?](https://docs.docker.com/compose/env-file/)
+
+#### 1.2 The devilbox `cfg/` directory
+
+Inside the devilbox root directory you will find a foder called `cfg/`. This will contain subdirectories in the form of `<SERVICE>-<VERSION>`. Those folders will be mounted into the appropriate location into the respective docker container in order to overwrite service configuration.
+
+Currently only MySQL/MariaDB and PHP/HHVM overrides are supported.
+
+The folder structure looks like this:
+```
+cfg/
+  hhvm-latest/
+  mariadb-10.0/
+  mariadb-10.1/
+  mariadb-10.2/
+  mariadb-10.3/
+  mariadb-5.5/
+  mysql-5.5/
+  mysql-5.6/
+  mysql-5.7/
+  mysql-8.0/
+  php-fpm-5.4/
+  php-fpm-5.5/
+  php-fpm-5.6/
+  php-fpm-7.0/
+  php-fpm-7.1/
+  php-fpm-7.2/
+```
+
+Each of the folders will contain an example file in the following format:
+```
+devilbox-custom.<ext>-example
+```
+
+Only files which have the correct file extensions will be read, all others such as `*.<ext>-example` will be ignored.
+
+* Valid PHP config extension: `.ini`
+* Valid MySQL config extension: `.cnf`
+
+#### 1.3 The operating system `hosts` file
+
+On Linux and OSX your hosts file is located at `/etc/hosts` on Windows it will be at `C:\Windows\System32\drivers\etc`. Use this file to setup custom DNS entries if you are not using Auto-DNS.
+
+Read up on it below at `/etc/hosts` or `Auto-DNS` section.
+
+#### 1.4 The operating system `resolv.conf` file
+
+This file is used to add the devilbox DNS server for Auto-DNS.
+
+Read up on it below at `/etc/hosts` or `Auto-DNS` section.
+
 
 ## 2. Devilbox general settings
 
@@ -189,7 +272,20 @@ $ id
 
 #### 4.2 PHP / HHVM
 
-##### 4.2.1 Xdebug
+##### 4.2.1 Select PHP version
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| PHP_SERVER                | `php-fpm-7.0`| Change the PHP Docker container |
+
+1. Open the `.env` file in your favorite editor
+2. Find the `PHP_SERVER=` block
+
+You can choose between different PHP versions and HHVM.
+
+**Important:** Keep in mind that if you have a custom php.ini config at `./cfg/php-*/`, it is only effective for one version. Custom php configurations are separted per version.
+
+##### 4.2.2 Xdebug
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
@@ -199,7 +295,7 @@ $ id
 
 Xdebug is turned on by default and also using the official Xdebug default port. The only thing you will have to adjust is the Xdebug remote host address so that your editor/IDE can actually receive Xdebug data.
 
-##### 4.2.2 php.ini
+##### 4.2.3 php.ini
 
 `php.ini` settings can be configured for each PHP/HHVM version separately. Container-based configuration is done inside the `./cfg/` directory.
 
@@ -229,7 +325,7 @@ $ vi devilbox-custom.ini
 
 Change will take effect after restarting the devilbox.
 
-##### 4.2.3 HHVM
+##### 4.2.4 HHVM
 
 HHVM can just be configured as all other PHP versions. However it has a special option to change between **PHP-5.6** mode and **PHP-7** mode. This example is addressed in `cfg/hhvm-latest/devilbox.ini-example`.
 
@@ -248,9 +344,20 @@ By default, HHVM is using **PHP-7** mode, you can change this setting to **PHP-5
 
 **Note:** You must then also copy the file to something that ends by `*.ini`.
 
-#### 4.3 Webserver
+#### 4.3 Apache / Nginx
 
-##### 4.3.1 Host port
+##### 4.3.1 Select Httpd version
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HTTPD_SERVER              | `nginx-stable`| Change the Httpd Docker container |
+
+1. Open the `.env` file in your favorite editor
+2. Find the `HTTPD_SERVER=` block
+
+You can choose between Apache and Nginx in different version. All of them are configured to work the same, there is nothing to worry about when changing them.
+
+##### 4.3.2 Host port
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
@@ -262,7 +369,18 @@ If you also want to change the listening address (default: 127.0.0.1) to somethi
 
 #### 4.4 MySQL
 
-##### 4.4.1 Root password
+##### 4.4.1 Select MySQL version
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| MYSQL_SERVER              | `mariadb-10.1`| Change the MySQL Docker container |
+
+1. Open the `.env` file in your favorite editor
+2. Find the `MYSQL_SERVER=` block
+
+**Important:** Each version has a different data directory. This is a security precautions. Imagine you startup MySQL 5.5 for the first time. New databases will be created. Now you startup MySQL 8. All existing databases would be upgraded to work flawlessly with MySQL 8, however this is not downwards compatible. So by startup up MySQL 5.5 again, it would say the database is corrupt.
+
+##### 4.4.2 Root password
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
@@ -270,7 +388,7 @@ If you also want to change the listening address (default: 127.0.0.1) to somethi
 
 If you start a MySQL container for the first time, it will setup MySQL itself with the specified password. If you do change the root password to something else, make sure to also set it accordingly in `.env`, otherwise the devilbox will not be able to connect to MySQL and will not be able to display information inside the bundled intranet.
 
-##### 4.4.2 General Log
+##### 4.4.3 General Log
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
@@ -281,7 +399,7 @@ https://dev.mysql.com/doc/refman/5.7/en/query-log.html:
 
 This logging behavior is turned on by default in order to provide all information during development. Set it to `0` to turn it off.
 
-##### 4.4.3 Host port
+##### 4.4.4 Host port
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
@@ -291,7 +409,7 @@ By default the MySQL server will listen on port 3306 (on your Host computer). Yo
 
 If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
 
-##### 4.4.4 Data path
+##### 4.4.5 Data path
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
@@ -302,19 +420,20 @@ This is the file system path on your host computer which will hold the MySQL dat
 **Note:** A sub directory will be created inside this path for each MySQL version. This separation is there to make sure that higher versions do not upgrade the database irrevocably. (e.g.: MySQL 8.0 can read data from MySQL 5.5, but not the other way round).
 
 The automatic folder structure will look something like this:
+
 ```shell
 $ ls -l ./data/mysql/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.0/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.1/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.2/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.3/
-drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysqp-5.5/
-drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysqp-5.6/
-drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysqp-5.7/
-drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysqp-8.0/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.5/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.6/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.7/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-8.0/
 ```
 
-##### 4.4.5 my.cnf
+##### 4.4.6 my.cnf
 
 `my.cnf` settings can be configured for each MySQL/MariaDB version separately. Container-based configuration is done inside the `./cfg/` directory.
 
@@ -347,7 +466,18 @@ Change will take effect after restarting the devilbox.
 
 #### 4.5 PostgreSQL
 
-##### 4.5.1 Root user
+##### 4.5.1 Select PostgreSQL version
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| PGSQL_SERVER              | `9.6` | Change the PostgreSQL Docker container |
+
+1. Open the `.env` file in your favorite editor
+2. Find the `PGSQL_SERVER=` block
+
+**Important:** Each version has a different data directory. This is a security precautions. Imagine you startup PostgreSQL 9.1 for the first time. New databases will be created. Now you startup PostgreSQL 9.6. All existing databases would be upgraded to work flawlessly with PostgreSQL 9.6, however this is not downwards compatible. So by startup up PostgreSQL 9.1 again, it would say the database is corrupt.
+
+##### 4.5.2 Root user
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
@@ -357,7 +487,7 @@ If you start a PostgreSQL  container for the first time, it will setup PostgreSQ
 
 See also: Root password
 
-S##### 4.5.2 Root password
+##### 4.5.3 Root password
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
@@ -367,7 +497,7 @@ If you start a PostgreSQL  container for the first time, it will setup PostgreSQ
 
 See also: Root user
 
-##### 4.5.3 Host port
+##### 4.5.4 Host port
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
@@ -377,15 +507,42 @@ By default the PostgreSQL server will listen on port 5432 (on your Host computer
 
 If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
 
-##### 4.5.4 Data path
+##### 4.5.5 Data path
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
 | HOST_PATH_PGSQL_DATADIR   | `./data/pgsql`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory. |
 
+This is the file system path on your host computer which will hold the PostgreSQL data.
+
+**Note:** A sub directory will be created inside this path for each PostgreSQL version. This separation is there to make sure that higher versions do not upgrade the database irrevocably. (e.g.: PostgreSQL 9.6 can read data from PostgreSQL 9.1, but maybe not the other way round).
+
+The automatic folder structure will look something like this:
+
+```shell
+$ ls -l ./data/pgsql/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.1/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.2/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.3/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.4/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.5/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.6/
+```
+
 #### 4.6 Redis
 
-##### 4.6.1 Host port
+##### 4.6.1 Select Redis version
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| REDIS_SERVER              | `3.2` | Change the Redis Docker container |
+
+1. Open the `.env` file in your favorite editor
+2. Find the `REDIS_SERVER=` block
+
+There is nothing to pay attention to here.
+
+##### 4.6.2 Host port
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
@@ -397,7 +554,18 @@ If you also want to change the listening address (default: 127.0.0.1) to somethi
 
 #### 4.7 Memcached
 
-##### 4.7.1 Host port
+##### 4.7.1 Select Memcached version
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| MEMCD_SERVER              | `1.4.21` | Change the Memcached Docker container |
+
+1. Open the `.env` file in your favorite editor
+2. Find the `MEMCD_SERVER=` block
+
+There is nothing to pay attention to here.
+
+##### 4.7.2 Host port
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
@@ -409,7 +577,18 @@ If you also want to change the listening address (default: 127.0.0.1) to somethi
 
 #### 4.8 MongoDB
 
-##### 4.8.1 Host port
+##### 4.8.1 Select MongoDB version
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| MONGO_SERVER              | `3.4` | Change the MongoDB Docker container |
+
+1. Open the `.env` file in your favorite editor
+2. Find the `MONGO_SERVER=` block
+
+**Important:** Each version has a different data directory. This is a security precautions. Imagine you startup MongoDB 2.8 for the first time. New databases will be created. Now you startup MongoDB 3.5. All existing databases would be upgraded to work flawlessly with MongoDB 3.5, however this is not downwards compatible. So by startup up MongoDB 2.8 again, it would say the database is corrupt.
+
+##### 4.8.2 Host port
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
@@ -419,11 +598,26 @@ By default the Memcached server will listen on port 27017 (on your Host computer
 
 If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
 
-##### 4.8.2 Data path
+##### 4.8.3 Data path
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
 | HOST_PATH_MONGO_DATADIR   | `./data/mongo`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory. |
+
+This is the file system path on your host computer which will hold the MongoDB data.
+
+**Note:** A sub directory will be created inside this path for each MongoDB version. This separation is there to make sure that higher versions do not upgrade the database irrevocably. (e.g.: MongoDB 3.5 can read data from MongoDB 2.8, but maybe not the other way round).
+
+The automatic folder structure will look something like this:
+
+```shell
+$ ls -l ./data/mongo/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 2.8/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.0/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.2/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.4/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.5/
+```
 
 #### 4.9 Bind
 
@@ -460,7 +654,11 @@ If you also want to change the listening address (default: 127.0.0.1) to somethi
 
 `DNS_CHECK_TIMEOUT` value is how many seconds to time out.
 
+
 ## 6. Host computer
-#### 6.1 Auto-DNS
-#### 6.2 /etc/hosts/
+
+#### 6.1 /etc/hosts
+
+
+#### 6.2 Auto-DNS
 

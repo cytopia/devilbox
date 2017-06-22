@@ -39,6 +39,7 @@ The devilbox provides popular tools for setting up and managing major frameworks
 | `drush`    | [drush](http://www.drush.org/)           | Drupal             |
 | `drupal`   | [drupal-consol](https://drupalconsole.com) | Drupal           |
 | `git`      | [git](https://git-scm.com) | Everything available on github and other git servers |
+| `laravel`  | [laravel installer](https://github.com/laravel/installer) | Laravel |
 | `phalcon`  | [phalcon devtools](https://github.com/phalcon/phalcon-devtools) | Phalcon         |
 | `symfony`  | [symfony installer](https://github.com/symfony/symfony-installer) | Symfony       |
 | `wp`       | [wp-cli](https://wp-cli.org/)            | Wordpress          |
@@ -118,6 +119,7 @@ All set now, you can visit http://my-cake.local in your browser.
 
 If you want to dig deeper into installing CakePHP, visit their documentation [https://book.cakephp.org/3.0/en/installation.html](https://book.cakephp.org/3.0/en/installation.html).
 
+
 ## 3. Setup Drupal
 
 The following configuration will be used:
@@ -162,6 +164,7 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-drupal.local and follow the Drupal installation steps.
 
 **Note:** For MySQL host choose `127.0.0.1`.
+
 
 ## 4. Setup Phalcon
 

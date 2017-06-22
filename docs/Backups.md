@@ -68,6 +68,7 @@ So before you change to a new database version you will have to make a backup an
 
 If you use the devilbox bundled tools, you will find all backups in the main directory under `./backups/`.
 
+
 ## 2. MySQL
 
 #### 2.1 MySQL Database Backup
@@ -202,7 +203,6 @@ $ docker-compose exec --user devilbox php mysqldump-secure
 
 To find out more about the configuration and options of mysqldump-secure, visit its project page under: [https://mysqldump-secure.org](https://mysqldump-secure.org).
 
-
 ##### 2.1.2 mysqldump
 
 **[mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)** is bundled with each PHP/HHVM container and ready to use. To backup a database named `my_db_name` follow the below listed example:
@@ -228,7 +228,6 @@ To find out more about the usage of phpMyAdmin, visit its project page under: [h
 If you do not like to use the command line for backups, you can use **[Adminer](https://www.adminer.org)**. It comes bundled with the devilbox intranet. View [Usage](Usage.md) to read more about the devilbox intranet.
 
 To find out more about the usage of Adminer, visit its project page under: [https://www.adminer.org](https://www.adminer.org).
-
 
 #### 2.2 MySQL Database Restore
 
@@ -278,7 +277,6 @@ devilbox@php-7.1.6 in /shared/httpd $ tar xzOf /shared/backups/mysql/my_db_name.
 ## 3. PostgreSQL
 
 #### 3.1 PostgreSQL Database Backup
-
 
 ##### 3.1.1 pg_dump
 

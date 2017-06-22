@@ -128,6 +128,7 @@ $ docker-compose kill
 
 Best pracice would be to start the container in the background (with `-d`) and use `docker compose down` to gracefully stop all of them.
 
+
 ## 3. Attach/Detach during run-time
 
 #### 3.1 Attach during run-time
@@ -144,7 +145,6 @@ $ docker-compose up -d redis
 
 It is recommended to always use background starts, this way you can intially start your desired stack and re-use the current terminal window to start or stop other services.
 
-
 #### 3.2 Detach during run-time
 
 You can also stop specific containers during runtime if they are not needed anymore. You might have started httpd, php, bind, mysql and redis and decided that redis was not needed. So go ahead and remove redis from the running container stack.
@@ -152,6 +152,7 @@ You can also stop specific containers during runtime if they are not needed anym
 ```shell
 $ docker-compose stop redis
 ```
+
 
 ## 4. Docker Logs
 
@@ -180,4 +181,3 @@ There is also a version similar to `tail -f` to keep logs updated all the time.
 ```shell
 $ docker-compose logs -f
 ```
-

@@ -58,6 +58,7 @@ By having the above folders, the devilbox will automatically be able to serve th
 
 New folders can be created, deleted and removed during run-time and corresponding virtual hosts will be available instantly without having to restart anything.
 
+
 ## 2. Features
 
 | Feature | Description |
@@ -109,10 +110,10 @@ The devilbox runs on all major operating systems. Below you can quickly check th
 [lin-issues]: https://github.com/cytopia/devilbox/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22host%3Alinux%22
 [osx-issues]: https://github.com/cytopia/devilbox/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20label%3A%22host%3Aosx%22
 
-
 **How about FreeBSD?**
 
 The devilbox has not been tested on FreeBSD yet. Current milestones include to make it rock-solid on the above listed operating systems. However, if you want it to run on FreeBSD open up an issue on Github and you will receive support making it work on FreeBSD.
+
 
 ## 4. Requirements
 
@@ -168,6 +169,7 @@ There will however be slight differences between the versions and especially wit
 [PHP 7.0](https://github.com/cytopia/docker-php-fpm-7.0) |
 [PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
 [HHVM](https://github.com/cytopia/docker-hhvm-latest)
+
 
 ## 9. Supported Frameworks and CMS
 

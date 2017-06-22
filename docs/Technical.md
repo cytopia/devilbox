@@ -43,6 +43,7 @@ It is best to use the hostnames and not to rely on the ip addresses as they migh
 | Memcached       | memcd           | memcd     | 172.16.238.15  |
 | MongoDB         | mongo           | mongo     | 172.16.238.16  |
 
+
 ## 2. Ports and forwarding
 
 #### 2.1 PHP Container
@@ -73,7 +74,6 @@ The following container can be reached from within the PHP container via the fol
 | Memcached       | memcd     | 172.16.238.15  | 127.0.0.1  | 11211 |
 | MongoDB         | mongo     | 172.16.238.16  | 127.0.0.1  | 27017 |
 
-
 #### 2.2 Docker Host
 
 The docker host (your computer) does exactly the same as the `php` container.
@@ -96,6 +96,7 @@ The following container can be reached from the Docker host via the following me
 | Redis           | 127.0.0.1  |  6379 |
 | Memcached       | 127.0.0.1  | 11211 |
 | MongoDB         | 127.0.0.1  | 27017 |
+
 
 ## 3. Works the same on Host and PHP Container
 

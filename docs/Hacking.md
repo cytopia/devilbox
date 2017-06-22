@@ -70,7 +70,6 @@ Your newly rebuild `latest` docker container will not yet be available for the n
 If your devilbox git repository is checkout out on the `master` branch, then all docker container are always bound to the `latest` docker tag inside `docker-compose.yml` and you do not need to change anything. Just rebuilding the container is enough to be picked up for the next start.
 
 
-
 ## 2. Customizing the bundled Docker container
 
 Customizing a Docker container is almost as simple as rebuilding it.
@@ -85,7 +84,6 @@ Customizing a Docker container is almost as simple as rebuilding it.
 ## 3. Adding your own Docker container
 
 You can add your custom docker container including its configuration to `docker-compose.yml`.
-
 
 #### 3.1 What information will you need?
 
@@ -147,7 +145,6 @@ services:
   # End of custom Docker container
 ...
 ```
-
 
 
 #### 3.3 How to start your service?

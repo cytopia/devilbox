@@ -53,6 +53,7 @@ $ docker-compose up
 
 Do not forget to read: [Pull new Docker container (Important!)](#4-pull-new-docker-container-important-)
 
+
 ## 2. Git tag vs master branch
 
 #### 2.1 Git tag
@@ -78,7 +79,6 @@ So the update procedure is as follows:
 $ git fetch --all
 $ git checkout "$(git describe --abbrev=0 --tags)"
 ```
-
 
 **Note:** If you want to pre-download all available versions for later offline-usage, run the `update-docker.sh` script.
 
@@ -115,6 +115,7 @@ $ docker-compose pull
 $ ./update-docker.sh
 ```
 
+
 ## 3. Compare .env file
 
 New devilbox releases will most likeley receive new or improved functionality and features and therefore will have an altered `env-example` file. (This is an example configuration file which holds all current configuration options).
@@ -127,6 +128,7 @@ $ vimdiff .env env-example
 ```
 
 Make sure to transfer all new options from `env-example` to your current `.env` file.
+
 
 ## 4. Pull new Docker container (Important!)
 
@@ -153,6 +155,7 @@ So instead of pulling everything manually, use the bundled update script to do t
 ```shell
 $ ./update-docker.sh
 ```
+
 
 ## 5. Remove anonymous volumes
 

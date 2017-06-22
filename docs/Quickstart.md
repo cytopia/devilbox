@@ -64,6 +64,7 @@ $ git pull origin master
 $ ./update-docker.sh
 ```
 
+
 ## 3. Configuration
 
 #### 3.1 .env
@@ -87,6 +88,7 @@ $ cd cfg/
 $ echo "[mysqld]\nslow_query_log = 1" > mysql-5.5/config.cnf
 ```
 
+
 ## 4. Run
 
 #### 4.1 Run all
@@ -100,6 +102,7 @@ $ docker-compose up -d
 ```shell
 $ docker-compose up -d httpd php mysql redis
 ```
+
 
 ## 5. Project setup
 

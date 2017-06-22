@@ -48,6 +48,7 @@ Refer to the official [Docker for Mac documentation](https://docs.docker.com/doc
 
 **Note:** You should install the [Native Mac Docker](https://docs.docker.com/docker-for-mac/install/) and not the [Docker Toolbox](https://docs.docker.com/toolbox/overview/).
 
+
 ## 2. Install Devilbox
 
 Just clone the devilbox repository and copy the configuration file.
@@ -59,7 +60,6 @@ $ cp env-example .env
 ```
 
 You are all set now and can continue with [configuring the devilbox](Configure.md).
-
 
 #### 2.1 Latest git tag
 
