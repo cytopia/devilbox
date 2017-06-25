@@ -340,8 +340,8 @@ devilbox_start() {
 	done
 	printf "\n"
 
-	# Wait another 30 sec for databases to come up
-	wait_for 30 1
+	# Wait another 60 sec for databases to come up
+	wait_for 60 1
 	echo
 
 }
@@ -436,7 +436,7 @@ devilbox_test_url() {
 	_pattern="${2}"
 	_number="${3}"
 
-	_count="$( curl -q "${_url}" 2>/dev/null | grep -c "${_pattern}" || true )"
+	_count="$( curl -q --retry 100 --retry-max-time 0 "${_url}" 2>/dev/null | grep -c "${_pattern}" || true )"
 
 	if [ "${_count}" != "${_number}" ]; then
 		echo "[ERR]: Found ${_count}/${_number} of '${_pattern}'"

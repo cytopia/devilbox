@@ -393,7 +393,7 @@ HOST_PORT_MONGO=27017
 ###
 ### Expose Bind Port to Host
 ###
-HOST_PORT_BIND=53
+HOST_PORT_BIND=1053
 
 ###
 ### Add comma separated DNS server from which you want to receive DNS
