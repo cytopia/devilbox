@@ -20,8 +20,8 @@ Update |
 
 1. [TL;DR](#1-tl-dr)
 2. [Git tag vs master branch](#2-git-tag-vs-master-branch)
-  1. [Git tag](#2-1-git-tag)
-  2. [Git master branch](#2-2-git-master-branch)
+    1. [Git tag](#2-1-git-tag)
+    2. [Git master branch](#2-2-git-master-branch)
 3. [Compare .env file](#3-compare-env-file)
 4. [Pull new Docker container (Important!)](#4-pull-new-docker-container-important-)
 5. [Remove anonymous volumes](#5-remove-anonymous-volumes)
