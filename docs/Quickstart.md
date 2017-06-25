@@ -37,13 +37,19 @@ Quickstart |
 
 ## 1. Installation
 
+Installing the devilbox is as easy as this:
+
 ```shell
 $ git clone https://github.com/cytopia/devilbox
 $ cd devilbox/
 $ cp env-example .env
 ```
 
+To find out in more detail for different operating systems have a look at **[Install](Install.md)**.
+
 ## 2. Update
+
+You will have the choice to stay on stable git tags or on the latest master branch. Both options have slightly different update procedures. View the quick instructions below and for more information have a look at **[Update](Update.md)**
 
 #### 2.1 Tagged release
 
@@ -67,22 +73,27 @@ $ ./update-docker.sh
 
 ## 3. Configuration
 
+The devilbox will work out-of-the box after the above installation routine has been done. However there are lots of options to configure. Read up on it on **[Configure](Configure.md)**. A brief overview is shown below.
+
 #### 3.1 .env
 
-Edit all general settings inside the .env file (file paths, what version to run, debug, timezeon, etc)
+Edit all general settings inside the .env file (file paths, what version to run, debug, timezeon, etc). The `.env` file is well documented and self-explanatory.
+
 ```shell
 $ vim .env
 ```
 
 #### 3.2 Services
 
-Configure PHP 5.6
+Additionally to configure the devilbox in general, you can also configure each service separately by adding/altering service specific configuration files.
+
+**Example:** Configure PHP 5.6
 ```shell
 $ cd cfg/
 $ echo "max_execution_time = 180" > php-fpm-5.6/config.ini
 ```
 
-Configure MySQL 5.5
+**Example:** Configure MySQL 5.5
 ```shell
 $ cd cfg/
 $ echo "[mysqld]\nslow_query_log = 1" > mysql-5.5/config.cnf
@@ -90,6 +101,8 @@ $ echo "[mysqld]\nslow_query_log = 1" > mysql-5.5/config.cnf
 
 
 ## 4. Run
+
+Starting up the devilbox is done via docker-compose commands. You will have the choice to start-up everything or just a selection of the services you need. To get more more information about this view **[Run](Run.md)**.
 
 #### 4.1 Run all
 
@@ -105,6 +118,8 @@ $ docker-compose up -d httpd php mysql redis
 
 
 ## 5. Project setup
+
+The heart of the devilbox is the easy configuration of an unlimitted numbder of projects. Most stuff configures itself automatically in the background, but a few things are still left up to you. The following will give you a kick-start for setting up a few projects. To find out in more detail view **[Usage](Usage.md)**.
 
 #### 5.1 General setup
 
@@ -142,7 +157,7 @@ lrwxrwxrwx 1 cytopia   11 Jun 14 08:29 htdocs -> cakephp/app/webroot/
 
 #### 5.2 Specific Frameworks
 
-Some frameworks use a deep nested directory to serve their actual www data such as:
+One example of the above mentioned nested directory structure is CakePHP. Its actual www dats is serveed from:
 
 ```shell
 <project>/cake/app/webroot
@@ -161,7 +176,16 @@ drwxrwxr-x 2 cytopia 4096 Jun 14 08:29 cakephp
 lrwxrwxrwx 1 cytopia   11 Jun 14 08:29 htdocs -> cakephp/app/webroot/
 ```
 
-See [Examples](Examples.md) for more info about how to setup different frameworks.
+To quickly find setup instructions for your framework of choice head over to **[Examples](Examples.md)**:
+
+> 1. [Introduction](Examples.md#1-introduction)
+> 2. [Setup CakePHP](Examples.md#2-setup-cakephp)
+> 3. [Setup Drupal](Examples.md#3-setup-drupal)
+> 4. [Setup Phalcon](Examples.md#4-setup-phalcon)
+> 5. [Setup Symfony](Examples.md#5-setup-symfony)
+> 6. [Setup Wordpress](Examples.md#6-setup-wordpress)
+> 7. [Setup Yii](Examples.md#7-setup-yii)
+> 8. [Setup Zend](Examples.md#8-setup-zend)
 
 
 ## 6. Enter the PHP Docker container
@@ -173,4 +197,4 @@ host> ./bash.sh
 devilbox@php-7.0.19 in /shared/httpd $
 ```
 
-See [Usage](Usage.md) for a detailed explanation.
+See **[Usage](Usage.md)** for a detailed explanation.
