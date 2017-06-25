@@ -19,12 +19,12 @@ Install |
 ## Install
 
 1. [Install Docker](#1-install-docker)
-  1. [Linux](#1-1-linux)
-  2. [Windows](#1-2-windows)
-  3. [OSX](#1-3-osx)
+    1. [Linux](#1-1-linux)
+    2. [Windows](#1-2-windows)
+    3. [OSX](#1-3-osx)
 2. [Install Devilbox](#2-install-devilbox)
-  1. [Latest git tag](#2-1-latest-git-tag)
-  2. [Current master branch](#2-2-current-master-branch)
+    1. [Latest git tag](#2-1-latest-git-tag)
+    2. [Current master branch](#2-2-current-master-branch)
 
 ---
 

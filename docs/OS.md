@@ -20,8 +20,8 @@ OS |
 
 1. [Linux](#1-linux)
 2. [Windows](#2-windows)
-  1. [/etc/hosts](#2-1-etc-hosts-)
-  1. [/etc/resolv.conf](#2-2-etc-resolv-conf-)
+    1. [/etc/hosts](#2-1-etc-hosts-)
+    1. [/etc/resolv.conf](#2-2-etc-resolv-conf-)
 3. [OSX](#3-osx)
 
 ---
