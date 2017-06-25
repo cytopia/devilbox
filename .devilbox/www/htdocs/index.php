@@ -411,16 +411,24 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 										<td><?php if (($version = loadClass('Php')->getComposerVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
 									</tr>
 									<tr>
+										<th>drupal-console</th>
+										<td><?php if (($version = loadClass('Php')->getDrushConsoleVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+									</tr>
+									<tr>
 										<th>drush</th>
 										<td><?php if (($version = loadClass('Php')->getDrushVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
 									</tr>
 									<tr>
-										<th>drush-console</th>
-										<td><?php if (($version = loadClass('Php')->getDrushConsoleVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
-									</tr>
-									<tr>
 										<th>git</th>
 										<td><?php if (($version = loadClass('Php')->getGitVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+									</tr>
+									<tr>
+										<th>Laravell installer</th>
+										<td><?php if (($version = loadClass('Php')->getLaravelVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+									</tr>
+									<tr>
+										<th>mysqldump-secure</th>
+										<td><?php if (($version = loadClass('Php')->getMdsVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
 									</tr>
 									<tr>
 										<th>node</th>
@@ -429,6 +437,18 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 									<tr>
 										<th>npm</th>
 										<td><?php if (($version = loadClass('Php')->getNpmVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+									</tr>
+									<tr>
+										<th>Phalcon devtools</th>
+										<td><?php if (($version = loadClass('Php')->getPhalconVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+									</tr>
+									<tr>
+										<th>Symfony installer</th>
+										<td><?php if (($version = loadClass('Php')->getSymfonyVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+									</tr>
+									<tr>
+										<th>Wordpress cli</th>
+										<td><?php if (($version = loadClass('Php')->getWpcliVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
 									</tr>
 								</tbody>
 							</table>

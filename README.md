@@ -197,6 +197,13 @@ The devilbox has everything setup for you. The only thing you will have to insta
 | [symfony installer](https://github.com/symfony/symfony-installer) | `symfony` |
 | [wp-cli](https://wp-cli.org)           | `wp` |
 
+Require additional tools? Have a look at [Hacking](docs/Hacking.md) for information about how to add your own tools or open up an issue with a new tool request.
+
+#### PHP Modules
+
+The devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks.
+
+*apc, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dom, ereg, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, magickwand, mbstring, mcrypt, memcache, memcached, mhash, mongodb, msgpack, mysql, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, soap, sockets, SPL, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib*
 
 ## Documentation
 

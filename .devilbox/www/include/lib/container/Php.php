@@ -52,8 +52,8 @@ class Php extends BaseClass implements BaseInterface
 	}
 	public function getDrushConsoleVersion()
 	{
-		$output = loadClass('Helper')->exec('drush-console --version', $output);
-		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
+		$output = loadClass('Helper')->exec('drupal --version | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"', $output);
+		return loadClass('Helper')->egrep('/[0-9.]+[-rc0-9.]*/', $output);
 	}
 	public function getNodeVersion()
 	{
@@ -65,6 +65,32 @@ class Php extends BaseClass implements BaseInterface
 		$output = loadClass('Helper')->exec('npm --version', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
+	public function getLaravelVersion()
+	{
+		$output = loadClass('Helper')->exec('laravel --version', $output);
+		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
+	}
+	public function getMdsVersion()
+	{
+		$output = loadClass('Helper')->exec('mysqldump-secure --version', $output);
+		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
+	}
+	public function getPhalconVersion()
+	{
+		$output = loadClass('Helper')->exec('phalcon --version', $output);
+		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
+	}
+	public function getSymfonyVersion()
+	{
+		$output = loadClass('Helper')->exec('symfony --version', $output);
+		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
+	}
+	public function getWpcliVersion()
+	{
+		$output = loadClass('Helper')->exec('wp --version', $output);
+		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
+	}
+
 
 
 	/*********************************************************************************
