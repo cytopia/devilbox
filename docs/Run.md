@@ -19,19 +19,19 @@ Run |
 ## Run
 
 1. [Start the devilbox](#1-start-the-devilbox)
-    1. [Foreground Start](#1-1-foreground-start)
-    2. [Background Start](#1-2-background-start)
-    3. [Selective Start](#1-3-selective-start)
+    1. [Foreground Start](#11-foreground-start)
+    2. [Background Start](#12-background-start)
+    3. [Selective Start](#13-selective-start)
 2. [Stop the devilbox](#2-stop-the-devilbox)
-    1. [Foreground Stop](#2-1-foreground-stop)
-    2. [Background Stop](#2-2-background-stop)
+    1. [Foreground Stop](#21-foreground-stop)
+    2. [Background Stop](#22-background-stop)
 3. [Attach/Detach during run-time](#3-attach-detach-during-run-time)
-    1. [Attach during run-time](#3-1-attach-during-run-time)
-    2. [Detach during run-time](#3-2-detach-during-run-time)
+    1. [Attach during run-time](#31-attach-during-run-time)
+    2. [Detach during run-time](#32-detach-during-run-time)
 4. [Docker logs](#4-docker-logs)
-    1. [All logs](#4-1-all-logs)
-    1. [Specific logs](#4-2-specific-logs)
-    1. [Tail logs](#4-3-tail-logs)
+    1. [All logs](#41-all-logs)
+    1. [Specific logs](#42-specific-logs)
+    1. [Tail logs](#43-tail-logs)
 
 
 ---

@@ -19,14 +19,14 @@ Hacking |
 ## Hacking
 
 1. [Rebuilding bundled Docker container](#1-rebuilding-bundled-docker-container)
-    1. [Why rebuild yourself?](#1-1-why-rebuild-yourself-)
-    2. [How to rebuild yourself?](#1-2-how-to-rebuild-yourself-)
-    3. [How to use the rebuild container?](#1-3-how-to-use-the-rebuild-container-)
+    1. [Why rebuild yourself?](#11-why-rebuild-yourself)
+    2. [How to rebuild yourself?](#12-how-to-rebuild-yourself)
+    3. [How to use the rebuild container?](#13-how-to-use-the-rebuild-container)
 2. [Customizing the bundled Docker container](#2-customizing-the-bundled-docker-container)
 3. [Adding your own Docker container](#3-adding-your-own-docker-container)
-    1. [What information will you need?](#3-1-what-information-will-you-need-)
-    2. [How to add your service?](#3-2-how-to-add-your-service-)
-    3. [How to start your service?](#3-3-how-to-start-your-service-)
+    1. [What information will you need?](#31-what-information-will-you-need)
+    2. [How to add your service?](#32-how-to-add-your-service)
+    3. [How to start your service?](#33-how-to-start-your-service)
 
 ---
 
