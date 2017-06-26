@@ -20,8 +20,8 @@ Technical |
 
 1. [Networking](#1-networking)
 2. [Ports and forwarding](#2-ports-and-forwarding)
-    1. [PHP Container](#2-1-php-container)
-    2. [Docker Host](#2-2-docker-host)
+    1. [PHP Container](#21-php-container)
+    2. [Docker Host](#22-docker-host)
 3. [Works the same on Host and PHP Container](#3-works-the-same-on-host-and-php-container)
 
 ---
