@@ -31,8 +31,8 @@ services:
   # Bind (DNS Server)
   # ----------------------------------------
   bind:
-    #image: cytopia/bind:latest
-    image: cytopia/bind:0.10
+    image: cytopia/bind:latest
+    #image: cytopia/bind:0.10
     restart: always
     ports:
       # [local-machine:]local-port:docker-port
@@ -64,8 +64,8 @@ services:
   # PHP-FPM
   # ----------------------------------------
   php:
-    #image: cytopia/${PHP_SERVER:-php-fpm-7.0}:latest
-    image: cytopia/${PHP_SERVER:-php-fpm-7.0}:0.11
+    image: cytopia/${PHP_SERVER:-php-fpm-7.0}:latest
+    #image: cytopia/${PHP_SERVER:-php-fpm-7.0}:0.11
     restart: always
 
     # Manually build via `docker-compose build`
@@ -192,8 +192,8 @@ services:
   # HTTPD
   # ----------------------------------------
   httpd:
-    #image: cytopia/${HTTPD_SERVER:-nginx-stable}:latest
-    image: cytopia/${HTTPD_SERVER:-nginx-stable}:0.9
+    image: cytopia/${HTTPD_SERVER:-nginx-stable}:latest
+    #image: cytopia/${HTTPD_SERVER:-nginx-stable}:0.9
     restart: always
 
     # Manually build via `docker-compose build`
@@ -270,8 +270,8 @@ services:
   # DATABASE
   # ----------------------------------------
   mysql:
-    #image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
-    image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:0.9
+    image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
+    #image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:0.9
 
     # Manually build via `docker-compose build`
     #build:
