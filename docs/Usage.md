@@ -145,6 +145,7 @@ The complete list of tools including their version can be found at the PHP docke
 [PHP 5.6](https://github.com/cytopia/docker-php-fpm-5.6) |
 [PHP 7.0](https://github.com/cytopia/docker-php-fpm-7.0) |
 [PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
+[PHP 7.2](https://github.com/cytopia/docker-php-fpm-7.2) |
 [HHVM](https://github.com/cytopia/docker-hhvm-latest)
 
 If you permanently require additional software refer to [Hacking](Hacking.md).

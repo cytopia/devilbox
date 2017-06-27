@@ -114,7 +114,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="MariaDB 10.2"     href="https://github.com/cytopia/docker-mariadb-10.2">10.2</a></td>
       <td><a target="_blank" title="PgSQL 9.4"        href="https://github.com/docker-library/postgres">9.4</a></td>
       <td></td>
-      <td>...</td>
+      <td><a target="_blank" title="Memcached 1.4.23" href="https://github.com/docker-library/memcached">1.4.24</a></td>
       <td><a target="_blank" title="MongoDB 3.4"      href="https://github.com/docker-library/mongo">3.4</a></td>
     </tr>
     <tr>
@@ -125,8 +125,19 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="MariaDB 10.3"     href="https://github.com/cytopia/docker-mariadb-10.3">10.3</a></td>
       <td><a target="_blank" title="PgSQL 9.5"        href="https://github.com/docker-library/postgres">9.5</a></td>
       <td></td>
-      <td><a target="_blank" title="Memcached 1.4.36" href="https://github.com/docker-library/memcached">1.4.36</a></td>
+      <td>...</td>
       <td><a target="_blank" title="MongoDB 3.5"      href="https://github.com/docker-library/mongo">3.5</a></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><a target="_blank" title="PHP 7.2"          href="https://github.com/cytopia/docker-php-fpm-7.2">7.2</a></td>
+      <td></td>
+      <td></td>
+      <td><a target="_blank" title="PgSQL 9.6"        href="https://github.com/docker-library/postgres">9.6</a></td>
+      <td></td>
+      <td><a target="_blank" title="Memcached latest" href="https://github.com/docker-library/memcached">1.4.36</a></td>
+      <td></td>
     </tr>
     <tr>
       <td></td>
@@ -134,7 +145,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="HHVM"             href="https://github.com/cytopia/docker-hhvm-latest">HHVM</a></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PgSQL 9.6"        href="https://github.com/docker-library/postgres">9.6</a></td>
+      <td></td>
       <td></td>
       <td><a target="_blank" title="Memcached latest" href="https://github.com/docker-library/memcached">latest</a></td>
       <td></td>
@@ -339,6 +350,7 @@ In order to make sure every combination works with each other, the devilbox inte
 |     | [![Build Status](https://travis-ci.org/cytopia/docker-nginx-stable.svg?branch=master)](https://travis-ci.org/cytopia/docker-nginx-stable) [Nginx stable](https://github.com/cytopia/docker-nginx-stable) | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-5.6.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-5.6) [PHP 5.6](https://github.com/cytopia/docker-php-fpm-5.6) |
 |     | [![Build Status](https://travis-ci.org/cytopia/docker-nginx-mainline.svg?branch=master)](https://travis-ci.org/cytopia/docker-nginx-mainline) [Nginx mainline](https://github.com/cytopia/docker-nginx-mainline) | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-7.0.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-7.0) [PHP 7.0](https://github.com/cytopia/docker-php-fpm-7.0) |
 |     | | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-7.1.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-7.1) [PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
+|     | | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-7.2.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-7.2) [PHP 7.2](https://github.com/cytopia/docker-php-fpm-7.2)
 |     | | [![Build Status](https://travis-ci.org/cytopia/docker-hhvm-latest.svg?branch=master)](https://travis-ci.org/cytopia/docker-hhvm-latest) [HHVM latest](https://github.com/cytopia/docker-hhvm-latest)
 
 #### SQL stack (optional)
