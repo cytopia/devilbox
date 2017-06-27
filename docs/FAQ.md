@@ -64,6 +64,7 @@ There will however be slight differences between the versions and especially wit
 [PHP 5.6](https://github.com/cytopia/docker-php-fpm-5.6) |
 [PHP 7.0](https://github.com/cytopia/docker-php-fpm-7.0) |
 [PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
+[PHP 7.2](https://github.com/cytopia/docker-php-fpm-7.2) |
 [HHVM](https://github.com/cytopia/docker-hhvm-latest)
 
 **Can I add other PHP Modules?**

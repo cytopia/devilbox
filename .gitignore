@@ -38,6 +38,7 @@
 /cfg/php-fpm-5.6/*.ini
 /cfg/php-fpm-7.0/*.ini
 /cfg/php-fpm-7.1/*.ini
+/cfg/php-fpm-7.2/*.ini
 /cfg/hhvm-latest/*.ini
 
 
