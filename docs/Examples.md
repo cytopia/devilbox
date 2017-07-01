@@ -186,7 +186,7 @@ It will be ready in six simple steps:
 3. Install Laravel via `laravel`
 4. Symlink public directory
 5. Setup DNS record
-6. Visit http://my-phalcon.local in your browser
+6. Visit http://my-laravel.local in your browser
 
 ```shell
 # 1. Enter the PHP container
