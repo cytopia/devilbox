@@ -21,11 +21,12 @@ Examples |
 1. [Introduction](#1-introduction)
 2. [Setup CakePHP](#2-setup-cakephp)
 3. [Setup Drupal](#3-setup-drupal)
-4. [Setup Phalcon](#4-setup-phalcon)
-5. [Setup Symfony](#5-setup-symfony)
-6. [Setup Wordpress](#6-setup-wordpress)
-7. [Setup Yii](#7-setup-yii)
-8. [Setup Zend](#8-setup-zend)
+4. [Setup Laravel](#4-setup-laravel)
+5. [Setup Phalcon](#5-setup-phalcon)
+6. [Setup Symfony](#6-setup-symfony)
+7. [Setup Wordpress](#7-setup-wordpress)
+8. [Setup Yii](#8-setup-yii)
+9. [Setup Zend](#9-setup-zend)
 
 ---
 
@@ -46,6 +47,8 @@ The devilbox provides popular tools for setting up and managing major frameworks
 
 
 ## 2. Setup CakePHP
+
+> **[Official CakePHP Documentation](https://book.cakephp.org/3.0/en/installation.html)**
 
 The following configuration will be used:
 
@@ -117,10 +120,10 @@ If you do not have auto-DNS configured, you will need to add the following line 
 
 All set now, you can visit http://my-cake.local in your browser.
 
-If you want to dig deeper into installing CakePHP, visit their documentation [https://book.cakephp.org/3.0/en/installation.html](https://book.cakephp.org/3.0/en/installation.html).
-
 
 ## 3. Setup Drupal
+
+> **[Official Drupal Documentation](https://www.drupal.org/docs/7/install)**
 
 The following configuration will be used:
 
@@ -166,7 +169,55 @@ Open your browser at http://my-drupal.local and follow the Drupal installation s
 **Note:** For MySQL host choose `127.0.0.1`.
 
 
-## 4. Setup Phalcon
+## 4. Setup Laravel
+
+> **[Official Laravel Documentation](https://laravel.com/docs/5.4/installation)**
+
+The following configuration will be used:
+
+| Project name | VirtualHost directory | Database   | TLD_SUFFIX | Url |
+|--------------|-----------------------|------------|------------|-----|
+| my-laravel   | /shared/httpd/my-laravel | -       | local      | http://my-laravel.local |
+
+It will be ready in six simple steps:
+
+1. Enter the PHP container
+2. Create a new VirtualHost directory
+3. Install Laravel via `laravel`
+4. Symlink public directory
+5. Setup DNS record
+6. Visit http://my-phalcon.local in your browser
+
+```shell
+# 1. Enter the PHP container
+host> ./bash.sh
+
+# 2. Create a new VirtualHost directory
+devilbox@php-7.0.20 in /shared/httpd $ mkdir my-laravel
+
+# 3. Install Laravel via laravel
+devilbox@php-7.0.20 in /shared/httpd $ cd my-laravel
+devilbox@php-7.0.20 in /shared/httpd $ laravel new laravel-project
+
+# 4. Symlink public directory
+devilbox@php-7.0.20 in /shared/httpd $ ln -s laravel-project/public htdocs
+```
+
+**5. DNS record**
+
+If you do not have auto-DNS configured, you will need to add the following line to your Host computer's `/etc/hosts`:
+```shell
+127.0.0.1 my-laravel.local
+```
+
+**6. Open your browser**
+
+Open your browser at http://my-laravel.local
+
+
+## 5. Setup Phalcon
+
+> **[Official Phalcon Documentation](https://docs.phalconphp.com/en/3.2/devtools-usage)**
 
 The following configuration will be used:
 
@@ -205,12 +256,14 @@ If you do not have auto-DNS configured, you will need to add the following line 
 127.0.0.1 my-phalcon.local
 ```
 
-**7. Open your browser**
+**6. Open your browser**
 
 Open your browser at http://my-phalcon.local
 
 
-## 5. Setup Symfony
+## 6. Setup Symfony
+
+> **[Official Symfony Documentation](https://symfony.com/doc/current/setup.html)**
 
 The following configuration will be used:
 
@@ -259,7 +312,9 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-symfony.local
 
 
-## 6. Setup Wordpress
+## 7. Setup Wordpress
+
+> **[Official Wordpress Documentation](https://codex.wordpress.org/Installing_WordPress)**
 
 The following configuration will be used:
 
@@ -303,7 +358,9 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-wp.local
 
 
-## 7. Setup Yii
+## 8. Setup Yii
+
+> **[Official Yii Documentation](http://www.yiiframework.com/doc-2.0/guide-start-installation.html)**
 
 The following configuration will be used:
 
@@ -347,7 +404,9 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-yii.local
 
 
-## 8. Setup Zend
+## 9. Setup Zend
+
+> **[Official Zend Documentation](https://docs.zendframework.com/tutorials/getting-started/skeleton-application/)**
 
 The following configuration will be used:
 
@@ -386,6 +445,6 @@ If you do not have auto-DNS configured, you will need to add the following line 
 127.0.0.1 my-zend.local
 ```
 
-**7. Open your browser**
+**6. Open your browser**
 
 Open your browser at http://my-zend.local
