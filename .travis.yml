@@ -131,6 +131,31 @@ env:
   - S1=PHP V1=php-fpm-7.1 S2=MYSQL V2=mariadb-10.3
   - S1=PHP V1=php-fpm-7.2 S2=MYSQL V2=mariadb-10.3
   - S1=PHP V1=hhvm-latest S2=MYSQL V2=mariadb-10.3
+  # PHP vs PerconaDB 5.5
+  - S1=PHP V1=php-fpm-5.4 S2=MYSQL V2=percona-5.5
+  - S1=PHP V1=php-fpm-5.5 S2=MYSQL V2=percona-5.5
+  - S1=PHP V1=php-fpm-5.6 S2=MYSQL V2=percona-5.5
+  - S1=PHP V1=php-fpm-7.0 S2=MYSQL V2=percona-5.5
+  - S1=PHP V1=php-fpm-7.1 S2=MYSQL V2=percona-5.5
+  - S1=PHP V1=php-fpm-7.2 S2=MYSQL V2=percona-5.5
+  - S1=PHP V1=hhvm-latest S2=MYSQL V2=percona-5.5
+  # PHP vs PerconaDB 5.6
+  - S1=PHP V1=php-fpm-5.4 S2=MYSQL V2=percona-5.6
+  - S1=PHP V1=php-fpm-5.5 S2=MYSQL V2=percona-5.6
+  - S1=PHP V1=php-fpm-5.6 S2=MYSQL V2=percona-5.6
+  - S1=PHP V1=php-fpm-7.0 S2=MYSQL V2=percona-5.6
+  - S1=PHP V1=php-fpm-7.1 S2=MYSQL V2=percona-5.6
+  - S1=PHP V1=php-fpm-7.2 S2=MYSQL V2=percona-5.6
+  - S1=PHP V1=hhvm-latest S2=MYSQL V2=percona-5.6
+  # PHP vs PerconaDB 5.7
+  - S1=PHP V1=php-fpm-5.4 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=php-fpm-5.5 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=php-fpm-5.6 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=php-fpm-7.0 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=php-fpm-7.1 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=php-fpm-7.2 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=hhvm-latest S2=MYSQL V2=percona-5.7
+
 
   ###
   ### PHP vs PostgreSQL
