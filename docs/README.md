@@ -159,7 +159,7 @@ Have a look at youtube to see some the features in action.
 
 The devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks.
 
-*apc, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dom, ereg, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, magickwand, mbstring, mcrypt, memcache, memcached, mhash, mongodb, msgpack, mysql, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, soap, sockets, SPL, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib*
+> *apc, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dom, ereg, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, magickwand, mbstring, mcrypt, memcache, memcached, mhash, mongodb, msgpack, mysql, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, soap, sockets, SPL, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib*
 
 There will however be slight differences between the versions and especially with HHVM. To see the exact bundled modules for each version visit the corresponding docker repositories on Github:
 
@@ -176,10 +176,13 @@ There will however be slight differences between the versions and especially wit
 
 As far as tested there are no limitations and you can use any Framework or CMS just as you would on your live environment. Below are a few examples of extensively tested Frameworks and CMS:
 
-![CakePHP](img/logos/cake.png)
-![Drupal](img/logos/drupal.png)
-![Phalcon](img/logos/phalcon.png)
-![Wordpress](img/logos/wordpress.png)
-![Yii](img/logos/yii.png)
+[![CakePHP](img/logos/cake.png)](https://cakephp.org)
+[![Drupal](img/logos/drupal.png)](https://www.drupal.org)
+[![Laravel](img/logos/laravel.png)](https://laravel.com)
+[![Phalcon](img/logos/phalcon.png)](https://phalconphp.com)
+[![Symfony](img/logos/symfony.png)](https://symfony.com)
+[![Wordpress](img/logos/wordpress.png)](https://wordpress.org)
+[![Yii](img/logos/yii.png)](http://www.yiiframework.com)
+[![Zend](img/logos/zend.png)](https://framework.zend.com)
 
-Have a look at [Examples](Examples.md) for how to set them up.
+Have a look at **[Examples](Examples.md)** for how to set them up on the devilbox.
