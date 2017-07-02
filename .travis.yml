@@ -131,6 +131,31 @@ env:
   - S1=PHP V1=php-fpm-7.1 S2=MYSQL V2=mariadb-10.3
   - S1=PHP V1=php-fpm-7.2 S2=MYSQL V2=mariadb-10.3
   - S1=PHP V1=hhvm-latest S2=MYSQL V2=mariadb-10.3
+  # PHP vs PerconaDB 5.5
+  - S1=PHP V1=php-fpm-5.4 S2=MYSQL V2=percona-5.5
+  - S1=PHP V1=php-fpm-5.5 S2=MYSQL V2=percona-5.5
+  - S1=PHP V1=php-fpm-5.6 S2=MYSQL V2=percona-5.5
+  - S1=PHP V1=php-fpm-7.0 S2=MYSQL V2=percona-5.5
+  - S1=PHP V1=php-fpm-7.1 S2=MYSQL V2=percona-5.5
+  - S1=PHP V1=php-fpm-7.2 S2=MYSQL V2=percona-5.5
+  - S1=PHP V1=hhvm-latest S2=MYSQL V2=percona-5.5
+  # PHP vs PerconaDB 5.6
+  - S1=PHP V1=php-fpm-5.4 S2=MYSQL V2=percona-5.6
+  - S1=PHP V1=php-fpm-5.5 S2=MYSQL V2=percona-5.6
+  - S1=PHP V1=php-fpm-5.6 S2=MYSQL V2=percona-5.6
+  - S1=PHP V1=php-fpm-7.0 S2=MYSQL V2=percona-5.6
+  - S1=PHP V1=php-fpm-7.1 S2=MYSQL V2=percona-5.6
+  - S1=PHP V1=php-fpm-7.2 S2=MYSQL V2=percona-5.6
+  - S1=PHP V1=hhvm-latest S2=MYSQL V2=percona-5.6
+  # PHP vs PerconaDB 5.7
+  - S1=PHP V1=php-fpm-5.4 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=php-fpm-5.5 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=php-fpm-5.6 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=php-fpm-7.0 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=php-fpm-7.1 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=php-fpm-7.2 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=hhvm-latest S2=MYSQL V2=percona-5.7
+
 
   ###
   ### PHP vs PostgreSQL
@@ -193,7 +218,7 @@ before_install:
   - max=100; i=0; while [ $i -lt $max ]; do if sudo apt-get update; then break; else i=$((i+1)); fi done
   - max=100; i=0; while [ $i -lt $max ]; do if sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce; then break; else i=$((i+1)); fi done
   # Get newer docker-compose version
-  - curl -L --retry 100 --retry-max-time 0 https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - max=100; i=0; while [ $i -lt $max ]; do if curl -L --retry 100 --retry-max-time 0 https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > docker-compose; then break; else i=$((i+1)); fi done
   - chmod +x docker-compose
   - sudo mv -f docker-compose /usr/local/bin
   # List versions

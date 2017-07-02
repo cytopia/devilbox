@@ -120,6 +120,9 @@ cfg/
   mysql-5.6/
   mysql-5.7/
   mysql-8.0/
+  percona-5.5/
+  percona-5.6/
+  percona-5.7/
   php-fpm-5.4/
   php-fpm-5.5/
   php-fpm-5.6/
@@ -431,6 +434,9 @@ drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.5/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.6/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.7/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-8.0/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.5/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.6/
+drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.7/
 ```
 
 ##### 4.4.6 my.cnf
@@ -447,6 +453,9 @@ drwxrwxr-x 2 cytopia 4096 Jun 13 13:18 mysql-5.5/
 drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 mysql-5.6/
 drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 mysql-5.7/
 drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 mysql-8.0/
+drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 percona-5.5/
+drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 percona-5.6/
+drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 percona-5.7/
 ```
 
 Each of the above folders will hold an example configuration file named `devilbox-custom.cnf-example` which shows some example settings but will **not have** any effect yet. Only files ending by **`.cnf`** will be sourced and applied, so you must copy it (or create a new file) to something that ends by `*.cnf`.

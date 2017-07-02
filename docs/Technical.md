@@ -32,16 +32,16 @@ It is best to use the hostnames and not to rely on the ip addresses as they migh
 
 > E.g.: When you want to setup a MySQL database connection use `mysql` or `127.0.0.1` as the hostname.
 
-| Container       | Container name  | Hostname  | IP Address     |
-|-----------------|-----------------|-----------|----------------|
-| DNS             | bind            | bind      | 172.16.238.100 |
-| PHP / HHVM      | php             | php       | 172.16.238.10  |
-| Apache / Nginx  | http            | http      | 172.16.238.11  |
-| MySQL / MariaDB | mysql           | mysql     | 172.16.238.12  |
-| PostgreSQL      | pgsql           | pgsql     | 172.16.238.13  |
-| Redis           | redis           | redis     | 172.16.238.14  |
-| Memcached       | memcd           | memcd     | 172.16.238.15  |
-| MongoDB         | mongo           | mongo     | 172.16.238.16  |
+| Container                   | Container name  | Hostname  | IP Address     |
+|-----------------------------|-----------------|-----------|----------------|
+| DNS                         | bind            | bind      | 172.16.238.100 |
+| PHP / HHVM                  | php             | php       | 172.16.238.10  |
+| Apache / Nginx              | http            | http      | 172.16.238.11  |
+| MySQL / MariaDB / PerconaDB | mysql           | mysql     | 172.16.238.12  |
+| PostgreSQL                  | pgsql           | pgsql     | 172.16.238.13  |
+| Redis                       | redis           | redis     | 172.16.238.14  |
+| Memcached                   | memcd           | memcd     | 172.16.238.15  |
+| MongoDB                     | mongo           | mongo     | 172.16.238.16  |
 
 
 ## 2. Ports and forwarding
@@ -63,16 +63,16 @@ The PHP container is using [socat](https://linux.die.net/man/1/socat) to
 
 The following container can be reached from within the PHP container via the following methods:
 
-| Container       | Hostname  | IP Address     | IP Address | Port  |
-|-----------------|-----------|----------------|------------|-------|
-| DNS             | bind      | 172.16.238.100 | -          |    53 |
-| PHP / HHVM      | php       | 172.16.238.10  | -          |  9000 |
-| Apache / Nginx  | http      | 172.16.238.11  | -          |    80 |
-| MySQL / MariaDB | mysql     | 172.16.238.12  | 127.0.0.1  |  3306 |
-| PostgreSQL      | pgsql     | 172.16.238.13  | 127.0.0.1  |  5432 |
-| Redis           | redis     | 172.16.238.14  | 127.0.0.1  |  6379 |
-| Memcached       | memcd     | 172.16.238.15  | 127.0.0.1  | 11211 |
-| MongoDB         | mongo     | 172.16.238.16  | 127.0.0.1  | 27017 |
+| Container                   | Hostname  | IP Address     | IP Address | Port  |
+|-----------------------------|-----------|----------------|------------|-------|
+| DNS                         | bind      | 172.16.238.100 | -          |    53 |
+| PHP / HHVM                  | php       | 172.16.238.10  | -          |  9000 |
+| Apache / Nginx              | http      | 172.16.238.11  | -          |    80 |
+| MySQL / MariaDB / PerconaDB | mysql     | 172.16.238.12  | 127.0.0.1  |  3306 |
+| PostgreSQL                  | pgsql     | 172.16.238.13  | 127.0.0.1  |  5432 |
+| Redis                       | redis     | 172.16.238.14  | 127.0.0.1  |  6379 |
+| Memcached                   | memcd     | 172.16.238.15  | 127.0.0.1  | 11211 |
+| MongoDB                     | mongo     | 172.16.238.16  | 127.0.0.1  | 27017 |
 
 #### 2.2 Docker Host
 
@@ -86,16 +86,16 @@ The docker host (your computer) does exactly the same as the `php` container.
 
 The following container can be reached from the Docker host via the following methods:
 
-| Container       | IP Address | Port  |
-|-----------------|------------|-------|
-| DNS             | 127.0.0.1  |  1053 |
-| PHP / HHVM      | -          |  9000 |
-| Apache / Nginx  | 127.0.0.1  |    80 |
-| MySQL / MariaDB | 127.0.0.1  |  3306 |
-| PostgreSQL      | 127.0.0.1  |  5432 |
-| Redis           | 127.0.0.1  |  6379 |
-| Memcached       | 127.0.0.1  | 11211 |
-| MongoDB         | 127.0.0.1  | 27017 |
+| Container                   | IP Address | Port  |
+|-----------------------------|------------|-------|
+| DNS                         | 127.0.0.1  |  1053 |
+| PHP / HHVM                  | -          |  9000 |
+| Apache / Nginx              | 127.0.0.1  |    80 |
+| MySQL / MariaDB / PerconaDB | 127.0.0.1  |  3306 |
+| PostgreSQL                  | 127.0.0.1  |  5432 |
+| Redis                       | 127.0.0.1  |  6379 |
+| Memcached                   | 127.0.0.1  | 11211 |
+| MongoDB                     | 127.0.0.1  | 27017 |
 
 
 ## 3. Works the same on Host and PHP Container

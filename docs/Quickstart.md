@@ -181,11 +181,12 @@ To quickly find setup instructions for your framework of choice head over to **[
 > 1. [Introduction](Examples.md#1-introduction)
 > 2. [Setup CakePHP](Examples.md#2-setup-cakephp)
 > 3. [Setup Drupal](Examples.md#3-setup-drupal)
-> 4. [Setup Phalcon](Examples.md#4-setup-phalcon)
-> 5. [Setup Symfony](Examples.md#5-setup-symfony)
-> 6. [Setup Wordpress](Examples.md#6-setup-wordpress)
-> 7. [Setup Yii](Examples.md#7-setup-yii)
-> 8. [Setup Zend](Examples.md#8-setup-zend)
+> 4. [Setup Laravel](Examples.md#4-setup-laravel)
+> 5. [Setup Phalcon](Examples.md#5-setup-phalcon)
+> 6. [Setup Symfony](Examples.md#6-setup-symfony)
+> 7. [Setup Wordpress](Examples.md#7-setup-wordpress)
+> 8. [Setup Yii](Examples.md#8-setup-yii)
+> 9. [Setup Zend](Examples.md#9-setup-zend)
 
 
 ## 6. Enter the PHP Docker container
