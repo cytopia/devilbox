@@ -185,7 +185,7 @@ The devilbox has everything setup for you. The only thing you will have to insta
 #### Features
 
 * **Mass virtual host**
-* **Custom domains** (`*.loc`, `*.local`, `*.dev`, ...)
+* **Custom domains** (`*.loc`, `*.local`, `*.dev`, `*.sub.loc`, ...)
 * **Auto-DNS** (Internal Bind server running)
 * **Email catch-all** (Internal postfix with catch-all)
 * **Log files** (available on host computer)

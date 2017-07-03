@@ -126,16 +126,16 @@ The heart of the devilbox is the easy configuration of an unlimitted numbder of 
 **Assumption:**
 
 1. HOST_PATH_TO_HTTPD_DATADIR=**./data/www**
-2. TLD_SUFFIX=**local**
+2. TLD_SUFFIX=**loc**
 3. Three Projects: project1, project2 and wordpress
 
 **Folder setup on your Host system:**
 
 | VirtualHost directory | DocumentRoot directory      | URL                    |
 |-----------------------|-----------------------------|------------------------|
-| <code>./data/www/<b>project1</b></code> | <code>./data/www/project1/<b>htdocs</b></code> | `http://project1.local`  |
-| <code>./data/www/<b>project2</b></code> | <code>./data/www/project2/<b>htdocs</b></code>  | `http://project2.local`  |
-| <code>./data/www/<b>wordpress</b></code>| <code>./data/www/wordpress/<b>htdocs</b></code> | `http://wordpress.local` |
+| <code>./data/www/<b>project1</b></code> | <code>./data/www/project1/<b>htdocs</b></code> | `http://project1.loc`  |
+| <code>./data/www/<b>project2</b></code> | <code>./data/www/project2/<b>htdocs</b></code>  | `http://project2.loc`  |
+| <code>./data/www/<b>wordpress</b></code>| <code>./data/www/wordpress/<b>htdocs</b></code> | `http://wordpress.loc` |
 
 Each VirtualHost will serve files from the **htdocs/** folder.
 
@@ -143,9 +143,9 @@ Each VirtualHost will serve files from the **htdocs/** folder.
 
 | Project folder | `/etc/hosts` entry         |
 |----------------|----------------------------|
-| project1       | `127.0.0.1 project1.local` |
-| project2       | `127.0.0.1 project2.local` |
-| wordpress      | `127.0.0.1 wordpress.local`|
+| project1       | `127.0.0.1 project1.loc` |
+| project2       | `127.0.0.1 project2.loc` |
+| wordpress      | `127.0.0.1 wordpress.loc`|
 
 Some frameworks have a nested www directory and require you to use a symlink instead of explicitly setting a **htdocs/** folder. See the CakePHP folder setup below:
 
