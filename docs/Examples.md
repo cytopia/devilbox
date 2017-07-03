@@ -54,7 +54,7 @@ The following configuration will be used:
 
 | Project name | VirtualHost directory | Database   | TLD_SUFFIX | Url |
 |--------------|-----------------------|------------|------------|-----|
-| my-cake      | /shared/httpd/my-cake | my_cake    | local      | http://my-cake.local |
+| my-cake      | /shared/httpd/my-cake | my_cake    | loc        | http://my-cake.loc |
 
 It will be ready in eight simple steps:
 
@@ -65,7 +65,7 @@ It will be ready in eight simple steps:
 5. Add MySQL database
 6. Configure datbase connection
 7. Setup DNS record
-8. Visit http://my-cake.local in your browser
+8. Visit http://my-cake.loc in your browser
 
 ```shell
 # 1. Enter the PHP container
@@ -113,12 +113,12 @@ devilbox@php-7.0.20 in /shared/httpd $ vi cakephp/config/app.php
 
 If you do not have auto-DNS configured, you will need to add the following line to your Host computer's `/etc/hosts`:
 ```shell
-127.0.0.1 my-cake.local
+127.0.0.1 my-cake.loc
 ```
 
 **8. Open your browser**
 
-All set now, you can visit http://my-cake.local in your browser.
+All set now, you can visit http://my-cake.loc in your browser.
 
 
 ## 3. Setup Drupal
@@ -129,7 +129,7 @@ The following configuration will be used:
 
 | Project name | VirtualHost directory | Database   | TLD_SUFFIX | Url |
 |--------------|-----------------------|------------|------------|-----|
-| my-drupal    | /shared/httpd/my-drupal | my_drupal| local      | http://my-drupal.local |
+| my-drupal    | /shared/httpd/my-drupal | my_drupal| loc        | http://my-drupal.loc |
 
 It will be ready in six simple steps:
 
@@ -138,7 +138,7 @@ It will be ready in six simple steps:
 3. Install Drupal via `drush`
 4. Symlink Drupal directory
 5. Setup DNS record
-6. Visit http://my-drupal.local in your browser and follow instructions
+6. Visit http://my-drupal.loc in your browser and follow instructions
 
 ```shell
 # 1. Enter the PHP container
@@ -159,12 +159,12 @@ devilbox@php-7.0.20 in /shared/httpd $ ln -s drupal-8.3.3 htdocs
 
 If you do not have auto-DNS configured, you will need to add the following line to your Host computer's `/etc/hosts`:
 ```shell
-127.0.0.1 my-drupal.local
+127.0.0.1 my-drupal.loc
 ```
 
 **6. Open your browser**
 
-Open your browser at http://my-drupal.local and follow the Drupal installation steps.
+Open your browser at http://my-drupal.loc and follow the Drupal installation steps.
 
 **Note:** For MySQL host choose `127.0.0.1`.
 
@@ -177,7 +177,7 @@ The following configuration will be used:
 
 | Project name | VirtualHost directory | Database   | TLD_SUFFIX | Url |
 |--------------|-----------------------|------------|------------|-----|
-| my-laravel   | /shared/httpd/my-laravel | -       | local      | http://my-laravel.local |
+| my-laravel   | /shared/httpd/my-laravel | -       | loc        | http://my-laravel.loc |
 
 It will be ready in six simple steps:
 
@@ -186,7 +186,7 @@ It will be ready in six simple steps:
 3. Install Laravel via `laravel`
 4. Symlink public directory
 5. Setup DNS record
-6. Visit http://my-laravel.local in your browser
+6. Visit http://my-laravel.loc in your browser
 
 ```shell
 # 1. Enter the PHP container
@@ -207,12 +207,12 @@ devilbox@php-7.0.20 in /shared/httpd $ ln -s laravel-project/public htdocs
 
 If you do not have auto-DNS configured, you will need to add the following line to your Host computer's `/etc/hosts`:
 ```shell
-127.0.0.1 my-laravel.local
+127.0.0.1 my-laravel.loc
 ```
 
 **6. Open your browser**
 
-Open your browser at http://my-laravel.local
+Open your browser at http://my-laravel.loc
 
 
 ## 5. Setup Phalcon
@@ -223,7 +223,7 @@ The following configuration will be used:
 
 | Project name | VirtualHost directory | Database   | TLD_SUFFIX | Url |
 |--------------|-----------------------|------------|------------|-----|
-| my-phalcon   | /shared/httpd/my-phalcon | -       | local      | http://my-phalcon.local |
+| my-phalcon   | /shared/httpd/my-phalcon | -       | loc        | http://my-phalcon.loc |
 
 It will be ready in six simple steps:
 
@@ -232,7 +232,7 @@ It will be ready in six simple steps:
 3. Install Phalcon via `phalcon`
 4. Symlink public directory
 5. Setup DNS record
-6. Visit http://my-phalcon.local in your browser
+6. Visit http://my-phalcon.loc in your browser
 
 ```shell
 # 1. Enter the PHP container
@@ -253,12 +253,12 @@ devilbox@php-7.0.20 in /shared/httpd $ ln -s phalconphp/public htdocs
 
 If you do not have auto-DNS configured, you will need to add the following line to your Host computer's `/etc/hosts`:
 ```shell
-127.0.0.1 my-phalcon.local
+127.0.0.1 my-phalcon.loc
 ```
 
 **6. Open your browser**
 
-Open your browser at http://my-phalcon.local
+Open your browser at http://my-phalcon.loc
 
 
 ## 6. Setup Symfony
@@ -269,7 +269,7 @@ The following configuration will be used:
 
 | Project name | VirtualHost directory | Database   | TLD_SUFFIX | Url |
 |--------------|-----------------------|------------|------------|-----|
-| my-symfony   | /shared/httpd/my-symfony | -       | local      | http://my-symfony.local |
+| my-symfony   | /shared/httpd/my-symfony | -       | loc        | http://my-symfony.loc |
 
 It will be ready in six simple steps:
 
@@ -279,7 +279,7 @@ It will be ready in six simple steps:
 4. Symlink web directory
 5. Enable Symfony prod (app.php)
 6. Setup DNS record
-7. Visit http://my-symfony.local in your browser
+7. Visit http://my-symfony.loc in your browser
 
 ```shell
 # 1. Enter the PHP container
@@ -304,12 +304,12 @@ devilbox@php-7.0.20 in /shared/httpd $ ln -s app.php index.php
 
 If you do not have auto-DNS configured, you will need to add the following line to your Host computer's `/etc/hosts`:
 ```shell
-127.0.0.1 my-symfony.local
+127.0.0.1 my-symfony.loc
 ```
 
 **7. Open your browser**
 
-Open your browser at http://my-symfony.local
+Open your browser at http://my-symfony.loc
 
 
 ## 7. Setup Wordpress
@@ -320,7 +320,7 @@ The following configuration will be used:
 
 | Project name | VirtualHost directory | Database   | TLD_SUFFIX | Url |
 |--------------|-----------------------|------------|------------|-----|
-| my-wp        | /shared/httpd/my-wp   | my_wp      | local      | http://my-wp.local |
+| my-wp        | /shared/httpd/my-wp   | my_wp      | loc        | http://my-wp.loc |
 
 It will be ready in six simple steps:
 
@@ -329,7 +329,7 @@ It will be ready in six simple steps:
 3. Download Wordpress via `git`
 4. Symlink wordpress git directory
 5. Setup DNS record
-6. Visit http://my-wp.local in your browser
+6. Visit http://my-wp.loc in your browser
 
 ```shell
 # 1. Enter the PHP container
@@ -350,12 +350,12 @@ devilbox@php-7.0.20 in /shared/httpd $ ln -s wordpress.git htdocs
 
 If you do not have auto-DNS configured, you will need to add the following line to your Host computer's `/etc/hosts`:
 ```shell
-127.0.0.1 my-wp.local
+127.0.0.1 my-wp.loc
 ```
 
 **6. Open your browser**
 
-Open your browser at http://my-wp.local
+Open your browser at http://my-wp.loc
 
 
 ## 8. Setup Yii
@@ -366,7 +366,7 @@ The following configuration will be used:
 
 | Project name | VirtualHost directory | Database   | TLD_SUFFIX | Url |
 |--------------|-----------------------|------------|------------|-----|
-| my-yii       | /shared/httpd/my-yii  | -          | local      | http://my-yii.local |
+| my-yii       | /shared/httpd/my-yii  | -          | loc        | http://my-yii.loc |
 
 It will be ready in six simple steps:
 
@@ -375,7 +375,7 @@ It will be ready in six simple steps:
 3. Install Yii2 via `composer`
 4. Symlink web directory
 5. Setup DNS record
-6. Visit http://my-yii.local in your browser
+6. Visit http://my-yii.loc in your browser
 
 ```shell
 # 1. Enter the PHP container
@@ -396,12 +396,12 @@ devilbox@php-7.0.20 in /shared/httpd $ ln -s yii2-dev/web htdocs
 
 If you do not have auto-DNS configured, you will need to add the following line to your Host computer's `/etc/hosts`:
 ```shell
-127.0.0.1 my-yii.local
+127.0.0.1 my-yii.loc
 ```
 
 **6. Open your browser**
 
-Open your browser at http://my-yii.local
+Open your browser at http://my-yii.loc
 
 
 ## 9. Setup Zend
@@ -412,7 +412,7 @@ The following configuration will be used:
 
 | Project name | VirtualHost directory | Database   | TLD_SUFFIX | Url |
 |--------------|-----------------------|------------|------------|-----|
-| my-zend      | /shared/httpd/my-zend | -          | local      | http://my-zend.local |
+| my-zend      | /shared/httpd/my-zend | -          | loc        | http://my-zend.loc |
 
 It will be ready in six simple steps:
 
@@ -421,7 +421,7 @@ It will be ready in six simple steps:
 3. Install Zendframework via `composer`
 4. Symlink public directory
 5. Setup DNS record
-6. Visit http://my-zend.local in your browser
+6. Visit http://my-zend.loc in your browser
 
 ```shell
 # 1. Enter the PHP container
@@ -442,9 +442,9 @@ devilbox@php-7.0.20 in /shared/httpd $ ln -s zend/public htdocs
 
 If you do not have auto-DNS configured, you will need to add the following line to your Host computer's `/etc/hosts`:
 ```shell
-127.0.0.1 my-zend.local
+127.0.0.1 my-zend.loc
 ```
 
 **6. Open your browser**
 
-Open your browser at http://my-zend.local
+Open your browser at http://my-zend.loc

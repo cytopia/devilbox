@@ -156,7 +156,7 @@ If you think additional tools should always be bundled, [create an issue](https:
 
 Your projects will be available by the same URL as they are available from your docker host computer. There is no need to edit the PHP container's `/etc/hosts` file, as it is automatically provide via the DNS container `bind`.
 
-For example, by doing `curl http://project1.dev` from either your host computer or from inside the PHP container will return the same URL.
+For example, by doing `curl http://project1.loc` from either your host computer or from inside the PHP container will return the same URL.
 
 
 ## 4. Managing Projects explained
@@ -192,13 +192,13 @@ Your project folder is determined by the value of `HOST_PATH_TO_HTTPD_DATADIR` w
 In order to make the following examples easier let's work with some assumed default values. The first one represents the project base directory and the second one is for the project domains.
 
 1. HOST_PATH_TO_HTTPD_DATADIR=**./data/www**
-2. TLD_SUFFIX=**local**
+2. TLD_SUFFIX=**loc**
 
 | VirtualHost directory | DocumentRoot directory      | URL                    |
 |-----------------------|-----------------------------|------------------------|
-| <code>./data/www/<b>project1</b></code> | <code>./data/www/project1/<b>htdocs</b></code> | `http://project1.local`  |
-| <code>./data/www/<b>project2</b></code> | <code>./data/www/project2/<b>htdocs</b></code>  | `http://project2.local`  |
-| <code>./data/www/<b>wordpress</b></code>| <code>./data/www/wordpress/<b>htdocs</b></code> | `http://wordpress.local` |
+| <code>./data/www/<b>project1</b></code> | <code>./data/www/project1/<b>htdocs</b></code> | `http://project1.loc`  |
+| <code>./data/www/<b>project2</b></code> | <code>./data/www/project2/<b>htdocs</b></code>  | `http://project2.loc`  |
+| <code>./data/www/<b>wordpress</b></code>| <code>./data/www/wordpress/<b>htdocs</b></code> | `http://wordpress.loc` |
 
 The VirtualHost directory make a new VirtualHost available under the specified URL. However the actual files that will be served are always expected to be in a subfolder called `htdocs/`. By having an additional sub-directory for the Document root you are able to store non-www files inside the project folder and even **symlink** you www dir to htdocs.
 
@@ -209,7 +209,7 @@ This is a general overview about creating projects. If you want to see some real
 
 #### 5.1 From Docker host
 
-The following will create a VirtualHost for `http://project1.local`.
+The following will create a VirtualHost for `http://project1.loc`.
 
 ```shell
 # replace HOST_PATH_TO_HTTPD_DATADIR with the actual project base dir
@@ -218,11 +218,11 @@ $ mkdir project1
 $ mkdir project1/htdocs
 ```
 
-<sub>If you want to know how to change the TLD_SUFFIX `local` to something else, refer to [Configure](Configure.md).</sub>
+<sub>If you want to know how to change the TLD_SUFFIX `loc` to something else, refer to [Configure](Configure.md).</sub>
 
 #### 5.2 From inside the PHP container
 
-If you prefer to work directly inside the PHP Docker container, you can do the same. The following will create a VirtualHost for `http://project1.local`.
+If you prefer to work directly inside the PHP Docker container, you can do the same. The following will create a VirtualHost for `http://project1.loc`.
 
 ```shell
 $ cd /shared/httpd
@@ -256,13 +256,13 @@ In order to actually visit the newly created project in your browser, there must
 
 ##### 5.4.1 /etc/hosts
 
-If you have not setup Auto-DNS, you will need to create your own DNS records for every project. Let's assume your `TLD_SUFFIX` is set to `local`.
+If you have not setup Auto-DNS, you will need to create your own DNS records for every project. Let's assume your `TLD_SUFFIX` is set to `loc`.
 
 | Project folder | `/etc/hosts` entry            |
 |----------------|-------------------------------|
-| my-project1    | `127.0.0.1 my-project1.local` |
-| drupal-test    | `127.0.0.1 drupal-test.local` |
-| playground     | `127.0.0.1 playground.local`  |
+| my-project1    | `127.0.0.1 my-project1.loc` |
+| drupal-test    | `127.0.0.1 drupal-test.loc` |
+| playground     | `127.0.0.1 playground.loc`  |
 
 ##### 5.4.2 Auto-DNS
 
