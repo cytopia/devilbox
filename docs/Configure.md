@@ -168,10 +168,27 @@ If set to `1`, it will show all executed commands during docker startup.
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
-| DEVILBOX_PATH             | `.`     | Relative or absolute path allowed |
+| DEVILBOX_PATH             | `.`     | Relative or absolute path allowed.<br/><strong>Note:</strong> Container need to be re-created after changing this value. |
 
 This is the base path that will be prepended to all mount paths specified in `.env`.
 You will usually not need to change this value..
+
+**IMPORTANT:** When changing this path, it will affect the paths of all other mounted DATA directories. You must therefore also remove any stopped container so that they will be re-created with new different mount points during the next run. In order to accomplish this obey the following precedure:
+
+```shell
+# Stop the container
+$ docker-compose stop
+
+# Remove the stopped container (IMPORTANT!)
+# After the removal it will be re-created during next run
+$ docker-compose rm -f
+
+# Edit any path variables
+$ vim .env
+
+# Start your stack
+$ docker-compose up -d
+```
 
 #### 2.3 Host computer listening address
 
@@ -213,9 +230,23 @@ The above examples should make it clear enough.
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
-| HOST_PATH_HTTPD_DATADIR   | `./data/www`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory. |
+| HOST_PATH_HTTPD_DATADIR   | `./data/www`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory.<br/><strong>Note:</strong> Container need to be re-created after changing this value. |
 
 This is the file system path on your host computer which will hold the Project Folders.
+
+**IMPORTANT:** When changing this path, you must re-create any affected Docker container explicitly. This can be accomplished by doing the following:
+
+```shell
+# Stop the container
+$ docker-compose stop
+
+# Remove the stopped container (IMPORTANT!)
+# After the removal it will be re-created during next run
+$ docker-compose rm -f
+
+# Start your stack
+$ docker-compose up -d
+```
 
 
 ## 4. Container settings
@@ -416,7 +447,7 @@ If you also want to change the listening address (default: 127.0.0.1) to somethi
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
-| HOST_PATH_MYSQL_DATADIR   | `./data/mysql`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory. |
+| HOST_PATH_MYSQL_DATADIR   | `./data/mysql`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory.<br/><strong>Note:</strong> Container need to be re-created after changing this value. |
 
 This is the file system path on your host computer which will hold the MySQL data.
 
@@ -438,6 +469,21 @@ drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.5/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.6/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.7/
 ```
+
+**IMPORTANT:** When changing this path, you must re-create any affected Docker container explicitly. This can be accomplished by doing the following:
+
+```shell
+# Stop the container
+$ docker-compose stop
+
+# Remove the stopped container (IMPORTANT!)
+# After the removal it will be re-created during next run
+$ docker-compose rm -f
+
+# Start your stack
+$ docker-compose up -d
+```
+
 
 ##### 4.4.6 my.cnf
 
@@ -520,7 +566,7 @@ If you also want to change the listening address (default: 127.0.0.1) to somethi
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
-| HOST_PATH_PGSQL_DATADIR   | `./data/pgsql`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory. |
+| HOST_PATH_PGSQL_DATADIR   | `./data/pgsql`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory.<br/><strong>Note:</strong> Container need to be re-created after changing this value. |
 
 This is the file system path on your host computer which will hold the PostgreSQL data.
 
@@ -537,6 +583,21 @@ drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.4/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.5/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.6/
 ```
+
+**IMPORTANT:** When changing this path, you must re-create any affected Docker container explicitly. This can be accomplished by doing the following:
+
+```shell
+# Stop the container
+$ docker-compose stop
+
+# Remove the stopped container (IMPORTANT!)
+# After the removal it will be re-created during next run
+$ docker-compose rm -f
+
+# Start your stack
+$ docker-compose up -d
+```
+
 
 #### 4.6 Redis
 
@@ -611,7 +672,7 @@ If you also want to change the listening address (default: 127.0.0.1) to somethi
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
-| HOST_PATH_MONGO_DATADIR   | `./data/mongo`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory. |
+| HOST_PATH_MONGO_DATADIR   | `./data/mongo`   | Can be absolute or relative path. A relative path starts inside the devilbox git directory.<br/><strong>Note:</strong> Container need to be re-created after changing this value. |
 
 This is the file system path on your host computer which will hold the MongoDB data.
 
@@ -627,6 +688,21 @@ drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.2/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.4/
 drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.5/
 ```
+
+**IMPORTANT:** When changing this path, you must re-create any affected Docker container explicitly. This can be accomplished by doing the following:
+
+```shell
+# Stop the container
+$ docker-compose stop
+
+# Remove the stopped container (IMPORTANT!)
+# After the removal it will be re-created during next run
+$ docker-compose rm -f
+
+# Start your stack
+$ docker-compose up -d
+```
+
 
 #### 4.9 Bind
 

@@ -83,6 +83,16 @@ Edit all general settings inside the .env file (file paths, what version to run,
 $ vim .env
 ```
 
+**Important:** When changing any path variables, you will have to stop all container, delete them so that they can be re-created during the next startup.
+
+```shell
+$ docker-compose stop
+
+# Remove the stopped container (IMPORTANT!)
+# After the removal it will be re-created during next run
+$ docker-compose rm -rf
+```
+
 #### 3.2 Services
 
 Additionally to configure the devilbox in general, you can also configure each service separately by adding/altering service specific configuration files.

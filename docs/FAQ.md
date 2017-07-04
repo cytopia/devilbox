@@ -21,6 +21,7 @@ FAQ
 1. [General](#1-general)
 2. [Configuration](#2-configuration)
 3. [Usage](#3-usage)
+4. [Troubleshooting](#4-troubleshooting)
 
 ---
 
@@ -152,3 +153,19 @@ Yes, see **[How to setup Yii](Examples.md#8-setup-yii)**.
 
 Yes, see **[How to setup Zend](Examples.md#9-setup-zend)**.
 
+
+## 4. Troubleshooting
+
+**`Invalid bind mount spec` after changing the path of MySQL, PgSQL, Mongo or the Data dir.**
+
+When you change any paths inside `.env` that affect Docker mountpoints, the container need to be *removed* and re-created during the next startup. *Removing* the container is sufficient as they will always be created during run if they don't exist.
+
+In order to *remove* the container do the following:
+
+```shell
+$ docker-compose stop
+
+# Remove the stopped container (IMPORTANT!)
+# After the removal it will be re-created during next run
+$ docker-compose rm -f
+```
