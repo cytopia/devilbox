@@ -28,6 +28,11 @@ DEBUG_COMPOSE_ENTRYPOINT=0
 ### mounts instead of Filesystem mounts due to degraded performance
 ### on OSX.
 ###
+### Note: When changing this variable you must re-create the container.
+###       Simply remove it, it will be auto-created during the next start:
+###
+### $ docker-compose rm -f
+###
 DEVILBOX_PATH=.
 
 
@@ -209,6 +214,11 @@ MONGO_SERVER=3.4
 ###
 ### Local filesystem path to www projects.
 ###
+### Note: When changing this variable you must re-create the container.
+###       Simply remove it, it will be auto-created during the next start:
+###
+### $ docker-compose rm -f
+###
 HOST_PATH_HTTPD_DATADIR=./data/www
 
 ###
@@ -225,6 +235,11 @@ HOST_PATH_HTTPD_DATADIR=./data/www
 ###       version will be created where the actual data resides.
 ###       This is to protect databases from being altered by
 ###       newer or older mysql|mariadb server versions.
+###
+### Note: When changing this variable you must re-create the container.
+###       Simply remove it, it will be auto-created during the next start:
+###
+### $ docker-compose rm -f
 ###
 HOST_PATH_MYSQL_DATADIR=./data/mysql
 
@@ -243,6 +258,12 @@ HOST_PATH_MYSQL_DATADIR=./data/mysql
 ###       version will be created where the actual data resides.
 ###       This is to protect databases from being altered by
 ###       newer or older postgres server versions.
+###
+### Note: When changing this variable you must re-create the container.
+###       Simply remove it, it will be auto-created during the next start:
+###
+### $ docker-compose rm -f
+###
 HOST_PATH_PGSQL_DATADIR=./data/pgsql
 
 
@@ -255,6 +276,11 @@ HOST_PATH_PGSQL_DATADIR=./data/pgsql
 ###
 ### If this directory is empty, a new mongodb database will be
 ### created.
+###
+### Note: When changing this variable you must re-create the container.
+###       Simply remove it, it will be auto-created during the next start:
+###
+### $ docker-compose rm -f
 ###
 HOST_PATH_MONGO_DATADIR=./data/mongo
 
