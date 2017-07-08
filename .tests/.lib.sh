@@ -315,6 +315,11 @@ devilbox_pull() {
 
 
 devilbox_start() {
+	# Make sure everything is stopped and defaulted
+	sudo service docker restart || true
+	sleep 5
+	devilbox_stop
+
 	# Make sure to start until success
 	ret=1
 	while [ "${ret}" != "0" ]; do
