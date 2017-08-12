@@ -181,6 +181,10 @@ services:
       # to overwrite the default PHP configuration
       - ${DEVILBOX_PATH}/cfg/${PHP_SERVER}:/etc/php-custom.d:ro
 
+      # Mount devilbox user-defined *.so files in order
+      # to load custom PHP modules
+      - ${DEVILBOX_PATH}/mod/${PHP_SERVER}:/usr/lib64/php/custom-modules:ro
+
       # Mount custom mass virtual hosting
       # (configured in /etc/${HTTPD_SERVER}/02-vhost-mass.conf)
       - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd
