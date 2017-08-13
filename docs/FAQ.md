@@ -18,10 +18,36 @@ FAQ
 
 ## FAQ
 
-1. [General](#1-general)
-2. [Configuration](#2-configuration)
-3. [Usage](#3-usage)
-4. [Troubleshooting](#4-troubleshooting)
+1. **[General](#1-general)**
+    - [Are there any differences between Linux, Windows and OSX?](#are-there-any-differences-between-linux-windows-and-osx)
+	- [Why are mounted MySQL data directories separated by version?](#why-are-mounted-mysql-data-directories-separated-by-version)
+	- [Why are mounted PostgreSQL data directories separated by version?](#why-are-mounted-postgresql-data-directories-separated-by-version)
+	- [Why are mounted MongoDB data directories separated by version?](#why-are-mounted-mongodb-data-directories-separated-by-version)
+	- [Why do the user/group permissions of log/ or cfg/ directories show 1000?](#why-do-the-usergroup-permissions-of-log-or-cfg-directories-show-1000)
+	- [Can I not just comment out the service in the .env file?](#can-i-not-just-comment-out-the-service-in-the-env-file)
+	- [Are there any required services that must/will always be started?](#are-there-any-required-services-that-mustwill-always-be-started)
+	- [What PHP Modules are available?](#what-php-modules-are-available)
+	- [Can I load custom PHP modules without rebuilding the Docker container?](#can-i-load-custom-php-modules-without-rebuilding-the-docker-container)
+2. **[Configuration](#2-configuration)**
+    - [Can I change the MySQL root password?](#can-i-change-the-mysql-root-password)
+	- [Can I add other PHP Modules?](#can-i-add-other-php-modules)
+	- [Can I change php.ini?](#can-i-change-phpini)
+	- [Can I change my.cnf?](#can-i-change-mycnf)
+	- [Can I switch HHVM between PHP 5.6 and PHP 7 mode?](#can-i-switch-hhvm-between-php-56-and-php-7-mode)
+	- [Can I change the project virtual host domain .loc?](#can-i-change-the-project-virtual-host-domain-loc)
+	- [Can I just start PHP and MySQL instead of all container?](#can-i-just-start-php-and-mysql-instead-of-all-container)
+	- [Do I always have to edit /etc/hosts for new projects?](#do-i-always-have-to-edit-etchosts-for-new-projects)
+3. **[Usage](#3-usage)**
+    - [Does it work with CakePHP?](#does-it-work-with-cakephp)
+	- [Does it work with Drupal?](#does-it-work-with-drupal)
+	- [Does it work with Laravel?](#does-it-work-with-laravel)
+	- [Does it work with PhalconPHP?](#does-it-work-with-phalconphp)
+	- [Does it work with Symfony?](#does-it-work-with-symfony)
+	- [Does it work with Wordpress?](#does-it-work-with-wordpress)
+	- [Does it work with Yii?](#does-it-work-with-yii)
+	- [Does it work with Zend Framework?](#does-it-work-with-zend-framework)
+4. **[Troubleshooting](#4-troubleshooting)**
+    - [Invalid bind mount spec after changing the path of MySQL, PgSQL, Mongo or the Data dir.](#invalid-bind-mount-spec-after-changing-the-path-of-mysql-pgsql-mongo-or-the-data-dir)
 
 ---
 
