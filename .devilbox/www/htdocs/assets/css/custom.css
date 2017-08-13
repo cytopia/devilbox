@@ -71,7 +71,7 @@ html {
 }
 body {
 	/* Margin bottom by footer height */
-	margin-bottom: 80px;
+	margin-bottom: 80px !important;
 }
 .footer {
 	position: absolute;
@@ -189,4 +189,7 @@ td.break-word {
 }
 #lang {
     top: 53px !important;
+}
+.pages {
+	z-index:1000;
 }
