@@ -19,20 +19,31 @@ Examples |
 ## Examples
 
 1. [Introduction](#1-introduction)
-2. [Setup CakePHP](#2-setup-cakephp)
-3. [Setup Drupal](#3-setup-drupal)
-4. [Setup Laravel](#4-setup-laravel)
-5. [Setup Phalcon](#5-setup-phalcon)
-6. [Setup Symfony](#6-setup-symfony)
-7. [Setup Wordpress](#7-setup-wordpress)
-8. [Setup Yii](#8-setup-yii)
-9. [Setup Zend](#9-setup-zend)
+    1. [Framework/CMS tools](#11-framework-cms-tools)
+    2. [Code analysis tools](#12-code-analysis-tools)
+2. [Project setup](#2-project-setup)
+    1. [Setup CakePHP](#21-setup-cakephp)
+    2. [Setup Drupal](#22-setup-drupal)
+    3. [Setup Laravel](#23-setup-laravel)
+    4. [Setup Phalcon](#24-setup-phalcon)
+    5. [Setup Symfony](#25-setup-symfony)
+    6. [Setup Wordpress](#26-setup-wordpress)
+    7. [Setup Yii](#27-setup-yii)
+    8. [Setup Zend](#28-setup-zend)
+3. [Code analysis](#3-code-analysis)
+    1. [awesome-ci](#31-awesome-ci)
+    2. [phpcs](#32-phpcs)
+    3. [eslint](#33-eslint)
 
 ---
 
 ## 1. Introduction
 
-The devilbox provides popular tools for setting up and managing major frameworks or content management systems. The following bundled tools are available:
+The devilbox provides popular tools for setting up and managing major frameworks or content management systems, as well as tools for static code analysis. The following bundled tools are available inside each PHP|HHVM Docker container:
+
+#### 1.1 Framework/CMS tools
+
+You can use the following tools to setup or manage your Frameworks/CMS.
 
 | Binary     | Tool name         | Framework/CMS      |
 |------------|-------------------|--------------------|
@@ -45,8 +56,20 @@ The devilbox provides popular tools for setting up and managing major frameworks
 | `symfony`  | [symfony installer](https://github.com/symfony/symfony-installer) | Symfony       |
 | `wp`       | [wp-cli](https://wp-cli.org/)            | Wordpress          |
 
+#### 1.2 Code analysis tools
 
-## 2. Setup CakePHP
+You can use the following tools to analyse and fix your source code files.
+
+| Binary     | Tool name         | Description        |
+|------------|-------------------|--------------------|
+| `file-cr`, `file-crlf`, `file-empty`, `file-nullbyte-char`, `file-trailing-newline`, `file-trailing-single-newline`, `file-trailing-space`, `file-utf8`, `file-utf8-bom`, `git-conflicts`, `git-ignored`, `inline-css`, `inline-js`, `regex-grep`, `regex-perl`, `syntax-bash`, `syntax-css`, `syntax-js`, `syntax-json`, `syntax-markdown`, `syntax-perl`, `syntax-php`, `syntax-python`, `syntax-ruby`, `syntax-scss`, `syntax-sh` | [awesome-ci](https://github.com/cytopia/awesome-ci) | General file, code and repository analysis and linting (Some of them also support to fix the problems) |
+| `phpcs`    | [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) | Lint and optionally fix your PHP files |
+| `eslint`   | [eslint](http://eslint.org/) | Lint and optionally fix your JS files |
+
+
+## 2. Project Setup
+
+#### 2.1 Setup CakePHP
 
 > **[Official CakePHP Documentation](https://book.cakephp.org/3.0/en/installation.html)**
 
@@ -121,7 +144,7 @@ If you do not have auto-DNS configured, you will need to add the following line 
 All set now, you can visit http://my-cake.loc in your browser.
 
 
-## 3. Setup Drupal
+#### 2.2 Setup Drupal
 
 > **[Official Drupal Documentation](https://www.drupal.org/docs/7/install)**
 
@@ -169,7 +192,7 @@ Open your browser at http://my-drupal.loc and follow the Drupal installation ste
 **Note:** For MySQL host choose `127.0.0.1`.
 
 
-## 4. Setup Laravel
+#### 2.3 Setup Laravel
 
 > **[Official Laravel Documentation](https://laravel.com/docs/5.4/installation)**
 
@@ -215,7 +238,7 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-laravel.loc
 
 
-## 5. Setup Phalcon
+#### 2.4 Setup Phalcon
 
 > **[Official Phalcon Documentation](https://docs.phalconphp.com/en/3.2/devtools-usage)**
 
@@ -261,7 +284,7 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-phalcon.loc
 
 
-## 6. Setup Symfony
+#### 2.5 Setup Symfony
 
 > **[Official Symfony Documentation](https://symfony.com/doc/current/setup.html)**
 
@@ -312,7 +335,7 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-symfony.loc
 
 
-## 7. Setup Wordpress
+#### 2.6 Setup Wordpress
 
 > **[Official Wordpress Documentation](https://codex.wordpress.org/Installing_WordPress)**
 
@@ -358,7 +381,7 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-wp.loc
 
 
-## 8. Setup Yii
+#### 2.7 Setup Yii
 
 > **[Official Yii Documentation](http://www.yiiframework.com/doc-2.0/guide-start-installation.html)**
 
@@ -404,7 +427,7 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-yii.loc
 
 
-## 9. Setup Zend
+#### 2.8 Setup Zend
 
 > **[Official Zend Documentation](https://docs.zendframework.com/tutorials/getting-started/skeleton-application/)**
 
@@ -448,3 +471,81 @@ If you do not have auto-DNS configured, you will need to add the following line 
 **6. Open your browser**
 
 Open your browser at http://my-zend.loc
+
+
+## 3. Code analysis
+
+#### 3.1 awesome-ci
+
+**[awesome-ci](https://github.com/cytopia/awesome-ci)** is a collection of tools for analysing your workspace and its files. You can for example check for:
+
+* git conflicts
+* git ignored files that have not been removed from the git index
+* trailing spaces and newlines
+* non-utf8 files or utf8 files with bom
+* windows line feeds
+* null-byte characters
+* empty files
+* syntax errors for various languages
+* inline css or js code
+* customized regex
+
+Some of the bundled tools allow for automatic fixing. See the project page for how to use it: [https://github.com/cytopia/awesome-ci](https://github.com/cytopia/awesome-ci).
+
+The following shows an example how to use it with the devilbox:
+
+```shell
+# 1. Enter your PHP/HHVM container
+host> ./bash
+
+# 2. Go to your project folder
+devilbox@php-7.0.20 $ cd /shared/httpd/my-project
+
+# 3. Run the tools
+devilbox@php-7.0.20 $ git-conflicts --path=.
+devilbox@php-7.0.20 $ git-ignored --path=.
+devilbox@php-7.0.20 $ file-cr --path=.
+devilbox@php-7.0.20 $ file-crlf --path=.
+devilbox@php-7.0.20 $ file-empty --path=.
+
+# 4. Run tools with more options
+devilbox@php-7.0.20 $ syntax-php --path=. --extension=php
+devilbox@php-7.0.20 $ syntax-php --path=. --shebang=php
+...
+```
+
+#### 3.2 phpcs
+
+**[phpcs](https://github.com/squizlabs/PHP_CodeSniffer)** is also available the devilbox:
+
+```shell
+# 1. Enter your PHP/HHVM container
+host> ./bash
+
+# 2. Go to your project folder
+devilbox@php-7.0.20 $ cd /shared/httpd/my-project
+
+# 3. Run it
+devilbox@php-7.0.20 $ phpcs .
+```
+
+For more details visit its project page [https://github.com/squizlabs/PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
+
+
+#### 3.3 eslint
+
+
+**[eslint](http://eslint.org/)** is also available the devilbox:
+
+```shell
+# 1. Enter your PHP/HHVM container
+host> ./bash
+
+# 2. Go to your project folder
+devilbox@php-7.0.20 $ cd /shared/httpd/my-project
+
+# 3. Run it
+devilbox@php-7.0.20 $ eslint .
+```
+
+For more details visit its project page [http://eslint.org](http://eslint.org).

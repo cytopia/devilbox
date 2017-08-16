@@ -207,6 +207,7 @@ The devilbox has everything setup for you. The only thing you will have to insta
 
 | tool           | binary |
 |----------------|---------|
+| [awesome-ci](https://github.com/cytopia/awesome-ci)    | `file-cr`, `file-crlf`, `file-empty`, `file-nullbyte-char`, `file-trailing-newline`, `file-trailing-single-newline`, `file-trailing-space`, `file-utf8`, `file-utf8-bom`, `git-conflicts`, `git-ignored`, `inline-css`, `inline-js`, `regex-grep`, `regex-perl`, `syntax-bash`, `syntax-css`, `syntax-js`, `syntax-json`, `syntax-markdown`, `syntax-perl`, `syntax-php`, `syntax-python`, `syntax-ruby`, `syntax-scss`, `syntax-sh` |
 | [composer](https://getcomposer.org)    | `composer` |
 | [drupal-console](https://drupalconsole.com) | `drupal` |
 | [drush](http://www.drush.org)          | `drush` |
@@ -295,9 +296,9 @@ The devilbox documentation consists of the following main sections.
     6. [Enter the PHP Docker container](docs/Quickstart.md#6-enter-the-php-docker-container)
 3. **[Install](docs/Install.md)**
     1. [Install Docker](docs/Install.md#1-install-docker)
-        1. [Linux](docs/Install.md#1-1-linux)
-        2. [Windows](docs/Install.md#1-2-windows)
-        3. [OSX](docs/Install.md#1-3-osx)
+        1. [Linux](docs/Install.md#11-linux)
+        2. [Windows](docs/Install.md#12-windows)
+        3. [OSX](docs/Install.md#13-osx)
     2. [Install Devilbox](#2-install-devilbox)
 4. **[Update](docs/Update.md)**
     1. [TL;DR](docs/Update.md#1-tl-dr)
@@ -334,24 +335,31 @@ The devilbox documentation consists of the following main sections.
 9. **[Backups](docs/Backups.md)**
     1. [Info](docs/Backups.md#1-info)
     2. [MySQL](docs/Backups.md#2-mysql)
-        1. [MySQL Database Backup](docs/Backups.md#2-1-mysql-database-backup)
-        2. [MySQL Database Restore](docs/Backups.md#2-2-mysql-database-restore)
+        1. [MySQL Database Backup](docs/Backups.md#21-mysql-database-backup)
+        2. [MySQL Database Restore](docs/Backups.md#22-mysql-database-restore)
     3. [PostgreSQL](docs/Backups.md#3-postgresql)
-        1. [PostgreSQL Database Backup](docs/Backups.md#3-1-postgresql-database-backup)
-        2. [PostgreSQL Database Restore](docs/Backups.md#3-1-postgresql-database-restore)
+        1. [PostgreSQL Database Backup](docs/Backups.md#31-postgresql-database-backup)
+        2. [PostgreSQL Database Restore](docs/Backups.md#31-postgresql-database-restore)
     4. [MongoDB](docs/Backups.md#4-mongodb)
-        1. [MongoDB Database Backup](docs/Backups.md#4-1-mongodb-database-backup)
-        2. [MongoDB Database Restore](docs/Backups.md#4-1-mongodb-database-restore)
+        1. [MongoDB Database Backup](docs/Backups.md#41-mongodb-database-backup)
+        2. [MongoDB Database Restore](docs/Backups.md#41-mongodb-database-restore)
 10. **[Examples](docs/Examples.md)**
     1. [Introduction](docs/Examples.md#1-introduction)
-    2. [Setup CakePHP](docs/Examples.md#2-setup-cakephp)
-    3. [Setup Drupal](docs/Examples.md#3-setup-drupal)
-    4. [Setup Laravel](docs/Examples.md#4-setup-laravel)
-    5. [Setup Phalcon](docs/Examples.md#5-setup-phalcon)
-    6. [Setup Symfony](docs/Examples.md#6-setup-symfony)
-    7. [Setup Wordpress](docs/Examples.md#7-setup-wordpress)
-    8. [Setup Yii](docs/Examples.md#8-setup-yii)
-    9. [Setup Zend](docs/Examples.md#9-setup-zend)
+		1. [Framework/CMS tools](docs/Examples.md#11-framework-cms-tools)
+		2. [Code analysis tools](docs/Examples.md#12-code-analysis-tools)
+	2. [Project setup](docs/Examples.md#2-project-setup)
+        2. [Setup CakePHP](docs/Examples.md#21-setup-cakephp)
+        3. [Setup Drupal](docs/Examples.md#22-setup-drupal)
+        4. [Setup Laravel](docs/Examples.md#23-setup-laravel)
+        5. [Setup Phalcon](docs/Examples.md#24-setup-phalcon)
+        6. [Setup Symfony](docs/Examples.md#25-setup-symfony)
+        7. [Setup Wordpress](docs/Examples.md#26-setup-wordpress)
+        8. [Setup Yii](docs/Examples.md#27-setup-yii)
+        9. [Setup Zend](docs/Examples.md#28-setup-zend)
+	3. [Code analysis](docs/Examples.md#3-code-analysis)
+		1. [awesome-ci](docs/Examples.md#31-awesome-ci)
+		2. [phpcs](docs/Examples.md#32-phpcs)
+		3. [eslint](docs/Examples.md#33-eslint)
 11. **[Technical](docs/Technical.md)**
     1. [Networking](docs/Technical.md#1-networking)
     2. [Ports and forwarding](docs/Technical.md#2-ports-and-forwarding)
