@@ -79,6 +79,7 @@ New folders can be created, deleted and removed during run-time and correspondin
 | **Configuration** | |
 | HHVM | You can choose between PHP 5.6 and PHP 7 mode for HHVM |
 | php.ini | You an overwrite PHP settings for each PHP version. |
+| Custom PHP modules | You can add any custom PHP modules without having to rebuild the Docker container. |
 | my.cnf | You an overwrite MySQL settings for each MySQL version. |
 | **Intranet** | |
 | phpMyAdmin | Manage your MySQL databases here. |
@@ -171,6 +172,9 @@ There will however be slight differences between the versions and especially wit
 [PHP 7.2](https://github.com/cytopia/docker-php-fpm-7.2) |
 [HHVM](https://github.com/cytopia/docker-hhvm-latest)
 
+** Custom PHP Modules**
+
+Apart from asking for new modules to be bundled with each Docker container, you can simply also just place any missing modules into `mod/(php-fpm|hhvm)-<VERSION>` and add a custom `*.ini` file to load them. See [Custom PHP Modules](Configure.md#425-custom-php-modules) in the Configuration documentation for how to do that in two simple steps.
 
 ## 9. Supported Frameworks and CMS
 

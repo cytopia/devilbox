@@ -44,6 +44,15 @@
 /cfg/php-fpm-7.2/*.ini
 /cfg/hhvm-latest/*.ini
 
+# Ignore custom PHP-FPM modules
+/mod/php-fpm-5.4/*.so
+/mod/php-fpm-5.5/*.so
+/mod/php-fpm-5.6/*.so
+/mod/php-fpm-7.0/*.so
+/mod/php-fpm-7.1/*.so
+/mod/php-fpm-7.2/*.so
+/mod/hhvm-latest/*.so
+
 
 ######################################
 # GENERIC

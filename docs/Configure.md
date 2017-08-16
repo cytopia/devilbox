@@ -21,8 +21,10 @@ Configure |
 1. [Overview](#1-overview)
     1. [The devilbox `.env` file](#11-the-devilbox-env-file)
     2. [The devilbox `cfg/` directory](#12-the-devilbox-cfg-directory)
-    3. [The operating system `hosts` file](#13-the-operating-system-hosts-file)
-    4. [The operating system `resolv.conf` file](#14-the-operating-system-resolvconf-file)
+    3. [The devilbox `mod/` directory](#13-the-devilbox-mod-directory)
+        1. [Custom PHP module example](#134-custom-php-module-example)
+    4. [The operating system `hosts` file](#14-the-operating-system-hosts-file)
+    5. [The operating system `resolv.conf` file](#15-the-operating-system-resolvconf-file)
 2. [Devilbox general settings](#2-devilbox-general-settings)
     1. [Verbosity](#21-verbosity)
     2. [Devilbox base path](#22-devilbox-base-path)
@@ -40,6 +42,7 @@ Configure |
         2. [Xdebug](#422-xdebug)
         3. [php.ini](#423-phpini)
         4. [HHVM](#424-hhvm)
+        5. [Custom PHP modules](#425-custom-php-modules)
     3. [Apache / Nginx](#43-apache--nginx)
         1. [Select Httpd version](#431-select-httpd-version)
         2. [Host port](#432-host-port)
@@ -103,7 +106,7 @@ You can get more information here:
 
 #### 1.2 The devilbox `cfg/` directory
 
-Inside the devilbox root directory you will find a foder called `cfg/`. This will contain subdirectories in the form of `<SERVICE>-<VERSION>`. Those folders will be mounted into the appropriate location into the respective docker container in order to overwrite service configuration.
+Inside the devilbox root directory you will find a folder called `cfg/`. This will contain subdirectories in the form of `<SERVICE>-<VERSION>`. Those folders will be mounted into the appropriate location into the respective docker container in order to overwrite service configuration.
 
 Currently only MySQL/MariaDB and PHP/HHVM overrides are supported.
 
@@ -141,13 +144,45 @@ Only files which have the correct file extensions will be read, all others such 
 * Valid PHP config extension: `.ini`
 * Valid MySQL config extension: `.cnf`
 
-#### 1.3 The operating system `hosts` file
+#### 1.3 The devilbox `mod/` directory
+
+Inside the devilbox root directory you will find a folder called `mod/`. This will contain subdirectories in the form of `(php-fpm|hhvm)-<VERSION>`. Those folders will be mounted into the appropriate location into the respective PHP docker container under `/usr/lib64/php/custom-modules/` in order to provide custom PHP modules.
+
+The folder structure looks like this:
+```
+cfg/
+  hhvm-latest/
+  php-fpm-5.4/
+  php-fpm-5.5/
+  php-fpm-5.6/
+  php-fpm-7.0/
+  php-fpm-7.1/
+  php-fpm-7.2/
+```
+
+Each of the folders are empty by default. Place any PHP modules (`*.so`) inside the versioned folder of your choice.
+
+Modules placed in the above folders are not loaded by default. You will also have to enable them via your custom configuration as described in the above section.
+
+##### 1.3.4 Custom PHP module example
+
+The following example will add a custom [ioncube](https://www.ioncube.com) module for PHP 7.0:
+
+1. Copy `ioncube_loader_lin_7.0.so` to `mod/php-fpm-7.0/ioncube_loader_lin_7.0.so`
+2. Create custom config to enable ioncube in: `cfg/php-fpm-7.0/00-ioncube.ini`
+```shell
+zend_extension = /usr/lib64/php/custom-modules/ioncube_loader_lin_7.0.so
+```
+
+**Note:** PHP configuration files are loaded by file names in alphabetical order and the ioncube zend extension needs to be loaded before any other zend extension. This is the reason why its configuration file name starts with `00-`.
+
+#### 1.4 The operating system `hosts` file
 
 On Linux and OSX your hosts file is located at `/etc/hosts` on Windows it will be at `C:\Windows\System32\drivers\etc`. Use this file to setup custom DNS entries if you are not using Auto-DNS.
 
 Read up on it below at `/etc/hosts` or `Auto-DNS` section.
 
-#### 1.4 The operating system `resolv.conf` file
+#### 1.5 The operating system `resolv.conf` file
 
 This file is used to add the devilbox DNS server for Auto-DNS.
 
@@ -377,6 +412,37 @@ $ cat cfg/hhvm-latest/devilbox.ini-example
 By default, HHVM is using **PHP-7** mode, you can change this setting to **PHP-5.6** by enabling `hhvm.php7.all = 0`.
 
 **Note:** You must then also copy the file to something that ends by `*.ini`.
+
+##### 4.2.5 Custom PHP modules
+
+The devilbox supports to load custom PHP modules for each version without having to rebuild the PHP containers. There are only two things to be done in order to load them:
+
+1. Copy your custom module to `mod/(hhvm|php-fpm)-<VERSION>/*.so`
+2. Create a config file that loads the module in `cfg/(hhvm|php-fpm)-<VERSION>/*.ini`
+
+As you will need to state the Path of the module to be loaded in your configuration file (`*.ini`), you will need to know where those modules are placed inside the docker container. Have a look at the following table to find out:
+
+| Docker  | Module host path           | Path inside Docker container             |
+|---------|----------------------------|------------------------------------------|
+| PHP 5.4 | `mod/php-fpm-5.4/<mod>.so` | `/usr/lib64/php/custom-modules/<mod>.so` |
+| PHP 5.5 | `mod/php-fpm-5.5/<mod>.so` | `/usr/lib64/php/custom-modules/<mod>.so` |
+| PHP 5.6 | `mod/php-fpm-5.6/<mod>.so` | `/usr/lib64/php/custom-modules/<mod>.so` |
+| PHP 7.0 | `mod/php-fpm-7.0/<mod>.so` | `/usr/lib64/php/custom-modules/<mod>.so` |
+| PHP 7.1 | `mod/php-fpm-7.1/<mod>.so` | `/usr/lib64/php/custom-modules/<mod>.so` |
+| PHP 7.2 | `mod/php-fpm-7.2/<mod>.so` | `/usr/lib64/php/custom-modules/<mod>.so` |
+| HHVM    | `mod/hhvm-latest/<mod>.so` | `/usr/lib64/php/custom-modules/<mod>.so` |
+
+As you can see from the above table, modules are always available in `/usr/lib64/php/custom-modules/` and you can just copy/paste your configuration files for each PHP version.
+
+The following will show an example how to load [ioncube](https://www.ioncube.com) module for PHP 7.0:
+
+1. Copy `ioncube_loader_lin_7.0.so` to `mod/php-fpm-7.0/ioncube_loader_lin_7.0.so`
+2. Create custom config to enable ioncube in: `cfg/php-fpm-7.0/00-ioncube.ini`
+```shell
+zend_extension = /usr/lib64/php/custom-modules/ioncube_loader_lin_7.0.so
+```
+
+**Note:** PHP configuration files are loaded by file names in alphabetical order and the ioncube zend extension needs to be loaded before any other zend extension. This is the reason why its configuration file name starts with `00-`.
 
 #### 4.3 Apache / Nginx
 

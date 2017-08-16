@@ -192,6 +192,7 @@ The devilbox has everything setup for you. The only thing you will have to insta
 * **Email catch-all** (Internal postfix with catch-all)
 * **Log files** (available on host computer)
 * **Config overwrites** (`my.cnf`, `nginx.conf`, `httpd.conf` or `php.ini`)
+* **Custom PHP modules**
 * **Self-validation** (projects and configured options are validated and marked in the intranet)
 * **Xdebug**
 
@@ -225,6 +226,10 @@ Require additional tools? Have a look at [Hacking](docs/Hacking.md) for informat
 The devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks.
 
 > *apc, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dom, ereg, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, magickwand, mbstring, mcrypt, memcache, memcached, mhash, mongodb, msgpack, mysql, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, soap, sockets, SPL, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib*
+
+** Custom PHP Modules**
+
+You can also copy any custom modules into `mod/(php-fpm|hhvm)-<VERSION>` and add a custom `*.ini` file to load them. See [Custom PHP Modules](docs/Configure.md#425-custom-php-modules) in the Configuration documentation for how to do that in two simple steps.
 
 #### Supported Frameworks
 
