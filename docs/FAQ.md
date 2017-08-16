@@ -154,35 +154,35 @@ You need a valid DNS entry for every project that points to the Httpd server. As
 
 #### Does it work with CakePHP?
 
-Yes, see **[How to setup CakePHP](Examples.md#2-1-setup-cakephp)**.
+Yes, see **[How to setup CakePHP](Examples.md#21-setup-cakephp)**.
 
 #### Does it work with Drupal?
 
-Yes, see **[How to setup Drupal](Examples.md#2-2-setup-drupal)**.
+Yes, see **[How to setup Drupal](Examples.md#22-setup-drupal)**.
 
 #### Does it work with Laravel?
 
-Yes, see **[How to setup Laravel](Examples.md#2-3-setup-laravel)**.
+Yes, see **[How to setup Laravel](Examples.md#23-setup-laravel)**.
 
 #### Does it work with PhalconPHP?
 
-Yes, see **[How to setup Phalcon](Examples.md#2-4-setup-phalcon)**.
+Yes, see **[How to setup Phalcon](Examples.md#24-setup-phalcon)**.
 
 #### Does it work with Symfony?
 
-Yes, see **[How to setup Symfony](Examples.md#2-5-setup-symfony)**.
+Yes, see **[How to setup Symfony](Examples.md#25-setup-symfony)**.
 
 #### Does it work with Wordpress?
 
-Yes, see **[How to setup Wordpress](Examples.md#2-6-setup-wordpress)**.
+Yes, see **[How to setup Wordpress](Examples.md#26-setup-wordpress)**.
 
 #### Does it work with Yii?
 
-Yes, see **[How to setup Yii](Examples.md#2-7-setup-yii)**.
+Yes, see **[How to setup Yii](Examples.md#27-setup-yii)**.
 
 #### Does it work with Zend Framework?
 
-Yes, see **[How to setup Zend](Examples.md#2-8-setup-zend)**.
+Yes, see **[How to setup Zend](Examples.md#28-setup-zend)**.
 
 
 ## 4. Troubleshooting

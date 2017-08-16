@@ -189,14 +189,14 @@ lrwxrwxrwx 1 cytopia   11 Jun 14 08:29 htdocs -> cakephp/app/webroot/
 To quickly find setup instructions for your framework of choice head over to **[Examples](Examples.md)**:
 
 > 2. [Project setup](Examples.md#2-project-setup)
->     1. [Setup CakePHP](Examples.md#2-1-setup-cakephp)
->     2. [Setup Drupal](Examples.md#2-2-setup-drupal)
->     3. [Setup Laravel](Examples.md#2-3-setup-laravel)
->     4. [Setup Phalcon](Examples.md#2-4-setup-phalcon)
->     5. [Setup Symfony](Examples.md#2-5-setup-symfony)
->     6. [Setup Wordpress](Examples.md#2-6-setup-wordpress)
->     7. [Setup Yii](Examples.md#2-7-setup-yii)
->     8. [Setup Zend](Examples.md#2-8-setup-zend)
+>     1. [Setup CakePHP](Examples.md#21-setup-cakephp)
+>     2. [Setup Drupal](Examples.md#22-setup-drupal)
+>     3. [Setup Laravel](Examples.md#23-setup-laravel)
+>     4. [Setup Phalcon](Examples.md#24-setup-phalcon)
+>     5. [Setup Symfony](Examples.md#25-setup-symfony)
+>     6. [Setup Wordpress](Examples.md#26-setup-wordpress)
+>     7. [Setup Yii](Examples.md#27-setup-yii)
+>     8. [Setup Zend](Examples.md#28-setup-zend)
 
 
 ## 6. Enter the PHP Docker container
