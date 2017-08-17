@@ -100,10 +100,10 @@ The situation inside the container is not different from on the Docker host. All
 
 #### 3.1 As devilbox user
 
-In the devilbox git directory you will find a bash script called `bash.sh`. Just execute this script and it will take you directly into the PHP docker container at the project root directory.
+In the devilbox git directory you will find a bash script called `shell.sh`. Just execute this script and it will take you directly into the PHP docker container at the project root directory.
 
 ```shell
-host> ./bash.sh
+host> ./shell.sh
 devilbox@php-7.0.19 in /shared/httpd $
 ```
 
@@ -111,10 +111,11 @@ As you can see, the PS1 prompt will also show you the current configured PHP ver
 
 #### 3.2 As root user
 
-In case you need to perform some tasks that are only possible with root rights (such as installing or updating software), you can also use the `root_bash.sh` script.
+In case you need to perform some tasks that are only possible with root rights (such as installing or updating software), you can do so via password-less `sudo`.
 
 ```shell
-host> ./root_bash.sh
+host> ./shell.sh
+devilbox@php-7.0.19 in /shared/httpd $ sudo su -
 root@php-7.0.19 in /shared/httpd $
 ```
 

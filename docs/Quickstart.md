@@ -204,7 +204,7 @@ To quickly find setup instructions for your framework of choice head over to **[
 The PHP Docker container is your workhorse which has many tools pre-installed and you can do every task inside instead of doing it on the docker host. Entering the container is done via a shipped script:
 
 ```shell
-host> ./bash.sh
+host> ./shell.sh
 devilbox@php-7.0.19 in /shared/httpd $
 ```
 
