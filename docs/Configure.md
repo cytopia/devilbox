@@ -23,8 +23,9 @@ Configure |
     2. [The devilbox `cfg/` directory](#12-the-devilbox-cfg-directory)
     3. [The devilbox `mod/` directory](#13-the-devilbox-mod-directory)
         1. [Custom PHP module example](#134-custom-php-module-example)
-    4. [The operating system `hosts` file](#14-the-operating-system-hosts-file)
-    5. [The operating system `resolv.conf` file](#15-the-operating-system-resolvconf-file)
+    4. [The devilbox `bash/` directory](#14-the-devilbox-bash-directory)
+    5. [The operating system `hosts` file](#15-the-operating-system-hosts-file)
+    6. [The operating system `resolv.conf` file](#16-the-operating-system-resolvconf-file)
 2. [Devilbox general settings](#2-devilbox-general-settings)
     1. [Verbosity](#21-verbosity)
     2. [Devilbox base path](#22-devilbox-base-path)
@@ -43,6 +44,7 @@ Configure |
         3. [php.ini](#423-phpini)
         4. [HHVM](#424-hhvm)
         5. [Custom PHP modules](#425-custom-php-modules)
+        6. [Customize bash and other tools](#426-customize-bash-and-other-tools)
     3. [Apache / Nginx](#43-apache--nginx)
         1. [Select Httpd version](#431-select-httpd-version)
         2. [Host port](#432-host-port)
@@ -176,13 +178,19 @@ zend_extension = /usr/lib64/php/custom-modules/ioncube_loader_lin_7.0.so
 
 **Note:** PHP configuration files are loaded by file names in alphabetical order and the ioncube zend extension needs to be loaded before any other zend extension. This is the reason why its configuration file name starts with `00-`.
 
-#### 1.4 The operating system `hosts` file
+#### 1.4 The devilbox `bash/` directory
+
+Inside the devilbox root directory you will find a folder called `bash/`. Every file inside this folder ending by `*.sh` will be source by your bash, allowing for a customized bash configuration. All files not ending by `*.sh` will be ignored and can be used to create config files for other programs.
+
+The `bash/` folder will be mounted into the PHP/HHVM container to `/etc/bashrc-devilbox.d/`.
+
+#### 1.5 The operating system `hosts` file
 
 On Linux and OSX your hosts file is located at `/etc/hosts` on Windows it will be at `C:\Windows\System32\drivers\etc`. Use this file to setup custom DNS entries if you are not using Auto-DNS.
 
 Read up on it below at `/etc/hosts` or `Auto-DNS` section.
 
-#### 1.5 The operating system `resolv.conf` file
+#### 1.6 The operating system `resolv.conf` file
 
 This file is used to add the devilbox DNS server for Auto-DNS.
 
@@ -443,6 +451,52 @@ zend_extension = /usr/lib64/php/custom-modules/ioncube_loader_lin_7.0.so
 ```
 
 **Note:** PHP configuration files are loaded by file names in alphabetical order and the ioncube zend extension needs to be loaded before any other zend extension. This is the reason why its configuration file name starts with `00-`.
+
+##### 4.2.6 Customize bash and other tools
+
+The devilbox supports to load custom configuration files for your Docker containers bash. Put any file ending by `*.sh` into the `bash/` folder and they will automatically be sourced by your container's bash. It is also possible to add any other configuration files into that folder and start your app with the appended configuration path. To better understand how that works, have a look at the paths:
+
+| Docker  | bash host path  | Path inside Docker container      |
+|---------|----------------------------|------------------------|
+| PHP 5.4 | `bash/<cfg>.sh` | `/etc/bashrc-devilbox.d/<cfg>.sh` |
+| PHP 5.5 | `bash/<cfg>.sh` | `/etc/bashrc-devilbox.d/<cfg>.sh` |
+| PHP 5.6 | `bash/<cfg>.sh` | `/etc/bashrc-devilbox.d/<cfg>.sh` |
+| PHP 7.0 | `bash/<cfg>.sh` | `/etc/bashrc-devilbox.d/<cfg>.sh` |
+| PHP 7.1 | `bash/<cfg>.sh` | `/etc/bashrc-devilbox.d/<cfg>.sh` |
+| PHP 7.2 | `bash/<cfg>.sh` | `/etc/bashrc-devilbox.d/<cfg>.sh` |
+| HHVM    | `bash/<cfg>.sh` | `/etc/bashrc-devilbox.d/<cfg>.sh` |
+
+So lets assume you also want to change your vim configuration and have vim always use that specific config file during startup. This is achieved by placing the vim config file into that directory and create a bash alias, that always starts vim with that config file:
+
+On your host system do the following:
+
+```shell
+# Create your vim config in the devilbox bash directory `my-vimrc`
+$ vim bash/my-vimrc
+```
+```vim
+" You vim
+set encoding=utf-8              " The encoding displayed
+set nocompatible                " Use vim defaults instead of vi defaults
+set autoread                    " Automatically reload file contents when changed from outside
+set backspace=indent,eol,start  " Allow backspacing over everything in insert mode
+set hidden                      " Start new file with :e without having to save current
+set history=50                  " Remember commands entered in :
+set undolevels=100              " Use many levels of undo
+set shell=$SHELL                " Set Shell
+set more                        " to show pages using `more` in command outpouts
+set title                       " show vim in terminal title
+```
+
+Now add a custom bash config and create an alias to always start vim with the above created config:
+```shell
+$ vim bash/my-bash.sh
+```
+```shell
+alias vim='vim -u /etc/bashrc-devilbox.d/my-vimrc'
+```
+
+The next time you open `vim` within the PHP/HHVM docker container, it will automatically source your `my-vimrc`.
 
 #### 4.3 Apache / Nginx
 

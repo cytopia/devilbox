@@ -165,15 +165,16 @@ Every single attachable container comes with many different versions. In order t
 
 #### Enter the container
 
-You can also work directly inside the php container. Simply use the bundled scripts `bash.sh` or `root_bash.sh`. The `PS1` will automatically be populated with current chosen php version.
+You can also work directly inside the php container. Simply use the bundled scripts `shell.sh`. The `PS1` will automatically be populated with current chosen php version.
 ```shell
 # Enter as user devilbox (normal operation / development)
-host> ./bash.sh
+host> ./shell.sh
 devilbox@php-7.0.19 in /shared/httpd $
 ```
 ```shell
 # Enter as root user (do root stuff)
-host> ./root_bash.sh
+host> ./shell.sh
+devilbox@php-7.0.19 in /shared/httpd $ sudo su -
 root@php-7.0.19 in /shared/httpd $
 ```
 

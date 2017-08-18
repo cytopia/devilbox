@@ -185,6 +185,9 @@ services:
       # to load custom PHP modules
       - ${DEVILBOX_PATH}/mod/${PHP_SERVER}:/usr/lib64/php/custom-modules:ro
 
+      # Mount devilbox user-defined bash config
+      - ${DEVILBOX_PATH}/bash:/etc/bashrc-devilbox.d
+
       # Mount custom mass virtual hosting
       # (configured in /etc/${HTTPD_SERVER}/02-vhost-mass.conf)
       - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd

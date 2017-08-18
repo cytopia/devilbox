@@ -92,7 +92,7 @@ It will be ready in eight simple steps:
 
 ```shell
 # 1. Enter the PHP container
-host> ./bash.sh
+host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-cake
@@ -165,7 +165,7 @@ It will be ready in six simple steps:
 
 ```shell
 # 1. Enter the PHP container
-host> ./bash.sh
+host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-drupal
@@ -213,7 +213,7 @@ It will be ready in six simple steps:
 
 ```shell
 # 1. Enter the PHP container
-host> ./bash.sh
+host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-laravel
@@ -259,7 +259,7 @@ It will be ready in six simple steps:
 
 ```shell
 # 1. Enter the PHP container
-host> ./bash.sh
+host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-phalcon
@@ -306,7 +306,7 @@ It will be ready in six simple steps:
 
 ```shell
 # 1. Enter the PHP container
-host> ./bash.sh
+host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-symfony
@@ -356,7 +356,7 @@ It will be ready in six simple steps:
 
 ```shell
 # 1. Enter the PHP container
-host> ./bash.sh
+host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-wp
@@ -402,7 +402,7 @@ It will be ready in six simple steps:
 
 ```shell
 # 1. Enter the PHP container
-host> ./bash.sh
+host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-yii
@@ -448,7 +448,7 @@ It will be ready in six simple steps:
 
 ```shell
 # 1. Enter the PHP container
-host> ./bash.sh
+host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-zend

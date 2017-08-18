@@ -81,7 +81,7 @@ There are many different options to backup your MySQL database including some fo
 
 ```shell
 # Enter the Container
-host> ./bash.sh
+host> ./shell.sh
 
 # Start the backup
 devilbox@php-7.1.6 in /shared/httpd $ mysqldump-secure
@@ -209,7 +209,7 @@ To find out more about the configuration and options of mysqldump-secure, visit 
 
 ```shell
 # Enter the Container
-host> ./bash.sh
+host> ./shell.sh
 
 # Start the backup
 devilbox@php-7.1.6 in /shared/httpd $ mysqldump -h mysql -u root -p my_db_name > /shared/backups/mysql/my_db_name.sql
@@ -239,7 +239,7 @@ In order to restore or import mysql databases on the command line, you need to u
 
 ```shell
 # Enter the Container
-host> ./bash.sh
+host> ./shell.sh
 
 # Start the import
 devilbox@php-7.1.6 in /shared/httpd $ mysql -h mysql -u root -p my_db_name < /shared/backups/mysql/my_db_name.sql
@@ -249,7 +249,7 @@ devilbox@php-7.1.6 in /shared/httpd $ mysql -h mysql -u root -p my_db_name < /sh
 
 ```shell
 # Enter the Container
-host> ./bash.sh
+host> ./shell.sh
 
 # Start the import
 devilbox@php-7.1.6 in /shared/httpd $ zcat /shared/backups/mysql/my_db_name.sql.gz | mysql -h mysql -u root -p my_db_name
@@ -259,7 +259,7 @@ devilbox@php-7.1.6 in /shared/httpd $ zcat /shared/backups/mysql/my_db_name.sql.
 
 ```shell
 # Enter the Container
-host> ./bash.sh
+host> ./shell.sh
 
 # Start the import
 devilbox@php-7.1.6 in /shared/httpd $ tar xzOf /shared/backups/mysql/my_db_name.sql.tar.gz | mysql -h mysql -u root -p my_db_name
@@ -284,7 +284,7 @@ devilbox@php-7.1.6 in /shared/httpd $ tar xzOf /shared/backups/mysql/my_db_name.
 
 ```shell
 # Enter the Container
-host> ./bash.sh
+host> ./shell.sh
 
 # Start the import
 devilbox@php-7.1.6 in /shared/httpd $ pg_dump -h pgsql -U postgres -W my_db_name > /shared/backups/pgsql/my_db_name.sql
@@ -308,7 +308,7 @@ In order to restore or import PostgreSQL databases on the command line, you need
 
 ```shell
 # Enter the Container
-host> ./bash.sh
+host> ./shell.sh
 
 # Start the import
 devilbox@php-7.1.6 in /shared/httpd $ psql -h pgsql -U postgres -W my_db_name < /shared/backups/pgsql/my_db_name.sql
@@ -318,7 +318,7 @@ devilbox@php-7.1.6 in /shared/httpd $ psql -h pgsql -U postgres -W my_db_name < 
 
 ```shell
 # Enter the Container
-host> ./bash.sh
+host> ./shell.sh
 
 # Start the import
 devilbox@php-7.1.6 in /shared/httpd $ zcat /shared/backups/pgsql/my_db_name.sql.gz | psql -h pgsql -U postgres -W my_db_name
@@ -328,7 +328,7 @@ devilbox@php-7.1.6 in /shared/httpd $ zcat /shared/backups/pgsql/my_db_name.sql.
 
 ```shell
 # Enter the Container
-host> ./bash.sh
+host> ./shell.sh
 
 # Start the import
 devilbox@php-7.1.6 in /shared/httpd $ tar xzOf /shared/backups/pgsql/my_db_name.sql.tar.gz | psql -h pgsql -U postgres -W my_db_name
@@ -349,7 +349,7 @@ devilbox@php-7.1.6 in /shared/httpd $ tar xzOf /shared/backups/pgsql/my_db_name.
 
 ```shell
 # Enter the Container
-host> ./bash.sh
+host> ./shell.sh
 
 # Start the dump into /shared/backups/mongo
 devilbox@php-7.1.6 in /shared/httpd $ mongodump --out /shared/backups/mongo
@@ -365,7 +365,7 @@ To find out more about the configuration and options of mongodump, visit its pro
 
 ```shell
 # Enter the Container
-host> ./bash.sh
+host> ./shell.sh
 
 # Start the restore/import from /shared/backups/mongo
 devilbox@php-7.1.6 in /shared/httpd $ mongorestore /shared/backups/mongo

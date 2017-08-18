@@ -53,6 +53,10 @@
 /mod/php-fpm-7.2/*.so
 /mod/hhvm-latest/*.so
 
+# Ignore custom bash and other confi files
+/bash/*
+!/bash/bashrc.sh-example
+!/bash/README.md
 
 ######################################
 # GENERIC
