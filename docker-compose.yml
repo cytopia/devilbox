@@ -50,7 +50,7 @@ services:
       ##
       - WILDCARD_DOMAIN=${TLD_SUFFIX:-loc}
       - WILDCARD_ADDRESS=172.16.238.11
-      - BIND_DNS_RESOLVER=${BIND_DNS_RESOLVER:-8.8.8.8,8.8.4.4}
+      - DNS_FORWARDER=${BIND_DNS_RESOLVER:-8.8.8.8,8.8.4.4}
 
     dns:
       - 127.0.0.1
