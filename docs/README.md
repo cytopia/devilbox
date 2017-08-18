@@ -120,7 +120,7 @@ The devilbox has not been tested on FreeBSD yet. Current milestones include to m
 
 * **Internet connection** - only required during initial setup for cloning the devilbox repository and pulling the required docker container. Afterwards you can always work offline.
 * [Docker Engine 1.12.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
-* [Docker Compose 1.6.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-2)
+* [Docker Compose 1.9.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
 * On Windows use [Docker for Windows][d4w] (not tested on [Docker Toolbox][dtb])
 * On OSX use [Docker for Mac][d4m] (not tested on [Docker Toolbox][dtb])
 
