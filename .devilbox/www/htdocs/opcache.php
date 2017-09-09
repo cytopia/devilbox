@@ -1,4 +1,5 @@
 <?php require '../config.php'; ?>
+<?php loadClass('Helper')->authPage(); ?>
 <?php
 
 /**

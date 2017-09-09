@@ -1,11 +1,11 @@
 .meter {
-    height: 20px;  /* Can be anything */
-    position: relative;
-    background: #555;
-    -moz-border-radius: 25px;
-    -webkit-border-radius: 25px;
-    border-radius: 25px;
-    box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+	height: 20px;  /* Can be anything */
+	position: relative;
+	background: #555;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
 }
 .meter > span {
   display: block;
@@ -16,49 +16,49 @@
   border-bottom-left-radius: 20px;
   background-color: rgb(43,194,83);
   background-image: linear-gradient(
-    center bottom,
-    rgb(43,194,83) 37%,
-    rgb(84,240,84) 69%
+	center bottom,
+	rgb(43,194,83) 37%,
+	rgb(84,240,84) 69%
   );
   box-shadow:
-    inset 0 2px 9px  rgba(255,255,255,0.3),
-    inset 0 -2px 6px rgba(0,0,0,0.4);
+	inset 0 2px 9px  rgba(255,255,255,0.3),
+	inset 0 -2px 6px rgba(0,0,0,0.4);
   position: relative;
   overflow: hidden;
 }
 
 
 .dash-box {
-    border: 1px solid #383737;
-    background-color: #3d3d3d;
-    color: #999999;
-    height:100%;
+	border: 1px solid #383737;
+	background-color: #3d3d3d;
+	color: #999999;
+	height:100%;
 }
 .dash-box-head {
-    background-color: #383737;
-    color: #999999;
-    width:100%;
-    display: inline-block;
-    padding:10px;
-    font-weight: bold;
+	background-color: #383737;
+	color: #999999;
+	width:100%;
+	display: inline-block;
+	padding:10px;
+	font-weight: bold;
 }
 .dash-box-body {
-    padding:10px;
+	padding:10px;
 }
 
 
 .row-margin {
-    margin-bottom:20px;
+	margin-bottom:20px;
 }
 .col-margin {
-    margin-bottom:20px;
+	margin-bottom:20px;
 }
 
 
 /* Bootstrap overwrites
 -------------------------------------------------- */
 html, body {
-    font-size: 14px;
+	font-size: 14px;
 }
 
 
@@ -86,7 +86,7 @@ body {
 /* Generics
 -------------------------------------------------- */
 .font-small {
-    font-size: 12px;
+	font-size: 12px;
 }
 
 
@@ -95,52 +95,52 @@ body {
 -------------------------------------------------- */
 
 .circles{
-    margin:0px auto;
+	margin:0px auto;
 }
 .circles > div {
-    overflow:hidden;
-    float:left;
-    width:auto;
-    height:auto;
-    position: relative;
-    border-radius:50%;
-    -moz-border-radius:50%;
-    -webkit-border-radius:50%;
-    -khtml-border-radius: 50%;
-    background:#eee;
+	overflow:hidden;
+	float:left;
+	width:auto;
+	height:auto;
+	position: relative;
+	border-radius:50%;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	-khtml-border-radius: 50%;
+	background:#eee;
 }
 
 .circles > div > div {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 }
 .circles > div > div > div {
-    display: table;
-    width: 100%;
-    height: 100%;
+	display: table;
+	width: 100%;
+	height: 100%;
 }
 .circles > div > div > div > div {
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
 }
 
 @media (max-width: 320px)
 {
-    .circles > div {padding: 50%;}
+	.circles > div {padding: 50%;}
 }
 
 @media (min-width: 321px) and (max-width: 800px)
 {
-    .circles > div {padding: 50%;}
+	.circles > div {padding: 50%;}
 }
 
 @media (min-width: 801px)
 {
-    .circles > div {padding: 48%;}
+	.circles > div {padding: 48%;}
 }
 
 
@@ -151,17 +151,17 @@ a.navbar-brand {
 	background-color: transparent !important;
 }
 a.nav-link {
-    background-color: transparent !important;
+	background-color: transparent !important;
 }
 img.d-inline-block {
-    float: none;
+	float: none;
 }
 nav.navbar {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #373a3c;
-    background-color: #fff;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: #373a3c;
+	background-color: #fff;
 }
 
 
@@ -170,26 +170,62 @@ nav.navbar {
 /* mail.php;
 -------------------------------------------------- */
 tr.subject {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 td.break-word {
-    word-break: break-word;
+	word-break: break-word;
 }
 
 
 /* adminer.php;
 -------------------------------------------------- */
 #menu {
-    position: absolute;
-    margin: 76px 0 0 !important;
+	position: absolute;
+	margin: 76px 0 0 !important;
 }
 #breadcrumb {
-    top: 60px !important;
+	top: 60px !important;
 }
 #lang {
-    top: 53px !important;
+	top: 53px !important;
 }
 .pages {
 	z-index:1000;
+}
+
+
+
+/* login.php;
+-------------------------------------------------- */
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+	display: table;
+	width: 100%;
+	height: 100%; /* For at least Firefox */
+	min-height: 100%;
+	-webkit-box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
+	box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
+}
+.site-wrapper-inner {
+	display: table-cell;
+	vertical-align: top;
+}
+.cover-container {
+	margin-right: auto;
+	margin-left: auto;
+}
+/* Affix and center */
+@media (min-width: 40em) {
+	/* Start the vertical centering */
+	.site-wrapper-inner {
+		vertical-align: middle;
+	}
+}
+@media (min-width: 62em) {
+	.masthead,
+	.mastfoot,
+	.cover-container {
+		width: 32rem;
+	}
 }

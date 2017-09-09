@@ -102,6 +102,36 @@ NEW_GID=1000
 TIMEZONE=Europe/Berlin
 
 
+###
+### Devilbox UI Password protection enable/disable (1/0)
+###
+### Set DEVILBOX_UI_PROTECT to 1 in order to password protect the
+### intranet.
+###
+### Example:
+###   DEVILBOX_UI_PROTECT=1
+###   DEVILBOX_UI_PROTECT=0
+###
+DEVILBOX_UI_PROTECT=0
+
+
+###
+### Devilbox UI Password
+###
+### When DEVILBOX_UI_PROTECT=1, use the following password
+### to log in. The password can always be changed.
+### When changing the password, make sure to restart your
+### PHP container.
+###
+### Example:
+###   DEVILBOX_UI_PASSWORD=my-very-secure-password
+###   DEVILBOX_UI_PASSWORD=Some pass with spaces
+###
+### The default username is 'devilbox'
+###
+DEVILBOX_UI_PASSWORD=password
+
+
 
 ################################################################################
 ###

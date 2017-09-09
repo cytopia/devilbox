@@ -1,4 +1,5 @@
 <?php require '../config.php'; ?>
+<?php loadClass('Helper')->authPage(); ?>
 <?php
 // Also required for JS calls (see bottom of this page)
 $len_table = 4;
