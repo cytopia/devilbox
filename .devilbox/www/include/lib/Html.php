@@ -91,7 +91,8 @@ class Html
 				),
 				array(
 					'name' => 'Adminer',
-					'path' => '/vendor/adminer-4.3.1/adminer/index.php'
+					'path' => '/vendor/adminer-4.3.1-en.php',
+					'target' => '_blank'
 				),
 				array(
 					'name' => 'Opcache GUI',
