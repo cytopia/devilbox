@@ -98,6 +98,12 @@ services:
       - DNS_CHECK_TIMEOUT=${DNS_CHECK_TIMEOUT:-1}
 
       ##
+      ## Password protect the devilbox Intranet
+      ##
+      - DEVILBOX_UI_PROTECT=${DEVILBOX_UI_PROTECT:-0}
+      - DEVILBOX_UI_PASSWORD=${DEVILBOX_UI_PASSWORD}
+
+      ##
       ## PHP Xdebug
       ##
       - PHP_XDEBUG_ENABLE

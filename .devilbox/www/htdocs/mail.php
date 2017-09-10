@@ -1,5 +1,6 @@
+<?php require '../config.php';  ?>
+<?php loadClass('Helper')->authPage(); ?>
 <?php
-require '../config.php';
 
 //
 // $_POST submit for sending a test email

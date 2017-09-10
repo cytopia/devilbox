@@ -2,6 +2,9 @@
 // Measure time
 $TIME_START = microtime(true);
 
+// Start session
+session_start();
+
 // Turn on all PHP errors
 error_reporting(-1);
 

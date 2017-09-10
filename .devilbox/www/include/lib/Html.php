@@ -183,6 +183,12 @@ HTML;
 	public function getNavbar()
 	{
 		$menu = $this->_buildMenu();
+		$logout = '';
+		if (loadClass('Helper')->isLoginProtected()) {
+			$logout =	'<ul class="navbar-nav">'.
+							'<li class="nav-item text-right"><a class="nav-link" href="/logout.php?id='.session_id().'">Log out</a></li>'.
+						'</ul>';
+		}
 
 		$html = <<<HTML
 			<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
@@ -198,8 +204,11 @@ HTML;
 
 						{$menu}
 
+
 					</ul>
+					{$logout}
 				</div>
+
 			</nav>
 			<br/>
 HTML;

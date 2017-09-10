@@ -76,6 +76,7 @@ Configure |
         2. [Host port](#492-host-port)
 5. [Intranet settings](#5-intranet-settings)
     1. [DNS check timeout](#51-dns-check-timeout)
+    2. [Password protection](#52-password-protection)
 6. [Host computer](#6-host-computer)
     1. [/etc/hosts](#61-etchosts)
     2. [Auto-DNS](#62-auto-dns)
@@ -858,6 +859,19 @@ If you also want to change the listening address (default: 127.0.0.1) to somethi
 `TLD_SUFFIX` domains are checked if they are set in the host computer /etc/hosts or available via attached DNS server. Timeout is done on vhosts.php (intranet) via ajax calls. In order to keep performance, set this to a low value. DNS checks might not succeed in time on slow machines. If DNS is valid, but timeout is expired, set this to a higher value.
 
 `DNS_CHECK_TIMEOUT` value is how many seconds to time out.
+
+#### 5.2 Password protection
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| DEVILBOX_UI_PROTECT       | `0`     | Enable or disable devilbox's Intranet password protection |
+| DEVILBOX_UI_PASSWORD      | ``      | Choose the password to login. (Default username: `devilbox`) |
+
+If you wish, you can password-protect the devilbox intranet (not the vhost projects).
+
+> You could for example allow people from your local network to access the projects hosted on your devilbox (When changing `LOCAL_LISTEN_ADDRESS` to also listen on your external LAN side).
+> However, the devilbox intranet might give away too much information, what other people should not see, such as databases or others.
+> In that case, you should enable password protection.
 
 
 ## 6. Host computer
