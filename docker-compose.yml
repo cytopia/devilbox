@@ -234,7 +234,7 @@ services:
       ##
       ## Disable default vhost?
       ##
-      - VHOST_MAIN_DISABLE=${DEVILBOX_UI_DISABLE}
+      - MAIN_VHOST_DISABLE=${DEVILBOX_UI_DISABLE}
 
       ##
       ## Enable Mass Vhosts

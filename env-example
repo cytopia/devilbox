@@ -16,7 +16,7 @@
 ###
 ### 1: Yes
 ### 0: No
-DEBUG_COMPOSE_ENTRYPOINT=0
+DEBUG_COMPOSE_ENTRYPOINT=1
 
 
 ###
@@ -71,20 +71,6 @@ TLD_SUFFIX=loc
 
 
 ###
-### TLD_SUFFIX domains are checked if they are set in the
-### host computer /etc/hosts or available via attached DNS server.
-### Timeout is done on vhosts.php (intranet) via ajax calls.
-### In order to keep performance, set this to a low value.
-### DNS checks might not succeed in time on slow machines.
-### If DNS is valid, but timeout is expired, set this to a higher value.
-###
-### DNS_CHECK_TIMEOUT value is how many seconds to time out
-### Default is to timeout after 1 second (DNS_CHECK_TIMEOUT=1)
-###
-DNS_CHECK_TIMEOUT=1
-
-
-###
 ### Set your user id and group id
 ###
 ### This should be changed to the value of your local
@@ -100,6 +86,28 @@ NEW_GID=1000
 ### Timezone for all dockers and service config files
 ###
 TIMEZONE=Europe/Berlin
+
+
+
+
+################################################################################
+###
+### INTRANET SETTINGS
+###
+################################################################################
+
+###
+### TLD_SUFFIX domains are checked if they are set in the
+### host computer /etc/hosts or available via attached DNS server.
+### Timeout is done on vhosts.php (intranet) via ajax calls.
+### In order to keep performance, set this to a low value.
+### DNS checks might not succeed in time on slow machines.
+### If DNS is valid, but timeout is expired, set this to a higher value.
+###
+### DNS_CHECK_TIMEOUT value is how many seconds to time out
+### Default is to timeout after 1 second (DNS_CHECK_TIMEOUT=1)
+###
+DNS_CHECK_TIMEOUT=1
 
 
 ###
@@ -130,6 +138,16 @@ DEVILBOX_UI_PROTECT=0
 ### The default username is 'devilbox'
 ###
 DEVILBOX_UI_PASSWORD=password
+
+
+###
+### Disable the Devilbox Intranet?
+###
+### Example:
+###   DEVILBOX_UI_PROTECT=1
+###   DEVILBOX_UI_PROTECT=0
+###
+DEVILBOX_UI_DISABLE=1
 
 
 
@@ -331,7 +349,7 @@ PHP_XDEBUG_ENABLE=1
 
 # Your local port (your computer host [not the docker])
 # where your ide/editor is listening for xdebug connections.
-PHP_XDEBUG_REMOTE_PORT=9000
+PHP_XDEBUG_REMOTE_PORT=9001
 
 # Your local IP address (your computer host [not the docker])
 # where your ide/editor is listening for xdebug connections.
@@ -350,6 +368,11 @@ PHP_XDEBUG_REMOTE_HOST=192.168.0.215
 ### Expose HTTPD Port to Host
 ###
 HOST_PORT_HTTPD=80
+
+
+HTTPD_DOCROOT_DIR="htdocs"
+
+HTTPD_TEMPLATE_DIR=".devilbox"
 
 
 
