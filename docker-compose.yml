@@ -235,6 +235,8 @@ services:
       ## Disable default vhost?
       ##
       - MAIN_VHOST_DISABLE=${DEVILBOX_UI_DISABLE}
+      - MAIN_VHOST_STATUS_ENABLE=1
+      - MAIN_VHOST_STATUS_ALIAS=/devilbox-httpd-status
 
       ##
       ## Enable Mass Vhosts
