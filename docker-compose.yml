@@ -68,12 +68,6 @@ services:
     #image: cytopia/${PHP_SERVER:-php-fpm-7.0}:0.11
     restart: always
 
-    # Manually build via `docker-compose build`
-    #build:
-        #context: https://github.com/cytopia/docker-${PHP_SERVER}.git#1
-    #    context: https://github.com/cytopia/docker-${PHP_SERVER}.git
-
-
     ##
     ## Custom variables
     ##
@@ -82,7 +76,6 @@ services:
     ##
     env_file:
       - ./.env
-
 
     environment:
 
@@ -218,11 +211,6 @@ services:
     image: cytopia/${HTTPD_SERVER:-nginx-stable}:release-0.10
     restart: always
 
-    # Manually build via `docker-compose build`
-    #build:
-        #context: https://github.com/cytopia/docker-${HTTPD_SERVER}.git#1
-    #    context: https://github.com/cytopia/docker-${HTTPD_SERVER}.git
-
     environment:
 
       ##
@@ -300,11 +288,6 @@ services:
   mysql:
     image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
     #image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:0.9
-
-    # Manually build via `docker-compose build`
-    #build:
-        #context: https://github.com/cytopia/docker-${MYSQL_SERVER}.git#1
-    #    context: https://github.com/cytopia/docker-${MYSQL_SERVER}.git
 
     environment:
 
