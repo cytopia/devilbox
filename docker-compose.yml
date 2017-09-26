@@ -73,6 +73,17 @@ services:
         #context: https://github.com/cytopia/docker-${PHP_SERVER}.git#1
     #    context: https://github.com/cytopia/docker-${PHP_SERVER}.git
 
+
+    ##
+    ## Custom variables
+    ##
+    ## Source all variables defined in .env
+    ## This makes any custom variable available in each PHP/HHVM container
+    ##
+    env_file:
+      - ./.env
+
+
     environment:
 
       ##

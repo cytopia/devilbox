@@ -8,6 +8,8 @@
 ###
 ###  No need to rebuild any dockers!
 ###
+###  For custom variables, scroll to the bottom
+###
 
 
 ###
@@ -483,3 +485,25 @@ HOST_PORT_BIND=1053
 ### You can also add DNS servers from your LAN (if any are available)
 ###
 BIND_DNS_RESOLVER=8.8.8.8,8.8.4.4
+
+
+
+################################################################################
+###
+### 11. Custom variables
+###
+################################################################################
+
+###
+### Any variable defined in this file will be available
+### as environment variables to your PHP/HHV Docker container.
+###
+### This might be useful to set application environment and retriev
+### them via: <?php getenv('MY_APPLICATION_ENV'); ?>
+###
+
+###
+### Example:
+### <?php echo getenv('Foo');?> would produce: 'some value'
+###
+#Foo=some value
