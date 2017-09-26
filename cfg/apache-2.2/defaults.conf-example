@@ -1,0 +1,25 @@
+#
+# Apache 2.2 configuration overwrites
+#
+# Make sure this file ends by *.conf, otherwise
+# the configuration is not sourced by nginx.
+#
+# The below settings are just examples.
+# Copy them, remove them or reset them.
+#
+
+AddDefaultCharset UTF-8
+
+# No DNS
+HostnameLookups Off
+
+Timeout 60
+KeepAlive On
+KeepAliveTimeout 10
+MaxKeepAliveRequests 100
+
+EnableMMAP Off
+EnableSendfile Off
+
+XSendFile On
+XSendFilePath /shared/httpd

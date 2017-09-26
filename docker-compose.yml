@@ -272,6 +272,9 @@ services:
       # Mount custom mass virtual hosting
       - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd
 
+      # Mount custom web server config directory
+      - ${DEVILBOX_PATH}/cfg/${HTTPD_SERVER}:/etc/${HTTPD_SERVER}.d
+
       # Mount logs
       - ${DEVILBOX_PATH}/log/${HTTPD_SERVER}:/var/log/${HTTPD_SERVER}
 
