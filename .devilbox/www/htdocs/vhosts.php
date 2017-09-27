@@ -125,7 +125,7 @@
 						//console.log(vhost);
 					}
 				}
-				xhttp.open('GET', 'http://'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix();?>/devilbox-api/status.json', true);
+				xhttp.open('POST', 'http://'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix();?>/devilbox-api/status.json', true);
 				xhttp.send();
 
 				// Timeout to abort in 1 second
