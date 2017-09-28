@@ -242,7 +242,7 @@ services:
       ##
       - MASS_VHOST_ENABLE=1
       - MASS_VHOST_TLD=.${TLD_SUFFIX}
-      - MASS_VHOST_DIR_SUFFIX=${HTTPD_DOCROOT_DIR}
+      - MASS_VHOST_DOCROOT=${HTTPD_DOCROOT_DIR}
       - MASS_VHOST_TPL=${HTTPD_TEMPLATE_DIR}
 
       ##
@@ -272,7 +272,7 @@ services:
       - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd
 
       # Mount custom web server config directory
-      - ${DEVILBOX_PATH}/cfg/${HTTPD_SERVER}:/etc/${HTTPD_SERVER}.d
+      - ${DEVILBOX_PATH}/cfg/${HTTPD_SERVER}:/etc/httpd-custom.d
 
       # Mount logs
       - ${DEVILBOX_PATH}/log/${HTTPD_SERVER}:/var/log/${HTTPD_SERVER}
