@@ -352,6 +352,14 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 										<td><?php echo loadClass('Php')->getGid(); ?></td>
 									</tr>
 									<tr>
+										<th>vHost docroot dir</th>
+										<td><?php echo loadClass('Helper')->getEnv('HTTPD_DOCROOT_DIR'); ?></td>
+									</tr>
+									<tr>
+										<th>vHost config dir</th>
+										<td><?php echo loadClass('Helper')->getEnv('HTTPD_TEMPLATE_DIR'); ?></td>
+									</tr>
+									<tr>
 										<th>vHost TLD</th>
 										<td>*.<?php echo loadClass('Httpd')->getTldSuffix(); ?></td>
 									</tr>
@@ -762,8 +770,8 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 											</tr>
 											<tr>
 												<th>httpd</th>
-												<td>-</td>
-												<td>-</td>
+												<td>./cfg/<?php echo loadClass('Helper')->getEnv('HTTPD_SERVER'); ?></td>
+												<td>/etc/httpd-custom.d</td>
 											</tr>
 											<?php if ($avail_mysql): ?>
 												<tr>
