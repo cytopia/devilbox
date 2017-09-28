@@ -371,10 +371,25 @@ PHP_XDEBUG_REMOTE_HOST=192.168.0.215
 ###
 HOST_PORT_HTTPD=80
 
+###
+### Document Root Subdirectory
+###
+### In your project directory, which subfolder should
+### serve your files?
+###
+### When changing this value, restart the devilbox.
+###
+HTTPD_DOCROOT_DIR=htdocs
 
-HTTPD_DOCROOT_DIR="htdocs"
-
-HTTPD_TEMPLATE_DIR=".devilbox"
+###
+### Per vHost Config Subdirectory
+###
+### In your project directory, which subfolder should
+### hold apache, nginx templates for a customized vhost?
+###
+### When changing this value, restart the devilbox.
+###
+HTTPD_TEMPLATE_DIR=.devilbox
 
 
 
