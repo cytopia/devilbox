@@ -207,8 +207,7 @@ services:
   # HTTPD
   # ----------------------------------------
   httpd:
-    #image: cytopia/${HTTPD_SERVER:-nginx-stable}:latest
-    image: cytopia/${HTTPD_SERVER:-nginx-stable}:release-0.10
+    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.12
     restart: always
 
     environment:
