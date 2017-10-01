@@ -33,10 +33,10 @@ docker pull cytopia/hhvm-latest:${TAG}
 ### HTTPD
 ###
 TAG="$( grep '^[[:space:]]*image:.*\${HTTPD_SERVER' "${CWD}/docker-compose.yml" | sed 's/^.*://g' )"
-docker pull cytopia/nginx-stable:${TAG}
-docker pull cytopia/nginx-mainline:${TAG}
-docker pull cytopia/apache-2.2:${TAG}
-docker pull cytopia/apache-2.4:${TAG}
+docker pull devilbox/nginx-stable:${TAG}
+docker pull devilbox/nginx-mainline:${TAG}
+docker pull devilbox/apache-2.2:${TAG}
+docker pull devilbox/apache-2.4:${TAG}
 
 ###
 ### MYSQL
