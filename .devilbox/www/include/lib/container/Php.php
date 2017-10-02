@@ -50,7 +50,7 @@ class Php extends BaseClass implements BaseInterface
 		$output = loadClass('Helper')->exec('drush --version', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
-	public function getDrushConsoleVersion()
+	public function getDrupalConsoleVersion()
 	{
 		$output = loadClass('Helper')->exec('drupal --version | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+[-rc0-9.]*/', $output);
