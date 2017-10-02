@@ -85,12 +85,12 @@ if (loadClass('Helper')->isLoggedIn()) {
 		}
 		else if ($_GET['software'] == 'symfony') {
 			echo json_encode(array(
-				$_GET['software'] => (($version = loadClass('Php')->getPhalconVersion()) !== false) ? $version : $no
+				$_GET['software'] => (($version = loadClass('Php')->getSymfonyVersion()) !== false) ? $version : $no
 			));
 		}
 		else if ($_GET['software'] == 'wpcli') {
 			echo json_encode(array(
-				$_GET['software'] => (($version = loadClass('Php')->getSymfonyVersion()) !== false) ? $version : $no
+				$_GET['software'] => (($version = loadClass('Php')->getWpcliVersion()) !== false) ? $version : $no
 			));
 		} else {
 			echo json_encode(array($_GET['software'] => 'unknown software'));
