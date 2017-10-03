@@ -359,7 +359,6 @@ $ id
 
 **Note:** If your Host computers user id and the containers user id do not match, files will have different access rights inside and outside which might result in permission errors like `access denied`. So make sure to set this value.
 
-**Note:** Files created by the webserver such as uploads, tmp and cache files are still created by the webservers user id and you will probably have to `chmod` them. This issues will be addressed shortly and you will also be able to change the uid/gid of the webserver in the next devilbox release.
 
 ##### 4.1.2 Group id
 
