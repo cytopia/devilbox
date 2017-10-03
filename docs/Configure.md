@@ -77,6 +77,7 @@ Configure |
 5. [Intranet settings](#5-intranet-settings)
     1. [DNS check timeout](#51-dns-check-timeout)
     2. [Password protection](#52-password-protection)
+	3. [Disable Intranet](#53-disable-intranet)
 6. [Host computer](#6-host-computer)
     1. [/etc/hosts](#61-etchosts)
     2. [Auto-DNS](#62-auto-dns)
@@ -872,6 +873,14 @@ If you wish, you can password-protect the devilbox intranet (not the vhost proje
 > You could for example allow people from your local network to access the projects hosted on your devilbox (When changing `LOCAL_LISTEN_ADDRESS` to also listen on your external LAN side).
 > However, the devilbox intranet might give away too much information, what other people should not see, such as databases or others.
 > In that case, you should enable password protection.
+
+#### 5.3 Disable Intranet
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| DEVILBOX_UI_DISABLE       | `0`     | Enable or disable devilbox's Intranet completely. |
+
+If you wish, you can disable the built-in intranet completely. Set this variable to `1` which will remove the vhost that servers the Intranet. All that will be left are your custom project based virtual hosts.
 
 
 ## 6. Host computer
