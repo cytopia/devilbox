@@ -51,7 +51,7 @@ DEVILBOX_PATH=.
 ### b.) If an IP is specified, note the trailing colon ':'
 ###    LOCAL_LISTEN_ADDR=127.0.0.1:
 ###
-LOCAL_LISTEN_ADDR=127.0.0.1:
+LOCAL_LISTEN_ADDR=
 
 
 ###
