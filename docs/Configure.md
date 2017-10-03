@@ -33,6 +33,7 @@ Configure |
 3. [Project settings](#3-project-settings)
     1. [Project domain](#31-project-domain)
     2. [Project path](#32-project-path)
+    3. [Project htdocs directory](#33-project-htdocs directory)
 4. [Container settings](#4-container-settings)
     1. [General](#41-general)
         1. [Timezone](#411-timezone)
@@ -293,6 +294,23 @@ $ docker-compose rm -f
 $ docker-compose up -d
 ```
 
+#### 3.3 Project htdocs directory
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HTTPD_DOCROOT_DIR         | `htdocs` | A sub directory inside your project directory from which the web server will serve your files.<br/>The full path to the docuement root would be: `${HOST_PATH_HTTPD_DATADIR}/<project-name>/${HTTPD_DOCROOT_DIR}` |
+
+If you rather would use a directory called `www`, just change it to this. Be aware that this will affect all your projects.
+
+**Note:** When changing this value, you must restart the devilbox.
+
+```shell
+# Stop the container
+$ docker-compose stop
+
+# Start your stack
+$ docker-compose up -d
+```
 
 ## 4. Container settings
 
