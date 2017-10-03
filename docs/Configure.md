@@ -46,6 +46,7 @@ Configure |
         4. [HHVM](#424-hhvm)
         5. [Custom PHP modules](#425-custom-php-modules)
         6. [Customize bash and other tools](#426-customize-bash-and-other-tools)
+		7. [Custom environment variables](#427-custom-environment-variables)
     3. [Apache / Nginx](#43-apache--nginx)
         1. [Select Httpd version](#431-select-httpd-version)
         2. [Host port](#432-host-port)
@@ -518,6 +519,20 @@ alias vim='vim -u /etc/bashrc-devilbox.d/my-vimrc'
 ```
 
 The next time you open `vim` within the PHP/HHVM docker container, it will automatically source your `my-vimrc`.
+
+##### 4.2.7 Custom environment variables
+
+If you projects require custom environment variables to be available to PHP or HHVM, you can simply add any variable to the `.env` file. All of them are automatically available to the container.
+
+If your application requires are variable to determine if it is run under development or production, for example: `APPLICATION_ENV`, you can just add this to the `.env` file:
+
+```
+$ cat .env
+
+...
+APPLICATION_ENV=1
+```
+
 
 #### 4.3 Apache / Nginx
 
