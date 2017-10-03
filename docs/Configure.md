@@ -115,30 +115,38 @@ You can get more information here:
 
 Inside the devilbox root directory you will find a folder called `cfg/`. This will contain subdirectories in the form of `<SERVICE>-<VERSION>`. Those folders will be mounted into the appropriate location into the respective docker container in order to overwrite service configuration.
 
-Currently only MySQL/MariaDB and PHP/HHVM overrides are supported.
+Currently only MySQL/MariaDB, PHP/HHVM and Apache/Nginx overrides are supported.
 
 The folder structure looks like this:
 ```
 cfg/
+  apache-2.2/
+  apache-2.4/
+  nginx-mainline/
+  nginx-stable/
+
   hhvm-latest/
-  mariadb-10.0/
-  mariadb-10.1/
-  mariadb-10.2/
-  mariadb-10.3/
-  mariadb-5.5/
-  mysql-5.5/
-  mysql-5.6/
-  mysql-5.7/
-  mysql-8.0/
-  percona-5.5/
-  percona-5.6/
-  percona-5.7/
   php-fpm-5.4/
   php-fpm-5.5/
   php-fpm-5.6/
   php-fpm-7.0/
   php-fpm-7.1/
   php-fpm-7.2/
+
+  mariadb-5.5/
+  mariadb-10.0/
+  mariadb-10.1/
+  mariadb-10.2/
+  mariadb-10.3/
+
+  mysql-5.5/
+  mysql-5.6/
+  mysql-5.7/
+  mysql-8.0/
+
+  percona-5.5/
+  percona-5.6/
+  percona-5.7/
 ```
 
 Each of the folders will contain an example file in the following format:
@@ -150,6 +158,7 @@ Only files which have the correct file extensions will be read, all others such 
 
 * Valid PHP config extension: `.ini`
 * Valid MySQL config extension: `.cnf`
+* Valid Httpd config extension: `.conf`
 
 #### 1.3 The devilbox `mod/` directory
 
