@@ -49,6 +49,7 @@ Configure |
     3. [Apache / Nginx](#43-apache--nginx)
         1. [Select Httpd version](#431-select-httpd-version)
         2. [Host port](#432-host-port)
+		3. [Customize the vhost configuration](#433-customize-the-vhost-configuration)
     4. [MySQL](#44-mysql)
         1. [Select MySQL version](#441-select-mysql-version)
         2. [Root password](#442-root-password)
@@ -540,6 +541,17 @@ You can choose between Apache and Nginx in different version. All of them are co
 By default the webserver will listen on port 80 (on your Host computer). You can change this to any other port (in case port 80 is already taken).
 
 If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
+
+##### 4.3.3 Customize the vhost configuration
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HTTPD_TEMPLATE_DIR        | `.devilbox`| A sub directory inside your project directory where the web server will look for web server templates in order to load a custom configuration for this specific project. |
+
+If no such directory exists or no templates are available, the chosen web server will use the standard configuration for this virtual host. You can however overwrite each virtual host with custom settings by adding **[vhost-gen](https://github.com/devilbox/vhost-gen)** templates.
+
+Copy all available templates from [vhost-gen templates directory](https://github.com/devilbox/vhost-gen/tree/master/etc/templates) to a a sub directory in your projects dir (By default `.devilbox/`) and adjust those template files to your needs.
+
 
 #### 4.4 MySQL
 
