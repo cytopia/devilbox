@@ -27,12 +27,11 @@ version: '2.1'
 ################################################################################
 services:
 
-  # ----------------------------------------
+  # ------------------------------------------------------------
   # Bind (DNS Server)
-  # ----------------------------------------
+  # ------------------------------------------------------------
   bind:
     image: cytopia/bind:latest
-    #image: cytopia/bind:0.10
     restart: always
     ports:
       # [local-machine:]local-port:docker-port
@@ -60,25 +59,23 @@ services:
         ipv4_address: 172.16.238.100
 
 
-  # ----------------------------------------
-  # PHP-FPM
-  # ----------------------------------------
+  # ------------------------------------------------------------
+  # PHP / HHVM
+  # ------------------------------------------------------------
   php:
     image: cytopia/${PHP_SERVER:-php-fpm-7.0}:latest
-    #image: cytopia/${PHP_SERVER:-php-fpm-7.0}:0.11
     restart: always
 
     ##
-    ## Custom variables
+    ## All .env variables
     ##
     ## Source all variables defined in .env
-    ## This makes any custom variable available in each PHP/HHVM container
+    ## This also makes any custom variable available in each PHP/HHVM container
     ##
     env_file:
       - ./.env
 
     environment:
-
       ##
       ## Debug?
       ##
@@ -94,18 +91,6 @@ services:
       ## Adjust timezone
       ##
       - TIMEZONE
-
-      ##
-      ## TLD SUffix
-      ##
-      - TLD_SUFFIX=${TLD_SUFFIX:-loc}
-      - DNS_CHECK_TIMEOUT=${DNS_CHECK_TIMEOUT:-1}
-
-      ##
-      ## Password protect the devilbox Intranet
-      ##
-      - DEVILBOX_UI_PROTECT=${DEVILBOX_UI_PROTECT:-0}
-      - DEVILBOX_UI_PASSWORD=${DEVILBOX_UI_PASSWORD}
 
       ##
       ## PHP Xdebug
@@ -130,36 +115,6 @@ services:
       - MYSQL_BACKUP_USER=root
       - MYSQL_BACKUP_PASS=${MYSQL_ROOT_PASSWORD}
       - MYSQL_BACKUP_HOST=mysql
-
-      ##
-      ## Additional variables to announce to intranet/php-container
-      ##
-      # Ports
-      - LOCAL_LISTEN_ADDR
-      - HOST_PORT_BIND
-      - HOST_PORT_HTTPD
-      - HOST_PORT_MYSQL
-      - HOST_PORT_PGSQL
-      - HOST_PORT_REDIS
-      - HOST_PORT_MEMCD
-      - HOST_PORT_MONGO
-      # Data dir paths
-      - HOST_PATH_HTTPD_DATADIR
-      - HOST_PATH_MYSQL_DATADIR
-      - HOST_PATH_PGSQL_DATADIR
-      - HOST_PATH_MONGO_DATADIR
-      # Database credentials
-      - PGSQL_ROOT_USER
-      - PGSQL_ROOT_PASSWORD
-      - MYSQL_ROOT_PASSWORD
-      # Selected Server versions
-      - PHP_SERVER
-      - HTTPD_SERVER
-      - PGSQL_SERVER
-      - MYSQL_SERVER
-      - REDIS_SERVER
-      - MEMCD_SERVER
-      - MONGO_SERVER
 
     networks:
       app_net:
@@ -203,9 +158,10 @@ services:
     depends_on:
       - bind
 
-  # ----------------------------------------
-  # HTTPD
-  # ----------------------------------------
+
+  # ------------------------------------------------------------
+  # Web Server
+  # ------------------------------------------------------------
   httpd:
     image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.12
     restart: always
@@ -281,12 +237,11 @@ services:
       - php
 
 
-  # ----------------------------------------
-  # DATABASE
-  # ----------------------------------------
+  # ------------------------------------------------------------
+  # MySQL Database
+  # ------------------------------------------------------------
   mysql:
     image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
-    #image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:0.9
 
     environment:
 
@@ -346,16 +301,11 @@ services:
       - httpd
 
 
-  # ----------------------------------------
-  # POSTGRESQL
-  # ----------------------------------------
+  # ------------------------------------------------------------
+  # PostgreSQL
+  # ------------------------------------------------------------
   pgsql:
     image: postgres:${PGSQL_SERVER:-9.6}
-
-    # Manually build via `docker-compose build`
-    #build:
-        #context: https://github.com/cytopia/docker-${MYSQL_SERVER}.git#1
-    #    context: https://github.com/cytopia/docker-${MYSQL_SERVER}.git
 
     environment:
 
@@ -387,9 +337,9 @@ services:
       - httpd
 
 
-  # ----------------------------------------
+  # ------------------------------------------------------------
   # Redis
-  # ----------------------------------------
+  # ------------------------------------------------------------
   redis:
     image: redis:${REDIS_SERVER:-3.2}
 
@@ -414,9 +364,9 @@ services:
       - httpd
 
 
-  # ----------------------------------------
+  # ------------------------------------------------------------
   # Memcached
-  # ----------------------------------------
+  # ------------------------------------------------------------
   memcd:
     image: memcached:${MEMCD_SERVER:-latest}
 
@@ -441,9 +391,9 @@ services:
       - httpd
 
 
-  # ----------------------------------------
-  # Mongo
-  # ----------------------------------------
+  # ------------------------------------------------------------
+  # MongoDB
+  # ------------------------------------------------------------
   mongo:
     image: mongo:${MONGO_SERVER:-latest}
 
