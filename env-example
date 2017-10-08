@@ -359,7 +359,7 @@ PHP_XDEBUG_ENABLE=1
 
 # Your local port (your computer host [not the docker])
 # where your ide/editor is listening for xdebug connections.
-PHP_XDEBUG_REMOTE_PORT=9001
+PHP_XDEBUG_REMOTE_PORT=9000
 
 # Your local IP address (your computer host [not the docker])
 # where your ide/editor is listening for xdebug connections.
