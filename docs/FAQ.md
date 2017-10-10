@@ -40,6 +40,7 @@ FAQ
 3. **[Usage](#3-usage)**
     - [Does it work with CakePHP?](#does-it-work-with-cakephp)
 	- [Does it work with Drupal?](#does-it-work-with-drupal)
+	- [Does it work with Joomla?](#does-it-work-with-joomla)
 	- [Does it work with Laravel?](#does-it-work-with-laravel)
 	- [Does it work with PhalconPHP?](#does-it-work-with-phalconphp)
 	- [Does it work with Symfony?](#does-it-work-with-symfony)
@@ -160,29 +161,33 @@ Yes, see **[How to setup CakePHP](Examples.md#21-setup-cakephp)**.
 
 Yes, see **[How to setup Drupal](Examples.md#22-setup-drupal)**.
 
+#### Does it work with Joomla?
+
+Yes, see **[How to setup Joomla](Examples.md#23-setup-joomla)**.
+
 #### Does it work with Laravel?
 
-Yes, see **[How to setup Laravel](Examples.md#23-setup-laravel)**.
+Yes, see **[How to setup Laravel](Examples.md#24-setup-laravel)**.
 
 #### Does it work with PhalconPHP?
 
-Yes, see **[How to setup Phalcon](Examples.md#24-setup-phalcon)**.
+Yes, see **[How to setup Phalcon](Examples.md#25-setup-phalcon)**.
 
 #### Does it work with Symfony?
 
-Yes, see **[How to setup Symfony](Examples.md#25-setup-symfony)**.
+Yes, see **[How to setup Symfony](Examples.md#26-setup-symfony)**.
 
 #### Does it work with Wordpress?
 
-Yes, see **[How to setup Wordpress](Examples.md#26-setup-wordpress)**.
+Yes, see **[How to setup Wordpress](Examples.md#27-setup-wordpress)**.
 
 #### Does it work with Yii?
 
-Yes, see **[How to setup Yii](Examples.md#27-setup-yii)**.
+Yes, see **[How to setup Yii](Examples.md#28-setup-yii)**.
 
 #### Does it work with Zend Framework?
 
-Yes, see **[How to setup Zend](Examples.md#28-setup-zend)**.
+Yes, see **[How to setup Zend](Examples.md#29-setup-zend)**.
 
 
 ## 4. Troubleshooting

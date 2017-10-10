@@ -1,0 +1,18 @@
+#
+# Nginx (mainline) configuration overwrites
+#
+# Make sure this file ends by *.conf, otherwise
+# the configuration is not sourced by nginx.
+#
+# The below settings are just examples.
+# Copy them, remove them or reset them.
+#
+
+charset utf-8;
+
+send_timeout 60;
+keepalive_timeout 10;
+
+sendfile        off;
+tcp_nopush      on;
+tcp_nodelay     on;

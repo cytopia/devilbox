@@ -39,7 +39,7 @@
 								<?php foreach ($vHosts as $vHost): ?>
 									<tr>
 										<td><?php echo $vHost['name'];?></td>
-										<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR');?>/<?php echo $vHost['name'];?>/htdocs</td>
+										<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR');?>/<?php echo $vHost['name'];?>/<?php echo loadClass('Helper')->getEnv('HTTPD_DOCROOT_DIR');?></td>
 										<td class="text-xs-center text-xs-small" id="valid-<?php echo $vHost['name'];?>">&nbsp;&nbsp;&nbsp;</td>
 										<td id="href-<?php echo $vHost['name'];?>"><?php echo $filler;?></td>
 									</tr>
@@ -80,12 +80,10 @@
 						error = this.responseText;
 
 						if (error.length && error.match(/^error/)) {
-							console.log(error);
 							el_valid.className += ' bg-danger';
 							el_valid.innerHTML = 'ERR';
 							el_href.innerHTML = error;
 						} else if (error.length && error.match(/^warning/)) {
-							console.log(error);
 							el_valid.className += ' bg-warning';
 							el_valid.innerHTML = 'WARN';
 							el_href.innerHTML = error.replace('warning', '');
@@ -125,7 +123,7 @@
 						//console.log(vhost);
 					}
 				}
-				xhttp.open('GET', 'http://'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix();?>/devilbox-api/status.json', true);
+				xhttp.open('POST', 'http://'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix();?>/devilbox-api/status.json', true);
 				xhttp.send();
 
 				// Timeout to abort in 1 second

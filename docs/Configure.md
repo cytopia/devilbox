@@ -33,6 +33,7 @@ Configure |
 3. [Project settings](#3-project-settings)
     1. [Project domain](#31-project-domain)
     2. [Project path](#32-project-path)
+    3. [Project htdocs directory](#33-project-htdocs directory)
 4. [Container settings](#4-container-settings)
     1. [General](#41-general)
         1. [Timezone](#411-timezone)
@@ -45,9 +46,11 @@ Configure |
         4. [HHVM](#424-hhvm)
         5. [Custom PHP modules](#425-custom-php-modules)
         6. [Customize bash and other tools](#426-customize-bash-and-other-tools)
+		7. [Custom environment variables](#427-custom-environment-variables)
     3. [Apache / Nginx](#43-apache--nginx)
         1. [Select Httpd version](#431-select-httpd-version)
         2. [Host port](#432-host-port)
+		3. [Customize the vhost configuration](#433-customize-the-vhost-configuration)
     4. [MySQL](#44-mysql)
         1. [Select MySQL version](#441-select-mysql-version)
         2. [Root password](#442-root-password)
@@ -77,6 +80,7 @@ Configure |
 5. [Intranet settings](#5-intranet-settings)
     1. [DNS check timeout](#51-dns-check-timeout)
     2. [Password protection](#52-password-protection)
+	3. [Disable Intranet](#53-disable-intranet)
 6. [Host computer](#6-host-computer)
     1. [/etc/hosts](#61-etchosts)
     2. [Auto-DNS](#62-auto-dns)
@@ -111,30 +115,38 @@ You can get more information here:
 
 Inside the devilbox root directory you will find a folder called `cfg/`. This will contain subdirectories in the form of `<SERVICE>-<VERSION>`. Those folders will be mounted into the appropriate location into the respective docker container in order to overwrite service configuration.
 
-Currently only MySQL/MariaDB and PHP/HHVM overrides are supported.
+Currently only MySQL/MariaDB, PHP/HHVM and Apache/Nginx overrides are supported.
 
 The folder structure looks like this:
 ```
 cfg/
+  apache-2.2/
+  apache-2.4/
+  nginx-mainline/
+  nginx-stable/
+
   hhvm-latest/
-  mariadb-10.0/
-  mariadb-10.1/
-  mariadb-10.2/
-  mariadb-10.3/
-  mariadb-5.5/
-  mysql-5.5/
-  mysql-5.6/
-  mysql-5.7/
-  mysql-8.0/
-  percona-5.5/
-  percona-5.6/
-  percona-5.7/
   php-fpm-5.4/
   php-fpm-5.5/
   php-fpm-5.6/
   php-fpm-7.0/
   php-fpm-7.1/
   php-fpm-7.2/
+
+  mariadb-5.5/
+  mariadb-10.0/
+  mariadb-10.1/
+  mariadb-10.2/
+  mariadb-10.3/
+
+  mysql-5.5/
+  mysql-5.6/
+  mysql-5.7/
+  mysql-8.0/
+
+  percona-5.5/
+  percona-5.6/
+  percona-5.7/
 ```
 
 Each of the folders will contain an example file in the following format:
@@ -146,6 +158,7 @@ Only files which have the correct file extensions will be read, all others such 
 
 * Valid PHP config extension: `.ini`
 * Valid MySQL config extension: `.cnf`
+* Valid Httpd config extension: `.conf`
 
 #### 1.3 The devilbox `mod/` directory
 
@@ -292,6 +305,23 @@ $ docker-compose rm -f
 $ docker-compose up -d
 ```
 
+#### 3.3 Project htdocs directory
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HTTPD_DOCROOT_DIR         | `htdocs` | A sub directory inside your project directory from which the web server will serve your files.<br/>The full path to the docuement root would be: `${HOST_PATH_HTTPD_DATADIR}/<project-name>/${HTTPD_DOCROOT_DIR}` |
+
+If you rather would use a directory called `www`, just change it to this. Be aware that this will affect all your projects.
+
+**Note:** When changing this value, you must restart the devilbox.
+
+```shell
+# Stop the container
+$ docker-compose stop
+
+# Start your stack
+$ docker-compose up -d
+```
 
 ## 4. Container settings
 
@@ -329,7 +359,6 @@ $ id
 
 **Note:** If your Host computers user id and the containers user id do not match, files will have different access rights inside and outside which might result in permission errors like `access denied`. So make sure to set this value.
 
-**Note:** Files created by the webserver such as uploads, tmp and cache files are still created by the webservers user id and you will probably have to `chmod` them. This issues will be addressed shortly and you will also be able to change the uid/gid of the webserver in the next devilbox release.
 
 ##### 4.1.2 Group id
 
@@ -499,6 +528,20 @@ alias vim='vim -u /etc/bashrc-devilbox.d/my-vimrc'
 
 The next time you open `vim` within the PHP/HHVM docker container, it will automatically source your `my-vimrc`.
 
+##### 4.2.7 Custom environment variables
+
+If you projects require custom environment variables to be available to PHP or HHVM, you can simply add any variable to the `.env` file. All of them are automatically available to the container.
+
+If your application requires are variable to determine if it is run under development or production, for example: `APPLICATION_ENV`, you can just add this to the `.env` file:
+
+```
+$ cat .env
+
+...
+APPLICATION_ENV=1
+```
+
+
 #### 4.3 Apache / Nginx
 
 ##### 4.3.1 Select Httpd version
@@ -521,6 +564,17 @@ You can choose between Apache and Nginx in different version. All of them are co
 By default the webserver will listen on port 80 (on your Host computer). You can change this to any other port (in case port 80 is already taken).
 
 If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
+
+##### 4.3.3 Customize the vhost configuration
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| HTTPD_TEMPLATE_DIR        | `.devilbox`| A sub directory inside your project directory where the web server will look for web server templates in order to load a custom configuration for this specific project. |
+
+If no such directory exists or no templates are available, the chosen web server will use the standard configuration for this virtual host. You can however overwrite each virtual host with custom settings by adding **[vhost-gen](https://github.com/devilbox/vhost-gen)** templates.
+
+Copy all available templates from [vhost-gen templates directory](https://github.com/devilbox/vhost-gen/tree/master/etc/templates) to a a sub directory in your projects dir (By default `.devilbox/`) and adjust those template files to your needs.
+
 
 #### 4.4 MySQL
 
@@ -872,6 +926,14 @@ If you wish, you can password-protect the devilbox intranet (not the vhost proje
 > You could for example allow people from your local network to access the projects hosted on your devilbox (When changing `LOCAL_LISTEN_ADDRESS` to also listen on your external LAN side).
 > However, the devilbox intranet might give away too much information, what other people should not see, such as databases or others.
 > In that case, you should enable password protection.
+
+#### 5.3 Disable Intranet
+
+| `.env` file variable name | Default | Note |
+|---------------------------|---------|------|
+| DEVILBOX_UI_DISABLE       | `0`     | Enable or disable devilbox's Intranet completely. |
+
+If you wish, you can disable the built-in intranet completely. Set this variable to `1` which will remove the vhost that servers the Intranet. All that will be left are your custom project based virtual hosts.
 
 
 ## 6. Host computer

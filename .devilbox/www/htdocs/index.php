@@ -30,6 +30,7 @@ $connection = array();
 $error	= null;
 
 // ---- HTTPD (required) ----
+
 $host	= $GLOBALS['HTTPD_HOST_NAME'];
 $succ	= loadClass('Httpd')->canConnect($error, $host);
 $connection['Httpd'][$host] = array(
@@ -51,7 +52,6 @@ $connection['Httpd'][$host] = array(
 	'host' => $host,
 	'succ' => $succ
 );
-
 // ---- MYSQL ----
 if ($avail_mysql) {
 	$host	= $GLOBALS['MYSQL_HOST_NAME'];
@@ -126,6 +126,7 @@ if ($avail_redis) {
 		'succ' => $succ
 	);
 }
+
 
 // ---- MEMCACHED ----
 if ($avail_memcd) {
@@ -352,6 +353,14 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 										<td><?php echo loadClass('Php')->getGid(); ?></td>
 									</tr>
 									<tr>
+										<th>vHost docroot dir</th>
+										<td><?php echo loadClass('Helper')->getEnv('HTTPD_DOCROOT_DIR'); ?></td>
+									</tr>
+									<tr>
+										<th>vHost config dir</th>
+										<td><?php echo loadClass('Helper')->getEnv('HTTPD_TEMPLATE_DIR'); ?></td>
+									</tr>
+									<tr>
 										<th>vHost TLD</th>
 										<td>*.<?php echo loadClass('Httpd')->getTldSuffix(); ?></td>
 									</tr>
@@ -409,47 +418,47 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 								<tbody>
 									<tr>
 										<th>composer</th>
-										<td><?php if (($version = loadClass('Php')->getComposerVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+										<td id="app_composer"></td>
 									</tr>
 									<tr>
 										<th>drupal-console</th>
-										<td><?php if (($version = loadClass('Php')->getDrushConsoleVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+										<td id="app_drupalc"></td>
 									</tr>
 									<tr>
 										<th>drush</th>
-										<td><?php if (($version = loadClass('Php')->getDrushVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+										<td id="app_drush"></td>
 									</tr>
 									<tr>
 										<th>git</th>
-										<td><?php if (($version = loadClass('Php')->getGitVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+										<td id="app_git"></td>
 									</tr>
 									<tr>
-										<th>Laravell installer</th>
-										<td><?php if (($version = loadClass('Php')->getLaravelVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+										<th>Laravel installer</th>
+										<td id="app_laravel"></td>
 									</tr>
 									<tr>
 										<th>mysqldump-secure</th>
-										<td><?php if (($version = loadClass('Php')->getMdsVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+										<td id="app_mds"></td>
 									</tr>
 									<tr>
 										<th>node</th>
-										<td><?php if (($version = loadClass('Php')->getNodeVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+										<td id="app_node"></td>
 									</tr>
 									<tr>
 										<th>npm</th>
-										<td><?php if (($version = loadClass('Php')->getNpmVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+										<td id="app_npm"></td>
 									</tr>
 									<tr>
 										<th>Phalcon devtools</th>
-										<td><?php if (($version = loadClass('Php')->getPhalconVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+										<td id="app_phalcon"></td>
 									</tr>
 									<tr>
 										<th>Symfony installer</th>
-										<td><?php if (($version = loadClass('Php')->getSymfonyVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+										<td id="app_symfony"></td>
 									</tr>
 									<tr>
 										<th>Wordpress cli</th>
-										<td><?php if (($version = loadClass('Php')->getWpcliVersion()) === false) {echo '<span class="text-danger">not installed</span>';}else{echo $version;}; ?></td>
+										<td id="app_wpcli"></td>
 									</tr>
 								</tbody>
 							</table>
@@ -762,8 +771,8 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 											</tr>
 											<tr>
 												<th>httpd</th>
-												<td>-</td>
-												<td>-</td>
+												<td>./cfg/<?php echo loadClass('Helper')->getEnv('HTTPD_SERVER'); ?></td>
+												<td>/etc/httpd-custom.d</td>
 											</tr>
 											<?php if ($avail_mysql): ?>
 												<tr>
@@ -902,6 +911,37 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 		(function() {
 			// your page initialization code here
 			// the DOM will be available here
+
+			/**
+			 * Update installed tool versions.
+			 * Ajax method is faster for loading the front page
+			 * @param  string app Name of the tool
+			 */
+			function updateVersions(app) {
+				var xhttp = new XMLHttpRequest();
+
+				xhttp.onreadystatechange = function() {
+					var elem = document.getElementById('app_'+app);
+
+					if (this.readyState == 4 && this.status == 200) {
+						json = JSON.parse(this.responseText);
+						elem.innerHTML = json[app];
+					}
+				};
+				xhttp.open('GET', '_ajax_callback.php?software='+app, true);
+				xhttp.send();
+			}
+			updateVersions('composer');
+			updateVersions('drupalc');
+			updateVersions('drush');
+			updateVersions('git');
+			updateVersions('laravel');
+			updateVersions('mds');
+			updateVersions('node');
+			updateVersions('npm');
+			updateVersions('phalcon');
+			updateVersions('symfony');
+			updateVersions('wpcli');
 		})();
 		</script>
 	</body>

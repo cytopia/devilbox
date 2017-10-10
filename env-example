@@ -8,6 +8,8 @@
 ###
 ###  No need to rebuild any dockers!
 ###
+###  For custom variables, scroll to the bottom
+###
 
 
 ###
@@ -16,7 +18,7 @@
 ###
 ### 1: Yes
 ### 0: No
-DEBUG_COMPOSE_ENTRYPOINT=0
+DEBUG_COMPOSE_ENTRYPOINT=1
 
 
 ###
@@ -49,7 +51,7 @@ DEVILBOX_PATH=.
 ### b.) If an IP is specified, note the trailing colon ':'
 ###    LOCAL_LISTEN_ADDR=127.0.0.1:
 ###
-LOCAL_LISTEN_ADDR=127.0.0.1:
+LOCAL_LISTEN_ADDR=
 
 
 ###
@@ -71,20 +73,6 @@ TLD_SUFFIX=loc
 
 
 ###
-### TLD_SUFFIX domains are checked if they are set in the
-### host computer /etc/hosts or available via attached DNS server.
-### Timeout is done on vhosts.php (intranet) via ajax calls.
-### In order to keep performance, set this to a low value.
-### DNS checks might not succeed in time on slow machines.
-### If DNS is valid, but timeout is expired, set this to a higher value.
-###
-### DNS_CHECK_TIMEOUT value is how many seconds to time out
-### Default is to timeout after 1 second (DNS_CHECK_TIMEOUT=1)
-###
-DNS_CHECK_TIMEOUT=1
-
-
-###
 ### Set your user id and group id
 ###
 ### This should be changed to the value of your local
@@ -100,6 +88,28 @@ NEW_GID=1000
 ### Timezone for all dockers and service config files
 ###
 TIMEZONE=Europe/Berlin
+
+
+
+
+################################################################################
+###
+### INTRANET SETTINGS
+###
+################################################################################
+
+###
+### TLD_SUFFIX domains are checked if they are set in the
+### host computer /etc/hosts or available via attached DNS server.
+### Timeout is done on vhosts.php (intranet) via ajax calls.
+### In order to keep performance, set this to a low value.
+### DNS checks might not succeed in time on slow machines.
+### If DNS is valid, but timeout is expired, set this to a higher value.
+###
+### DNS_CHECK_TIMEOUT value is how many seconds to time out
+### Default is to timeout after 1 second (DNS_CHECK_TIMEOUT=1)
+###
+DNS_CHECK_TIMEOUT=1
 
 
 ###
@@ -130,6 +140,16 @@ DEVILBOX_UI_PROTECT=0
 ### The default username is 'devilbox'
 ###
 DEVILBOX_UI_PASSWORD=password
+
+
+###
+### Disable the Devilbox Intranet?
+###
+### Example:
+###   DEVILBOX_UI_PROTECT=1
+###   DEVILBOX_UI_PROTECT=0
+###
+DEVILBOX_UI_DISABLE=0
 
 
 
@@ -192,6 +212,7 @@ MYSQL_SERVER=mariadb-10.1
 #PGSQL_SERVER=9.4
 #PGSQL_SERVER=9.5
 PGSQL_SERVER=9.6
+#PGSQL_SERVER=10.0
 
 
 ###
@@ -199,13 +220,14 @@ PGSQL_SERVER=9.6
 ###
 #REDIS_SERVER=2.8
 #REDIS_SERVER=3.0
-REDIS_SERVER=3.2
+#REDIS_SERVER=3.2
+REDIS_SERVER=4.0
 
 
 ###
 ### 1.6 Choose Memcached Server Image
 ###
-MEMCD_SERVER=1.4.21
+#MEMCD_SERVER=1.4.21
 #MEMCD_SERVER=1.4.22
 #MEMCD_SERVER=1.4.23
 #MEMCD_SERVER=1.4.24
@@ -221,6 +243,12 @@ MEMCD_SERVER=1.4.21
 #MEMCD_SERVER=1.4.34
 #MEMCD_SERVER=1.4.35
 #MEMCD_SERVER=1.4.36
+#MEMCD_SERVER=1.4.37
+#MEMCD_SERVER=1.4.38
+#MEMCD_SERVER=1.4.39
+#MEMCD_SERVER=1.5.0
+#MEMCD_SERVER=1.5.1
+MEMCD_SERVER=1.5.2
 #MEMCD_SERVER=latest
 
 
@@ -351,6 +379,26 @@ PHP_XDEBUG_REMOTE_HOST=192.168.0.215
 ###
 HOST_PORT_HTTPD=80
 
+###
+### Document Root Subdirectory
+###
+### In your project directory, which subfolder should
+### serve your files?
+###
+### When changing this value, restart the devilbox.
+###
+HTTPD_DOCROOT_DIR=htdocs
+
+###
+### Per vHost Config Subdirectory
+###
+### In your project directory, which subfolder should
+### hold apache, nginx templates for a customized vhost?
+###
+### When changing this value, restart the devilbox.
+###
+HTTPD_TEMPLATE_DIR=.devilbox
+
 
 
 ################################################################################
@@ -460,3 +508,25 @@ HOST_PORT_BIND=1053
 ### You can also add DNS servers from your LAN (if any are available)
 ###
 BIND_DNS_RESOLVER=8.8.8.8,8.8.4.4
+
+
+
+################################################################################
+###
+### 11. Custom variables
+###
+################################################################################
+
+###
+### Any variable defined in this file will be available
+### as environment variables to your PHP/HHV Docker container.
+###
+### This might be useful to set application environment and retriev
+### them via: <?php getenv('MY_APPLICATION_ENV'); ?>
+###
+
+###
+### Example:
+### <?php echo getenv('Foo');?> would produce: 'some value'
+###
+#Foo=some value

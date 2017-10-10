@@ -24,12 +24,13 @@ Examples |
 2. [Project setup](#2-project-setup)
     1. [Setup CakePHP](#21-setup-cakephp)
     2. [Setup Drupal](#22-setup-drupal)
-    3. [Setup Laravel](#23-setup-laravel)
-    4. [Setup Phalcon](#24-setup-phalcon)
-    5. [Setup Symfony](#25-setup-symfony)
-    6. [Setup Wordpress](#26-setup-wordpress)
-    7. [Setup Yii](#27-setup-yii)
-    8. [Setup Zend](#28-setup-zend)
+    3. [Setup Joomla](#23-setup-joomla)
+    4. [Setup Laravel](#24-setup-laravel)
+    5. [Setup Phalcon](#25-setup-phalcon)
+    6. [Setup Symfony](#26-setup-symfony)
+    7. [Setup Wordpress](#27-setup-wordpress)
+    8. [Setup Yii](#28-setup-yii)
+    9. [Setup Zend](#29-setup-zend)
 3. [Code analysis](#3-code-analysis)
     1. [awesome-ci](#31-awesome-ci)
     2. [phpcs](#32-phpcs)
@@ -96,19 +97,19 @@ host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-cake
+devilbox@php-7.0.20 in /shared/httpd $ cd my-cake
 
 # 3. Install CakePHP via composer
-devilbox@php-7.0.20 in /shared/httpd $ cd my-cake
-devilbox@php-7.0.20 in /shared/httpd $ composer create-project --prefer-dist cakephp/app cakephp
+devilbox@php-7.0.20 in /shared/httpd/my-cake $ composer create-project --prefer-dist cakephp/app cakephp
 
 # 4. Symlink webroot directory
-devilbox@php-7.0.20 in /shared/httpd $ ln -s cakephp/webroot/ htdocs
+devilbox@php-7.0.20 in /shared/httpd/my-cake $ ln -s cakephp/webroot/ htdocs
 
 # 5. Add MySQL datbase
-devilbox@php-7.0.20 in /shared/httpd $ mysql -u root -h 127.0.0.1 -p -e 'CREATE DATABASE my_cake;'
+devilbox@php-7.0.20 in /shared/httpd/my-cake $ mysql -u root -h 127.0.0.1 -p -e 'CREATE DATABASE my_cake;'
 
 # 6. Configure datbase connection
-devilbox@php-7.0.20 in /shared/httpd $ vi cakephp/config/app.php
+devilbox@php-7.0.20 in /shared/httpd/my-cake $ vi cakephp/config/app.php
 ```
 ```php
 <?php
@@ -169,13 +170,13 @@ host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-drupal
+devilbox@php-7.0.20 in /shared/httpd $ cd my-drupal
 
 # 3. Install Drupal via drush
-devilbox@php-7.0.20 in /shared/httpd $ cd my-drupal
-devilbox@php-7.0.20 in /shared/httpd $ drush dl drupal
+devilbox@php-7.0.20 in /shared/httpd/my-drupal $ drush dl drupal
 
 # 4. Symlink Drupal directory
-devilbox@php-7.0.20 in /shared/httpd $ ln -s drupal-8.3.3 htdocs
+devilbox@php-7.0.20 in /shared/httpd/my-drupal $ ln -s drupal-8.3.3 htdocs
 ```
 
 **5. DNS record**
@@ -191,8 +192,55 @@ Open your browser at http://my-drupal.loc and follow the Drupal installation ste
 
 **Note:** For MySQL host choose `127.0.0.1`.
 
+#### 2.3 Setup Joomla
 
-#### 2.3 Setup Laravel
+> **[Official Joomla Documentation](https://docs.joomla.org/J3.x:Installing_Joomla)**
+
+The following configuration will be used:
+
+| Project name | VirtualHost directory | Database   | TLD_SUFFIX | Url |
+|--------------|-----------------------|------------|------------|-----|
+| my-joomla    | /shared/httpd/my-joomla | -       | loc        | http://my-joomla.loc |
+
+It will be ready in six simple steps:
+
+1. Enter the PHP container
+2. Create a new VirtualHost directory
+3. Download and extract Joomla
+4. Symlink public directory
+5. Setup DNS record
+6. Visit http://my-joomla.loc in your browser
+
+```shell
+# 1. Enter the PHP container
+host> ./shell.sh
+
+# 2. Create a new VirtualHost directory
+devilbox@php-7.0.20 in /shared/httpd $ mkdir my-joomla
+devilbox@php-7.0.20 in /shared/httpd $ cd my-joomla
+
+# 3. Download and extract Joomla
+devilbox@php-7.0.20 in /shared/httpd/my-joomla $ wget -O joomla.tar.gz https://downloads.joomla.org/cms/joomla3/3-8-0/joomla_3-8-0-stable-full_package-tar-gz?format=gz
+devilbox@php-7.0.20 in /shared/httpd/my-joomla $ mkdir joomla/
+devilbox@php-7.0.20 in /shared/httpd/my-joomla $ tar xvfz joomla.tar.gz -C joomla/
+
+
+# 4. Symlink Joomla directory
+devilbox@php-7.0.20 in /shared/httpd/my-joomla $ ln -s joomla htdocs
+```
+
+**5. DNS record**
+
+If you do not have auto-DNS configured, you will need to add the following line to your Host computer's `/etc/hosts`:
+```shell
+127.0.0.1 my-joomla.loc
+```
+
+**6. Open your browser**
+
+Open your browser at http://my-joomla.loc
+
+#### 2.4 Setup Laravel
 
 > **[Official Laravel Documentation](https://laravel.com/docs/5.4/installation)**
 
@@ -217,13 +265,13 @@ host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-laravel
+devilbox@php-7.0.20 in /shared/httpd $ cd my-laravel
 
 # 3. Install Laravel via laravel
-devilbox@php-7.0.20 in /shared/httpd $ cd my-laravel
-devilbox@php-7.0.20 in /shared/httpd $ laravel new laravel-project
+devilbox@php-7.0.20 in /shared/httpd/my-laravel $ laravel new laravel-project
 
 # 4. Symlink public directory
-devilbox@php-7.0.20 in /shared/httpd $ ln -s laravel-project/public htdocs
+devilbox@php-7.0.20 in /shared/httpd/my-laravel $ ln -s laravel-project/public htdocs
 ```
 
 **5. DNS record**
@@ -238,7 +286,7 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-laravel.loc
 
 
-#### 2.4 Setup Phalcon
+#### 2.5 Setup Phalcon
 
 > **[Official Phalcon Documentation](https://docs.phalconphp.com/en/3.2/devtools-usage)**
 
@@ -263,13 +311,13 @@ host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-phalcon
+devilbox@php-7.0.20 in /shared/httpd $ cd my-phalcon
 
 # 3. Install Phalcon via phalcon
-devilbox@php-7.0.20 in /shared/httpd $ cd my-phalcon
-devilbox@php-7.0.20 in /shared/httpd $ phalcon project phalconphp
+devilbox@php-7.0.20 in /shared/httpd/my-phalcon $ phalcon project phalconphp
 
 # 4. Symlink public directory
-devilbox@php-7.0.20 in /shared/httpd $ ln -s phalconphp/public htdocs
+devilbox@php-7.0.20 in /shared/httpd/my-phalcon $ ln -s phalconphp/public htdocs
 ```
 
 **5. DNS record**
@@ -284,7 +332,7 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-phalcon.loc
 
 
-#### 2.5 Setup Symfony
+#### 2.6 Setup Symfony
 
 > **[Official Symfony Documentation](https://symfony.com/doc/current/setup.html)**
 
@@ -310,17 +358,17 @@ host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-symfony
+devilbox@php-7.0.20 in /shared/httpd $ cd my-symfony
 
 # 3. Install Symfony via symfony
-devilbox@php-7.0.20 in /shared/httpd $ cd my-symfony
-devilbox@php-7.0.20 in /shared/httpd $ symfony new symfony
+devilbox@php-7.0.20 in /shared/httpd/my-symfony $ symfony new symfony
 
 # 4. Symlink web directory
-devilbox@php-7.0.20 in /shared/httpd $ ln -s symfony/web htdocs
+devilbox@php-7.0.20 in /shared/httpd/my-symfony $ ln -s symfony/web htdocs
 
 # 5. Enable Symfony production (app.php)
-devilbox@php-7.0.20 in /shared/httpd $ cd symfony/web
-devilbox@php-7.0.20 in /shared/httpd $ ln -s app.php index.php
+devilbox@php-7.0.20 in /shared/httpd/my-symfony $ cd symfony/web
+devilbox@php-7.0.20 in /shared/httpd/my-symfony/symfony/web $ ln -s app.php index.php
 ```
 
 **6. DNS record**
@@ -335,7 +383,7 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-symfony.loc
 
 
-#### 2.6 Setup Wordpress
+#### 2.7 Setup Wordpress
 
 > **[Official Wordpress Documentation](https://codex.wordpress.org/Installing_WordPress)**
 
@@ -360,13 +408,13 @@ host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-wp
+devilbox@php-7.0.20 in /shared/httpd $ cd my-wp
 
 # 3. Download Wordpress via git
-devilbox@php-7.0.20 in /shared/httpd $ cd my-wp
-devilbox@php-7.0.20 in /shared/httpd $ git clone https://github.com/WordPress/WordPress wordpress.git
+devilbox@php-7.0.20 in /shared/httpd/my-wp $ git clone https://github.com/WordPress/WordPress wordpress.git
 
 # 4. Symlink wordpress git directory
-devilbox@php-7.0.20 in /shared/httpd $ ln -s wordpress.git htdocs
+devilbox@php-7.0.20 in /shared/httpd/my-wp $ ln -s wordpress.git htdocs
 ```
 
 **5. DNS record**
@@ -381,7 +429,7 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-wp.loc
 
 
-#### 2.7 Setup Yii
+#### 2.8 Setup Yii
 
 > **[Official Yii Documentation](http://www.yiiframework.com/doc-2.0/guide-start-installation.html)**
 
@@ -406,13 +454,13 @@ host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-yii
+devilbox@php-7.0.20 in /shared/httpd $ cd my-yii
 
 # 3. Install Yii2 via composer
-devilbox@php-7.0.20 in /shared/httpd $ cd my-yii
-devilbox@php-7.0.20 in /shared/httpd $ composer create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic yii2-dev
+devilbox@php-7.0.20 in /shared/httpd/my-yii $ composer create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic yii2-dev
 
 # 4. Symlink web directory
-devilbox@php-7.0.20 in /shared/httpd $ ln -s yii2-dev/web htdocs
+devilbox@php-7.0.20 in /shared/httpd/my-yii $ ln -s yii2-dev/web htdocs
 ```
 
 **5. DNS record**
@@ -427,7 +475,7 @@ If you do not have auto-DNS configured, you will need to add the following line 
 Open your browser at http://my-yii.loc
 
 
-#### 2.8 Setup Zend
+#### 2.9 Setup Zend
 
 > **[Official Zend Documentation](https://docs.zendframework.com/tutorials/getting-started/skeleton-application/)**
 
@@ -452,13 +500,13 @@ host> ./shell.sh
 
 # 2. Create a new VirtualHost directory
 devilbox@php-7.0.20 in /shared/httpd $ mkdir my-zend
+devilbox@php-7.0.20 in /shared/httpd $ cd my-zend
 
 # 3. Install Zendframework via composer
-devilbox@php-7.0.20 in /shared/httpd $ cd my-zend
-devilbox@php-7.0.20 in /shared/httpd $ composer create-project --prefer-dist zendframework/skeleton-application zend
+devilbox@php-7.0.20 in /shared/httpd/my-zend $ composer create-project --prefer-dist zendframework/skeleton-application zend
 
 # 4. Symlink public directory
-devilbox@php-7.0.20 in /shared/httpd $ ln -s zend/public htdocs
+devilbox@php-7.0.20 in /shared/httpd/my-zend $ ln -s zend/public htdocs
 ```
 
 **5. DNS record**
