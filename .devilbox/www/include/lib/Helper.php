@@ -181,6 +181,17 @@ class Helper
 	}
 
 
+	public function getDomain()
+	{
+		return $_SERVER['HTTP_HOST'];
+	}
+	public function getProtocol()
+	{
+		return strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/')));
+	}
+
+
+
 	/*********************************************************************************
 	 *
 	 * Login Helper Functions

@@ -13,8 +13,8 @@ error_reporting(-1);
 putenv('RES_OPTIONS=retrans:1 retry:1 timeout:1 attempts:1');
 
 
-$DEVILBOX_VERSION = 'v0.12';
-$DEVILBOX_DATE = '2017-10-10';
+$DEVILBOX_VERSION = 'v0.13';
+$DEVILBOX_DATE = '2017-10-12';
 $DEVILBOX_API_PAGE = 'devilbox-api/status.json';
 
 //
@@ -45,6 +45,7 @@ $PGSQL_HOST_NAME	= 'pgsql';
 $REDIS_HOST_NAME	= 'redis';
 $MEMCD_HOST_NAME	= 'memcd';
 $MONGO_HOST_NAME	= 'mongo';
+$RABBIT_HOST_NAME	= 'rabbit';
 
 
 //
@@ -141,6 +142,16 @@ function loadClass($class) {
 				$_LOADED_LIBS[$class] = \devilbox\Mongo::getInstance($GLOBALS['MONGO_HOST_NAME']);
 				break;
 
+			case 'Rabbit':
+				loadFile($class, $cnt_dir);
+				$_LOADED_LIBS[$class] = \devilbox\Rabbit::getInstance($GLOBALS['RABBIT_HOST_NAME'], array(
+					'user' => loadClass('Helper')->getEnv('RABBIT_DEFAULT_USER'),
+					'pass' => loadClass('Helper')->getEnv('RABBIT_DEFAULT_PASS'),
+					'vhost' => loadClass('Helper')->getEnv('RABBIT_DEFAULT_VHOST'),
+					'port' => '5672',
+					'mgmt_port' => '15672'
+				));
+				break;
 			// Get optional docker classes
 			default:
 				// Redis

@@ -127,7 +127,7 @@ if ! devilbox_test_compose; then
 fi
 
 print_h2 "Testing 'dvlbox-ok': index.php"
-if ! devilbox_test_url "http://127.0.0.1/index.php" "dvlbox-ok" "20"; then
+if ! devilbox_test_url "http://127.0.0.1/index.php" "dvlbox-ok" "23"; then
 	devilbox_print_errors "http://127.0.0.1/index.php"
 	exit 1
 fi
