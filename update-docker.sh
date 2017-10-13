@@ -27,6 +27,7 @@ docker pull cytopia/php-fpm-5.5:${TAG}
 docker pull cytopia/php-fpm-5.6:${TAG}
 docker pull cytopia/php-fpm-7.0:${TAG}
 docker pull cytopia/php-fpm-7.1:${TAG}
+docker pull cytopia/php-fpm-7.2:${TAG}
 docker pull cytopia/hhvm-latest:${TAG}
 
 ###
@@ -51,6 +52,9 @@ docker pull cytopia/mariadb-10.0:${TAG}
 docker pull cytopia/mariadb-10.1:${TAG}
 docker pull cytopia/mariadb-10.2:${TAG}
 docker pull cytopia/mariadb-10.3:${TAG}
+docker pull cytopia/percona-5.5:${TAG}
+docker pull cytopia/percona-5.6:${TAG}
+docker pull cytopia/percona-5.7:${TAG}
 
 ###
 ### PGSQL
@@ -61,6 +65,7 @@ docker pull postgres:9.3
 docker pull postgres:9.4
 docker pull postgres:9.5
 docker pull postgres:9.6
+docker pull postgres:10.0
 
 ###
 ### REDIS
@@ -68,6 +73,7 @@ docker pull postgres:9.6
 docker pull redis:2.8
 docker pull redis:3.0
 docker pull redis:3.2
+docker pull redis:4.0
 
 ###
 ### MEMCACHED
@@ -88,6 +94,12 @@ docker pull memcached:1.4.33
 docker pull memcached:1.4.34
 docker pull memcached:1.4.35
 docker pull memcached:1.4.36
+docker pull memcached:1.4.37
+docker pull memcached:1.4.38
+docker pull memcached:1.4.39
+docker pull memcached:1.5.0
+docker pull memcached:1.5.1
+docker pull memcached:1.5.2
 docker pull memcached:latest
 
 ###
@@ -99,3 +111,9 @@ docker pull mongo:3.2
 docker pull mongo:3.4
 docker pull mongo:3.5
 
+###
+### RABBITMQ
+###
+docker pull rabbitmq:3.4-management
+docker pull rabbitmq:3.5-management
+docker pull rabbitmq:3.6-management
