@@ -12,12 +12,6 @@ class Rabbit extends BaseClass implements BaseInterface
 	 *
 	 *********************************************************************************/
 
-	/**
-	 * RabbitMQ instance
-	 * @var object|null
-	 */
-	private $_rabbit = null;
-
 	private $_host = null;
 	private $_port = null;
 	private $_mgmt_port = null;
@@ -45,13 +39,6 @@ class Rabbit extends BaseClass implements BaseInterface
 
 		// Silence errors and try to connect
 		//error_reporting(0);
-		$rabbit = new \AMQPConnection();
-
-		$rabbit->setHost($hostname);
-		$rabbit->setPort($data['port']);
-		$rabbit->setLogin($data['user']);
-		$rabbit->setPassword($data['pass']);
-		$rabbit->setVhost($data['vhost']);
 
 		$this->_host = $hostname;
 		$this->_port = $data['port'];
@@ -64,10 +51,8 @@ class Rabbit extends BaseClass implements BaseInterface
 		if (!$this->canConnect($err, $hostname)) {
 			$this->setConnectError('Failed to connect to RabbitMQ host on '.$hostname);
 			$this->setConnectErrno(1);
-		} else {
-			$this->_rabbit = $rabbit;
 		}
-		error_reporting(-1);
+		//error_reporting(-1);
 	}
 
 	/**
@@ -75,9 +60,6 @@ class Rabbit extends BaseClass implements BaseInterface
 	 */
 	public function __destruct()
 	{
-		if ($this->_rabbit) {
-			$this->_rabbit->disconnect();
-		}
 	}
 
 
@@ -90,23 +72,18 @@ class Rabbit extends BaseClass implements BaseInterface
 
 	public function getInfo()
 	{
-		if ($this->_rabbit) {
+		$url = 'http://'.$this->_user.':'.$this->_pass.'@'.$this->_host.':'.$this->_mgmt_port.'/api/overview';
+		$curl_handle = curl_init();
+		curl_setopt($curl_handle, CURLOPT_URL, $url);
+		curl_setopt($curl_handle,CURLOPT_CONNECTTIMEOUT, 1);
+		curl_setopt($curl_handle,CURLOPT_RETURNTRANSFER, 1);
+		$buffer = curl_exec($curl_handle);
+		curl_close($curl_handle);
 
-			$url = 'http://'.$this->_user.':'.$this->_pass.'@'.$this->_host.':'.$this->_mgmt_port.'/api/overview';
-			$curl_handle = curl_init();
-			curl_setopt($curl_handle, CURLOPT_URL, $url);
-			curl_setopt($curl_handle,CURLOPT_CONNECTTIMEOUT, 1);
-			curl_setopt($curl_handle,CURLOPT_RETURNTRANSFER, 1);
-			$buffer = curl_exec($curl_handle);
-			curl_close($curl_handle);
-			if (empty($buffer)) {
-				return array();
-			}
-			else{
-				return json_decode($buffer);
-			}
-		} else {
+		if (empty($buffer)) {
 			return array();
+		} else {
+			return json_decode($buffer);
 		}
 	}
 
@@ -140,32 +117,27 @@ class Rabbit extends BaseClass implements BaseInterface
 			return $this->_can_connect[$hostname];
 		}
 
-		// Silence errors and try to connect
-		//error_reporting(0);
 
-		$rabbit = new \AMQPConnection();
+		$url = 'http://'.$this->_user.':'.$this->_pass.'@'.$hostname.':'.$this->_mgmt_port.'/api/overview';
+		$curl_handle = curl_init();
+		curl_setopt($curl_handle, CURLOPT_URL, $url);
+		curl_setopt($curl_handle,CURLOPT_CONNECTTIMEOUT, 1);
+		curl_setopt($curl_handle,CURLOPT_RETURNTRANSFER, 1);
+		$buffer = curl_exec($curl_handle);
+		curl_close($curl_handle);
 
-		$rabbit->setHost($hostname);
-		$rabbit->setPort($this->_port);
-		$rabbit->setLogin($this->_user);
-		$rabbit->setPassword($this->_pass);
-		$rabbit->setVhost($this->_vhost);
-
-		if (!$rabbit->connect()) {
+		if (empty($buffer)) {
 			$err = 'Failed to connect to RabbitMQ host on '.$hostname;
 			$this->_can_connect[$hostname] = false;
 		} else {
-			if (!$rabbit->isConnected()) {
+			$info = json_decode($buffer);
+			if (!isset($info->rabbitmq_version)) {
+				$this->_can_connect[$hostname] = true;
+			} else {
 				$err = 'Failed to connect to RabbitMQ host on '.$hostname;
 				$this->_can_connect[$hostname] = false;
-			} else {
-				$this->_can_connect[$hostname] = true;
-				$rabbit->disconnect();
 			}
 		}
-
-		//error_reporting(-1);
-
 
 		$this->_can_connect_err[$hostname] = $err;
 		return $this->_can_connect[$hostname];
