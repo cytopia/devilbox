@@ -116,7 +116,7 @@ wait_for() {
 ### Get newline separated default data mount directories (from .env file)
 ###
 get_data_mounts() {
-	_mounts="$( grep -E '^.*_DATADIR=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
+	_mounts="$( grep -E '^[_A-Z]*_DATADIR=' "${DEVILBOX_PATH}/env-example" | sed 's/^.*=//g' )"
 	_data=""
 
 	IFS='
