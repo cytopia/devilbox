@@ -131,7 +131,7 @@ class Rabbit extends BaseClass implements BaseInterface
 			$this->_can_connect[$hostname] = false;
 		} else {
 			$info = json_decode($buffer);
-			if (!isset($info->rabbitmq_version)) {
+			if (isset($info->rabbitmq_version)) {
 				$this->_can_connect[$hostname] = true;
 			} else {
 				$err = 'Failed to connect to RabbitMQ host on '.$hostname;
