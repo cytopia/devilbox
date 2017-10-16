@@ -446,30 +446,24 @@ The homepage shows you the status of your current configured setup.
 * what other settings have been set
 * did any errors occur?
 
-![Intranet Home](docs/img/01_intranet_home.png "Intranet Home")
-
-#### Virtual Host overview
-
-This overview shows you all available virtual hosts and if they need additional configuration (on the host)
-
-Virtual Hosts are considered valid if the following requirements are met (on the host system):
-
-* `htdocs` folder/symlink exists in your project folder
-* `/etc/hosts` has a valid DNS config for your host: `127.0.0.1  <project-folder>.<TLD_SUFFIX>` (alternatively the bundle BIND server can be attached to your host-computer).
-
-![Intranet vHost](docs/img/02_intranet_vhosts.png "Intranet Home")
-
-#### Database overview
-
-Shows you all the databases that are loaded
-
-![Intranet DB](docs/img/03_intranet_databases.png "Intranet Home")
-
-#### Email overview
-
-Shows you all the emails that have been sent. No email will actually be sent outside, but they are all catched by one account and presented here.
-
-![Intranet Email](docs/img/04_intranet_emails.png "Intranet Home")
+<table>
+<tbody>
+ <tr>
+  <td rowspan="2">
+   <img style="width:250px;" width="250" src="docs/img/screenshots/01_intranet_home.png" />
+  </td>
+  <td>
+   <img style="width:250px" width="250" src="docs/img/screenshots/02_intranet_vhosts.png" />
+  </td>
+  <td>
+   <img style="width:250px;" width="250" src="docs/img/screenshots/03_intranet_databases.png" />
+  </td>
+ </tr>
+ <tr>
+  <td><img style="width:250px;" width="250" src="docs/img/screenshots/04_intranet_emails.png" /></td>
+  <td></td>
+ </tr>
+</table>
 
 
 ## Contributing
