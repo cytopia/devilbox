@@ -1,4 +1,9 @@
-# ![Devilbox](https://raw.githubusercontent.com/cytopia/devilbox/master/.devilbox/www/htdocs/assets/img/devilbox_80.png) The devilbox
+
+<p align="center">
+    <h1 align="center">The devilbox</h1>
+</p>
+
+![Devilbox](docs/img/devilbox-banner.png)
 
 [![Join the chat at https://gitter.im/devilbox/Lobby](https://badges.gitter.im/devilbox/Lobby.svg)](https://gitter.im/devilbox/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -10,33 +15,29 @@
 [Intranet](#intranet-overview) |
 [Screenshots](#screenshots) |
 [Contributing](#contributing) |
+[Logos](#logos) |
 [License](#license)
 
 ![Devilbox](docs/img/devilbox-dash.png)
 
 [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox) ![Tag](https://img.shields.io/github/tag/cytopia/devilbox.svg) [![type](https://img.shields.io/badge/type-Docker-orange.svg)](https://www.docker.com/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-The devilbox is a modern and highly customisable **LAMP** and **MEAN** stack replacement based purely on docker and docker-compose running on all major platforms. It supports an unlimited number of projects for which vhosts and DNS records are created automatically. Email catch-all and popular development tools will be at your service as well.
-
-Configuration is not necessary, as everything is pre-setup with mass virtual hosting and also offers Auto-DNS.
-
-**Supported operating systems**
+The devilbox is a modern and highly customisable **dockerized PHP stack** supporting full **LAMP** and **MEAN** and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an unlimited number of projects for which vhosts and DNS records are created automatically. Email catch-all and popular development tools will be at your service as well.  Configuration is not necessary, as everything is pre-setup with mass virtual hosting.
 
 ![Linux](https://raw.githubusercontent.com/cytopia/icons/master/64x64/linux.png) ![Windows](https://raw.githubusercontent.com/cytopia/icons/master/64x64/windows.png) ![OSX](https://raw.githubusercontent.com/cytopia/icons/master/64x64/osx.png)
-
-<sub>It might run on FreeBSD, but I don't know the status of docker-compose there.</sub>
-
-
----
 
 
 ## Usage
 
 #### Quick start
 
-You are up and running in three simple steps:
+You are up and running in four simple steps:
 
 ```shell
+# Get the devilbox
+$ git clone https://github.com/cytopia/devilbox
+$ cd devilbox
+
 # Create docker-compose environment file
 $ cp env-example .env
 
@@ -58,7 +59,7 @@ $ docker-compose up httpd php mysql redis
 
 #### Run different versions
 
-Every single attachable container comes with many different versions. In order to select the desired version for a container, simply edit the `.env` file and uncomment the version of choice.
+Every single attachable container comes with many different versions. In order to select the desired version for a container, simply edit the `.env` file and uncomment the version of choice. Any combination is possible.
 
 <table>
   <thead>
@@ -180,56 +181,145 @@ root@php-7.0.19 in /shared/httpd $
 
 Your projects can be found in `/shared/httpd`. DNS records are automatically available inside the php container. Also every other service will be available on `127.0.0.1` inside the php container (tricky socat port-forwarding).
 
+#### Quick Video intro
+
+[![Devilbox setup and workflow](docs/img/devilbox_01-setup-and-workflow.png "devilbox - setup and workflow")](https://www.youtube.com/watch?v=reyZMyt2Zzo)
+[![Devilbox email catch-all](docs/img/devilbox_02-email-catch-all.png "devilbox - email catch-all")](https://www.youtube.com/watch?v=e-U-C5WhxGY)
+
 
 ## Feature overview
 
-The devilbox has everything setup for you. The only thing you will have to install is `docker` and `docker-compose`. Virtual hosts and DNS entries will be created automatically, just by adding new project folders.
+The devilbox has everything setup for you. The only thing you will have to install is [docker](https://docs.docker.com/engine/installation/) and [docker-compose](https://docs.docker.com/compose/install/). Virtual hosts and DNS entries will be created automatically, just by adding new project folders.
 
 #### Features
 
-* **Mass virtual host**
-* **Custom domains** (`*.loc`, `*.local`, `*.dev`, `*.example.com`, ...)
-* **Auto-DNS** (Internal Bind server running)
-* **Email catch-all** (Internal postfix with catch-all)
-* **Log files** (available on host computer)
-* **Config overwrites** (`my.cnf`, `nginx.conf`, `httpd.conf` or `php.ini`)
-* **Custom PHP modules** (can be loaded on the fly)
-* **Self-validation** (projects and configured options are validated and marked in the intranet)
-* **Xdebug**
+<table>
+<tbody>
+  <tr>
+    <td width="200">:star: **Mass virtual hosts**</td>
+    <td>New vhosts are created automatically whenever you add a project directory. This is done internally and automatically via [vhost-gen](https://travis-ci.org/devilbox/vhost-gen) and [watcherd](https://github.com/devilbox/watcherd).</td>
+  </tr>
+  <tr>
+    <td>:star: **Custom vhosts**</td>
+    <td>You can overwrite and customise the default applied vhost configuration for every single vhost.</td>
+  </tr>
+  <tr>
+    <td>:star: **Custom domains**</td>
+    <td>Choose whatever development domain you desire: `*.loc`, `*.local`, `*.dev` or use real domains as well: `*.example.com`</td>
+  </tr>
+  <tr>
+    <td>:star: **Auto DNS**</td>
+    <td>An integraded BIND server is able to create DNS entries automatically for your chosen domains.</td>
+  </tr>
+  <tr>
+    <td>:star: **Custom PHP config**</td>
+    <td>Overwrite any setting for PHP.</td>
+  </tr>
+  <tr>
+    <td>:star: **Custom PHP modules**</td>
+    <td>Load custom PHP modules on the fly.</td>
+  </tr>
+  <tr>
+    <td>:star: **Email catch-all**</td>
+    <td>All outgoing emails are catched and will be presented in the included intranet.</td>
+  </tr>
+  <tr>
+    <td>:star: **Self-validation**</td>
+    <td>Projects and configuration options are validated and marked in the intranet.</td>
+  </tr>
+  <tr>
+    <td>:star: **Xdebug**</td>
+    <td>Xdebug and a full blown PHP-FPM/HHVM server is ready to serve.</td>
+  </tr>
+  <tr>
+    <td>Many more</td>
+    <td>See Documentation for all available features.</td>
+  </tr>
+</tbody>
+</table>
+
 
 #### Batteries
 
-* [phpMyAdmin](https://www.phpmyadmin.net)
-* [Adminer](https://www.adminer.org)
-* [OpcacheGUI](https://github.com/PeeHaa/OpCacheGUI)
-* Mail viewer
+<div class="center">
+  <a target="_blank" title="phpMyAdmin" href="https://www.phpmyadmin.net"><img style="width:64px" src="docs/img/logo_batteries/phpmyadmin.png" alt="Devilbox"/></a>
+  <a target="_blank" title="Adminer" href="https://www.adminer.org"><img style="width:64px" src="docs/img/logo_batteries/adminer.png" alt="Devilbox"/></a>
+  <a target="_blank" title="OpCache GUI" href="https://github.com/PeeHaa/OpCacheGUI"><img style="width:64px" src="docs/img/logo_batteries/opcachegui.png" alt="Devilbox"/></a>
+</div>
+
+ <table>
+<tbody>
+  <tr>
+    <td width="200">**[phpMyAdmin]()**</td>
+    </td>
+  </tr>
+  <tr>
+    <td>**[Adminer](https://www.adminer.org)**</td>
+    </td>
+  </tr>
+  <tr>
+    <td>**[OpcacheGUI](https://github.com/PeeHaa/OpCacheGUI)**</td>
+    </td>
+  </tr>
+  <tr>
+    <td>**Mail viewer**</td>
+    </td>
+  </tr>
+</tbody>
+</table>
+
 
 #### Tools
 
-| tool           | binary |
-|----------------|---------|
-| [awesome-ci](https://github.com/cytopia/awesome-ci)    | `file-cr`, `file-crlf`, `file-empty`, `file-nullbyte-char`, `file-trailing-newline`, `file-trailing-single-newline`, `file-trailing-space`, `file-utf8`, `file-utf8-bom`, `git-conflicts`, `git-ignored`, `inline-css`, `inline-js`, `regex-grep`, `regex-perl`, `syntax-bash`, `syntax-css`, `syntax-js`, `syntax-json`, `syntax-markdown`, `syntax-perl`, `syntax-php`, `syntax-python`, `syntax-ruby`, `syntax-scss`, `syntax-sh` |
-| [composer](https://getcomposer.org)    | `composer` |
-| [drupal-console](https://drupalconsole.com) | `drupal` |
-| [drush](http://www.drush.org)          | `drush` |
-| [git](https://git-scm.com)             | `git` |
-| [laravel installer](https://github.com/laravel/installer)     | `laravel` |
-| [mysqldump-secure](https://mysqldump-secure.org) | `mysqldump-secure` |
-| [node](https://nodejs.org)             | `node` |
-| [npm](https://www.npmjs.com)           | `npm` |
-| [phalcon-devtools](https://github.com/phalcon/phalcon-devtools)   | `phalcon` |
-| [symfony installer](https://github.com/symfony/symfony-installer) | `symfony` |
-| [wp-cli](https://wp-cli.org)           | `wp` |
+<table>
+<tbody>
+  <tr>
+    <td width="200">**[awesome-ci](https://github.com/cytopia/awesome-ci)**</td>
+    <td>A set of tools for static code analysis:<br/><br/>`file-cr`, `file-crlf`, `file-empty`, `file-nullbyte-char`, `file-trailing-newline`, `file-trailing-single-newline`, `file-trailing-space`, `file-utf8`, `file-utf8-bom`, `git-conflicts`, `git-ignored`, `inline-css`, `inline-js`, `regex-grep`, `regex-perl`, `syntax-bash`, `syntax-css`, `syntax-js`, `syntax-json`, `syntax-markdown`, `syntax-perl`, `syntax-php`, `syntax-python`, `syntax-ruby`, `syntax-scss`, `syntax-sh`</td>
+  </tr>
+  <tr>
+    <td>**[laravel installer](https://github.com/laravel/installer)**</td>
+    <td>`laravel`</td>
+  </tr>
+  <tr>
+    <td>**[mysqldump-secure](https://mysqldump-secure.org)**</td>
+    <td>`mysqldump-secure`</td>
+  </tr>
+  <tr>
+    <td>**[phalcon-devtools](https://github.com/phalcon/phalcon-devtools)**</td>
+    <td>`phalcon`</td>
+  </tr>
+  <tr>
+    <td>**[symfony installer](https://github.com/symfony/symfony-installer)**</td>
+    <td>`symfony`</td>
+  </tr>
+  <tr>
+    <td>**[wp-cli](https://wp-cli.org)**</td>
+    <td>`wp`</td>
+  </tr>
+</tbody>
+</table>
+
+<div class="center">
+  <a target="_blank" title="Composer" href="https://getcomposer.org"><img style="width:64px" src="docs/img/logo_tools/composer.png" alt="Devilbox"/></a>
+  <a target="_blank" title="Drupal Console" href="https://drupalconsole.com"><img style="battery" src="docs/img/logo_tools/drupal-console.png" alt="Devilbox"/></a>
+  <a target="_blank" title="Drush" href="https://www.drupal.org/project/drush"><img style="width:64px;" src="docs/img/logo_tools/drush.png" alt="Devilbox"/></a>
+  <a target="_blank" title="Git" href="https://git-scm.com"><img style="width:64px;" src="docs/img/logo_tools/git.png" alt="Devilbox"/></a>
+  <a target="_blank" title="mysqldump-secure" href="https://mysqldump-secure.org"><img style="width:64px;" src="docs/img/logo_tools/mysqldump-secure.png" alt="Devilbox"/></a>
+  <a target="_blank" title="NodeJS" href="https://nodejs.org"><img style="width:64px;" src="docs/img/logo_tools/nodejs.png" alt="Devilbox"/></a>
+  <a target="_blank" title="NPM" href="https://www.npmjs.com"><img style="width:64px;" src="docs/img/logo_tools/npm.png" alt="Devilbox"/></a>
+</div>
+
 
 Require additional tools? Have a look at [Hacking](docs/Hacking.md) for information about how to add your own tools or open up an issue with a new tool request.
 
-#### PHP Modules
+#### Available PHP Modules
 
 The devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks.
 
 > *apc, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dom, ereg, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, magickwand, mbstring, mcrypt, memcache, memcached, mhash, mongodb, msgpack, mysql, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, soap, sockets, SPL, sqlite3, standard, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib*
 
-**Custom PHP Modules**
+#### Custom PHP Modules
 
 You can also copy any custom modules into `mod/(php-fpm|hhvm)-<VERSION>` and add a custom `*.ini` file to load them. See [Custom PHP Modules](docs/Configure.md#425-custom-php-modules) in the Configuration documentation for how to do that in two simple steps.
 
@@ -249,35 +339,6 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 
 
 ## Documentation
-
-#### Video Tutorials
-
-To get you started quickly, lean back and watch the following videos on Youtube.
-
-[![Devilbox setup and workflow](docs/img/devilbox_01-setup-and-workflow.png "devilbox - setup and workflow")](https://www.youtube.com/watch?v=reyZMyt2Zzo) 
-[![Devilbox email catch-all](docs/img/devilbox_02-email-catch-all.png "devilbox - email catch-all")](https://www.youtube.com/watch?v=e-U-C5WhxGY)
-
-#### Documentation explained
-
-The devilbox documentation consists of the following main sections.
-
-| Documentaion                     | Description |
-|----------------------------------|-------------|
-| [Overview](docs/README.md)       | General overview |
-| [Quickstart](docs/Quickstart.md) | Everything needed to get you started in no time |
-| [Install](docs/Install.md)       | Installation information for different operating systems |
-| [Update](docs/Update.md)         | Update strategies |
-| [Configure](docs/Configure.md)   | How to configure the devilbox and its services |
-| [Run](docs/Run.md)               | Explanation of different required docker-compose run commands |
-| [Usage](docs/Usage.md)           | How to use the devilbox in detail |
-| [OS](docs/OS.md)                 | Operating system specific information |
-| [Backups](docs/Backups.md)       | How to backup and restore various databases |
-| [Examples](docs/Examples.md)     | How to setup different frameworks: drupal, Yii, Symfony, Phalcon, Wordpress... |
-| [Technical](docs/Technical.md)   | Technical background information |
-| [Hacking](docs/Hacking.md)       | Hack the devilbox and integrate custom stuff |
-| [FAQ](docs/FAQ.md)               | Frequently asked questions |
-
-#### Documentation
 
 1. **[Overview](docs/README.md)**
     1. [Main idea](docs/README.md#1-main-idea)
@@ -374,70 +435,6 @@ The devilbox documentation consists of the following main sections.
 13. **[FAQ](docs/FAQ.md)**
 
 
-## Run-time Matrix
-
-The main idea of the devilbox is to selectively run and combine any version you require for your currently desired development stack. Services are grouped into different stacks, currently into **Base**, **SQL** and **NoSQL**. However there are many more to come. If you find yourself in need of a stack or service that is not yet inluded, just open up an issue or pull request.
-
-In order to make sure every combination works with each other, the devilbox integrates extensive CI tests for the Docker container itself and their combinations. The following tables show the available stacks including git repositories and travis-ci checks.
-
-<sub>**Note:** Entries without links or without build-status are planned, but not yet available. See [ROADMAP](https://github.com/cytopia/devilbox/issues/23) for tasks and upcoming features.</sub>
-
-#### Base stack (required)
-
-| DNS | Webserver | PHP |
-|-----|-----------|-----|
-| [![Build Status](https://travis-ci.org/cytopia/docker-bind.svg?branch=master)](https://travis-ci.org/cytopia/docker-bind) [Bind](https://github.com/cytopia/docker-bind)  | [![Build Status](https://travis-ci.org/devilbox/docker-apache-2.2.svg?branch=master)](https://travis-ci.org/devilbox/docker-apache-2.2) [Apache 2.2](https://github.com/devilbox/docker-apache-2.2) | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-5.4.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-5.4) [PHP 5.4](https://github.com/cytopia/docker-php-fpm-5.4) |
-|     | [![Build Status](https://travis-ci.org/devilbox/docker-apache-2.4.svg?branch=master)](https://travis-ci.org/devilbox/docker-apache-2.4) [Apache 2.4](https://github.com/devilbox/docker-apache-2.4) | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-5.5.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-5.5) [PHP 5.5](https://github.com/cytopia/docker-php-fpm-5.5) |
-|     | [![Build Status](https://travis-ci.org/devilbox/docker-nginx-stable.svg?branch=master)](https://travis-ci.org/devilbox/docker-nginx-stable) [Nginx stable](https://github.com/devilbox/docker-nginx-stable) | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-5.6.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-5.6) [PHP 5.6](https://github.com/cytopia/docker-php-fpm-5.6) |
-|     | [![Build Status](https://travis-ci.org/devilbox/docker-nginx-mainline.svg?branch=master)](https://travis-ci.org/devilbox/docker-nginx-mainline) [Nginx mainline](https://github.com/devilbox/docker-nginx-mainline) | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-7.0.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-7.0) [PHP 7.0](https://github.com/cytopia/docker-php-fpm-7.0) |
-|     | | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-7.1.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-7.1) [PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
-|     | | [![Build Status](https://travis-ci.org/cytopia/docker-php-fpm-7.2.svg?branch=master)](https://travis-ci.org/cytopia/docker-php-fpm-7.2) [PHP 7.2](https://github.com/cytopia/docker-php-fpm-7.2)
-|     | | [![Build Status](https://travis-ci.org/cytopia/docker-hhvm-latest.svg?branch=master)](https://travis-ci.org/cytopia/docker-hhvm-latest) [HHVM latest](https://github.com/cytopia/docker-hhvm-latest)
-
-#### SQL stack (optional)
-
-| MySQL | PostgreSQL | MS SQL |
-|-------|------------|--------|
-| [![Build Status](https://travis-ci.org/cytopia/docker-mysql-5.5.svg?branch=master)](https://travis-ci.org/cytopia/docker-mysql-5.5) [MySQL 5.5](https://github.com/cytopia/docker-mysql-5.5) | [![Build Status](https://travis-ci.org/docker-library/postgres.svg?branch=master)](https://travis-ci.org/docker-library/postgres/branches) [PgSQL 9.1](https://hub.docker.com/_/postgres/) | MS SQL 2017 |
-| [![Build Status](https://travis-ci.org/cytopia/docker-mysql-5.6.svg?branch=master)](https://travis-ci.org/cytopia/docker-mysql-5.6) [MySQL 5.6](https://github.com/cytopia/docker-mysql-5.6) | [![Build Status](https://travis-ci.org/docker-library/postgres.svg?branch=master)](https://travis-ci.org/docker-library/postgres/branches) [PgSQL 9.2](https://hub.docker.com/_/postgres/) | |
-| [![Build Status](https://travis-ci.org/cytopia/docker-mysql-5.7.svg?branch=master)](https://travis-ci.org/cytopia/docker-mysql-5.7) [MySQL 5.7](https://github.com/cytopia/docker-mysql-5.7) | [![Build Status](https://travis-ci.org/docker-library/postgres.svg?branch=master)](https://travis-ci.org/docker-library/postgres/branches) [PgSQL 9.3](https://hub.docker.com/_/postgres/) | |
-| [![Build Status](https://travis-ci.org/cytopia/docker-mysql-8.0.svg?branch=master)](https://travis-ci.org/cytopia/docker-mysql-8.0) [MySQL 8.0](https://github.com/cytopia/docker-mysql-8.0)  | [![Build Status](https://travis-ci.org/docker-library/postgres.svg?branch=master)](https://travis-ci.org/docker-library/postgres/branches) [PgSQL 9.4](https://hub.docker.com/_/postgres/) | |
-| [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-5.5.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-5.5) [MariaDB 5.5](https://github.com/cytopia/docker-mariadb-5.5) | [![Build Status](https://travis-ci.org/docker-library/postgres.svg?branch=master)](https://travis-ci.org/docker-library/postgres/branches) [PgSQL 9.5](https://hub.docker.com/_/postgres/) | |
-| [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.0.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.0) [MariaDB 10.0](https://github.com/cytopia/docker-mariadb-10.0) | [![Build Status](https://travis-ci.org/docker-library/postgres.svg?branch=master)](https://travis-ci.org/docker-library/postgres/branches) [PgSQL 9.6](https://hub.docker.com/_/postgres/) | |
-| [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.1.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.1) [MariaDB 10.1](https://github.com/cytopia/docker-mariadb-10.1) | [![Build Status](https://travis-ci.org/docker-library/postgres.svg?branch=master)](https://travis-ci.org/docker-library/postgres/branches) [PgSQL 10.0](https://hub.docker.com/_/postgres/) | |
-| [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.2.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.2) [MariaDB 10.2](https://github.com/cytopia/docker-mariadb-10.2) | | |
-| [![Build Status](https://travis-ci.org/cytopia/docker-mariadb-10.3.svg?branch=master)](https://travis-ci.org/cytopia/docker-mariadb-10.3) [MariaDB 10.3](https://github.com/cytopia/docker-mariadb-10.3) | | |
-| [![Build Status](https://travis-ci.org/cytopia/docker-percona-5.5.svg?branch=master)](https://travis-ci.org/cytopia/docker-percona-5.5) [PerconaDB 5.5](https://github.com/cytopia/docker-percona-5.5) | | |
-| [![Build Status](https://travis-ci.org/cytopia/docker-percona-5.6.svg?branch=master)](https://travis-ci.org/cytopia/docker-percona-5.6) [PerconaDB 5.6](https://github.com/cytopia/docker-percona-5.6) | | |
-| [![Build Status](https://travis-ci.org/cytopia/docker-percona-5.7.svg?branch=master)](https://travis-ci.org/cytopia/docker-percona-5.7) [PerconaDB 5.7](https://github.com/cytopia/docker-percona-5.7) | | |
-
-#### NoSQL stack (optional)
-
-| Cassandra | CouchDB | Memcached | MongoDB | Redis |
-|-----------|---------|-----------|---------|-------|
-| Cassandra 2.1 | CouchDB 1.6 | [![Travis CI](https://travis-ci.org/docker-library/memcached.svg?branch=master)](https://travis-ci.org/docker-library/memcached) [latest](https://github.com/docker-library/memcached) | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [2.8](https://github.com/docker-library/mongo) | [![Travis CI](https://travis-ci.org/docker-library/redis.svg?branch=master)](https://travis-ci.org/docker-library/redis) [2.8](https://github.com/docker-library/redis) |
-| Cassandra 2.2 | CouchDB 2.0 |                  | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [3.0](https://github.com/docker-library/mongo) | [![Travis CI](https://travis-ci.org/docker-library/redis.svg?branch=master)](https://travis-ci.org/docker-library/redis) [3.0](https://github.com/docker-library/redis) |
-| Cassandra 3.0 |             |                  | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [3.2](https://github.com/docker-library/mongo) | [![Travis CI](https://travis-ci.org/docker-library/redis.svg?branch=master)](https://travis-ci.org/docker-library/redis) [3.2](https://github.com/docker-library/redis) |
-|               |             |                  | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [3.4](https://github.com/docker-library/mongo) | [![Travis CI](https://travis-ci.org/docker-library/redis.svg?branch=master)](https://travis-ci.org/docker-library/redis) [4.0](https://github.com/docker-library/redis) |
-| | | | [![build Status](https://travis-ci.org/docker-library/mongo.svg?branch=master)](https://travis-ci.org/docker-library/mongo) [3.5](https://github.com/docker-library/mongo) | |
-
-<!--
-#### Message stack (optional)
-**Optional search stack**
-
-| Apache Solr | Elasticsearch |
-|-------------|---------------|
-| todo        |               |
--->
-<!--
-**Optional cgi stack**
-
-| Go   | Perl | Python | Ruby |
-|------|------|--------|------|
-| todo | todo | todo   | todo |
--->
-
-
 ## Intranet overview
 
 The devilbox comes with a pre-configured intranet on `http://localhost`. It will not only show you, your chosen configuration, but also validate the status of your configuration, such as *Do DNS records exists (on host and container)*, *are directories properly set-up*. Additionally it provides external tools to let you interact with databases and emails.
@@ -501,6 +498,14 @@ And last but not least, you can also get actively involved. **Do clone the proje
 
 Major contributors will be credited within the intranet and on the github page.
 
+
+## Logos
+
+Logos and banners can be found at **[devilbox/artwork](https://github.com/devilbox/artwork)**.
+
+<img style="width:64px; height:64px;" width="64" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_logo/cytopia/01/png/logo_128_trans.png?raw=true" />
+<img style="width:64px; height:64px;" width="64" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_logo/cytopia/02/png/logo_128_trans.png?raw=true" />
+<img style="height:64px;" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_banner/cytopia/01/png/banner_128_trans.png?raw=true" />
 
 ## License
 
