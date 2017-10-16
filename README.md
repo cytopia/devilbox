@@ -264,6 +264,8 @@ The devilbox has everything setup for you. The only thing you will have to insta
 
 #### Tools
 
+The following tools will assist you on creating new projects easily as well as helping you check your code against guidelines.
+
 <table>
 <tbody>
   <tr>
@@ -288,6 +290,8 @@ The devilbox has everything setup for you. The only thing you will have to insta
   </tr>
 </tbody>
 </table>
+
+Well-known and popular tools will be at your service as well:
 
 <a target="_blank" title="Composer" href="https://getcomposer.org"><img width="64" style="width:64px" src="docs/img/logo_tools/composer.png" alt="Devilbox"/></a>
 <a target="_blank" title="Drupal Console" href="https://drupalconsole.com"><img width="64" style="battery" src="docs/img/logo_tools/drupal-console.png" alt="Devilbox"/></a>
