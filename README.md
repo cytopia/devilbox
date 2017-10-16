@@ -8,15 +8,14 @@
 [![Join the chat at https://gitter.im/devilbox/Lobby](https://badges.gitter.im/devilbox/Lobby.svg)](https://gitter.im/devilbox/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
-[Usage](#usage) |
-[Features](#feature-overview) |
-[Documentation](#documentation) |
-[Run-time Matrix](#run-time-matrix) |
-[Intranet](#intranet-overview) |
-[Screenshots](#screenshots) |
-[Contributing](#contributing) |
-[Logos](#logos) |
-[License](#license)
+**[Usage](#usage)** |
+**[Features](#feature-overview)** |
+**[Documentation](#documentation)** |
+**[Intranet](#intranet-overview)** |
+**[Screenshots](#screenshots)** |
+**[Contributing](#contributing)** |
+**[Logos](#logos)** |
+**[License](#license)**
 
 ![Devilbox](docs/img/devilbox-dash.png)
 
@@ -196,43 +195,43 @@ The devilbox has everything setup for you. The only thing you will have to insta
 <table>
 <tbody>
   <tr>
-    <td width="200">:star: **Mass virtual hosts**</td>
-    <td>New vhosts are created automatically whenever you add a project directory. This is done internally and automatically via [vhost-gen](https://travis-ci.org/devilbox/vhost-gen) and [watcherd](https://github.com/devilbox/watcherd).</td>
+    <td width="220" style="width:220px;">:star: Mass virtual hosts</td>
+    <td>New vhosts are created automatically whenever you add a project directory. This is done internally and automatically via <a href="https://travis-ci.org/devilbox/vhost-gen">vhost-gen</a> and <a href="https://github.com/devilbox/watcherd">watcherd</a>.</td>
   </tr>
   <tr>
-    <td>:star: **Custom vhosts**</td>
+    <td>:star: Custom vhosts</td>
     <td>You can overwrite and customise the default applied vhost configuration for every single vhost.</td>
   </tr>
   <tr>
-    <td>:star: **Custom domains**</td>
-    <td>Choose whatever development domain you desire: `*.loc`, `*.local`, `*.dev` or use real domains as well: `*.example.com`</td>
+    <td>:star: Custom domains</td>
+    <td>Choose whatever development domain you desire: <code>*.loc</code>, <code>*.local</code>, <code>*.dev</code> or use real domains as well: <code>*.example.com</code></td>
   </tr>
   <tr>
-    <td>:star: **Auto DNS**</td>
+    <td>:star: Auto DNS</td>
     <td>An integraded BIND server is able to create DNS entries automatically for your chosen domains.</td>
   </tr>
   <tr>
-    <td>:star: **Custom PHP config**</td>
+    <td>:star: Custom PHP config</td>
     <td>Overwrite any setting for PHP.</td>
   </tr>
   <tr>
-    <td>:star: **Custom PHP modules**</td>
+    <td>:star: Custom PHP modules</td>
     <td>Load custom PHP modules on the fly.</td>
   </tr>
   <tr>
-    <td>:star: **Email catch-all**</td>
+    <td>:star: Email catch-all</td>
     <td>All outgoing emails are catched and will be presented in the included intranet.</td>
   </tr>
   <tr>
-    <td>:star: **Self-validation**</td>
+    <td>:star: Self-validation</td>
     <td>Projects and configuration options are validated and marked in the intranet.</td>
   </tr>
   <tr>
-    <td>:star: **Xdebug**</td>
+    <td>:star: Xdebug</td>
     <td>Xdebug and a full blown PHP-FPM/HHVM server is ready to serve.</td>
   </tr>
   <tr>
-    <td>Many more</td>
+    <td>:star: Many more</td>
     <td>See Documentation for all available features.</td>
   </tr>
 </tbody>
@@ -241,29 +240,23 @@ The devilbox has everything setup for you. The only thing you will have to insta
 
 #### Batteries
 
-<div class="center">
-  <a target="_blank" title="phpMyAdmin" href="https://www.phpmyadmin.net"><img style="width:64px" src="docs/img/logo_batteries/phpmyadmin.png" alt="Devilbox"/></a>
-  <a target="_blank" title="Adminer" href="https://www.adminer.org"><img style="width:64px" src="docs/img/logo_batteries/adminer.png" alt="Devilbox"/></a>
-  <a target="_blank" title="OpCache GUI" href="https://github.com/PeeHaa/OpCacheGUI"><img style="width:64px" src="docs/img/logo_batteries/opcachegui.png" alt="Devilbox"/></a>
-</div>
-
- <table>
+<table>
 <tbody>
   <tr>
-    <td width="200">**[phpMyAdmin]()**</td>
-    </td>
+    <td>:open_file_folder:</td>
+    <td><a href="https://www.phpmyadmin.net">phpMyAdmin</a></td>
   </tr>
   <tr>
-    <td>**[Adminer](https://www.adminer.org)**</td>
-    </td>
+    <td>:open_file_folder:</td>
+    <td><a href="https://www.adminer.org">Adminer</a></td>
   </tr>
   <tr>
-    <td>**[OpcacheGUI](https://github.com/PeeHaa/OpCacheGUI)**</td>
-    </td>
+    <td>:bar_chart:</td>
+    <td><a href="https://github.com/PeeHaa/OpCacheGUI">OpCache GUI</a></td>
   </tr>
   <tr>
-    <td>**Mail viewer**</td>
-    </td>
+    <td>:email:</td>
+    <td>Mail viewer</td>
   </tr>
 </tbody>
 </table>
@@ -274,44 +267,37 @@ The devilbox has everything setup for you. The only thing you will have to insta
 <table>
 <tbody>
   <tr>
-    <td width="200">**[awesome-ci](https://github.com/cytopia/awesome-ci)**</td>
+    <td width="220" style="width:220px;">:wrench: <a href="https://github.com/cytopia/awesome-ci">awesome-ci</a></td>
     <td>A set of tools for static code analysis:<br/><br/>`file-cr`, `file-crlf`, `file-empty`, `file-nullbyte-char`, `file-trailing-newline`, `file-trailing-single-newline`, `file-trailing-space`, `file-utf8`, `file-utf8-bom`, `git-conflicts`, `git-ignored`, `inline-css`, `inline-js`, `regex-grep`, `regex-perl`, `syntax-bash`, `syntax-css`, `syntax-js`, `syntax-json`, `syntax-markdown`, `syntax-perl`, `syntax-php`, `syntax-python`, `syntax-ruby`, `syntax-scss`, `syntax-sh`</td>
   </tr>
   <tr>
-    <td>**[laravel installer](https://github.com/laravel/installer)**</td>
-    <td>`laravel`</td>
+    <td>:wrench: <a href="https://github.com/laravel/installer">laravel installer</a></td>
+    <td><code>laravel</code> is a command line tool that lets you easily install the Laravel framework.</td>
   </tr>
   <tr>
-    <td>**[mysqldump-secure](https://mysqldump-secure.org)**</td>
-    <td>`mysqldump-secure`</td>
+    <td>:wrench: <a href="https://github.com/phalcon/phalcon-devtools">phalcon devtools</a></td>
+    <td><code>phalcon</code> is a command line tool that lets you easily install the PhalconPHP framework.</td>
   </tr>
   <tr>
-    <td>**[phalcon-devtools](https://github.com/phalcon/phalcon-devtools)**</td>
-    <td>`phalcon`</td>
+    <td>:wrench: <a href="https://github.com/symfony/symfony-installer">symfony installer</a></td>
+    <td><code>symfony</code> is a command line tool that lets you easily install the Symfony framework.</td>
   </tr>
   <tr>
-    <td>**[symfony installer](https://github.com/symfony/symfony-installer)**</td>
-    <td>`symfony`</td>
-  </tr>
-  <tr>
-    <td>**[wp-cli](https://wp-cli.org)**</td>
-    <td>`wp`</td>
+    <td>:wrench: <a href="https://wp-cli.org">wp-cli</a></td>
+    <td><code>wp</code> is a command line tool that lets you easily install Wordpress.</td>
   </tr>
 </tbody>
 </table>
 
-<div class="center">
-  <a target="_blank" title="Composer" href="https://getcomposer.org"><img style="width:64px" src="docs/img/logo_tools/composer.png" alt="Devilbox"/></a>
-  <a target="_blank" title="Drupal Console" href="https://drupalconsole.com"><img style="battery" src="docs/img/logo_tools/drupal-console.png" alt="Devilbox"/></a>
-  <a target="_blank" title="Drush" href="https://www.drupal.org/project/drush"><img style="width:64px;" src="docs/img/logo_tools/drush.png" alt="Devilbox"/></a>
-  <a target="_blank" title="Git" href="https://git-scm.com"><img style="width:64px;" src="docs/img/logo_tools/git.png" alt="Devilbox"/></a>
-  <a target="_blank" title="mysqldump-secure" href="https://mysqldump-secure.org"><img style="width:64px;" src="docs/img/logo_tools/mysqldump-secure.png" alt="Devilbox"/></a>
-  <a target="_blank" title="NodeJS" href="https://nodejs.org"><img style="width:64px;" src="docs/img/logo_tools/nodejs.png" alt="Devilbox"/></a>
-  <a target="_blank" title="NPM" href="https://www.npmjs.com"><img style="width:64px;" src="docs/img/logo_tools/npm.png" alt="Devilbox"/></a>
-</div>
+<a target="_blank" title="Composer" href="https://getcomposer.org"><img width="64" style="width:64px" src="docs/img/logo_tools/composer.png" alt="Devilbox"/></a>
+<a target="_blank" title="Drupal Console" href="https://drupalconsole.com"><img width="64" style="battery" src="docs/img/logo_tools/drupal-console.png" alt="Devilbox"/></a>
+<a target="_blank" title="Drush" href="https://www.drupal.org/project/drush"><img width="64" style="width:64px;" src="docs/img/logo_tools/drush.png" alt="Devilbox"/></a>
+<a target="_blank" title="Git" href="https://git-scm.com"><img width="64" style="width:64px;" src="docs/img/logo_tools/git.png" alt="Devilbox"/></a>
+<a target="_blank" title="mysqldump-secure" href="https://mysqldump-secure.org"><img width="64" style="width:64px;" src="docs/img/logo_tools/mysqldump-secure.png" alt="Devilbox"/></a>
+<a target="_blank" title="NodeJS" href="https://nodejs.org"><img width="64" style="width:64px;" src="docs/img/logo_tools/nodejs.png" alt="Devilbox"/></a>
+<a target="_blank" title="NPM" href="https://www.npmjs.com"><img width="64" style="width:64px;" src="docs/img/logo_tools/npm.png" alt="Devilbox"/></a>
 
-
-Require additional tools? Have a look at [Hacking](docs/Hacking.md) for information about how to add your own tools or open up an issue with a new tool request.
+Require additional tools? Have a look at **[Hacking](docs/Hacking.md)** for information about how to add your own tools or open up an issue with a new tool request.
 
 #### Available PHP Modules
 
@@ -503,9 +489,7 @@ Major contributors will be credited within the intranet and on the github page.
 
 Logos and banners can be found at **[devilbox/artwork](https://github.com/devilbox/artwork)**.
 
-<img style="width:64px; height:64px;" width="64" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_logo/cytopia/01/png/logo_128_trans.png?raw=true" />
-<img style="width:64px; height:64px;" width="64" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_logo/cytopia/02/png/logo_128_trans.png?raw=true" />
-<img style="height:64px;" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_banner/cytopia/01/png/banner_128_trans.png?raw=true" />
+<img style="width:64px; height:64px;" width="64" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_logo/cytopia/01/png/logo_128_trans.png?raw=true" /> <img style="width:64px; height:64px;" width="64" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_logo/cytopia/02/png/logo_128_trans.png?raw=true" /> <img style="height:64px;" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_banner/cytopia/01/png/banner_128_trans.png?raw=true" />
 
 ## License
 
