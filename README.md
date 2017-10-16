@@ -17,7 +17,7 @@
 **[Logos](#logos)** |
 **[License](#license)**
 
-![Devilbox](docs/img/devilbox-dash.png)
+![Devilbox](docs/img/devilbox-dash-full.png)
 
 [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox) ![Tag](https://img.shields.io/github/tag/cytopia/devilbox.svg) [![type](https://img.shields.io/badge/type-Docker-orange.svg)](https://www.docker.com/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -54,7 +54,7 @@ The above will start all containers, you can however also just start the contain
 ```shell
 $ docker-compose up httpd php mysql redis
 ```
-![Devilbox](docs/img/devilbox-dash-01.png)
+![Devilbox](docs/img/devilbox-dash-selective.png)
 
 #### Run different versions
 
@@ -268,7 +268,7 @@ The devilbox has everything setup for you. The only thing you will have to insta
 <tbody>
   <tr>
     <td width="220" style="width:220px;">:wrench: <a href="https://github.com/cytopia/awesome-ci">awesome-ci</a></td>
-    <td>A set of tools for static code analysis:<br/><br/>`file-cr`, `file-crlf`, `file-empty`, `file-nullbyte-char`, `file-trailing-newline`, `file-trailing-single-newline`, `file-trailing-space`, `file-utf8`, `file-utf8-bom`, `git-conflicts`, `git-ignored`, `inline-css`, `inline-js`, `regex-grep`, `regex-perl`, `syntax-bash`, `syntax-css`, `syntax-js`, `syntax-json`, `syntax-markdown`, `syntax-perl`, `syntax-php`, `syntax-python`, `syntax-ruby`, `syntax-scss`, `syntax-sh`</td>
+    <td>A set of tools for static code analysis:<br/><br/><code>file-cr</code>, <code>file-crlf</code>, <code>file-empty</code>, <code>file-nullbyte-char</code>, <code>file-trailing-newline</code>, <code>file-trailing-single-newline</code>, <code>file-trailing-space</code>, <code>file-utf8</code>, <code>file-utf8-bom</code>, <code>git-conflicts</code>, <code>git-ignored</code>, <code>inline-css</code>, <code>inline-js</code>, <code>regex-grep</code>, <code>regex-perl</code>, <code>syntax-bash</code>, <code>syntax-css</code>, <code>syntax-js</code>, <code>syntax-json</code>, <code>syntax-markdown</code>, <code>syntax-perl</code>, <code>syntax-php</code>, <code>syntax-python</code>, <code>syntax-ruby</code>, <code>syntax-scss</code>, <code>syntax-sh</code></td>
   </tr>
   <tr>
     <td>:wrench: <a href="https://github.com/laravel/installer">laravel installer</a></td>
@@ -313,15 +313,15 @@ You can also copy any custom modules into `mod/(php-fpm|hhvm)-<VERSION>` and add
 
 As far as tested there are no limitations and you can use any Framework or CMS just as you would on your live environment. Below are a few examples of extensively tested Frameworks and CMS:
 
-[![CakePHP](docs/img/logos/cake.png)](https://cakephp.org)
-[![Drupal](docs/img/logos/drupal.png)](https://www.drupal.org)
-[![Joomla](docs/img/logos/joomla.png)](https://www.joomla.org)
-[![Laravel](docs/img/logos/laravel.png)](https://laravel.com)
-[![Phalcon](docs/img/logos/phalcon.png)](https://phalconphp.com)
-[![Symfony](docs/img/logos/symfony.png)](https://symfony.com)
-[![Wordpress](docs/img/logos/wordpress.png)](https://wordpress.org)
-[![Yii](docs/img/logos/yii.png)](http://www.yiiframework.com)
-[![Zend](docs/img/logos/zend.png)](https://framework.zend.com)
+[![CakePHP](docs/img/logo_fw/cake.png)](https://cakephp.org)
+[![Drupal](docs/img/logo_fw/drupal.png)](https://www.drupal.org)
+[![Joomla](docs/img/logo_fw/joomla.png)](https://www.joomla.org)
+[![Laravel](docs/img/logo_fw/laravel.png)](https://laravel.com)
+[![Phalcon](docs/img/logo_fw/phalcon.png)](https://phalconphp.com)
+[![Symfony](docs/img/logo_fw/symfony.png)](https://symfony.com)
+[![Wordpress](docs/img/logo_fw/wordpress.png)](https://wordpress.org)
+[![Yii](docs/img/logo_fw/yii.png)](http://www.yiiframework.com)
+[![Zend](docs/img/logo_fw/zend.png)](https://framework.zend.com)
 
 
 ## Documentation
@@ -423,7 +423,7 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 
 ## Intranet overview
 
-The devilbox comes with a pre-configured intranet on `http://localhost`. It will not only show you, your chosen configuration, but also validate the status of your configuration, such as *Do DNS records exists (on host and container)*, *are directories properly set-up*. Additionally it provides external tools to let you interact with databases and emails.
+The devilbox comes with a pre-configured intranet on `http://localhost`. This can be explicitly disabled or password-protected. The intranet will not only show you, the chosen configuration, but also validate the status of the current configuration, such as if **DNS records** exists (on host and container), are directories properly set-up. Additionally it provides external tools to let you interact with databases and emails.
 
 * **Virtual Host overview** (validates directories and DNS)
 * **Database overview** (MySQL, PgSQL, Redis, Memcache, ...)
@@ -481,10 +481,12 @@ Major contributors will be credited within the intranet and on the github page.
 
 ## Logos
 
-Logos and banners can be found at **[devilbox/artwork](https://github.com/devilbox/artwork)**.
+Logos and banners can be found at **[devilbox/artwork](https://github.com/devilbox/artwork)**. Feel free to use or modify them by the terms of their license.
 
 <img style="width:64px; height:64px;" width="64" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_logo/cytopia/01/png/logo_128_trans.png?raw=true" /> <img style="width:64px; height:64px;" width="64" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_logo/cytopia/02/png/logo_128_trans.png?raw=true" /> <img style="height:64px;" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_banner/cytopia/01/png/banner_128_trans.png?raw=true" />
 
 ## License
 
 [MIT License](LICENSE.md)
+
+Copyright (c) 2016 [cytopia](https://github.com/cytopia)
