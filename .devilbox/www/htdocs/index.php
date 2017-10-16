@@ -247,7 +247,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 				</div>
 
 				<div class="col-md-4 col-sm-4 col-xs-12 col-margin">
-					<img src="/assets/img/devilbox_80.png" style="width:100%;" />
+					<img src="/assets/img/banner.png" style="width:100%;" />
 				</div>
 
 				<div class="col-md-4 col-sm-4 col-xs-12 col-margin">

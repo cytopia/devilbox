@@ -197,7 +197,7 @@ HTML;
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<a class="navbar-brand" href="/index.php">
-					<img src="/assets/img/logo_30.png" width="30" height="30" class="d-inline-block align-top" alt="">devilbox
+					<img src="/assets/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">devilbox
 				</a>
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">

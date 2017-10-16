@@ -150,6 +150,9 @@ body {
 a.navbar-brand {
 	background-color: transparent !important;
 }
+a.navbar-brand img {
+	margin-right: 10px;
+}
 a.nav-link {
 	background-color: transparent !important;
 }

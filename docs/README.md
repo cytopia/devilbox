@@ -180,13 +180,13 @@ Apart from asking for new modules to be bundled with each Docker container, you 
 
 As far as tested there are no limitations and you can use any Framework or CMS just as you would on your live environment. Below are a few examples of extensively tested Frameworks and CMS:
 
-[![CakePHP](img/logos/cake.png)](https://cakephp.org)
-[![Drupal](img/logos/drupal.png)](https://www.drupal.org)
-[![Laravel](img/logos/laravel.png)](https://laravel.com)
-[![Phalcon](img/logos/phalcon.png)](https://phalconphp.com)
-[![Symfony](img/logos/symfony.png)](https://symfony.com)
-[![Wordpress](img/logos/wordpress.png)](https://wordpress.org)
-[![Yii](img/logos/yii.png)](http://www.yiiframework.com)
-[![Zend](img/logos/zend.png)](https://framework.zend.com)
+[![CakePHP](img/logo_fw/cake.png)](https://cakephp.org)
+[![Drupal](img/logo_fw/drupal.png)](https://www.drupal.org)
+[![Laravel](img/logo_fw/laravel.png)](https://laravel.com)
+[![Phalcon](img/logo_fw/phalcon.png)](https://phalconphp.com)
+[![Symfony](img/logo_fw/symfony.png)](https://symfony.com)
+[![Wordpress](img/logo_fw/wordpress.png)](https://wordpress.org)
+[![Yii](img/logo_fw/yii.png)](http://www.yiiframework.com)
+[![Zend](img/logo_fw/zend.png)](https://framework.zend.com)
 
 Have a look at **[Examples](Examples.md)** for how to set them up on the devilbox.
