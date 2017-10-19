@@ -50,7 +50,7 @@ services:
       ##
       ## Bind wildcard/host settings
       ##
-      - WILDCARD_DNS=${TLD_SUFFIX:-loc}=172.16.238.11
+      - WILDCARD_DNS=${TLD_SUFFIX:-loc}=127.0.0.1
       - EXTRA_HOSTS=${EXTRA_HOSTS}
 
       ##
@@ -139,7 +139,7 @@ services:
       ##
       ## Enable 127.0.0.1 Port-forwarding
       ##
-      - FORWARD_PORTS_TO_LOCALHOST=3306:mysql:3306,5432:pgsql:5432,6379:redis:6379,11211:memcd:11211,27017:mongo:27017
+      - FORWARD_PORTS_TO_LOCALHOST=80:httpd:80,3306:mysql:3306,5432:pgsql:5432,6379:redis:6379,11211:memcd:11211,27017:mongo:27017
 
       ##
       ## MySQL Backups
