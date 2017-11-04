@@ -10,7 +10,7 @@ if (isset($_GET['email']) && isset($_GET['subject']) && isset($_GET['message']))
 	$subj = $_GET['subject'];
 	$mess = $_GET['message'];
 	if (! mail($mail, $subj, $mess)) {
-		loadClass('Logger')->error('Could not send mail to: '.$mail.' | subject: '.$subject);
+		loadClass('Logger')->error('Could not send mail to: '.$mail.' | subject: '.$subj);
 	}
 	header('Location: /mail.php');
 	exit();
