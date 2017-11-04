@@ -195,8 +195,12 @@ The devilbox has everything setup for you. The only thing you will have to insta
 <table>
 <tbody>
   <tr>
-    <td width="220" style="width:220px;">:star: Mass virtual hosts</td>
-    <td>New vhosts are created automatically whenever you add a project directory. This is done internally and automatically via <a href="https://travis-ci.org/devilbox/vhost-gen">vhost-gen</a> and <a href="https://github.com/devilbox/watcherd">watcherd</a>.</td>
+    <td width="220" style="width:220px;">:star: Auto virtual hosts</td>
+    <td>New virtual hosts are created automatically and instantly whenever you add a project directory. This is done internally via <a href="https://travis-ci.org/devilbox/vhost-gen">vhost-gen</a> and <a href="https://github.com/devilbox/watcherd">watcherd</a>.</td>
+  </tr>
+  <tr>
+    <td>:star: Unlimited vhosts</td>
+    <td>Run as many projects as you need with a single instance of the devilbox.</td>
   </tr>
   <tr>
     <td>:star: Custom vhosts</td>
