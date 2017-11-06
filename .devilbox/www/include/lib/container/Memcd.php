@@ -111,6 +111,9 @@ class Memcd extends BaseClass implements BaseInterface
 				}
 				$this->_memcached->getDelayed($keys);
 				$store = $this->_memcached->fetchAll();
+				if (!is_array($store)) {
+					$store = array();
+				}
 			}
 		}
 		return $store;
