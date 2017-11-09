@@ -78,6 +78,10 @@ class Html
 				array(
 					'name' => 'Memcached Info',
 					'path' => '/info_memcd.php'
+				),
+				array(
+					'name' => 'RabbitMQ Info',
+					'path' => '/info_rabbit.php'
 				)
 			)
 		),
@@ -97,6 +101,11 @@ class Html
 				array(
 					'name' => 'Opcache GUI',
 					'path' => '/opcache.php'
+				),
+				array(
+					'name' => 'RabbitMQ Management Console',
+					'path' => '__RABBITMQ__',
+					'target' => '_blank'
 				)
 			)
 		)
@@ -295,6 +304,12 @@ HTML;
 				$available = loadClass('Mongo')->isAvailable();
 				$name = loadClass('Mongo')->getName();
 				break;
+			case 'rabbit':
+				$class = 'bg-danger';
+				$version = loadClass('Rabbit')->getVersion();
+				$available = loadClass('Rabbit')->isAvailable();
+				$name = loadClass('Rabbit')->getName();
+				break;
 			default:
 				$available = false;
 				$version = '';
@@ -379,6 +394,10 @@ HTML;
 					// Replace
 					if ($el['path'] == '__PHPMYADMIN__') {
 						$el['path'] = (strpos(loadClass('Php')->getVersion(), '5.4') !== false) ? '/vendor/phpmyadmin-4.0/index.php' : '/vendor/phpmyadmin-4.7/index.php';
+					}
+					else if ($el['path'] == '__RABBITMQ__') {
+						$protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/')));
+						$el['path'] = loadClass('Helper')->getProtocol().'://'.loadClass('Helper')->getDomain().':'.loadClass('Helper')->getEnv('HOST_PORT_RABBIT_MGMT');
 					}
 
 					$target = isset($el['target']) ? 'target="'.$el['target'].'"' : '';

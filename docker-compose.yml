@@ -48,6 +48,8 @@ services:
       ## Bind settings
       ##
       - WILDCARD_DOMAIN=${TLD_SUFFIX:-loc}
+      #- WILDCARD_ADDRESS=127.0.0.1
+
       - WILDCARD_ADDRESS=172.16.238.11
       - DNS_FORWARDER=${BIND_DNS_RESOLVER:-8.8.8.8,8.8.4.4}
 
@@ -107,7 +109,8 @@ services:
       ##
       ## Enable 127.0.0.1 Port-forwarding
       ##
-      - FORWARD_PORTS_TO_LOCALHOST=3306:mysql:3306,5432:pgsql:5432,6379:redis:6379,11211:memcd:11211,27017:mongo:27017
+      #- FORWARD_PORTS_TO_LOCALHOST=80:php:80,3306:mysql:3306,5432:pgsql:5432,6379:redis:6379,11211:memcd:11211,27017:mongo:27017,5672:rabbit:5672,15672:rabbit:15672
+      - FORWARD_PORTS_TO_LOCALHOST=3306:mysql:3306,5432:pgsql:5432,6379:redis:6379,11211:memcd:11211,27017:mongo:27017,5672:rabbit:5672,15672:rabbit:15672
 
       ##
       ## MySQL Backups
@@ -411,6 +414,41 @@ services:
 
       # Mount MongoDB Data directory
       - ${HOST_PATH_MONGO_DATADIR}/${MONGO_SERVER}:/data/db
+
+    depends_on:
+      - bind
+      - php
+      - httpd
+
+
+  # ------------------------------------------------------------
+  # RabbitMQ
+  # ------------------------------------------------------------
+  rabbit:
+    image: rabbitmq:${RABBIT_SERVER:-latest}-management
+
+    hostname: rabbit
+
+    environment:
+      - RABBITMQ_DEFAULT_VHOST=${RABBIT_DEFAULT_VHOST:-my_vhost}
+      - RABBITMQ_DEFAULT_USER=${RABBIT_DEFAULT_USER:-guest}
+      - RABBITMQ_DEFAULT_PASS=${RABBIT_DEFAULT_PASS:-password}
+
+    ports:
+      # [local-machine:]local-port:docker-port
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_RABBIT_MGMT}:15672"
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_RABBIT}:5672"
+
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.17
+
+    volumes:
+      # ---- Format: ----
+      # HOST-DIRECTORY : DOCKER-DIRECTORY
+
+      # Mount RabbitMQ Data directory
+      - ${HOST_PATH_RABBIT_DATADIR}/${RABBIT_SERVER}:/var/lib/rabbitmq
 
     depends_on:
       - bind

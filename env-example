@@ -85,9 +85,15 @@ NEW_GID=1000
 
 
 ###
-### Timezone for all dockers and service config files
+### Timezone for all dockers and service config files.
 ###
-TIMEZONE=Europe/Berlin
+### Examples:
+###
+###   TIMEZONE=America/Los_Angeles
+###   TIMEZONE=Asia/Tokyo
+###   TIMEZONE=Europe/Berlin
+###
+TIMEZONE=Etc/UTC
 
 
 
@@ -262,12 +268,30 @@ MONGO_SERVER=3.4
 #MONGO_SERVER=3.5
 
 
+###
+### 1.8 Choose RabbitMQ Server Image
+###
+#RABBIT_SERVER=3.4
+#RABBIT_SERVER=3.5
+RABBIT_SERVER=3.6
+
+
 
 ################################################################################
 ###
 ### 2. Host Mounts (Your computer)
 ###
 ################################################################################
+
+###
+### Note that all paths below (if relative or absolute) are always
+### prefixed with DEVILBOX_PATH.
+###
+### As an example the actual path for the datadir  will be:
+###
+### HOST_PATH_HTTPD_DATADIR=${DEVILBOX_PATH}/${HOST_PATH_HTTPD_DATADIR}
+###
+
 
 ###
 ### Local filesystem path to www projects.
@@ -279,11 +303,12 @@ MONGO_SERVER=3.4
 ###
 HOST_PATH_HTTPD_DATADIR=./data/www
 
+
 ###
-### Local filesystem path to mysql/mariadb datadir.
+### Local filesystem path to MySQL/MariaDB datadir.
 ###
-### This can be an existing mysql data directory or empty.
-### If it already is a mysql data directory with content,
+### This can be an existing MySQL data directory or empty.
+### If it already is a MySQL data directory with content,
 ### it will be mounted into the docker and used.
 ###
 ### If this directory is empty, a new mysql database will be
@@ -303,10 +328,10 @@ HOST_PATH_MYSQL_DATADIR=./data/mysql
 
 
 ###
-### Local filesystem path to postgresql datadir.
+### Local filesystem path to PostgreSQL datadir.
 ###
-### This can be an existing postgresql data directory or empty.
-### If it already is a postgresql data directory with content,
+### This can be an existing PostgreSQL data directory or empty.
+### If it already is a PostgreSQL data directory with content,
 ### it will be mounted into the docker and used.
 ###
 ### If this directory is empty, a new postgresql database will be
@@ -326,10 +351,10 @@ HOST_PATH_PGSQL_DATADIR=./data/pgsql
 
 
 ###
-### Local filesystem path to mongodb datadir.
+### Local filesystem path to MongoDB datadir.
 ###
-### This can be an existing mongodb data directory or empty.
-### If it already is a mongodb data directory with content,
+### This can be an existing MongoDB data directory or empty.
+### If it already is a MongoDB data directory with content,
 ### it will be mounted into the docker and used.
 ###
 ### If this directory is empty, a new mongodb database will be
@@ -341,6 +366,24 @@ HOST_PATH_PGSQL_DATADIR=./data/pgsql
 ### $ docker-compose rm -f
 ###
 HOST_PATH_MONGO_DATADIR=./data/mongo
+
+
+###
+### Local filesystem path to RabbitMQ datadir.
+###
+### This can be an existing RabbitMQ data directory or empty.
+### If it already is a RabbitMQ data directory with content,
+### it will be mounted into the docker and used.
+###
+### If this directory is empty, a new RabbitMQ database will be
+### created.
+###
+### Note: When changing this variable you must re-create the container.
+###       Simply remove it, it will be auto-created during the next start:
+###
+### $ docker-compose rm -f
+###
+HOST_PATH_RABBIT_DATADIR=./data/rabbit
 
 
 
@@ -494,7 +537,36 @@ HOST_PORT_MONGO=27017
 
 ################################################################################
 ###
-### 10. Bind Docker Settings
+### 10. RabbitMQ Docker Settings
+###
+################################################################################
+
+###
+### Expose RabbitMQ Port to Host
+###
+HOST_PORT_RABBIT=5672
+
+###
+### Expose RabbitMQ Management Port to Host
+###
+HOST_PORT_RABBIT_MGMT=15672
+
+###
+### RabbitMQ default vhost name to create
+###
+RABBIT_DEFAULT_VHOST=my_vhost
+
+###
+### RabbitMQ Management Login
+###
+RABBIT_DEFAULT_USER=guest
+RABBIT_DEFAULT_PASS=password
+
+
+
+################################################################################
+###
+### 11. Bind Docker Settings
 ###
 ################################################################################
 

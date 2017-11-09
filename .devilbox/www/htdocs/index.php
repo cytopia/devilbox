@@ -20,6 +20,7 @@ $avail_pgsql	= loadClass('Pgsql')->isAvailable();
 $avail_redis	= loadClass('Redis')->isAvailable();
 $avail_memcd	= loadClass('Memcd')->isAvailable();
 $avail_mongo	= loadClass('Mongo')->isAvailable();
+$avail_rabbit	= loadClass('Rabbit')->isAvailable();
 
 
 /*************************************************************
@@ -178,6 +179,31 @@ if ($avail_mongo) {
 	);
 }
 
+// ---- RABBIT ----
+if ($avail_rabbit) {
+	$host	= $GLOBALS['RABBIT_HOST_NAME'];
+	$succ	= loadClass('Rabbit')->canConnect($error, $host);
+	$connection['RabbitMQ'][$host] = array(
+		'error' => $error,
+		'host' => $host,
+		'succ' => $succ
+	);
+	$host	= loadClass('Rabbit')->getIpAddress();
+	$succ	= loadClass('Rabbit')->canConnect($error, $host);
+	$connection['RabbitMQ'][$host] = array(
+		'error' => $error,
+		'host' => $host,
+		'succ' => $succ
+	);
+	$host	= '127.0.0.1';
+	$succ	= loadClass('Rabbit')->canConnect($error, $host);
+	$connection['RabbitMQ'][$host] = array(
+		'error' => $error,
+		'host' => $host,
+		'succ' => $succ
+	);
+}
+
 
 // ---- BIND (required)----
 $host	= $GLOBALS['DNS_HOST_NAME'];
@@ -325,6 +351,25 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 				</div>
 
 			</div><!-- /row -->
+
+
+			<div class="row">
+
+				<div class="col-md-4 col-sm-4 col-xs-12 col-margin">
+					<div class="dash-box">
+						<div class="dash-box-head"><i class="fa fa-cog" aria-hidden="true"></i> Queue Stack</div>
+						<div class="dash-box-body">
+							<div class="row">
+								<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-4" style="margin-bottom:15px;">
+									<?php echo loadClass('Html')->getCirle('rabbit'); ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
 
 
 			<!-- ############################################################ -->
