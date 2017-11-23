@@ -64,8 +64,8 @@ Git tags tie each Docker container to a stable Docker tag. This will look like t
 $ grep '^[[:space:]]*image:' docker-compose.yml
 
     image: cytopia/bind:0.9
-    image: cytopia/${PHP_SERVER:-php-fpm-7.0}:0.9
-    image: cytopia/${HTTPD_SERVER:-nginx-stable}:0.9
+    image: devilbox/${PHP_SERVER:-php-fpm-7.0}:0.9
+    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.9
     image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:0.9
 ```
 
@@ -94,8 +94,8 @@ The git master branch ties each Docker container to their `latest` tag. Latest t
 $ grep '^[[:space:]]*image:' docker-compose.yml
 
     image: cytopia/bind:latest
-    image: cytopia/${PHP_SERVER:-php-fpm-7.0}:latest
-    image: cytopia/${HTTPD_SERVER:-nginx-stable}:latest
+    image: devilbox/${PHP_SERVER:-php-fpm-7.0}:work-debian
+    image: devilbox/${HTTPD_SERVER:-nginx-stable}:latest
     image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
 ```
 
@@ -143,12 +143,12 @@ No! You will have to `docker-compose pull` again. Why?
 Lets have another look into `docker-compose.yml`:
 
 ```yml
-image: cytopia/${PHP_SERVER:-php-fpm-7.0}:latest
-image: cytopia/${HTTPD_SERVER:-nginx-stable}:latest
+image: devilbox/${PHP_SERVER:-php-fpm-7.0}:work-debian
+image: devilbox/${HTTPD_SERVER:-nginx-stable}:latest
 image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
 ```
 
-As you can see, the Docker container names are variablized. If you updated `php-fpm-5.4:latest`, you still have to update `php-fpm-5.5:latest` (and all others) as they were not yet enabled/visible in `docker-compose.yml`.
+As you can see, the Docker container names are variablized. If you updated `php-fpm-5.4:work-debian`, you still have to update `php-fpm-5.5:work-debian` (and all others) as they were not yet enabled/visible in `docker-compose.yml`.
 
 So instead of pulling everything manually, use the bundled update script to do that for all available Docker container. That will also allow you to work offline, as every available docker image will be download in their latest version.
 
