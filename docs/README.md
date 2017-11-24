@@ -98,7 +98,7 @@ The devilbox runs on all major operating systems. Below you can quickly check th
 
 |             | ![linux][lin-logo]   | ![windows][win-logo]      | ![osx][osx-logo]     |
 |-------------|----------------------|---------------------------|----------------------|
-| **Docker Version** | normal               | [Docker for Windows][d4w] | [Docker dor Mac][d4m]|
+| **Docker Version** | normal               | [Docker for Windows][d4w] | [Docker for Mac][d4m]|
 | **Current Issues**  | [here][lin-issues]   | [here][win-issues]        | [here][osx-issues]   |
 
 [win-logo]: https://raw.githubusercontent.com/cytopia/icons/master/64x64/windows.png
