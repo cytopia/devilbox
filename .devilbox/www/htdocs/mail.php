@@ -30,7 +30,7 @@ require $LIB_DIR . DIRECTORY_SEPARATOR . 'Sort.php';
 
 // Sort/Order settings
 $defaultSort	= array('sort' => 'date', 'order' => 'DESC');
-$allowedSorts	= array('date', 'subject', 'x-original-to');
+$allowedSorts	= array('date', 'subject', 'x-original-to', 'from');
 $allowedOrders	= array('ASC', 'DESC');
 $GET_sortKeys	= array('sort' => 'sort', 'order' => 'order');
 
@@ -41,6 +41,7 @@ $order = $MySort->getOrder();
 
 // Evaluate Sorters/Orderers
 $orderDate	= '<a href="/mail.php?sort=date&order=ASC"><i class="fa fa-sort" aria-hidden="true"></i></a>';
+$orderFrom	= '<a href="/mail.php?sort=from&order=ASC"><i class="fa fa-sort" aria-hidden="true"></i></a>';
 $orderTo	= '<a href="/mail.php?sort=x-original-to&order=ASC"><i class="fa fa-sort" aria-hidden="true"></i></a>';
 $orderSubj	= '<a href="/mail.php?sort=subject&order=ASC"><i class="fa fa-sort" aria-hidden="true"></i></a>';
 
@@ -61,6 +62,12 @@ if ($sort == 'date') {
 		$orderTo = '<a href="/mail.php?sort=x-original-to&order=DESC"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>';
 	} else {
 		$orderTo = '<a href="/mail.php?sort=x-original-to&order=ASC"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>';
+	}
+} else if ($sort == 'from') {
+	if ($order == 'ASC') {
+		$orderFrom = '<a href="/mail.php?sort=from&order=DESC"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>';
+	} else {
+		$orderFrom = '<a href="/mail.php?sort=from&order=ASC"><i class="fa fa-sort" aria-hidden="true"></i></a> <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>';
 	}
 }
 
@@ -142,6 +149,7 @@ $messages = $MyMbox->get($sortOrderArr);
 							<tr>
 								<th>#</th>
 								<th>Date <?php echo $orderDate;?></th>
+								<th>From <?php echo $orderFrom;?></th>
 								<th>To <?php echo $orderTo;?></th>
 								<th>Subject <?php echo $orderSubj;?></th>
 							</tr>
@@ -158,14 +166,18 @@ $messages = $MyMbox->get($sortOrderArr);
 										<?php echo date('H:i', strtotime($structure->headers['date']));?><br/>
 										<small><?php echo date('Y-m-d', strtotime($structure->headers['date']));?></small>
 									</td>
+									<td><?php echo htmlentities($structure->headers['from']);?></td>
 									<td><?php echo $structure->headers['x-original-to'];?></td>
 									<td><?php echo $structure->headers['subject'];?></td>
 								</tr>
 								<tr></tr>
 								<tr id="mail-<?php echo $data['num'];?>" style="display:none">
 									<td></td>
-									<td colspan="3">
-										<pre><?php echo $message;?></pre>
+									<td colspan="4">
+										<?php echo $structure->body ?>
+										<hr>
+										<p><a class="btn btn-primary" data-toggle="collapse" href="#email-<?php echo $data['num'];?>" aria-expanded="false" aria-controls="email-<?php echo $data['num'];?>">Raw source</a></p>
+										<div class="collapse" id="email-<?php echo $data['num'];?>"><pre><?php echo $message;?></pre></div>
 									</td>
 								</tr>
 							<?php endforeach; ?>
