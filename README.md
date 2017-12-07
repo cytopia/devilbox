@@ -370,6 +370,8 @@ As far as tested there are no limitations and you can use any Framework or CMS j
     4. [Container settings](docs/Configure.md#4-container-settings)
     5. [Intranet settings](docs/Configure.md#5-intranet-settings)
     6. [Host computer](docs/Configure.md#6-host-computer)
+        1. [/etc/hosts](docs/Configure.md#61-etchosts)
+		2. [Auto-DNS](docs/Configure.md#62-auto-dns)
 6. **[Run](docs/Run.md)**
     1. [Start the devilbox](docs/Run.md#1-start-the-devilbox)
     2. [Stop the devilbox](docs/Run.md#2-stop-the-devilbox)
@@ -414,7 +416,7 @@ As far as tested there are no limitations and you can use any Framework or CMS j
         7. [Setup Wordpress](docs/Examples.md#27-setup-wordpress)
         8. [Setup Yii](docs/Examples.md#28-setup-yii)
         9. [Setup Zend](docs/Examples.md#29-setup-zend)
-   3. [Code analysis](docs/Examples.md#3-code-analysis)
+    3. [Code analysis](docs/Examples.md#3-code-analysis)
         1. [awesome-ci](docs/Examples.md#31-awesome-ci)
         2. [phpcs](docs/Examples.md#32-phpcs)
         3. [eslint](docs/Examples.md#33-eslint)
