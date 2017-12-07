@@ -976,12 +976,20 @@ The devilbox provides its own DNS nameserver that automatically configures itsel
 
 You can make advantage of that by adding this DNS nameserver to your host computers DNS config in `/etc/resolv.conf`. Then everytime you make a request (in your Browser for example) to a devilbox project domain, the bundled DNS name server will successfully answer the request and direct you to the project. This will remove the need to make custom `/etc/hosts` entries for each project.
 
+
 **What is required for this to work?**
 
-First of all, you need to make sure that nothing on your host computer is listening on port 53.
+By default, the Bind port (`.env`: `HOST_PORT_BIND=1053`) is set to a non standard DNS port in order to avoid failed devilbox startups in case you already have a local DNS resolver running. So edit your `.env` file and set the Bind port to `53`:
+```
+$ vi .env
+
+HOST_PORT_BIND=53
+```
+
+Then you need to make sure that nothing on your host computer is listening on port 53. Do this before starting up the devilbox.
 
 ```shell
-$ netstat -tulpen | grep ':53'
+$ netstat -tuln | grep ':53'
 ```
 
 If there is already something listening on that port, you will need to stop whatever is listening in port 53 (TCP and UDP).
