@@ -89,6 +89,14 @@ Here is an example to list the PHP inside the container from the Docker host.
 $ docker-compose exec --user devilbox php php -v
 ```
 
+However, instead of having to type all of the above for a simple command execution, you might be better off to simply enter the PHP container and work on a normal shell. Going into the container is as simple as this:
+
+```
+$ ./shell.sh
+```
+
+Read more about this in the next section.
+
 
 ## 3. Work inside the PHP container
 
