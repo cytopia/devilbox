@@ -174,7 +174,17 @@ $messages = $MyMbox->get($sortOrderArr);
 								<tr id="mail-<?php echo $data['num'];?>" style="display:none">
 									<td></td>
 									<td colspan="4">
-										<?php echo $structure->body ?>
+										<?php if (isset($structure->body)): ?>
+											<?php echo $structure->body ?>
+										<?php elseif(isset($structure->parts[1]->body)): ?>
+											<?php echo $structure->parts[1]->body ?>
+										<?php elseif(isset($structure->parts[0]->body)): ?>
+											<?php echo htmlentities($structure->parts[0]->body) ?>
+										<?php else: ?>
+											<?php echo '<div class="alert alert-warning" role="alert">
+												No valid body found
+											</div>' ?>
+										<?php endif; ?>
 										<hr>
 										<p><a class="btn btn-primary" data-toggle="collapse" href="#email-<?php echo $data['num'];?>" aria-expanded="false" aria-controls="email-<?php echo $data['num'];?>">Raw source</a></p>
 										<div class="collapse" id="email-<?php echo $data['num'];?>"><pre><?php echo $message;?></pre></div>
