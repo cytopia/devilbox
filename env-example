@@ -146,8 +146,8 @@ DEVILBOX_UI_PASSWORD=password
 ### Disable the Devilbox Intranet?
 ###
 ### Example:
-###   DEVILBOX_UI_PROTECT=1
-###   DEVILBOX_UI_PROTECT=0
+###   DEVILBOX_UI_DISABLE=1
+###   DEVILBOX_UI_DISABLE=0
 ###
 DEVILBOX_UI_DISABLE=0
 
@@ -521,12 +521,12 @@ BIND_DNS_RESOLVER=8.8.8.8,8.8.4.4
 ### Any variable defined in this file will be available
 ### as environment variables to your PHP/HHV Docker container.
 ###
-### This might be useful to set application environment and retriev
+### This might be useful to set application environment and retrieve
 ### them via: <?php getenv('MY_APPLICATION_ENV'); ?>
 ###
 
 ###
 ### Example:
-### <?php echo getenv('Foo');?> would produce: 'some value'
+### <?php echo getenv('Foo'); ?> would produce: 'some value'
 ###
 #Foo=some value
