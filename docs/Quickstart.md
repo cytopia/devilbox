@@ -90,7 +90,7 @@ $ docker-compose stop
 
 # Remove the stopped container (IMPORTANT!)
 # After the removal it will be re-created during next run
-$ docker-compose rm -rf
+$ docker-compose rm -f
 ```
 
 #### 3.2 Services
