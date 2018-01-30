@@ -309,7 +309,7 @@ $ docker-compose up -d
 
 | `.env` file variable name | Default | Note |
 |---------------------------|---------|------|
-| HTTPD_DOCROOT_DIR         | `htdocs` | A sub directory inside your project directory from which the web server will serve your files.<br/>The full path to the docuement root would be: `${HOST_PATH_HTTPD_DATADIR}/<project-name>/${HTTPD_DOCROOT_DIR}` |
+| HTTPD_DOCROOT_DIR         | `htdocs` | A sub directory inside your project directory from which the web server will serve your files.<br/>The full path to the document root would be: `${HOST_PATH_HTTPD_DATADIR}/<project-name>/${HTTPD_DOCROOT_DIR}` |
 
 If you rather would use a directory called `www`, just change it to this. Be aware that this will affect all your projects.
 
@@ -342,7 +342,7 @@ Use this variable to control the timezone of the container.
 * PHP/HHVM
 * Apache/Nginx
 
-The official container do not support this setting.
+The official containers do not support this setting.
 
 ##### 4.1.1 User id
 
@@ -366,7 +366,7 @@ $ id
 |---------------------------|---------|------|
 | NEW_GID                   | `1000`| Change the Docker containers group id (gid) |
 
-This setting is used to change the group id of the PHP/HHVM container to the one you specify. As you will work insisde the PHP/HHVM container, you will have to set it to the same group id of your Host computers group id. It will make sure that files created inside the container have the same access permissions as outside the container.
+This setting is used to change the group id of the PHP/HHVM container to the one you specify. As you will work inside the PHP/HHVM container, you will have to set it to the same group id of your Host computers group id. It will make sure that files created inside the container have the same access permissions as outside the container.
 
 To find out your group id, type the following on your Host system:
 ```shell
@@ -398,7 +398,7 @@ You can choose between different PHP versions and HHVM.
 |---------------------------|---------|------|
 | PHP_XDEBUG_ENABLE         | `1` | Enable Xdebug for PHP |
 | PHP_XDEBUG_REMOTE_PORT    | `9000` | PHP Xdebugs remote port - where your editor/IDE is receiving Xdebug data |
-| PHP_XDEBUG_REMOTE_HOST    | `192.168.0.215` | PHP Xdebugs remote IP address - where your editor/IDE is listening for Xdebug connections (Make sure to change this to the IP of your Docker Host |
+| PHP_XDEBUG_REMOTE_HOST    | `192.168.0.215` | PHP Xdebugs remote IP address - where your editor/IDE is listening for Xdebug connections (make sure to change this to the IP of your Docker Host) |
 
 Xdebug is turned on by default and also using the official Xdebug default port. The only thing you will have to adjust is the Xdebug remote host address so that your editor/IDE can actually receive Xdebug data.
 
@@ -681,7 +681,7 @@ drwxrwxr-x 2 cytopia 4096 Jun  1 08:44 percona-5.7/
 
 Each of the above folders will hold an example configuration file named `devilbox-custom.cnf-example` which shows some example settings but will **not have** any effect yet. Only files ending by **`.cnf`** will be sourced and applied, so you must copy it (or create a new file) to something that ends by `*.cnf`.
 
-In order to edit settings for MySQL 5.5, go into that folder, copy the example file and adjust ist:
+In order to edit settings for MySQL 5.5, go into that folder, copy the example file and adjust it:
 
 ```shell
 # Copy to file ending by *.ini
@@ -897,7 +897,7 @@ If you don't trust the Google DNS server, then set it to something else. If you 
 |---------------------------|---------|------|
 | HOST_PORT_BIND           | `1053`| Host computer listening port for the Bind DNS server |
 
-By default the Bind DNS server will listen on port 1053 (on your Host computer). You can change this to any other port (in case port 1053 is already taken)
+By default the Bind DNS server will listen on port 1053 (on your Host computer). You can change this to any other port (in case port 1053 is already taken).
 
 If you also want to change the listening address (default: 127.0.0.1) to something else, see above or search this document for `LOCAL_LISTEN_ADDRESS`.
 
