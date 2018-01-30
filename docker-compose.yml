@@ -31,7 +31,7 @@ services:
   # Bind (DNS Server)
   # ------------------------------------------------------------
   bind:
-    image: cytopia/bind:latest
+    image: cytopia/bind:0.11
     restart: always
     ports:
       # [local-machine:]local-port:docker-port
