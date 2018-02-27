@@ -1012,3 +1012,18 @@ search local
 ```
 
 **Note:** This section needs to be improved with more detail. If anything is unclear for now, drop an issue at Github.
+
+#### 6.2 For This to Work on Macs
+
+Mac does not have Docker support for bridged network.
+Therefore, you need to set the WILDCARD_ADDRESS in docker-compose.yml to 127.0.0.1 .
+Kind of like here: https://github.com/cytopia/devilbox/pull/138/files
+
+Afterwards, modifying resolv.conf does not work on Macs either, so edit using the Network tool in System Preferences instead.
+
+- System Preferences
+- Network
+- Click on what you use for your internet.
+- Click Advanced...
+- Click DNS
+- Add 127.0.0.1 along with your default DNS server.
