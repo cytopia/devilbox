@@ -208,5 +208,12 @@ The PHP Docker container is your workhorse which has many tools pre-installed an
 host> ./shell.sh
 devilbox@php-7.0.19 in /shared/httpd $
 ```
+Or on windows
+
+```shell
+path> ./shell.bat
+devilbox@php-7.0.19 in /shared/httpd $
+```
+
 
 See **[Usage](Usage.md)** for a detailed explanation.
