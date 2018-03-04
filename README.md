@@ -7,13 +7,12 @@
 
 [![Join the chat at https://gitter.im/devilbox/Lobby](https://badges.gitter.im/devilbox/Lobby.svg)](https://gitter.im/devilbox/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-
 **[Usage](#usage)** |
 **[Features](#feature-overview)** |
 **[Documentation](#documentation)** |
 **[Intranet](#intranet-overview)** |
 **[Screenshots](#screenshots)** |
-**[Contributing](#contributing)** |
+**[Contributing](#contributing-)** |
 **[Logos](#logos)** |
 **[License](#license)**
 
@@ -476,13 +475,13 @@ The homepage shows you the status of your current configured setup.
 </table>
 
 
-## Contributing
+## Contributing [![Open Source Helpers](https://www.codetriage.com/cytopia/devilbox/badges/users.svg)](https://www.codetriage.com/cytopia/devilbox)
 
 Contributers are welcome in any way.
 
 First of all, if you like the project, please **do star it**. Starring is an important measurement to see the number of active users and better allows me to organize my time and effort I can put into this project.
 
-Secondly, please **do report all bugs**. This will not only help you get your problem fixed, but also help others as they might encounter the same.
+Secondly, please **do report all bugs**. This will not only help you get your problem fixed, but also help others as they might encounter the same. You can also help triage existing issues.This can include reproducing bug reports, or asking for vital information such as version numbers or reproduction instructions. If you would like to start triaging issues, one easy way to get started is to [subscribe to devilbox on CodeTriage](https://www.codetriage.com/cytopia/devilbox).
 
 And last but not least, you can also get actively involved. **Do clone the project** and start improving whatever you think is useful. There is quite a lot todo and planned. If you like to contribute, view [CONTRIBUTING.md](CONTRIBUTING.md) and [ROADMAP](https://github.com/cytopia/devilbox/issues/23).
 
