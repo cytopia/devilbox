@@ -168,13 +168,12 @@ DEVILBOX_UI_DISABLE=0
 ###
 ### 1.1 Choose PHP Server Image
 ###
-#PHP_SERVER=php-fpm-5.4
-#PHP_SERVER=php-fpm-5.5
-#PHP_SERVER=php-fpm-5.6
-#PHP_SERVER=php-fpm-7.0
+#PHP_SERVER=5.4
+#PHP_SERVER=5.5
+#PHP_SERVER=5.6
+#PHP_SERVER=7.0
 PHP_SERVER=7.1
-#PHP_SERVER=php-fpm-7.2
-#PHP_SERVER=hhvm-latest
+#PHP_SERVER=7.2
 
 
 ###
@@ -350,21 +349,9 @@ HOST_PATH_MONGO_DATADIR=./data/mongo
 ###
 ################################################################################
 
-###
-### Xdebug
-###
-
-# Enable/Disable Xdebug
-PHP_XDEBUG_ENABLE=1
-
-# Your local port (your computer host [not the docker])
-# where your ide/editor is listening for xdebug connections.
-PHP_XDEBUG_REMOTE_PORT=9000
-
-# Your local IP address (your computer host [not the docker])
-# where your ide/editor is listening for xdebug connections.
-PHP_XDEBUG_REMOTE_HOST=192.168.0.215
-## TODO: Check if it works by automatically sending it to the broadcast address
+# None
+#
+# Configure everything about PHP in cfg/php-fpm-X.X/*.ini
 
 
 
