@@ -172,7 +172,7 @@ DEVILBOX_UI_DISABLE=0
 #PHP_SERVER=php-fpm-5.5
 #PHP_SERVER=php-fpm-5.6
 #PHP_SERVER=php-fpm-7.0
-PHP_SERVER=php-fpm-7.1
+PHP_SERVER=7.1
 #PHP_SERVER=php-fpm-7.2
 #PHP_SERVER=hhvm-latest
 

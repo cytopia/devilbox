@@ -13,14 +13,11 @@
 # CUSTOM
 ######################################
 
-# Keep folders
-!.keepme
-
 # Ignore variable dat
 /.env
 /log/[a-z0-9-]*
-/data/
-/backups/
+/data/*
+/backups/*
 
 # Ignore custom HTTPD configs
 /cfg/apache-2.2/*.conf
@@ -63,6 +60,10 @@
 /bash/*
 !/bash/bashrc.sh-example
 !/bash/README.md
+
+# Keep folders
+!.keepme
+
 
 ######################################
 # GENERIC
