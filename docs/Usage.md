@@ -149,13 +149,14 @@ For your convenience a few selected tools have been pre-installed in their curre
 
 The complete list of tools including their version can be found at the PHP docker containers git repository Readme:
 
-[PHP 5.4](https://github.com/cytopia/docker-php-fpm-5.4) |
-[PHP 5.5](https://github.com/cytopia/docker-php-fpm-5.5) |
-[PHP 5.6](https://github.com/cytopia/docker-php-fpm-5.6) |
-[PHP 7.0](https://github.com/cytopia/docker-php-fpm-7.0) |
-[PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) |
-[PHP 7.2](https://github.com/cytopia/docker-php-fpm-7.2) |
-[HHVM](https://github.com/cytopia/docker-hhvm-latest)
+[PHP 5.4](https://github.com/devilbox/docker-php-fpm-5.4) |
+[PHP 5.5](https://github.com/devilbox/docker-php-fpm-5.5) |
+[PHP 5.6](https://github.com/devilbox/docker-php-fpm-5.6) |
+[PHP 7.0](https://github.com/devilbox/docker-php-fpm-7.0) |
+[PHP 7.1](https://github.com/devilbox/docker-php-fpm-7.1) |
+[PHP 7.2](https://github.com/devilbox/docker-php-fpm-7.2) |
+[PHP 7.3](https://github.com/devilbox/docker-php-fpm-7.3) |
+[HHVM](https://github.com/devilbox/docker-hhvm-latest)
 
 If you permanently require additional software refer to [Hacking](Hacking.md).
 

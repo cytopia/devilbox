@@ -32,11 +32,11 @@ Hacking |
 
 ## 1. Rebuilding bundled Docker container
 
-The devilbox Docker container are rebuild frequently and pushed to [dockerhub](https://hub.docker.com/r/cytopia/). However there might be cases in which you want to rebuild right away in order to use a new minor version of a tool inside the container.
+The devilbox Docker container are built automatically every night and afterwards pushed to [dockerhub](https://hub.docker.com/r/devilbox/). However there might be cases in which you want to rebuild right away in order to use a new minor version of a tool inside the container.
 
 #### 1.1 Why rebuild yourself?
 
-Imagine for example you are using the [PHP 7.1](https://github.com/cytopia/docker-php-fpm-7.1) container which currently is available with the version 7.1.6. You found that PHP 7.1.7 has just been released, but the container wasn't yet updated to that version. If you can't wait and need that version now, you can just update the container to that version yourself.
+Imagine for example you are using the [PHP 7.1](https://github.com/devilbox/docker-php-fpm-7.1) container which currently is available with the version 7.1.6. You found that PHP 7.1.7 has just been released, but the container wasn't yet updated to that version. If you can't wait and need that version now, you can just update the container to that version yourself.
 
 #### 1.2 How to rebuild yourself?
 
@@ -55,14 +55,14 @@ If your devilbox git repository is checked out on a `git tag`, then also the doc
 
 ```yml
   php:
-     image: cytopia/${PHP_SERVER:-php-fpm-7.0}:0.10
+     image: devilbox/${PHP_SERVER:-php-fpm-7.0}:0.10
 ```
 
 Your newly rebuild `latest` docker container will not yet be available for the next run. You still need to change the `docker-compose.yml` and set the container to `latest`:
 
 ```yml
   php:
-     image: cytopia/${PHP_SERVER:-php-fpm-7.0}:latest
+     image: devilbox/${PHP_SERVER:-php-fpm-7.0}:work-debian
 ```
 
 ##### 1.3.2 devilbox repository on master branch
