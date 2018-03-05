@@ -372,40 +372,6 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 										<th>Postfix</th>
 										<td><?php echo loadClass('Helper')->getEnv('ENABLE_MAIL') ? 'Enabled'  : '<span class="bg-danger">No</span> Disabled';?></td>
 									</tr>
-									<tr>
-										<th>Xdebug</th>
-										<td>
-											<?php $Xdebug = (loadClass('Helper')->getEnv('PHP_XDEBUG_ENABLE') == 0) ? '' : loadClass('Helper')->getEnv('PHP_XDEBUG_ENABLE'); ?>
-											<?php if ($Xdebug == loadClass('Php')->getConfig('xdebug.remote_enable')): ?>
-												<?php echo loadClass('Php')->getConfig('xdebug.remote_enable') == 1 ? 'Yes' : 'No'; ?>
-											<?php else: ?>
-												<?php echo '<span class="text-danger">not installed</span>.env file setting differs from custom php .ini file</span><br/>'; ?>
-												<?php echo 'Effective setting: '.loadClass('Php')->getConfig('xdebug.remote_enable'); ?>
-											<?php endif; ?>
-										</td>
-									</tr>
-									<tr>
-										<th>Xdebug Remote</th>
-										<td>
-											<?php if (loadClass('Helper')->getEnv('PHP_XDEBUG_REMOTE_HOST') == loadClass('Php')->getConfig('xdebug.remote_host')): ?>
-												<?php echo loadClass('Php')->getConfig('xdebug.remote_host'); ?>
-											<?php else: ?>
-												<?php echo '<span class="text-danger">not installed</span>.env file setting differs from custom php .ini file</span><br/>'; ?>
-												<?php echo 'Effective setting: '.loadClass('Php')->getConfig('xdebug.remote_host'); ?>
-											<?php endif; ?>
-										</td>
-									</tr>
-									<tr>
-										<th>Xdebug Port</th>
-										<td>
-											<?php if (loadClass('Helper')->getEnv('PHP_XDEBUG_REMOTE_PORT') == loadClass('Php')->getConfig('xdebug.remote_port')): ?>
-												<?php echo loadClass('Php')->getConfig('xdebug.remote_port'); ?>
-											<?php else: ?>
-												<?php echo '<span class="text-danger">not installed</span>.env file setting differs from custom php .ini file</span><br/>'; ?>
-												<?php echo 'Effective setting: '.loadClass('Php')->getConfig('xdebug.remote_port'); ?>
-											<?php endif; ?>
-										</td>
-									</tr>
 								</tbody>
 							</table>
 
@@ -766,7 +732,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 										<tbody>
 											<tr>
 												<th>php</th>
-												<td>./cfg/<?php echo loadClass('Helper')->getEnv('PHP_SERVER'); ?></td>
+												<td>./cfg/php-fpm-<?php echo loadClass('Helper')->getEnv('PHP_SERVER'); ?></td>
 												<td>/etc/php-custom.d</td>
 											</tr>
 											<tr>
@@ -841,7 +807,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 										<tbody>
 											<tr>
 												<th>php</th>
-												<td>./log/<?php echo loadClass('Helper')->getEnv('PHP_SERVER'); ?></td>
+												<td>./log/php-fpm-<?php echo loadClass('Helper')->getEnv('PHP_SERVER'); ?></td>
 												<td>/var/log/php</td>
 											</tr>
 											<tr>

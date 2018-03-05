@@ -94,13 +94,6 @@ services:
       - TIMEZONE
 
       ##
-      ## PHP Xdebug
-      ##
-      - PHP_XDEBUG_ENABLE
-      - PHP_XDEBUG_REMOTE_PORT
-      - PHP_XDEBUG_REMOTE_HOST
-
-      ##
       ## Mail-catching
       ##
       - ENABLE_MAIL=1
