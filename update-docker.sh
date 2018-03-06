@@ -22,12 +22,12 @@ docker pull cytopia/bind:${TAG}
 ### PHP
 ###
 TAG="$( grep '^[[:space:]]*image:.*\${PHP_SERVER' "${CWD}/docker-compose.yml" | sed 's/^.*://g' )"
-docker pull cytopia/php-fpm-5.4:${TAG}
-docker pull cytopia/php-fpm-5.5:${TAG}
-docker pull cytopia/php-fpm-5.6:${TAG}
-docker pull cytopia/php-fpm-7.0:${TAG}
-docker pull cytopia/php-fpm-7.1:${TAG}
-docker pull cytopia/hhvm-latest:${TAG}
+docker pull devilbox/php-fpm:5.4-work
+docker pull devilbox/php-fpm:5.5-work
+docker pull devilbox/php-fpm:5.6-work
+docker pull devilbox/php-fpm:7.0-work
+docker pull devilbox/php-fpm:7.1-work
+#docker pull cytopia/hhvm-latest:${TAG}
 
 ###
 ### HTTPD
