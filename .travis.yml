@@ -17,7 +17,7 @@ services:
 env:
   ###
   ### The matrix specifies 2 versions to compare against each other.
-  ### As PHP (any versoin) needs to be able to run with everything,
+  ### As PHP (any version) needs to be able to run with everything,
   ### I am going to test any PHP version against any other service.
   ###
   ###
