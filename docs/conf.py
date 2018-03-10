@@ -55,6 +55,10 @@ templates_path = ['_templates']
 source_suffix = ['.rst', '.md']
 #source_suffix = '.rst'
 
+source_parsers = {
+    '.md': CommonMarkParser,
+}
+
 # The master toctree document.
 master_doc = 'index'
 
@@ -83,9 +87,10 @@ pygments_style = 'sphinx'
 #html_theme = 'sphinx_rtd_theme'
 html_theme = 'default'
 
-# From:
-# * https://github.com/snide/sphinx_rtd_theme#using-this-theme-locally-then-building-on-read-the-docs
+html_logo = 'img/logo.png'
 
+# From:
+# * https://github.com/snide/sphinx_png_theme#using-this-theme-locally-then-building-on-read-the-docs
 if not on_rtd:  # only import and set the theme if we're building docs locally
     import sphinx_rtd_theme
     html_theme = 'sphinx_rtd_theme'
@@ -97,21 +102,21 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 #
 # html_theme_options = {}
 # https://sphinx-rtd-theme.readthedocs.io/en/latest/configuring.html#project-wide-configuration
-#html_theme_options = {
-#    'canonical_url': '',
-#    'analytics_id': '',
-#    'logo_only': False,
-#    'display_version': True,
-#    'prev_next_buttons_location': 'bottom',
-#    'style_external_links': False,
-#    #'vcs_pageview_mode': '',
-#    # Toc options
-#    'collapse_navigation': False,
-#    'sticky_navigation': True,
-#    'navigation_depth': 4,
-#    #'includehidden': True,
-#    'titles_only': False
-#}
+html_theme_options = {
+    'canonical_url': '',
+    'analytics_id': '',
+    'logo_only': False,
+    'display_version': True,
+    'prev_next_buttons_location': 'bottom',
+    #'style_external_links': False,
+    #'vcs_pageview_mode': '',
+    # Toc options
+    'collapse_navigation': False,
+    'sticky_navigation': True,
+    'navigation_depth': 5,
+    #'includehidden': True,
+    #'titles_only': False
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -128,17 +133,14 @@ html_static_path = ['_static']
 #
 # html_sidebars = {}
 
+def setup(app):
+    app.add_stylesheet('css/custom.css')
+
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'devilboxdoc'
-
-
-# -- Options for Markdown output ------------------------------------------------
-source_parsers = {
-    '.md': CommonMarkParser,
-}
 
 
 # -- Options for LaTeX output ------------------------------------------------
