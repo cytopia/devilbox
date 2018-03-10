@@ -1,4 +1,4 @@
-.. include:: ../README.rst
+.. include:: ../README.md
 
 .. toctree::
    :caption: Quickstart
