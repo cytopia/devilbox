@@ -1,7 +1,7 @@
-.. _docker_version:
+.. _docker_toolbox:
 
 **************
-Docker version
+Docker Toolbox
 **************
 
 Before going to proceed with the devilbox installation and setup, make sure you meet the requirements.
