@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from recommonmark.parser import CommonMarkParser
 
 source_parsers = {
