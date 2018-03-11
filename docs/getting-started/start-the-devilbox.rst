@@ -1,3 +1,5 @@
+.. _start_the_devilbox:
+
 ******************
 Start the Devilbox
 ******************
