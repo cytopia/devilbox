@@ -12,8 +12,8 @@ devilbox documentation
    :numbered:
    :caption: Getting started
 
-   getting-started/installation
-   getting-started/create-env-file
+   getting-started/install-the-devilbox
+   getting-started/update-the-devilbox
    getting-started/start-the-devilbox
    getting-started/create-your-first-project
 
@@ -101,3 +101,4 @@ devilbox documentation
 
    support/faq
    support/contributing
+   support/artwork
