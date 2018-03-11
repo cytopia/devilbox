@@ -100,6 +100,8 @@ devilbox documentation
    :caption: Readings
    :maxdepth: 2
 
+   installation/docker-installation
+   installation/docker-toolbox
    readings/available-container
    readings/syncronize-container-permissions
 
