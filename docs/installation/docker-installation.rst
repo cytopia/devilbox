@@ -44,7 +44,7 @@ called ``docker``. After having installed Docker on your system, ensure that you
 user is assigned to the ``docker`` group. Check this via ``groups`` or ``id`` command.
 
 
-.. code-block:: console
+.. code-block:: bash
 
    id
 

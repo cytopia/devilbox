@@ -22,6 +22,7 @@ devilbox documentation
    :maxdepth: 2
    :caption: Tutorials
 
+   tutorials/configure-database-in-your-project
    tutorials/change-document-root
    tutorials/change-container-versions
    tutorials/work-inside-the-container
