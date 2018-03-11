@@ -52,7 +52,7 @@ Download the devilbox
 The devilbox does not need to be installed. The only thing that is required is its git directory.
 To download that, open a terminal and copy/paste the following command.
 
-.. code-block:: console
+.. code-block:: bash
 
    git clone https://github.com/cytopia/devilbox
 
@@ -67,7 +67,7 @@ specific ``git tag``.
 Lets say you want your devilbox setup to be at release ``0.12.1``, all you have to do is to check out
 this specific git tag.
 
-.. code-block:: console
+.. code-block:: bash
 
    cd path/to/devilbox
    git checkout 0.12.1
@@ -87,7 +87,7 @@ Inside the cloned devilbox git directory, you will find a file called ``env-exam
 acts as a template with sane defaults for ``Docker Compose``. In order to use it, it must be
 copied to a file named ``.env``. (Note the leading dot).
 
-.. code-block:: console
+.. code-block:: bash
 
    cp env-example .env
 
@@ -113,14 +113,14 @@ on a terminal:
 Find your user id
 -----------------
 
-.. code-block:: console
+.. code-block:: bash
 
    id -u
 
 Find your group id
 ------------------
 
-.. code-block:: console
+.. code-block:: bash
 
    id -g
 
