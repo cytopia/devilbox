@@ -5,7 +5,15 @@ devilbox documentation
 
 .. image:: img/banner.png
 
+.. important::
+   :ref:`read_first`
+     Ensure you have read this document to understand how this documentation works.
 
+.. toctree::
+   :maxdepth: 2
+   :caption: About
+
+   about/read-first
 
 .. toctree::
    :maxdepth: 2

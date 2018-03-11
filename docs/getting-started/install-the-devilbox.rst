@@ -2,6 +2,11 @@
 Install the Devilbox
 ********************
 
+.. important::
+   :ref:`read_first`
+     Ensure you have read this document to understand how this documentation works.
+
+
 Supported OS
 ============
 
@@ -54,7 +59,7 @@ To download that, open a terminal and copy/paste the following command.
 
 .. code-block:: bash
 
-   git clone https://github.com/cytopia/devilbox
+   host> git clone https://github.com/cytopia/devilbox
 
 
 Checkout a different release
@@ -69,8 +74,8 @@ this specific git tag.
 
 .. code-block:: bash
 
-   cd path/to/devilbox
-   git checkout 0.12.1
+   host> cd path/to/devilbox
+   host> git checkout 0.12.1
 
 
 .. warning::
@@ -89,7 +94,7 @@ copied to a file named ``.env``. (Note the leading dot).
 
 .. code-block:: bash
 
-   cp env-example .env
+   host> cp env-example .env
 
 The ``.env`` file does nothing else then providing environment variables for ``Docker Compose``
 and in this case it is used as the main configuration file for the devilbox by providing all kinds
@@ -115,14 +120,14 @@ Find your user id
 
 .. code-block:: bash
 
-   id -u
+   host> id -u
 
 Find your group id
 ------------------
 
 .. code-block:: bash
 
-   id -g
+   host> id -g
 
 In most cases both values will be ``1000``, but for the sake of this example, let's assume a value
 of ``1001`` for the user id and ``1002`` for the group id.
@@ -134,7 +139,7 @@ Open the ``.env`` file with your favorite text editor and adjust those values:
    :name: .env
    :emphasize-lines: 3,4
 
-   vi .env
+   host> vi .env
 
    NEW_UID=1001
    NEW_GID=1002

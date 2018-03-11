@@ -17,11 +17,11 @@ stop all devilbox containers:
 .. code-block:: bash
 
    # Stop containers
-   cd path/to/devilbox
-   docker-compose stop
+   host> cd path/to/devilbox
+   host> docker-compose stop
 
    # Ensure containers are stopped
-   docker-compse ps
+   host> docker-compse ps
 
 Case 1: Update master branch
 ----------------------------
@@ -31,8 +31,8 @@ If you simply want to update the master branch, do a ``git pull origin master``:
 .. code-block:: bash
 
    # Update master branch
-   cd path/to/devilbox
-   git pull origin master
+   host> cd path/to/devilbox
+   host> git pull origin master
 
 
 Case 2: Checkout release tag
@@ -43,8 +43,8 @@ If you want to checkout a specific release tag (such as ``0.12.1``), do a ``git 
 .. code-block:: bash
 
    # Checkout release
-   cd path/to/devilbox
-   git checkout 0.12.1
+   host> cd path/to/devilbox
+   host> git checkout 0.12.1
 
 
 
@@ -61,15 +61,15 @@ your favorite diff editor:
 
 .. code-block:: bash
 
-   vimdiff .env env-example
+   host> vimdiff .env env-example
 
 .. code-block:: bash
 
-   diff .env env-example
+   host> diff .env env-example
 
 .. code-block:: bash
 
-   meld .env env-example
+   host> meld .env env-example
 
 
 Update Docker container
@@ -85,8 +85,8 @@ which will update all available Docker images at once.
 .. code-block:: bash
 
    # Update docker images
-   cd path/to/devilbox
-   ./update-docker.sh
+   host> cd path/to/devilbox
+   host> ./update-docker.sh
 
 .. note::
 
@@ -102,8 +102,8 @@ The devilbox is not yet at a feature-ready stable release and volumes mounts mig
 .. code-block:: bash
 
    # Remove anonymous volumes
-   cd path/to/devilbox
-   docker-compose rm
+   host> cd path/to/devilbox
+   host> docker-compose rm
 
 
 Checklist git repository
