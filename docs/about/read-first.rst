@@ -4,6 +4,11 @@
 Read first
 **********
 
+Find some useful information and tips for the documentation itself.
+
+Shell commands:
+---------------
+
 .. important::
 
    All shell commands in this documentation use two different formats:
@@ -19,3 +24,11 @@ Read first
    .. code-block:: bash
 
        php> command
+
+
+Checklists
+----------
+
+.. note::
+   Most guids and tutorials provide a **Checklist** at the very bottom.
+   You can as well jump to it and quickly see if you have done everything already.
