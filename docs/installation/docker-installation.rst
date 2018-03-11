@@ -46,7 +46,7 @@ user is assigned to the ``docker`` group. Check this via ``groups`` or ``id`` co
 
 .. code-block:: bash
 
-   id
+   host> id
 
    uid=1000(cytopia) gid=1000(cytopia) groups=1000(cytopia),999(docker)
 

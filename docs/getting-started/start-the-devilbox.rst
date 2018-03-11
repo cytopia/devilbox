@@ -22,7 +22,7 @@ just start them all via:
 
 .. code-block:: bash
 
-   docker-compose up
+   host> docker-compose up
 
 * If you want to gracefully stop all container, hit ``Ctrl + c``
 * If you want to kill all container, hit ``Ctrl + c`` twice
@@ -36,7 +36,7 @@ If you don't require all services to be up and running and let's say just ``PHP`
 
 .. code-block:: bash
 
-   docker-compose up httpd php mysql
+   host> docker-compose up httpd php mysql
 
 * If you want to gracefully stop all started container, hit ``Ctrl + c``
 * If you want to kill all started container, hit ``Ctrl + c`` twice
