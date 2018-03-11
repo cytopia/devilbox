@@ -259,7 +259,7 @@ Vist the vhost page again and see what has changed: http://localhost/vhosts.php
 By having created the DNS record, the Devilbox intranet is aware that everything is setup now and
 gives you a link to your new project.
 
-Step 5: visit your project
+Step 5: Visit your project
 --------------------------
 
 On the intranet, click on your project link. This will open your project in a new Browser tab or
@@ -273,7 +273,7 @@ Everything is setup now, however the webserver is trying to find a ``index.php``
 
 So all is left for you to do is to add your HTML or PHP files.
 
-Step 6: create a hello world
+Step 6: Create a hello world
 ----------------------------
 
 Navigate to your docroot directory within your project and create a ``index.php`` file with some output.
@@ -304,7 +304,7 @@ Checklist
 =========
 
 1. :ref:`prerequisites` are read and understood
-2. project directory is created
-3. docroot directory is created
+2. Project directory is created
+3. Docroot directory is created
 4. DNS entry is added to the host operating system
 5. PHP files are added to your docroot directory
