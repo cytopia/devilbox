@@ -97,6 +97,14 @@ devilbox documentation
 
 
 .. toctree::
+   :caption: Readings
+   :maxdepth: 2
+
+   readings/available-container
+   readings/syncronize-container-permissions
+
+
+.. toctree::
    :caption: Advanced
    :maxdepth: 2
 
