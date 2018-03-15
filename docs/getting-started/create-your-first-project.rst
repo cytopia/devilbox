@@ -35,6 +35,23 @@ You can verifiy that the path is actually ``./data/www/`` by checking your ``.en
 
    HOST_PATH_HTTPD_DATADIR=./data/www
 
+
+Project directory
+-----------------
+
+The project directory is a directory directly within the data directory.
+
+**This represents one project.**
+
+By creating this directory, the web server will create a new virtual host for you. This
+happens fully automated and there is nothing else required to do except just to create a directory.
+
+The name of this directory will also be used to build up the final project url together with the
+domain suffix: ``http://<project directory>.<domain suffix>``
+
+Create as many project directories as you require.
+
+
 Docroot directory
 -----------------
 
@@ -52,6 +69,7 @@ You can verifiy that the docroot directory is actually ``htdocs`` by checking yo
 
    HTTPD_DOCROOT_DIR=htdocs
 
+
 Domain suffix
 -------------
 
@@ -68,45 +86,45 @@ You can verifiy that the suffix is actually ``loc`` by checking your ``.env`` fi
    TLD_SUFFIX=loc
 
 
-Make sense of it
-----------------
+Making sense of it
+------------------
 
-Ok, let's sum it up and make sense of the previously provided information:
+Ok, let's sum it up and make sense of the previously provided information. To better illustrate
+the behaviour we are going to use ``project-1`` as our project directory name.
 
-+---------------+---------------------------------+
-| Item          | Example                         |
-+===============+=================================+
-| data dir      | ``./data/www``                  |
-+---------------+---------------------------------+
-| project dir   | ``./data/www/project-1``        |
-+---------------+---------------------------------+
-| docroot dir   | ``./data/www/project-1/htdocs`` |
-+---------------+---------------------------------+
-| domain suffix | ``loc``                         |
-+---------------+---------------------------------+
-| project url   | ``http://project-1.loc``        |
-+---------------+---------------------------------+
++---------------+---------------------------------+-------------------------------------------------------------+
+| Item          | Example                         | Description                                                 |
++===============+=================================+=============================================================+
+| data dir      | ``./data/www``                  | Where all of your projects reside.                          |
++---------------+---------------------------------+-------------------------------------------------------------+
+| project dir   | ``./data/www/project-1``        | A single project. It's name will be used to create the url. |
++---------------+---------------------------------+-------------------------------------------------------------+
+| docroot dir   | ``./data/www/project-1/htdocs`` | Where the webserver looks for files within your project.    |
++---------------+---------------------------------+-------------------------------------------------------------+
+| domain suffix | ``loc``                         | Suffix to build up your project url.                        |
++---------------+---------------------------------+-------------------------------------------------------------+
+| project url   | ``http://project-1.loc``        | Final resulting project url.                                |
++---------------+---------------------------------+-------------------------------------------------------------+
 
-data dir
-^^^^^^^^
+**data dir**
 
-This directory is mounted into the ``httpd`` and ``php`` container, so that both know where all projects can be found. This is also the place where you create ``project directories`` in for each of your projects.
+This directory is mounted into the ``httpd`` and ``php`` container, so that both know where all projects can be found. This is also the place where you create ``project directories`` for each of your projects.
 
-project dir
-^^^^^^^^^^^
+**project dir**
 
-A directory created in ``data dir``. This represents one project. By creating this directory, the `httpd` container automatically create a new VirtualHost that is ready to serve.
+Is your project and used to generate the virtual host together with the domain suffix.
 
-The `httpd` container also uses the name of the ``data dir`` and the ``domain suffix`` to create the final url for the project.
+**docroot dir**
+
+A directory inside your ``project dir`` from where the webserver will actually serve your files.
+
+**domain suffix**
+
+Used as part of the project url.
 
 .. note::
      The projcet directory will be discussed in more detail in :ref:`project_creation_workflow` below.
 
-
-docroot dir
-^^^^^^^^^^^
-
-A directory inside your ``project dir`` from where the webserver will actually serve your files.
 
 .. _project_creation_workflow:
 

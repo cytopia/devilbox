@@ -100,7 +100,11 @@ The ``.env`` file does nothing else then providing environment variables for ``D
 and in this case it is used as the main configuration file for the devilbox by providing all kinds
 of settings (such as which version to start up).
 
-.. seealso:: `Docker Compose: env file <https://docs.docker.com/compose/env-file/>`_
+.. seealso::
+   `Docker Compose env file <https://docs.docker.com/compose/env-file/>`_
+     Official Docker documentation about the ``.env`` file
+   :ref:`env_file`
+     All available Devilbox ``.env`` values and their description
 
 
 Adjust ``.env`` file
