@@ -16,6 +16,11 @@ hands dirty.
      `stop <https://docs.docker.com/compose/reference/stop/>`_ commands.
 
 
+**Table of Contents**
+
+.. contents:: :local:
+
+
 Start all container
 ===================
 

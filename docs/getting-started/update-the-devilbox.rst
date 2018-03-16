@@ -5,6 +5,12 @@ Update the Devilbox
 If you are in the initial install process, you can safely skip this section and come back once
 you actually want to update the Devilbox.
 
+
+**Table of Contents**
+
+.. contents:: :local:
+
+
 Update git repository
 =====================
 
