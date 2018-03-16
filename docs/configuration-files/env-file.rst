@@ -46,8 +46,10 @@ The only reason you would ever want change this variable is when you are on MacO
 your project files onto an NFS volume due to performance issues.
 
 .. warning::
-   Whenever you change this value you have to stop the Devilbox and re-create your volumes via
-   ``docker-compose rm -f``.
+   :ref:`remove_stopped_container`
+     Whenever you change this value you have to stop the Devilbox and also remove the stopped
+     container via
+     ``docker-compose rm``.
 
 +-------------------+----------------+---------------+
 | Name              | Allowed values | Default value |
@@ -130,6 +132,12 @@ this project visible to everyone in your corporate LAN.
 +-------------+----------------+---------------------------+
 | www.test    | ``org``        | ``http://www.test.org``   |
 +-------------+----------------+---------------------------+
+
+.. warning::
+   Do not use ``dev`` (I know, it's tempting) as a domain suffix, as it has been registered by
+   `Google <https://icannwiki.org/.dev>`_ and they advertise the
+   `HSTS header <https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security>`_
+   which makes your browser redirect every http request to https.
 
 
 .. _env_new_uid:
@@ -586,6 +594,107 @@ Mapping
 
 No matter what path you assign, inside the PHP and the web server container your data dir will
 always be ``/shared/httpd/``.
+
+.. warning::
+   Do not create any symlinks inside your project directories that go outside the data dir.
+   Anything which is outside this directory is not mounted into the container.
+
+.. warning::
+   :ref:`remove_stopped_container`
+     Whenever you change this value you have to stop the Devilbox and also remove the stopped
+     container via
+     ``docker-compose rm``.
+
+
+HOST_PATH_MYSQL_DATADIR
+-----------------------
+
+This is an absolute or relative path (relative to Devilbox git directory) to your MySQL data directory.
+
+* Relative path: relative to the devilbox git directory (Must start with ``.``)
+* Absolute path: Full path (Must start with ``/``)
+
++------------------------------+----------------+------------------+
+| Name                         | Allowed values | Default value    |
++==============================+================+==================+
+| ``HOST_PATH_MYSQL_DATADIR``  | valid path     | ``./data/mysql`` |
++------------------------------+----------------+------------------+
+
+Each MySQL, MariaDB or PerconaDB version will have its own subdirectory, so when first running MySQL 5.5
+and then starting MySQL 5.6, you will have a different database with different data.
+
+Having each version separated from each other makes sure that you don't accidently upgrade
+from a lower to a higher version which might not be reversable. (MySQL auto-upgrade certain older
+data files to newer, but this process does not necessarily work the other way round and could result in failues).
+
+The directory structure will look something like this:
+
+.. code-block:: bash
+
+    host> ls -l ./data/mysql/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.0/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.1/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.2/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.3/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.5/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.6/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.7/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-8.0/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.5/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.6/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.7/
+
+.. warning::
+   :ref:`remove_stopped_container`
+     Whenever you change this value you have to stop the Devilbox and also remove the stopped
+     container via
+     ``docker-compose rm``.
+
+
+HOST_PATH_PGSQL_DATADIR
+-----------------------
+
+This is an absolute or relative path (relative to Devilbox git directory) to your PostgreSQL data directory.
+
+* Relative path: relative to the devilbox git directory (Must start with ``.``)
+* Absolute path: Full path (Must start with ``/``)
+
++------------------------------+----------------+------------------+
+| Name                         | Allowed values | Default value    |
++==============================+================+==================+
+| ``HOST_PATH_PGSQL_DATADIR``  | valid path     | ``./data/pgsql`` |
++------------------------------+----------------+------------------+
+
+Each PostgreSQL version will have its own subdirectory, so when first running PostgreSQL 9.1
+and then starting PostgreSQL 10.0, you will have a different database with different data.
+
+Having each version separated from each other makes sure that you don't accidently upgrade
+from a lower to a higher version which might not be reversable.
+
+The directory structure will look something like this:
+
+.. code-block:: bash
+
+    host> ls -l ./data/pgsql/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.1/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.2/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.3/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.4/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.5/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.6/
+
+.. warning::
+   :ref:`remove_stopped_container`
+     Whenever you change this value you have to stop the Devilbox and also remove the stopped
+     container via
+     ``docker-compose rm``.
+
+
+
+
+
+
+
 
 
 

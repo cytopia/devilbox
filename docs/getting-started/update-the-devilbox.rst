@@ -78,6 +78,23 @@ your favorite diff editor:
    host> meld .env env-example
 
 
+Recreate container
+------------------
+
+Whenever the path of a volume changes (either due to upstream changes in git or due to you changing
+it manually in the ``.env`` file) you need to remove the stopped container and have them fully
+recreated during the next start.
+
+.. code-block:: bash
+
+   # Remove anonymous volumes
+   host> cd path/to/devilbox
+   host> docker-compose rm
+
+.. seealso::
+   :ref:`remove_stopped_container`
+
+
 Update Docker container
 =======================
 
@@ -100,30 +117,15 @@ which will update all available Docker images at once.
      latest security patches and tool versions are applied.
 
 
-Remove anonymous volumes
-========================
-
-The devilbox is not yet at a feature-ready stable release and volumes mounts might change from release to release until version 1.0 will be released. This can cause errors during startup. To solve those issues after updating, you should remove all anonymouse volumes with the following command:
-
-.. code-block:: bash
-
-   # Remove anonymous volumes
-   host> cd path/to/devilbox
-   host> docker-compose rm
-
-
 Checklist git repository
 ========================
 
-1. Ensure containers are stopped
+1. Ensure containers are stopped and removed/recreated
 2. Ensure desired branch, tag or commit is checked out or latest changes are pulled
 3. Ensure ``.env`` file is in sync with ``env-example`` file
-4. Ensure anonymous volumes are removed
 
 
 Checklist Docker images
 =======================
 
 1. Ensure ``./update-docker.sh`` is executed
-2. Ensure anonymous volumes are removed
-
