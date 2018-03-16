@@ -23,6 +23,7 @@ devilbox documentation
    getting-started/install-the-devilbox
    getting-started/update-the-devilbox
    getting-started/start-the-devilbox
+   getting-started/directory-overview
    getting-started/create-your-first-project
 
 

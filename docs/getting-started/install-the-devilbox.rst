@@ -7,6 +7,11 @@ Install the Devilbox
      Ensure you have read this document to understand how this documentation works.
 
 
+**Table of Contents**
+
+.. contents:: :local:
+
+
 Supported OS
 ============
 
