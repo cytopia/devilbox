@@ -1,3 +1,5 @@
+.. _getting_started_update_the_devilbox:
+
 *******************
 Update the Devilbox
 *******************
@@ -95,8 +97,10 @@ recreated during the next start.
    :ref:`remove_stopped_container`
 
 
-Update Docker container
-=======================
+.. _getting_started_update_the_docker_images:
+
+Update Docker images
+====================
 
 Updating the git branch shouldn't be needed to often, most changes are actually shipped via newer
 ``Docker images``, so you should frequently update those.
