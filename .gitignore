@@ -61,6 +61,9 @@
 !/bash/bashrc.sh-example
 !/bash/README.md
 
+# Ignore documentation sphinx build
+/docs/_build/
+
 # Keep folders
 !.keepme
 
