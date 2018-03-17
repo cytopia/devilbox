@@ -25,6 +25,7 @@ devilbox documentation
    getting-started/start-the-devilbox
    getting-started/directory-overview
    getting-started/create-your-first-project
+   getting-started/enter-the-php-container
 
 
 .. toctree::
@@ -94,7 +95,6 @@ devilbox documentation
    configuration-files/php-ini
    configuration-files/my-cnf
    configuration-files/bashrc
-   configuration-files/vhost-gen
 
 
 .. toctree::
@@ -122,4 +122,5 @@ devilbox documentation
 
    support/faq
    support/contributing
+   support/blogs-videos-and-use-cases
    support/artwork

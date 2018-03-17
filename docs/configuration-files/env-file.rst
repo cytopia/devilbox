@@ -10,6 +10,13 @@ variables parsed to docker-compose.yml.
 .. note::
    what is the `.env <https://docs.docker.com/compose/env-file/>`_ file?
 
+.. note::
+   Use your browsers search function to quickly find the desired variable name.
+
+.. important::
+   Any change of ``.env`` requires a restart of the Devilbox.
+
+
 
 **Table of Contents**
 
@@ -58,6 +65,8 @@ your project files onto an NFS volume due to performance issues.
 +-------------------+----------------+---------------+
 
 
+.. _env_local_listen_addr:
+
 LOCAL_LISTEN_ADDR
 -----------------
 
@@ -83,6 +92,8 @@ colon (``:``).
 | ``127.0.0.1:``   | only expose ports on your host os on ``127.0.0.1``. Note the trailing ``:``   |
 +------------------+-------------------------------------------------------------------------------+
 | ``192.168.0.1:`` | only expose ports on your host os on ``192.168.0.1``. Note the trailing ``:`` |
++------------------+-------------------------------------------------------------------------------+
+| ``0.0.0.0:``     | listen on all host computer interfaces / IP addresses                         |
 +------------------+-------------------------------------------------------------------------------+
 |                  | listen on all host computer interfaces / IP addresses                         |
 +------------------+-------------------------------------------------------------------------------+
@@ -556,6 +567,8 @@ Being able to do that on both sides, removes the need to install any development
 IDE/editor) on your host and have everything fully encapsulated into the containers itself.
 
 
+.. _env_httpd_datadir:
+
 HOST_PATH_HTTPD_DATADIR
 -----------------------
 
@@ -690,13 +703,391 @@ The directory structure will look something like this:
      ``docker-compose rm``.
 
 
+HOST_PATH_MONGO_DATADIR
+-----------------------
+
+This is an absolute or relative path (relative to Devilbox git directory) to your MongoDB data directory.
+
+* Relative path: relative to the devilbox git directory (Must start with ``.``)
+* Absolute path: Full path (Must start with ``/``)
+
++------------------------------+----------------+------------------+
+| Name                         | Allowed values | Default value    |
++==============================+================+==================+
+| ``HOST_PATH_MONGO_DATADIR``  | valid path     | ``./data/mongo`` |
++------------------------------+----------------+------------------+
+
+Each MongoDB version will have its own subdirectory, so when first running MongoDB 2.8
+and then starting MongoDB 3.5, you will have a different database with different data.
+
+Having each version separated from each other makes sure that you don't accidently upgrade
+from a lower to a higher version which might not be reversable.
+
+The directory structure will look something like this:
+
+.. code-block:: bash
+
+    host> ls -l ./data/mongo/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 2.8/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.0/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.2/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.4/
+    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.5/
+
+.. warning::
+   :ref:`remove_stopped_container`
+     Whenever you change this value you have to stop the Devilbox and also remove the stopped
+     container via
+     ``docker-compose rm``.
 
 
+Docker host ports
+=================
+
+All describned host ports below are ports that the Docker container expose on your host operating
+system. By default each port will be exposed to all interfaces or IP addresses of the host
+operating system. This can be controlled with :ref:`env_local_listen_addr`.
+
+**How to list used ports on Linux and MacOS**
+
+Open a terminal and type the following:
+
+.. code-block:: bash
+
+    host> netstat -an | grep 'LISTEN\s'
+    tcp        0      0 127.0.0.1:53585    0.0.0.0:*     LISTEN
+    tcp        0      0 127.0.0.1:37715    0.0.0.0:*     LISTEN
+    tcp        0      0 127.0.0.1:58555    0.0.0.0:*     LISTEN
+    tcp        0      0 127.0.0.1:48573    0.0.0.0:*     LISTEN
+    tcp        0      0 127.0.0.1:34591    0.0.0.0:*     LISTEN
+    tcp        0      0 127.0.0.1:8000     0.0.0.0:*     LISTEN
+
+**How to list used ports on Windows**
+
+Open the command prompt and type the following:
+
+.. code-block:: bash
+
+    C:\WINDOWS\system32> netstat -an
+    Proto  Local Address       Foreign Address      State
+    TCP    0.0.0.0:80          0.0.0.0:0            LISTENING
+    TCP    0.0.0.0:145         0.0.0.0:0            LISTENING
+    TCP    0.0.0.0:445         0.0.0.0:0            LISTENING
+    TCP    0.0.0.0:1875        0.0.0.0:0            LISTENING
+
+.. warning::
+   :ref:`docker_toolbox`
+      When using Docker Toobox ensure that ports are exposed to all interfaces.
+      See :ref:`env_local_listen_addr`
+
+.. warning::
+   Before setting the ports, ensure that they are not already in use on your host operating
+   system by other services.
 
 
+HOST_PORT_HTTPD
+---------------
+
+The port to expose for the web server (Apache or Nginx). This is usually 80. Set it to something
+else if 80 is already in use on your host operating system.
+
++----------------------+-------------------+------------------+
+| Name                 | Allowed values    | Default value    |
++======================+===================+==================+
+| ``HOST_PORT_HTTPD``  | ``1`` - ``65535`` | ``80``           |
++----------------------+-------------------+------------------+
 
 
+HOST_PORT_MYSQL
+---------------
 
+The port to expose for the MySQL server (MySQL, MariaDB or PerconaDB). This is usually 3306. Set it
+to something else if 3306 is already in use on your host operating system.
+
++----------------------+-------------------+------------------+
+| Name                 | Allowed values    | Default value    |
++======================+===================+==================+
+| ``HOST_PORT_MYSQL``  | ``1`` - ``65535`` | ``3306``         |
++----------------------+-------------------+------------------+
+
+
+HOST_PORT_PGSQL
+---------------
+
+The port to expose for the PostgreSQL server. This is usually 5432. Set it
+to something else if 5432 is already in use on your host operating system.
+
++----------------------+-------------------+------------------+
+| Name                 | Allowed values    | Default value    |
++======================+===================+==================+
+| ``HOST_PORT_PGSQL``  | ``1`` - ``65535`` | ``5432``         |
++----------------------+-------------------+------------------+
+
+
+HOST_PORT_REDIS
+---------------
+
+The port to expose for the Redis server. This is usually 6379. Set it
+to something else if 6379 is already in use on your host operating system.
+
++----------------------+-------------------+------------------+
+| Name                 | Allowed values    | Default value    |
++======================+===================+==================+
+| ``HOST_PORT_REDIS``  | ``1`` - ``65535`` | ``5432``         |
++----------------------+-------------------+------------------+
+
+
+HOST_PORT_MEMCD
+---------------
+
+The port to expose for the Memcached server. This is usually 11211. Set it
+to something else if 11211 is already in use on your host operating system.
+
++----------------------+-------------------+------------------+
+| Name                 | Allowed values    | Default value    |
++======================+===================+==================+
+| ``HOST_PORT_MEMCD``  | ``1`` - ``65535`` | ``11211``        |
++----------------------+-------------------+------------------+
+
+
+HOST_PORT_MONGO
+---------------
+
+The port to expose for the MongoDB server. This is usually 27017. Set it
+to something else if 27017 is already in use on your host operating system.
+
++----------------------+-------------------+------------------+
+| Name                 | Allowed values    | Default value    |
++======================+===================+==================+
+| ``HOST_PORT_MONGO``  | ``1`` - ``65535`` | ``27017``        |
++----------------------+-------------------+------------------+
+
+
+HOST_PORT_BIND
+--------------
+
+The port to expose for the BIND DNS server. This is usually ``53``. Set it
+to something else if ``53`` is already in use on your host operating system.
+
++----------------------+-------------------+------------------+
+| Name                 | Allowed values    | Default value    |
++======================+===================+==================+
+| ``HOST_PORT_BIND``   | ``1`` - ``65535`` | ``1053``         |
++----------------------+-------------------+------------------+
+
+.. warning::
+   As you might have noticed, BIND is not set to its default port ``53`` by default, but rather
+   to ``1053``. This is because some operating system already have a local DNS resolver running
+   on port ``53`` which would result in a failure when this BIND server is starting.
+
+   You only need to set BIND to port ``53`` when you want to use the ``Auto-DNS`` feautre of the
+   Devilbox. When doing so, read this article with care: :ref:`enable_auto_dns`.
+
+
+Container settings
+==================
+
+PHP
+---
+
+Custom variables
+^^^^^^^^^^^^^^^^
+
+The PHP container itself does not offer any variables, however you can add any key-value pair
+variable into the ``.env`` file which will automatically be available to the started PHP container
+and thus in any of your PHP projects.
+
+If your application requires are variable to determine if it is run under development or
+production, for example: ``APPLICATION_ENV``, you can just add this to the ``.env`` file:
+
+.. code-block:: bash
+   :caption: .env
+   :name: .env
+   :emphasize-lines: 3
+
+   host> grep APPLICATION_ENV .env
+
+   APPLICATION_ENV=development
+
+Within your php application/file you can then access this variable via the ``getenv`` function:
+
+.. code-block:: php
+   :caption: index.php
+   :name: index.php
+   :emphasize-lines: 3
+
+   <?php
+   // Example use of getenv()
+   echo getenv('APPLICATION_ENV');
+   ?>
+
+This will then output ``development``.
+
+
+.. note::
+   Add as many custom environment variables as you require.
+
+
+Web server
+----------
+
+HTTPD_DOCROOT_DIR
+^^^^^^^^^^^^^^^^^
+
+This variable specifies the name of a directory within each of your project directories from which
+the web server will serve the files.
+
+Together with the :ref:`env_httpd_datadir` and your project directory, the ``HTTPD_DOCROOT_DIR``
+will built up the final location of a virtual hosts document root.
+
++-----------------------+-------------------+------------------+
+| Name                  | Allowed values    | Default value    |
++=======================+===================+==================+
+| ``HTTPD_DOCROOT_DIR`` | valid dir name    | ``htdocs``       |
++-----------------------+-------------------+------------------+
+
+**Example 1**
+
+* devilbox git directory location: ``/home/user-1/repo/devilbox``
+* HOST_PATH_HTTPD_DATADIR: ``./data/www`` (relative)
+* Project directory: ``my-first-project``
+* HTTPD_DOCROOT_DIR: ``htdocs``
+
+The location from where the web server will serve files for ``my-first-project`` is then:
+``/home/user-1/repo/devilbox/data/www/my-first-project/htdocs``
+
+**Example 2**
+
+* devilbox git directory location: ``/home/user-1/repo/devilbox``
+* HOST_PATH_HTTPD_DATADIR: ``/home/user-1/www`` (absolute)
+* Project directory: ``my-first-project``
+* HTTPD_DOCROOT_DIR: ``htdocs``
+
+The location from where the web server will serve files for ``my-first-project`` is then:
+``/home/user-1/www/my-first-project/htdocs``
+
+**Directory structure: default**
+
+Let's have a look how the directory is actually built up:
+
+.. code-block:: bash
+   :emphasize-lines: 4
+
+    # Project directory
+    host> ls -l data/www/my-first-project/
+    total 4
+    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
+
+    # htdocs directory inside your project directory
+    host> ls -l data/www/my-first-project/htdocs
+    total 4
+    -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 index.php
+
+By calling your proect url, the ``index.php`` file will be served.
+
+
+**Directory structure: nested symlink**
+
+Most of the time you would clone or otherwise download a PHP framework, which in most cases has
+its own `www` directory somewhere nested. How can this be linked to the ``htdocs`` directory?
+
+Let's have a look how the directory is actually built up:
+
+.. code-block:: bash
+   :emphasize-lines: 5
+
+    # Project directory
+    host> ls -l data/www/my-first-project/
+    total 4
+    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 cakephp/
+    lrwxrwxrwx 1 cytopia cytopia   15 Mar 17 09:36 htdocs -> cakephp/webroot/
+
+    # htdocs directory inside your project directory
+    host> ls -l data/www/my-first-project/htdocs
+    total 4
+    -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 index.php
+
+As you can see, the web server is still able to server the files from the ``htdocs`` location,
+this time however, ``htdocs`` itself is a symlink pointing to a much deeper and nested location
+inside an actual framework directory.
+
+
+HTTPD_TEMPLATE_DIR
+^^^^^^^^^^^^^^^^^^
+
+This variable specifies the directory name (which is just in your project directory, next to the
+HTTPD_DOCROOT_DIR directory) in which you can hold custom web server configuration files.
+
+**Every virtual host (which represents a project) can be fully customized to its own needs,
+independently of other virtual hosts.**
+
+This directory does not exist by default and you need to create it. Additionally you will also
+have to populate it with one of three yaml-based template files.
+
++------------------------+-------------------+------------------+
+| Name                   | Allowed values    | Default value    |
++========================+===================+==================+
+| ``HTTPD_TEMPLATE_DIR`` | valid dir name    | ``.devilbox``    |
++------------------------+-------------------+------------------+
+
+
+Let's have a look how the directory is actually built up:
+
+.. code-block:: bash
+   :emphasize-lines: 4,8
+
+    # Project directory
+    host> ls -l data/www/my-first-project/
+    total 4
+    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 .devilbox/
+    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
+
+    # template directory inside your project directory
+    host> ls -l data/www/my-first-project/htdocs/.devilbox
+    total 4
+    -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 apache22.yml
+    -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 apache24.yml
+    -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 nginx.yml
+
+The three files ``apache22.yml``, ``apache24.yml`` and ``nginx.yml`` let you customize your web
+servers virtual host to anything from adding rewrite rules, overwriting directory index to even
+changing the server name or adding locations to other assets.
+
+.. seealso::
+    The whole process is based on a project called `vhost-gen <https://github.com/devilbox/vhost-gen>`_.
+    A virtual host generator for Apache 2.2, Apache 2.4 and any Nginx version.
+
+.. seealso::
+    **Customize your virtual host**
+      When you want to find out more how to actually customize each virtual host to its own need,
+      read up more on :ref:`custom_vhost`.
+
+
+MySQL
+-----
+
+MYSQL_ROOT_PASSWORD
+^^^^^^^^^^^^^^^^^^^
+
+MYSQL_GENERAL_LOG
+^^^^^^^^^^^^^^^^^
+
+
+PostgreSQL
+----------
+
+PGSQL_ROOT_USER
+^^^^^^^^^^^^^^^
+
+PGSQL_ROOT_PASSWORD
+^^^^^^^^^^^^^^^^^^^
+
+
+Bind
+----
+
+BIND_DNS_RESOLVER
+^^^^^^^^^^^^^^^^^
 
 .. |br| raw:: html
 
