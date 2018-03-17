@@ -104,6 +104,7 @@ devilbox documentation
    installation/docker-installation
    installation/docker-toolbox
    readings/available-container
+   readings/available-tools
    readings/remove-stopped-container
    readings/syncronize-container-permissions
 
