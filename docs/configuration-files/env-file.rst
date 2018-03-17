@@ -145,10 +145,13 @@ this project visible to everyone in your corporate LAN.
 +-------------+----------------+---------------------------+
 
 .. warning::
-   Do not use ``dev`` (I know, it's tempting) as a domain suffix, as it has been registered by
+   Do not use ``dev`` as a domain suffix (I know, it's tempting).
+   It has been registered by
    `Google <https://icannwiki.org/.dev>`_ and they advertise the
    `HSTS header <https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security>`_
    which makes your browser redirect every http request to https.
+
+   **See also:** `This blog post <https://ma.ttias.be/chrome-force-dev-domains-https-via-preloaded-hsts>`_
 
 
 .. _env_new_uid:
