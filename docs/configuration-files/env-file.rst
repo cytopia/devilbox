@@ -1030,7 +1030,6 @@ have to populate it with one of three yaml-based template files.
 | ``HTTPD_TEMPLATE_DIR`` | valid dir name    | ``.devilbox``    |
 +------------------------+-------------------+------------------+
 
-
 Let's have a look how the directory is actually built up:
 
 .. code-block:: bash
@@ -1069,18 +1068,76 @@ MySQL
 MYSQL_ROOT_PASSWORD
 ^^^^^^^^^^^^^^^^^^^
 
+If you start a MySQL container for the first time, it will setup MySQL itself with this specified
+password. If you do change the root password to something else, make sure to also set it
+accordingly in ``.env``, otherwise the devilbox will not be able to connect to MySQL and will not
+be able to display information inside the bundled intranet.
+
++-------------------------+-------------------+---------------------+
+| Name                    | Allowed values    | Default value       |
++=========================+===================+=====================+
+| ``MYSQL_ROOT_PASSWORD`` | any string        | empty (no password) |
++-------------------------+-------------------+---------------------+
+
+.. warning::
+    Keep this variable in sync with the actual MySQL root password.
+
+
 MYSQL_GENERAL_LOG
 ^^^^^^^^^^^^^^^^^
 
+This variable controls the logging behaviour of the MySQL server (MySQL, MariaDB and PerconaDB).
+As the Devilbox is intended to be used for development, this feature is turned on by default.
+
++-------------------------+-------------------+---------------------+
+| Name                    | Allowed values    | Default value       |
++=========================+===================+=====================+
+| ``MYSQL_GENERAL_LOG``   | ``0`` or ``1``    | ``1``               |
++-------------------------+-------------------+---------------------+
+
+**MySQL documentation:**
+    "The general query log is a general record of what mysqld is doing. The server writes information to this log when clients connect or disconnect, and it logs each SQL statement received from clients. The general query log can be very useful when you suspect an error in a client and want to know exactly what the client sent to mysqld."
+
+    -- https://dev.mysql.com/doc/refman/5.7/en/query-log.html
 
 PostgreSQL
 ----------
 
+
 PGSQL_ROOT_USER
 ^^^^^^^^^^^^^^^
 
+If you start a PostgreSQL container for the first time, it will setup PostgreSQL itself with a
+specified username and password. If you do change the root username or password to something else,
+make sure to also set it accordingly in .``env,`` otherwise the devilbox will not be able to
+connect to PostgreSQL and will not be able to display information inside the bundled intranet.
+
++-------------------------+---------------------+---------------------+
+| Name                    | Allowed values      | Default value       |
++=========================+=====================+=====================+
+| ``PGSQL_ROOT_USER``     | alphabetical string | ``postgres``        |
++-------------------------+---------------------+---------------------+
+
+.. warning::
+    Keep this variable in sync with the actual PostgreSQL username.
+
+
 PGSQL_ROOT_PASSWORD
 ^^^^^^^^^^^^^^^^^^^
+
+If you start a PostgreSQL container for the first time, it will setup PostgreSQL itself with a
+specified username and password. If you do change the root username or password to something else,
+make sure to also set it accordingly in .``env,`` otherwise the devilbox will not be able to
+connect to PostgreSQL and will not be able to display information inside the bundled intranet.
+
++-------------------------+---------------------+---------------------+
+| Name                    | Allowed values      | Default value       |
++=========================+=====================+=====================+
+| ``PGSQL_ROOT_PASSWORD`` | any string          | empty (no password) |
++-------------------------+---------------------+---------------------+
+
+.. warning::
+    Keep this variable in sync with the actual PostgreSQL password.
 
 
 Bind
@@ -1088,6 +1145,26 @@ Bind
 
 BIND_DNS_RESOLVER
 ^^^^^^^^^^^^^^^^^
+
+This variable holds a comma separated list of IP addresses of DNS servers.
+By default using Google's DNS server as they are pretty fast.
+
++-------------------------+--------------------------------------+---------------------+
+| Name                    | Allowed values                       | Default value       |
++=========================+======================================+=====================+
+| ``BIND_DNS_RESOLVER``   | comma separated list of IP addresses | ``8.8.8.8,8.8.4.4`` |
++-------------------------+--------------------------------------+---------------------+
+
+The devilbox is using its own DNS server internally (your host computer can also use it for
+Auto-DNS) in order to resolve custom project domains defined by ``TLD_SUFFIX``.
+To also be able to reach the internet from within the Container there must be some kind of
+upstream DNS server to ask for queries.
+
+.. note::
+    If you don't trust the Google DNS server, then set it to something else.
+    If you already have a DNS server inside your LAN and also want your custom DNS (if any)
+    to be available inside the containers, set the value to its IP address.
+
 
 .. |br| raw:: html
 
