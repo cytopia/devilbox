@@ -147,14 +147,24 @@ this project visible to everyone in your corporate LAN.
 +-------------+----------------+---------------------------+
 
 .. warning::
-   Do not use ``dev`` as a domain suffix (I know, it's tempting).
-   It has been registered by
-   `Google <https://icannwiki.org/.dev>`_ and they advertise the
-   `HSTS header <https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security>`_
-   which makes your browser redirect every http request to https.
+    Do not use ``dev`` as a domain suffix (I know, it's tempting).
+    It has been registered by
+    `Google <https://icannwiki.org/.dev>`_ and they advertise the
+    `HSTS header <https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security>`_
+    which makes your browser redirect every http request to https.
 
-   **See also:** `This blog post <https://ma.ttias.be/chrome-force-dev-domains-https-via-preloaded-hsts>`_
+    **See also:** `This blog post <https://ma.ttias.be/chrome-force-dev-domains-https-via-preloaded-hsts>`_
 
+.. warning::
+    Do not use ``localhost`` as a domain suffix.
+    There is an RFC draft to make sure all localhost requests, including their sub domains
+    should be redirected to the systems loopback interface.
+    Docker has already released a commit preventing the use of ``localhost`` on MacOS.
+
+
+    **See also:** `RFC Draft <https://tools.ietf.org/html/draft-west-let-localhost-be-localhost-06>`_
+    and
+    `Docker Release notes <https://docs.docker.com/docker-for-mac/release-notes/#docker-community-edition-17120-ce-mac46-2018-01-09>`_
 
 .. _env_new_uid:
 
