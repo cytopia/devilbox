@@ -330,6 +330,8 @@ combination of all container versions.
    Any change for those settings requires a restart of the devilbox.
 
 
+.. _env_php_server:
+
 PHP_SERVER
 ----------
 
@@ -360,6 +362,8 @@ All values are already available in the ``.env`` file and just need to be commen
    #PHP_SERVER=hhvm-latest
 
 
+.. _env_httpd_server:
+
 HTTPD_SERVER
 ------------
 
@@ -385,6 +389,8 @@ All values are already available in the ``.env`` file and just need to be commen
    HTTPD_SERVER=nginx-stable
    #HTTPD_SERVER=nginx-mainline
 
+
+.. _env_mysql_server:
 
 MYSQL_SERVER
 ------------
@@ -420,6 +426,8 @@ All values are already available in the ``.env`` file and just need to be commen
    #MYSQL_SERVER=percona-5.7
 
 
+.. _env_pgsql_server:
+
 PGSQL_SERVER
 ------------
 
@@ -454,6 +462,8 @@ All values are already available in the ``.env`` file and just need to be commen
    https://hub.docker.com/_/postgres/
 
 
+.. _env_redis_server:
+
 REDIS_SERVER
 ------------
 
@@ -484,6 +494,8 @@ All values are already available in the ``.env`` file and just need to be commen
    check their official website for even more versions.
    https://hub.docker.com/_/redis/
 
+
+.. _env_memcd_server:
 
 MEMCD_SERVER
 ------------
@@ -534,6 +546,8 @@ All values are already available in the ``.env`` file and just need to be commen
    check their official website for even more versions.
    https://hub.docker.com/_/memcached/
 
+
+.. _env_mongo_server:
 
 MONGO_SERVER
 ------------
