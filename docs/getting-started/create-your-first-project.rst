@@ -87,6 +87,8 @@ The intranet already gives you the exact string that you can simply copy into yo
      This will only work on **native Docker** for Linux or MacOS. Read up on the next section to also find out how to do that on **Docker Toolbox** and Windows.
 
 
+.. _getting_started_create_your_first_project_dns_entry:
+
 Step 4: create a DNS entry
 ==========================
 
