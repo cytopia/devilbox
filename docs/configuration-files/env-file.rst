@@ -103,6 +103,8 @@ colon (``:``).
    ports available on the external interface of the virtual machine.
 
 
+.. _env_tld_suffix:
+
 TLD_SUFFIX
 ----------
 
@@ -884,7 +886,7 @@ to something else if ``53`` is already in use on your host operating system.
    on port ``53`` which would result in a failure when this BIND server is starting.
 
    You only need to set BIND to port ``53`` when you want to use the ``Auto-DNS`` feautre of the
-   Devilbox. When doing so, read this article with care: :ref:`enable_auto_dns`.
+   Devilbox. When doing so, read this article with care: :ref:`tutorial_enable_auto_dns`.
 
 
 Container settings
@@ -1015,6 +1017,8 @@ this time however, ``htdocs`` itself is a symlink pointing to a much deeper and 
 inside an actual framework directory.
 
 
+.. _env_httpd_template_dir:
+
 HTTPD_TEMPLATE_DIR
 ^^^^^^^^^^^^^^^^^^
 
@@ -1032,6 +1036,47 @@ have to populate it with one of three yaml-based template files.
 +========================+===================+==================+
 | ``HTTPD_TEMPLATE_DIR`` | valid dir name    | ``.devilbox``    |
 +------------------------+-------------------+------------------+
+
+Let's have a look at an imaginary project directory called ``my-first-project``:
+
+.. code-block:: bash
+
+    # Project directory
+    host> ls -l data/www/my-first-project/
+    total 4
+    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
+
+Inside this your project directory you will need to create another directory which is called
+``.devilbox`` by default. If you change the ``HTTPD_TEMPLATE_DIR`` variable to something else,
+you will have to create a directory by whatever name you chose for that variable.
+
+.. code-block:: bash
+   :emphasize-lines: 3,6
+
+    # Project directory
+    host> cd data/www/my-first-project/
+    host> mkdir .devilbox
+    host> ls -l
+    total 4
+    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 .devilbox/
+    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
+
+Now you need to copy the ``vhost-gen`` templates into the ``.devilbox`` directory. The templates
+are available in the Devilbox git directory under ``templates/vhost-gen/``.
+
+By copying those files into your project template directory, nothing will change, these are the
+default templates that will create the virtual host exactly the same way as if they were not
+present.
+
+.. code-block:: bash
+   :emphasize-lines: 5
+
+    # Navigate into the devilbox directory
+    host> cd path/to/devilbox
+
+    # Copy templates to your project directory
+    host> cp templates/vhost-gen/* data/www/my-first-project/.devilbox/
+
 
 Let's have a look how the directory is actually built up:
 
@@ -1063,6 +1108,10 @@ changing the server name or adding locations to other assets.
     **Customize your virtual host**
       When you want to find out more how to actually customize each virtual host to its own need,
       read up more on :ref:`custom_vhost`.
+    **Tutorials**
+      Also have a look at this tutorial which is a walk-through showing you how to modify
+      a virtual host and make it serve all files for multiple sub domains (server names):
+      :ref:`tutorial_adding_sub_domains`
 
 
 MySQL

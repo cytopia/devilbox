@@ -106,14 +106,9 @@ Updating the git branch shouldn't be needed to often, most changes are actually 
 ``Docker images``, so you should frequently update those.
 
 This is usually achieved by issueing a ``docker pull`` command with the correct image name and image
-version. For your convenience there is a shell script in the Devilbox git directory: ``update-docker.sh``
-which will update all available Docker images at once.
-
-.. code-block:: bash
-
-   # Update docker images
-   host> cd path/to/devilbox
-   host> ./update-docker.sh
+version or ``docker-compose pull`` for all currently selected images in ``.env`` file.
+For your convenience there is a shell script in the Devilbox git directory: ``update-docker.sh``
+which will update all available Docker images at once for every version.
 
 .. note::
 
@@ -121,10 +116,83 @@ which will update all available Docker images at once.
      latest security patches and tool versions are applied.
 
 
+Update one Docker image
+-----------------------
+
+Updating or pulling a single Docker image is accomplished by ``docker pull <image>:<tag>``.
+This is not very handy as it is quite troublesome to do it separately per Docker image.
+
+You first need to find out the image name and then also the currently used image tag.
+
+.. code-block:: bash
+
+   host> grep 'image:' docker-compose.yml
+
+    image: cytopia/bind:0.11
+    image: devilbox/php-fpm:${PHP_SERVER:-7.0}-work
+    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.13
+    image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
+    image: postgres:${PGSQL_SERVER:-9.6}
+    image: redis:${REDIS_SERVER:-3.2}
+    image: memcached:${MEMCD_SERVER:-latest}
+    image: mongo:${MONGO_SERVER:-latest}
+
+After having found the possible candidates, you will still have to find the corresponding value
+inside the ``..env`` file. Let's do it for the PHP image:
+
+.. code-block:: bash
+
+   host> grep '^PHP_SERVER' .env
+
+   PHP_SERVER=5.6
+
+So now you can substitute the ``${PHP_SERVER}`` variable from the first command with ``5.6`` and
+finally pull a newer version:
+
+.. code-block:: bash
+
+   host> docker pull devilbox/php-fpm:5.6-work
+
+Not very efficient.
+
+
+Update all currently set Docker images
+--------------------------------------
+
+This approach is using ``docker-compose pull`` to update all images, but only for the versions
+that are actually set in ``.env``.
+
+.. code-block:: bash
+
+   host> docker-compose pull
+
+   Pulling bind (cytopia/bind:0.11)...
+   Pulling php (devilbox/php-fpm:5.6-work)...
+   Pulling httpd (devilbox/apache-2.2:0.13)...
+   Pulling mysql (cytopia/mysql-5.7:latest)...
+   Pulling pgsql (postgres:9.6)...
+   Pulling redis (redis:4.0)...
+   Pulling memcd (memcached:1.5.2)...
+   Pulling mongo (mongo:3.0)...
+
+This is most likely the variant you want.
+
+
+Update all available Docker images for all versions
+---------------------------------------------------
+
+In case you also want to pull/update every single of every available Devilbox image, you can
+use the provided shell script, which has all versions hardcoded and pulls them for you:
+
+.. code-block:: bash
+
+   host> ./update-docker.sh
+
+
 Checklist git repository
 ========================
 
-1. Ensure containers are stopped and removed/recreated
+1. Ensure containers are stopped and removed/recreated (``docker-compose stop && docker-compose rm``)
 2. Ensure desired branch, tag or commit is checked out or latest changes are pulled
 3. Ensure ``.env`` file is in sync with ``env-example`` file
 
@@ -132,4 +200,4 @@ Checklist git repository
 Checklist Docker images
 =======================
 
-1. Ensure ``./update-docker.sh`` is executed
+1. Ensure ``docker-compose pull`` or ``./update-docker.sh`` is executed

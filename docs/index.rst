@@ -32,6 +32,7 @@ devilbox documentation
    :maxdepth: 2
    :caption: Tutorials
 
+   tutorials/adding-subdomains
    tutorials/configure-database-in-your-project
    tutorials/change-document-root
    tutorials/change-container-versions
