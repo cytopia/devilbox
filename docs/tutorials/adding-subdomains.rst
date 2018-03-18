@@ -124,6 +124,8 @@ By having done all prerequisite, your project should be available under http://m
 Now you are all set and we can dive into the actual configuration.
 
 
+.. _tutorial_adding_sub_domains_apache_22:
+
 Apache 2.2
 ----------
 
@@ -149,7 +151,7 @@ Next you will have to adjust the Apache 2.2 vhost configuration template. The cu
 template looks similar to the one shown below (**Note:** Only the ``vhost:`` sub section is shown
 here).
 
-.. code-block:: yml
+.. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/apache22.yml
    :name: apache22.yml
    :emphasize-lines: 3
@@ -173,7 +175,7 @@ here).
 
 All you will have to do, is to add another ``ServerName`` directive:
 
-.. code-block:: yml
+.. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/apache22.yml
    :name: apache22.yml
    :emphasize-lines: 3,4
@@ -221,7 +223,6 @@ See here how to do that for Linux, MacOS or Windows:
 This however is not really convenient. If you have basically infinite sub domains (via catch-all),
 you should consider using Auto-DNS instead: :ref:`tutorial_enable_auto_dns`.
 
-
 Step 2: Adjust apache22.yml
 """""""""""""""""""""""""""
 
@@ -229,7 +230,7 @@ Next you will have to adjust the Apache 2.2 vhost configuration template. The cu
 template looks similar to the one shown below (**Note:** Only the ``vhost:`` sub section is shown
 here).
 
-.. code-block:: yml
+.. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/apache22.yml
    :name: apache22.yml
    :emphasize-lines: 3
@@ -253,7 +254,7 @@ here).
 
 All you will have to do, is to add another ``ServerName`` directive which does catch-all:
 
-.. code-block:: yml
+.. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/apache22.yml
    :name: apache22.yml
    :emphasize-lines: 3,4
@@ -286,8 +287,177 @@ Go to :ref:`tutorial_adding_sub_domains_apply_changes` and follow the steps.
 Apache 2.4
 ----------
 
+The procedure for Apache 2.4 is exactly the same as for Apache 2.2, even the syntax is identical.
+The only difference is that you need to adjust ``apache24.yml`` instead of ``apache22.yml``.
+
+Just go up one section: :ref:`tutorial_adding_sub_domains_apache_22`
+
+
 Nginx
 -----
+
+The procedure for Nginx is also exactly the same as for Apache 2.4, however the syntax of its
+``nginx.yml`` file is slightly different, that's why the whole tutorial will be repeated here
+fitted for Nginx.
+
+
+Adding ``www`` sub domain
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Let's also make this project available under http://www.my-project-1.loc
+
+Step 1: Add DNS entry
+"""""""""""""""""""""
+
+The first step would be to add an additional DNS entry for ``www.my-project-1.loc``.
+See here how to do that for Linux, MacOS or Windows:
+:ref:`getting_started_create_your_first_project_dns_entry`
+
+DNS is in place, however when you visit http://www.my-project-1.loc, you will end up seeing the
+Devilbox intranet, because this is the default host when no match has been found.
+
+Step 2: Adjust nginx.yml
+"""""""""""""""""""""""""""
+
+Next you will have to adjust the Nginx vhost configuration template. The current default
+template looks similar to the one shown below (**Note:** Only the ``vhost:`` sub section is shown
+here).
+
+.. code-block:: yaml
+   :caption: /home/user/devilbox/data/www/project-1/.devilbox/nginx.yml
+   :name: nginx.yml
+   :emphasize-lines: 4
+
+   vhost: |
+     server {
+         listen       __PORT____DEFAULT_VHOST__;
+         server_name  __VHOST_NAME__;
+
+         access_log   "__ACCESS_LOG__" combined;
+         error_log    "__ERROR_LOG__" warn;
+
+     __VHOST_DOCROOT__
+     __VHOST_RPROXY__
+     __PHP_FPM__
+     __ALIASES__
+     __DENIES__
+     __SERVER_STATUS__
+         # Custom directives
+     __CUSTOM__
+     }
+
+All you will have to do, is to extend the ``server_name`` directive:
+
+.. code-block:: yaml
+   :caption: /home/user/devilbox/data/www/project-1/.devilbox/nginx.yml
+   :name: nginx.yml
+   :emphasize-lines: 4
+
+   vhost: |
+     server {
+         listen       __PORT____DEFAULT_VHOST__;
+         server_name  __VHOST_NAME__ www.__VHOST_NAME__;
+
+         access_log   "__ACCESS_LOG__" combined;
+         error_log    "__ERROR_LOG__" warn;
+
+     __VHOST_DOCROOT__
+     __VHOST_RPROXY__
+     __PHP_FPM__
+     __ALIASES__
+     __DENIES__
+     __SERVER_STATUS__
+         # Custom directives
+     __CUSTOM__
+     }
+
+
+Step 3: Apply new changes
+"""""""""""""""""""""""""
+
+The **last step** is to actually to apply those changes. This is equal for all web servers.
+Go to :ref:`tutorial_adding_sub_domains_apply_changes` and follow the steps.
+
+Afterwards you can go and visit http://www.my-project-1.loc and you should see the same page as if you
+visit http://my-project-1.loc
+
+
+Adding catch-all sub domain
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Let's also make this project available under any sub domain.
+
+Step 1: Add DNS entry
+"""""""""""""""""""""
+
+The first step would be to add DNS entries for all sub domains you require.
+See here how to do that for Linux, MacOS or Windows:
+:ref:`getting_started_create_your_first_project_dns_entry`
+
+This however is not really convenient. If you have basically infinite sub domains (via catch-all),
+you should consider using Auto-DNS instead: :ref:`tutorial_enable_auto_dns`.
+
+
+Step 2: Adjust nginx.yml
+"""""""""""""""""""""""""""
+
+Next you will have to adjust the Nginx vhost configuration template. The current default
+template looks similar to the one shown below (**Note:** Only the ``vhost:`` sub section is shown
+here).
+
+.. code-block:: yaml
+   :caption: /home/user/devilbox/data/www/project-1/.devilbox/nginx.yml
+   :name: nginx.yml
+   :emphasize-lines: 4
+
+   vhost: |
+     server {
+         listen       __PORT____DEFAULT_VHOST__;
+         server_name  __VHOST_NAME__;
+
+         access_log   "__ACCESS_LOG__" combined;
+         error_log    "__ERROR_LOG__" warn;
+
+     __VHOST_DOCROOT__
+     __VHOST_RPROXY__
+     __PHP_FPM__
+     __ALIASES__
+     __DENIES__
+     __SERVER_STATUS__
+         # Custom directives
+     __CUSTOM__
+     }
+
+All you will have to do, is to extend the ``server_name`` directive with a catch-all:
+
+.. code-block:: yaml
+   :caption: /home/user/devilbox/data/www/project-1/.devilbox/nginx.yml
+   :name: nginx.yml
+   :emphasize-lines: 4
+
+   vhost: |
+     server {
+         listen       __PORT____DEFAULT_VHOST__;
+         server_name  __VHOST_NAME__ *.__VHOST_NAME__;
+
+         access_log   "__ACCESS_LOG__" combined;
+         error_log    "__ERROR_LOG__" warn;
+
+     __VHOST_DOCROOT__
+     __VHOST_RPROXY__
+     __PHP_FPM__
+     __ALIASES__
+     __DENIES__
+     __SERVER_STATUS__
+         # Custom directives
+     __CUSTOM__
+     }
+
+Step 3: Apply new changes
+"""""""""""""""""""""""""
+
+The **last step** is to actually to apply those changes. This is equal for all web servers.
+Go to :ref:`tutorial_adding_sub_domains_apply_changes` and follow the steps.
 
 
 .. _tutorial_adding_sub_domains_apply_changes:
