@@ -265,11 +265,12 @@ DNS mappings
 All project DNS records are also available from inside the PHP container independent of the
 value of :ref:`env_tld_suffix`.
 
-The PHP container is hooked up by default to the bundled DNS server and makes use :ref:`auto_dns`.
+The PHP container is hooked up by default to the bundled DNS server and makes use
+:ref:`global_configuration_auto_dns`.
 
 .. seealso::
     You can achieve the same on your host operating system by explicitly enabling auto-dns.
-    See also: :ref:`auto_dns` and :ref:`tutorial_enable_auto_dns`.
+    See also: :ref:`global_configuration_auto_dns` and :ref:`tutorial_enable_auto_dns`.
 
 
 Checklist
