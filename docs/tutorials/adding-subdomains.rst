@@ -221,7 +221,7 @@ See here how to do that for Linux, MacOS or Windows:
 :ref:`getting_started_create_your_first_project_dns_entry`
 
 This however is not really convenient. If you have basically infinite sub domains (via catch-all),
-you should consider using Auto-DNS instead: :ref:`tutorial_enable_auto_dns`.
+you should consider using Auto-DNS instead: :ref:`global_configuration_auto_dns`.
 
 Step 2: Adjust apache22.yml
 """""""""""""""""""""""""""
@@ -395,7 +395,7 @@ See here how to do that for Linux, MacOS or Windows:
 :ref:`getting_started_create_your_first_project_dns_entry`
 
 This however is not really convenient. If you have basically infinite sub domains (via catch-all),
-you should consider using Auto-DNS instead: :ref:`tutorial_enable_auto_dns`.
+you should consider using Auto-DNS instead: :ref:`global_configuration_auto_dns`.
 
 
 Step 2: Adjust nginx.yml

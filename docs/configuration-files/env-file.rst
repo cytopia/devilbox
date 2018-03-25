@@ -912,7 +912,7 @@ to something else if ``53`` is already in use on your host operating system.
    on port ``53`` which would result in a failure when this BIND server is starting.
 
    You only need to set BIND to port ``53`` when you want to use the ``Auto-DNS`` feautre of the
-   Devilbox. When doing so, read this article with care: :ref:`tutorial_enable_auto_dns`.
+   Devilbox. When doing so, read this article with care: :ref:`global_configuration_auto_dns`.
 
 
 Container settings

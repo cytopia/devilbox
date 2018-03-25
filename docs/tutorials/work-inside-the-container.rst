@@ -270,7 +270,7 @@ The PHP container is hooked up by default to the bundled DNS server and makes us
 
 .. seealso::
     You can achieve the same on your host operating system by explicitly enabling auto-dns.
-    See also: :ref:`global_configuration_auto_dns` and :ref:`tutorial_enable_auto_dns`.
+    See also: :ref:`global_configuration_auto_dns`.
 
 
 Checklist
