@@ -19,7 +19,12 @@
 
 The devilbox is a modern and highly customisable **dockerized PHP stack** supporting full **LAMP** and **MEAN** and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an unlimited number of projects for which vhosts and DNS records are created automatically. Email catch-all and popular development tools will be at your service as well.  Configuration is not necessary, as everything is pre-setup with mass virtual hosting.
 
+**Requirements**
+
 ![Linux](https://raw.githubusercontent.com/cytopia/icons/master/64x64/linux.png) ![Windows](https://raw.githubusercontent.com/cytopia/icons/master/64x64/windows.png) ![OSX](https://raw.githubusercontent.com/cytopia/icons/master/64x64/osx.png)
+
+* [Docker Engine 1.12.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
+* [Docker Compose 1.9.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
 
 
 ## Community
@@ -264,7 +269,7 @@ The devilbox has everything setup for you. The only thing you will have to insta
   </tr>
   <tr>
     <td>:star: Xdebug</td>
-    <td>Xdebug and a full blown PHP-FPM/HHVM server is ready to serve.</td>
+    <td>Xdebug and a full blown PHP-FPM server is ready to serve.</td>
   </tr>
   <tr>
     <td>:star: Many more</td>
@@ -346,7 +351,7 @@ The devilbox is a development stack, so it is made sure that a lot of PHP module
 
 #### Custom PHP Modules
 
-You can also copy any custom modules into `mod/(php-fpm|hhvm)-<VERSION>` and add a custom `*.ini` file to load them.
+You can also copy any custom modules into `mod/(php-fpm)-<VERSION>` and add a custom `*.ini` file to load them.
 
 #### Supported Frameworks
 
