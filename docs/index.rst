@@ -49,7 +49,6 @@ devilbox documentation
    tutorials/change-document-root
    tutorials/change-container-versions
    tutorials/work-inside-the-container
-   tutorials/enable-auto-dns
    tutorials/enable-xdebug
    tutorials/customize-vhost
    tutorials/custom-apache-modules
