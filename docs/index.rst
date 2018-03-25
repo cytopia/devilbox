@@ -29,6 +29,18 @@ devilbox documentation
 
 
 .. toctree::
+   :caption: Maintenance
+   :maxdepth: 2
+
+   maintenance/install
+   maintenance/update
+   maintenance/uninstall
+   tutorials/backup-mysql
+   tutorials/backup-pgsql
+   tutorials/backup-mongo
+
+
+.. toctree::
    :maxdepth: 2
    :caption: Tutorials
 
@@ -40,9 +52,7 @@ devilbox documentation
    tutorials/enable-auto-dns
    tutorials/enable-xdebug
    tutorials/customize-vhost
-   tutorials/backup-mysql
-   tutorials/backup-pgsql
-   tutorials/backup-mongo
+   tutorials/custom-apache-modules
    tutorials/custom-environment-variables
    tutorials/password-protect-intranet
    tutorials/disable-intranet

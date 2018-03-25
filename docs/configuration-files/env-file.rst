@@ -203,6 +203,8 @@ and you do not have to fix permissions afterwards.
       the host system and a running Docker container.
 
 
+.. _env_new_gid:
+
 NEW_GID
 -------
 
