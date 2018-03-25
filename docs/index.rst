@@ -56,6 +56,7 @@ devilbox documentation
    tutorials/custom-environment-variables
    tutorials/password-protect-intranet
    tutorials/disable-intranet
+   tutorials/static-code-analysis
 
 
 .. toctree::
@@ -74,6 +75,15 @@ devilbox documentation
 
 
 .. toctree::
+   :caption: Project configuration
+   :maxdepth: 2
+
+   configuration-project/dns-records
+   configuration-project/domain
+   configuration-project/custom-vhost
+
+
+.. toctree::
    :caption: Global configuration
    :maxdepth: 2
 
@@ -85,15 +95,8 @@ devilbox documentation
    configuration-global/memcached
    configuration-global/bind
    configuration-global/devilbox-intranet
-
-.. toctree::
-   :caption: Project configuration
-   :maxdepth: 2
-
-   configuration-project/dns
-   configuration-project/auto-dns
-   configuration-project/domain
-   configuration-project/custom-vhost
+   configuration-global/auto-dns
+   configuration-global/logging
 
 
 .. toctree::
