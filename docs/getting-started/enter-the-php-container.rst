@@ -79,29 +79,6 @@ the password-less ``sudo``.
     platforms.
 
 
-Directory mapping
-=================
-
-One thing you should understand is the relation between the directories on your host operating
-system and the corresponding directory inside the PHP container.
-
-The location of the data directory (:ref:`env_httpd_datadir`) on your host computer is controlled
-via the ``HOST_PATH_HTTPD_DATADIR`` variable inside the ``.env`` file. No matter what location you
-set it to, inside the container it will always be mapped to ``/shared/httpd``.
-
-See the following table for a few examples:
-
-+----------+-----------------------+----------------------+
-|          | Host operating system | Inside PHP container |
-+==========+=======================+======================+
-| Data dir | ``./www/data``        | ``/shared/httpd``    |
-+----------+-----------------------+----------------------+
-| Data dir | ``/home/user1/www``   | ``/shared/httpd``    |
-+----------+-----------------------+----------------------+
-| Data dir | ``/var/www``          | ``/shared/httpd``    |
-+----------+-----------------------+----------------------+
-
-
 Tools
 =====
 
@@ -126,10 +103,19 @@ The only thing you have to do, is to update the Docker images itself, simply by 
 .. seealso:: :ref:`getting_started_update_the_docker_images`
 
 
+Advanced
+========
+
+This is just a short overview about the possibility to work inside the container.
+If you want to dig deeper into this topic there is also a more advanced tutorial available:
+
+.. seealso:: :ref:`tutorial_work_inside_the_php_container`
+
+
 Checklist
 =========
 
 * You know how to enter the PHP container on Linux, MacOS or Windows
 * You know how to become ``root`` inside the PHP container
-* You understand the directory relation between inside the container and your host operating system
+* You know what tools are available inside the PHP container
 * You know how to update the tools by pulling new versions of the Docker images
