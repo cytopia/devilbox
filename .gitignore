@@ -45,7 +45,7 @@
 /cfg/php-fpm-7.0/*.ini
 /cfg/php-fpm-7.1/*.ini
 /cfg/php-fpm-7.2/*.ini
-/cfg/hhvm-latest/*.ini
+#/cfg/hhvm-latest/*.ini
 
 # Ignore custom PHP-FPM modules
 /mod/php-fpm-5.4/*.so
@@ -54,7 +54,7 @@
 /mod/php-fpm-7.0/*.so
 /mod/php-fpm-7.1/*.so
 /mod/php-fpm-7.2/*.so
-/mod/hhvm-latest/*.so
+#/mod/hhvm-latest/*.so
 
 # Ignore custom bash and other confi files
 /bash/*
