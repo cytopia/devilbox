@@ -45,7 +45,7 @@ In your Devilbox git directory, navigate to ``./data/www`` and create a new dire
    # create a new project directory named: project-1
    host> mkdir project-1
 
-Vist the vhost page again and see what has changed: http://localhost/vhosts.php
+Visit the vhost page again and see what has changed: http://localhost/vhosts.php
 
 .. image:: /_static/img/devilbox-vhosts-directory.png
 
@@ -202,7 +202,7 @@ Alternatively create an ``index.php`` file in ``data/www/project-1/htdocs`` with
 
    <?php echo 'hello world';
 
-Vist your project url again and see what has changed: http://project-1.loc
+Visit your project url again and see what has changed: http://project-1.loc
 
 .. image:: /_static/img/devilbox-project-hello-world.png
 

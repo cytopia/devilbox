@@ -894,6 +894,8 @@ to something else if 27017 is already in use on your host operating system.
 +----------------------+-------------------+------------------+
 
 
+.. _env_host_port_bind:
+
 HOST_PORT_BIND
 --------------
 
