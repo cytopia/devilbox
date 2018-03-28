@@ -20,17 +20,29 @@ DNS server and use it's DNS catch-all feature to have all DNS records automatica
 Native Docker
 =============
 
-The webserver as well as the DNS server must at least be available on ``127.0.0.``.
-The DNS server port must be set to ``53``.
+The webserver as well as the DNS server must be available on ``127.0.0.1`` or on all interfaces
+on ``0.0.0.0``. Additionally the DNS server port must be set to ``53`` (it is not by default).
 
 * Ensure :ref:`env_local_listen_addr` is set accordingly
 * Ensure :ref:`env_host_port_bind` is set accordingly
 * No other DNS resolver should listen on ``127.0.0.1:53``
 
-Linux
------
 
-First you need to ensure that :ref:`env_host_port_bind` is set to ``53``.
+Prerequisites
+-------------
+
+First ensure that :ref:`env_local_listen_addr` is either empty or listening on ``127.0.0.1``.
+
+.. code-block:: bash
+    :caption: .env
+    :name: .env
+    :emphasize-lines: 3
+
+    host> cd path/to/devilbox
+    host> vi .env
+    LOCAL_LISTEN_ADDR=
+
+Then you need to ensure that :ref:`env_host_port_bind` is set to ``53``.
 
 .. code-block:: bash
     :caption: .env
@@ -62,7 +74,11 @@ The output should look like this (It is only important that there is no ``:53``.
     tcp        0      0 127.0.0.1:43477         0.0.0.0:*               LISTEN
     tcp        0      0 127.0.0.1:50267         0.0.0.0:*               LISTEN
 
-If everything is set, you can edit ``/etc/resolv.conf`` with root or sudo privileges
+
+Linux
+-----
+
+If the prerequisites are met, you can edit ``/etc/resolv.conf`` with root or sudo privileges
 and add the Devilbox DNS server line by adding a ``nameserver`` directive
 which points to ``127.0.0.1``:
 
@@ -90,5 +106,57 @@ If you now start the Devilbox you don't need to take care about manually adding 
 anymore. Auto-DNS is now setup working.
 
 
+MacOS
+-----
+
+Modifying ``/etc/resolv.conf`` does not work on MacOS, you need to make changes in your
+System Preferences:
+
+1. Open System Preferences
+2. Go to Network
+3. Select your connected interface
+4. Click on ``DNS`` tab
+5. Add new DNS server by clicking the ``+`` sign
+6. Add ``127.0.0.1``
+
+.. image:: /_static/img/auto-dns-macos-dns.png
+
+
+Windows
+-------
+
+On Windows, you need to change your active network adapter. See the following screenshots
+for how to do it.
+
+.. image:: /_static/img/auto-dns-windows-dns-01.jpg
+.. image:: /_static/img/auto-dns-windows-dns-02.jpg
+.. image:: /_static/img/auto-dns-windows-dns-03.jpg
+
+In the last screenshot, you will have to add ``127.0.0.1`` as your ``Preferred DNS server``.
+
+
 Docker Toolbox
 ==============
+
+.. seealso:: :ref:`docker_toolbox`
+
+MacOS
+-----
+
+* :ref:`env_local_listen_addr` must be empty in order to listen on all interfaces
+* :ref:`env_host_port_bind` must be set to ``53``
+* Port ``80`` from the Docker Toolbox virtual machine must be port-forwarded to ``127.0.0.1:80`` on your host os
+* Port ``53`` from the Docker Toolbox virtual machine must be port-forwarded to ``127.0.0.1:53`` on your host os
+
+.. todo:: This section needs further proof and information.
+
+
+Windows
+--------
+
+* :ref:`env_local_listen_addr` must be empty in order to listen on all interfaces
+* :ref:`env_host_port_bind` must be set to ``53``
+* Port ``80`` from the Docker Toolbox virtual machine must be port-forwarded to ``127.0.0.1:80`` on your host os
+* Port ``53`` from the Docker Toolbox virtual machine must be port-forwarded to ``127.0.0.1:53`` on your host os
+
+.. todo:: This section needs further proof and information.
