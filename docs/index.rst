@@ -135,6 +135,7 @@ devilbox documentation
    :maxdepth: 2
 
    support/faq
+   support/troubleshooting
    support/contributing
    support/blogs-videos-and-use-cases
    support/artwork
