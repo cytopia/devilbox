@@ -111,7 +111,7 @@ Ensure that the default ``vhost-gen`` templates have been copied to your project
 .. code-block:: bash
 
     # Navigate to the Devilbox directory
-    host> /home/user/devilbox
+    host> cd ./home/user/devilbox
 
     # Create template directory in your project
     host> mkdir ./data/www/project-1/.devilbox
