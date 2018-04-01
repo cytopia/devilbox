@@ -13,13 +13,17 @@ PHP.ini changes are a global option and will affect all projects simultaneously.
 .. contents:: :local:
 
 
+General
+=======
+
 You can set custom php.ini configuration options for each PHP version separately.
 
-This is achieved by placing a file into ``cfg/php-fpm-X.X`` (where ``X.X`` stands for your PHP version).
+This is achieved by placing a file into ``cfg/php-fpm-X.X/`` (where ``X.X`` stands for your PHP version).
 The file must end by ``.ini`` in order to be sourced by the PHP-FPM server.
 
 Each of the PHP ini configuration directories already contain an example file:
-``devilbox-custom.ini-example``, that can be renamed to ``devilbox-custom.ini``.
+``devilbox-custom.ini-example``, that can simply be renamed to ``devilbox-custom.ini``.
+This file holds same example values that can be adjusted or commented out.
 
 In order for the changes to be applied, you will have to restart the Devilbox.
 
@@ -55,7 +59,6 @@ Now add the following content to the file:
     memory_limit = 4096M
 
 In order to apply the changes you need to restart the Devilbox.
-
 You can validate that the changes have taken place by visiting the Devilbox intranet phpinfo page.
 
 
@@ -89,5 +92,4 @@ Now add the following content to the file:
     max_input_time     = 180
 
 In order to apply the changes you need to restart the Devilbox.
-
 You can validate that the changes have taken place by visiting the Devilbox intranet phpinfo page.
