@@ -26,7 +26,9 @@ devilbox documentation
    getting-started/directory-overview
    getting-started/create-your-first-project
    getting-started/read-log-files
+   getting-started/email-catch-all
    getting-started/enter-the-php-container
+   getting-started/the-intranet
 
 
 .. toctree::
