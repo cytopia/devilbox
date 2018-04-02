@@ -77,10 +77,10 @@ services:
 
     environment:
       ##
-      ## Debug?
+      ## Debug/Logging
       ##
       - DEBUG_COMPOSE_ENTRYPOINT
-      - DOCKER_LOGS=0
+      - DOCKER_LOGS
 
       ##
       ## UserID and GroupID
@@ -163,10 +163,11 @@ services:
     environment:
 
       ##
-      ## Debug?
+      ## Debug/Logging
       ##
       - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
       - DEBUG_RUNTIME=${DEBUG_COMPOSE_ENTRYPOINT}
+      - DOCKER_LOGS
 
       ##
       ## Adjust timezone

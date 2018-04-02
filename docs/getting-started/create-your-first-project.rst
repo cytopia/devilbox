@@ -4,6 +4,10 @@
 Create your first project
 *************************
 
+.. important::
+    Ensure you have read :ref:`getting_started_directory_overview` to understand what is
+    going on under the hood.
+
 .. note::
 
      This section not only applies for one project, it applied for as many projects as you need.

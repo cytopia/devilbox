@@ -22,6 +22,20 @@ DEBUG_COMPOSE_ENTRYPOINT=1
 
 
 ###
+### Log to file or Docker logs.
+###
+### Logging to file means log files are available under log/
+### on your host operating system.
+### Logging to Docker logs means log files are streamed to
+### stdout and stderr.
+###
+### 1: Log to Docker logs
+### 0: Log to file
+###
+DOCKER_LOGS=0
+
+
+###
 ### Relative or absolute path to the devilbox repository.
 ### (Used as a prefix for all mount paths)
 ### There is no need to change this.
