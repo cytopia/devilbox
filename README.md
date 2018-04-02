@@ -41,16 +41,16 @@ The devilbox is a modern and highly customisable **dockerized PHP stack** suppor
   <tr>
    <td>
     <a href="https://devilbox.readthedocs.io">
-	 <img title="Documentation" name="Documentation" src="https://pbs.twimg.com/profile_images/525686734760067072/OhsWgbsr_400x400.png" />
+	 <img title="Documentation" name="Documentation" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/readthedocs.png" />
     </a>
    </td>
    <td>
     <a href="https://gitter.im/devilbox/Lobby">
-     <img title="Chat" name="Chat" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9A68ZmRt6PKTkCXXslzCQkqGh2Q0FmLKvRaVrRNY7xTOAzYa4_Q" />
+     <img title="Chat on Gitter" name="Chat on Gitter" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/gitter.png" />
     </a>
    </td>
    <td>
-    <img title="Forum" name="Forum" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6ryI8VGmL0vXjMgrNH4EregCko9sm9godr8-ZHiwDGlXab92v" />
+    <img title="Forum" name="Forum" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discourse.png" />
    </td>
   </tr>
   <tr>
