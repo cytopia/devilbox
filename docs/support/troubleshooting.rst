@@ -31,3 +31,5 @@ In order to remove the container do the following:
     # Remove the stopped container (IMPORTANT!)
     # After the removal it will be re-created during next run
     host> docker-compose rm -f
+
+.. seealso:: :ref:`remove_stopped_container`
