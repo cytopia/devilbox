@@ -1228,6 +1228,8 @@ changing the server name or adding locations to other assets.
 MySQL
 -----
 
+.. _env_mysql_root_password:
+
 MYSQL_ROOT_PASSWORD
 ^^^^^^^^^^^^^^^^^^^
 
