@@ -46,7 +46,7 @@ DOCKER_LOGS
 -----------
 
 This variable controls the output of logs. Logs can either go to file and will be available
-under ``./logs/`` inside the Devilbox git directory or they can be forwarded to Docker logs
+under ``./log/`` inside the Devilbox git directory or they can be forwarded to Docker logs
 and will then be send to stdout and stderr.
 
 +-------------------+----------------+---------------+
@@ -56,10 +56,10 @@ and will then be send to stdout and stderr.
 +-------------------+----------------+---------------+
 
 When ``DOCKER_LOGS`` is set to ``1``, output will go to Docker logs, otherwise if it is set to
-``0`` the log output will go to files under ``./logs/``.
+``0`` the log output will go to files under ``./log/``.
 
 The ``./log/`` directory itself will contain subdirectories in the form ``<service>-<version>``
-which will then hold all available log files. 
+which will then hold all available log files.
 
 .. note::
     Log directories do not exist until you start the Devilbox and will only be created for
@@ -351,7 +351,7 @@ and report as unsuccessful. The default is ``1`` second, wich should be fairly s
 +-----------------------+----------------+-------------------+
 
 
-
+.. _env_devilbox_ui_protect:
 
 DEVILBOX_UI_PROTECT
 -------------------
@@ -371,6 +371,8 @@ everybody to have access to the intranet itself, just to the projects you actual
    ``DEVILBOX_UI_PASSWORD``.
 
 
+.. _env_devilbox_ui_password:
+
 DEVILBOX_UI_PASSWORD
 --------------------
 
@@ -383,6 +385,8 @@ password by which it will be protected.
 | ``DEVILBOX_UI_PASSWORD`` | any string     | ``password``      |
 +--------------------------+----------------+-------------------+
 
+
+.. _env_devilbox_ui_disable:
 
 DEVILBOX_UI_DISABLE
 -------------------
