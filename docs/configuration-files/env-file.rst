@@ -40,6 +40,85 @@ When set to ``0`` only warnings and errors are shown.
 +------------------------------+----------------+---------------+
 
 
+.. _env_docker_logs:
+
+DOCKER_LOGS
+-----------
+
+This variable controls the output of logs. Logs can either go to file and will be available
+under ``./logs/`` inside the Devilbox git directory or they can be forwarded to Docker logs
+and will then be send to stdout and stderr.
+
++-------------------+----------------+---------------+
+| Name              | Allowed values | Default value |
++===================+================+===============+
+| ``DOCKER_LOGS``   | ``1`` or ``0`` | ``0``         |
++-------------------+----------------+---------------+
+
+When ``DOCKER_LOGS`` is set to ``1``, output will go to Docker logs, otherwise if it is set to
+``0`` the log output will go to files under ``./logs/``.
+
+The ``./log/`` directory itself will contain subdirectories in the form ``<service>-<version>``
+which will then hold all available log files. 
+
+.. note::
+    Log directories do not exist until you start the Devilbox and will only be created for
+    the service versions you have enabled in ``.env``.
+
+The log directory structure would look something like this:
+
+.. code-block:: bash
+
+    host> cd path/to/devilbox
+    host> tree log
+
+    log/
+    ├── nginx-stable/
+    │   ├── nginx-stable/
+    │   ├── defaultlocalhost-access.log
+    │   ├── defaultlocalhost-error.log
+    │   ├── <project-name>-access.log    # Each project has its own access log
+    │   ├── <project-name>-error.log     # Each project has its own error log
+    ├── mariadb-10.1/
+    │   ├── error.log
+    │   ├── query.log
+    │   ├── slow.log
+    ├── php-fpm-7.1/
+    │   ├── php-fpm.access
+    │   ├── php-fpm.error
+
+When you want to read logs sent to Docker logs, you can do so via the following command:
+
+.. code-block:: bash
+    :emphasize-lines: 2
+
+    host> cd path/to/devilbox
+    host> docker-compose logs
+
+When you want to continuously watch the log output (such as ``tail -f``), you need to append ``-f``
+to the command.
+
+.. code-block:: bash
+    :emphasize-lines: 2
+
+    host> cd path/to/devilbox
+    host> docker-compose logs -f
+
+When you only want to have logs displayed for a single service, you can also append the service
+name (works with or without ``-f`` as well):
+
+.. code-block:: bash
+    :emphasize-lines: 2
+
+    host> cd path/to/devilbox
+    host> docker-compose logs php -f
+
+.. important::
+    Currently this is only implemented for PHP-FPM and HTTPD Docker container.
+    MySQL will always output its logs to file and all other official Docker container
+    always output to Docker logs.
+
+
 DEVILBOX_PATH
 -------------
 
