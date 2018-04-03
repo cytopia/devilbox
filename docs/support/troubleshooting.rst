@@ -1,9 +1,13 @@
+.. _troubleshooting:
+
 ***************
 Troubleshooting
 ***************
 
 This section will contain common problems and how to resolve them.
 It will grow over time once there are more issues reported.
+
+.. seealso:: :ref:`faq`
 
 
 **Table of Contents**

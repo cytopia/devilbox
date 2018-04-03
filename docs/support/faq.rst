@@ -6,6 +6,8 @@ FAQ
 
 Find common questions and answers here.
 
+.. seealso:: :ref:`troubleshooting`
+
 
 **Table of Contents**
 
