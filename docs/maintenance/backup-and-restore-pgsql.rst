@@ -1,8 +1,8 @@
 .. _backup_and_restore_pgsql:
 
-****************************
-Backup and restore PostreSQL
-****************************
+*****************************
+Backup and restore PostgreSQL
+*****************************
 
 Backup and restore will be necessary when you are going to switch PostgreSQL versions.
 Each version has its own data directory and is fully indepentend of other versions.
