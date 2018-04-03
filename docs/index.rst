@@ -5,15 +5,26 @@ devilbox documentation
 
 .. image:: img/banner.png
 
+The Devilbox allows you to have an unlimited number of projects ready without having to install
+any external software and without having to configure any virtual hosts. As well as providing a
+very flexible development stack that you can run offline. (Internet is only required to initially
+pull docker container).
+
+The only thing you will have to do is to create a new directory on the filesystem and your virtual
+host is ready to be served with your custom domain.
+
+
 .. important::
    :ref:`read_first`
      Ensure you have read this document to understand how this documentation works.
+
 
 .. toctree::
    :maxdepth: 2
    :caption: About
 
    about/read-first
+   about/features
 
 .. toctree::
    :maxdepth: 2
@@ -139,6 +150,7 @@ devilbox documentation
 
    support/faq
    support/troubleshooting
+   support/hacking
    support/contributing
    support/blogs-videos-and-use-cases
    support/artwork
