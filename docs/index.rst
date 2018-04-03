@@ -5,7 +5,10 @@ devilbox documentation
 
 .. image:: img/banner.png
 
-The Devilbox allows you to have an unlimited number of projects ready without having to install
+The Devilbox is a modern dockerized LAMP and MEAN stack for local development on Linux, MacOS
+and Windows.
+
+It allows you to have an unlimited number of projects ready without having to install
 any external software and without having to configure any virtual hosts. As well as providing a
 very flexible development stack that you can run offline. (Internet is only required to initially
 pull docker container).
@@ -49,9 +52,9 @@ host is ready to be served with your custom domain.
    maintenance/install
    maintenance/update
    maintenance/uninstall
-   tutorials/backup-mysql
-   tutorials/backup-pgsql
-   tutorials/backup-mongo
+   maintenance/backup-and-restore-mysql
+   maintenance/backup-and-restore-pgsql
+   maintenance/backup-and-restore-mongo
 
 
 .. toctree::
