@@ -227,9 +227,8 @@ To find out more about the usage of Adminer, visit its project page under: https
 Restore
 =======
 
-
-Command line
-------------
+mysql
+-----
 
 In order to restore or import mysql databases on the command line, you need to use the ``mysql``
 binary. Here are a few examples for different file types:
