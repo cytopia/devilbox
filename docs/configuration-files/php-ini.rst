@@ -5,7 +5,8 @@ php.ini
 *******
 
 
-PHP.ini changes are a global option and will affect all projects simultaneously.
+``php.ini`` changes are global to all projects, but will only affect the currently selected
+PHP version.
 
 
 **Table of Contents**
@@ -44,7 +45,7 @@ The following examples shows you how to change the
     host> cd path/to/devilbox
 
     # Navigate to PHP 7.1 config directory
-    host> cd cfg/php-fpm/7.1
+    host> cd cfg/php-fpm-7.1
 
     # Create new ini file
     host> touch memory_limit.ini
@@ -76,7 +77,7 @@ of PHP 5.6.
     host> cd path/to/devilbox
 
     # Navigate to PHP 5.6 config directory
-    host> cd cfg/php-fpm/5.6
+    host> cd cfg/php-fpm-5.6
 
     # Create new ini file
     host> touch timeouts.ini
