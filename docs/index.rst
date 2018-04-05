@@ -52,6 +52,9 @@ host is ready to be served with your custom domain.
    maintenance/install
    maintenance/update
    maintenance/uninstall
+   maintenance/start-the-devilbox
+   maintenance/add-service-to-running-devilbox
+   maintenance/remove-service-from-running-devilbox
    maintenance/backup-and-restore-mysql
    maintenance/backup-and-restore-pgsql
    maintenance/backup-and-restore-mongo
@@ -124,7 +127,7 @@ host is ready to be served with your custom domain.
    configuration-files/nginx-conf
    configuration-files/php-ini
    configuration-files/my-cnf
-   configuration-files/bashrc
+   configuration-files/bashrc-sh
 
 
 .. toctree::
