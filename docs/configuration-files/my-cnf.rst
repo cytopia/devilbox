@@ -18,8 +18,25 @@ General
 =======
 
 You can set custom MySQL options via your own defined ``my.cnf`` files for each version separately.
+See the directory structure for MySQL configuration directories inside ``./cfg/`` directory:
 
-This is achieved by placing a file into ``cfg/mysql-X.X/``, ``cfg/mariadb-X.X/`` or
+.. code-block:: bash
+
+    host> ls -l path/to/devilbox/cfg/ | grep -E 'mysql|mariadb|percona'
+
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mariadb-10.0/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mariadb-10.1/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mariadb-10.2/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mariadb-10.3/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mysql-5.5/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mysql-5.6/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mysql-5.7/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mysql-8.0/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 percona-5.5/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 percona-5.6/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 percona-5.7/
+
+Customization is achieved by placing a file into ``cfg/mysql-X.X/``, ``cfg/mariadb-X.X/`` or
 ``cfg/percona-X-X`` (where ``X.X`` stands for your MySQL version).
 The file must end by ``.cnf`` in order to be sourced by the MySQL server.
 
