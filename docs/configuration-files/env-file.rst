@@ -1021,7 +1021,7 @@ The PHP container itself does not offer any variables, however you can add any k
 variable into the ``.env`` file which will automatically be available to the started PHP container
 and thus in any of your PHP projects.
 
-If your application requires are variable to determine if it is run under development or
+If your application requires a variable to determine if it is run under development or
 production, for example: ``APPLICATION_ENV``, you can just add this to the ``.env`` file:
 
 .. code-block:: bash
@@ -1050,6 +1050,8 @@ This will then output ``development``.
 
 .. note::
    Add as many custom environment variables as you require.
+
+.. seealso:: :ref:`tutorial_custom_environment_variables`
 
 
 Web server
