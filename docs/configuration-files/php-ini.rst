@@ -36,7 +36,7 @@ your PHP version).  The file must end by ``.ini`` in order to be sourced by the 
 
 Each of the PHP ini configuration directories already contain an example file:
 ``devilbox-custom.ini-example``, that can simply be renamed to ``devilbox-custom.ini``.
-This file holds same example values that can be adjusted or commented out.
+This file holds some example values that can be adjusted or commented out.
 
 In order for the changes to be applied, you will have to restart the Devilbox.
 
