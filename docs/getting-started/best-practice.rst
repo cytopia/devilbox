@@ -167,6 +167,67 @@ symlink and have your own git directory
 Separate data partition, backups
 
 
+PHP project hostname settings
+=============================
+
+When configuring your PHP projects to use MySQL, PostgreSQL, Redis, Mongo and other services,
+make sure to set the hostname of each of those services to ``127.0.0.1``.
+
+**Why is that?**
+
+The PHP container port-forwards each service port to its own listen address on ``127.0.0.1``.
+The Devilbox also exposes each of those service ports to the host operating system on ``127.0.0.1``.
+
+This allows you to keep your project configuration unchanged and have the same behaviour inside the
+PHP container and on your host operating system.
+
+.. important::
+    Do not mix up ``localhost`` with ``127.0.0.1``. They behave differently!
+    Use ``127.0.0.1`` and do not use ``localhost``.
+
+As an example, if you want to access the MySQL database from within the PHP container, you do the
+following:
+
+.. code-block:: bash
+   :emphasize-lines: 8
+
+    # Navigate to Devilbox git directory
+    host> cd path/to/devilbox
+
+    # Enter the PHP container
+    host> ./shell.sh
+
+    # Enter the MySQL console
+    php> mysql -u root -h 127.0.0.1 -p
+    mysql>
+
+The very same command applies to access the MySQL database from your host operating system:
+
+.. code-block:: bash
+   :emphasize-lines: 2
+
+    # Enter the MySQL console
+    host> mysql -u root -h 127.0.0.1 -p
+    mysql>
+
+So no matter if you use the Devilbox or have another LAMP stack installed locally on your host
+operating system, you do not have to change your configuration files if you stick to this tip.
+
+So any of your projects php files that configure MySQL as an example should point the hostname
+or IP address of the MySQL server to ``127.0.0.1``:
+
+.. code-block:: php
+
+    <?php
+    // MySQL server connection in your project configuration
+    mysql_host = '127.0.0.1';
+    mysql_port = '3306';
+    mysql_user = 'someusername';
+    mysql_pass = 'somepassword';
+    ?>
+
+.. seealso:: :ref:`tutorial_work_inside_the_php_container`
+
 
 Timezone
 ========
