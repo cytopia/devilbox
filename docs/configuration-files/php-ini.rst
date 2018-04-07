@@ -22,16 +22,16 @@ See the directory structure for PHP configuration directories inside ``./cfg/`` 
 
 .. code-block:: bash
 
-    host> ls -l path/to/devilbox/cfg/ | grep 'php'
+    host> ls -l path/to/devilbox/cfg/ | grep 'php-ini'
 
-    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-fpm-5.4/
-    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-fpm-5.5/
-    drwxr-xr-x  2 cytopia cytopia 4096 Apr  3 22:04 php-fpm-5.6/
-    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-fpm-7.0/
-    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-fpm-7.1/
-    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-fpm-7.2/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-ini-5.4/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-ini-5.5/
+    drwxr-xr-x  2 cytopia cytopia 4096 Apr  3 22:04 php-ini-5.6/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-ini-7.0/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-ini-7.1/
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-ini-7.2/
 
-Customization is achieved by placing a file into ``cfg/php-fpm-X.X/`` (where ``X.X`` stands for
+Customization is achieved by placing a file into ``cfg/php-ini-X.X/`` (where ``X.X`` stands for
 your PHP version).  The file must end by ``.ini`` in order to be sourced by the PHP-FPM server.
 
 Each of the PHP ini configuration directories already contain an example file:
@@ -57,7 +57,7 @@ The following examples shows you how to change the
     host> cd path/to/devilbox
 
     # Navigate to PHP 7.1 config directory
-    host> cd cfg/php-fpm-7.1
+    host> cd cfg/php-ini-7.1
 
     # Create new ini file
     host> touch memory_limit.ini
@@ -89,7 +89,7 @@ of PHP 5.6.
     host> cd path/to/devilbox
 
     # Navigate to PHP 5.6 config directory
-    host> cd cfg/php-fpm-5.6
+    host> cd cfg/php-ini-5.6
 
     # Create new ini file
     host> touch timeouts.ini

@@ -38,14 +38,23 @@
 /cfg/percona-5.6/*.cnf
 /cfg/percona-5.7/*.cnf
 
-# Ignore custom PHP-FPM configs
-/cfg/php-fpm-5.4/*.ini
-/cfg/php-fpm-5.5/*.ini
-/cfg/php-fpm-5.6/*.ini
-/cfg/php-fpm-7.0/*.ini
-/cfg/php-fpm-7.1/*.ini
-/cfg/php-fpm-7.2/*.ini
+# Ignore custom PHP.ini configs
+/cfg/php-ini-5.4/*.ini
+/cfg/php-ini-5.5/*.ini
+/cfg/php-ini-5.6/*.ini
+/cfg/php-ini-7.0/*.ini
+/cfg/php-ini-7.1/*.ini
+/cfg/php-ini-7.2/*.ini
 #/cfg/hhvm-latest/*.ini
+
+# Ignore custom PHP-FPM configs
+/cfg/php-fpm-5.4/*.conf
+/cfg/php-fpm-5.5/*.conf
+/cfg/php-fpm-5.6/*.conf
+/cfg/php-fpm-7.0/*.conf
+/cfg/php-fpm-7.1/*.conf
+/cfg/php-fpm-7.2/*.conf
+#/cfg/hhvm-latest/*.conf
 
 # Ignore custom PHP-FPM modules
 /mod/php-fpm-5.4/*.so
