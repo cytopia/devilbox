@@ -37,3 +37,29 @@ In order to remove the container do the following:
     host> docker-compose rm -f
 
 .. seealso:: :ref:`remove_stopped_container`
+
+
+[Warning] World-writable config file '/etc/mysql/docker-default.d/my.cnf' is ignored
+------------------------------------------------------------------------------------
+
+This warning might occur when using :ref:`docker_toolbox` on Windows and trying to apply custom
+MySQL configuration files. This will also result in the configuration file not being source
+by the MySQL server.
+
+To fix this issue, you will have to change the file permission of your custom configuration files
+to read-only by applying the following ``chmod`` command.
+
+.. code-block:: bash
+
+    # Nagivate to devilbox git directory
+    host> cd path/to/devilbox
+
+    # Navigate to the MySQL config directory (e.g.: MySQL 5.5)
+    host> cd cfg/mysql-5.5
+
+    # Make cnf files read only
+    host> chmod 0444 *.cnf
+
+.. seealso::
+    * :ref:`my_cnf`
+    * https://github.com/cytopia/devilbox/issues/212
