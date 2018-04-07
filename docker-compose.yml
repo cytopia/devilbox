@@ -139,8 +139,12 @@ services:
       - ${DEVILBOX_PATH}/backups:/shared/backups
 
       # Mount devilbox user-defined *.ini files in order
-      # to overwrite the default PHP configuration
-      - ${DEVILBOX_PATH}/cfg/php-fpm-${PHP_SERVER}:/etc/php-custom.d:ro
+      # to overwrite the default PHP.ini configuration
+      - ${DEVILBOX_PATH}/cfg/php-ini-${PHP_SERVER}:/etc/php-custom.d:ro
+
+      # Mount devilbox user-defined PHP-FPM *.conf files in order
+      # to overwrite the default PHP-FPM configuration
+      - ${DEVILBOX_PATH}/cfg/php-fpm-${PHP_SERVER}:/etc/php-fpm-custom.d:ro
 
       # Mount devilbox user-defined *.so files in order
       # to load custom PHP modules

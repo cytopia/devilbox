@@ -127,6 +127,7 @@ host is ready to be served with your custom domain.
    configuration-files/apache-conf
    configuration-files/nginx-conf
    configuration-files/php-ini
+   configuration-files/php-fpm-conf
    configuration-files/my-cnf
    configuration-files/bashrc-sh
 
