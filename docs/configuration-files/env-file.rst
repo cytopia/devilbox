@@ -311,6 +311,8 @@ your system, however it could also be a different value.
       the host system and a running Docker container.
 
 
+.. _env_timezone:
+
 TIMEZONE
 --------
 
@@ -733,6 +735,8 @@ always be ``/shared/httpd/``.
      ``docker-compose rm``.
 
 
+.. _env_mysql_datadir:
+
 HOST_PATH_MYSQL_DATADIR
 -----------------------
 
@@ -778,6 +782,8 @@ The directory structure will look something like this:
      ``docker-compose rm``.
 
 
+.. _env_pgsql_datadir:
+
 HOST_PATH_PGSQL_DATADIR
 -----------------------
 
@@ -816,6 +822,8 @@ The directory structure will look something like this:
      container via
      ``docker-compose rm``.
 
+
+.. _env_mongo_datadir:
 
 HOST_PATH_MONGO_DATADIR
 -----------------------
