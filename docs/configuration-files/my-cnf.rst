@@ -9,6 +9,13 @@ my.cnf
 MySQL version.
 
 
+.. important::
+    When using :ref:`docker_toolbox` on Windows, ``*.cnf`` files must have read-only file
+    permissions, otherwise they are not sourced by the MySQL server.
+
+    Make sure to ``chmod 0444 *.cnf`` after adding your values.
+
+
 **Table of Contents**
 
 .. contents:: :local:
@@ -42,7 +49,7 @@ The file must end by ``.cnf`` in order to be sourced by the MySQL server.
 
 Each of the MySQL cnf configuration directories already contain an example file:
 ``devilbox-custom.cnf-example``, that can simply be renamed to ``devilbox-custom.cnf``.
-This file holds same example values that can be adjusted or commented out.
+This file holds some example values that can be adjusted or commented out.
 
 In order for the changes to be applied, you will have to restart the Devilbox.
 
