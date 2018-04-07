@@ -43,6 +43,7 @@ host is ready to be served with your custom domain.
    getting-started/email-catch-all
    getting-started/enter-the-php-container
    getting-started/the-intranet
+   getting-started/best-practice
 
 
 .. toctree::
