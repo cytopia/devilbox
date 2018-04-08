@@ -57,6 +57,18 @@ Some of the bundled tools even allow for automatic fixing.
     devilbox@php-7.0.20 $ syntax-php --path=. --extension=php
     devilbox@php-7.0.20 $ syntax-php --path=. --shebang=php
 
+    # 5. Various syntax checks
+    devilbox@php-7.0.20 $ syntax-bash --path=. --text --extension=sh
+    devilbox@php-7.0.20 $ syntax-css --path=. --text --extension=css
+    devilbox@php-7.0.20 $ syntax-js --path=. --text --extension=js
+    devilbox@php-7.0.20 $ syntax-json --path=. --text --extension=json
+    devilbox@php-7.0.20 $ syntax-markdown --path=. --text --extension=md
+    devilbox@php-7.0.20 $ syntax-perl --path=. --text --extension=pl
+    devilbox@php-7.0.20 $ syntax-php --path=. --text --extension=php
+    devilbox@php-7.0.20 $ syntax-python --path=. --text --extension=python
+    devilbox@php-7.0.20 $ syntax-ruby --path=. --text --extension=rb
+    devilbox@php-7.0.20 $ syntax-scss --path=. --text --extension=scss
+
 
 PHPCS
 =====
