@@ -45,9 +45,9 @@ class Pgsql extends BaseClass implements BaseInterface
 		// Silence errors and try to connect
 		error_reporting(0);
 		if ($db !== null) {
-			$link = pg_connect('host='.$hostname.' dbname='.$db.' user='.$user.' password='.$pass);
+			$link = @pg_connect('host='.$hostname.' dbname='.$db.' user='.$user.' password='.$pass);
 		} else {
-			$link = pg_connect('host='.$hostname.' user='.$user.' password='.$pass);
+			$link = @pg_connect('host='.$hostname.' user='.$user.' password='.$pass);
 		}
 		error_reporting(-1);
 
