@@ -79,6 +79,7 @@ services:
       ##
       ## Debug/Logging
       ##
+      - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
       - DEBUG_COMPOSE_ENTRYPOINT
       - DOCKER_LOGS
 
