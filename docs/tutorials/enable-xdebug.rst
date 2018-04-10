@@ -45,9 +45,51 @@ probably also want to add the following to your ini file:
     xdebug.idekey="PHPSTORM"
     xdebug.remote_log=/var/log/php/xdebug.log
 
+.. seealso:: https://xdebug.org/docs/all_settings
+
+default_enable
+^^^^^^^^^^^^^^
+By enabling this, stacktraces will be shown by default on an error event.
+It is advisable to leave this setting set to 1.
+
+remote_enable
+^^^^^^^^^^^^^
+This switch controls whether Xdebug should try to contact a debug client which is listening on the
+host and port as set with the settings ``xdebug.remote_host`` and ``xdebug.remote_port``.
+If a connection can not be established the script will just continue as if this setting was 0.
+
+remote_handler
+^^^^^^^^^^^^^^
+Can be either ``'php3'`` which selects the old PHP 3 style debugger output, ``'gdb'`` which enables
+the GDB like debugger interface or ``'dbgp'`` - the debugger protocol. The DBGp protocol is the only
+supported protocol.
+
+**Note:** Xdebug 2.1 and later only support ``'dbgp'`` as protocol.
+
+remote_port
+^^^^^^^^^^^
+The port to which Xdebug tries to connect on the remote host. Port ``9000`` is the default for both
+the client and the bundled debugclient. As many clients use this port number, it is best to leave
+this setting unchanged.
+
+remote_autostart
+^^^^^^^^^^^^^^^^
+Normally you need to use a specific HTTP GET/POST variable to start remote debugging (see
+`Remote Debugging <https://xdebug.org/docs/remote#browser_session>`_). When this setting is set to
+``1``, Xdebug will always attempt to start a remote debugging session and try to connect to a client,
+even if the GET/POST/COOKIE variable was not present.
+
+idekey
+^^^^^^
+Controls which IDE Key Xdebug should pass on to the DBGp debugger handler. The default is based on
+environment settings. First the environment setting DBGP_IDEKEY is consulted, then USER and as last
+USERNAME. The default is set to the first environment variable that is found. If none could be found
+the setting has as default ''. If this setting is set, it always overrides the environment variables.
+
+For the sake of this tutorial we are going to use ``PHPSTORM`` as an example value.
+
 remote_log
 ^^^^^^^^^^
-
 Keep the exact path of ``/var/log/php/xdebug.log``. You will then have the log file available
 in the Devilbox log directory of the PHP version for which you have configured Xdebug.
 
@@ -137,6 +179,7 @@ Docker 17.06.0-ce+ and Docker compose 1.14.0+
 
 If you have older versions, upgrade.
 
+
 Windows (Docker Toolbox)
 ------------------------
 
@@ -148,25 +191,82 @@ Windows (Docker Toolbox)
 Configure your IDE
 ==================
 
+Required for all IDE
+--------------------
+
+Path mapping
+^^^^^^^^^^^^
+The path mapping is a mapping between the file path on your host operating system and the one
+inside the PHP Docker container.
+
+The path on your host operating system is the one you have set in :ref:`env_httpd_datadir`.
+In case you have set a relative path in ``.env``, ensure to retrieve the absolute path of it when
+setting up your IDE config.
+
+The path inside the PHP Docker container is always ``/shared/httpd``.
+
+.. important::
+    Even though your path in ``.env`` for :ref:`env_httpd_datadir` might be relative (e.g. ``./data/www``),
+    you need to get the actualy absolute path of it, when setting up your IDE.
+
+IDE key
+^^^^^^^
+This is the value you have set in ``xdebug.ini`` for ``xdebug.idekey``. In the example of this
+tutorial, the value was set to ``PHPSTORM``.
+
+Port
+^^^^
+This is the value you have set in ``xdebug.ini`` for ``xdebug.remote_port``. In the example of this
+tutorial, the value was set to ``9000``.
+
 
 Atom
 ----
 
+1. Install `php-debug <https://atom.io/packages/php-debug>`_
+2. Configure ``config.cson`` (File -> Config...)
+3. Adjust your ``xdebug.ini``
+
+For Atom, you need to provide a different ``xdebug.idekey`` in your php.ini file ``xdebug.ini``:
+
+.. code-block:: ini
+    :name: xdebug.ini
+    :caption: xdebug.ini
+
+    xdebug.idekey=xdebug.atom
+
+
 Linux
 ^^^^^^
+.. code-block:: json
+    :name: launch.json
+    :caption: launch.json
+    :emphasize-lines: 6
+
+    "php-debug":
+     {
+       ServerPort: 9000
+       PathMaps: [
+         "remotepath;localpath"
+         "/shared/httpd;/home/cytopia/repo/devilbox/data/www"
+       ]
+     }
 
 MacOS (Docker for Mac)
 ^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
 MacOS (Docker Toolbox)
 ^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
 Windows (Docker for Windows)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
 Windows (Docker Toolbox)
 ^^^^^^^^^^^^^^^^^^^^^^^^
-
+.. todo:: Help needed. Please provide your config.
 
 
 PHPStorm
@@ -174,30 +274,33 @@ PHPStorm
 
 Linux
 ^^^^^^
+.. todo:: Help needed. Please provide your config.
 
 MacOS (Docker for Mac)
 ^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
 MacOS (Docker Toolbox)
 ^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
 Windows (Docker for Windows)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
 Windows (Docker Toolbox)
 ^^^^^^^^^^^^^^^^^^^^^^^^
-
+.. todo:: Help needed. Please provide your config.
 
 
 Sublime Text 3
 --------------
 
+1. Install `Xdebug Client <https://github.com/martomo/SublimeTextXdebug>`_ via the Sublime Package Control.
+2. Configure ``Xdebug.sublime-settings`` (Tools -> Xdebug -> Settings - User)
+
 Linux
 ^^^^^^
-
-1. Install `Xdebug Client <https://github.com/martomo/SublimeTextXdebug>`_ via the Sublime Package Control.
-2. Configure `Xdebug.sublime-settings` (Tools -> Xdebug -> Settings - User)
-
 .. code-block:: json
     :name: Xdebug-sublime-settings
     :caption: Xdebug-sublime-settings
@@ -213,43 +316,74 @@ Linux
         "port": 9000
     }
 
-There are two things you need to pay attention to.
 
-path_mapping
-""""""""""""
+MacOS (Docker for Mac)
+^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
-The ``path_mapping`` has the format of ``<server-path> : <host-path>``. The left hand side should
-always be ``/shared/httpd``, because this is the path on the PHP-FPM server where all the projects
-reside. The right hand side is for you to adjust which must be an absolute path to the files on
-your host operating system.
+MacOS (Docker Toolbox)
+^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
-Check your ``.env`` file and see where :ref:`env_httpd_datadir` points to. This is what you need
-for the right hand side of the xdebug configuration for the path mapping. In case
-:ref:`env_httpd_datadir` is using a relative path (starting with ``./``), you need to find out
-the absolute path of it.
+Windows (Docker for Windows)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
-In case it is ``./data/www`` as it is by default, you need to prepend the path of the Devilbox
-git directory and you have the absolute path.
+Windows (Docker Toolbox)
+^^^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
-ide_key
-"""""""
 
-The ``ide_key`` is what we have set at the very top for general Xdebug definition:
-``xdebug.idekey="PHPSTORM"``. For this tutorial we have assumed ``PHPSTORM``, so that is the value
-you will have to add to the xdebug configuration of your editor.
+Visual Studio Code
+------------------
+
+1. Install `vscode-php-debug <https://github.com/felixfbecker/vscode-php-debug>`_
+2. Configure ``launch.json``
+
+Linux
+^^^^^^
+.. code-block:: json
+    :name: launch.json
+    :caption: launch.json
+    :emphasize-lines: 9,10
+
+    {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Listen for Xbebug",
+                "type": "php",
+                "request": "launch",
+                "port": 9000,
+                "serverSourceRoot": "/shared/httpd",
+                "localSourceRoot": "/home/cytopia/repo/devilbox/data/www"
+            }, {
+                "name": "Launch currently open script",
+                "type": "php",
+                "request": "launch",
+                "program": "${file}",
+                "cwd": "${fileDirname}",
+                "port": 9000
+            }
+        ]
+    }
 
 
 MacOS (Docker for Mac)
 ^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
 MacOS (Docker Toolbox)
 ^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
 Windows (Docker for Windows)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
 Windows (Docker Toolbox)
 ^^^^^^^^^^^^^^^^^^^^^^^^
+.. todo:: Help needed. Please provide your config.
 
 
 ..
