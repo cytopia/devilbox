@@ -274,7 +274,20 @@ PHPStorm
 
 Linux
 ^^^^^^
-.. todo:: Help needed. Please provide your config.
+
+Enable Xdebug for the port set in ``xdebug.ini``:
+
+.. image:: /_static/img/tutorials/xdebug_phpstorm_settings.png
+
+Create a new PHP server and set a path mapping. This tutorial assumes your local Devilbox projects
+to be in ``./data/www`` of the Devilbox git directory:
+
+.. image:: /_static/img/tutorials/xdebug_phpstorm_path_mapping.png
+
+Set DBGp proxy settings:
+
+.. image:: /_static/img/tutorials/xdebug_phpstorm_proxy.png
+
 
 MacOS (Docker for Mac)
 ^^^^^^^^^^^^^^^^^^^^^^
