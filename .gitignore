@@ -72,6 +72,8 @@
 
 # Ignore documentation sphinx build
 /docs/_build/
+/docs/make.bat
+/docs/Makefile
 
 # Keep folders
 !.keepme
