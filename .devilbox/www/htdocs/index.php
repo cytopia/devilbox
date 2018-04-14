@@ -731,9 +731,14 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 										</thead>
 										<tbody>
 											<tr>
-												<th>php</th>
-												<td>./cfg/php-fpm-<?php echo loadClass('Helper')->getEnv('PHP_SERVER'); ?></td>
+												<th>php (ini)</th>
+												<td>./cfg/php-ini-<?php echo loadClass('Helper')->getEnv('PHP_SERVER'); ?></td>
 												<td>/etc/php-custom.d</td>
+											</tr>
+											<tr>
+												<th>php (fpm)</th>
+												<td>./cfg/php-fpm-<?php echo loadClass('Helper')->getEnv('PHP_SERVER'); ?></td>
+												<td>/etc/php-fpm-custom.d</td>
 											</tr>
 											<tr>
 												<th>httpd</th>
