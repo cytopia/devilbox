@@ -19,7 +19,7 @@
 
 				<div class="col-md-6">
 					<h2>Contributors</h2>
-					<p>The following people have contributed to the <a href="https://github.com/cytopia/devilbox">Devilbox</a>.</p>
+					<p>The following people have contributed to the <a href="https://github.com/cytopia/devilbox/graphs/contributors">Devilbox</a>.</p>
 					<table class="table table-striped ">
 						<thead class="thead-inverse ">
 							<tr>
