@@ -378,7 +378,7 @@ HTML;
 
 					// Replace
 					if ($el['path'] == '__PHPMYADMIN__') {
-						$el['path'] = (strpos(loadClass('Php')->getVersion(), '5.4') !== false) ? '/vendor/phpmyadmin-4.0/index.php' : '/vendor/phpmyadmin-4.7/index.php';
+						$el['path'] = (strpos(loadClass('Php')->getVersion(), '5.4') !== false) ? '/vendor/phpmyadmin-4.0/index.php' : '/vendor/phpmyadmin-4.8/index.php';
 					}
 
 					$target = isset($el['target']) ? 'target="'.$el['target'].'"' : '';
