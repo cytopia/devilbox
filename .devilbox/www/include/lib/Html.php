@@ -91,7 +91,7 @@ class Html
 				),
 				array(
 					'name' => 'Adminer',
-					'path' => '/vendor/adminer-4.3.1-en.php',
+					'path' => '/vendor/adminer-4.6.2-en.php',
 					'target' => '_blank'
 				),
 				array(
