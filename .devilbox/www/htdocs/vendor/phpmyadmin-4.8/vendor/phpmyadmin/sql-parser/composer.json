@@ -1,0 +1,47 @@
+{
+    "name": "phpmyadmin/sql-parser",
+    "description": "A validating SQL lexer and parser with a focus on MySQL dialect.",
+    "license": "GPL-2.0+",
+    "keywords": ["sql", "lexer", "parser", "analysis"],
+    "homepage": "https://github.com/phpmyadmin/sql-parser",
+    "authors": [
+        {
+            "name": "The phpMyAdmin Team",
+            "email": "developers@phpmyadmin.net",
+            "homepage": "https://www.phpmyadmin.net/team/"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/phpmyadmin/sql-parser/issues",
+        "source": "https://github.com/phpmyadmin/sql-parser"
+    },
+    "require": {
+        "php": ">=5.3.0",
+        "symfony/polyfill-mbstring": "^1.3"
+    },
+    "require-dev": {
+        "phpunit/php-code-coverage": "*",
+        "phpunit/phpunit": "~4.8 || ~5.7"
+    },
+    "conflict": {
+        "phpmyadmin/motranslator": "<3.0"
+    },
+    "suggest": {
+        "ext-mbstring": "For best performance",
+        "phpmyadmin/motranslator": "Translate messages to your favorite locale"
+    },
+    "bin": [
+        "bin/highlight-query",
+        "bin/lint-query"
+    ],
+    "autoload": {
+        "psr-4": {
+            "PhpMyAdmin\\SqlParser\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpMyAdmin\\SqlParser\\Tests\\": "tests"
+        }
+    }
+}

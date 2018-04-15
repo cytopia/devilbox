@@ -91,7 +91,7 @@ class Html
 				),
 				array(
 					'name' => 'Adminer',
-					'path' => '/vendor/adminer-4.3.1-en.php',
+					'path' => '/vendor/adminer-4.6.2-en.php',
 					'target' => '_blank'
 				),
 				array(
@@ -378,7 +378,7 @@ HTML;
 
 					// Replace
 					if ($el['path'] == '__PHPMYADMIN__') {
-						$el['path'] = (strpos(loadClass('Php')->getVersion(), '5.4') !== false) ? '/vendor/phpmyadmin-4.0/index.php' : '/vendor/phpmyadmin-4.7/index.php';
+						$el['path'] = (strpos(loadClass('Php')->getVersion(), '5.4') !== false) ? '/vendor/phpmyadmin-4.0/index.php' : '/vendor/phpmyadmin-4.8/index.php';
 					}
 
 					$target = isset($el['target']) ? 'target="'.$el['target'].'"' : '';

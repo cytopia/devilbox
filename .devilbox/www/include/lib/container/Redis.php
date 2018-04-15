@@ -37,19 +37,17 @@ class Redis extends BaseClass implements BaseInterface
 	{
 		parent::__construct($hostname, $data);
 
-		// Silence errors and try to connect
-		error_reporting(0);
-		$redis = new \Redis();
-
-		if (!$redis->connect($hostname, 6379)) {
-			$this->setConnectError('Failed to connect to Redis host on '.$hostname);
-			$this->setConnectErrno(1);
-			//loadClass('Logger')->error($this->_connect_error);
-		} else {
-			$redis->set('devilbox-version', $GLOBALS['DEVILBOX_VERSION'].' ('.$GLOBALS['DEVILBOX_DATE'].')');
-			$this->_redis = $redis;
+		if ($this->isAvailable()) {
+			$redis = new \Redis();
+			if (!@$redis->connect($hostname, 6379, 0.5, NULL)) {
+				$this->setConnectError('Failed to connect to Redis host on '.$hostname);
+				$this->setConnectErrno(1);
+				//loadClass('Logger')->error($this->_connect_error);
+			} else {
+				$redis->set('devilbox-version', $GLOBALS['DEVILBOX_VERSION'].' ('.$GLOBALS['DEVILBOX_DATE'].')');
+				$this->_redis = $redis;
+			}
 		}
-		error_reporting(-1);
 	}
 
 	/**

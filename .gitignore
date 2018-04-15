@@ -13,14 +13,11 @@
 # CUSTOM
 ######################################
 
-# Keep folders
-!.keepme
-
 # Ignore variable dat
 /.env
 /log/[a-z0-9-]*
-/data/
-/backups/
+/data/*
+/backups/*
 
 # Ignore custom HTTPD configs
 /cfg/apache-2.2/*.conf
@@ -41,14 +38,23 @@
 /cfg/percona-5.6/*.cnf
 /cfg/percona-5.7/*.cnf
 
+# Ignore custom PHP.ini configs
+/cfg/php-ini-5.4/*.ini
+/cfg/php-ini-5.5/*.ini
+/cfg/php-ini-5.6/*.ini
+/cfg/php-ini-7.0/*.ini
+/cfg/php-ini-7.1/*.ini
+/cfg/php-ini-7.2/*.ini
+#/cfg/hhvm-latest/*.ini
+
 # Ignore custom PHP-FPM configs
-/cfg/php-fpm-5.4/*.ini
-/cfg/php-fpm-5.5/*.ini
-/cfg/php-fpm-5.6/*.ini
-/cfg/php-fpm-7.0/*.ini
-/cfg/php-fpm-7.1/*.ini
-/cfg/php-fpm-7.2/*.ini
-/cfg/hhvm-latest/*.ini
+/cfg/php-fpm-5.4/*.conf
+/cfg/php-fpm-5.5/*.conf
+/cfg/php-fpm-5.6/*.conf
+/cfg/php-fpm-7.0/*.conf
+/cfg/php-fpm-7.1/*.conf
+/cfg/php-fpm-7.2/*.conf
+#/cfg/hhvm-latest/*.conf
 
 # Ignore custom PHP-FPM modules
 /mod/php-fpm-5.4/*.so
@@ -57,12 +63,21 @@
 /mod/php-fpm-7.0/*.so
 /mod/php-fpm-7.1/*.so
 /mod/php-fpm-7.2/*.so
-/mod/hhvm-latest/*.so
+#/mod/hhvm-latest/*.so
 
 # Ignore custom bash and other confi files
 /bash/*
 !/bash/bashrc.sh-example
 !/bash/README.md
+
+# Ignore documentation sphinx build
+/docs/_build/
+/docs/make.bat
+/docs/Makefile
+
+# Keep folders
+!.keepme
+
 
 ######################################
 # GENERIC

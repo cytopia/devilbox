@@ -37,7 +37,7 @@ class Mysql extends BaseClass implements BaseInterface
 
 		// Silence errors and try to connect
 		error_reporting(0);
-		$link = mysqli_connect($hostname, $user, $pass);
+		$link = @mysqli_connect($hostname, $user, $pass);
 		error_reporting(-1);
 
 		if (mysqli_connect_errno()) {

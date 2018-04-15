@@ -1,0 +1,16 @@
+/* overwrite logo dimensions */
+.wy-side-nav-search>a img.logo,
+.wy-side-nav-search .wy-dropdown>a img.logo {
+	width: 128px;
+}
+
+/* overwrite top-left serach div */
+.wy-side-nav-search {
+	background-color: #343131;
+}
+
+/*
+div.rtd-pro.rtd-pro-footer {
+	display: none;
+}
+*/

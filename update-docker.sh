@@ -22,12 +22,12 @@ docker pull cytopia/bind:${TAG}
 ### PHP
 ###
 TAG="$( grep '^[[:space:]]*image:.*\${PHP_SERVER' "${CWD}/docker-compose.yml" | sed 's/^.*://g' )"
-docker pull cytopia/php-fpm-5.4:${TAG}
-docker pull cytopia/php-fpm-5.5:${TAG}
-docker pull cytopia/php-fpm-5.6:${TAG}
-docker pull cytopia/php-fpm-7.0:${TAG}
-docker pull cytopia/php-fpm-7.1:${TAG}
-docker pull cytopia/hhvm-latest:${TAG}
+docker pull devilbox/php-fpm:5.4-work
+docker pull devilbox/php-fpm:5.5-work
+docker pull devilbox/php-fpm:5.6-work
+docker pull devilbox/php-fpm:7.0-work
+docker pull devilbox/php-fpm:7.1-work
+#docker pull cytopia/hhvm-latest:${TAG}
 
 ###
 ### HTTPD
@@ -61,6 +61,10 @@ docker pull postgres:9.3
 docker pull postgres:9.4
 docker pull postgres:9.5
 docker pull postgres:9.6
+docker pull postgres:10.0
+docker pull postgres:10.1
+docker pull postgres:10.2
+docker pull postgres:10.3
 
 ###
 ### REDIS
@@ -68,6 +72,7 @@ docker pull postgres:9.6
 docker pull redis:2.8
 docker pull redis:3.0
 docker pull redis:3.2
+docker pull redis:4.0
 
 ###
 ### MEMCACHED
@@ -88,6 +93,15 @@ docker pull memcached:1.4.33
 docker pull memcached:1.4.34
 docker pull memcached:1.4.35
 docker pull memcached:1.4.36
+docker pull memcached:1.4.37
+docker pull memcached:1.4.38
+docker pull memcached:1.4.39
+docker pull memcached:1.5.0
+docker pull memcached:1.5.1
+docker pull memcached:1.5.2
+docker pull memcached:1.5.3
+docker pull memcached:1.5.4
+docker pull memcached:1.5.5
 docker pull memcached:latest
 
 ###
@@ -98,4 +112,6 @@ docker pull mongo:3.0
 docker pull mongo:3.2
 docker pull mongo:3.4
 docker pull mongo:3.5
+docker pull mongo:3.6
+docker pull mongo:3.7
 

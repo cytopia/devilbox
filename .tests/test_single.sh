@@ -61,7 +61,7 @@ set_host_port_pgsql "5432"
 ###
 ### Default values for container
 ###
-DEF_PHP="php-fpm-7.0"
+DEF_PHP="7.0"
 DEF_HTTPD="nginx-stable"
 DEF_MYSQL="mariadb-10.0"
 DEF_PGSQL="9.6"

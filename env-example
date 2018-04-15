@@ -22,6 +22,20 @@ DEBUG_COMPOSE_ENTRYPOINT=1
 
 
 ###
+### Log to file or Docker logs.
+###
+### Logging to file means log files are available under log/
+### on your host operating system.
+### Logging to Docker logs means log files are streamed to
+### stdout and stderr.
+###
+### 1: Log to Docker logs
+### 0: Log to file
+###
+DOCKER_LOGS=0
+
+
+###
 ### Relative or absolute path to the devilbox repository.
 ### (Used as a prefix for all mount paths)
 ### There is no need to change this.
@@ -168,13 +182,12 @@ DEVILBOX_UI_DISABLE=0
 ###
 ### 1.1 Choose PHP Server Image
 ###
-#PHP_SERVER=php-fpm-5.4
-#PHP_SERVER=php-fpm-5.5
-#PHP_SERVER=php-fpm-5.6
-#PHP_SERVER=php-fpm-7.0
-PHP_SERVER=php-fpm-7.1
-#PHP_SERVER=php-fpm-7.2
-#PHP_SERVER=hhvm-latest
+#PHP_SERVER=5.4
+#PHP_SERVER=5.5
+#PHP_SERVER=5.6
+#PHP_SERVER=7.0
+#PHP_SERVER=7.1
+PHP_SERVER=7.2
 
 
 ###
@@ -213,6 +226,9 @@ MYSQL_SERVER=mariadb-10.1
 #PGSQL_SERVER=9.5
 PGSQL_SERVER=9.6
 #PGSQL_SERVER=10.0
+#PGSQL_SERVER=10.1
+#PGSQL_SERVER=10.2
+#PGSQL_SERVER=10.3
 
 
 ###
@@ -248,7 +264,10 @@ REDIS_SERVER=4.0
 #MEMCD_SERVER=1.4.39
 #MEMCD_SERVER=1.5.0
 #MEMCD_SERVER=1.5.1
-MEMCD_SERVER=1.5.2
+#MEMCD_SERVER=1.5.2
+#MEMCD_SERVER=1.5.3
+#MEMCD_SERVER=1.5.4
+MEMCD_SERVER=1.5.5
 #MEMCD_SERVER=latest
 
 
@@ -258,8 +277,10 @@ MEMCD_SERVER=1.5.2
 #MONGO_SERVER=2.8
 #MONGO_SERVER=3.0
 #MONGO_SERVER=3.2
-MONGO_SERVER=3.4
+#MONGO_SERVER=3.4
 #MONGO_SERVER=3.5
+#MONGO_SERVER=3.6
+MONGO_SERVER=3.7
 
 
 
@@ -350,21 +371,9 @@ HOST_PATH_MONGO_DATADIR=./data/mongo
 ###
 ################################################################################
 
-###
-### Xdebug
-###
-
-# Enable/Disable Xdebug
-PHP_XDEBUG_ENABLE=1
-
-# Your local port (your computer host [not the docker])
-# where your ide/editor is listening for xdebug connections.
-PHP_XDEBUG_REMOTE_PORT=9000
-
-# Your local IP address (your computer host [not the docker])
-# where your ide/editor is listening for xdebug connections.
-PHP_XDEBUG_REMOTE_HOST=192.168.0.215
-## TODO: Check if it works by automatically sending it to the broadcast address
+# None
+#
+# Configure everything about PHP in cfg/php-fpm-X.X/*.ini
 
 
 

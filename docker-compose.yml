@@ -63,7 +63,7 @@ services:
   # PHP / HHVM
   # ------------------------------------------------------------
   php:
-    image: cytopia/${PHP_SERVER:-php-fpm-7.0}:latest
+    image: devilbox/php-fpm:${PHP_SERVER:-7.0}-work
     restart: always
 
     ##
@@ -77,9 +77,11 @@ services:
 
     environment:
       ##
-      ## Debug?
+      ## Debug/Logging
       ##
+      - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
       - DEBUG_COMPOSE_ENTRYPOINT
+      - DOCKER_LOGS
 
       ##
       ## UserID and GroupID
@@ -91,13 +93,6 @@ services:
       ## Adjust timezone
       ##
       - TIMEZONE
-
-      ##
-      ## PHP Xdebug
-      ##
-      - PHP_XDEBUG_ENABLE
-      - PHP_XDEBUG_REMOTE_PORT
-      - PHP_XDEBUG_REMOTE_HOST
 
       ##
       ## Mail-catching
@@ -136,7 +131,7 @@ services:
       - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/${PHP_SERVER}:/var/log/php
+      - ${DEVILBOX_PATH}/log/php-fpm-${PHP_SERVER}:/var/log/php
 
       # Mount Mail directory
       #- ${DEVILBOX_PATH}/run/mail:/var/mail
@@ -145,12 +140,16 @@ services:
       - ${DEVILBOX_PATH}/backups:/shared/backups
 
       # Mount devilbox user-defined *.ini files in order
-      # to overwrite the default PHP configuration
-      - ${DEVILBOX_PATH}/cfg/${PHP_SERVER}:/etc/php-custom.d:ro
+      # to overwrite the default PHP.ini configuration
+      - ${DEVILBOX_PATH}/cfg/php-ini-${PHP_SERVER}:/etc/php-custom.d:ro
+
+      # Mount devilbox user-defined PHP-FPM *.conf files in order
+      # to overwrite the default PHP-FPM configuration
+      - ${DEVILBOX_PATH}/cfg/php-fpm-${PHP_SERVER}:/etc/php-fpm-custom.d:ro
 
       # Mount devilbox user-defined *.so files in order
       # to load custom PHP modules
-      - ${DEVILBOX_PATH}/mod/${PHP_SERVER}:/usr/lib64/php/custom-modules:ro
+      - ${DEVILBOX_PATH}/mod/php-fpm-${PHP_SERVER}:/usr/lib64/php/custom-modules:ro
 
       # Mount devilbox user-defined bash config
       - ${DEVILBOX_PATH}/bash:/etc/bashrc-devilbox.d
@@ -163,16 +162,17 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.12
+    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.13
     restart: always
 
     environment:
 
       ##
-      ## Debug?
+      ## Debug/Logging
       ##
       - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
       - DEBUG_RUNTIME=${DEBUG_COMPOSE_ENTRYPOINT}
+      - DOCKER_LOGS
 
       ##
       ## Adjust timezone
