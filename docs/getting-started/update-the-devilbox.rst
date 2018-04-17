@@ -29,7 +29,7 @@ stop all devilbox containers:
    host> docker-compose stop
 
    # Ensure containers are stopped
-   host> docker-compse ps
+   host> docker-compose ps
 
 Case 1: Update master branch
 ----------------------------
