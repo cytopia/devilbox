@@ -65,6 +65,8 @@ host is ready to be served with your custom domain.
    :maxdepth: 2
    :caption: Tutorials
 
+   tutorials/add-your-own-docker-image
+   tutorials/overwrite-existing-docker-image
    tutorials/adding-subdomains
    tutorials/configure-database-in-your-project
    tutorials/change-document-root
@@ -124,6 +126,8 @@ host is ready to be served with your custom domain.
    :maxdepth: 2
 
    configuration-files/env-file
+   configuration-files/docker-compose-yml
+   configuration-files/docker-compose-override-yml
    configuration-files/apache-conf
    configuration-files/nginx-conf
    configuration-files/php-ini
@@ -158,7 +162,6 @@ host is ready to be served with your custom domain.
 
    support/faq
    support/troubleshooting
-   support/hacking
    support/contributing
    support/blogs-videos-and-use-cases
    support/artwork
