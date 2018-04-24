@@ -155,16 +155,23 @@ In case of the Devilbox ``.env`` file, just store this file in your repository a
 the Devilbox git directiry. This way you make sure that you keep your file, even when the Devilbox
 git directory is deleted and you also have a means of keeping track about changes you made.
 
+You could also go further and have several ``.env`` files available somewhere. Each of those files
+holds different configurations e.g. for different projects or customers.
+
+* ``env-customer1``
+* ``env-php55``
+* ``env-project3``
+
+You would then simply symlink one of those files to the Devilbox git directory.
+
 
 Version control service config files
 ------------------------------------
 
 .. todo:: This will require some changes on the Devilbox and will be implemented shortly.
 
-
-symlink and have your own git directory
-
-Separate data partition, backups
+* Symlink and have your own git directory
+* Separate data partition, backups
 
 
 PHP project hostname settings
