@@ -1,0 +1,23 @@
+# IMPORTANT: The version must match the version of docker-compose.yml
+version: '2.1'
+
+# The following override shows an example for the cockroachdb
+services:
+  # Your custom Docker image here:
+  cockroach:
+    image: cockroachdb/cockroach:latest
+    command: start --insecure
+    # Ensure the chosen ports are not occupied on the host system
+    ports:
+      - "${LOCAL_LISTEN_ADDR}26257:26257"
+      - "${LOCAL_LISTEN_ADDR}8080:8080"
+    networks:
+      app_net:
+        # Ensure to pick an IP address from docker-compose.yml network
+        # that is not yet taken by other sevices
+        ipv4_address: 172.16.238.200
+    # (Optional) For ease of use always automatically start these:
+    depends_on:
+      - bind
+      - php
+      - httpd
