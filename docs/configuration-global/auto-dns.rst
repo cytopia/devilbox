@@ -160,3 +160,20 @@ Windows
 * Port ``53`` from the Docker Toolbox virtual machine must be port-forwarded to ``127.0.0.1:53`` on your host os
 
 .. todo:: This section needs further proof and information.
+
+
+Custom DNS Entires
+==================
+
+If you like the features of Auto-DNS, but have a more complicated setup, you can pass in additional DNS records in your env file.
+
+This is done with the `CUSTOM_DNS` environment variable.
+
+Because docker does not support arrays or more complicated structures, you can input a key/pair string in the following format:
+.. code-block:: bash
+    :caption: .env
+    :name: .env
+    
+    CUSTOM_DNS="special=172.16.238.250,special2=172.16.238.251"
+
+These custom dns entries go above the wildcard record to allow you to set exceptions to the main wildcard record.

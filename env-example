@@ -87,6 +87,19 @@ TLD_SUFFIX=loc
 
 
 ###
+### Optional DNS configuration
+### Allows you to add extra DNS records (above the wildcard entry)
+###
+### Example:
+###   CUSTOM_DNS="special=172.168.1.250,special2=172.168.1.253"
+###   TLD_SUFFIX=loc
+### Makes two new dns entries:
+###    special.loc -> 172.168.1.250
+###    special2.loc -> 172.168.1.253
+# CUSTOM_DNS="special=172.168.1.250"
+
+
+###
 ### Set your user id and group id
 ###
 ### This should be changed to the value of your local
