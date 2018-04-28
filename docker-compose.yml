@@ -34,7 +34,7 @@ services:
   # Bind (DNS Server)
   # ------------------------------------------------------------
   bind:
-    image: cytopia/bind:0.14
+    image: cytopia/bind:0.15
     restart: always
     ports:
       # [local-machine:]local-port:docker-port
@@ -79,6 +79,11 @@ services:
 
     dns:
       - 127.0.0.1
+
+    # MacOS and Windows have this by default, this hack also allows it for Linux
+    extra_hosts:
+      docker.for.lin.host.internal: 172.16.238.1
+      docker.for.lin.localhost: 172.16.238.1
 
     networks:
       app_net:
@@ -137,14 +142,17 @@ services:
       - MYSQL_BACKUP_PASS=${MYSQL_ROOT_PASSWORD}
       - MYSQL_BACKUP_HOST=mysql
 
+    dns:
+      - 172.16.238.100
+
+    # MacOS and Windows have this by default, this hack also allows it for Linux
+    extra_hosts:
+      docker.for.lin.host.internal: 172.16.238.1
+      docker.for.lin.localhost: 172.16.238.1
+
     networks:
       app_net:
         ipv4_address: 172.16.238.10
-
-    dns:
-      - 172.16.238.100
-      - 8.8.8.8
-      - 8.8.4.4
 
     volumes:
       # ---- Format: ----

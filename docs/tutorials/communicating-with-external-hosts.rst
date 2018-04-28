@@ -24,8 +24,15 @@ There are two things you need to make sure of are met beforehand:
 Host IP: Docker on Linux
 ------------------------
 
-If you run Docker on Linux the host IP is usually ``172.17.0.1``.
+If you run Docker on Linux the host IP is always ``172.16.238.1``, which is the default gateway
+IP address within the Devilbox bridge network (see ``docker-compose.yml``).
 
+By default Docker on Linux does not have CNAME's of the host computer as for example with MacOS
+or Windows, therefore two custom CNAME's have been added by the Devilbox in order to emulate the
+same behaviour:
+
+* CNAME: ``docker.for.lin.host.internal``
+* CNAME: ``docker.for.lin.localhost``
 
 Host IP: Docker for Mac
 -----------------------
@@ -96,13 +103,29 @@ Mapping on Linux
 ^^^^^^^^^^^^^^^^
 
 If you are running Linux as your host operating system you would use the IP address of the host
-computer which was identified as ``172.17.0.1``.
+computer which was identified as ``172.16.238.1``.
 
 .. code-block:: bash
     :name: .env
     :caption: .env
 
-    EXTRA_HOSTS=mywebserver.loc=172.17.0.1
+    EXTRA_HOSTS=mywebserver.loc=172.16.238.1
+
+or
+
+.. code-block:: bash
+    :name: .env
+    :caption: .env
+
+    EXTRA_HOSTS=mywebserver.loc=docker.for.lin.host.internal
+
+or
+
+.. code-block:: bash
+    :name: .env
+    :caption: .env
+
+    EXTRA_HOSTS=mywebserver.loc=docker.for.lin.localhost
 
 
 Mapping on MacOS
