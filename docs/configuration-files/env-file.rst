@@ -245,6 +245,76 @@ this project visible to everyone in your corporate LAN.
     and
     `Docker Release notes <https://docs.docker.com/docker-for-mac/release-notes/#docker-community-edition-17120-ce-mac46-2018-01-09>`_
 
+.. _env_extra_hosts:
+
+EXTRA_HOSTS
+-----------
+
+This variable allows you to add additional DNS entries from hosts outside the Devilbox network,
+such as hosts running on your host operating system, the LAN or from the internet.
+
++-----------------+------------------------------+---------------+
+| Name            | Allowed values               | Default value |
++=================+==============================+===============+
+| ``EXTRA_HOSTS`` | comma separated host mapping | empty         |
++-----------------+------------------------------+---------------+
+
+Adding hosts can be done in two ways:
+
+1. Add DNS entry for an IP address
+2. Add DNS entry for a hostname/CNAME which will be mapped to whatever IP address it will resolve
+
+
+The general structure to add extra hosts looks like this
+
+.. code-block:: bash
+
+    # Single host
+    EXTRA_HOSTS='hostname=1.1.1.1'
+    EXTRA_HOSTS='hostname=CNAME'
+
+    # Multiple hosts
+    EXTRA_HOSTS='hostname1=1.1.1.1,hostname2=2.2.2.2'
+    EXTRA_HOSTS='hostname1=CNAME1,hostname2=CNAME2'
+
+* The left side represents the name by which the host will be available by
+* The right side represents the IP address by which the new name will resolve to
+* If the right side is a CNAME itself, it will be first resolved to an IP address and then the left side will resolve to that IP address.
+
+A few examples for adding extra hosts:
+
+.. code-block:: bash
+
+    # 1. One entry:
+    # The following extra host 'loc' is added and will always point to 192.168.0.7.
+    # When reverse resolving '192.168.0.7' it will answer with 'tld'.
+    EXTRA_HOSTS='loc=192.168.0.7'
+
+    # 2. One entry:
+    # The following extra host 'my.host.loc' is added and will always point to 192.168.0.9.
+    # When reverse resolving '192.168.0.9' it will answer with 'my.host'.
+    EXTRA_HOSTS='my.host.loc=192.168.0.9'
+
+    # 3. Two entries:
+    # The following extra host 'tld' is added and will always point to 192.168.0.1.
+    # When reverse resolving '192.168.0.1' it will answer with 'tld'.
+    # A second extra host 'example.org' is added and always redirects to 192.168.0.2
+    # When reverse resolving '192.168.0.2' it will answer with 'example.org'.
+    EXTRA_HOSTS='tld=192.168.0.1,example.org=192.168.0.2'
+
+    # 4. Using CNAME's for resolving:
+    # The following extra host 'my.host' is added and will always point to whatever
+    # IP example.org resolves to.
+    # When reverse resolving '192.168.0.1' it will answer with 'my.host'.
+    EXTRA_HOSTS='my.host=example.org'
+
+.. seealso::
+
+    This resembles the feature of `Docker Compose: extra_hosts <https://docs.docker.com/compose/compose-file/#external_links>`_ to add external links.
+
+.. seealso:: :ref:`communicating_with_external_hosts`
+
+
 .. _env_new_uid:
 
 NEW_UID
@@ -1335,10 +1405,121 @@ Auto-DNS) in order to resolve custom project domains defined by ``TLD_SUFFIX``.
 To also be able to reach the internet from within the Container there must be some kind of
 upstream DNS server to ask for queries.
 
+Some examples:
+
+.. code-block:: bash
+
+    BIND_DNS_RESOLVER='8.8.8.8'
+    BIND_DNS_RESOLVER='8.8.8.8,192.168.0.10'
+
+
 .. note::
     If you don't trust the Google DNS server, then set it to something else.
     If you already have a DNS server inside your LAN and also want your custom DNS (if any)
     to be available inside the containers, set the value to its IP address.
+
+
+BIND_DNSSEC_VALIDATE
+^^^^^^^^^^^^^^^^^^^^
+
+This variable controls the DNSSEC validation of the DNS server. By default it is turned off.
+
++--------------------------+--------------------------------------+---------------------+
+| Name                     | Allowed values                       | Default value       |
++==========================+======================================+=====================+
+| ``BIND_DNSSEC_VALIDATE`` | ``no``, ``auto``, ``yes``            | ``no``              |
++--------------------------+--------------------------------------+---------------------+
+
+* ``yes`` - DNSSEC validation is enabled, but a trust anchor must be manually configured. No validation will actually take place.
+* ``no`` - DNSSEC validation is disabled, and recursive server will behave in the "old fashioned" way of performing insecure DNS lookups, until you have manually configured at least one trusted key.
+* ``auto`` - DNSSEC validation is enabled, and a default trust anchor (included as part of BIND) for the DNS root zone is used.
+
+BIND_LOG_DNS
+^^^^^^^^^^^^
+
+This variable controls if DNS queries should be shown in Docker log output or not. By default no
+DNS queries are shown.
+
++--------------------------+------------------------+---------------------+
+| Name                     | Allowed values         | Default value       |
++==========================+========================+=====================+
+| ``BIND_LOG_DNS``         | ``1`` or ``0``         | ``0``               |
++--------------------------+------------------------+---------------------+
+
+If enabled all DNS queries are shown. This is useful for debugging.
+
+
+BIND_TTL_TIME
+^^^^^^^^^^^^^
+
+This variable controls the DNS TTL in seconds. If empty or removed it will fallback to a sane default.
+
++--------------------------+----------------------+---------------------+
+| Name                     | Allowed values       | Default value       |
++==========================+======================+=====================+
+| ``BIND_TTL_TIME``        | integer              | empty               |
++--------------------------+----------------------+---------------------+
+
+.. seealso::
+
+    * `BIND TTL <http://www.zytrax.com/books/dns/apa/ttl.html>`_
+    * `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+
+BIND_REFRESH_TIME
+^^^^^^^^^^^^^^^^^
+
+This variable controls the DNS Refresh time in seconds. If empty or removed it will fallback to a sane default.
+
++--------------------------+----------------------+---------------------+
+| Name                     | Allowed values       | Default value       |
++==========================+======================+=====================+
+| ``BIND_REFRESH_TIME``    | integer              | empty               |
++--------------------------+----------------------+---------------------+
+
+.. seealso:: `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+
+BIND_RETRY_TIME
+^^^^^^^^^^^^^^^
+
+This variable controls the DNS Retry time in seconds. If empty or removed it will fallback to a sane default.
+
++--------------------------+----------------------+---------------------+
+| Name                     | Allowed values       | Default value       |
++==========================+======================+=====================+
+| ``BIND_RETRY_TIME``      | integer              | empty               |
++--------------------------+----------------------+---------------------+
+
+.. seealso:: `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+
+BIND_EXPIRY_TIME
+^^^^^^^^^^^^^^^^
+
+This variable controls the DNS Expiry time in seconds. If empty or removed it will fallback to a sane default.
+
++--------------------------+----------------------+---------------------+
+| Name                     | Allowed values       | Default value       |
++==========================+======================+=====================+
+| ``BIND_EXPIRY_TIME``     | integer              | empty               |
++--------------------------+----------------------+---------------------+
+
+.. seealso:: `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+
+BIND_MAX_CACHE_TIME
+^^^^^^^^^^^^^^^^^^^
+
+This variable controls the DNS Max Cache time in seconds. If empty or removed it will fallback to a sane default.
+
++--------------------------+----------------------+---------------------+
+| Name                     | Allowed values       | Default value       |
++==========================+======================+=====================+
+| ``BIND_MAX_CACHE_TIME``  | integer              | empty               |
++--------------------------+----------------------+---------------------+
+
+.. seealso:: `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+
+
+
+
 
 
 .. |br| raw:: html

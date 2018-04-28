@@ -65,6 +65,7 @@ host is ready to be served with your custom domain.
    :maxdepth: 2
    :caption: Tutorials
 
+   tutorials/communicating-with-external-hosts
    tutorials/add-your-own-docker-image
    tutorials/overwrite-existing-docker-image
    tutorials/adding-subdomains

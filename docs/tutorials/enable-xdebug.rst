@@ -164,7 +164,7 @@ Docker 18.03.0-ce+ and Docker compose 1.20.1+
     :caption: xdebug.ini
     :emphasize-lines: 1
 
-    xdebug.remote_host=docker.for.mac.host.internal
+    xdebug.remote_host=docker.for.win.host.internal
     xdebug.remote_connect_back=0
 
 Docker 17.06.0-ce+ and Docker compose 1.14.0+
@@ -174,7 +174,7 @@ Docker 17.06.0-ce+ and Docker compose 1.14.0+
     :caption: xdebug.ini
     :emphasize-lines: 1
 
-    xdebug.remote_host=docker.for.mac.host.internal
+    xdebug.remote_host=docker.for.win.host.localhost
     xdebug.remote_connect_back=0
 
 If you have older versions, upgrade.
