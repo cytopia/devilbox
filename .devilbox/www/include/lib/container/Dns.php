@@ -56,7 +56,7 @@ class Dns extends BaseClass implements BaseInterface
 		$output = loadClass('Helper')->exec($cmd);
 
 		$version = loadClass('Helper')->egrep('/"[0-9.-]+.*"/', $output);
-		$version = loadClass('Helper')->egrep('/[0-9.-]+/', $version);
+		$version = loadClass('Helper')->egrep('/[0-9.-]+[0-9]+/', $version);
 
 		// Cache and return
 		$this->_version = $version ? $version : '';
