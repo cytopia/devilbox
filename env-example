@@ -87,6 +87,29 @@ TLD_SUFFIX=loc
 
 
 ###
+### Optional DNS configuration
+### Allows you to add extra DNS records (above the wildcard entry)
+### Useful if your host computer run other Docker services that you want to connect to or reach
+### from within the Devilbox network by a custom hostname.
+###
+### Format:
+### -------
+### Resolve any custom defined hostname to an IP address (useable inside container and host os)
+###     EXTRA_HOSTS=<hostname>=<ip>[,<hostname>=<ip>]
+###
+### Resolve any custom defined hostname to whatever IP address a CNAME resolves to
+### (Useable inside the container and host OS).
+### Note: CNAME must be resolvable by Google DNS
+###     EXTRA_HOSTS=<hostname>=<CNAME>[,<hostname>=<CNAME>]
+###
+### Examples:
+### ---------
+### EXTRA_HOSTS=hostname.loc=1.2.3.4
+### EXTRA_HOSTS=host.loc=1.2.3.4,host.example.org=3.4.5.6
+EXTRA_HOSTS=
+
+
+###
 ### Set your user id and group id
 ###
 ### This should be changed to the value of your local
@@ -517,6 +540,35 @@ HOST_PORT_BIND=1053
 ### You can also add DNS servers from your LAN (if any are available)
 ###
 BIND_DNS_RESOLVER=8.8.8.8,8.8.4.4
+
+###
+### Validate DNSSEC
+###
+### Values:
+###  no:    DNSSEC validation is disabled
+###  yes:   DNSSEC validation is enabled, but a trust anchor must be manually configured.
+###  auto:  DNSSEC validation is enabled, and a default trust anchor for root zone is used.
+###
+BIND_DNSSEC_VALIDATE=no
+
+###
+### Bind timing options (time in seconds)
+###
+### Leave empty for defaults.
+### Only change when you know what you are doing.
+###
+BIND_TTL_TIME=
+BIND_REFRESH_TIME=
+BIND_RETRY_TIME=
+BIND_EXPIRY_TIME=
+BIND_MAX_CACHE_TIME=
+
+###
+### Show DNS Queries in Docker logs output?
+###
+### 1: Yes
+### 0: No
+BIND_LOG_DNS_QUERIES=0
 
 
 
