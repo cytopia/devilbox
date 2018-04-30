@@ -52,6 +52,8 @@ vhost: |
       access_log   "__ACCESS_LOG__" combined;
       error_log    "__ERROR_LOG__" warn;
 
+  __REDIRECT__
+  __SSL__
   __VHOST_DOCROOT__
   __VHOST_RPROXY__
   __PHP_FPM__
@@ -87,6 +89,18 @@ vhost_type:
 ### Optional features to be enabled in vHost
 ###
 features:
+
+  # SSL Configuration
+  ssl: |
+    ssl_certificate           __SSL_PATH_CRT__;
+    ssl_certificate_key       __SSL_PATH_KEY__;
+    ssl_protocols             __SSL_PROTOCOLS__;
+    ssl_prefer_server_ciphers __SSL_HONOR_CIPHER_ORDER__;
+    ssl_ciphers               __SSL_CIPHERS__;
+
+  # Redirect to SSL directive
+  redirect: |
+    return 301 https://__VHOST_NAME__:__SSL_PORT__$request_uri;
 
   # PHP-FPM will not be applied to a reverse proxy!
   php_fpm: |
