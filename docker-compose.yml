@@ -266,6 +266,9 @@ services:
       # Mount logs
       - ${DEVILBOX_PATH}/log/${HTTPD_SERVER}:/var/log/${HTTPD_SERVER}
 
+      # Certificate Authority public key
+      - ${DEVILBOX_PATH}/ca:/ca
+
     depends_on:
       - bind
       - php
