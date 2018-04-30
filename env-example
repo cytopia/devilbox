@@ -410,6 +410,7 @@ HOST_PATH_MONGO_DATADIR=./data/mongo
 ### Expose HTTPD Port to Host
 ###
 HOST_PORT_HTTPD=80
+HOST_PORT_HTTPD_SSL=443
 
 ###
 ### Document Root Subdirectory

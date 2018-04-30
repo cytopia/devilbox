@@ -245,6 +245,7 @@ services:
       # ---- Format: ----
       # [HOST-ADDR : ] HOST-PORT : DOCKER-PORT
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_HTTPD}:80"
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_HTTPD_SSL}:443"
 
     networks:
       app_net:
