@@ -222,9 +222,11 @@ services:
       ##
       ## Disable default vhost?
       ##
-      - MAIN_VHOST_DISABLE=${DEVILBOX_UI_DISABLE}
+      - MAIN_VHOST_ENABLE=${DEVILBOX_UI_ENABLE}
       - MAIN_VHOST_STATUS_ENABLE=1
       - MAIN_VHOST_STATUS_ALIAS=/devilbox-httpd-status
+      - MAIN_VHOST_SSL_TYPE=both
+      - MAIN_VHOST_SSL_GEN=1
 
       ##
       ## Enable Mass Vhosts
@@ -233,6 +235,8 @@ services:
       - MASS_VHOST_TLD=.${TLD_SUFFIX}
       - MASS_VHOST_DOCROOT=${HTTPD_DOCROOT_DIR}
       - MASS_VHOST_TPL=${HTTPD_TEMPLATE_DIR}
+      - MASS_VHOST_SSL_TYPE=both
+      - MASS_VHOST_SSL_GEN=1
 
       ##
       ## PHP-FPM Remote Server

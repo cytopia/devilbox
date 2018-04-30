@@ -180,13 +180,13 @@ DEVILBOX_UI_PASSWORD=password
 
 
 ###
-### Disable the Devilbox Intranet?
+### Enable the Devilbox Intranet?
 ###
 ### Example:
-###   DEVILBOX_UI_DISABLE=1
-###   DEVILBOX_UI_DISABLE=0
+###   DEVILBOX_UI_ENABLE=1
+###   DEVILBOX_UI_ENABLE=0
 ###
-DEVILBOX_UI_DISABLE=0
+DEVILBOX_UI_ENABLE=1
 
 
 
