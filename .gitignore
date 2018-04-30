@@ -19,6 +19,9 @@
 /data/*
 /backups/*
 
+# Ignore Certificate Authority
+/ca/*
+
 # Ignore compose override file
 docker-compose.override.yml
 
