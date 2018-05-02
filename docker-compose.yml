@@ -227,6 +227,7 @@ services:
       - MAIN_VHOST_STATUS_ALIAS=/devilbox-httpd-status
       - MAIN_VHOST_SSL_TYPE=both
       - MAIN_VHOST_SSL_GEN=1
+      - MAIN_VHOST_SSL_CN=${DEVILBOX_UI_SSL_CN:-localhost}
 
       ##
       ## Enable Mass Vhosts

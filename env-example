@@ -149,6 +149,22 @@ TIMEZONE=Europe/Berlin
 DNS_CHECK_TIMEOUT=1
 
 
+
+###
+### Devilbox UI SSL Certificate generation
+###
+### When using SSL each certificate requires names for which it is responsible:
+### Common Name as well as alternative names.
+###
+### Specify comma separated hostnames below by which you want to access the Devilbox.
+### Those hostnames will be included in the SSL certificate for the Devilbox intranet.
+### This has nothing to do for SSL certificates for projects, it is just for the intranet
+### itself.
+###
+DEVILBOX_UI_SSL_CN=localhost,*.localhost,devilbox,*.devilbox
+
+
+
 ###
 ### Devilbox UI Password protection enable/disable (1/0)
 ###
