@@ -118,7 +118,7 @@
 						if (el_valid.innerHTML != 'WARN') {
 							el_valid.innerHTML = 'OK';
 						}
-						el_href.innerHTML = '<a target="_blank" href="http://'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix().loadClass('Httpd')->getPort();?>">'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix().loadClass('Httpd')->getPort();?></a>' + el_href.innerHTML;
+						el_href.innerHTML = '<a target="_blank" href="//'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix().loadClass('Httpd')->getPort();?>">'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix().loadClass('Httpd')->getPort();?></a>' + el_href.innerHTML;
 					} else {
 						//console.log(vhost);
 					}
