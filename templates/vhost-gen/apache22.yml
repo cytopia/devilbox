@@ -150,7 +150,7 @@ features:
 
   xdomain_request: |
     # Allow cross domain request from these hosts
-    SetEnvIf Origin "__REGEX__" AccessControlAllowOrigin=$0$1
+    SetEnvIf Origin "__REGEX__" AccessControlAllowOrigin=$0
     Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
     Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
     Header always set Access-Control-Max-Age "0"
