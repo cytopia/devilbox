@@ -1337,7 +1337,7 @@ As the Devilbox is intended to be used for development, this feature is turned o
 +-------------------------+-------------------+---------------------+
 | Name                    | Allowed values    | Default value       |
 +=========================+===================+=====================+
-| ``MYSQL_GENERAL_LOG``   | ``0`` or ``1``    | ``1``               |
+| ``MYSQL_GENERAL_LOG``   | ``0`` or ``1``    | ``0``               |
 +-------------------------+-------------------+---------------------+
 
 **MySQL documentation:**
