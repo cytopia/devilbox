@@ -453,7 +453,7 @@ MYSQL_ROOT_PASSWORD=
 ###
 ### Custom MySQL Runtime Settings
 ###
-MYSQL_GENERAL_LOG=1
+MYSQL_GENERAL_LOG=0
 
 ###
 ### Expose MySQL Port to Host
