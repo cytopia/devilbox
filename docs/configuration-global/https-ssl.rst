@@ -73,15 +73,15 @@ Chrome / Chromium
 Open Chrome settings, scroll down to the very bottom and click on ``Advanced`` to expand the
 advanced settings.
 
-.. image:: /_static/img/global-configuration/https-ssl-01-settings.png
+.. image:: /_static/img/global-configuration/https-ssl-01-chrome-settings.png
 
 Find the setting ``Manage certificates`` and open it.
 
-.. image:: /_static/img/global-configuration/https-ssl-02-advanced-settings.png
+.. image:: /_static/img/global-configuration/https-ssl-02-chrome-advanced-settings.png
 
 Navigate to the tab setting ``AUTHORITIES`` and click on ``IMPORT``.
 
-.. image:: /_static/img/global-configuration/https-ssl-03-authorities.png
+.. image:: /_static/img/global-configuration/https-ssl-03-chrome-authorities.png
 
 Select ``devilbox-ca.crt`` from within the Devilbox ``./ca`` directory:
 
@@ -90,12 +90,40 @@ Select ``devilbox-ca.crt`` from within the Devilbox ``./ca`` directory:
 As the last step you are asked what permissions you want to grant the newly importat CA.
 To make sure it works everywhere, check all options and proceed with ``OK``.
 
-.. image:: /_static/img/global-configuration/https-ssl-05-set-trust.png
+.. image:: /_static/img/global-configuration/https-ssl-05-chrome-set-trust.png
 
 Now you are all set and all generated SSL certificates will be valid from now on.
 
 .. image:: /_static/img/global-configuration/https-ssl-address-bar.png
 
+
+Firefox
+-------
+
+Open Firefox settings and click on ``Privacy & Security``.
+
+.. image:: /_static/img/global-configuration/https-ssl-01-firefox-settings.png
+
+At the very bottom click on the button ``View Certificates``.
+
+.. image:: /_static/img/global-configuration/https-ssl-02-firefox-security-settings.png
+
+In the ``Authories`` tab, click on ``Import``.
+
+.. image:: /_static/img/global-configuration/https-ssl-03-firefox-authorities.png
+
+Select ``devilbox-ca.crt`` from within the Devilbox ``./ca`` directory:
+
+.. image:: /_static/img/global-configuration/https-ssl-04-import.png
+
+As the last step you are asked what permissions you want to grant the newly importat CA.
+To make sure it works everywhere, check all options and proceed with ``OK``.
+
+.. image:: /_static/img/global-configuration/https-ssl-05-firefox-set-trust.png
+
+Now you are all set and all generated SSL certificates will be valid from now on.
+
+.. image:: /_static/img/global-configuration/https-ssl-address-bar.png
 
 
 Further Reading
