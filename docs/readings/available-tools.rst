@@ -66,6 +66,8 @@ The PHP container is your workhorse and these are your tools:
 +----------------------+-----------------------------------------------------------------------------------+
 | ``scss-lint``        | `SCSS Lint <https://github.com/brigade/scss-lint>`_                               |
 +----------------------+-----------------------------------------------------------------------------------+
+| ``ssh``              | `OpenSSH <https://www.openssh.com/>`_                               |
++----------------------+-----------------------------------------------------------------------------------+
 | ``symfony``          | `Symfony installer <https://github.com/symfony/symfony-installer>`_               |
 +----------------------+-----------------------------------------------------------------------------------+
 | ``tig``              | `Text-mode Interface for Git <https://github.com/jonas/tig>`_                     |
