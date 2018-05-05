@@ -450,6 +450,8 @@ hostname.
 * ``DEVILBOX_UI_SSL_CN=localhost,*.localhost,devilbox,*.devilbox``
 * ``DEVILBOX_UI_SSL_CN=intranet.example.com``
 
+.. seealso:: :ref:`configuration_https_ssl`
+
 
 .. _env_devilbox_ui_protect:
 
