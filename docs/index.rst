@@ -110,6 +110,7 @@ host is ready to be served with your custom domain.
    :caption: Global configuration
    :maxdepth: 2
 
+   configuration-global/https-ssl
    configuration-global/webserver
    configuration-global/php
    configuration-global/mysql
