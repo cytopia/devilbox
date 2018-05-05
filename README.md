@@ -21,7 +21,9 @@
 [![type](https://img.shields.io/badge/type-Docker-orange.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-The devilbox is a modern and highly customisable **dockerized PHP stack** supporting full **LAMP** and **MEAN** and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an unlimited number of projects for which vhosts and DNS records are created automatically. Email catch-all and popular development tools will be at your service as well.  Configuration is not necessary, as everything is pre-setup with mass virtual hosting.
+<img width="200" style="width:200px;" src="docs/_static/img/global-configuration/https-ssl-address-bar.png" />
+
+The devilbox is a modern and highly customisable **dockerized PHP stack** supporting full **LAMP** and **MEAN** and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an **unlimited number of projects** for which vhosts, **SSL certificates** and **DNS records** are created automatically. Email catch-all and popular development tools will be at your service as well.  Configuration is not necessary, as everything is pre-setup with mass virtual hosting.
 
 **Requirements**
 
@@ -238,6 +240,10 @@ The devilbox has everything setup for you. The only thing you will have to insta
   <tr>
     <td width="220" style="width:220px;">:star: Auto virtual hosts</td>
     <td>New virtual hosts are created automatically and instantly whenever you add a project directory. This is done internally via <a href="https://travis-ci.org/devilbox/vhost-gen">vhost-gen</a> and <a href="https://github.com/devilbox/watcherd">watcherd</a>.</td>
+  </tr>
+  <tr>
+    <td>:star: Automated SSL certificate generation</td>
+    <td>SSL certificates are automatically created for each vhost and signed by the Devilbox CA.</td>
   </tr>
   <tr>
     <td>:star: Unlimited vhosts</td>
