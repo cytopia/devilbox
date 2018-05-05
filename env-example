@@ -442,10 +442,10 @@ HTTPD_TEMPLATE_DIR=.devilbox
 ###
 ### MySQL root user password
 ###
-### If $HOST_PATH_TO_MYSQL_DATADIR already contains an existing
+### If $HOST_PATH_MYSQL_DATADIR already contains an existing
 ### mysql datadir, enter the password for the existing mysql database
 ###
-### If $HOST_PATH_TO_MYSQL_DATADIR is empty, choose a new password that
+### If $HOST_PATH_MYSQL_DATADIR is empty, choose a new password that
 ### will be applied
 ###
 MYSQL_ROOT_PASSWORD=
