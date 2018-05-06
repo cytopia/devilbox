@@ -584,8 +584,11 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 											</tr>
 											<tr>
 												<th>httpd</th>
-												<td><?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_HTTPD');?></td>
-												<td>80</td>
+												<td>
+													<?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_HTTPD');?><br/>
+													<?php echo loadClass('Helper')->getEnv('LOCAL_LISTEN_ADDR').loadClass('Helper')->getEnv('HOST_PORT_HTTPD_SSL');?>
+												</td>
+												<td>80<br/>443</td>
 											</tr>
 											<?php if ($avail_mysql): ?>
 												<tr>

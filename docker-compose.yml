@@ -196,7 +196,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.13
+    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.15
     restart: always
 
     environment:
@@ -222,9 +222,12 @@ services:
       ##
       ## Disable default vhost?
       ##
-      - MAIN_VHOST_DISABLE=${DEVILBOX_UI_DISABLE}
+      - MAIN_VHOST_ENABLE=${DEVILBOX_UI_ENABLE}
       - MAIN_VHOST_STATUS_ENABLE=1
       - MAIN_VHOST_STATUS_ALIAS=/devilbox-httpd-status
+      - MAIN_VHOST_SSL_TYPE=both
+      - MAIN_VHOST_SSL_GEN=1
+      - MAIN_VHOST_SSL_CN=${DEVILBOX_UI_SSL_CN:-localhost}
 
       ##
       ## Enable Mass Vhosts
@@ -233,6 +236,8 @@ services:
       - MASS_VHOST_TLD=.${TLD_SUFFIX}
       - MASS_VHOST_DOCROOT=${HTTPD_DOCROOT_DIR}
       - MASS_VHOST_TPL=${HTTPD_TEMPLATE_DIR}
+      - MASS_VHOST_SSL_TYPE=both
+      - MASS_VHOST_SSL_GEN=1
 
       ##
       ## PHP-FPM Remote Server
@@ -245,6 +250,7 @@ services:
       # ---- Format: ----
       # [HOST-ADDR : ] HOST-PORT : DOCKER-PORT
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_HTTPD}:80"
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_HTTPD_SSL}:443"
 
     networks:
       app_net:
@@ -265,6 +271,9 @@ services:
 
       # Mount logs
       - ${DEVILBOX_PATH}/log/${HTTPD_SERVER}:/var/log/${HTTPD_SERVER}
+
+      # Certificate Authority public key
+      - ${DEVILBOX_PATH}/ca:/ca
 
     depends_on:
       - bind

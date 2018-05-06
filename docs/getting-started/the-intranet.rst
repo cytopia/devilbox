@@ -125,7 +125,7 @@ When the intranet is disabled, there is no way to access it.
 .. seealso::
     In order to do so, have a look at the following ``.env`` variable:
 
-    * :ref:`env_devilbox_ui_disable`
+    * :ref:`env_devilbox_ui_enable`
 
 
 Checklist

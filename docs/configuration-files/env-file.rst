@@ -423,6 +423,36 @@ and report as unsuccessful. The default is ``1`` second, wich should be fairly s
 +-----------------------+----------------+-------------------+
 
 
+.. _env_devilbox_ui_ssl_cn:
+
+DEVILBOX_UI_SSL_CN
+------------------
+
+When accessing the Devilbox intranet via ``https`` it will use an automatically created SSL certificate.
+Each SSL certificate requires a valid Common Name, which must match the virtual host name.
+
+This setting let's you specify by what **name** you are accessing the Devilbox intranet.
+The default is ``localhost``, but if you have created your own alias, you must change this value
+accordingly. Also note that multiple values are possible and must be separated with a comma.
+When you add an asterisk (``*.``) to the beginning, it means it will create a wildcard certificate for that
+hostname.
+
++-------------------------+------------------------------+-----------------------------------------------+
+| Name                    | Allowed values               | Default value                                 |
++=========================+==============================+===============================================+
+| ``DEVILBOX_UI_SSL_CN``  | comma separated list of CN's | ``localhost,*.localhost,devilbox,*.devilbox`` |
++-------------------------+------------------------------+-----------------------------------------------+
+
+**Examples**:
+
+* ``DEVILBOX_UI_SSL_CN=localhost``
+* ``DEVILBOX_UI_SSL_CN=localhost,*.localhost``
+* ``DEVILBOX_UI_SSL_CN=localhost,*.localhost,devilbox,*.devilbox``
+* ``DEVILBOX_UI_SSL_CN=intranet.example.com``
+
+.. seealso:: :ref:`configuration_https_ssl`
+
+
 .. _env_devilbox_ui_protect:
 
 DEVILBOX_UI_PROTECT
@@ -458,13 +488,13 @@ password by which it will be protected.
 +--------------------------+----------------+-------------------+
 
 
-.. _env_devilbox_ui_disable:
+.. _env_devilbox_ui_enable:
 
-DEVILBOX_UI_DISABLE
+DEVILBOX_UI_ENABLE
 -------------------
 
 In case you want to completely disable the Devilbox intranet, such as when running it on production,
-you need to set this variable to ``1``.
+you need to set this variable to ``0``.
 
 By disabling the intranet, the webserver will simply remove the default virtual host and redirect
 all IP-based requests to the first available virtual host, which will be you first project when
@@ -473,7 +503,7 @@ ordering their names alphabetically.
 +-------------------------+----------------+-------------------+
 | Name                    | Allowed values | Default value     |
 +=========================+================+===================+
-| ``DEVILBOX_UI_DISABLE`` | ``0`` or ``1`` | ``0``             |
+| ``DEVILBOX_UI_ENABLE``  | ``0`` or ``1`` | ``1``             |
 +-------------------------+----------------+-------------------+
 
 
@@ -988,6 +1018,19 @@ else if 80 is already in use on your host operating system.
 +======================+===================+==================+
 | ``HOST_PORT_HTTPD``  | ``1`` - ``65535`` | ``80``           |
 +----------------------+-------------------+------------------+
+
+
+HOST_PORT_HTTPD_SSL
+-------------------
+
+The port to expose for the web server (Apache or Nginx) for HTTPS (SSL) requests. This is usually
+443. Set it to something else if 443 is already in use on your host operating system.
+
++--------------------------+-------------------+------------------+
+| Name                     | Allowed values    | Default value    |
++==========================+===================+==================+
+| ``HOST_PORT_HTTPD_SSL``  | ``1`` - ``65535`` | ``443``           |
++--------------------------+-------------------+------------------+
 
 
 HOST_PORT_MYSQL

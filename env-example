@@ -149,6 +149,22 @@ TIMEZONE=Europe/Berlin
 DNS_CHECK_TIMEOUT=1
 
 
+
+###
+### Devilbox UI SSL Certificate generation
+###
+### When using SSL each certificate requires names for which it is responsible:
+### Common Name as well as alternative names.
+###
+### Specify comma separated hostnames below by which you want to access the Devilbox.
+### Those hostnames will be included in the SSL certificate for the Devilbox intranet.
+### This has nothing to do for SSL certificates for projects, it is just for the intranet
+### itself.
+###
+DEVILBOX_UI_SSL_CN=localhost,*.localhost,devilbox,*.devilbox
+
+
+
 ###
 ### Devilbox UI Password protection enable/disable (1/0)
 ###
@@ -180,13 +196,13 @@ DEVILBOX_UI_PASSWORD=password
 
 
 ###
-### Disable the Devilbox Intranet?
+### Enable the Devilbox Intranet?
 ###
 ### Example:
-###   DEVILBOX_UI_DISABLE=1
-###   DEVILBOX_UI_DISABLE=0
+###   DEVILBOX_UI_ENABLE=1
+###   DEVILBOX_UI_ENABLE=0
 ###
-DEVILBOX_UI_DISABLE=0
+DEVILBOX_UI_ENABLE=1
 
 
 
@@ -410,6 +426,7 @@ HOST_PATH_MONGO_DATADIR=./data/mongo
 ### Expose HTTPD Port to Host
 ###
 HOST_PORT_HTTPD=80
+HOST_PORT_HTTPD_SSL=443
 
 ###
 ### Document Root Subdirectory

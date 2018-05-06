@@ -51,6 +51,8 @@ vhost: |
       CustomLog  "__ACCESS_LOG__" combined
       ErrorLog   "__ERROR_LOG__"
 
+  __REDIRECT__
+  __SSL__
   __VHOST_DOCROOT__
   __VHOST_RPROXY__
   __PHP_FPM__
@@ -102,6 +104,19 @@ vhost_type:
 ###
 features:
 
+  # SSL Configuration
+  ssl: |
+    SSLEngine on
+    SSLCertificateFile    "__SSL_PATH_CRT__"
+    SSLCertificateKeyFile "__SSL_PATH_KEY__"
+    SSLProtocol           __SSL_PROTOCOLS__
+    SSLHonorCipherOrder   __SSL_HONOR_CIPHER_ORDER__
+    SSLCipherSuite        __SSL_CIPHERS__
+
+  # Redirect to SSL directive
+  redirect: |
+    RedirectMatch (.*) https://__VHOST_NAME__:__SSL_PORT__$1
+
   # PHP-FPM will not be applied to a reverse proxy!
   php_fpm: |
     # PHP-FPM Definition
@@ -135,7 +150,7 @@ features:
 
   xdomain_request: |
     # Allow cross domain request from these hosts
-    SetEnvIf Origin "__REGEX__" AccessControlAllowOrigin=$0$1
+    SetEnvIf Origin "__REGEX__" AccessControlAllowOrigin=$0
     Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
     Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
     Header always set Access-Control-Max-Age "0"
