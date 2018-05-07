@@ -26,6 +26,12 @@ Creating a new project is literally done by creating a new directory on the file
 Everything else is automatically taken care of in the background. Virtual hosts are added
 instantly without having to restart any services.
 
+Automated SSL certificates
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Whenever a new project is created, SSL certificates are generated as well and assigned to that
+virtual host. Those certificates are signed by the Devilbox certificate authority which can be
+imported into your local browser to make all certificates valid and trusted.
+
 Automated DNS records
 ^^^^^^^^^^^^^^^^^^^^^
 The built-in DNS server will automatically make any DNS record available to your host system by
