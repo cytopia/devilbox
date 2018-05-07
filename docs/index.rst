@@ -95,6 +95,7 @@ host is ready to be served with your custom domain.
    examples/setup-wordpress
    examples/setup-yii
    examples/setup-zend
+   examples/setup-other-frameworks
 
 
 .. toctree::
