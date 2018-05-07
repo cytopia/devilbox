@@ -71,7 +71,7 @@ Checkout a different release
 ----------------------------
 
 You now have the devilbox downloaded at the latest version (``git master branch``). This is also recommended as it receives
-bugfixes frequently. If you however want to stay on a stable release, you need to check out s
+bugfixes frequently. If you however want to stay on a stable release, you need to check out a
 specific ``git tag``.
 
 Lets say you want your devilbox setup to be at release ``0.12.1``, all you have to do is to check out
