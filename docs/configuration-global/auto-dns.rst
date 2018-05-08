@@ -78,6 +78,12 @@ The output should look like this (It is only important that there is no ``:53``.
 Linux
 -----
 
+On Linux the DNS settings can be controlled by various different methods. Two of them are via
+Network Manager and systemd-resolved. Choose on of the methods depending on your local setup.
+
+Network Manager
+^^^^^^^^^^^^^^^
+
 If the prerequisites are met, you can edit ``/etc/dhcp/dhclient.conf`` with root or sudo privileges
 and add an instruction, which tells your local DHCP client that whenever any of your DNS servers
 are changed, you always want to have an additional entry, which is the one from the Devilbox.
@@ -95,10 +101,10 @@ When you do that for the first time, you need to restart the ``network-manager``
 .. code-block:: bash
 
     # Via service command
-    $ sudo service network-manager restart
+    host> sudo service network-manager restart
 
     # Or the systemd way
-    $ sudo systemctl restart network-manager
+    host> sudo systemctl restart network-manager
 
 This will make sure that whenever your /etc/resolv.conf is deployed, you will have ``127.0.0.1``
 as the first entry and also make use of any other DNS server which are deployed via the LAN's DHCP server.
@@ -106,6 +112,43 @@ as the first entry and also make use of any other DNS server which are deployed 
 If the Devilbox DNS server is not running, it does not affect the name resolution, because you will
 still have other entries in ``/etc/resolv.conf``.
 
+
+systemd-resolved
+^^^^^^^^^^^^^^^^
+
+In case you are using systemd-resolved instead of NetworkManager, add the following line to
+the very beginning to ``/etc/resolv.conf.head``:
+
+.. code-block:: bash
+    :caption: /etc/resolv.conf.head
+    :name: /etc/resolv.conf.head
+
+    nameserver 127.0.0.1
+
+Prevent NetworkManager from modifying ``/etc/resolv.conf`` and leave everything to
+systemd-resolved by adding the following line under the ``[main]`` section of
+``/etc/NetworkManager/NetworkManager.conf``
+
+.. code-block:: bash
+    :caption: /etc/NetworkManager/NetworkManager.conf
+    :name: /etc/NetworkManager/NetworkManager.conf
+
+    dns=none
+
+As a last step you will have to restart ``systemd-resolved``.
+
+.. code-block:: bash
+
+    host> sudo systemctl stop systemd-resolved
+    host> sudo systemctl start systemd-resolved
+
+Once done, you can verify if the new DNS settings are effective:
+
+.. code-block:: bash
+
+    host> systemd-resolve --status
+
+.. seealso:: `Archlinux Wiki: resolv.conf <https://wiki.archlinux.org/index.php/Resolv.conf#Modify_the_dhcpcd_config>`_
 
 
 MacOS
