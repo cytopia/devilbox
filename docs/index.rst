@@ -112,16 +112,7 @@ host is ready to be served with your custom domain.
    :maxdepth: 2
 
    configuration-global/https-ssl
-   configuration-global/webserver
-   configuration-global/php
-   configuration-global/mysql
-   configuration-global/mongodb
-   configuration-global/redis
-   configuration-global/memcached
-   configuration-global/bind
-   configuration-global/devilbox-intranet
    configuration-global/auto-dns
-   configuration-global/logging
 
 
 .. toctree::
