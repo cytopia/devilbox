@@ -115,12 +115,22 @@ class Mongo extends BaseClass implements BaseInterface
 		$databases = array();
 		$tmp = $this->command(array('listDatabases' => true));
 		if (isset($tmp[0])) {
-			foreach ($tmp[0]->databases as $db) {
-				$databases[] = array(
-					'name' => $db->name,
-					'size' => $db->sizeOnDisk,
-					'empty' => $db->empty
-				);
+			if (is_array($tmp[0])) {
+				foreach ($tmp[0]['databases'] as $db) {
+					$databases[] = array(
+						'name' => $db->name,
+						'size' => $db->sizeOnDisk,
+						'empty' => $db->empty
+					);
+				}
+			} else {
+				foreach ($tmp[0]->databases as $db) {
+					$databases[] = array(
+						'name' => $db->name,
+						'size' => $db->sizeOnDisk,
+						'empty' => $db->empty
+					);
+				}
 			}
 		}
 

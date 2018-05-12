@@ -92,7 +92,7 @@ class Helper
 			$output = array();
 
 			// Translate PHP Docker environmental variables to $ENV
-			exec('env', $output);
+			exec('/usr/bin/env', $output);
 
 			foreach ($output as $var) {
 				$tmp = explode('=', $var);
