@@ -24,6 +24,7 @@ See the directory structure for PHP configuration directories inside ``./cfg/`` 
 
     host> ls -l path/to/devilbox/cfg/ | grep 'php-ini'
 
+    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-ini-5.3/
     drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-ini-5.4/
     drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-ini-5.5/
     drwxr-xr-x  2 cytopia cytopia 4096 Apr  3 22:04 php-ini-5.6/
