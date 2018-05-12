@@ -524,11 +524,11 @@ PHP_SERVER
 
 This variable choses your desired PHP-FPM version to be started.
 
-+-------------------------+--------------------------------------------------------------------------------------------------------------------------+-----------------+
-| Name                    | Allowed values                                                                                                           | Default value   |
-+=========================+==========================================================================================================================+=================+
-| ``PHP_SERVER``          | ``php-fpm-5.4`` |br| ``php-fpm-5.5`` |br| ``php-fpm-5.6`` |br| ``php-fpm-7.0`` |br| ``php-fpm-7.1`` |br| ``php-fpm-7.2`` | ``php-fpm-7.1`` |
-+-------------------------+--------------------------------------------------------------------------------------------------------------------------+-----------------+
++-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+| Name                    | Allowed values                                                                                                                                | Default value   |
++=========================+===============================================================================================================================================+=================+
+| ``PHP_SERVER``          | ``php-fpm-5.3`` |br| ``php-fpm-5.4`` |br| ``php-fpm-5.5`` |br| ``php-fpm-5.6`` |br| ``php-fpm-7.0`` |br| ``php-fpm-7.1`` |br| ``php-fpm-7.2`` | ``php-fpm-7.1`` |
++-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
 
@@ -539,14 +539,13 @@ All values are already available in the ``.env`` file and just need to be commen
 
    host> grep PHP_SERVER .env
 
+   #PHP_SERVER=php-fpm-5.3
    #PHP_SERVER=php-fpm-5.4
    #PHP_SERVER=php-fpm-5.5
    #PHP_SERVER=php-fpm-5.6
    #PHP_SERVER=php-fpm-7.0
    PHP_SERVER=php-fpm-7.1
    #PHP_SERVER=php-fpm-7.2
-   #PHP_SERVER=php-fpm-7.3
-   #PHP_SERVER=hhvm-latest
 
 
 .. _env_httpd_server:

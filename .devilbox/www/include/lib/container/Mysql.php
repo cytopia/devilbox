@@ -207,7 +207,8 @@ class Mysql extends BaseClass implements BaseInterface
 			$val = $this->select($sql, $callback);
 
 			if (is_array($val) && $val) {
-				return array_values($val)[0];
+				$array_values = array_values($val);
+				return $array_values[0];
 			} else {
 				return $val;
 			}

@@ -40,12 +40,13 @@ It will look something like this:
    :caption: .env
    :emphasize-lines: 5
 
+    #PHP_SERVER=5.3
     #PHP_SERVER=5.4
     #PHP_SERVER=5.5
     #PHP_SERVER=5.6
     #PHP_SERVER=7.0
     PHP_SERVER=7.1
-    #PHP_SERVER=7.1
+    #PHP_SERVER=7.2
 
 As you can see, all available values are already there, but commented. Only one is uncommented.
 In this example it is ``7.1``, which is the PHP version that will be started, once the Devilbox
@@ -61,12 +62,13 @@ In order to enable PHP 5.5, you would change the ``.env`` file like this:
    :caption: .env
    :emphasize-lines: 2
 
+    #PHP_SERVER=5.3
     #PHP_SERVER=5.4
     PHP_SERVER=5.5
     #PHP_SERVER=5.6
     #PHP_SERVER=7.0
     #PHP_SERVER=7.1
-    #PHP_SERVER=7.1
+    #PHP_SERVER=7.2
 
 
 Start the Devilbox
@@ -97,12 +99,13 @@ Consider this ``.env`` file:
    :caption: .env
    :emphasize-lines: 2,4
 
+    #PHP_SERVER=5.3
     #PHP_SERVER=5.4
     PHP_SERVER=5.5
     #PHP_SERVER=5.6
     PHP_SERVER=7.0
     #PHP_SERVER=7.1
-    #PHP_SERVER=7.1
+    #PHP_SERVER=7.2
 
 Both, PHP 5.4 and PHP 7.0 are uncommented, however, when you start the Devilbox, it will use
 PHP 7.0 as this value overwrites any previous ones.

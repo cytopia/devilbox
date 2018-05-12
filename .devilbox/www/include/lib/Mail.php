@@ -85,27 +85,33 @@ class Mail
 		}
 
 		// Optionally sort messages
-		if (is_array($sort) && (array_values($sort)[0] == 'ASC' || array_values($sort)[0] == 'DESC')) {
-			$key	= array_keys($sort)[0];
-			$order	= array_values($sort)[0];
+		if (is_array($sort)) {
+			$array_values = array_values($sort);
+			$array_value = $array_values[0];
+			if ($array_value == 'ASC' || $array_value == 'DESC') {
+				$key	= array_keys($sort);
+				$key	= $key[0];
+				$order	= array_values($sort);
+				$order	= $order[0];
 
-			$sorter = function ($a, $b) use ($key, $order) {
-				$val1 = $a['decoded']->headers[$key];
-				$val2 = $b['decoded']->headers[$key];
+				$sorter = function ($a, $b) use ($key, $order) {
+					$val1 = $a['decoded']->headers[$key];
+					$val2 = $b['decoded']->headers[$key];
 
-				// Convert date strings to timestamps for comparison
-				if (strtotime($val1) !== false && strtotime($val2) !== false) {
-					$val1 = strtotime($val1);
-					$val2 = strtotime($val2);
-				}
+					// Convert date strings to timestamps for comparison
+					if (strtotime($val1) !== false && strtotime($val2) !== false) {
+						$val1 = strtotime($val1);
+						$val2 = strtotime($val2);
+					}
 
-				if ($order === 'ASC') {
-					return (strcmp($val1, $val2) > 0);
-				} else {
-					return (strcmp($val1, $val2) <= 0);
-				}
-			};
-			usort($messages, $sorter);
+					if ($order === 'ASC') {
+						return (strcmp($val1, $val2) > 0);
+					} else {
+						return (strcmp($val1, $val2) <= 0);
+					}
+				};
+				usort($messages, $sorter);
+			}
 		}
 
 		return $messages;
