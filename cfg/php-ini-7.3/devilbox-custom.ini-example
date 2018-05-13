@@ -1,0 +1,18 @@
+[PHP]
+; Memory
+memory_limit			= 4096M
+
+; Timeouts
+max_execution_time		= 180
+max_input_time			= 180
+; Uploads
+post_max_size			= 1990M
+upload_max_filesize		= 1990M
+
+; Vars
+max_input_vars			= 8000
+
+; Error reporting
+error_reporting			= E_ALL
+display_errors			= On
+track_errors			= On

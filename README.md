@@ -35,12 +35,14 @@ The devilbox is a modern and highly customisable **dockerized PHP stack** suppor
 
 ## Community
 
+Find documentation and help here
+
 <table width="100%" style="width:100%; display:table;">
  <thead>
   <tr>
-   <th width="33%" style="width:33%;">Documentation</th>
-   <th width="33%" style="width:33%;">Chat</th>
-   <th width="33%" style="width:33%;">Forum</th>
+   <th width="33%" style="width:33%;"><h3><a href="https://devilbox.readthedocs.io" >Documentation</a></h3></th>
+   <th width="33%" style="width:33%;"><h3><a href="https://gitter.im/devilbox/Lobby" >Chat</a></h3></th>
+   <th width="33%" style="width:33%;"><h3>Forum</h3></th>
   </tr>
  </thead>
  <tbody style="vertical-align: middle; text-align: center;">
@@ -201,6 +203,18 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="PgSQL 10.0"       href="https://github.com/docker-library/postgres">10.0</a></td>
       <td></td>
       <td><a target="_blank" title="Memcached latest" href="https://github.com/docker-library/memcached">latest</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><a target="_blank" title="PHP 7.3"          href="https://github.com/devilbox/docker-php-fpm">7.3</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td></td>
     </tr>
   </tbody>
