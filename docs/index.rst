@@ -91,6 +91,7 @@ host is ready to be served with your custom domain.
    examples/setup-joomla
    examples/setup-laravel
    examples/setup-phalcon
+   examples/setup-photon-cms
    examples/setup-symfony
    examples/setup-wordpress
    examples/setup-yii
