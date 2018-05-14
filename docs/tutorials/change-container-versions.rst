@@ -47,6 +47,7 @@ It will look something like this:
     #PHP_SERVER=7.0
     PHP_SERVER=7.1
     #PHP_SERVER=7.2
+    #PHP_SERVER=7.3
 
 As you can see, all available values are already there, but commented. Only one is uncommented.
 In this example it is ``7.1``, which is the PHP version that will be started, once the Devilbox
@@ -69,6 +70,7 @@ In order to enable PHP 5.5, you would change the ``.env`` file like this:
     #PHP_SERVER=7.0
     #PHP_SERVER=7.1
     #PHP_SERVER=7.2
+    #PHP_SERVER=7.3
 
 
 Start the Devilbox
@@ -106,6 +108,7 @@ Consider this ``.env`` file:
     PHP_SERVER=7.0
     #PHP_SERVER=7.1
     #PHP_SERVER=7.2
+    #PHP_SERVER=7.3
 
 Both, PHP 5.4 and PHP 7.0 are uncommented, however, when you start the Devilbox, it will use
 PHP 7.0 as this value overwrites any previous ones.
