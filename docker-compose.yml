@@ -188,6 +188,9 @@ services:
       # Mount devilbox user-defined bash config
       - ${DEVILBOX_PATH}/bash:/etc/bashrc-devilbox.d
 
+      # Certificate Authority public key
+      - ${DEVILBOX_PATH}/ca:/ca
+
     depends_on:
       - bind
 
