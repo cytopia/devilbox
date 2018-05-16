@@ -65,16 +65,18 @@ It will be ready in six simple steps:
 3. Install Photon
 ------------------
 
-During the installation it will ask for a MySQL username and password.
-Provide a pair of credentials that has permissions to create a database or create the database
+During the installation you will be asked for the MySQL hostname, username and password. Ensure
+not to specify ``localhost``, but instead use ``127.0.0.1`` for the hostname.
+Additionally, provide a pair of credentials that has permissions to create a database or create the database
 itself beforehand.
 
 .. code-block:: bash
 
     devilbox@php-7.0.20 in /shared/httpd $ cd my-photon
     devilbox@php-7.0.20 in /shared/httpd/my-photon $ photon new blog
-    ...What is your mysql username?  root
-    ...What is your mysql password?
+    ...What is your mysql hostname? [localhost]  127.0.0.1
+    ...What is your mysql username? [root]root
+    ...What is your mysql password? []
 
 
 4. Symlink webroot
