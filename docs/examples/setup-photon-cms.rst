@@ -1,12 +1,12 @@
-.. _example_setup_phalcon:
+.. _example_setup_photon_cms:
 
-*************
-Setup Phalcon
-*************
+****************
+Setup Photon CMS
+****************
 
-This example will use ``phalcon`` to install Phalcon from within the PHP container.
+This example will use ``photon`` cli to install Photon CMS from within the PHP container.
 
-.. seealso:: `Official Phalcon Documentation <https://docs.phalconphp.com/en/3.2/devtools-usage>`_
+.. seealso:: `Official Photon CMS Documentation <https://photoncms.com/resources/installing>`_
 
 
 **Table of Contents**
@@ -22,8 +22,10 @@ The following configuration will be used:
 +--------------+--------------------------+-------------+------------+-----------------------+
 | Project name | VirtualHost directory    | Database    | TLD_SUFFIX | Project URL           |
 +==============+==========================+=============+============+=======================+
-| my-phalcon   | /shared/httpd/my-phalcon | n.a.        | loc        | http://my-phalcon.loc |
+| my-photon    | /shared/httpd/my-photon  | blog        | loc        | http://my-photon.loc  |
 +--------------+--------------------------+-------------+------------+-----------------------+
+
+.. note:: The database is created automatically by ``photon`` cli.
 
 
 Walk through
@@ -33,10 +35,10 @@ It will be ready in six simple steps:
 
 1. Enter the PHP container
 2. Create a new VirtualHost directory
-3. Install Phalcon
+3. Install Photon
 4. Symlink webroot directory
 5. Setup DNS record
-6. Visit http://my-phalcon.loc in your browser
+6. Visit http://my-photon.loc in your browser
 
 
 .. seealso:: :ref:`available_tools`
@@ -57,16 +59,24 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd $ mkdir my-phalcon
+    devilbox@php-7.0.20 in /shared/httpd $ mkdir my-photon
 
 
-3. Install Phalcon
+3. Install Photon
 ------------------
+
+During the installation you will be asked for the MySQL hostname, username and password. Ensure
+not to specify ``localhost``, but instead use ``127.0.0.1`` for the hostname.
+Additionally, provide a pair of credentials that has permissions to create a database or create the database
+itself beforehand.
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd $ cd my-phalcon
-    devilbox@php-7.0.20 in /shared/httpd/my-phalcon $ phalcon project phalconphp
+    devilbox@php-7.0.20 in /shared/httpd $ cd my-photon
+    devilbox@php-7.0.20 in /shared/httpd/my-photon $ photon new blog
+    ...What is your mysql hostname? [localhost]  127.0.0.1
+    ...What is your mysql username? [root]root
+    ...What is your mysql password? []
 
 
 4. Symlink webroot
@@ -74,7 +84,7 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd/my-phalcon $ ln -s phalconphp/public/ htdocs
+    devilbox@php-7.0.20 in /shared/httpd/my-photon $ ln -s blog/public/ htdocs
 
 
 5. DNS record
@@ -88,7 +98,7 @@ following line to your host operating systems ``/etc/hosts`` file
    :caption: /etc/hosts
    :name: /etc/hosts
 
-    127.0.0.1 my-phalcon.loc
+    127.0.0.1 my-photon.loc
 
 .. seealso::
     For in-depth info about adding DNS records on Linux, Windows or MacOS see:
@@ -98,4 +108,4 @@ following line to your host operating systems ``/etc/hosts`` file
 6. Open your browser
 --------------------
 
-Open your browser at http://my-phalcon.loc
+Open your browser at http://my-photon.loc

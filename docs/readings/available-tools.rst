@@ -60,6 +60,8 @@ The PHP container is your workhorse and these are your tools:
 +----------------------+-----------------------------------------------------------------------------------+
 | ``phpcbf``           | `PHP Code Beautifier and Fixer <https://github.com/squizlabs/PHP_CodeSniffer>`_   |
 +----------------------+-----------------------------------------------------------------------------------+
+| ``photon``           | `Photon CMS cli <https://photoncms.com/resources/installing>`_                    |
++----------------------+-----------------------------------------------------------------------------------+
 | ``redis*``           | Various Redis client tools                                                        |
 +----------------------+-----------------------------------------------------------------------------------+
 | ``sass``             | `Sass <http://sass-lang.com>`_                                                    |
