@@ -29,6 +29,7 @@ docker pull devilbox/php-fpm:5.6-work
 docker pull devilbox/php-fpm:7.0-work
 docker pull devilbox/php-fpm:7.1-work
 docker pull devilbox/php-fpm:7.2-work
+docker pull devilbox/php-fpm:7.3-work
 #docker pull cytopia/hhvm-latest:${TAG}
 
 ###
