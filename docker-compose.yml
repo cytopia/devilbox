@@ -126,6 +126,12 @@ services:
       - TIMEZONE
 
       ##
+      ## Enable/Disable PHP Modules
+      ##
+      - ENABLE_MODULES=${PHP_MODULES_ENABLE}
+      - DISABLE_MODULES=${PHP_MODULES_DISABLE}
+
+      ##
       ## Mail-catching
       ##
       - ENABLE_MAIL=1

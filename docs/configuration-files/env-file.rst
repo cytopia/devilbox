@@ -1127,6 +1127,51 @@ Container settings
 PHP
 ---
 
+PHP_MODULES_ENABLE
+^^^^^^^^^^^^^^^^^^
+
+Enable any non-standard PHP modules in a comma separated list.
+
++------------------------+--------------------------------------+------------------+
+| Name                   | Allowed values                       | Default value    |
++========================+======================================+==================+
+| ``PHP_MODULES_ENABLE`` | comma separated list of module names | empty            |
++------------------------+--------------------------------------+------------------+
+
+.. note::
+    Currently only ``ioncube`` is available to enable.
+
+Example:
+
+.. code-block:: bash
+   :caption: .env
+   :name: .env
+   :emphasize-lines: 2
+
+   # Enable ionCube
+   PHP_MODULES_ENABLE=ioncube
+
+PHP_MODULES_DISABLE
+^^^^^^^^^^^^^^^^^^^
+
+Disable any PHP modules in a comma separated list.
+
++-------------------------+--------------------------------------+------------------+
+| Name                    | Allowed values                       | Default value    |
++=========================+======================================+==================+
+| ``PHP_MODULES_DISABLE`` | comma separated list of module names | empty            |
++-------------------------+--------------------------------------+------------------+
+
+Example:
+
+.. code-block:: bash
+   :caption: .env
+   :name: .env
+   :emphasize-lines: 2
+
+   # Disable Xdebug, Imagick and Swoole
+   PHP_MODULES_DISABLE=xdebug,imagick,swoole
+
 Custom variables
 ^^^^^^^^^^^^^^^^
 
