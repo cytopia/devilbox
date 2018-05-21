@@ -87,6 +87,7 @@ host is ready to be served with your custom domain.
    :caption: Examples
 
    examples/setup-cakephp
+   examples/setup-codeigniter
    examples/setup-drupal
    examples/setup-joomla
    examples/setup-laravel
