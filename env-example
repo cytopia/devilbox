@@ -149,7 +149,6 @@ TIMEZONE=Europe/Berlin
 DNS_CHECK_TIMEOUT=1
 
 
-
 ###
 ### Devilbox UI SSL Certificate generation
 ###
@@ -162,7 +161,6 @@ DNS_CHECK_TIMEOUT=1
 ### itself.
 ###
 DEVILBOX_UI_SSL_CN=localhost,*.localhost,devilbox,*.devilbox
-
 
 
 ###
@@ -341,6 +339,7 @@ MONGO_SERVER=3.7
 ###
 HOST_PATH_HTTPD_DATADIR=./data/www
 
+
 ###
 ### Local filesystem path to mysql/mariadb datadir.
 ###
@@ -412,9 +411,30 @@ HOST_PATH_MONGO_DATADIR=./data/mongo
 ###
 ################################################################################
 
-# None
-#
-# Configure everything about PHP in cfg/php-fpm-X.X/*.ini
+###
+### Enable certain PHP modules which are not enabled by default
+###
+### Currently the only module that can be enabled is 'ioncube'
+###
+### PHP_MODULES_ENABLE=ioncube
+###
+PHP_MODULES_ENABLE=
+
+
+###
+### Disable any PHP modules that you don't require
+###
+### Specify a comma separated list without spaces of modules to disable
+###
+### PHP_MODULES_DISABLE=xdebug,imagick,swoole
+###
+PHP_MODULES_DISABLE=
+
+
+###
+### Configure everything else about PHP in
+### * cfg/php-ini-X.X/*.ini
+### * cfg/php-fpm-X.X/*.conf
 
 
 
@@ -430,6 +450,7 @@ HOST_PATH_MONGO_DATADIR=./data/mongo
 HOST_PORT_HTTPD=80
 HOST_PORT_HTTPD_SSL=443
 
+
 ###
 ### Document Root Subdirectory
 ###
@@ -439,6 +460,7 @@ HOST_PORT_HTTPD_SSL=443
 ### When changing this value, restart the devilbox.
 ###
 HTTPD_DOCROOT_DIR=htdocs
+
 
 ###
 ### Per vHost Config Subdirectory
@@ -469,10 +491,12 @@ HTTPD_TEMPLATE_DIR=.devilbox
 ###
 MYSQL_ROOT_PASSWORD=
 
+
 ###
 ### Custom MySQL Runtime Settings
 ###
 MYSQL_GENERAL_LOG=0
+
 
 ###
 ### Expose MySQL Port to Host
@@ -492,10 +516,12 @@ HOST_PORT_MYSQL=3306
 ###
 PGSQL_ROOT_USER=postgres
 
+
 ###
 ### PostgreSQL 'root' user password
 ###
 PGSQL_ROOT_PASSWORD=
+
 
 ###
 ### Expose PostgreSQL Port to Host
@@ -570,6 +596,7 @@ BIND_DNS_RESOLVER=8.8.8.8,8.8.4.4
 ###
 BIND_DNSSEC_VALIDATE=no
 
+
 ###
 ### Bind timing options (time in seconds)
 ###
@@ -581,6 +608,7 @@ BIND_REFRESH_TIME=
 BIND_RETRY_TIME=
 BIND_EXPIRY_TIME=
 BIND_MAX_CACHE_TIME=
+
 
 ###
 ### Show DNS Queries in Docker logs output?
@@ -604,6 +632,7 @@ BIND_LOG_DNS_QUERIES=0
 ### This might be useful to set application environment and retrieve
 ### them via: <?php getenv('MY_APPLICATION_ENV'); ?>
 ###
+
 
 ###
 ### Example:
