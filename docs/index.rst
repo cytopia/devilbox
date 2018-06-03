@@ -66,7 +66,6 @@ host is ready to be served with your custom domain.
    tutorials/change-container-versions
    tutorials/work-inside-the-container
    tutorials/enable-xdebug
-   tutorials/custom-apache-modules
    tutorials/custom-environment-variables
    tutorials/static-code-analysis
 
@@ -94,7 +93,6 @@ host is ready to be served with your custom domain.
    :maxdepth: 2
 
    configuration-project/dns-records
-   configuration-project/domain
    configuration-project/custom-vhost
 
 

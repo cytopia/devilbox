@@ -45,9 +45,9 @@ Additionally you will require ``git`` in order to clone the devilbox project.
       Docker Toolbox (e.g. for Windows 7 or older Macs) read up on this section.
 
 .. warning::
-      Docker itself requires super user privileges which is granted to a system wide group
-      called ``docker``. After having installed Docker on your system, ensure that your local
-      user is assigned to the ``docker`` group. Check this via ``groups`` or ``id`` command.
+   Docker itself requires super user privileges which is granted to a system wide group
+   called ``docker``. After having installed Docker on your system, ensure that your local
+   user is assigned to the ``docker`` group. Check this via ``groups`` or ``id`` command.
 
 .. seealso::
    :ref:`install_docker`
@@ -84,10 +84,10 @@ this specific git tag.
 
 
 .. warning::
-      Whenever you check out a different version, make sure that your ``.env`` file is up-to-date
-      with the bundled ``env-example`` file. Different Devilbox releases might require different
-      settings to be available inside the ``.env`` file. Refer to the next section for how to
-      create the ``.env`` file.
+   Whenever you check out a different version, make sure that your ``.env`` file is up-to-date
+   with the bundled ``env-example`` file. Different Devilbox releases might require different
+   settings to be available inside the ``.env`` file. Refer to the next section for how to
+   create the ``.env`` file.
 
 
 Create ``.env`` file
@@ -145,7 +145,6 @@ Open the ``.env`` file with your favorite text editor and adjust those values:
 
 .. code-block:: bash
    :caption: .env
-   :name: .env
    :emphasize-lines: 3,4
 
    host> vi .env
@@ -154,7 +153,7 @@ Open the ``.env`` file with your favorite text editor and adjust those values:
    NEW_GID=1002
 
 .. warning::
-      Make sure that you use the values provided by ``id -u`` and ``id -g``.
+   Make sure that you use the values provided by ``id -u`` and ``id -g``.
 
 .. seealso::
    :ref:`syncronize_container_permissions`

@@ -12,8 +12,8 @@ The only thing you might need to install on your host operating system is your f
 editor to actually start coding.
 
 .. seealso::
-    If you want to find out what tools are available inside the PHP container, visit the
-    following section: :ref:`available_tools`.
+   If you want to find out what tools are available inside the PHP container, visit the
+   following section: :ref:`available_tools`.
 
 
 **Table of Contents**
@@ -25,7 +25,7 @@ How to enter
 ============
 
 .. note::
-    You can only enter the PHP container if it is running.
+   You can only enter the PHP container if it is running.
 
 
 Linux and MacOS
@@ -51,11 +51,11 @@ Just run it and it will enter you into the PHP container and bring you to ``/sha
 
 .. code-block:: bash
 
-    # Execute on the host operating system
-    C:/Users/user1/devilbox> shell.bat
+   # Execute on the host operating system
+   C:/Users/user1/devilbox> shell.bat
 
-    # Now you are inside the PHP Linux container
-    devilbox@php-7.0.19 in /shared/httpd $
+   # Now you are inside the PHP Linux container
+   devilbox@php-7.0.19 in /shared/httpd $
 
 
 How to become root
@@ -67,16 +67,16 @@ the password-less ``sudo``.
 
 .. code-block:: bash
 
-    # Inside the PHP Linux container as user devilbox
-    devilbox@php-7.0.19 in /shared/httpd $ sudo su -
+   # Inside the PHP Linux container as user devilbox
+   devilbox@php-7.0.19 in /shared/httpd $ sudo su -
 
-    # Now you are root and can do anything you want
-    root@php-7.0.19 in /shared/httpd $
+   # Now you are root and can do anything you want
+   root@php-7.0.19 in /shared/httpd $
 
 .. note::
-    As this action is inside a Docker container, there is no difference between Linux, MacOS or
-    Windows. Every host operating system is using the same Docker container - equal accross all
-    platforms.
+   As this action is inside a Docker container, there is no difference between Linux, MacOS or
+   Windows. Every host operating system is using the same Docker container - equal accross all
+   platforms.
 
 
 Tools

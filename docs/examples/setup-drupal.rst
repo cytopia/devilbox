@@ -47,7 +47,7 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    host> ./shell.sh
+   host> ./shell.sh
 
 .. seealso:: :ref:`tutorial_work_inside_the_php_container`
 
@@ -57,7 +57,7 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd $ mkdir my-drupal
+   devilbox@php-7.0.20 in /shared/httpd $ mkdir my-drupal
 
 
 3. Install Drupal
@@ -65,8 +65,8 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd $ cd my-drupal
-    devilbox@php-7.0.20 in /shared/httpd/my-drupal $ drush dl drupal
+   devilbox@php-7.0.20 in /shared/httpd $ cd my-drupal
+   devilbox@php-7.0.20 in /shared/httpd/my-drupal $ drush dl drupal
 
 
 4. Symlink webroot
@@ -74,7 +74,7 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd/my-drupal $ ln -s drupal-8.3.3/ htdocs
+   devilbox@php-7.0.20 in /shared/httpd/my-drupal $ ln -s drupal-8.3.3/ htdocs
 
 
 5. DNS record
@@ -86,13 +86,12 @@ following line to your host operating systems ``/etc/hosts`` file
 
 .. code-block:: bash
    :caption: /etc/hosts
-   :name: /etc/hosts
 
-    127.0.0.1 my-drupal.loc
+   127.0.0.1 my-drupal.loc
 
 .. seealso::
-    For in-depth info about adding DNS records on Linux, Windows or MacOS see:
-    :ref:`project_configuration_dns_records` or :ref:`global_configuration_auto_dns`.
+   For in-depth info about adding DNS records on Linux, Windows or MacOS see:
+   :ref:`project_configuration_dns_records` or :ref:`global_configuration_auto_dns`.
 
 
 6. Open your browser
@@ -101,4 +100,4 @@ following line to your host operating systems ``/etc/hosts`` file
 Open your browser at http://my-drupal.loc and follow the Drupal installation steps.
 
 .. note::
-    When asked about MySQL hostname, choose ``127.0.0.1``.
+   When asked about MySQL hostname, choose ``127.0.0.1``.

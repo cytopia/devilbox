@@ -30,14 +30,14 @@ listed example:
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    host> cd path/to/devilbox
+   # Navigate to the Devilbox directory
+   host> cd path/to/devilbox
 
-    # Enter the PHP container
-    host> ./shell.sh
+   # Enter the PHP container
+   host> ./shell.sh
 
-    # Run pg_dump
-    devilbox@php-7.1.6 in /shared/httpd $ pg_dump -h pgsql -U postgres -W my_db_name > /shared/backups/pgsql/my_db_name.sql
+   # Run pg_dump
+   devilbox@php-7.1.6 in /shared/httpd $ pg_dump -h pgsql -U postgres -W my_db_name > /shared/backups/pgsql/my_db_name.sql
 
 To find out more about the configuration and options of pg_dump, visit its project page under:
 https://www.postgresql.org/docs/current/static/backup-dump.html.
@@ -67,42 +67,42 @@ Here are a few examples for different file types:
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    host> cd path/to/devilbox
+   # Navigate to the Devilbox directory
+   host> cd path/to/devilbox
 
-    # Enter the PHP container
-    host> ./shell.sh
+   # Enter the PHP container
+   host> ./shell.sh
 
-    # Start the import
-    devilbox@php-7.1.6 in /shared/httpd $ psql -h pgsql -U postgres -W my_db_name < /shared/backups/pgsql/my_db_name.sql
+   # Start the import
+   devilbox@php-7.1.6 in /shared/httpd $ psql -h pgsql -U postgres -W my_db_name < /shared/backups/pgsql/my_db_name.sql
 
 ``*.sql.gz`` file
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    host> cd path/to/devilbox
+   # Navigate to the Devilbox directory
+   host> cd path/to/devilbox
 
-    # Enter the PHP container
-    host> ./shell.sh
+   # Enter the PHP container
+   host> ./shell.sh
 
-    # Start the import
-    devilbox@php-7.1.6 in /shared/httpd $ zcat /shared/backups/pgsql/my_db_name.sql.gz | psql -h pgsql -U postgres -W my_db_name
+   # Start the import
+   devilbox@php-7.1.6 in /shared/httpd $ zcat /shared/backups/pgsql/my_db_name.sql.gz | psql -h pgsql -U postgres -W my_db_name
 
 ``*.sql.tar.gz`` file
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    host> cd path/to/devilbox
+   # Navigate to the Devilbox directory
+   host> cd path/to/devilbox
 
-    # Enter the PHP container
-    host> ./shell.sh
+   # Enter the PHP container
+   host> ./shell.sh
 
-    # Start the import
-    devilbox@php-7.1.6 in /shared/httpd $ tar xzOf /shared/backups/pgsql/my_db_name.sql.tar.gz | psql -h pgsql -U postgres -W my_db_name
+   # Start the import
+   devilbox@php-7.1.6 in /shared/httpd $ tar xzOf /shared/backups/pgsql/my_db_name.sql.tar.gz | psql -h pgsql -U postgres -W my_db_name
 
 
 Adminer

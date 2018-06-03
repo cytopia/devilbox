@@ -7,8 +7,8 @@ Enable Xdebug
 This tutorial shows you how to enable and use Xdebug with the Devilbox.
 
 .. seealso::
-    If you are unsure of how to add custom ``*.ini`` files to the Devilbox,
-    have a look at this section first: :ref:`php_ini`
+   If you are unsure of how to add custom ``*.ini`` files to the Devilbox,
+   have a look at this section first: :ref:`php_ini`
 
 
 **Table of Contents**

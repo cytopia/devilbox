@@ -47,7 +47,7 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    host> ./shell.sh
+   host> ./shell.sh
 
 .. seealso:: :ref:`tutorial_work_inside_the_php_container`
 
@@ -57,7 +57,7 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd $ mkdir my-joomla
+   devilbox@php-7.0.20 in /shared/httpd $ mkdir my-joomla
 
 
 3. Download and extract Joomla
@@ -65,10 +65,10 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd $ cd my-joomla
-    devilbox@php-7.0.20 in /shared/httpd/my-joomla $ wget -O joomla.tar.gz https://downloads.joomla.org/cms/joomla3/3-8-0/joomla_3-8-0-stable-full_package-tar-gz?format=gz
-    devilbox@php-7.0.20 in /shared/httpd $ mkdir joomla
-    devilbox@php-7.0.20 in /shared/httpd $ tar xvfz joomla.tar.gz -C joomla/
+   devilbox@php-7.0.20 in /shared/httpd $ cd my-joomla
+   devilbox@php-7.0.20 in /shared/httpd/my-joomla $ wget -O joomla.tar.gz https://downloads.joomla.org/cms/joomla3/3-8-0/joomla_3-8-0-stable-full_package-tar-gz?format=gz
+   devilbox@php-7.0.20 in /shared/httpd $ mkdir joomla
+   devilbox@php-7.0.20 in /shared/httpd $ tar xvfz joomla.tar.gz -C joomla/
 
 
 4. Symlink webroot
@@ -76,7 +76,7 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd/my-joomla $ ln -s joomla/ htdocs
+   devilbox@php-7.0.20 in /shared/httpd/my-joomla $ ln -s joomla/ htdocs
 
 
 5. DNS record
@@ -88,13 +88,12 @@ following line to your host operating systems ``/etc/hosts`` file
 
 .. code-block:: bash
    :caption: /etc/hosts
-   :name: /etc/hosts
 
-    127.0.0.1 my-joomla.loc
+   127.0.0.1 my-joomla.loc
 
 .. seealso::
-    For in-depth info about adding DNS records on Linux, Windows or MacOS see:
-    :ref:`project_configuration_dns_records` or :ref:`global_configuration_auto_dns`.
+   For in-depth info about adding DNS records on Linux, Windows or MacOS see:
+   :ref:`project_configuration_dns_records` or :ref:`global_configuration_auto_dns`.
 
 
 6. Open your browser

@@ -1,4 +1,9 @@
 ###
+### Enable Python support
+###
+language: python
+
+###
 ### Enable sudo (required for docker service)
 ###
 sudo: required
@@ -15,6 +20,11 @@ services:
 ### Specify combinations
 ###
 env:
+  ###
+  ### Check Documentation
+  ###
+  - S1=DOCUMENTATION
+
   ###
   ### The matrix specifies 2 versions to compare against each other.
   ### As PHP (any version) needs to be able to run with everything,
@@ -112,6 +122,19 @@ before_install:
 
 
 ###
+### Installation
+###
+install:
+  # Install dependencies for documentation
+  - if [ "${S1}" = "DOCUMENTATION" ]; then
+      pip install sphinx;
+      pip install sphinx-autobuild;
+      pip install recommonmark;
+      pip install sphinx_rtd_theme;
+    fi
+
+
+###
 ### Before Script
 ###
 before_script:
@@ -135,4 +158,9 @@ before_script:
 ### Test
 ###
 script:
-  - .tests/test_single.sh . "${S1}" "${V1}" "${S2}" "${V2}"
+  - if [ "${S1}" = "DOCUMENTATION" ]; then
+        cd docs/;
+        sphinx-build -a -W -E -j auto -n -v . _build/html/;
+    else
+        .tests/test_single.sh . "${S1}" "${V1}" "${S2}" "${V2}";
+    fi

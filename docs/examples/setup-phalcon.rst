@@ -47,7 +47,7 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    host> ./shell.sh
+   host> ./shell.sh
 
 .. seealso:: :ref:`tutorial_work_inside_the_php_container`
 
@@ -57,7 +57,7 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd $ mkdir my-phalcon
+   devilbox@php-7.0.20 in /shared/httpd $ mkdir my-phalcon
 
 
 3. Install Phalcon
@@ -65,8 +65,8 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd $ cd my-phalcon
-    devilbox@php-7.0.20 in /shared/httpd/my-phalcon $ phalcon project phalconphp
+   devilbox@php-7.0.20 in /shared/httpd $ cd my-phalcon
+   devilbox@php-7.0.20 in /shared/httpd/my-phalcon $ phalcon project phalconphp
 
 
 4. Symlink webroot
@@ -74,7 +74,7 @@ It will be ready in six simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd/my-phalcon $ ln -s phalconphp/public/ htdocs
+   devilbox@php-7.0.20 in /shared/httpd/my-phalcon $ ln -s phalconphp/public/ htdocs
 
 
 5. DNS record
@@ -86,13 +86,12 @@ following line to your host operating systems ``/etc/hosts`` file
 
 .. code-block:: bash
    :caption: /etc/hosts
-   :name: /etc/hosts
 
-    127.0.0.1 my-phalcon.loc
+   127.0.0.1 my-phalcon.loc
 
 .. seealso::
-    For in-depth info about adding DNS records on Linux, Windows or MacOS see:
-    :ref:`project_configuration_dns_records` or :ref:`global_configuration_auto_dns`.
+   For in-depth info about adding DNS records on Linux, Windows or MacOS see:
+   :ref:`project_configuration_dns_records` or :ref:`global_configuration_auto_dns`.
 
 
 6. Open your browser

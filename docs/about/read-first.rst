@@ -17,13 +17,13 @@ Shell commands
 
    .. code-block:: bash
 
-       host> command
+      host> command
 
    2. This one indicates that the command should be executed inside the currently selected PHP container.  (When copying commands, do not copy the ``php>`` part).
 
    .. code-block:: bash
 
-       php> command
+      php> command
 
 
 Checklists

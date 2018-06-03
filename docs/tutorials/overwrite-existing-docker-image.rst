@@ -49,66 +49,63 @@ First you simply copy the while definition of the bind service from ``docker-com
 ``docker-compose.override.yml``:
 
 .. code-block:: yaml
-    :name: docker-compose.override.yml
-    :caption: docker-compose.override.yml
+   :caption: docker-compose.override.yml
 
-    version: '2.1'
-    services:
-      bind:
-        image: cytopia/bind:0.11
-        restart: always
-        ports:
-          # [local-machine:]local-port:docker-port
-          - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND:-1053}:53"
-          - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND:-1053}:53/udp"
+   version: '2.1'
+   services:
+     bind:
+       image: cytopia/bind:0.11
+       restart: always
+       ports:
+         # [local-machine:]local-port:docker-port
+         - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND:-1053}:53"
+         - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND:-1053}:53/udp"
 
-        environment:
-          ##
-          ## Debug?
-          ##
-          - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
-          - DOCKER_LOGS=1
+       environment:
+         ##
+         ## Debug?
+         ##
+         - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
+         - DOCKER_LOGS=1
 
-          ##
-          ## Bind settings
-          ##
-          - WILDCARD_ADDRESS=172.16.238.11
-          - DNS_FORWARDER=${BIND_DNS_RESOLVER:-8.8.8.8,8.8.4.4}
+         ##
+         ## Bind settings
+         ##
+         - WILDCARD_ADDRESS=172.16.238.11
+         - DNS_FORWARDER=${BIND_DNS_RESOLVER:-8.8.8.8,8.8.4.4}
 
-        dns:
-          - 127.0.0.1
+       dns:
+         - 127.0.0.1
 
-        networks:
-          app_net:
-            ipv4_address: 172.16.238.100
+       networks:
+         app_net:
+           ipv4_address: 172.16.238.100
 
 The second step is to remove everything that you do not need to overwrite:
 
 .. code-block:: yaml
-    :name: docker-compose.override.yml
-    :caption: docker-compose.override.yml
+   :caption: docker-compose.override.yml
 
-    version: '2.1'
-    services:
-      bind:
-        image: cytopia/bind:0.11
+   version: '2.1'
+   services:
+     bind:
+       image: cytopia/bind:0.11
 
 The last step is to actually adjust the value you want to change for the bind service:
 
 .. code-block:: yaml
-    :name: docker-compose.override.yml
-    :caption: docker-compose.override.yml
-    :emphasize-lines: 4
+   :caption: docker-compose.override.yml
+   :emphasize-lines: 4
 
-    version: '2.1'
-    services:
-      bind:
-        image: someother/bind:latest
+   version: '2.1'
+   services:
+     bind:
+       image: someother/bind:latest
 
 
 Further reading
 ===============
 
 .. seealso::
-    * :ref:`docker_compose_override_yml`
-    * :ref:`add_your_own_docker_image`
+   * :ref:`docker_compose_override_yml`
+   * :ref:`add_your_own_docker_image`
