@@ -84,16 +84,16 @@ Available PHP modules can be seen at the PHP Docker image repository.
 Configuration
 =============
 
-Can I load custom PHP modules without rebuilding the Docker image?
-------------------------------------------------------------------
-
-Yes, see :ref:`custom_php_modules`
-
-
-Can I load custom Apache modules without rebuilding the Docker image?
----------------------------------------------------------------------
-
-Yes, see :ref:`custom_apache_modules`
+.. Can I load custom PHP modules without rebuilding the Docker image?
+.. ------------------------------------------------------------------
+.. 
+.. Yes, see :ref:`custom_php_modules`
+.. 
+.. 
+.. Can I load custom Apache modules without rebuilding the Docker image?
+.. ---------------------------------------------------------------------
+.. 
+.. Yes, see :ref:`custom_apache_modules`
 
 
 Can I change the MySQL root password?
