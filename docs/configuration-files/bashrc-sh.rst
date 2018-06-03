@@ -97,10 +97,10 @@ that will always use this file:
     host> vi ./bash/vim.sh
 
 .. code-block:: bash
-    :name: ./bash/vim.sh
-    :caption: ./bash/vim.sh
+   :name: ./bash/vim.sh
+   :caption: ./bash/vim.sh
 
-    alias vim='vim -u /etc/bashrc-devilbox.d/.vimrc
+   alias vim='vim -u /etc/bashrc-devilbox.d/.vimrc
 
 Whenever you start ``vim`` inside any PHP container, it will automatically use the provided vim
 configuration file.
