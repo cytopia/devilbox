@@ -43,22 +43,21 @@ by ``.sh`` and place it into the ``./bash/`` directory:
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox git directory
-    host> cd path/to/devilbox
+   # Navigate to the Devilbox git directory
+   host> cd path/to/devilbox
 
-    # Create a new file
-    host> touch ./bash/aliases.sh
+   # Create a new file
+   host> touch ./bash/aliases.sh
 
-    # Add some content to the file
-    host> vi ./bash/aliases.sh
+   # Add some content to the file
+   host> vi ./bash/aliases.sh
 
 .. code-block:: bash
-    :name: ./bash/aliases.sh
-    :caption: ./bash/aliases.sh
+   :caption: ./bash/aliases.sh
 
-     alias l='ls -a'
-     alias ll='ls -al'
-     alias www='cd /shared/httpd'
+   alias l='ls -a'
+   alias ll='ls -al'
+   alias www='cd /shared/httpd'
 
 
 Custom vim configuration
@@ -72,11 +71,11 @@ First of all, place your favorite ``.vimrc`` into the ``./bash/`` directory
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox git directory
-    host> cd path/to/devilbox
+   # Navigate to the Devilbox git directory
+   host> cd path/to/devilbox
 
-    # Copy your vim config to the ./bash directory
-    host> cp ~/.vimrc bash/.vimrc
+   # Copy your vim config to the ./bash directory
+   host> cp ~/.vimrc bash/.vimrc
 
 Right now, this is not going to do anything and as ``.vimrc`` is not ending by ``.sh`` it is also
 ignored by the shell itself. What is now left to do, is make vim itself always use this config file.
@@ -87,20 +86,19 @@ that will always use this file:
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox git directory
-    host> cd path/to/devilbox
+   # Navigate to the Devilbox git directory
+   host> cd path/to/devilbox
 
-    # Create a new file
-    host> touch ./bash/vim.sh
+   # Create a new file
+   host> touch ./bash/vim.sh
 
-    # Add your vim alias
-    host> vi ./bash/vim.sh
+   # Add your vim alias
+   host> vi ./bash/vim.sh
 
 .. code-block:: bash
-    :name: ./bash/vim.sh
-    :caption: ./bash/vim.sh
+   :caption: ./bash/vim.sh
 
-    alias vim='vim -u /etc/bashrc-devilbox.d/.vimrc
+   alias vim='vim -u /etc/bashrc-devilbox.d/.vimrc'
 
 Whenever you start ``vim`` inside any PHP container, it will automatically use the provided vim
 configuration file.

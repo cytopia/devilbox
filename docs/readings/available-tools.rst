@@ -84,11 +84,11 @@ The PHP container is your workhorse and these are your tools:
 +----------------------+-----------------------------------------------------------------------------------+
 
 .. note::
-    If you are in need of other tools, open up an issue at
-    `Github <https://github.com/cytopia/devilbox/issues>`_ and ask for it,
-    this can usually be implemented very quickly.
+   If you are in need of other tools, open up an issue at
+   `Github <https://github.com/cytopia/devilbox/issues>`_ and ask for it,
+   this can usually be implemented very quickly.
 
 .. seealso::
-    If you ever feel those tools are out-dated, simply update your Docker images.
-    Docker images are built every night to ensure latest tools and security patches:
-    :ref:`getting_started_update_the_docker_images`
+   If you ever feel those tools are out-dated, simply update your Docker images.
+   Docker images are built every night to ensure latest tools and security patches:
+   :ref:`getting_started_update_the_docker_images`

@@ -34,14 +34,14 @@ Entering from Linux or MacOS: ``shell.sh``
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    host> cd /path/to/devilbox
+   # Navigate to the Devilbox directory
+   host> cd /path/to/devilbox
 
-    # Run provided script
-    host> ./shell.sh
+   # Run provided script
+   host> ./shell.sh
 
-    # Now you are inside the PHP Linux container
-    devilbox@php-7.0.19 in /shared/httpd $
+   # Now you are inside the PHP Linux container
+   devilbox@php-7.0.19 in /shared/httpd $
 
 
 Entering from Windows: ``shell.bat``
@@ -49,14 +49,14 @@ Entering from Windows: ``shell.bat``
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    C:/> cd C:/Users/user1/devilbox
+   # Navigate to the Devilbox directory
+   C:/> cd C:/Users/user1/devilbox
 
-    # Run provided script
-    C:/Users/user1/devilbox> shell.bat
+   # Run provided script
+   C:/Users/user1/devilbox> shell.bat
 
-    # Now you are inside the PHP Linux container
-    devilbox@php-7.0.19 in /shared/httpd $
+   # Now you are inside the PHP Linux container
+   devilbox@php-7.0.19 in /shared/httpd $
 
 
 Inside the container
@@ -77,8 +77,8 @@ The uid and gid mappings are controlled via two ``.env`` variables called :ref:`
 
 
 .. seealso::
-    If you want to find out more about synronized container permissions read up here:
-    :ref:`syncronize_container_permissions`
+   If you want to find out more about synronized container permissions read up here:
+   :ref:`syncronize_container_permissions`
 
 
 ``root`` user
@@ -92,19 +92,19 @@ By default ``sudo`` is configured to be used without passwords, so you can simpl
 
 .. code-block:: bash
 
-    # As user devilbox inside the container
-    devilbox@php-7.0.19 in /shared/httpd $ sudo su -
+   # As user devilbox inside the container
+   devilbox@php-7.0.19 in /shared/httpd $ sudo su -
 
-    # You are now the root user
-    root@php-7.0.19 in /shared/httpd $
+   # You are now the root user
+   root@php-7.0.19 in /shared/httpd $
 
 You can also use ``sudo`` to run commands with root privileges without having to become root first.
 
 .. code-block:: bash
 
-    # As user devilbox inside the container
-    devilbox@php-7.0.19 in /shared/httpd $ sudo apt update
-    devilbox@php-7.0.19 in /shared/httpd $ sudo apt install nmap
+   # As user devilbox inside the container
+   devilbox@php-7.0.19 in /shared/httpd $ sudo apt update
+   devilbox@php-7.0.19 in /shared/httpd $ sudo apt install nmap
 
 
 Leave the container
@@ -115,11 +115,11 @@ and you are out.
 
 .. code-block:: bash
 
-    # As user devilbox inside the container
-    devilbox@php-7.0.19 in /shared/httpd $ exit
+   # As user devilbox inside the container
+   devilbox@php-7.0.19 in /shared/httpd $ exit
 
-    # You are now back on your host operating system
-    host>
+   # You are now back on your host operating system
+   host>
 
 
 Host to Container mappings
@@ -199,28 +199,28 @@ An example to access the MySQL database from either host or within the PHP conta
 
 .. code-block:: bash
 
-    # Access MySQL from your host operating system
-    host> mysql -h 127.0.0.1
+   # Access MySQL from your host operating system
+   host> mysql -h 127.0.0.1
 
-    # Access MySQL from within the PHP container
-    devilbox@php-7.0.19 in /shared/httpd $ mysql -h 127.0.0.1
+   # Access MySQL from within the PHP container
+   devilbox@php-7.0.19 in /shared/httpd $ mysql -h 127.0.0.1
 
 .. important::
-    Do not use ``localhost`` to access the services, it does not map to ``127.0.0.1`` on
-    all cases.
+   Do not use ``localhost`` to access the services, it does not map to ``127.0.0.1`` on
+   all cases.
 
 So when setting up a configuration file from your PHP project you would for example use
 ``127.0.0.`` as the host for your MySQL database connection:
 
 .. code-block:: php
 
-    <?php
-    // MySQL server connection
-    mysql_host = '127.0.0.1';
-    mysql_port = '3306';
-    mysql_user = 'someusername';
-    mysql_pass = 'somepassword';
-    ?>
+   <?php
+   // MySQL server connection
+   mysql_host = '127.0.0.1';
+   mysql_port = '3306';
+   mysql_user = 'someusername';
+   mysql_pass = 'somepassword';
+   ?>
 
 Imagine your PHP framework ships a command line tool to run database migration. You could run
 it from your host operating system or from within the PHP container. It would work from both
@@ -230,8 +230,8 @@ You could also even switch between the Devilbox and a locally installed LAMP sta
 and still use the same configuration.
 
 .. warning::
-    The mapping of ``127.0.0.1`` to your host operating system does not work with
-    :ref:`docker_toolbox`.
+   The mapping of ``127.0.0.1`` to your host operating system does not work with
+   :ref:`docker_toolbox`.
 
 
 Port mappings
@@ -269,8 +269,8 @@ The PHP container is hooked up by default to the bundled DNS server and makes us
 :ref:`global_configuration_auto_dns`.
 
 .. seealso::
-    You can achieve the same on your host operating system by explicitly enabling auto-dns.
-    See also: :ref:`global_configuration_auto_dns`.
+   You can achieve the same on your host operating system by explicitly enabling auto-dns.
+   See also: :ref:`global_configuration_auto_dns`.
 
 
 Checklist

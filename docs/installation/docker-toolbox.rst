@@ -74,6 +74,7 @@ If you do not port-forward it to your host machines localhost, you will have to 
 DNS entries that are described in this documentation to go to ``127.0.0.1`` to the IP address of
 your virtual machine.
 
+.. _docker_toolbox_auto_dns:
 
 Auto-DNS
 --------

@@ -106,26 +106,23 @@ If you are running Linux as your host operating system you would use the IP addr
 computer which was identified as ``172.16.238.1``.
 
 .. code-block:: bash
-    :name: .env
-    :caption: .env
+   :caption: .env
 
-    EXTRA_HOSTS=mywebserver.loc=172.16.238.1
-
-or
-
-.. code-block:: bash
-    :name: .env
-    :caption: .env
-
-    EXTRA_HOSTS=mywebserver.loc=docker.for.lin.host.internal
+   EXTRA_HOSTS=mywebserver.loc=172.16.238.1
 
 or
 
 .. code-block:: bash
-    :name: .env
-    :caption: .env
+   :caption: .env
 
-    EXTRA_HOSTS=mywebserver.loc=docker.for.lin.localhost
+   EXTRA_HOSTS=mywebserver.loc=docker.for.lin.host.internal
+
+or
+
+.. code-block:: bash
+   :caption: .env
+
+   EXTRA_HOSTS=mywebserver.loc=docker.for.lin.localhost
 
 
 Mapping on MacOS
@@ -135,10 +132,9 @@ If you are running MacOS as your host operating system you would use one of the 
 (depending on your Docker version).
 
 .. code-block:: bash
-    :name: .env
-    :caption: .env
+   :caption: .env
 
-    EXTRA_HOSTS=mywebserver.loc=host.docker.internal
+   EXTRA_HOSTS=mywebserver.loc=host.docker.internal
 
 The CNAME ``host.docker.internal`` will be resolved to an IP address during startup and ``mywebserver.loc``
 's DNS record will point to that IP address.
@@ -151,10 +147,9 @@ If you are running Windows as your host operating system you would use one of th
 (depending on your Docker version).
 
 .. code-block:: bash
-    :name: .env
-    :caption: .env
+   :caption: .env
 
-    EXTRA_HOSTS=mywebserver.loc=docker.for.win.host.internal
+   EXTRA_HOSTS=mywebserver.loc=docker.for.win.host.internal
 
 The CNAME ``docker.for.win.host.internal`` will be resolved to an IP address during startup and ``mywebserver.loc``
 's DNS record will point to that IP address.
@@ -171,5 +166,5 @@ Further reading
 ===============
 
 .. seealso::
-    * :ref:`env_extra_hosts`
-    * :ref:`global_configuration_auto_dns`
+   * :ref:`env_extra_hosts`
+   * :ref:`global_configuration_auto_dns`

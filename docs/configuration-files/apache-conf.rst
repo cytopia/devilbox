@@ -11,9 +11,9 @@ custom configurations.
 .. seealso:: If you are rather using Nginx, have a look at: :ref:`nginx_conf`
 
 .. important::
-    You could actually also create virtual hosts here, but it is recommended to use the
-    Devilbox Auto-vhost generation feature. If you want to custimize your current virtual hosts
-    have a look at :ref:`custom_vhost`.
+   You could actually also create virtual hosts here, but it is recommended to use the
+   Devilbox Auto-vhost generation feature. If you want to custimize your current virtual hosts
+   have a look at :ref:`custom_vhost`.
 
 
 **Table of Contents**
@@ -29,10 +29,10 @@ See the directory structure for Apache configuration directories inside ``./cfg/
 
 .. code-block:: bash
 
-    host> ls -l path/to/devilbox/cfg/ | grep 'apache'
+   host> ls -l path/to/devilbox/cfg/ | grep 'apache'
 
-    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 apache-2.2/
-    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 apache-2.4/
+   drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 apache-2.2/
+   drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 apache-2.4/
 
 Customization is achieved by placing a file into ``cfg/apache-X.X/`` (where ``X.X`` stands for
 your Apache version).  The file must end by ``.conf`` in order to be sourced by the web server.
@@ -59,31 +59,30 @@ Apache 2.2.
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    host> cd path/to/devilbox
+   # Navigate to the Devilbox directory
+   host> cd path/to/devilbox
 
-    # Navigate to Apache 2.2 config directory
-    host> cd cfg/apache-2.2
+   # Navigate to Apache 2.2 config directory
+   host> cd cfg/apache-2.2
 
-    # Create new conf file
-    host> touch keep_alive.conf
+   # Create new conf file
+   host> touch keep_alive.conf
 
 Now add the following content to the file:
 
 .. code-block:: ini
-    :name: keep_alive.conf
-    :caption: keep_alive.conf
+   :caption: keep_alive.conf
 
-    KeepAlive On
-    KeepAliveTimeout 10
-    MaxKeepAliveRequests 100
+   KeepAlive On
+   KeepAliveTimeout 10
+   MaxKeepAliveRequests 100
 
 In order to apply the changes you need to restart the Devilbox.
 
 .. note::
-    The above is just an example demonstration, you probably need other values for your setup.
-    So make sure to understand how to configure Apache, if you are going to change any of those
-    settings.
+   The above is just an example demonstration, you probably need other values for your setup.
+   So make sure to understand how to configure Apache, if you are going to change any of those
+   settings.
 
 
 Limit HTTP headers and GET size for Apache 2.4
@@ -99,31 +98,30 @@ for Apache 2.4.
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    host> cd path/to/devilbox
+   # Navigate to the Devilbox directory
+   host> cd path/to/devilbox
 
-    # Navigate to Apache 2.4 config directory
-    host> cd cfg/apache-2.4
+   # Navigate to Apache 2.4 config directory
+   host> cd cfg/apache-2.4
 
-    # Create new conf file
-    host> touch limits.conf
+   # Create new conf file
+   host> touch limits.conf
 
 Now add the following content to the file:
 
 .. code-block:: ini
-    :name: limits.conf
-    :caption: limits.conf
+   :caption: limits.conf
 
-    # Limit amount of HTTP headers a client can send to the server
-    LimitRequestFields 20
-    LimitRequestFieldSize 4094
+   # Limit amount of HTTP headers a client can send to the server
+   LimitRequestFields 20
+   LimitRequestFieldSize 4094
 
-    # URL GET size
-    LimitRequestLine 2048
+   # URL GET size
+   LimitRequestLine 2048
 
 In order to apply the changes you need to restart the Devilbox.
 
 .. note::
-    The above is just an example demonstration, you probably need other values for your setup.
-    So make sure to understand how to configure Apache, if you are going to change any of those
-    settings.
+   The above is just an example demonstration, you probably need other values for your setup.
+   So make sure to understand how to configure Apache, if you are going to change any of those
+   settings.

@@ -23,8 +23,13 @@ You can also build the documentation locally before pushing to ensure everything
 sudo pip install sphinx sphinx-autobuild
 sudo pip install sphinx_rtd_theme
 ```
+#### How to build and error-check
+```
+cd docs/
+sphinx-build -a -E -j auto -n -q . _build/html/
+```
 
-#### How to build
+#### How to build continuously
 ```
 cd docs/
 sphinx-autobuild . _build/html

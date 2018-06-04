@@ -80,6 +80,7 @@ docker-compose.override.yml
 /docs/_build/
 /docs/make.bat
 /docs/Makefile
+*.rst.todo
 
 # Keep folders
 !.keepme

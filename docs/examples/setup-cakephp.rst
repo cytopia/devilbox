@@ -49,7 +49,7 @@ It will be ready in eight simple steps:
 
 .. code-block:: bash
 
-    host> ./shell.sh
+   host> ./shell.sh
 
 .. seealso:: :ref:`tutorial_work_inside_the_php_container`
 
@@ -59,7 +59,7 @@ It will be ready in eight simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd $ mkdir my-cake
+   devilbox@php-7.0.20 in /shared/httpd $ mkdir my-cake
 
 
 3. Install CakePHP
@@ -67,8 +67,8 @@ It will be ready in eight simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd $ cd my-cake
-    devilbox@php-7.0.20 in /shared/httpd/my-cake $ composer create-project --prefer-dist cakephp/app cakephp
+   devilbox@php-7.0.20 in /shared/httpd $ cd my-cake
+   devilbox@php-7.0.20 in /shared/httpd/my-cake $ composer create-project --prefer-dist cakephp/app cakephp
 
 
 4. Symlink webroot
@@ -76,7 +76,7 @@ It will be ready in eight simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd/my-cake $ ln -s cakephp/webroot/ htdocs
+   devilbox@php-7.0.20 in /shared/httpd/my-cake $ ln -s cakephp/webroot/ htdocs
 
 
 5. Add MySQL Database
@@ -84,7 +84,7 @@ It will be ready in eight simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd/my-cake $ mysql -u root -h 127.0.0.1 -p -e 'CREATE DATABASE my_cake;'
+   devilbox@php-7.0.20 in /shared/httpd/my-cake $ mysql -u root -h 127.0.0.1 -p -e 'CREATE DATABASE my_cake;'
 
 
 6. Configure database connection
@@ -92,34 +92,33 @@ It will be ready in eight simple steps:
 
 .. code-block:: bash
 
-    devilbox@php-7.0.20 in /shared/httpd/my-cake $ vi cakephp/config/app.php
+   devilbox@php-7.0.20 in /shared/httpd/my-cake $ vi cakephp/config/app.php
 
 .. code-block:: php
    :caption: cakephp/config/app.php
-   :name: cakephp/config/app.php
    :emphasize-lines: 7,14,15,16
 
-    <?php
-      'Datasources' => [
-            'default' => [
-                'className' => 'Cake\Database\Connection',
-                'driver' => 'Cake\Database\Driver\Mysql',
-                'persistent' => false,
-                'host' => '127.0.0.1',
-                /**
-                 * CakePHP will use the default DB port based on the driver selected
-                 * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
-                 * the following line and set the port accordingly
-                 */
-                //'port' => 'non_standard_port_number',
-                'username' => 'root',
-                'password' => 'secret',
-                'database' => 'my_cake',
-                'encoding' => 'utf8',
-                'timezone' => 'UTC',
-                'flags' => [],
-                'cacheMetadata' => true,
-    ?>
+   <?php
+     'Datasources' => [
+           'default' => [
+               'className' => 'Cake\Database\Connection',
+               'driver' => 'Cake\Database\Driver\Mysql',
+               'persistent' => false,
+               'host' => '127.0.0.1',
+               /**
+                * CakePHP will use the default DB port based on the driver selected
+                * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
+                * the following line and set the port accordingly
+                */
+               //'port' => 'non_standard_port_number',
+               'username' => 'root',
+               'password' => 'secret',
+               'database' => 'my_cake',
+               'encoding' => 'utf8',
+               'timezone' => 'UTC',
+               'flags' => [],
+               'cacheMetadata' => true,
+   ?>
 
 
 7. DNS record
@@ -131,13 +130,12 @@ following line to your host operating systems ``/etc/hosts`` file
 
 .. code-block:: bash
    :caption: /etc/hosts
-   :name: /etc/hosts
 
-    127.0.0.1 my-cake.loc
+   127.0.0.1 my-cake.loc
 
 .. seealso::
-    For in-depth info about adding DNS records on Linux, Windows or MacOS see:
-    :ref:`project_configuration_dns_records` or :ref:`global_configuration_auto_dns`.
+   For in-depth info about adding DNS records on Linux, Windows or MacOS see:
+   :ref:`project_configuration_dns_records` or :ref:`global_configuration_auto_dns`.
 
 
 8. Open your browser

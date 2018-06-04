@@ -8,8 +8,8 @@ If you don't want to add DNS records manually for every project, you can also us
 DNS server and use it's DNS catch-all feature to have all DNS records automatically available.
 
 .. important::
-    By default, the DNS server is set to listen on ``1053`` to avoid port collisions during startup.
-    You need to change it to ``53`` in ``.env`` via :ref:`env_host_port_bind`.
+   By default, the DNS server is set to listen on ``1053`` to avoid port collisions during startup.
+   You need to change it to ``53`` in ``.env`` via :ref:`env_host_port_bind`.
 
 
 **Table of Contents**
@@ -34,34 +34,32 @@ Prerequisites
 First ensure that :ref:`env_local_listen_addr` is either empty or listening on ``127.0.0.1``.
 
 .. code-block:: bash
-    :caption: .env
-    :name: .env
-    :emphasize-lines: 3
+   :caption: .env
+   :emphasize-lines: 3
 
-    host> cd path/to/devilbox
-    host> vi .env
-    LOCAL_LISTEN_ADDR=
+   host> cd path/to/devilbox
+   host> vi .env
+   LOCAL_LISTEN_ADDR=
 
 Then you need to ensure that :ref:`env_host_port_bind` is set to ``53``.
 
 .. code-block:: bash
-    :caption: .env
-    :name: .env
-    :emphasize-lines: 3
+   :caption: .env
+   :emphasize-lines: 3
 
-    host> cd path/to/devilbox
-    host> vi .env
-    HOST_PORT_BIND=53
+   host> cd path/to/devilbox
+   host> vi .env
+   HOST_PORT_BIND=53
 
 Before starting up the Devilbox, ensure that port ``53`` is not already used on ``127.0.0.1``.
 
 .. code-block:: bash
-    :emphasize-lines: 2
+   :emphasize-lines: 2
 
-    host> netstat -an | grep -E 'LISTEN\s*$'
-    tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN
-    tcp        0      0 127.0.0.1:43477         0.0.0.0:*               LISTEN
-    tcp        0      0 127.0.0.1:50267         0.0.0.0:*               LISTEN
+   host> netstat -an | grep -E 'LISTEN\s*$'
+   tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN
+   tcp        0      0 127.0.0.1:43477         0.0.0.0:*               LISTEN
+   tcp        0      0 127.0.0.1:50267         0.0.0.0:*               LISTEN
 
 If you see port ``53`` already being used as in the above example, ensure to stop any
 DNS resolver, otherwise it does not work.
@@ -70,9 +68,9 @@ The output should look like this (It is only important that there is no ``:53``.
 
 .. code-block:: bash
 
-    host> netstat -an | grep -E 'LISTEN\s*$'
-    tcp        0      0 127.0.0.1:43477         0.0.0.0:*               LISTEN
-    tcp        0      0 127.0.0.1:50267         0.0.0.0:*               LISTEN
+   host> netstat -an | grep -E 'LISTEN\s*$'
+   tcp        0      0 127.0.0.1:43477         0.0.0.0:*               LISTEN
+   tcp        0      0 127.0.0.1:50267         0.0.0.0:*               LISTEN
 
 
 Linux
@@ -91,20 +89,19 @@ are changed, you always want to have an additional entry, which is the one from 
 Add the following line to to the very beginning to ``/etc/dhcp/dhclient.conf``:
 
 .. code-block:: bash
-    :caption: /etc/dhcp/dhclient.conf
-    :name: /etc/dhcp/dhclient.conf
+   :caption: /etc/dhcp/dhclient.conf
 
-    prepend domain-name-servers 127.0.0.1;
+   prepend domain-name-servers 127.0.0.1;
 
 When you do that for the first time, you need to restart the ``network-manager`` service.
 
 .. code-block:: bash
 
-    # Via service command
-    host> sudo service network-manager restart
+   # Via service command
+   host> sudo service network-manager restart
 
-    # Or the systemd way
-    host> sudo systemctl restart network-manager
+   # Or the systemd way
+   host> sudo systemctl restart network-manager
 
 This will make sure that whenever your /etc/resolv.conf is deployed, you will have ``127.0.0.1``
 as the first entry and also make use of any other DNS server which are deployed via the LAN's DHCP server.
@@ -120,33 +117,31 @@ In case you are using systemd-resolved instead of NetworkManager, add the follow
 the very beginning to ``/etc/resolv.conf.head``:
 
 .. code-block:: bash
-    :caption: /etc/resolv.conf.head
-    :name: /etc/resolv.conf.head
+   :caption: /etc/resolv.conf.head
 
-    nameserver 127.0.0.1
+   nameserver 127.0.0.1
 
 Prevent NetworkManager from modifying ``/etc/resolv.conf`` and leave everything to
 systemd-resolved by adding the following line under the ``[main]`` section of
 ``/etc/NetworkManager/NetworkManager.conf``
 
 .. code-block:: bash
-    :caption: /etc/NetworkManager/NetworkManager.conf
-    :name: /etc/NetworkManager/NetworkManager.conf
+   :caption: /etc/NetworkManager/NetworkManager.conf
 
-    dns=none
+   dns=none
 
 As a last step you will have to restart ``systemd-resolved``.
 
 .. code-block:: bash
 
-    host> sudo systemctl stop systemd-resolved
-    host> sudo systemctl start systemd-resolved
+   host> sudo systemctl stop systemd-resolved
+   host> sudo systemctl start systemd-resolved
 
 Once done, you can verify if the new DNS settings are effective:
 
 .. code-block:: bash
 
-    host> systemd-resolve --status
+   host> systemd-resolve --status
 
 .. seealso:: `Archlinux Wiki: resolv.conf <https://wiki.archlinux.org/index.php/Resolv.conf#Modify_the_dhcpcd_config>`_
 

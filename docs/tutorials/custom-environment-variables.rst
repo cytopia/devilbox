@@ -24,7 +24,6 @@ would add the following to the ``.env`` file:
 
 .. code-block:: bash
    :caption: .env
-   :name: .env
    :emphasize-lines: 1
 
    APPLICATION_ENV=production
@@ -32,8 +31,8 @@ would add the following to the ``.env`` file:
 You need to restart the Devilbox for the changes to take effect.
 
 .. note::
-    There is already a proposed section inside the ``.env`` file at the very bottom
-    to add you custom variables to differentiate them from the Devilbox required variables.
+   There is already a proposed section inside the ``.env`` file at the very bottom
+   to add you custom variables to differentiate them from the Devilbox required variables.
 
 
 Use custom environment variables
@@ -44,7 +43,6 @@ You can use the PHP's built-in function ``getenv`` to obtain the value:
 
 .. code-block:: php
    :caption: index.php
-   :name: index.php
    :emphasize-lines: 3
 
    <?php

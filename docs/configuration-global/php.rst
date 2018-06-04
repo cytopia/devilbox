@@ -1,5 +1,0 @@
-***
-PHP
-***
-
-Environment variables

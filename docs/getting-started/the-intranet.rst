@@ -109,10 +109,10 @@ If you share your projects over a LAN, but do not want anybody to view the Devil
 you can also password protect it.
 
 .. seealso::
-    In order to do so, have a look at the following ``.env`` variables:
+   In order to do so, have a look at the following ``.env`` variables:
 
-    * :ref:`env_devilbox_ui_protect`
-    * :ref:`env_devilbox_ui_password`
+   * :ref:`env_devilbox_ui_protect`
+   * :ref:`env_devilbox_ui_password`
 
 
 Disable the intranet
@@ -123,9 +123,9 @@ This is achieved internally by removing the default virtual host which serves th
 When the intranet is disabled, there is no way to access it.
 
 .. seealso::
-    In order to do so, have a look at the following ``.env`` variable:
+   In order to do so, have a look at the following ``.env`` variable:
 
-    * :ref:`env_devilbox_ui_enable`
+   * :ref:`env_devilbox_ui_enable`
 
 
 Checklist

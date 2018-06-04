@@ -128,14 +128,14 @@ You first need to find out the image name and then also the currently used image
 
    host> grep 'image:' docker-compose.yml
 
-    image: cytopia/bind:0.11
-    image: devilbox/php-fpm:${PHP_SERVER:-7.0}-work
-    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.13
-    image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
-    image: postgres:${PGSQL_SERVER:-9.6}
-    image: redis:${REDIS_SERVER:-3.2}
-    image: memcached:${MEMCD_SERVER:-latest}
-    image: mongo:${MONGO_SERVER:-latest}
+   image: cytopia/bind:0.11
+   image: devilbox/php-fpm:${PHP_SERVER:-7.0}-work
+   image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.13
+   image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
+   image: postgres:${PGSQL_SERVER:-9.6}
+   image: redis:${REDIS_SERVER:-3.2}
+   image: memcached:${MEMCD_SERVER:-latest}
+   image: mongo:${MONGO_SERVER:-latest}
 
 After having found the possible candidates, you will still have to find the corresponding value
 inside the ``..env`` file. Let's do it for the PHP image:

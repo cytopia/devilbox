@@ -50,12 +50,6 @@ host is ready to be served with your custom domain.
    :caption: Maintenance
    :maxdepth: 2
 
-   maintenance/install
-   maintenance/update
-   maintenance/uninstall
-   maintenance/start-the-devilbox
-   maintenance/add-service-to-running-devilbox
-   maintenance/remove-service-from-running-devilbox
    maintenance/backup-and-restore-mysql
    maintenance/backup-and-restore-pgsql
    maintenance/backup-and-restore-mongo
@@ -69,16 +63,10 @@ host is ready to be served with your custom domain.
    tutorials/add-your-own-docker-image
    tutorials/overwrite-existing-docker-image
    tutorials/adding-subdomains
-   tutorials/configure-database-in-your-project
-   tutorials/change-document-root
    tutorials/change-container-versions
    tutorials/work-inside-the-container
    tutorials/enable-xdebug
-   tutorials/customize-vhost
-   tutorials/custom-apache-modules
    tutorials/custom-environment-variables
-   tutorials/password-protect-intranet
-   tutorials/disable-intranet
    tutorials/static-code-analysis
 
 
@@ -105,7 +93,6 @@ host is ready to be served with your custom domain.
    :maxdepth: 2
 
    configuration-project/dns-records
-   configuration-project/domain
    configuration-project/custom-vhost
 
 
@@ -148,9 +135,6 @@ host is ready to be served with your custom domain.
    :caption: Advanced
    :maxdepth: 2
 
-   advanced/technical
-   advanced/hacking
-
 
 .. toctree::
    :caption: Support
@@ -158,6 +142,5 @@ host is ready to be served with your custom domain.
 
    support/faq
    support/troubleshooting
-   support/contributing
    support/blogs-videos-and-use-cases
    support/artwork
