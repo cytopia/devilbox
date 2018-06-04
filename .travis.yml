@@ -98,30 +98,6 @@ env:
 
 
 ###
-### Build Matrix definition
-###
-#matrix:
-#  allow_failures:
-#    - env: S1=PHP V1=hhvm-latest S2=HTTPD V2=apache-2.2
-#
-
-###
-### Berfore Install
-###
-before_install:
-  # Get newer docker version
-  - max=100; i=0; while [ $i -lt $max ]; do if sudo apt-get update; then break; else i=$((i+1)); fi done
-  - max=100; i=0; while [ $i -lt $max ]; do if sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce; then break; else i=$((i+1)); fi done
-  # Get newer docker-compose version
-  - max=100; i=0; while [ $i -lt $max ]; do if curl -L --retry 100 --retry-max-time 0 https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > docker-compose; then break; else i=$((i+1)); fi done
-  - chmod +x docker-compose
-  - sudo mv -f docker-compose /usr/local/bin
-  # List versions
-  - docker version
-  - docker-compose version
-
-
-###
 ### Installation
 ###
 install:
@@ -131,6 +107,27 @@ install:
       pip install sphinx-autobuild;
       pip install recommonmark;
       pip install sphinx_rtd_theme;
+    fi
+
+  # Install dependencies for docker/docker-compose
+  - if [ "${S1}" != "DOCUMENTATION" ]; then
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if sudo apt-get update; then break; else i=$((i+1)); fi
+      done;
+
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce; then break; else i=$((i+1)); fi
+      done;
+
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if curl -L --retry 100 --retry-max-time 0 https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > docker-compose; then break; else i=$((i+1)); fi
+      done;
+
+      chmod +x docker-compose;
+      sudo mv -f docker-compose /usr/local/bin;
     fi
 
 
@@ -152,6 +149,19 @@ before_script:
   - sudo service redis      stop || true
   - sudo service mongodb    stop || true
   - netstat -tulpn
+
+  # Show Python/pip
+  - if [ "${S1}" = "DOCUMENTATION" ]; then
+      pip freeze;
+      pip --version;
+      python --version;
+    fi
+
+  # Show Docker/Docker Compose
+  - if [ "${S1}" != "DOCUMENTATION" ]; then
+      docker --version;
+      docker-compose --version;
+    fi
 
 
 ###
