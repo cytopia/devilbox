@@ -5,7 +5,7 @@ Adding Sub domains
 ******************
 
 This tutorial gives you a brief overview how to serve your project under one subdomain via
-the project directory name as well as how to serve one projcet with multiple subdomains with
+the project directory name as well as how to serve one project with multiple subdomains with
 a customized virtual host config via ``vhost-gen``.
 
 
