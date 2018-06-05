@@ -103,10 +103,25 @@ env:
 install:
   # Install dependencies for documentation
   - if [ "${S1}" = "DOCUMENTATION" ]; then
-      pip install sphinx;
-      pip install sphinx-autobuild;
-      pip install recommonmark;
-      pip install sphinx_rtd_theme;
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if pip install sphinx; then break; else i=$((i+1)); fi
+      done;
+
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if pip install sphinx-autobuild; then break; else i=$((i+1)); fi
+      done;
+
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if pip install recommonmark; then break; else i=$((i+1)); fi
+      done;
+
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if pip install sphinx_rtd_theme; then break; else i=$((i+1)); fi
+      done;
     fi
 
   # Install dependencies for docker/docker-compose
