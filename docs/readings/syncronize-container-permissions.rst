@@ -86,5 +86,5 @@ When the PHP-FPM process finally starts up it actually runs with your local syst
 sure permissions will be in sync from now on.
 
 .. note::
-    To tackle this on the PHP-FPM side is only half a solution to the problem. The same applies to a web server Docker container when you offer **file uploads**. They will be uploaded and created by the web servers uid/gid. Therefore the web server itself must also provide the same kind of solution.
+   To tackle this on the PHP-FPM side is only half a solution to the problem. The same applies to a web server Docker container when you offer **file uploads**. They will be uploaded and created by the web servers uid/gid. Therefore the web server itself must also provide the same kind of solution.
 

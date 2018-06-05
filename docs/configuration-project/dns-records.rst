@@ -11,9 +11,9 @@ The server name is constructed by a ``<project-directory>`` and the :ref:`env_tl
 requires the same DNS record to be present in order to access it.
 
 .. seealso::
-    This section gives you an overview about how to create separate DNS records for each project.
-    It has to be done for each project, however if you want to automate the process, refer
-    to :ref:`global_configuration_auto_dns`.
+   This section gives you an overview about how to create separate DNS records for each project.
+   It has to be done for each project, however if you want to automate the process, refer
+   to :ref:`global_configuration_auto_dns`.
 
 
 **Table of Contents**
@@ -36,8 +36,8 @@ See the following table for project directories and TLD_SUFFIX.
 +-------------------+------------+--------------------------+-----------------------+
 
 .. note::
-    When you have created the above two projects, you can check the vhost page on the
-    Devilbox intranet. It will tell you exactly what DNS record to add.
+   When you have created the above two projects, you can check the vhost page on the
+   Devilbox intranet. It will tell you exactly what DNS record to add.
 
 .. image:: /_static/img/devilbox-vhosts-dns.png
 
@@ -66,10 +66,10 @@ uses vim to add the two example DNS records.
 
 .. code-block:: bash
 
-    host> sudo vim /etc/hosts
+   host> sudo vim /etc/hosts
 
-    127.0.0.1 project-1.loc
-    127.0.0.1 www.project-1.loc
+   127.0.0.1 project-1.loc
+   127.0.0.1 www.project-1.loc
 
 
 MacOS
@@ -80,10 +80,10 @@ uses vim to add the two example DNS records.
 
 .. code-block:: bash
 
-    host> sudo vim /etc/hosts
+   host> sudo vim /etc/hosts
 
-    127.0.0.1 project-1.loc
-    127.0.0.1 www.project-1.loc
+   127.0.0.1 project-1.loc
+   127.0.0.1 www.project-1.loc
 
 
 Windows
@@ -94,8 +94,8 @@ and add the following two lines:
 
 .. code-block:: bash
 
-    127.0.0.1 project-1.loc
-    127.0.0.1 www.project-1.loc
+   127.0.0.1 project-1.loc
+   127.0.0.1 www.project-1.loc
 
 
 Docker Toolbox
@@ -119,10 +119,10 @@ uses vim to add the two example DNS records.
 
 .. code-block:: bash
 
-    host> sudo vim /etc/hosts
+   host> sudo vim /etc/hosts
 
-    192.16.0.1 project-1.loc
-    192.16.0.1 www.project-1.loc
+   192.16.0.1 project-1.loc
+   192.16.0.1 www.project-1.loc
 
 
 Windows
@@ -133,8 +133,8 @@ and add the following two lines:
 
 .. code-block:: bash
 
-    192.16.0.1 project-1.loc
-    192.16.0.1 www.project-1.loc
+   192.16.0.1 project-1.loc
+   192.16.0.1 www.project-1.loc
 
 
 
@@ -145,14 +145,14 @@ After settings the DNS records, you can use the ``ping`` command to verify if ev
 
 .. code-block:: bash
 
-    host> ping -c1 project-1.loc
+   host> ping -c1 project-1.loc
 
-    PING project-1.loc (127.0.0.1) 56(84) bytes of data.
-    64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.066 ms
+   PING project-1.loc (127.0.0.1) 56(84) bytes of data.
+   64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.066 ms
 
 .. code-block:: bash
 
-    host> ping -c1 www.project-1.loc
+   host> ping -c1 www.project-1.loc
 
-    PING www.project-1.loc (127.0.0.1) 56(84) bytes of data.
-    64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.066 ms
+   PING www.project-1.loc (127.0.0.1) 56(84) bytes of data.
+   64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.066 ms

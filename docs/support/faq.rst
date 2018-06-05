@@ -84,16 +84,16 @@ Available PHP modules can be seen at the PHP Docker image repository.
 Configuration
 =============
 
-Can I load custom PHP modules without rebuilding the Docker image?
-------------------------------------------------------------------
-
-Yes, see :ref:`custom_php_modules`
-
-
-Can I load custom Apache modules without rebuilding the Docker image?
----------------------------------------------------------------------
-
-Yes, see :ref:`custom_apache_modules`
+.. Can I load custom PHP modules without rebuilding the Docker image?
+.. ------------------------------------------------------------------
+.. 
+.. Yes, see :ref:`custom_php_modules`
+.. 
+.. 
+.. Can I load custom Apache modules without rebuilding the Docker image?
+.. ---------------------------------------------------------------------
+.. 
+.. Yes, see :ref:`custom_apache_modules`
 
 
 Can I change the MySQL root password?
@@ -122,7 +122,7 @@ Yes, the ``.env`` variable :ref:`env_tld_suffix` can be changed to whatever doma
 you want. See :ref:`env_tld_suffix`.
 
 .. warning::
-    Be aware not to use ``dev`` or ``localhost``. See :ref:`env_tld_suffix` for more details.
+   Be aware not to use ``dev`` or ``localhost``. See :ref:`env_tld_suffix` for more details.
 
 
 Can I just start PHP and MySQL instead of all container?

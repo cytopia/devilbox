@@ -5,13 +5,12 @@ Create your first project
 *************************
 
 .. important::
-    Ensure you have read :ref:`getting_started_directory_overview` to understand what is
-    going on under the hood.
+   Ensure you have read :ref:`getting_started_directory_overview` to understand what is
+   going on under the hood.
 
 .. note::
-
-     This section not only applies for one project, it applied for as many projects as you need.
-     **There is no limit in the number of projects.**
+   This section not only applies for one project, it applied for as many projects as you need.
+   **There is no limit in the number of projects.**
 
 
 **Table of Contents**
@@ -35,8 +34,8 @@ Step 2: create a project directory
 In your Devilbox git directory, navigate to ``./data/www`` and create a new directory.
 
 .. note::
-     Choose the directory name wisely, as it will be part of the domain for that project.
-     For this example we will use ``project-1`` as our project name.
+   Choose the directory name wisely, as it will be part of the domain for that project.
+   For this example we will use ``project-1`` as our project name.
 
 .. code-block:: bash
 
@@ -62,7 +61,7 @@ Step 3: create a docroot directory
 ==================================
 
 .. note::
-     As desribed in :ref:`getting_started_directory_overview_docroot` the docroot directory name must be ``htdocs`` for now.
+   As desribed in :ref:`getting_started_directory_overview_docroot` the docroot directory name must be ``htdocs`` for now.
 
 Navigate to your newly created project directory and create a directory named `htdocs` inside it.
 
@@ -88,7 +87,7 @@ By having created the docroot directory, the web server is now able to serve you
 The intranet already gives you the exact string that you can simply copy into your ``/etc/hosts`` file on your host operating system to solve this issue.
 
 .. important::
-     This will only work on **native Docker** for Linux or MacOS. Read up on the next section to also find out how to do that on **Docker Toolbox** and Windows.
+   This will only work on **native Docker** for Linux or MacOS. Read up on the next section to also find out how to do that on **Docker Toolbox** and Windows.
 
 
 .. _getting_started_create_your_first_project_dns_entry:
@@ -97,9 +96,9 @@ Step 4: create a DNS entry
 ==========================
 
 .. note::
-     This step can also be automated via the bundled DNS server to automatically provide catch-all
-     DNS entries to your host computer, but is outside the scope of this
-     *getting started tutorial*.
+   This step can also be automated via the bundled DNS server to automatically provide catch-all
+   DNS entries to your host computer, but is outside the scope of this
+   *getting started tutorial*.
 
 Add DNS for Linux and MacOS (native Docker)
 -------------------------------------------
@@ -109,11 +108,11 @@ you the exact string you need to paste into your ``/etc/hosts`` file on your hos
 
 .. code-block:: bash
 
-    # Open your /etc/hosts file with sudo or root privileges
-    # and add the following DNS entry
-    host> sudo vi /etc/hosts
+   # Open your /etc/hosts file with sudo or root privileges
+   # and add the following DNS entry
+   host> sudo vi /etc/hosts
 
-    127.0.0.1 project-1.loc
+   127.0.0.1 project-1.loc
 
 Add DNS for Windows (native Docker)
 -----------------------------------
@@ -125,7 +124,7 @@ Open ``C:\Windows\System32\drivers\etc`` with admistrative privileges and add th
 
 .. code-block:: bash
 
-    127.0.0.1 project-1.loc
+   127.0.0.1 project-1.loc
 
 Add DNS for Docker Toolbox
 --------------------------
@@ -144,9 +143,9 @@ have to add instead on your host operating system is:
 
 .. code-block:: bash
 
-    host> sudo vi /etc/hosts
+   host> sudo vi /etc/hosts
 
-    192.16.0.1 project-1.loc
+   192.16.0.1 project-1.loc
 
 **Docker Toolbox on Windows**
 
@@ -154,7 +153,7 @@ Open ``C:\Windows\System32\drivers\etc`` with admistrative privileges and add th
 
 .. code-block:: bash
 
-    192.16.0.1 project-1.loc
+   192.16.0.1 project-1.loc
 
 Back to intranet
 ----------------

@@ -44,77 +44,75 @@ Open ``docker-compose.override.yml`` with your favourite editor and paste the fo
 into it.
 
 .. code-block:: yaml
-    :caption: docker-compose.override.yml
-    :name: docker-compose.override.yml
-    :emphasize-lines: 4,5,8
+   :caption: docker-compose.override.yml
+   :emphasize-lines: 4,5,8
 
-    version: '2.1'
-    services:
-      # Your custom Docker image here:
-      <name>:
-        image: <image-name>:<image-version>
-        networks:
-          app_net:
-            ipv4_address: <unused-ip-address>
-        # For ease of use always automatically start these:
-        depends_on:
-          - bind
-          - php
-          - httpd
-      # End of custom Docker image
+   version: '2.1'
+   services:
+     # Your custom Docker image here:
+     <name>:
+       image: <image-name>:<image-version>
+       networks:
+         app_net:
+           ipv4_address: <unused-ip-address>
+       # For ease of use always automatically start these:
+       depends_on:
+         - bind
+         - php
+         - httpd
+     # End of custom Docker image
 
 .. note::
-    * ``<name>`` has to be replaced with any name of your choice
-    * ``<image-name>`` has to be replaced with the name of the Docker image
-    * ``<image-version>`` has to be replaced with the tag of the Docker image
-    * ``<unused-ip-address>`` has to be replaced with an unused IP address
+   * ``<name>`` has to be replaced with any name of your choice
+   * ``<image-name>`` has to be replaced with the name of the Docker image
+   * ``<image-version>`` has to be replaced with the tag of the Docker image
+   * ``<unused-ip-address>`` has to be replaced with an unused IP address
 
 Two new services
 ^^^^^^^^^^^^^^^^
 
 .. code-block:: yaml
-    :caption: docker-compose.override.yml
-    :name: docker-compose.override.yml
-    :emphasize-lines: 4,5,8,16,17,20
+   :caption: docker-compose.override.yml
+   :emphasize-lines: 4,5,8,16,17,20
 
-    version: '2.1'
-    services:
-      # Your first custom Docker image here:
-      <name1>:
-        image: <image1-name>:<image1-version>
-        networks:
-          app_net:
-            ipv4_address: <unused-ip-address1>
-        # For ease of use always automatically start these:
-        depends_on:
-          - bind
-          - php
-          - httpd
-      # End of first custom Docker image
-      # Your second custom Docker image here:
-      <name2>:
-        image: <image2-name>:<image2-version>
-        networks:
-          app_net:
-            ipv4_address: <unused-ip-address2>
-        # For ease of use always automatically start these:
-        depends_on:
-          - bind
-          - php
-          - httpd
-      # End of second custom Docker image
-
-.. note::
-    * ``<name1>`` has to be replaced with any name of your choice
-    * ``<image1-name>`` has to be replaced with the name of the Docker image
-    * ``<image1-version>`` has to be replaced with the tag of the Docker image
-    * ``<unused-ip-address1>`` has to be replaced with an unused IP address
+   version: '2.1'
+   services:
+     # Your first custom Docker image here:
+     <name1>:
+       image: <image1-name>:<image1-version>
+       networks:
+         app_net:
+           ipv4_address: <unused-ip-address1>
+       # For ease of use always automatically start these:
+       depends_on:
+         - bind
+         - php
+         - httpd
+     # End of first custom Docker image
+     # Your second custom Docker image here:
+     <name2>:
+       image: <image2-name>:<image2-version>
+       networks:
+         app_net:
+           ipv4_address: <unused-ip-address2>
+       # For ease of use always automatically start these:
+       depends_on:
+         - bind
+         - php
+         - httpd
+     # End of second custom Docker image
 
 .. note::
-    * ``<name2>`` has to be replaced with any name of your choice
-    * ``<image2-name>`` has to be replaced with the name of the Docker image
-    * ``<image2-version>`` has to be replaced with the tag of the Docker image
-    * ``<unused-ip-address2>`` has to be replaced with an unused IP address
+   * ``<name1>`` has to be replaced with any name of your choice
+   * ``<image1-name>`` has to be replaced with the name of the Docker image
+   * ``<image1-version>`` has to be replaced with the tag of the Docker image
+   * ``<unused-ip-address1>`` has to be replaced with an unused IP address
+
+.. note::
+   * ``<name2>`` has to be replaced with any name of your choice
+   * ``<image2-name>`` has to be replaced with the name of the Docker image
+   * ``<image2-version>`` has to be replaced with the tag of the Docker image
+   * ``<unused-ip-address2>`` has to be replaced with an unused IP address
 
 
 CockroachDB example
@@ -131,25 +129,24 @@ Docker image:
 Now add the information to ``docker-compose.override.yml``:
 
 .. code-block:: yaml
-    :caption: docker-compose.override.yml
-    :name: docker-compose.override.yml
-    :emphasize-lines: 4-5,9
+   :caption: docker-compose.override.yml
+   :emphasize-lines: 4-5,9
 
-    version: '2.1'
-    services:
-      # Your custom Docker image here:
-      cockroach:
-        image: cockroachdb/cockroach:latest
-        command: start --insecure
-        networks:
-          app_net:
-            ipv4_address: 172.16.238.200
-        # For ease of use always automatically start these:
-        depends_on:
-          - bind
-          - php
-          - httpd
-      # End of custom Docker image
+   version: '2.1'
+   services:
+     # Your custom Docker image here:
+     cockroach:
+       image: cockroachdb/cockroach:latest
+       command: start --insecure
+       networks:
+         app_net:
+           ipv4_address: 172.16.238.200
+       # For ease of use always automatically start these:
+       depends_on:
+         - bind
+         - php
+         - httpd
+     # End of custom Docker image
 
 
 
@@ -162,18 +159,18 @@ name you have chosen.
 
 .. code-block:: bash
 
-    host> docker-compose up <name>
+   host> docker-compose up <name>
 
 In the example of Cockroach DB the command would look like this
 
 .. code-block:: bash
 
-    host> docker-compose up cockroach
+   host> docker-compose up cockroach
 
 
 Further reading
 ===============
 
 .. seealso::
-    * :ref:`docker_compose_override_yml`
-    * :ref:`overwrite_existing_docker_image`
+   * :ref:`docker_compose_override_yml`
+   * :ref:`overwrite_existing_docker_image`

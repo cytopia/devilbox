@@ -5,7 +5,7 @@ Adding Sub domains
 ******************
 
 This tutorial gives you a brief overview how to serve your project under one subdomain via
-the project directory name as well as how to serve one projcet with multiple subdomains with
+the project directory name as well as how to serve one project with multiple subdomains with
 a customized virtual host config via ``vhost-gen``.
 
 
@@ -59,32 +59,31 @@ default generation process via templates. Those templates can be added to each p
 you the option to customize the virtual host of this specific project.
 
 .. note::
-    :ref:`custom_vhost`
-      Ensure you have read and understand how to customize your virtual host with ``vhost-gen``.
-    :ref:`env_httpd_template_dir`
-      Ensure you know what this variable does inside your ``.env`` file.
+   :ref:`custom_vhost`
+     Ensure you have read and understand how to customize your virtual host with ``vhost-gen``.
+   :ref:`env_httpd_template_dir`
+     Ensure you know what this variable does inside your ``.env`` file.
 
 .. important::
-    When adjusting vhost-gen templates for a project you have to do **one** of the following:
+   When adjusting vhost-gen templates for a project you have to do **one** of the following:
 
-    * Restart the devilbox
-    * Or rename your project directory to some other name and then rename it back to its original
-      name.
+   * Restart the devilbox
+   * Or rename your project directory to some other name and then rename it back to its original name.
 
-    More information here: :ref:`custom_vhost_apply_vhost_gen_changes`
+   More information here: :ref:`custom_vhost_apply_vhost_gen_changes`
 
 .. warning::
-    Pay close attention that you do not use TAB (``\t``) characters for indenting the vhost-gen
-    yaml files. Some editors might automatically indent using TABs, so ensure they are replaced
-    with spaces. If TAB characters are present, those files become invalid and won't work.
-    https://github.com/cytopia/devilbox/issues/142
+   Pay close attention that you do not use TAB (``\t``) characters for indenting the vhost-gen
+   yaml files. Some editors might automatically indent using TABs, so ensure they are replaced
+   with spaces. If TAB characters are present, those files become invalid and won't work.
+   https://github.com/cytopia/devilbox/issues/142
 
-    You can use the bundled ``yamllint`` binary inside the container to validate your config.
+   You can use the bundled ``yamllint`` binary inside the container to validate your config.
 
-    **See also:**
+   **See also:**
 
-    * :ref:`tutorial_work_inside_the_php_container`
-    * :ref:`available_tools`
+   * :ref:`tutorial_work_inside_the_php_container`
+   * :ref:`available_tools`
 
 
 Prerequisite
@@ -110,14 +109,14 @@ Ensure that the default ``vhost-gen`` templates have been copied to your project
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    host> cd ./home/user/devilbox
+   # Navigate to the Devilbox directory
+   host> cd ./home/user/devilbox
 
-    # Create template directory in your project
-    host> mkdir ./data/www/project-1/.devilbox
+   # Create template directory in your project
+   host> mkdir ./data/www/project-1/.devilbox
 
-    # Copy vhost-gen templates
-    host> cp templates/vhost-gen/* ./data/www/project-1/.devilbox
+   # Copy vhost-gen templates
+   host> cp templates/vhost-gen/* ./data/www/project-1/.devilbox
 
 By having done all prerequisite, your project should be available under http://my-project-1.loc
 
@@ -153,7 +152,6 @@ here).
 
 .. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/apache22.yml
-   :name: apache22.yml
    :emphasize-lines: 3
 
    vhost: |
@@ -177,7 +175,6 @@ All you will have to do, is to add another ``ServerName`` directive:
 
 .. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/apache22.yml
-   :name: apache22.yml
    :emphasize-lines: 3,4
 
    vhost: |
@@ -232,7 +229,6 @@ here).
 
 .. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/apache22.yml
-   :name: apache22.yml
    :emphasize-lines: 3
 
    vhost: |
@@ -256,7 +252,6 @@ All you will have to do, is to add another ``ServerName`` directive which does c
 
 .. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/apache22.yml
-   :name: apache22.yml
    :emphasize-lines: 3,4
 
    vhost: |
@@ -325,7 +320,6 @@ here).
 
 .. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/nginx.yml
-   :name: nginx.yml
    :emphasize-lines: 4
 
    vhost: |
@@ -350,7 +344,6 @@ All you will have to do, is to extend the ``server_name`` directive:
 
 .. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/nginx.yml
-   :name: nginx.yml
    :emphasize-lines: 4
 
    vhost: |
@@ -407,7 +400,6 @@ here).
 
 .. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/nginx.yml
-   :name: nginx.yml
    :emphasize-lines: 4
 
    vhost: |
@@ -432,7 +424,6 @@ All you will have to do, is to extend the ``server_name`` directive with a catch
 
 .. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/nginx.yml
-   :name: nginx.yml
    :emphasize-lines: 4
 
    vhost: |
@@ -475,34 +466,34 @@ Let's cover the second step
 
 .. code-block:: bash
 
-    # Navigate to the data directory
-    host> /home/user/devilbox/data/www
+   # Navigate to the data directory
+   host> /home/user/devilbox/data/www
 
-    # Rename your project to something else
-    host> mv project-1 project-1.tmp
+   # Rename your project to something else
+   host> mv project-1 project-1.tmp
 
-    # Rename your project to its original name
-    host> mv project-1.tmp project-1
+   # Rename your project to its original name
+   host> mv project-1.tmp project-1
 
 If you want to understand what is going on right now, check the docker logs for the web server.
 
 .. code-block:: bash
 
-    # Navigate to the devilbox directory
-    host> /home/user/devilbox
+   # Navigate to the devilbox directory
+   host> /home/user/devilbox
 
-    # Check docker logs
-    host> docker-compose logs httpd
+   # Check docker logs
+   host> docker-compose logs httpd
 
-    httpd_1  | vhostgen: [2018-03-18 11:46:52] Adding: project-1.tmp.loc
-    httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  ADD: succeeded: /shared/httpd/project-1.tmp
-    httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  DEL: succeeded: /shared/httpd/project-1
-    httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  TRIGGER succeeded: /usr/local/apache2/bin/httpd -k restart
+   httpd_1  | vhostgen: [2018-03-18 11:46:52] Adding: project-1.tmp.loc
+   httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  ADD: succeeded: /shared/httpd/project-1.tmp
+   httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  DEL: succeeded: /shared/httpd/project-1
+   httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  TRIGGER succeeded: /usr/local/apache2/bin/httpd -k restart
 
-    httpd_1  | vhostgen: [2018-03-18 11:46:52] Adding: project-1loc
-    httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  ADD: succeeded: /shared/httpd/project-1
-    httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  DEL: succeeded: /shared/httpd/project-1.tmp
-    httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  TRIGGER succeeded: /usr/local/apache2/bin/httpd -k restart
+   httpd_1  | vhostgen: [2018-03-18 11:46:52] Adding: project-1loc
+   httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  ADD: succeeded: /shared/httpd/project-1
+   httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  DEL: succeeded: /shared/httpd/project-1.tmp
+   httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  TRIGGER succeeded: /usr/local/apache2/bin/httpd -k restart
 
 **What happened?**
 

@@ -38,11 +38,11 @@ manually, i.e. they are not overwritten.
 
 .. code-block:: bash
 
-    host> cd path/to/devilbox
-    host> ls -l ca/
-    -rw-r--r--  1 cytopia cytopia 1558 May  2 11:12 devilbox-ca.crt
-    -rw-------  1 cytopia cytopia 1675 May  2 11:12 devilbox-ca.key
-    -rw-r--r--  1 cytopia cytopia   17 May  4 08:35 devilbox-ca.srl
+   host> cd path/to/devilbox
+   host> ls -l ca/
+   -rw-r--r--  1 cytopia cytopia 1558 May  2 11:12 devilbox-ca.crt
+   -rw-------  1 cytopia cytopia 1675 May  2 11:12 devilbox-ca.key
+   -rw-r--r--  1 cytopia cytopia   17 May  4 08:35 devilbox-ca.srl
 
 
 SSL Certificates
@@ -60,8 +60,8 @@ into your browser ones and all current projects and future projects will automat
 valid and trusted SSL certificates without any further work.
 
 .. important::
-    Importing the CA into the browser is also recommended and required for the Devilbox
-    intranet page to work properly.
+   Importing the CA into the browser is also recommended and required for the Devilbox
+   intranet page to work properly.
 
 
 Import the CA into your browser

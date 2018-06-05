@@ -7,8 +7,8 @@ Enable Xdebug
 This tutorial shows you how to enable and use Xdebug with the Devilbox.
 
 .. seealso::
-    If you are unsure of how to add custom ``*.ini`` files to the Devilbox,
-    have a look at this section first: :ref:`php_ini`
+   If you are unsure of how to add custom ``*.ini`` files to the Devilbox,
+   have a look at this section first: :ref:`php_ini`
 
 
 **Table of Contents**
@@ -34,16 +34,15 @@ Additionally to the specific configurations for each operating system and Docker
 probably also want to add the following to your ini file:
 
 .. code-block:: ini
-    :name: xdebug.ini
-    :caption: xdebug.ini
+   :caption: xdebug.ini
 
-    xdebug.default_enable=1
-    xdebug.remote_enable=1
-    xdebug.remote_handler=dbgp
-    xdebug.remote_port=9000
-    xdebug.remote_autostart=1
-    xdebug.idekey="PHPSTORM"
-    xdebug.remote_log=/var/log/php/xdebug.log
+   xdebug.default_enable=1
+   xdebug.remote_enable=1
+   xdebug.remote_handler=dbgp
+   xdebug.remote_port=9000
+   xdebug.remote_autostart=1
+   xdebug.idekey="PHPSTORM"
+   xdebug.remote_log=/var/log/php/xdebug.log
 
 .. seealso:: https://xdebug.org/docs/all_settings
 
@@ -94,20 +93,19 @@ Keep the exact path of ``/var/log/php/xdebug.log``. You will then have the log f
 in the Devilbox log directory of the PHP version for which you have configured Xdebug.
 
 .. important::
-    You can set the value of ``xdebug.idekey`` to whatever you like, however it is important
-    to remember what value you have set. Throughout the examples in this tutorial it is assumed,
-    that the value is ``PHPSTORM``.
+   You can set the value of ``xdebug.idekey`` to whatever you like, however it is important
+   to remember what value you have set. Throughout the examples in this tutorial it is assumed,
+   that the value is ``PHPSTORM``.
 
 
 Linux
 -----
 
 .. code-block:: ini
-    :name: xdebug.ini
-    :caption: xdebug.ini
-    :emphasize-lines: 1
+   :caption: xdebug.ini
+   :emphasize-lines: 1
 
-    xdebug.remote_connect_back=1
+   xdebug.remote_connect_back=1
 
 
 MacOS (Docker for Mac)
@@ -116,32 +114,29 @@ MacOS (Docker for Mac)
 Docker 18.03.0-ce+ and Docker compose 1.20.1+
 
 .. code-block:: ini
-    :name: xdebug.ini
-    :caption: xdebug.ini
-    :emphasize-lines: 1
+   :caption: xdebug.ini
+   :emphasize-lines: 1
 
-    xdebug.remote_host=host.docker.internal
-    xdebug.remote_connect_back=0
+   xdebug.remote_host=host.docker.internal
+   xdebug.remote_connect_back=0
 
 Docker 17.12.0-ce+ and Docker compose 1.18.0+
 
 .. code-block:: ini
-    :name: xdebug.ini
-    :caption: xdebug.ini
-    :emphasize-lines: 1
+   :caption: xdebug.ini
+   :emphasize-lines: 1
 
-    xdebug.remote_host=docker.for.mac.host.internal
-    xdebug.remote_connect_back=0
+   xdebug.remote_host=docker.for.mac.host.internal
+   xdebug.remote_connect_back=0
 
 Docker 17.06.0-ce+ and Docker compose 1.14.0+
 
 .. code-block:: ini
-    :name: xdebug.ini
-    :caption: xdebug.ini
-    :emphasize-lines: 1
+   :caption: xdebug.ini
+   :emphasize-lines: 1
 
-    xdebug.remote_host=docker.for.mac.localhost
-    xdebug.remote_connect_back=0
+   xdebug.remote_host=docker.for.mac.localhost
+   xdebug.remote_connect_back=0
 
 If you have older versions, upgrade.
 
@@ -150,8 +145,8 @@ MacOS (Docker Toolbox)
 ----------------------
 
 .. warning::
-    This is a legacy solution, upgrade to Docker for Mac
-    https://docs.docker.com/toolbox
+   This is a legacy solution, upgrade to Docker for Mac
+   https://docs.docker.com/toolbox
 
 
 Windows (Docker for Windows)
@@ -160,22 +155,20 @@ Windows (Docker for Windows)
 Docker 18.03.0-ce+ and Docker compose 1.20.1+
 
 .. code-block:: ini
-    :name: xdebug.ini
-    :caption: xdebug.ini
-    :emphasize-lines: 1
+   :caption: xdebug.ini
+   :emphasize-lines: 1
 
-    xdebug.remote_host=docker.for.win.host.internal
-    xdebug.remote_connect_back=0
+   xdebug.remote_host=docker.for.win.host.internal
+   xdebug.remote_connect_back=0
 
 Docker 17.06.0-ce+ and Docker compose 1.14.0+
 
 .. code-block:: ini
-    :name: xdebug.ini
-    :caption: xdebug.ini
-    :emphasize-lines: 1
+   :caption: xdebug.ini
+   :emphasize-lines: 1
 
-    xdebug.remote_host=docker.for.win.host.localhost
-    xdebug.remote_connect_back=0
+   xdebug.remote_host=docker.for.win.host.localhost
+   xdebug.remote_connect_back=0
 
 If you have older versions, upgrade.
 
@@ -184,8 +177,8 @@ Windows (Docker Toolbox)
 ------------------------
 
 .. warning::
-    This is a legacy solution, upgrade to Docker for Windows
-    https://docs.docker.com/toolbox
+   This is a legacy solution, upgrade to Docker for Windows
+   https://docs.docker.com/toolbox
 
 
 Configure your IDE
@@ -206,8 +199,8 @@ setting up your IDE config.
 The path inside the PHP Docker container is always ``/shared/httpd``.
 
 .. important::
-    Even though your path in ``.env`` for :ref:`env_httpd_datadir` might be relative (e.g. ``./data/www``),
-    you need to get the actualy absolute path of it, when setting up your IDE.
+   Even though your path in ``.env`` for :ref:`env_httpd_datadir` might be relative (e.g. ``./data/www``),
+   you need to get the actualy absolute path of it, when setting up your IDE.
 
 IDE key
 ^^^^^^^
@@ -230,27 +223,25 @@ Atom
 For Atom, you need to provide a different ``xdebug.idekey`` in your php.ini file ``xdebug.ini``:
 
 .. code-block:: ini
-    :name: xdebug.ini
-    :caption: xdebug.ini
+   :caption: xdebug.ini
 
-    xdebug.idekey=xdebug.atom
+   xdebug.idekey=xdebug.atom
 
 
 Linux
 ^^^^^^
-.. code-block:: json
-    :name: launch.json
-    :caption: launch.json
-    :emphasize-lines: 6
+.. code-block:: js
+   :caption: launch.json
+   :emphasize-lines: 6
 
-    "php-debug":
-     {
-       ServerPort: 9000
-       PathMaps: [
-         "remotepath;localpath"
-         "/shared/httpd;/home/cytopia/repo/devilbox/data/www"
-       ]
-     }
+   "php-debug":
+   {
+      ServerPort: 9000
+      PathMaps: [
+        "remotepath;localpath"
+        "/shared/httpd;/home/cytopia/repo/devilbox/data/www"
+      ]
+   }
 
 MacOS (Docker for Mac)
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -315,19 +306,18 @@ Sublime Text 3
 Linux
 ^^^^^^
 .. code-block:: json
-    :name: Xdebug-sublime-settings
-    :caption: Xdebug-sublime-settings
-    :emphasize-lines: 3,6
+   :caption: Xdebug-sublime-settings
+   :emphasize-lines: 3,6
 
-    {
-        "path_mapping": {
-            "/shared/httpd" : "/home/cytopia/repo/devilbox/data/www"
-        },
-        "url": "",
-        "ide_key": "PHPSTORM",
-        "host": "0.0.0.0",
-        "port": 9000
-    }
+   {
+       "path_mapping": {
+           "/shared/httpd" : "/home/cytopia/repo/devilbox/data/www"
+       },
+       "url": "",
+       "ide_key": "PHPSTORM",
+       "host": "0.0.0.0",
+       "port": 9000
+   }
 
 
 MacOS (Docker for Mac)
@@ -356,30 +346,29 @@ Visual Studio Code
 Linux
 ^^^^^^
 .. code-block:: json
-    :name: launch.json
-    :caption: launch.json
-    :emphasize-lines: 9,10
+   :caption: launch.json
+   :emphasize-lines: 9,10
 
-    {
-        "version": "0.2.0",
-        "configurations": [
-            {
-                "name": "Listen for Xbebug",
-                "type": "php",
-                "request": "launch",
-                "port": 9000,
-                "serverSourceRoot": "/shared/httpd",
-                "localSourceRoot": "/home/cytopia/repo/devilbox/data/www"
-            }, {
-                "name": "Launch currently open script",
-                "type": "php",
-                "request": "launch",
-                "program": "${file}",
-                "cwd": "${fileDirname}",
-                "port": 9000
-            }
-        ]
-    }
+   {
+       "version": "0.2.0",
+       "configurations": [
+           {
+               "name": "Listen for Xbebug",
+               "type": "php",
+               "request": "launch",
+               "port": 9000,
+               "serverSourceRoot": "/shared/httpd",
+               "localSourceRoot": "/home/cytopia/repo/devilbox/data/www"
+           }, {
+               "name": "Launch currently open script",
+               "type": "php",
+               "request": "launch",
+               "program": "${file}",
+               "cwd": "${fileDirname}",
+               "port": 9000
+           }
+       ]
+   }
 
 
 MacOS (Docker for Mac)

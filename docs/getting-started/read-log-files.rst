@@ -24,29 +24,29 @@ The log directory structure would look something like this:
 
 .. code-block:: bash
 
-    host> cd path/to/devilbox
-    host> tree log
+   host> cd path/to/devilbox
+   host> tree log
 
-    log/
-    ├── nginx-stable/
-    │   ├── nginx-stable/
-    │   ├── defaultlocalhost-access.log
-    │   ├── defaultlocalhost-error.log
-    │   ├── <project-name>-access.log    # Each project has its own access log
-    │   ├── <project-name>-error.log     # Each project has its own error log
-    ├── mariadb-10.1/
-    │   ├── error.log
-    │   ├── query.log
-    │   ├── slow.log
-    ├── php-fpm-7.1/
-    │   ├── php-fpm.access
-    │   ├── php-fpm.error
+   log/
+   ├── nginx-stable/
+   │   ├── nginx-stable/
+   │   ├── defaultlocalhost-access.log
+   │   ├── defaultlocalhost-error.log
+   │   ├── <project-name>-access.log    # Each project has its own access log
+   │   ├── <project-name>-error.log     # Each project has its own error log
+   ├── mariadb-10.1/
+   │   ├── error.log
+   │   ├── query.log
+   │   ├── slow.log
+   ├── php-fpm-7.1/
+   │   ├── php-fpm.access
+   │   ├── php-fpm.error
 
 Use your favorite tools to view log files such as ``tail``, ``less``, ``more``, ``cat`` or others.
 
 .. important::
-    Currently logs are only mounted for PHP, HTTPD and MYSQL container.
-    All other services will log to Docker logs.
+   Currently logs are only mounted for PHP, HTTPD and MYSQL container.
+   All other services will log to Docker logs.
 
 
 Docker logs
@@ -59,31 +59,31 @@ When using this approach, you need to use the ``docker-compose logs`` command to
 files from within the Devilbox git directory.
 
 .. code-block:: bash
-    :emphasize-lines: 2
+   :emphasize-lines: 2
 
-    host> cd path/to/devilbox
-    host> docker-compose logs
+   host> cd path/to/devilbox
+   host> docker-compose logs
 
 When you want to continuously watch the log output (such as ``tail -f``), you need to append ``-f``
 to the command.
 
 .. code-block:: bash
-    :emphasize-lines: 2
+   :emphasize-lines: 2
 
-    host> cd path/to/devilbox
-    host> docker-compose logs -f
+   host> cd path/to/devilbox
+   host> docker-compose logs -f
 
 When you only want to have logs displayed for a single service, you can also append the service
 name (works with or without ``-f`` as well):
 
 .. code-block:: bash
-    :emphasize-lines: 2
+   :emphasize-lines: 2
 
-    host> cd path/to/devilbox
-    host> docker-compose logs php -f
+   host> cd path/to/devilbox
+   host> docker-compose logs php -f
 
 .. important::
-    This currently does not work for the MySQL container, which will always log to file.
+   This currently does not work for the MySQL container, which will always log to file.
 
 
 Checklist

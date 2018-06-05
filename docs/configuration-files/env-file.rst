@@ -62,61 +62,61 @@ The ``./log/`` directory itself will contain subdirectories in the form ``<servi
 which will then hold all available log files.
 
 .. note::
-    Log directories do not exist until you start the Devilbox and will only be created for
-    the service versions you have enabled in ``.env``.
+   Log directories do not exist until you start the Devilbox and will only be created for
+   the service versions you have enabled in ``.env``.
 
 The log directory structure would look something like this:
 
 .. code-block:: bash
 
-    host> cd path/to/devilbox
-    host> tree log
+   host> cd path/to/devilbox
+   host> tree log
 
-    log/
-    ├── nginx-stable/
-    │   ├── nginx-stable/
-    │   ├── defaultlocalhost-access.log
-    │   ├── defaultlocalhost-error.log
-    │   ├── <project-name>-access.log    # Each project has its own access log
-    │   ├── <project-name>-error.log     # Each project has its own error log
-    ├── mariadb-10.1/
-    │   ├── error.log
-    │   ├── query.log
-    │   ├── slow.log
-    ├── php-fpm-7.1/
-    │   ├── php-fpm.access
-    │   ├── php-fpm.error
+   log/
+   ├── nginx-stable/
+   │   ├── nginx-stable/
+   │   ├── defaultlocalhost-access.log
+   │   ├── defaultlocalhost-error.log
+   │   ├── <project-name>-access.log    # Each project has its own access log
+   │   ├── <project-name>-error.log     # Each project has its own error log
+   ├── mariadb-10.1/
+   │   ├── error.log
+   │   ├── query.log
+   │   ├── slow.log
+   ├── php-fpm-7.1/
+   │   ├── php-fpm.access
+   │   ├── php-fpm.error
 
 When you want to read logs sent to Docker logs, you can do so via the following command:
 
 .. code-block:: bash
-    :emphasize-lines: 2
+   :emphasize-lines: 2
 
-    host> cd path/to/devilbox
-    host> docker-compose logs
+   host> cd path/to/devilbox
+   host> docker-compose logs
 
 When you want to continuously watch the log output (such as ``tail -f``), you need to append ``-f``
 to the command.
 
 .. code-block:: bash
-    :emphasize-lines: 2
+   :emphasize-lines: 2
 
-    host> cd path/to/devilbox
-    host> docker-compose logs -f
+   host> cd path/to/devilbox
+   host> docker-compose logs -f
 
 When you only want to have logs displayed for a single service, you can also append the service
 name (works with or without ``-f`` as well):
 
 .. code-block:: bash
-    :emphasize-lines: 2
+   :emphasize-lines: 2
 
-    host> cd path/to/devilbox
-    host> docker-compose logs php -f
+   host> cd path/to/devilbox
+   host> docker-compose logs php -f
 
 .. important::
-    Currently this is only implemented for PHP-FPM and HTTPD Docker container.
-    MySQL will always output its logs to file and all other official Docker container
-    always output to Docker logs.
+   Currently this is only implemented for PHP-FPM and HTTPD Docker container.
+   MySQL will always output its logs to file and all other official Docker container
+   always output to Docker logs.
 
 
 DEVILBOX_PATH
@@ -226,24 +226,23 @@ this project visible to everyone in your corporate LAN.
 +-------------+----------------+---------------------------+
 
 .. warning::
-    Do not use ``dev`` as a domain suffix (I know, it's tempting).
-    It has been registered by
-    `Google <https://icannwiki.org/.dev>`_ and they advertise the
-    `HSTS header <https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security>`_
-    which makes your browser redirect every http request to https.
+   Do not use ``dev`` as a domain suffix (I know, it's tempting).
+   It has been registered by
+   `Google <https://icannwiki.org/.dev>`_ and they advertise the
+   `HSTS header <https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security>`_
+   which makes your browser redirect every http request to https.
 
-    **See also:** `This blog post <https://ma.ttias.be/chrome-force-dev-domains-https-via-preloaded-hsts>`_
+   **See also:** `This blog post <https://ma.ttias.be/chrome-force-dev-domains-https-via-preloaded-hsts>`_
 
 .. warning::
-    Do not use ``localhost`` as a domain suffix.
-    There is an RFC draft to make sure all localhost requests, including their sub domains
-    should be redirected to the systems loopback interface.
-    Docker has already released a commit preventing the use of ``localhost`` on MacOS.
+   Do not use ``localhost`` as a domain suffix.
+   There is an RFC draft to make sure all localhost requests, including their sub domains
+   should be redirected to the systems loopback interface.
+   Docker has already released a commit preventing the use of ``localhost`` on MacOS.
 
-
-    **See also:** `RFC Draft <https://tools.ietf.org/html/draft-west-let-localhost-be-localhost-06>`_
-    and
-    `Docker Release notes <https://docs.docker.com/docker-for-mac/release-notes/#docker-community-edition-17120-ce-mac46-2018-01-09>`_
+   **See also:** `RFC Draft <https://tools.ietf.org/html/draft-west-let-localhost-be-localhost-06>`_
+   and
+   `Docker Release notes <https://docs.docker.com/docker-for-mac/release-notes/#docker-community-edition-17120-ce-mac46-2018-01-09>`_
 
 .. _env_extra_hosts:
 
@@ -269,13 +268,13 @@ The general structure to add extra hosts looks like this
 
 .. code-block:: bash
 
-    # Single host
-    EXTRA_HOSTS='hostname=1.1.1.1'
-    EXTRA_HOSTS='hostname=CNAME'
+   # Single host
+   EXTRA_HOSTS='hostname=1.1.1.1'
+   EXTRA_HOSTS='hostname=CNAME'
 
-    # Multiple hosts
-    EXTRA_HOSTS='hostname1=1.1.1.1,hostname2=2.2.2.2'
-    EXTRA_HOSTS='hostname1=CNAME1,hostname2=CNAME2'
+   # Multiple hosts
+   EXTRA_HOSTS='hostname1=1.1.1.1,hostname2=2.2.2.2'
+   EXTRA_HOSTS='hostname1=CNAME1,hostname2=CNAME2'
 
 * The left side represents the name by which the host will be available by
 * The right side represents the IP address by which the new name will resolve to
@@ -285,32 +284,32 @@ A few examples for adding extra hosts:
 
 .. code-block:: bash
 
-    # 1. One entry:
-    # The following extra host 'loc' is added and will always point to 192.168.0.7.
-    # When reverse resolving '192.168.0.7' it will answer with 'tld'.
-    EXTRA_HOSTS='loc=192.168.0.7'
+   # 1. One entry:
+   # The following extra host 'loc' is added and will always point to 192.168.0.7.
+   # When reverse resolving '192.168.0.7' it will answer with 'tld'.
+   EXTRA_HOSTS='loc=192.168.0.7'
 
-    # 2. One entry:
-    # The following extra host 'my.host.loc' is added and will always point to 192.168.0.9.
-    # When reverse resolving '192.168.0.9' it will answer with 'my.host'.
-    EXTRA_HOSTS='my.host.loc=192.168.0.9'
+   # 2. One entry:
+   # The following extra host 'my.host.loc' is added and will always point to 192.168.0.9.
+   # When reverse resolving '192.168.0.9' it will answer with 'my.host'.
+   EXTRA_HOSTS='my.host.loc=192.168.0.9'
 
-    # 3. Two entries:
-    # The following extra host 'tld' is added and will always point to 192.168.0.1.
-    # When reverse resolving '192.168.0.1' it will answer with 'tld'.
-    # A second extra host 'example.org' is added and always redirects to 192.168.0.2
-    # When reverse resolving '192.168.0.2' it will answer with 'example.org'.
-    EXTRA_HOSTS='tld=192.168.0.1,example.org=192.168.0.2'
+   # 3. Two entries:
+   # The following extra host 'tld' is added and will always point to 192.168.0.1.
+   # When reverse resolving '192.168.0.1' it will answer with 'tld'.
+   # A second extra host 'example.org' is added and always redirects to 192.168.0.2
+   # When reverse resolving '192.168.0.2' it will answer with 'example.org'.
+   EXTRA_HOSTS='tld=192.168.0.1,example.org=192.168.0.2'
 
-    # 4. Using CNAME's for resolving:
-    # The following extra host 'my.host' is added and will always point to whatever
-    # IP example.org resolves to.
-    # When reverse resolving '192.168.0.1' it will answer with 'my.host'.
-    EXTRA_HOSTS='my.host=example.org'
+   # 4. Using CNAME's for resolving:
+   # The following extra host 'my.host' is added and will always point to whatever
+   # IP example.org resolves to.
+   # When reverse resolving '192.168.0.1' it will answer with 'my.host'.
+   EXTRA_HOSTS='my.host=example.org'
 
 .. seealso::
 
-    This resembles the feature of `Docker Compose: extra_hosts <https://docs.docker.com/compose/compose-file/#external_links>`_ to add external links.
+   This resembles the feature of `Docker Compose: extra_hosts <https://docs.docker.com/compose/compose-file/#external_links>`_ to add external links.
 
 .. seealso:: :ref:`communicating_with_external_hosts`
 
@@ -329,8 +328,8 @@ How do you find out your user id?
 
 .. code-block:: bash
 
-    host> id -u
-    1000
+   host> id -u
+   1000
 
 In most cases (on Linux and MacOS), this will be ``1000`` if you are the first and only user on
 your system, however it could also be a different value.
@@ -363,8 +362,8 @@ How do you find out your group id?
 
 .. code-block:: bash
 
-    host> id -g
-    1000
+   host> id -g
+   1000
 
 In most cases (on Linux and MacOS), this will be ``1000`` if you are the first and only user on
 your system, however it could also be a different value.
@@ -534,7 +533,6 @@ All values are already available in the ``.env`` file and just need to be commen
 
 .. code-block:: bash
    :caption: .env
-   :name: .env
    :emphasize-lines: 7
 
    host> grep PHP_SERVER .env
@@ -566,7 +564,6 @@ All values are already available in the ``.env`` file and just need to be commen
 
 .. code-block:: bash
    :caption: .env
-   :name: .env
    :emphasize-lines: 5
 
    host> grep HTTPD_SERVER .env
@@ -594,7 +591,6 @@ All values are already available in the ``.env`` file and just need to be commen
 
 .. code-block:: bash
    :caption: .env
-   :name: .env
    :emphasize-lines: 9
 
    host> grep MYSQL_SERVER .env
@@ -630,7 +626,6 @@ All values are already available in the ``.env`` file and just need to be commen
 
 .. code-block:: bash
    :caption: .env
-   :name: .env
    :emphasize-lines: 8
 
    host> grep PGSQL_SERVER .env
@@ -666,7 +661,6 @@ All values are already available in the ``.env`` file and just need to be commen
 
 .. code-block:: bash
    :caption: .env
-   :name: .env
    :emphasize-lines: 6
 
    host> grep REDIS_SERVER .env
@@ -699,7 +693,6 @@ All values are already available in the ``.env`` file and just need to be commen
 
 .. code-block:: bash
    :caption: .env
-   :name: .env
    :emphasize-lines: 24
 
    host> grep MEMCD_SERVER .env
@@ -751,7 +744,6 @@ All values are already available in the ``.env`` file and just need to be commen
 
 .. code-block:: bash
    :caption: .env
-   :name: .env
    :emphasize-lines: 6
 
    host> grep MONGO_SERVER .env
@@ -814,9 +806,8 @@ like this:
 
 .. code-block:: bash
    :caption: .env
-   :name: .env
 
-    HOST_PATH_HTTPD_DATADIR=/home/myuser/workspace/web
+   HOST_PATH_HTTPD_DATADIR=/home/myuser/workspace/web
 
 Mapping
 ^^^^^^^
@@ -862,18 +853,18 @@ The directory structure will look something like this:
 
 .. code-block:: bash
 
-    host> ls -l ./data/mysql/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.0/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.1/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.2/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.3/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.5/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.6/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.7/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-8.0/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.5/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.6/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.7/
+   host> ls -l ./data/mysql/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.0/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.1/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.2/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.3/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.5/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.6/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.7/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-8.0/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.5/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.6/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.7/
 
 .. warning::
    :ref:`remove_stopped_container`
@@ -908,13 +899,13 @@ The directory structure will look something like this:
 
 .. code-block:: bash
 
-    host> ls -l ./data/pgsql/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.1/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.2/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.3/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.4/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.5/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.6/
+   host> ls -l ./data/pgsql/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.1/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.2/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.3/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.4/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.5/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.6/
 
 .. warning::
    :ref:`remove_stopped_container`
@@ -949,12 +940,12 @@ The directory structure will look something like this:
 
 .. code-block:: bash
 
-    host> ls -l ./data/mongo/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 2.8/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.0/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.2/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.4/
-    drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.5/
+   host> ls -l ./data/mongo/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 2.8/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.0/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.2/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.4/
+   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.5/
 
 .. warning::
    :ref:`remove_stopped_container`
@@ -976,13 +967,13 @@ Open a terminal and type the following:
 
 .. code-block:: bash
 
-    host> netstat -an | grep 'LISTEN\s'
-    tcp        0      0 127.0.0.1:53585    0.0.0.0:*     LISTEN
-    tcp        0      0 127.0.0.1:37715    0.0.0.0:*     LISTEN
-    tcp        0      0 127.0.0.1:58555    0.0.0.0:*     LISTEN
-    tcp        0      0 127.0.0.1:48573    0.0.0.0:*     LISTEN
-    tcp        0      0 127.0.0.1:34591    0.0.0.0:*     LISTEN
-    tcp        0      0 127.0.0.1:8000     0.0.0.0:*     LISTEN
+   host> netstat -an | grep 'LISTEN\s'
+   tcp        0      0 127.0.0.1:53585    0.0.0.0:*     LISTEN
+   tcp        0      0 127.0.0.1:37715    0.0.0.0:*     LISTEN
+   tcp        0      0 127.0.0.1:58555    0.0.0.0:*     LISTEN
+   tcp        0      0 127.0.0.1:48573    0.0.0.0:*     LISTEN
+   tcp        0      0 127.0.0.1:34591    0.0.0.0:*     LISTEN
+   tcp        0      0 127.0.0.1:8000     0.0.0.0:*     LISTEN
 
 **How to list used ports on Windows**
 
@@ -990,12 +981,12 @@ Open the command prompt and type the following:
 
 .. code-block:: bash
 
-    C:\WINDOWS\system32> netstat -an
-    Proto  Local Address       Foreign Address      State
-    TCP    0.0.0.0:80          0.0.0.0:0            LISTENING
-    TCP    0.0.0.0:145         0.0.0.0:0            LISTENING
-    TCP    0.0.0.0:445         0.0.0.0:0            LISTENING
-    TCP    0.0.0.0:1875        0.0.0.0:0            LISTENING
+   C:\WINDOWS\system32> netstat -an
+   Proto  Local Address       Foreign Address      State
+   TCP    0.0.0.0:80          0.0.0.0:0            LISTENING
+   TCP    0.0.0.0:145         0.0.0.0:0            LISTENING
+   TCP    0.0.0.0:445         0.0.0.0:0            LISTENING
+   TCP    0.0.0.0:1875        0.0.0.0:0            LISTENING
 
 .. warning::
    :ref:`docker_toolbox`
@@ -1029,7 +1020,7 @@ The port to expose for the web server (Apache or Nginx) for HTTPS (SSL) requests
 +--------------------------+-------------------+------------------+
 | Name                     | Allowed values    | Default value    |
 +==========================+===================+==================+
-| ``HOST_PORT_HTTPD_SSL``  | ``1`` - ``65535`` | ``443``           |
+| ``HOST_PORT_HTTPD_SSL``  | ``1`` - ``65535`` | ``443``          |
 +--------------------------+-------------------+------------------+
 
 
@@ -1139,13 +1130,12 @@ Enable any non-standard PHP modules in a comma separated list.
 +------------------------+--------------------------------------+------------------+
 
 .. note::
-    Currently only ``ioncube`` is available to enable.
+   Currently only ``ioncube`` is available to enable.
 
 Example:
 
 .. code-block:: bash
    :caption: .env
-   :name: .env
    :emphasize-lines: 2
 
    # Enable ionCube
@@ -1166,7 +1156,6 @@ Example:
 
 .. code-block:: bash
    :caption: .env
-   :name: .env
    :emphasize-lines: 2
 
    # Disable Xdebug, Imagick and Swoole
@@ -1184,7 +1173,6 @@ production, for example: ``APPLICATION_ENV``, you can just add this to the ``.en
 
 .. code-block:: bash
    :caption: .env
-   :name: .env
    :emphasize-lines: 3
 
    host> grep APPLICATION_ENV .env
@@ -1195,7 +1183,6 @@ Within your php application/file you can then access this variable via the ``get
 
 .. code-block:: php
    :caption: index.php
-   :name: index.php
    :emphasize-lines: 3
 
    <?php
@@ -1257,15 +1244,15 @@ Let's have a look how the directory is actually built up:
 .. code-block:: bash
    :emphasize-lines: 4
 
-    # Project directory
-    host> ls -l data/www/my-first-project/
-    total 4
-    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
+   # Project directory
+   host> ls -l data/www/my-first-project/
+   total 4
+   drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
 
-    # htdocs directory inside your project directory
-    host> ls -l data/www/my-first-project/htdocs
-    total 4
-    -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 index.php
+   # htdocs directory inside your project directory
+   host> ls -l data/www/my-first-project/htdocs
+   total 4
+   -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 index.php
 
 By calling your proect url, the ``index.php`` file will be served.
 
@@ -1280,16 +1267,16 @@ Let's have a look how the directory is actually built up:
 .. code-block:: bash
    :emphasize-lines: 5
 
-    # Project directory
-    host> ls -l data/www/my-first-project/
-    total 4
-    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 cakephp/
-    lrwxrwxrwx 1 cytopia cytopia   15 Mar 17 09:36 htdocs -> cakephp/webroot/
+   # Project directory
+   host> ls -l data/www/my-first-project/
+   total 4
+   drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 cakephp/
+   lrwxrwxrwx 1 cytopia cytopia   15 Mar 17 09:36 htdocs -> cakephp/webroot/
 
-    # htdocs directory inside your project directory
-    host> ls -l data/www/my-first-project/htdocs
-    total 4
-    -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 index.php
+   # htdocs directory inside your project directory
+   host> ls -l data/www/my-first-project/htdocs
+   total 4
+   -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 index.php
 
 As you can see, the web server is still able to server the files from the ``htdocs`` location,
 this time however, ``htdocs`` itself is a symlink pointing to a much deeper and nested location
@@ -1320,10 +1307,10 @@ Let's have a look at an imaginary project directory called ``my-first-project``:
 
 .. code-block:: bash
 
-    # Project directory
-    host> ls -l data/www/my-first-project/
-    total 4
-    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
+   # Project directory
+   host> ls -l data/www/my-first-project/
+   total 4
+   drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
 
 Inside this your project directory you will need to create another directory which is called
 ``.devilbox`` by default. If you change the ``HTTPD_TEMPLATE_DIR`` variable to something else,
@@ -1332,13 +1319,13 @@ you will have to create a directory by whatever name you chose for that variable
 .. code-block:: bash
    :emphasize-lines: 3,6
 
-    # Project directory
-    host> cd data/www/my-first-project/
-    host> mkdir .devilbox
-    host> ls -l
-    total 4
-    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 .devilbox/
-    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
+   # Project directory
+   host> cd data/www/my-first-project/
+   host> mkdir .devilbox
+   host> ls -l
+   total 4
+   drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 .devilbox/
+   drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
 
 Now you need to copy the ``vhost-gen`` templates into the ``.devilbox`` directory. The templates
 are available in the Devilbox git directory under ``templates/vhost-gen/``.
@@ -1350,11 +1337,11 @@ present.
 .. code-block:: bash
    :emphasize-lines: 5
 
-    # Navigate into the devilbox directory
-    host> cd path/to/devilbox
+   # Navigate into the devilbox directory
+   host> cd path/to/devilbox
 
-    # Copy templates to your project directory
-    host> cp templates/vhost-gen/* data/www/my-first-project/.devilbox/
+   # Copy templates to your project directory
+   host> cp templates/vhost-gen/* data/www/my-first-project/.devilbox/
 
 
 Let's have a look how the directory is actually built up:
@@ -1362,35 +1349,35 @@ Let's have a look how the directory is actually built up:
 .. code-block:: bash
    :emphasize-lines: 4,8
 
-    # Project directory
-    host> ls -l data/www/my-first-project/
-    total 4
-    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 .devilbox/
-    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
+   # Project directory
+   host> ls -l data/www/my-first-project/
+   total 4
+   drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 .devilbox/
+   drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
 
-    # template directory inside your project directory
-    host> ls -l data/www/my-first-project/htdocs/.devilbox
-    total 4
-    -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 apache22.yml
-    -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 apache24.yml
-    -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 nginx.yml
+   # template directory inside your project directory
+   host> ls -l data/www/my-first-project/htdocs/.devilbox
+   total 4
+   -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 apache22.yml
+   -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 apache24.yml
+   -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 nginx.yml
 
 The three files ``apache22.yml``, ``apache24.yml`` and ``nginx.yml`` let you customize your web
 servers virtual host to anything from adding rewrite rules, overwriting directory index to even
 changing the server name or adding locations to other assets.
 
 .. seealso::
-    The whole process is based on a project called `vhost-gen <https://github.com/devilbox/vhost-gen>`_.
-    A virtual host generator for Apache 2.2, Apache 2.4 and any Nginx version.
+   The whole process is based on a project called `vhost-gen <https://github.com/devilbox/vhost-gen>`_.
+   A virtual host generator for Apache 2.2, Apache 2.4 and any Nginx version.
 
 .. seealso::
-    **Customize your virtual host**
-      When you want to find out more how to actually customize each virtual host to its own need,
-      read up more on :ref:`custom_vhost`.
-    **Tutorials**
-      Also have a look at this tutorial which is a walk-through showing you how to modify
-      a virtual host and make it serve all files for multiple sub domains (server names):
-      :ref:`tutorial_adding_sub_domains`
+   **Customize your virtual host**
+     When you want to find out more how to actually customize each virtual host to its own need,
+     read up more on :ref:`custom_vhost`.
+   **Tutorials**
+     Also have a look at this tutorial which is a walk-through showing you how to modify
+     a virtual host and make it serve all files for multiple sub domains (server names):
+     :ref:`tutorial_adding_sub_domains`
 
 
 MySQL
@@ -1413,7 +1400,7 @@ be able to display information inside the bundled intranet.
 +-------------------------+-------------------+---------------------+
 
 .. warning::
-    Keep this variable in sync with the actual MySQL root password.
+   Keep this variable in sync with the actual MySQL root password.
 
 
 MYSQL_GENERAL_LOG
@@ -1452,7 +1439,7 @@ connect to PostgreSQL and will not be able to display information inside the bun
 +-------------------------+---------------------+---------------------+
 
 .. warning::
-    Keep this variable in sync with the actual PostgreSQL username.
+   Keep this variable in sync with the actual PostgreSQL username.
 
 
 PGSQL_ROOT_PASSWORD
@@ -1470,7 +1457,7 @@ connect to PostgreSQL and will not be able to display information inside the bun
 +-------------------------+---------------------+---------------------+
 
 .. warning::
-    Keep this variable in sync with the actual PostgreSQL password.
+   Keep this variable in sync with the actual PostgreSQL password.
 
 
 Bind
@@ -1497,14 +1484,14 @@ Some examples:
 
 .. code-block:: bash
 
-    BIND_DNS_RESOLVER='8.8.8.8'
-    BIND_DNS_RESOLVER='8.8.8.8,192.168.0.10'
+   BIND_DNS_RESOLVER='8.8.8.8'
+   BIND_DNS_RESOLVER='8.8.8.8,192.168.0.10'
 
 
 .. note::
-    If you don't trust the Google DNS server, then set it to something else.
-    If you already have a DNS server inside your LAN and also want your custom DNS (if any)
-    to be available inside the containers, set the value to its IP address.
+   If you don't trust the Google DNS server, then set it to something else.
+   If you already have a DNS server inside your LAN and also want your custom DNS (if any)
+   to be available inside the containers, set the value to its IP address.
 
 
 BIND_DNSSEC_VALIDATE
@@ -1550,8 +1537,8 @@ This variable controls the DNS TTL in seconds. If empty or removed it will fallb
 
 .. seealso::
 
-    * `BIND TTL <http://www.zytrax.com/books/dns/apa/ttl.html>`_
-    * `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+   * `BIND TTL <http://www.zytrax.com/books/dns/apa/ttl.html>`_
+   * `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
 
 BIND_REFRESH_TIME
 ^^^^^^^^^^^^^^^^^

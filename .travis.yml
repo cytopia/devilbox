@@ -1,4 +1,9 @@
 ###
+### Enable Python support
+###
+language: python
+
+###
 ### Enable sudo (required for docker service)
 ###
 sudo: required
@@ -15,6 +20,11 @@ services:
 ### Specify combinations
 ###
 env:
+  ###
+  ### Check Documentation
+  ###
+  - S1=DOCUMENTATION
+
   ###
   ### The matrix specifies 2 versions to compare against each other.
   ### As PHP (any version) needs to be able to run with everything,
@@ -88,27 +98,52 @@ env:
 
 
 ###
-### Build Matrix definition
+### Installation
 ###
-#matrix:
-#  allow_failures:
-#    - env: S1=PHP V1=hhvm-latest S2=HTTPD V2=apache-2.2
-#
+install:
+  # Install dependencies for documentation
+  - if [ "${S1}" = "DOCUMENTATION" ]; then
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if pip install sphinx; then break; else i=$((i+1)); fi
+      done;
 
-###
-### Berfore Install
-###
-before_install:
-  # Get newer docker version
-  - max=100; i=0; while [ $i -lt $max ]; do if sudo apt-get update; then break; else i=$((i+1)); fi done
-  - max=100; i=0; while [ $i -lt $max ]; do if sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce; then break; else i=$((i+1)); fi done
-  # Get newer docker-compose version
-  - max=100; i=0; while [ $i -lt $max ]; do if curl -L --retry 100 --retry-max-time 0 https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > docker-compose; then break; else i=$((i+1)); fi done
-  - chmod +x docker-compose
-  - sudo mv -f docker-compose /usr/local/bin
-  # List versions
-  - docker version
-  - docker-compose version
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if pip install sphinx-autobuild; then break; else i=$((i+1)); fi
+      done;
+
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if pip install recommonmark; then break; else i=$((i+1)); fi
+      done;
+
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if pip install sphinx_rtd_theme; then break; else i=$((i+1)); fi
+      done;
+    fi
+
+  # Install dependencies for docker/docker-compose
+  - if [ "${S1}" != "DOCUMENTATION" ]; then
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if sudo apt-get update; then break; else i=$((i+1)); fi
+      done;
+
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce; then break; else i=$((i+1)); fi
+      done;
+
+      max=100; i=0;
+      while [ $i -lt $max ]; do
+        if curl -L --retry 100 --retry-max-time 0 https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > docker-compose; then break; else i=$((i+1)); fi
+      done;
+
+      chmod +x docker-compose;
+      sudo mv -f docker-compose /usr/local/bin;
+    fi
 
 
 ###
@@ -130,9 +165,27 @@ before_script:
   - sudo service mongodb    stop || true
   - netstat -tulpn
 
+  # Show Python/pip
+  - if [ "${S1}" = "DOCUMENTATION" ]; then
+      pip freeze;
+      pip --version;
+      python --version;
+    fi
+
+  # Show Docker/Docker Compose
+  - if [ "${S1}" != "DOCUMENTATION" ]; then
+      docker --version;
+      docker-compose --version;
+    fi
+
 
 ###
 ### Test
 ###
 script:
-  - .tests/test_single.sh . "${S1}" "${V1}" "${S2}" "${V2}"
+  - if [ "${S1}" = "DOCUMENTATION" ]; then
+        cd docs/;
+        sphinx-build -a -W -E -j auto -n -v . _build/html/;
+    else
+        .tests/test_single.sh . "${S1}" "${V1}" "${S2}" "${V2}";
+    fi

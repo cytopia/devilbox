@@ -11,9 +11,9 @@ supplying custom configurations.
 .. seealso:: If you are rather using Apache, have a look at: :ref:`apache_conf`
 
 .. important::
-    You could actually also create virtual hosts here, but it is recommended to use the
-    Devilbox Auto-vhost generation feature. If you want to custimize your current virtual hosts
-    have a look at :ref:`custom_vhost`.
+   You could actually also create virtual hosts here, but it is recommended to use the
+   Devilbox Auto-vhost generation feature. If you want to custimize your current virtual hosts
+   have a look at :ref:`custom_vhost`.
 
 
 **Table of Contents**
@@ -29,10 +29,10 @@ See the directory structure for Nginx configuration directories inside ``./cfg/`
 
 .. code-block:: bash
 
-    host> ls -l path/to/devilbox/cfg/ | grep 'nginx'
+   host> ls -l path/to/devilbox/cfg/ | grep 'nginx'
 
-    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 nginx-mainline/
-    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 nginx-stable/
+   drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 nginx-mainline/
+   drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 nginx-stable/
 
 Customization is achieved by placing a file into ``cfg/nginx-X/`` (where ``X`` stands for
 your Nginx flavoour).  The file must end by ``.conf`` in order to be sourced by the web server.
@@ -59,31 +59,30 @@ values of Nginx stable.
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    host> cd path/to/devilbox
+   # Navigate to the Devilbox directory
+   host> cd path/to/devilbox
 
-    # Navigate to Nginx stable config directory
-    host> cd cfg/nginx-stable
+   # Navigate to Nginx stable config directory
+   host> cd cfg/nginx-stable
 
-    # Create new conf file
-    host> touch keep_alive.conf
+   # Create new conf file
+   host> touch keep_alive.conf
 
 Now add the following content to the file:
 
 .. code-block:: ini
-    :name: keep_alive.conf
-    :caption: keep_alive.conf
+   :caption: keep_alive.conf
 
-    keepalive 10;
-    keepalive_timeout 10s;
-    keepalive_requests 100;
+   keepalive 10;
+   keepalive_timeout 10s;
+   keepalive_requests 100;
 
 In order to apply the changes you need to restart the Devilbox.
 
 .. note::
-    The above is just an example demonstration, you probably need other values for your setup.
-    So make sure to understand how to configure Nginx, if you are going to change any of those
-    settings.
+   The above is just an example demonstration, you probably need other values for your setup.
+   So make sure to understand how to configure Nginx, if you are going to change any of those
+   settings.
 
 
 Adjust timeout settings for Nginx mainline
@@ -98,28 +97,27 @@ and
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    host> cd path/to/devilbox
+   # Navigate to the Devilbox directory
+   host> cd path/to/devilbox
 
-    # Navigate to Nginx mainline config directory
-    host> cd cfg/nginx-mainline
+   # Navigate to Nginx mainline config directory
+   host> cd cfg/nginx-mainline
 
-    # Create new conf file
-    host> touch timeouts.conf
+   # Create new conf file
+   host> touch timeouts.conf
 
 Now add the following content to the file:
 
 .. code-block:: ini
-    :name: timeouts.conf
-    :caption: timeouts.conf
+   :caption: timeouts.conf
 
-    client_body_timeout 60s;
-    client_header_timeout 60s;
-    send_timeout 60s;
+   client_body_timeout 60s;
+   client_header_timeout 60s;
+   send_timeout 60s;
 
 In order to apply the changes you need to restart the Devilbox.
 
 .. note::
-    The above is just an example demonstration, you probably need other values for your setup.
-    So make sure to understand how to configure Nginx, if you are going to change any of those
-    settings.
+   The above is just an example demonstration, you probably need other values for your setup.
+   So make sure to understand how to configure Nginx, if you are going to change any of those
+   settings.

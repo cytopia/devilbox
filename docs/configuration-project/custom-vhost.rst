@@ -23,12 +23,12 @@ listening ports.
 
 .. seealso::
 
-    If you intend to use ``vhost-gen`` for your own projects, have a look at its projcet page and
-    its sister projects:
+   If you intend to use ``vhost-gen`` for your own projects, have a look at its project page and
+   its sister projects:
 
-    * `vhost-gen <https://github.com/devilbox/vhost-gen>`_
-    * `watcherd <https://github.com/devilbox/watcherd>`_
-    * `watcherp <https://github.com/devilbox/watcherp>`_
+   * `vhost-gen <https://github.com/devilbox/vhost-gen>`_
+   * `watcherd <https://github.com/devilbox/watcherd>`_
+   * `watcherp <https://github.com/devilbox/watcherp>`_
 
 
 Where do I find templates
@@ -99,7 +99,7 @@ it will change the `Project template path` which you need to create yourself.
 For this example we will keep the default value for the sake of simplicity: ``.devilxbox``.
 
 .. note::
-    The :ref:`env_httpd_template_dir` value is a global setting and will affect all projects.
+   The :ref:`env_httpd_template_dir` value is a global setting and will affect all projects.
 
 
 2. Copy webserver template to project template directory
@@ -109,23 +109,23 @@ First you need to ensure that the :ref:`env_httpd_template_dir` exists wihin you
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    host> cd /home/user/devilbox
+   # Navigate to the Devilbox directory
+   host> cd /home/user/devilbox
 
-    # Create template directory in your project
-    host> mkdir ./data/www/project-1/.devilbox
+   # Create template directory in your project
+   host> mkdir ./data/www/project-1/.devilbox
 
 Then you can copy the templates.
 
 .. code-block:: bash
 
-    host> cp templates/vhost-gen/* ./data/www/project-1/.devilbox
+   host> cp templates/vhost-gen/* ./data/www/project-1/.devilbox
 
 .. note::
-    You actually only need to copy the template of your chosen webserver (either Apache 2.2,
-    Apache 2.4 or Nginx), however it is good practice to copy all templates and also adjust
-    all templates synchronously. This allows you to change web server versions and still
-    keep your virtual host settings.
+   You actually only need to copy the template of your chosen webserver (either Apache 2.2,
+   Apache 2.4 or Nginx), however it is good practice to copy all templates and also adjust
+   all templates synchronously. This allows you to change web server versions and still
+   keep your virtual host settings.
 
 3. Adjust template
 ^^^^^^^^^^^^^^^^^^
@@ -167,42 +167,42 @@ needs to be in place for what webserver version.
 +----------------+------------------+
 
 .. note::
-    Nginx stable and mainline share the same template as their syntax has no special
-    differences, whereas Apache 2.2 and Apache 2.4 have slight differences in syntax and therefore
-    require two different templates.
+   Nginx stable and mainline share the same template as their syntax has no special
+   differences, whereas Apache 2.2 and Apache 2.4 have slight differences in syntax and therefore
+   require two different templates.
 
 
 Ensure yaml files are valid
 ---------------------------
 
 .. warning::
-    Pay close attention that you do not use TAB (``\t``) characters for indenting the vhost-gen
-    yaml files. Some editors might automatically indent using TABs, so ensure they are replaced
-    with spaces. If TAB characters are present, those files become invalid and won't work.
-    https://github.com/cytopia/devilbox/issues/142
+   Pay close attention that you do not use TAB (``\t``) characters for indenting the vhost-gen
+   yaml files. Some editors might automatically indent using TABs, so ensure they are replaced
+   with spaces. If TAB characters are present, those files become invalid and won't work.
+   https://github.com/cytopia/devilbox/issues/142
 
-    You can use the bundled ``yamllint`` binary inside the container to validate your config.
+   You can use the bundled ``yamllint`` binary inside the container to validate your config.
 
 
 .. code-block:: bash
    :emphasize-lines: 13-16
 
-    # Navigate to the Devilbox directory
-    host> cd /home/user/devilbox
+   # Navigate to the Devilbox directory
+   host> cd /home/user/devilbox
 
-    # Enter the PHP container
-    host> ./shell.sh
+   # Enter the PHP container
+   host> ./shell.sh
 
-    # Go to your project's template directory
-    devilbox@php-7.0.19 in /shared/httpd $ cd project-1/.devilbox
+   # Go to your project's template directory
+   devilbox@php-7.0.19 in /shared/httpd $ cd project-1/.devilbox
 
-    # Check the syntax of apache22.yml
-    devilbox@php-7.0.19 in /shared/httpd/project-1/.devilbox $ yamllint apache22.yml
+   # Check the syntax of apache22.yml
+   devilbox@php-7.0.19 in /shared/httpd/project-1/.devilbox $ yamllint apache22.yml
 
-    108:81    error    line too long (90 > 80 characters)  (line-length)
-    139:81    error    line too long (100 > 80 characters)  (line-length)
-    140:81    error    line too long (84 > 80 characters)  (line-length)
-    142:81    error    line too long (137 > 80 characters)  (line-length)
+   108:81    error    line too long (90 > 80 characters)  (line-length)
+   139:81    error    line too long (100 > 80 characters)  (line-length)
+   140:81    error    line too long (84 > 80 characters)  (line-length)
+   142:81    error    line too long (137 > 80 characters)  (line-length)
 
 Long line errors can safely be ignored.
 
@@ -280,29 +280,29 @@ look like this:
 
 .. code-block:: yaml
 
-    vhost: |
-      <VirtualHost *:80>
-          ServerName   example.com
+   vhost: |
+     <VirtualHost *:80>
+         ServerName   example.com
 
-          CustomLog  "/var/log/apache/access.log" combined
-          ErrorLog   "/var/log/apache/error.log"
+         CustomLog  "/var/log/apache/access.log" combined
+         ErrorLog   "/var/log/apache/error.log"
 
-          DocumentRoot "/shared/httpd/project-1/htdocs"
-          <Directory "/shared/httpd/project-1/htdocs">
-              DirectoryIndex index.php
+         DocumentRoot "/shared/httpd/project-1/htdocs"
+         <Directory "/shared/httpd/project-1/htdocs">
+             DirectoryIndex index.php
 
-              AllowOverride All
-              Options All
+             AllowOverride All
+             Options All
 
-              RewriteEngine on
-              RewriteBase /
+             RewriteEngine on
+             RewriteBase /
 
-              Order allow,deny
-              Allow from all
-          </Directory>
+             Order allow,deny
+             Allow from all
+         </Directory>
 
-          ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000/shared/httpd/project-1/htdocs/$1
-      </VirtualHost>
+         ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000/shared/httpd/project-1/htdocs/$1
+     </VirtualHost>
 
 2. ``vhost_type:``
 ^^^^^^^^^^^^^^^^^^
@@ -360,34 +360,34 @@ Rename project directory
 
 .. code-block:: bash
 
-    # Navigate to the data directory
-    host> /home/user/devilbox/data/www
+   # Navigate to the data directory
+   host> /home/user/devilbox/data/www
 
-    # Rename your project to something else
-    host> mv project-1 project-1.tmp
+   # Rename your project to something else
+   host> mv project-1 project-1.tmp
 
-    # Rename your project to its original name
-    host> mv project-1.tmp project-1
+   # Rename your project to its original name
+   host> mv project-1.tmp project-1
 
 If you want to understand what is going on right now, check the docker logs for the web server.
 
 .. code-block:: bash
 
-    # Navigate to the devilbox directory
-    host> /home/user/devilbox
+   # Navigate to the devilbox directory
+   host> /home/user/devilbox
 
-    # Check docker logs
-    host> docker-compose logs httpd
+   # Check docker logs
+   host> docker-compose logs httpd
 
-    httpd_1  | vhostgen: [2018-03-18 11:46:52] Adding: project-1.tmp.loc
-    httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  ADD: succeeded: /shared/httpd/project-1.tmp
-    httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  DEL: succeeded: /shared/httpd/project-1
-    httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  TRIGGER succeeded: /usr/local/apache2/bin/httpd -k restart
+   httpd_1  | vhostgen: [2018-03-18 11:46:52] Adding: project-1.tmp.loc
+   httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  ADD: succeeded: /shared/httpd/project-1.tmp
+   httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  DEL: succeeded: /shared/httpd/project-1
+   httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  TRIGGER succeeded: /usr/local/apache2/bin/httpd -k restart
 
-    httpd_1  | vhostgen: [2018-03-18 11:46:52] Adding: project-1loc
-    httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  ADD: succeeded: /shared/httpd/project-1
-    httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  DEL: succeeded: /shared/httpd/project-1.tmp
-    httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  TRIGGER succeeded: /usr/local/apache2/bin/httpd -k restart
+   httpd_1  | vhostgen: [2018-03-18 11:46:52] Adding: project-1loc
+   httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  ADD: succeeded: /shared/httpd/project-1
+   httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  DEL: succeeded: /shared/httpd/project-1.tmp
+   httpd_1  | watcherd: [2018-03-18 11:46:52] [OK]  TRIGGER succeeded: /usr/local/apache2/bin/httpd -k restart
 
 **What happened?**
 
@@ -395,9 +395,9 @@ The directory changes have been noticed and a new virtual host has been created.
 your new vhost-gen template has been read and the changes have applied.
 
 .. note::
-    Renaming a project directory will only affect a single project. In case your change the
-    value of :ref:`env_httpd_template_dir` it will affect all projects and you would have to
-    rename all project directories. In this case it is much faster to just restart the Devilbox.
+   Renaming a project directory will only affect a single project. In case your change the
+   value of :ref:`env_httpd_template_dir` it will affect all projects and you would have to
+   rename all project directories. In this case it is much faster to just restart the Devilbox.
 
 
 Restart the Devilbox
@@ -410,6 +410,6 @@ Further readings
 ================
 
 .. seealso::
-    Have a look at the following examples which involve customizing vhost-gen templates:
+   Have a look at the following examples which involve customizing vhost-gen templates:
 
-    * :ref:`tutorial_adding_sub_domains`
+   * :ref:`tutorial_adding_sub_domains`

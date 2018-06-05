@@ -8,8 +8,8 @@ This tutorial gives you a general overview how to do static code analysis from w
 container.
 
 .. seealso::
-    * :ref:`available_tools`
-    * :ref:`tutorial_work_inside_the_php_container`
+   * :ref:`available_tools`
+   * :ref:`tutorial_work_inside_the_php_container`
 
 
 **Table of Contents**
@@ -40,34 +40,34 @@ Some of the bundled tools even allow for automatic fixing.
 
 .. code-block:: bash
 
-    # 1. Enter your PHP container
-    host> ./bash
+   # 1. Enter your PHP container
+   host> ./bash
 
-    # 2. Go to your project folder
-    devilbox@php-7.0.20 $ cd /shared/httpd/my-project
+   # 2. Go to your project folder
+   devilbox@php-7.0.20 $ cd /shared/httpd/my-project
 
-    # 3. Run the tools
-    devilbox@php-7.0.20 $ git-conflicts --path=.
-    devilbox@php-7.0.20 $ git-ignored --path=.
-    devilbox@php-7.0.20 $ file-cr --path=.
-    devilbox@php-7.0.20 $ file-crlf --path=.
-    devilbox@php-7.0.20 $ file-empty --path=.
+   # 3. Run the tools
+   devilbox@php-7.0.20 $ git-conflicts --path=.
+   devilbox@php-7.0.20 $ git-ignored --path=.
+   devilbox@php-7.0.20 $ file-cr --path=.
+   devilbox@php-7.0.20 $ file-crlf --path=.
+   devilbox@php-7.0.20 $ file-empty --path=.
 
-    # 4. Run tools with more options
-    devilbox@php-7.0.20 $ syntax-php --path=. --extension=php
-    devilbox@php-7.0.20 $ syntax-php --path=. --shebang=php
+   # 4. Run tools with more options
+   devilbox@php-7.0.20 $ syntax-php --path=. --extension=php
+   devilbox@php-7.0.20 $ syntax-php --path=. --shebang=php
 
-    # 5. Various syntax checks
-    devilbox@php-7.0.20 $ syntax-bash --path=. --text --extension=sh
-    devilbox@php-7.0.20 $ syntax-css --path=. --text --extension=css
-    devilbox@php-7.0.20 $ syntax-js --path=. --text --extension=js
-    devilbox@php-7.0.20 $ syntax-json --path=. --text --extension=json
-    devilbox@php-7.0.20 $ syntax-markdown --path=. --text --extension=md
-    devilbox@php-7.0.20 $ syntax-perl --path=. --text --extension=pl
-    devilbox@php-7.0.20 $ syntax-php --path=. --text --extension=php
-    devilbox@php-7.0.20 $ syntax-python --path=. --text --extension=python
-    devilbox@php-7.0.20 $ syntax-ruby --path=. --text --extension=rb
-    devilbox@php-7.0.20 $ syntax-scss --path=. --text --extension=scss
+   # 5. Various syntax checks
+   devilbox@php-7.0.20 $ syntax-bash --path=. --text --extension=sh
+   devilbox@php-7.0.20 $ syntax-css --path=. --text --extension=css
+   devilbox@php-7.0.20 $ syntax-js --path=. --text --extension=js
+   devilbox@php-7.0.20 $ syntax-json --path=. --text --extension=json
+   devilbox@php-7.0.20 $ syntax-markdown --path=. --text --extension=md
+   devilbox@php-7.0.20 $ syntax-perl --path=. --text --extension=pl
+   devilbox@php-7.0.20 $ syntax-php --path=. --text --extension=php
+   devilbox@php-7.0.20 $ syntax-python --path=. --text --extension=python
+   devilbox@php-7.0.20 $ syntax-ruby --path=. --text --extension=rb
+   devilbox@php-7.0.20 $ syntax-scss --path=. --text --extension=scss
 
 
 PHPCS
@@ -79,14 +79,14 @@ PHPCS is a code style analyser for PHP.
 
 .. code-block:: bash
 
-     # 1. Enter your PHP container
-     host> ./bash
+   # 1. Enter your PHP container
+   host> ./bash
 
-     # 2. Go to your project folder
-     devilbox@php-7.0.20 $ cd /shared/httpd/my-project
+   # 2. Go to your project folder
+   devilbox@php-7.0.20 $ cd /shared/httpd/my-project
 
-     # 3. Run it
-     devilbox@php-7.0.20 $ phpcs .
+   # 3. Run it
+   devilbox@php-7.0.20 $ phpcs .
 
 
 ESLint
@@ -98,11 +98,11 @@ ESLint is a Javascript static source code analyzer.
 
 .. code-block:: bash
 
-     # 1. Enter your PHP container
-     host> ./bash
+   # 1. Enter your PHP container
+   host> ./bash
 
-     # 2. Go to your project folder
-     devilbox@php-7.0.20 $ cd /shared/httpd/my-project
+   # 2. Go to your project folder
+   devilbox@php-7.0.20 $ cd /shared/httpd/my-project
 
-     # 3. Run it
-     devilbox@php-7.0.20 $ eslint .
+   # 3. Run it
+   devilbox@php-7.0.20 $ eslint .

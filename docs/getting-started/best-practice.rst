@@ -36,20 +36,19 @@ All you have to to is to adjust the path of :ref:`env_httpd_datadir` in the ``.e
 
 .. code-block:: bash
 
-    # Navigate to Devilbox git directory
-    host> cd path/to/devilbox
+   # Navigate to Devilbox git directory
+   host> cd path/to/devilbox
 
-    # Open the .env file with your favourite editor
-    host> vim .env
+   # Open the .env file with your favourite editor
+   host> vim .env
 
 Now Adjust the value of :ref:`env_httpd_datadir`
 
 .. code-block:: bash
-    :name: .env
-    :caption: .env
-    :emphasize-lines: 1
+   :caption: .env
+   :emphasize-lines: 1
 
-    HOST_PATH_HTTPD_DATADIR=/home/user/workspace/web
+   HOST_PATH_HTTPD_DATADIR=/home/user/workspace/web
 
 That's it, whenever you start up the Devilbox ``/home/user/workspace/web/`` will be mounted into
 the PHP and the web server container into ``/shared/httpd/``.
@@ -70,20 +69,19 @@ All you have to to is to adjust the path of :ref:`env_mysql_datadir` in the ``.e
 
 .. code-block:: bash
 
-    # Navigate to Devilbox git directory
-    host> cd path/to/devilbox
+   # Navigate to Devilbox git directory
+   host> cd path/to/devilbox
 
-    # Open the .env file with your favourite editor
-    host> vim .env
+   # Open the .env file with your favourite editor
+   host> vim .env
 
 Now Adjust the value of :ref:`env_mysql_datadir`
 
 .. code-block:: bash
-    :name: .env
-    :caption: .env
-    :emphasize-lines: 1
+   :caption: .env
+   :emphasize-lines: 1
 
-    HOST_PATH_MYSQL_DATADIR=/home/user/workspace/db/mysql
+   HOST_PATH_MYSQL_DATADIR=/home/user/workspace/db/mysql
 
 That's it, whenever you start up the Devilbox ``/home/user/workspace/db/mysql/`` will be mounted
 into the MySQL container.
@@ -95,20 +93,19 @@ All you have to to is to adjust the path of :ref:`env_pgsql_datadir` in the ``.e
 
 .. code-block:: bash
 
-    # Navigate to Devilbox git directory
-    host> cd path/to/devilbox
+   # Navigate to Devilbox git directory
+   host> cd path/to/devilbox
 
-    # Open the .env file with your favourite editor
-    host> vim .env
+   # Open the .env file with your favourite editor
+   host> vim .env
 
 Now Adjust the value of :ref:`env_pgsql_datadir`
 
 .. code-block:: bash
-    :name: .env
-    :caption: .env
-    :emphasize-lines: 1
+   :caption: .env
+   :emphasize-lines: 1
 
-    HOST_PATH_PGSQL_DATADIR=/home/user/workspace/db/pgsql
+   HOST_PATH_PGSQL_DATADIR=/home/user/workspace/db/pgsql
 
 That's it, whenever you start up the Devilbox ``/home/user/workspace/db/pqsql/`` will be mounted
 into the PostgreSQL container.
@@ -120,20 +117,19 @@ All you have to to is to adjust the path of :ref:`env_mongo_datadir` in the ``.e
 
 .. code-block:: bash
 
-    # Navigate to Devilbox git directory
-    host> cd path/to/devilbox
+   # Navigate to Devilbox git directory
+   host> cd path/to/devilbox
 
-    # Open the .env file with your favourite editor
-    host> vim .env
+   # Open the .env file with your favourite editor
+   host> vim .env
 
 Now Adjust the value of :ref:`env_mongo_datadir`
 
 .. code-block:: bash
-    :name: .env
-    :caption: .env
-    :emphasize-lines: 1
+   :caption: .env
+   :emphasize-lines: 1
 
-    HOST_PATH_MONGO_DATADIR=/home/user/workspace/db/mongo
+   HOST_PATH_MONGO_DATADIR=/home/user/workspace/db/mongo
 
 That's it, whenever you start up the Devilbox ``/home/user/workspace/db/mongo/`` will be mounted
 into the MongoDB container.
@@ -189,8 +185,8 @@ This allows you to keep your project configuration unchanged and have the same b
 PHP container and on your host operating system.
 
 .. important::
-    Do not mix up ``localhost`` with ``127.0.0.1``. They behave differently!
-    Use ``127.0.0.1`` and do not use ``localhost``.
+   Do not mix up ``localhost`` with ``127.0.0.1``. They behave differently!
+   Use ``127.0.0.1`` and do not use ``localhost``.
 
 As an example, if you want to access the MySQL database from within the PHP container, you do the
 following:
@@ -198,24 +194,24 @@ following:
 .. code-block:: bash
    :emphasize-lines: 8
 
-    # Navigate to Devilbox git directory
-    host> cd path/to/devilbox
+   # Navigate to Devilbox git directory
+   host> cd path/to/devilbox
 
-    # Enter the PHP container
-    host> ./shell.sh
+   # Enter the PHP container
+   host> ./shell.sh
 
-    # Enter the MySQL console
-    php> mysql -u root -h 127.0.0.1 -p
-    mysql>
+   # Enter the MySQL console
+   php> mysql -u root -h 127.0.0.1 -p
+   mysql>
 
 The very same command applies to access the MySQL database from your host operating system:
 
 .. code-block:: bash
    :emphasize-lines: 2
 
-    # Enter the MySQL console
-    host> mysql -u root -h 127.0.0.1 -p
-    mysql>
+   # Enter the MySQL console
+   host> mysql -u root -h 127.0.0.1 -p
+   mysql>
 
 So no matter if you use the Devilbox or have another LAMP stack installed locally on your host
 operating system, you do not have to change your configuration files if you stick to this tip.
@@ -225,13 +221,13 @@ or IP address of the MySQL server to ``127.0.0.1``:
 
 .. code-block:: php
 
-    <?php
-    // MySQL server connection in your project configuration
-    mysql_host = '127.0.0.1';
-    mysql_port = '3306';
-    mysql_user = 'someusername';
-    mysql_pass = 'somepassword';
-    ?>
+   <?php
+   // MySQL server connection in your project configuration
+   mysql_host = '127.0.0.1';
+   mysql_port = '3306';
+   mysql_user = 'someusername';
+   mysql_pass = 'somepassword';
+   ?>
 
 .. seealso:: :ref:`tutorial_work_inside_the_php_container`
 

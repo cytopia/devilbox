@@ -9,6 +9,20 @@
 	background-color: #343131;
 }
 
+/* Disable annoying scrollbar in code-blocks */
+.codeblock,
+pre.literal-block,
+.rst-content .literal-block,
+.rst-content pre.literal-block,
+.rst-content div[class^='highlight'],
+div[class^='highlight'] {
+	overflow: hidden !important;
+}
+/* bg color for code windows */
+.highlight {
+	background-color: #ffffff !important;
+}
+
 /*
 div.rtd-pro.rtd-pro-footer {
 	display: none;

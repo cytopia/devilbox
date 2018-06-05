@@ -29,14 +29,14 @@ each PHP container and reay to use. To backup all databases follow the below lis
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    host> cd path/to/devilbox
+   # Navigate to the Devilbox directory
+   host> cd path/to/devilbox
 
-    # Enter the PHP container
-    host> ./shell.sh
+   # Enter the PHP container
+   host> ./shell.sh
 
-    # Run mongodump
-    devilbox@php-7.1.6 in /shared/httpd $ mongodump --out /shared/backups/mongo
+   # Run mongodump
+   devilbox@php-7.1.6 in /shared/httpd $ mongodump --out /shared/backups/mongo
 
 To find out more about the configuration and options of mongodump, visit its project page under:
 https://docs.mongodb.com/manual/reference/program/mongodump.
@@ -53,14 +53,14 @@ each PHP container and ready to use. To restore all MongoDB databases follow the
 
 .. code-block:: bash
 
-    # Navigate to the Devilbox directory
-    host> cd path/to/devilbox
+   # Navigate to the Devilbox directory
+   host> cd path/to/devilbox
 
-    # Enter the PHP container
-    host> ./shell.sh
+   # Enter the PHP container
+   host> ./shell.sh
 
-    # Start the restore/import from /shared/backups/mongo
-    devilbox@php-7.1.6 in /shared/httpd $ mongorestore /shared/backups/mongo
+   # Start the restore/import from /shared/backups/mongo
+   devilbox@php-7.1.6 in /shared/httpd $ mongorestore /shared/backups/mongo
 
 To find out more about the configuration and options of mongorestore, visit its project page under:
 https://docs.mongodb.com/manual/reference/program/mongorestore/.

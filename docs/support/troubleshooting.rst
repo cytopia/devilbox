@@ -29,12 +29,12 @@ In order to remove the container do the following:
 
 .. code-block:: bash
 
-    host> cd path/to/devilbox
-    host> docker-compose stop
+   host> cd path/to/devilbox
+   host> docker-compose stop
 
-    # Remove the stopped container (IMPORTANT!)
-    # After the removal it will be re-created during next run
-    host> docker-compose rm -f
+   # Remove the stopped container (IMPORTANT!)
+   # After the removal it will be re-created during next run
+   host> docker-compose rm -f
 
 .. seealso:: :ref:`remove_stopped_container`
 
@@ -51,15 +51,15 @@ to read-only by applying the following ``chmod`` command.
 
 .. code-block:: bash
 
-    # Nagivate to devilbox git directory
-    host> cd path/to/devilbox
+   # Nagivate to devilbox git directory
+   host> cd path/to/devilbox
 
-    # Navigate to the MySQL config directory (e.g.: MySQL 5.5)
-    host> cd cfg/mysql-5.5
+   # Navigate to the MySQL config directory (e.g.: MySQL 5.5)
+   host> cd cfg/mysql-5.5
 
-    # Make cnf files read only
-    host> chmod 0444 *.cnf
+   # Make cnf files read only
+   host> chmod 0444 *.cnf
 
 .. seealso::
-    * :ref:`my_cnf`
-    * https://github.com/cytopia/devilbox/issues/212
+   * :ref:`my_cnf`
+   * https://github.com/cytopia/devilbox/issues/212
