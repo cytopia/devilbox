@@ -23,7 +23,7 @@ listening ports.
 
 .. seealso::
 
-   If you intend to use ``vhost-gen`` for your own projects, have a look at its projcet page and
+   If you intend to use ``vhost-gen`` for your own projects, have a look at its project page and
    its sister projects:
 
    * `vhost-gen <https://github.com/devilbox/vhost-gen>`_
