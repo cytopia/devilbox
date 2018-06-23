@@ -205,7 +205,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.16
+    image: devilbox/${HTTPD_SERVER:-nginx-stable}:release-0.17
     restart: always
 
     environment:
