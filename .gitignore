@@ -16,7 +16,10 @@
 # Ignore variable dat
 /.env
 /log/[a-z0-9-]*
-/data/*
+/data/mongo/*
+/data/mysql/*
+/data/pqsql/*
+/data/www/*
 /backups/*
 
 # Ignore Certificate Authority
