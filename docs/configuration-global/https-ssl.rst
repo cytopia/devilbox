@@ -62,6 +62,8 @@ valid and trusted SSL certificates without any further work.
 .. important::
    Importing the CA into the browser is also recommended and required for the Devilbox
    intranet page to work properly.
+   You may also import the CA into your Operating System's Keystore. Information on that
+   is available at `GFI Root Certificate guide <https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html>`_
 
 
 Import the CA into your browser
