@@ -143,7 +143,7 @@ Once done, you can verify if the new DNS settings are effective:
 
    host> systemd-resolve --status
 
-.. seealso:: `Archlinux Wiki: resolv.conf <https://wiki.archlinux.org/index.php/Resolv.conf#Modify_the_dhcpcd_config>`_
+.. seealso:: `Archlinux Wiki: resolv.conf <https://wiki.archlinux.org/index.php/Dhcpcd#resolv.conf>`_
 
 
 MacOS

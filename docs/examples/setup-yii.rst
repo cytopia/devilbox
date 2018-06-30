@@ -6,7 +6,7 @@ Setup Yii
 
 This example will use ``composer`` to install Yii from within the PHP container.
 
-.. seealso:: `Official Yii Documentation <http://www.yiiframework.com/doc-2.0/guide-start-installation.html>`_
+.. seealso:: `Official Yii Documentation <https://www.yiiframework.com/doc/guide/2.0/en/start-installation>`_
 
 
 **Table of Contents**

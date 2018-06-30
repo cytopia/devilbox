@@ -81,6 +81,19 @@ exclude_patterns = [u'_build', 'Thumbs.db', '.DS_Store']
 pygments_style = 'sphinx'
 
 
+# -- Options for Link check -------------------------------------------------
+
+# http://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-the-linkcheck-builder
+linkcheck_ignore = [
+    r'http(s)?://localhost(/)?.*',
+    r'http(s)?://127\.0\.0\.1(/)?.*',
+    r'http(s)?://.+\.loc$'
+]
+linkcheck_retries = 5
+linkcheck_timeout = 60
+linkcheck_anchors = True
+
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for

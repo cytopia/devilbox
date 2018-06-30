@@ -93,7 +93,7 @@ Change child process on pool ``www`` for PHP 5.6
 
 The following examples shows you how to change the
 `pm <https://secure.php.net/manual/en/install.fpm.configuration.php#pm>`_,
-`pm.max_children <https://secure.php.net/manual/en/install.fpm.configuration.php#pm.max-chidlren>`_,
+`pm.max_children <https://secure.php.net/manual/en/install.fpm.configuration.php#pm.max-children>`_,
 `pm.start_servers <https://secure.php.net/manual/en/install.fpm.configuration.php#pm.start-servers>`_,
 `pm.min_spare_servers <https://secure.php.net/manual/en/install.fpm.configuration.php#pm.min-spare-servers>`_
 and

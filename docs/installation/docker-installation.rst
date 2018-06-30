@@ -24,7 +24,7 @@ Install Docker
 Docker on Linux
 ---------------
 
-Refer to the official `Docker for Linux documentation <https://docs.docker.com/engine/installation/#supported-platforms>`_ for how to install ``Docker`` on your specific Linux distribution.
+Refer to the official `Docker for Linux documentation <https://docs.docker.com/install/#supported-platforms>`_ for how to install ``Docker`` on your specific Linux distribution.
 
 Docker on Windows
 -----------------

@@ -94,7 +94,7 @@ ESLint
 
 ESLint is a Javascript static source code analyzer.
 
-.. seealso:: `ESLint <http://eslint.org>`_
+.. seealso:: `ESLint <https://eslint.org>`_
 
 .. code-block:: bash
 
