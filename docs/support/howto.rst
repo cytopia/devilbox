@@ -1,7 +1,7 @@
 .. _howto:
 
 ******
-How to
+How To
 ******
 
 The How to section gathers information about various things that are not directly related to the
