@@ -10,7 +10,7 @@ MySQL version.
 
 
 .. important::
-   When using :ref:`docker_toolbox` on Windows, ``*.cnf`` files must have read-only file
+   When using :ref:`howto_docker_toolbox_and_the_devilbox` on Windows, ``*.cnf`` files must have read-only file
    permissions, otherwise they are not sourced by the MySQL server.
 
    Make sure to ``chmod 0444 *.cnf`` after adding your values.

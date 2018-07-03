@@ -6,7 +6,9 @@ FAQ
 
 Find common questions and answers here.
 
-.. seealso:: :ref:`troubleshooting`
+.. seealso::
+   * :ref:`troubleshooting`
+   * :ref:`howto`
 
 
 **Table of Contents**
@@ -20,7 +22,7 @@ General
 Are there any differences between native Docker and Docker Toolbox?
 -------------------------------------------------------------------
 
-Yes, read :ref:`docker_toolbox` to find out more.
+Yes, read :ref:`howto_docker_toolbox_and_the_devilbox` to find out more.
 
 
 .. _faq_data_dir_separated_by_version:
@@ -139,7 +141,7 @@ You need a valid DNS entry for every project that points to the Httpd server. As
 don't exists by default, you will have to create them. However, the Devilbox has a bundled DNS
 server that can automate this for you. The only thing you have to do for that to work is to add
 this DNS server's IP address to your ``/etc/resolv.conf``.
-See :ref:`global_configuration_auto_dns` for detailed instructions.
+See :ref:`setup_auto_dns` for detailed instructions.
 
 
 Compatibility
@@ -149,6 +151,12 @@ Does it work with CakePHP?
 --------------------------
 
 Yes, see :ref:`example_setup_cakephp`
+
+
+Does it work with Codeigniter?
+------------------------------
+
+Yes, see :ref:`example_setup_codeigniter`
 
 
 Does it work with Drupal?
@@ -175,6 +183,12 @@ Does it work with Phalcon?
 Yes, see :ref:`example_setup_phalcon`
 
 
+Does it work with Photon CMS?
+-----------------------------
+
+Yes, see :ref:`example_setup_photon_cms`
+
+
 Does it work with Symfony?
 --------------------------
 
@@ -197,3 +211,8 @@ Does it work with Zend?
 -----------------------
 
 Yes, see :ref:`example_setup_zend`
+
+Does it work with other Frameworks?
+-----------------------------------
+
+Yes, see :ref:`example_setup_other_frameworks`

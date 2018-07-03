@@ -53,4 +53,4 @@ build:
 	sphinx-build -a -E -n -j auto -q -W . _build/html
 
 autobuild:
-	sphinx-autobuild -E -n -j auto . _build/html
+	sphinx-autobuild . _build/html

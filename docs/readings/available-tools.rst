@@ -7,7 +7,7 @@ Available tools
 Each PHP container version brings the same tools, so you can safely switch versions without having
 to worry to have less or more tools available.
 
-.. seealso:: :ref:`tutorial_work_inside_the_php_container`
+.. seealso:: :ref:`work_inside_the_php_container`
 
 The PHP container is your workhorse and these are your tools:
 
@@ -91,4 +91,4 @@ The PHP container is your workhorse and these are your tools:
 .. seealso::
    If you ever feel those tools are out-dated, simply update your Docker images.
    Docker images are built every night to ensure latest tools and security patches:
-   :ref:`getting_started_update_the_docker_images`
+   :ref:`update_the_devilbox_update_the_docker_images`

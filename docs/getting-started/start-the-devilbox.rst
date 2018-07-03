@@ -9,11 +9,11 @@ hands dirty.
 
 .. note::
 
-     Starting and stopping containers is done via ``docker-compose``. If you have never worked with
-     it before, have a look at their documentation for an
-     `overview <https://docs.docker.com/compose/reference/overview/>`_,
-     `up <https://docs.docker.com/compose/reference/up/>`_ and
-     `stop <https://docs.docker.com/compose/reference/stop/>`_ commands.
+   Starting and stopping containers is done via ``docker-compose``. If you have never worked with
+   it before, have a look at their documentation for an
+   `overview <https://docs.docker.com/compose/reference/overview/>`_,
+   `up <https://docs.docker.com/compose/reference/up/>`_ and
+   `stop <https://docs.docker.com/compose/reference/stop/>`_ commands.
 
 
 **Table of Contents**
@@ -63,18 +63,19 @@ http://127.0.0.1.
 
 The Intranet start page will also show you all running and failed containers:
 
-.. image:: /_static/img/devilbox-dash-full.png
-.. image:: /_static/img/devilbox-dash-selective.png
 
-.. warning::
-   :ref:`docker_toolbox`
-      When you are using ``Docker Toolbox`` the Devilbox Web server port will not be available on
-      your host computer. You have to forward the virtual machines port to your host computer.
-      Read more about it on this guide.
+.. include:: ../_includes/figures/devilbox/devilbox-intranet-dash-all.rst
+.. include:: ../_includes/figures/devilbox/devilbox-intranet-dash-selective.rst
+
+.. important::
+   :ref:`howto_find_docker_toolbox_ip_address`
+      When you are using ``Docker Toolbox`` the Devilbox web server port will not be available on
+      your host computer. You first have to find out on which IP address the Docker Toolbox machine
+      is serving and use this one instead.
 
 
 Checklist
 =========
 
 1. Docker container are started successfully with ``docker-compose up``
-2. Intranet is reachable via ``http://localhost`` or ``http://127.0.0.1``
+2. Intranet is reachable via ``http://localhost``, ``http://127.0.0.1`` or Docker Toolbox IP address

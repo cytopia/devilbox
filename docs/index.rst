@@ -1,9 +1,12 @@
-**********************
-devilbox documentation
-**********************
 .. :hidden:
 
-.. image:: img/banner.png
+.. include:: _includes/global/images.rst
+
+**********************
+Devilbox documentation
+**********************
+
+|img_banner|
 
 The Devilbox is a modern dockerized LAMP and MEAN stack for local development on Linux, MacOS
 and Windows.
@@ -19,55 +22,90 @@ host is ready to be served with your custom domain.
 
 .. important::
    :ref:`read_first`
-     Ensure you have read this document to understand how this documentation works.
+    Ensure you have read this document to understand how this documentation works.
 
 
 .. toctree::
    :maxdepth: 2
-   :caption: About
 
-   about/read-first
-   about/features
+   read-first
+   features
+   devilbox-purpose
+
 
 .. toctree::
+   :caption: Getting started
    :maxdepth: 2
    :numbered:
-   :caption: Getting started
 
+   getting-started/prerequisites
    getting-started/install-the-devilbox
-   getting-started/update-the-devilbox
    getting-started/start-the-devilbox
+   getting-started/devilbox-intranet
    getting-started/directory-overview
    getting-started/create-your-first-project
-   getting-started/read-log-files
-   getting-started/email-catch-all
    getting-started/enter-the-php-container
-   getting-started/the-intranet
-   getting-started/best-practice
+   getting-started/change-container-versions
+
+
+.. toctree::
+   :caption: Intermediate
+   :maxdepth: 2
+   :numbered:
+
+   intermediate/setup-auto-dns
+   intermediate/setup-valid-https
+   intermediate/configure-php-xdebug
+   intermediate/enable-disable-php-modules
+   intermediate/read-log-files
+   intermediate/email-catch-all
+   intermediate/add-custom-environment-variables
+   intermediate/work-inside-the-php-container
+   intermediate/source-code-analysis
+   intermediate/best-practice
+
+
+.. toctree::
+   :caption: Advanced
+   :maxdepth: 2
+   :numbered:
+
+   advanced/connect-to-external-hosts
+   advanced/customize-virtual-host
+   advanced/add-subdomains
+   advanced/add-your-own-docker-image
+   advanced/overwrite-existing-docker-image
+..
+   advanced/customize-php-globally
+   advanced/configure-webserver-globally
 
 
 .. toctree::
    :caption: Maintenance
    :maxdepth: 2
 
+   maintenance/checkout-different-devilbox-release
+   maintenance/remove-stopped-container
+   maintenance/update-the-devilbox
+   maintenance/remove-the-devilbox
    maintenance/backup-and-restore-mysql
    maintenance/backup-and-restore-pgsql
    maintenance/backup-and-restore-mongo
 
 
 .. toctree::
+   :caption: Configuration files
    :maxdepth: 2
-   :caption: Tutorials
 
-   tutorials/communicating-with-external-hosts
-   tutorials/add-your-own-docker-image
-   tutorials/overwrite-existing-docker-image
-   tutorials/adding-subdomains
-   tutorials/change-container-versions
-   tutorials/work-inside-the-container
-   tutorials/enable-xdebug
-   tutorials/custom-environment-variables
-   tutorials/static-code-analysis
+   configuration-files/env-file
+   configuration-files/docker-compose-yml
+   configuration-files/docker-compose-override-yml
+   configuration-files/apache-conf
+   configuration-files/nginx-conf
+   configuration-files/php-ini
+   configuration-files/php-fpm-conf
+   configuration-files/my-cnf
+   configuration-files/bashrc-sh
 
 
 .. toctree::
@@ -89,58 +127,20 @@ host is ready to be served with your custom domain.
 
 
 .. toctree::
-   :caption: Project configuration
-   :maxdepth: 2
-
-   configuration-project/dns-records
-   configuration-project/custom-vhost
-
-
-.. toctree::
-   :caption: Global configuration
-   :maxdepth: 2
-
-   configuration-global/https-ssl
-   configuration-global/auto-dns
-
-
-.. toctree::
-   :caption: Configuration files
-   :maxdepth: 2
-
-   configuration-files/env-file
-   configuration-files/docker-compose-yml
-   configuration-files/docker-compose-override-yml
-   configuration-files/apache-conf
-   configuration-files/nginx-conf
-   configuration-files/php-ini
-   configuration-files/php-fpm-conf
-   configuration-files/my-cnf
-   configuration-files/bashrc-sh
-
-
-.. toctree::
    :caption: Readings
    :maxdepth: 2
 
-   installation/docker-installation
-   installation/docker-toolbox
+   readings/syncronize-container-permissions
    readings/available-container
    readings/available-tools
-   readings/remove-stopped-container
-   readings/syncronize-container-permissions
-
-
-.. toctree::
-   :caption: Advanced
-   :maxdepth: 2
 
 
 .. toctree::
    :caption: Support
-   :maxdepth: 2
+   :maxdepth: 1
 
-   support/faq
-   support/troubleshooting
-   support/blogs-videos-and-use-cases
    support/artwork
+   support/blogs-videos-and-use-cases
+   support/troubleshooting
+   support/faq
+   support/howto

@@ -51,7 +51,7 @@ It will be ready in six simple steps:
 
    host> ./shell.sh
 
-.. seealso:: :ref:`tutorial_work_inside_the_php_container`
+.. seealso:: :ref:`work_inside_the_php_container`
 
 
 2. Create new vhost directory
@@ -90,7 +90,7 @@ itself beforehand.
 5. DNS record
 -------------
 
-If you do not have :ref:`global_configuration_auto_dns` configured, you will need to add the
+If you do not have :ref:`setup_auto_dns` configured, you will need to add the
 following line to your host operating systems ``/etc/hosts`` file
 (or ``C:\Windows\System32\drivers\etc`` on Windows):
 
@@ -100,8 +100,10 @@ following line to your host operating systems ``/etc/hosts`` file
    127.0.0.1 my-photon.loc
 
 .. seealso::
-   For in-depth info about adding DNS records on Linux, Windows or MacOS see:
-   :ref:`project_configuration_dns_records` or :ref:`global_configuration_auto_dns`.
+
+   * :ref:`howto_add_project_dns_entry_on_mac`
+   * :ref:`howto_add_project_dns_entry_on_win`
+   * :ref:`setup_auto_dns`
 
 
 6. Open your browser

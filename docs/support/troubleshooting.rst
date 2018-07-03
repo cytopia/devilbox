@@ -7,7 +7,7 @@ Troubleshooting
 This section will contain common problems and how to resolve them.
 It will grow over time once there are more issues reported.
 
-.. seealso:: :ref:`faq`
+.. seealso:: :ref:`howto`
 
 
 **Table of Contents**
@@ -42,7 +42,7 @@ In order to remove the container do the following:
 [Warning] World-writable config file '/etc/mysql/docker-default.d/my.cnf' is ignored
 ------------------------------------------------------------------------------------
 
-This warning might occur when using :ref:`docker_toolbox` on Windows and trying to apply custom
+This warning might occur when using :ref:`howto_docker_toolbox_and_the_devilbox` on Windows and trying to apply custom
 MySQL configuration files. This will also result in the configuration file not being source
 by the MySQL server.
 

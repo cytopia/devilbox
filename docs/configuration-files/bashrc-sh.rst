@@ -7,7 +7,7 @@ bashrc.sh
 Each PHP container is using bash as its default shell. If you do not like the way it is currently
 configured, you can add your own configuration files to overwrite settings.
 
-.. seealso:: :ref:`tutorial_work_inside_the_php_container`
+.. seealso:: :ref:`work_inside_the_php_container`
 
 
 **Table of Contents**

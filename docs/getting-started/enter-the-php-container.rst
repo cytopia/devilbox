@@ -2,7 +2,7 @@
 Enter the PHP container
 ***********************
 
-Another core feature of the Devilbox is, to be totally independent of what you have or have not
+Another core feature of the Devilbox, is to be totally independent of what you have or have not
 installed on your host operating system.
 
 The Devilbox already ships with many common developer tools which are installed inside each PHP
@@ -100,7 +100,7 @@ automatically pushed to Docker hub to ensure versions are outdated at a maximum 
 
 The only thing you have to do, is to update the Docker images itself, simply by pulling a new version.
 
-.. seealso:: :ref:`getting_started_update_the_docker_images`
+.. seealso:: :ref:`update_the_devilbox_update_the_docker_images`
 
 
 Advanced
@@ -109,7 +109,7 @@ Advanced
 This is just a short overview about the possibility to work inside the container.
 If you want to dig deeper into this topic there is also a more advanced tutorial available:
 
-.. seealso:: :ref:`tutorial_work_inside_the_php_container`
+.. seealso:: :ref:`work_inside_the_php_container`
 
 
 Checklist

@@ -10,11 +10,8 @@ Official videos
 The official videos might be a bit old, but are still valid and a good start,
 even if the intranet UI has changed a bit.
 
-.. image:: /_static/img/youtube-setup-and-workflow.png
-   :target: https://www.youtube.com/watch?v=reyZMyt2Zzo
-
-.. image:: /_static/img/youtube-email-catch-all.png
-   :target: https://www.youtube.com/watch?v=e-U-C5WhxGY
+.. include:: ../_includes/figures/blogs/youtube-setup-and-workflow.rst
+.. include:: ../_includes/figures/blogs/youtube-email-catch-all.rst
 
 
 Blog posts

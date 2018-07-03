@@ -5,9 +5,12 @@
 *********
 
 All docker-compose configuration is done inside the ``.env`` file which simply defines key-value
-variables parsed to docker-compose.yml.
+pairs evaluated by docker-compose.yml.
 
-.. note::
+If this file does not exist at the root of your Devilbox git directory, then copy ``env-example``
+to ``.env`` to initially create it with sane defaults.
+
+.. seealso::
    what is the `.env <https://docs.docker.com/compose/env-file/>`_ file?
 
 .. note::
@@ -311,7 +314,7 @@ A few examples for adding extra hosts:
 
    This resembles the feature of `Docker Compose: extra_hosts <https://docs.docker.com/compose/compose-file/#external_links>`_ to add external links.
 
-.. seealso:: :ref:`communicating_with_external_hosts`
+.. seealso:: :ref:`connect_to_external_hosts`
 
 
 .. _env_new_uid:
@@ -449,7 +452,7 @@ hostname.
 * ``DEVILBOX_UI_SSL_CN=localhost,*.localhost,devilbox,*.devilbox``
 * ``DEVILBOX_UI_SSL_CN=intranet.example.com``
 
-.. seealso:: :ref:`configuration_https_ssl`
+.. seealso:: :ref:`setup_valid_https`
 
 
 .. _env_devilbox_ui_protect:
@@ -989,7 +992,7 @@ Open the command prompt and type the following:
    TCP    0.0.0.0:1875        0.0.0.0:0            LISTENING
 
 .. warning::
-   :ref:`docker_toolbox`
+   :ref:`howto_docker_toolbox_and_the_devilbox`
       When using Docker Toobox ensure that ports are exposed to all interfaces.
       See :ref:`env_local_listen_addr`
 
@@ -1109,7 +1112,7 @@ to something else if ``53`` is already in use on your host operating system.
    on port ``53`` which would result in a failure when this BIND server is starting.
 
    You only need to set BIND to port ``53`` when you want to use the ``Auto-DNS`` feautre of the
-   Devilbox. When doing so, read this article with care: :ref:`global_configuration_auto_dns`.
+   Devilbox. When doing so, read this article with care: :ref:`setup_auto_dns`.
 
 
 Container settings
@@ -1196,7 +1199,7 @@ This will then output ``development``.
 .. note::
    Add as many custom environment variables as you require.
 
-.. seealso:: :ref:`tutorial_custom_environment_variables`
+.. seealso:: :ref:`add_custom_environment_variables`
 
 
 Web server
@@ -1373,11 +1376,11 @@ changing the server name or adding locations to other assets.
 .. seealso::
    **Customize your virtual host**
      When you want to find out more how to actually customize each virtual host to its own need,
-     read up more on :ref:`custom_vhost`.
+     read up more on :ref:`customize_virtual_host`.
    **Tutorials**
      Also have a look at this tutorial which is a walk-through showing you how to modify
      a virtual host and make it serve all files for multiple sub domains (server names):
-     :ref:`tutorial_adding_sub_domains`
+     :ref:`add_sub_domains`
 
 
 MySQL
