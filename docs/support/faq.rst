@@ -7,8 +7,8 @@ FAQ
 Find common questions and answers here.
 
 .. seealso::
-   * :ref:`troubleshooting`
    * :ref:`howto`
+   * :ref:`troubleshooting`
 
 
 **Table of Contents**
