@@ -120,6 +120,7 @@ host is ready to be served with your custom domain.
    examples/setup-phalcon
    examples/setup-photon-cms
    examples/setup-symfony
+   examples/setup-typo3
    examples/setup-wordpress
    examples/setup-yii
    examples/setup-zend

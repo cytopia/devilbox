@@ -195,6 +195,12 @@ Does it work with Symfony?
 Yes, see :ref:`example_setup_symfony`
 
 
+Does it work with Typo3?
+------------------------
+
+Yes, see :ref:`example_setup_typo3`
+
+
 Does it work with Wordpress?
 ----------------------------
 

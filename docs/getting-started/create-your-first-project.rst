@@ -200,6 +200,7 @@ their articles:
    * :ref:`example_setup_phalcon`
    * :ref:`example_setup_photon_cms`
    * :ref:`example_setup_symfony`
+   * :ref:`example_setup_typo3`
    * :ref:`example_setup_wordpress`
    * :ref:`example_setup_yii`
    * :ref:`example_setup_zend`
