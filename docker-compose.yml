@@ -394,6 +394,12 @@ services:
   # ------------------------------------------------------------
   redis:
     image: redis:${REDIS_SERVER:-3.2}
+    
+    # REDIS CUSTOM PASSWORD SETUP
+    #comment out the following 3 lines if you want to set a custom redis password, also set the redis pass variable in .env
+    #command: redis-server --requirepass ${REDIS_ROOT_PASSWORD}
+    #environment:
+    #  - ALLOW_EMPTY_PASSWORD=yes
 
     ports:
       # [local-machine:]local-port:docker-port

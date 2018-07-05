@@ -541,6 +541,11 @@ HOST_PORT_PGSQL=5432
 ###
 HOST_PORT_REDIS=6379
 
+###
+### Comment out to set the redis custom password also, in docker-compose.yml comment out the REDIS CUSTOM PASSWORD SETUP section
+###
+#REDIS_ROOT_PASSWORD=root
+
 
 
 ################################################################################

@@ -44,6 +44,9 @@ class Redis extends BaseClass implements BaseInterface
 				$this->setConnectErrno(1);
 				//loadClass('Logger')->error($this->_connect_error);
 			} else {
+				if(array_key_exists('pass', $data)){
+					$redis->auth($data['pass']);
+				}
 				$redis->set('devilbox-version', $GLOBALS['DEVILBOX_VERSION'].' ('.$GLOBALS['DEVILBOX_DATE'].')');
 				$this->_redis = $redis;
 			}

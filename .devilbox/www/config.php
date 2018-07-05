@@ -128,7 +128,13 @@ function loadClass($class) {
 
 			case 'Redis':
 				loadFile($class, $cnt_dir);
-				$_LOADED_LIBS[$class] = \devilbox\Redis::getInstance($GLOBALS['REDIS_HOST_NAME']);
+				if(loadClass('Helper')->getEnv('REDIS_ROOT_PASSWORD') == ''){
+					$_LOADED_LIBS[$class] = \devilbox\Redis::getInstance($GLOBALS['REDIS_HOST_NAME']);
+				}else{
+					$_LOADED_LIBS[$class] = \devilbox\Redis::getInstance($GLOBALS['REDIS_HOST_NAME'], array(
+						'pass' => loadClass('Helper')->getEnv('REDIS_ROOT_PASSWORD'),
+					));
+				}
 				break;
 
 			case 'Memcd':
