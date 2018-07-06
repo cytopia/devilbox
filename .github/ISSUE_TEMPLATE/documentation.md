@@ -1,5 +1,5 @@
 ---
-name: Documentation
+name: 📝 Questions / Documentation
 about: General questions or sections we should improve in the documentation?
 
 ---
