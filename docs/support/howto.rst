@@ -4,8 +4,7 @@
 How To
 ******
 
-The How to section gathers information about various things that are not directly related to the
-Devilbox, but need to be done at some point throughout the installation and configuration.
+The How to section gathers information about various topics, that might need to be done at some point throughout the installation and configuration.
 
 .. seealso::
    * :ref:`faq`
@@ -20,11 +19,18 @@ Devilbox, but need to be done at some point throughout the installation and conf
    ../howto/uid-and-gid/*
 
 .. toctree::
-   :caption: Docker
+   :caption: Devilbox
    :maxdepth: 1
    :glob:
 
-   ../howto/docker/*
+   ../howto/devilbox/*
+
+.. toctree::
+   :caption: Docker Toolbox
+   :maxdepth: 1
+   :glob:
+
+   ../howto/docker-toolbox/*
 
 .. toctree::
    :caption: Terminal

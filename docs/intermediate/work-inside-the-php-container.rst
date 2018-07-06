@@ -229,8 +229,9 @@ sides as the connection to the database is exactly the same locally or within th
 You could also even switch between the Devilbox and a locally installed LAMP stack
 and still use the same configuration.
 
-.. warning::
+.. important::
    The mapping of ``127.0.0.1`` to your host operating system does not work with
+   Docker Toolbox out of the box. In order to achieve the same behaviour read up on:
    :ref:`howto_docker_toolbox_and_the_devilbox`.
 
 

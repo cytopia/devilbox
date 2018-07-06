@@ -180,23 +180,40 @@ Docker Toolbox
 
 .. seealso:: :ref:`howto_docker_toolbox_and_the_devilbox`
 
-MacOS
------
+This part applies equally for Docker Toolbox on MacOS and on Windows:
+
+Prerequisites
+-------------
 
 * :ref:`env_local_listen_addr` must be empty in order to listen on all interfaces
 * :ref:`env_host_port_bind` must be set to ``53``
+
+You need to create three port-forwards to make the DNS and web server available on your host os:
+
 * Port ``80`` from the Docker Toolbox virtual machine must be port-forwarded to ``127.0.0.1:80`` on your host os
+* Port ``443`` from the Docker Toolbox virtual machine must be port-forwarded to ``127.0.0.1:443`` on your host os
 * Port ``53`` from the Docker Toolbox virtual machine must be port-forwarded to ``127.0.0.1:53`` on your host os
 
-.. todo:: This section needs further proof and information.
+Assuming the Docker Toolbox IP is ``192.168.99.100`` your forwards must be as follows:
+
++----------------+-----------+-----------+---------+
+| From IP        | From port | To IP     | To port |
++================+===========+===========+=========+
+| 192.168.99.100 | 53        | 127.0.0.1 | 53      |
++----------------+-----------+-----------+---------+
+| 192.168.99.100 | 80        | 127.0.0.1 | 80      |
++----------------+-----------+-----------+---------+
+| 192.168.99.100 | 443       | 127.0.0.1 | 443     |
++----------------+-----------+-----------+---------+
+
+.. seealso::
+   * :ref:`howto_ssh_port_forward_from_docker_toolbox_to_host`
+   * :ref:`howto_find_docker_toolbox_ip_address`
 
 
-Windows
---------
+Actual setup
+------------
 
-* :ref:`env_local_listen_addr` must be empty in order to listen on all interfaces
-* :ref:`env_host_port_bind` must be set to ``53``
-* Port ``80`` from the Docker Toolbox virtual machine must be port-forwarded to ``127.0.0.1:80`` on your host os
-* Port ``53`` from the Docker Toolbox virtual machine must be port-forwarded to ``127.0.0.1:53`` on your host os
-
-.. todo:: This section needs further proof and information.
+.. important::
+   After settings this up, follow the above guides for **Docker for Mac** or **Docker for Windows**
+   to finish the setup.

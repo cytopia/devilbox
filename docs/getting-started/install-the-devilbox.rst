@@ -107,3 +107,5 @@ Checklist
 3. User and group id have been set in ``.env`` file
 
 That's it, you have finished the first section and have a working Devilbox ready to be started.
+
+.. seealso:: :ref:`troubleshooting`

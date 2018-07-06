@@ -1001,6 +1001,8 @@ Open the command prompt and type the following:
    system by other services.
 
 
+.. _env_host_port_httpd:
+
 HOST_PORT_HTTPD
 ---------------
 
@@ -1013,6 +1015,7 @@ else if 80 is already in use on your host operating system.
 | ``HOST_PORT_HTTPD``  | ``1`` - ``65535`` | ``80``           |
 +----------------------+-------------------+------------------+
 
+.. _env_host_port_httpd_ssl:
 
 HOST_PORT_HTTPD_SSL
 -------------------
@@ -1121,6 +1124,8 @@ Container settings
 PHP
 ---
 
+.. _env_file_php_modules_enable:
+
 PHP_MODULES_ENABLE
 ^^^^^^^^^^^^^^^^^^
 
@@ -1143,6 +1148,8 @@ Example:
 
    # Enable ionCube
    PHP_MODULES_ENABLE=ioncube
+
+.. _env_file_php_modules_disable:
 
 PHP_MODULES_DISABLE
 ^^^^^^^^^^^^^^^^^^^
@@ -1204,6 +1211,8 @@ This will then output ``development``.
 
 Web server
 ----------
+
+.. _env_httpd_docroot_dir:
 
 HTTPD_DOCROOT_DIR
 ^^^^^^^^^^^^^^^^^
@@ -1284,7 +1293,6 @@ Let's have a look how the directory is actually built up:
 As you can see, the web server is still able to server the files from the ``htdocs`` location,
 this time however, ``htdocs`` itself is a symlink pointing to a much deeper and nested location
 inside an actual framework directory.
-
 
 .. _env_httpd_template_dir:
 
@@ -1376,11 +1384,11 @@ changing the server name or adding locations to other assets.
 .. seealso::
    **Customize your virtual host**
      When you want to find out more how to actually customize each virtual host to its own need,
-     read up more on :ref:`customize_virtual_host`.
-   **Tutorials**
-     Also have a look at this tutorial which is a walk-through showing you how to modify
-     a virtual host and make it serve all files for multiple sub domains (server names):
-     :ref:`add_sub_domains`
+     read up more on:
+
+     * :ref:`customize_all_virtual_hosts_globally`
+     * :ref:`customize_specific_virtual_host`
+     * :ref:`example_add_sub_domains`
 
 
 MySQL

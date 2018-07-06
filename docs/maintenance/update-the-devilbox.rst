@@ -59,10 +59,10 @@ If you want to checkout a specific release tag (such as ``0.12.1``), do a ``git 
 Keep ``.env`` file in sync
 --------------------------
 
-.. warning::
-      Whenever you check out a different version, make sure that your ``.env`` file is up-to-date
-      with the bundled ``env-example`` file. Different Devilbox releases might require different
-      settings to be available inside the ``.env`` file.
+.. important::
+   Whenever you check out a different version, make sure that your ``.env`` file is up-to-date
+   with the bundled ``env-example`` file. Different Devilbox releases might require different
+   settings to be available inside the ``.env`` file.
 
 You can also compare your current ``.env`` file with the provided ``env-example`` file by using
 your favorite diff editor:
@@ -78,6 +78,14 @@ your favorite diff editor:
 .. code-block:: bash
 
    host> meld .env env-example
+
+Keep ``vhost-gen`` templates in sync
+------------------------------------
+
+.. important::
+   Whenever you check out a different version, make sure that the vhost-gen templates that have
+   been copied to any virtual hosts are up-to-date with the templates provided in
+   ``templates/vhost-gen/``.
 
 
 Recreate container
@@ -195,6 +203,7 @@ Checklist git repository
 1. Ensure containers are stopped and removed/recreated (``docker-compose stop && docker-compose rm``)
 2. Ensure desired branch, tag or commit is checked out or latest changes are pulled
 3. Ensure ``.env`` file is in sync with ``env-example`` file
+4. Ensure all of your custom applied vhost-gen templates are in sync with the default templates
 
 
 Checklist Docker images

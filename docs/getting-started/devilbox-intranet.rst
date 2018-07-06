@@ -134,3 +134,5 @@ Checklist
 1. You know what tools are provided by the Devilbox intranet
 2. You know how to password protect the Devilbox intranet
 3. You know how to disable the Devilbox intranet
+
+.. seealso:: :ref:`troubleshooting`

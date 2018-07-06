@@ -1,8 +1,8 @@
-.. _customize_virtual_host:
+.. _customize_specific_virtual_host:
 
-**********************************
-Customize virtual host (vhost-gen)
-**********************************
+*******************************
+Customize specific virtual host
+*******************************
 
 
 **Table of Contents**
@@ -412,4 +412,4 @@ Further readings
 .. seealso::
    Have a look at the following examples which involve customizing vhost-gen templates:
 
-   * :ref:`add_sub_domains`
+   * :ref:`example_add_sub_domains`

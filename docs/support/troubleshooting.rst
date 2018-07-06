@@ -11,6 +11,16 @@ It will grow over time once there are more issues reported.
    * :ref:`howto`
    * :ref:`faq`
 
+.. important::
+
+   :ref:`update_the_devilbox`
+     Issues are constantly being fixed. Before attempting to spend too much time digging into
+     your issue, make sure you are running the latest git changes and have pulled the latest
+     Docker images.
+
+     Also keep in mind that configuration files might change, so ensure to diff the default ones
+     against your currently active ones for added, removed or changed values.
+
 
 **Table of Contents**
 
@@ -36,6 +46,13 @@ Address already in use
 One of the Docker container wants to bind to a port on the host system which is already taken.
 Figure out what service is listening on your host system and shut it down or change the port
 of the affected service in the Devilbox ``.env`` file.
+
+Some examples of common error messages:
+
+.. code-block:: bash
+
+   Error starting userland proxy: Bind for 0.0.0.0:80: unexpected error (Failure EADDRINUSE)
+
 
 Unable to finish Pulling as unauthorized: incorrect username or password
 ------------------------------------------------------------------------

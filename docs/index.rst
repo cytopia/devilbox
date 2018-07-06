@@ -70,14 +70,35 @@ host is ready to be served with your custom domain.
    :maxdepth: 2
    :numbered:
 
+   advanced/customize-php-globally
+   advanced/customize-webserver-globally
+   advanced/connect-to-host-os
+   advanced/connect-to-other-docker-container
    advanced/connect-to-external-hosts
-   advanced/customize-virtual-host
-   advanced/add-subdomains
+   advanced/add-custom-dns-entries
    advanced/add-your-own-docker-image
    advanced/overwrite-existing-docker-image
-..
-   advanced/customize-php-globally
-   advanced/configure-webserver-globally
+
+
+.. toctree::
+   :caption: vhost-gen
+   :maxdepth: 2
+   :numbered:
+
+   vhost-gen/customize-all-virtual-hosts-globally
+   vhost-gen/customize-specific-virtual-host
+   vhost-gen/example-add-subdomains
+
+
+.. toctree::
+   :caption: Corporate Usage
+   :maxdepth: 2
+   :numbered:
+
+   corporate-usage/shared-devilbox-server-in-lan
+   corporate-usage/access-devilbox-from-android
+   corporate-usage/access-devilbox-from-iphone
+   corporate-usage/use-external-databases
 
 
 .. toctree::

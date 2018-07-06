@@ -75,6 +75,7 @@ reach the Devilbox intranet.
 
    * :ref:`howto_open_terminal_on_mac`
    * :ref:`howto_open_terminal_on_win`
+   * :ref:`howto_find_docker_toolbox_ip_address`
 
 
 Project DNS record pitfalls
@@ -97,6 +98,7 @@ follows:
 
    * :ref:`howto_add_project_dns_entry_on_mac`
    * :ref:`howto_add_project_dns_entry_on_win`
+   * :ref:`howto_find_docker_toolbox_ip_address`
 
 
 Auto-DNS via port forwarding
@@ -114,25 +116,28 @@ domain to ``127.0.0.1``. Unfortunately Docker Toolbox does not listen on that IP
 How to fix it for Docker Toolbox
 --------------------------------
 
-To overcome this problem, you will have to create two port forwards on your host operating system
-from ``127.0.0.1`` to the Docker machine IP address for `http` (port 80) and `https` (port 443).
+To overcome this problem, you will have to create three port forwards on your host operating system
+from the Docker machine IP address for ``DNS`` (port 53), ``http`` (port 80) and ``https``
+(port 443) to ``127.0.0.1`` on your host os.
 
-Assuming the Docker Toolbox IP address is ``192.168.99.100`` the two port forwards must be as
+Assuming the Docker Toolbox IP address is ``192.168.99.100`` the three port forwards must be as
 follows:
 
-+-----------+-----------+----------------+---------+
-| From IP   | From port | To IP          | To port |
-+===========+===========+================+=========+
-| 127.0.0.1 | 80        | 192.168.99.100 | 80      |
-+-----------+-----------+----------------+---------+
-| 127.0.0.1 | 443       | 192.168.99.100 | 443     |
-+-----------+-----------+----------------+---------+
++----------------+-----------+-----------+---------+
+| From IP        | From port | To IP     | To port |
++================+===========+===========+=========+
+| 192.168.99.100 | 53        | 127.0.0.1 | 53      |
++----------------+-----------+-----------+---------+
+| 192.168.99.100 | 80        | 127.0.0.1 | 80      |
++----------------+-----------+-----------+---------+
+| 192.168.99.100 | 443       | 127.0.0.1 | 443     |
++----------------+-----------+-----------+---------+
 
 .. seealso::
 
-   :ref:`setup_auto_dns`
-
-.. todo:: This section requires a step-by-step guide for Mac on Windows on port-forwarding.
+   * :ref:`howto_find_docker_toolbox_ip_address`
+   * :ref:`howto_ssh_port_forward_from_docker_toolbox_to_host`
+   * :ref:`setup_auto_dns`
 
 
 Mount shared folders

@@ -237,3 +237,5 @@ Checklist
 1. Stop the Devilbox
 2. Uncomment version of choice in ``.env``
 3. Start the Devilbox
+
+.. seealso:: :ref:`troubleshooting`

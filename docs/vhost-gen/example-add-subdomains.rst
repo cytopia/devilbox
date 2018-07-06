@@ -1,8 +1,8 @@
-.. _add_sub_domains:
+.. _example_add_sub_domains:
 
-***************
-Add sub domains
-***************
+************************
+Example: add sub domains
+************************
 
 This tutorial gives you a brief overview how to serve your project under one subdomain via
 the project directory name as well as how to serve one project with multiple subdomains with
@@ -59,7 +59,7 @@ default generation process via templates. Those templates can be added to each p
 you the option to customize the virtual host of this specific project.
 
 .. note::
-   :ref:`customize_virtual_host`
+   :ref:`customize_all_virtual_hosts_globally` and :ref:`customize_specific_virtual_host`
      Ensure you have read and understand how to customize your virtual host with ``vhost-gen``.
    :ref:`env_httpd_template_dir`
      Ensure you know what this variable does inside your ``.env`` file.

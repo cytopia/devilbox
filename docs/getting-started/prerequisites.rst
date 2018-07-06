@@ -251,3 +251,4 @@ In order to easily work with the Devilbox you should already be familiar with th
 
    * |ext_lnk_docker_cmpose_cmd_reference|
    * |ext_lnk_docker_cmpose_env_file|
+   * :ref:`troubleshooting`

@@ -181,6 +181,8 @@ Checklist
 3. DNS entry is added to the host operating system
 4. PHP files are added to your docroot directory
 
+.. seealso:: :ref:`troubleshooting`
+
 
 Further examples
 ================

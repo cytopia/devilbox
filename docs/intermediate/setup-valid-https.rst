@@ -1,8 +1,8 @@
 .. _setup_valid_https:
 
-***********************
-Setup valid HTTPS (SSL)
-***********************
+*****************
+Setup valid HTTPS
+*****************
 
 This page shows you how to use the Devilbox on https and how to import the Certificate Authority
 into your browser once, so that you always and automatically get valid SSL certificates for all new

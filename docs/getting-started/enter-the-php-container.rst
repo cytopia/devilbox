@@ -119,3 +119,5 @@ Checklist
 * You know how to become ``root`` inside the PHP container
 * You know what tools are available inside the PHP container
 * You know how to update the tools by pulling new versions of the Docker images
+
+.. seealso:: :ref:`troubleshooting`
