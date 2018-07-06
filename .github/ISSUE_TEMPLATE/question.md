@@ -1,6 +1,6 @@
 ---
-name: 📝 Documentation
-about: Anything related to the Devilbox documentation
+name: ❔ Question
+about: General question
 
 ---
 
@@ -10,15 +10,17 @@ about: Anything related to the Devilbox documentation
 2. Fill out all required information below, otherwise it might take more time to properly handle this bug
 -->
 
+
 #### ISSUE TYPE
 <!-- DO NOT CHANGE THIS -->
- - Documentation
+ - Question
 
 
 #### SUMMARY
-<!-- 
-Find the Documentation here: https://readthedocs.org/projects/devilbox/
+<!--
+Ensure your question is not already covered by the documentation:
+https://readthedocs.org/projects/devilbox/
 
-Explain what is missing or wrong in the documentation and how it should be
+Explain your question in detail below
 -->
 
