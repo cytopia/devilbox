@@ -2,6 +2,14 @@
  * MENU
  ***********************************************************/
 
+/* overwrite left navbar width */
+.wy-grid-for-nav nav.wy-nav-side {
+	width: 350px;
+}
+.wy-grid-for-nav section.wy-nav-content-wrap {
+	margin-left: 350px;
+}
+
 /* overwrite logo dimensions */
 .wy-side-nav-search>a img.logo,
 .wy-side-nav-search .wy-dropdown>a img.logo {
