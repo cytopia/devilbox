@@ -83,6 +83,8 @@ CNAME: ``docker.for.win.host.localhost``
 Docker Toolbox
 ==============
 
+.. note:: This section applies for both, Docker Toolbox on MacOS and Docker Toolbox on Windows.
+
 Docker Toolbox behaves the same way as Docker on Linux, with one major difference.
 The Devilbox IP address or the custom provided CNAMEs actually refer to the Docker Toolbox machine.
 
