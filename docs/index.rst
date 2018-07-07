@@ -75,7 +75,7 @@ host is ready to be served with your custom domain.
    advanced/connect-to-host-os
    advanced/connect-to-other-docker-container
    advanced/connect-to-external-hosts
-   advanced/add-custom-dns-entries
+   advanced/add-custom-cname-dns-entries
    advanced/add-your-own-docker-image
    advanced/overwrite-existing-docker-image
 

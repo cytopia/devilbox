@@ -1,8 +1,8 @@
-.. _add_custom_dns_entries:
+.. _add_custom_cname_dns_entries:
 
-**********************
-Add custom DNS entries
-**********************
+****************************
+Add custom CNAME DNS entries
+****************************
 
 This section explains how to connect from inside a Devilbox container to the host operating system.
 
