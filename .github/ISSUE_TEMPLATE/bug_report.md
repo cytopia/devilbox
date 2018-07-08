@@ -12,7 +12,7 @@ about: Create a report to help us improve
 
 #### ISSUE TYPE
 <!-- DO NOT CHANGE THIS -->
- - Documentation
+ - Bug Report
 
 
 #### OS / ENVIRONMENT
