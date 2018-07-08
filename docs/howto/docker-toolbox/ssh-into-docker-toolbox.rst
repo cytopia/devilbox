@@ -1,6 +1,6 @@
 :orphan:
 
-.. include:: ../../_includes/global/links.rst
+.. include:: /_includes/global/links.rst
 
 .. _howto_ssh_into_docker_toolbox:
 

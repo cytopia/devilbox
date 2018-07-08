@@ -1,4 +1,4 @@
-.. include:: ../_includes/global/links.rst
+.. include:: /_includes/global/links.rst
 
 .. _connect_to_host_os:
 

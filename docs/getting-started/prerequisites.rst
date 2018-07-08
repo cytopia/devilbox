@@ -1,5 +1,5 @@
-.. include:: ../_includes/global/links.rst
-.. include:: ../_includes/global/images.rst
+.. include:: /_includes/global/links.rst
+.. include:: /_includes/global/images.rst
 
 .. _prerequisites:
 

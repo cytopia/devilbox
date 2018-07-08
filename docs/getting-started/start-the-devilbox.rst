@@ -122,8 +122,8 @@ http://127.0.0.1.
 The Intranet start page will also show you all running and failed containers:
 
 
-.. include:: ../_includes/figures/devilbox/devilbox-intranet-dash-all.rst
-.. include:: ../_includes/figures/devilbox/devilbox-intranet-dash-selective.rst
+.. include:: /_includes/figures/devilbox/devilbox-intranet-dash-all.rst
+.. include:: /_includes/figures/devilbox/devilbox-intranet-dash-selective.rst
 
 .. important::
    :ref:`howto_find_docker_toolbox_ip_address`

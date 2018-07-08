@@ -22,7 +22,7 @@ The start page is there to check if everything works as expected. It shows all d
 containers you wanted to start and if they succeeded, as well as their ports, mount points and
 special settings applied via ``.env``.
 
-.. include:: ../_includes/figures/devilbox/devilbox-intranet-index.rst
+.. include:: /_includes/figures/devilbox/devilbox-intranet-index.rst
 
 
 Virtual hosts
@@ -31,7 +31,7 @@ Virtual hosts
 The virtual host page displays all available projects and let's you know if their configuration
 is correct, such as DNS settings or document root.
 
-.. include:: ../_includes/figures/devilbox/devilbox-intranet-vhosts.rst
+.. include:: /_includes/figures/devilbox/devilbox-intranet-vhosts.rst
 
 
 Emails
@@ -40,7 +40,7 @@ Emails
 The email page displays all emails that would have been sent, but were caught by the integrated
 email catch-all functionality.
 
-.. include:: ../_includes/figures/devilbox/devilbox-intranet-emails.rst
+.. include:: /_includes/figures/devilbox/devilbox-intranet-emails.rst
 
 
 Databases
@@ -51,7 +51,7 @@ what is currently in place, how many databases/schemas and or recors and what si
 
 The following example shows the database page for MySQL:
 
-.. include:: ../_includes/figures/devilbox/devilbox-intranet-mysql-databases.rst
+.. include:: /_includes/figures/devilbox/devilbox-intranet-mysql-databases.rst
 
 
 Info pages
@@ -62,11 +62,11 @@ currently applied.
 
 The following example shows you the info page for PHP.
 
-.. include:: ../_includes/figures/devilbox/devilbox-intranet-php-info.rst
+.. include:: /_includes/figures/devilbox/devilbox-intranet-php-info.rst
 
 The following example shows you the info page for MySQL:
 
-.. include:: ../_includes/figures/devilbox/devilbox-intranet-mysql-info.rst
+.. include:: /_includes/figures/devilbox/devilbox-intranet-mysql-info.rst
 
 
 Third-party tools

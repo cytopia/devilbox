@@ -1,6 +1,6 @@
 :orphan:
 
-.. include:: ../../_includes/global/links.rst
+.. include:: /_includes/global/links.rst
 
 .. _howto_open_terminal_on_mac:
 
@@ -36,7 +36,7 @@ Via Launcher
 
 1. Open the **Launchpad** and locate the Docker Quickstart Terminal icon.
 
-.. include:: ../../_includes/figures/terminal/docker-toolbox-terminal-mac-quickstart-launchpad.rst
+.. include:: /_includes/figures/terminal/docker-toolbox-terminal-mac-quickstart-launchpad.rst
 
 2. Click the icon to launch a Docker Quickstart Terminal window.
 

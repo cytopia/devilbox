@@ -10,8 +10,8 @@ Official videos
 The official videos might be a bit old, but are still valid and a good start,
 even if the intranet UI has changed a bit.
 
-.. include:: ../_includes/figures/blogs/youtube-setup-and-workflow.rst
-.. include:: ../_includes/figures/blogs/youtube-email-catch-all.rst
+.. include:: /_includes/figures/blogs/youtube-setup-and-workflow.rst
+.. include:: /_includes/figures/blogs/youtube-email-catch-all.rst
 
 
 Blog posts

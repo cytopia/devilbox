@@ -269,16 +269,16 @@ Linux
 
 Enable Xdebug for the port set in ``xdebug.ini``:
 
-.. include:: ../_includes/figures/xdebug/phpstorm-settings.rst
+.. include:: /_includes/figures/xdebug/phpstorm-settings.rst
 
 Create a new PHP server and set a path mapping. This tutorial assumes your local Devilbox projects
 to be in ``./data/www`` of the Devilbox git directory:
 
-.. include:: ../_includes/figures/xdebug/phpstorm-path-mapping.rst
+.. include:: /_includes/figures/xdebug/phpstorm-path-mapping.rst
 
 Set DBGp proxy settings:
 
-.. include:: ../_includes/figures/xdebug/phpstorm-dbgp-proxy.rst
+.. include:: /_includes/figures/xdebug/phpstorm-dbgp-proxy.rst
 
 
 MacOS (Docker for Mac)

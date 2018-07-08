@@ -10,7 +10,7 @@ projects.
 
 SSL certificates are generated automatically and there is nothing to do from your side.
 
-.. include:: ../_includes/figures/https/https-ssl-address-bar.rst
+.. include:: /_includes/figures/https/https-ssl-address-bar.rst
 
 **Table of Contents**
 
@@ -75,28 +75,28 @@ Chrome / Chromium
 Open Chrome settings, scroll down to the very bottom and click on ``Advanced`` to expand the
 advanced settings.
 
-.. include:: ../_includes/figures/https/chrome-settings.rst
+.. include:: /_includes/figures/https/chrome-settings.rst
 
 Find the setting ``Manage certificates`` and open it.
 
-.. include:: ../_includes/figures/https/chrome-advanced-settings.rst
+.. include:: /_includes/figures/https/chrome-advanced-settings.rst
 
 Navigate to the tab setting ``AUTHORITIES`` and click on ``IMPORT``.
 
-.. include:: ../_includes/figures/https/chrome-manage-certificates.rst
+.. include:: /_includes/figures/https/chrome-manage-certificates.rst
 
 Select ``devilbox-ca.crt`` from within the Devilbox ``./ca`` directory:
 
-.. include:: ../_includes/figures/https/file-manager-import-ca.rst
+.. include:: /_includes/figures/https/file-manager-import-ca.rst
 
 As the last step you are asked what permissions you want to grant the newly importat CA.
 To make sure it works everywhere, check all options and proceed with ``OK``.
 
-.. include:: ../_includes/figures/https/chrome-set-trust.rst
+.. include:: /_includes/figures/https/chrome-set-trust.rst
 
 Now you are all set and all generated SSL certificates will be valid from now on.
 
-.. include:: ../_includes/figures/https/https-ssl-address-bar.rst
+.. include:: /_includes/figures/https/https-ssl-address-bar.rst
 
 
 Firefox
@@ -104,28 +104,28 @@ Firefox
 
 Open Firefox settings and click on ``Privacy & Security``.
 
-.. include:: ../_includes/figures/https/firefox-preferences.rst
+.. include:: /_includes/figures/https/firefox-preferences.rst
 
 At the very bottom click on the button ``View Certificates``.
 
-.. include:: ../_includes/figures/https/firefox-privacy-and-security.rst
+.. include:: /_includes/figures/https/firefox-privacy-and-security.rst
 
 In the ``Authories`` tab, click on ``Import``.
 
-.. include:: ../_includes/figures/https/firefox-certificate-manager.rst
+.. include:: /_includes/figures/https/firefox-certificate-manager.rst
 
 Select ``devilbox-ca.crt`` from within the Devilbox ``./ca`` directory:
 
-.. include:: ../_includes/figures/https/file-manager-import-ca.rst
+.. include:: /_includes/figures/https/file-manager-import-ca.rst
 
 As the last step you are asked what permissions you want to grant the newly importat CA.
 To make sure it works everywhere, check all options and proceed with ``OK``.
 
-.. include:: ../_includes/figures/https/firefox-set-trust.rst
+.. include:: /_includes/figures/https/firefox-set-trust.rst
 
 Now you are all set and all generated SSL certificates will be valid from now on.
 
-.. include:: ../_includes/figures/https/https-ssl-address-bar.rst
+.. include:: /_includes/figures/https/https-ssl-address-bar.rst
 
 
 Further Reading

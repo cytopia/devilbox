@@ -15,26 +15,26 @@ The How to section gathers information about various topics, that might need to 
    :maxdepth: 1
    :glob:
 
-   ../howto/dns/*
-   ../howto/uid-and-gid/*
+   /howto/dns/*
+   /howto/uid-and-gid/*
 
 .. toctree::
    :caption: Devilbox
    :maxdepth: 1
    :glob:
 
-   ../howto/devilbox/*
+   /howto/devilbox/*
 
 .. toctree::
    :caption: Docker Toolbox
    :maxdepth: 1
    :glob:
 
-   ../howto/docker-toolbox/*
+   /howto/docker-toolbox/*
 
 .. toctree::
    :caption: Terminal
    :maxdepth: 1
    :glob:
 
-   ../howto/terminal/*
+   /howto/terminal/*

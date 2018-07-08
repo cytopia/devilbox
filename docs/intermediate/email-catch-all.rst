@@ -11,7 +11,7 @@ all outgoing mails and puts them into a local mailbox by the user ``devilbox``.
 In order to view sent emails open up the devilbox intranet http://localhost/mail.php.
 There you can also test email sending and verify that they really stay locally.
 
-.. include:: ../_includes/figures/devilbox/devilbox-intranet-emails.rst
+.. include:: /_includes/figures/devilbox/devilbox-intranet-emails.rst
 
 In the above image from the intranet you can see that all emails sent to whatever recipient
 have been caught by the Devilbox and are available to be read.

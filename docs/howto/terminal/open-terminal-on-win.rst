@@ -1,6 +1,6 @@
 :orphan:
 
-.. include:: ../../_includes/global/links.rst
+.. include:: /_includes/global/links.rst
 
 .. _howto_open_terminal_on_win:
 
@@ -36,14 +36,14 @@ Docker Toolbox
 
 1. On your Desktop, find the Docker QuickStart Terminal icon.
 
-.. include:: ../../_includes/figures/terminal/docker-toolbox-terminal-win-quickstart-shortcut.rst
+.. include:: /_includes/figures/terminal/docker-toolbox-terminal-win-quickstart-shortcut.rst
 
 2. Click the Docker QuickStart icon to launch a pre-configured Docker Toolbox terminal.
 
    If the system displays a **User Account Control** prompt to allow VirtualBox to make changes to
    your computer. Choose **Yes**.
 
-.. include:: ../../_includes/figures/terminal/docker-toolbox-terminal-win-quickstart-terminal.rst
+.. include:: /_includes/figures/terminal/docker-toolbox-terminal-win-quickstart-terminal.rst
 
 ..
 
