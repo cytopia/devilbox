@@ -75,7 +75,7 @@ host is ready to be served with your custom domain.
    advanced/connect-to-host-os
    advanced/connect-to-other-docker-container
    advanced/connect-to-external-hosts
-   advanced/add-custom-cname-dns-entries
+   advanced/add-custom-cname-records
    advanced/add-your-own-docker-image
    advanced/overwrite-existing-docker-image
 
@@ -95,6 +95,7 @@ host is ready to be served with your custom domain.
    :maxdepth: 2
    :numbered:
 
+   corporate-usage/deploy-devilbox-via-ansible
    corporate-usage/shared-devilbox-server-in-lan
    corporate-usage/access-devilbox-from-android
    corporate-usage/access-devilbox-from-iphone

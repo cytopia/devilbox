@@ -113,14 +113,13 @@ Linux
 
 Docker on Linux requires super user privileges which is granted to a system
 wide group called ``docker``. After having installed Docker on your system,
-ensure that your local user is assigned to the ``docker`` group:
+ensure that your local user is a member of the ``docker`` group.
 
 .. code-block:: bash
 
    host> id
 
    uid=1000(cytopia) gid=1000(cytopia) groups=1000(cytopia),999(docker)
-
 
 .. seealso::
 
@@ -143,6 +142,16 @@ Docker for Mac
 
 Docker for Mac is the native and recommended version to choose when using the
 Devilbox.
+
+Docker for Mac requires super user privileges which is granted to a system
+wide group called ``docker``. After having installed Docker on your system,
+ensure that your local user is a member of the ``docker`` group.
+
+.. code-block:: bash
+
+   host> id
+
+   uid=502(cytopia) gid=20(staff) groups=20(staff),999(docker)
 
 .. seealso::
 
@@ -178,6 +187,10 @@ Docker for Windows
 
 Docker for Windows is the native and recommended version to choose when using
 the Devilbox. This however is only available since **Windows 10**.
+
+Docker for Windows requires administrative privileges which is granted to a system
+wide group called ``docker-users``. After having installed Docker on your system,
+ensure that your local user is a member of the ``docker-users`` group.
 
 .. seealso::
 
