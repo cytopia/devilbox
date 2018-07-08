@@ -1,7 +1,5 @@
 :orphan:
 
-.. include:: /_includes/global/links.rst
-
 .. _howto_ssh_port_forward_from_host_to_docker_toolbox:
 
 ********************************************

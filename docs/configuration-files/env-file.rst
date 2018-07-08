@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _env_file:
 
 *********
@@ -1602,12 +1604,3 @@ This variable controls the DNS Max Cache time in seconds. If empty or removed it
 +--------------------------+----------------------+---------------------+
 
 .. seealso:: `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
-
-
-
-
-
-
-.. |br| raw:: html
-
-   <br />

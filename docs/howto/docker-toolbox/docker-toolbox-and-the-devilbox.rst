@@ -1,6 +1,6 @@
 :orphan:
 
-.. include:: /_includes/global/links.rst
+.. include:: /_includes/all.rst
 
 .. _howto_docker_toolbox_and_the_devilbox:
 

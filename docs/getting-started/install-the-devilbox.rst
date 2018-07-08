@@ -1,4 +1,4 @@
-.. include:: /_includes/global/links.rst
+.. include:: /_includes/all.rst
 
 .. _install_the_devilbox:
 

@@ -1,6 +1,6 @@
 .. :hidden:
 
-.. include:: /_includes/global/images.rst
+.. include:: /_includes/all.rst
 
 **********************
 Devilbox documentation

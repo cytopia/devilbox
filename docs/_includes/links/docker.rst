@@ -1,6 +1,6 @@
 ..
    ============================================================
-   Docker
+   General Guides
    ============================================================
 
 .. |ext_lnk_install_docker| raw:: html
@@ -138,34 +138,4 @@
 
    <a target="_blank" href="https://docs.docker.com/compose/env-file/">
      Declare default environment variables in file <img src="/_static/img/icons/ext-link.svg" />
-   </a>
-
-
-..
-   ============================================================
-   Misc
-   ============================================================
-
-.. -------------------- uid --------------------
-
-.. |ext_lnk_uid| raw:: html
-
-   <a target="_blank" href="https://en.wikipedia.org/wiki/User_identifier">
-     Wikipedia: uid <img src="/_static/img/icons/ext-link.svg" />
-   </a>
-
-
-.. -------------------- ssh --------------------
-
-.. |ext_lnk_ssh_tunnelling_for_fun_and_profit| raw:: html
-
-   <a target="_blank" href="https://www.everythingcli.org/ssh-tunnelling-for-fun-and-profit-local-vs-remote/">
-     SSH tunnelling for fun and profie: Local vs Remote <img src="/_static/img/icons/ext-link.svg" />
-   </a>
-
-
-.. |ext_lnk_stackoverflow_ssh_into_docker_machine| raw:: html
-
-   <a target="_blank" href="https://stackoverflow.com/questions/30330442/how-to-ssh-into-docker-machine-virtualbox-instance">
-     Stackoverflow: SSH into Docker machine <img src="/_static/img/icons/ext-link.svg" />
    </a>
