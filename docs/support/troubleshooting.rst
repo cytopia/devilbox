@@ -102,6 +102,15 @@ This error occurs when using ``localhost`` as the :ref:`env_tld_suffix`.
 Web server issues
 =================
 
+Warning: DocumentRoot [/var/www/default/htdocs/] does not exist
+---------------------------------------------------------------
+
+This error is most likely to only occur on Docker for Windows and is just a result of not working
+volumes mounts.
+
+.. seealso:: https://forums.docker.com/t/volume-mounts-in-windows-does-not-work/10693
+
+
 403 forbidden
 -------------
 

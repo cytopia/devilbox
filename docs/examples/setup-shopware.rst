@@ -102,8 +102,8 @@ following line to your host operating systems ``/etc/hosts`` file
 
 .. seealso::
 
-   * :ref:`howto_add_project_dns_entry_on_mac`
-   * :ref:`howto_add_project_dns_entry_on_win`
+   * :ref:`howto_add_project_hosts_entry_on_mac`
+   * :ref:`howto_add_project_hosts_entry_on_win`
    * :ref:`setup_auto_dns`
 
 

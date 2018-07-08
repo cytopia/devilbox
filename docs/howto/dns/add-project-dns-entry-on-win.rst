@@ -1,10 +1,10 @@
 :orphan:
 
-.. _howto_add_project_dns_entry_on_win:
+.. _howto_add_project_hosts_entry_on_win:
 
-********************************
-Add project DNS entry on Windows
-********************************
+**********************************
+Add project hosts entry on Windows
+**********************************
 
 On Windows, custom DNS entries can be added to the ``C:\Windows\System32\drivers\etc`` and will
 take precedence over the same entries provided by any DNS server.

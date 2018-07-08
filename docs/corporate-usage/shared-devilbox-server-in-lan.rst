@@ -1,3 +1,5 @@
+.. _shared_devilbox_server_in_lan:
+
 *****************************
 Shared Devilbox server in LAN
 *****************************
@@ -68,6 +70,27 @@ Handle DNS records
 
 There are multiple ways of having DNS records available accross the LAN.
 
+Before you read on, have a quick look on the decision Matrix to find the best method for your
+use-case.
+
++---------------------+------------------+--------------------------------------------------------------------------------------------------------+
+| Method              | Sub-method       | Outcome                                                                                                |
++=====================+==================+========================================================================================================+
+| Real domain         |                  | All network devices will have Auto DNS                                                                 |
++---------------------+------------------+--------------------------------------------------------------------------------------------------------+
+| Own DNS server      |                  | All network devices will have Auto DNS                                                                 |
++---------------------+------------------+--------------------------------------------------------------------------------------------------------+
+| Devilbox DNS server | Manual           | Every network device must configure its DNS settings                                                   |
+|                     +------------------+--------------------------------------------------------------------------------------------------------+
+|                     | DHCP distributed | All network devices will have Auto DNS                                                                 |
++---------------------+------------------+--------------------------------------------------------------------------------------------------------+
+| Hosts entry         |                  | Every network device must manually set hosts entries |br| for each project. (Does not work for phones) |
++---------------------+------------------+--------------------------------------------------------------------------------------------------------+
+
+.. |br| raw:: html
+
+   <br />
+
 .. important::
    When using a shared Devilbox server and another Devilbox setup on your local computer,
    ensure that you are using different :ref:`env_tld_suffix` in order to not confuse
@@ -75,6 +98,8 @@ There are multiple ways of having DNS records available accross the LAN.
 
 Use a real domain
 -----------------
+
+*(This will allow all devices on the network to have Auto-DNS)*
 
 If you own a real domain, such as ``my-company.com``, you can create a wildcard DNS record for
 a subdomain, such as ``*.dev.my-company.com`` which must point to ``192.168.0.12.``.
@@ -89,6 +114,8 @@ You must then also change the ``TLD_SUFFIX`` to that subdomain.
 
 Handle DNS records in your own DNS server
 -----------------------------------------
+
+*(This will allow all devices on the network to have Auto-DNS)*
 
 If your LAN already provides its own customizable DNS server, you can setup a new wildcard DNS
 zone for ``*.loc`` which points to ``192.168.0.12``.
@@ -119,6 +146,8 @@ Now there are two ways to consume the DNS records on your local machine:
 
 Manual DNS settings
 ^^^^^^^^^^^^^^^^^^^
+*(Each device on the network needs to manually set the DNS server)*
+
 When using this approach, you have to manually add the DNS server (IP: ``192.168.0.12``) to your
 host operating system.
 
@@ -130,9 +159,13 @@ host operating system.
    * :ref:`howto_add_custom_dns_server_on_linux`
    * :ref:`howto_add_custom_dns_server_on_mac`
    * :ref:`howto_add_custom_dns_server_on_win`
+   * :ref:`howto_add_custom_dns_server_on_android`
+   * :ref:`howto_add_custom_dns_server_on_iphone`
 
 DHCP distributed
 ^^^^^^^^^^^^^^^^
+*(This will allow all devices on the network to have Auto-DNS)*
+
 This is the automated and more pain-free approach, as all devices within the network will be able
 to access projects on the shared Devilbox server.
 
@@ -156,6 +189,8 @@ in its web interface and add the Devilbox DNS server as the first in the list (`
 Add hosts entries for every project
 -----------------------------------
 
+*(Each device on the network needs to manually set the hosts entries for every single projcet)*
+
 As you also do for the Devilbox locally when not using Auto-DNS, you can do as well for remote
 computer. Just edit your local hosts file and add one DNS entry for every project on the shared
 Devilbox server.
@@ -163,9 +198,9 @@ Devilbox server.
 Keep in mind that this time you will have to use ``192.168.0.12`` instead of ``127.0.0.1``.
 
 .. seealso::
-   * :ref:`howto_add_project_dns_entry_on_linux`
-   * :ref:`howto_add_project_dns_entry_on_mac`
-   * :ref:`howto_add_project_dns_entry_on_win`
+   * :ref:`howto_add_project_hosts_entry_on_linux`
+   * :ref:`howto_add_project_hosts_entry_on_mac`
+   * :ref:`howto_add_project_hosts_entry_on_win`
 
 
 Share Devilbox CA

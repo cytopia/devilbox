@@ -14,9 +14,11 @@ Find your user id and group id on Windows
 Docker for Windows
 ==================
 
-.. todo::
-   This section requires the actual information about how to get uid and gid.
-   https://forums.docker.com/t/find-uid-and-gid-on-windows-for-mounted-directories/53320
+On Docker for Windows it is **not necessary** to change uid and gid in your ``.env`` file.
+
+.. note::
+   Docker for Windows is internally using network shares (SMB) to mount Docker volumes.
+   This does not require to syncronize file and directoriy permissions via uid and gid.
 
 
 Docker Toolbox

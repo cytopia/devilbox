@@ -117,8 +117,8 @@ into your ``/etc/hosts`` (or ``C:\Windows\System32\drivers\etc`` for Windows).
 
 .. seealso::
 
-   * :ref:`howto_add_project_dns_entry_on_mac`
-   * :ref:`howto_add_project_dns_entry_on_win`
+   * :ref:`howto_add_project_hosts_entry_on_mac`
+   * :ref:`howto_add_project_hosts_entry_on_win`
 
 
 Vist the vhost page again and see what has changed: http://localhost/vhosts.php

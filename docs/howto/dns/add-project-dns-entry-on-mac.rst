@@ -1,10 +1,10 @@
 :orphan:
 
-.. _howto_add_project_dns_entry_on_mac:
+.. _howto_add_project_hosts_entry_on_mac:
 
-******************************
-Add project DNS entry on MacOS
-******************************
+********************************
+Add project hosts entry on MacOS
+********************************
 
 On MacOS, custom DNS entries can be added to the ``/etc/hosts`` and will take precedence over the
 same entries provided by any DNS server.

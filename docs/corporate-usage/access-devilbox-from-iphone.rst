@@ -1,3 +1,5 @@
+.. _access_devilbox_from_iphone:
+
 ***************************
 Access Devilbox from iPhone
 ***************************

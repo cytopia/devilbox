@@ -97,6 +97,7 @@ host is ready to be served with your custom domain.
 
    corporate-usage/deploy-devilbox-via-ansible
    corporate-usage/shared-devilbox-server-in-lan
+   corporate-usage/access-colleagues-devilbox
    corporate-usage/access-devilbox-from-android
    corporate-usage/access-devilbox-from-iphone
    corporate-usage/use-external-databases

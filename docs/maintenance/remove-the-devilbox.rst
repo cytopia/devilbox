@@ -118,8 +118,8 @@ Revert any changes you have done in ``/etc/hosts`` (or ``C:\Windows\System32\dri
 
 .. seealso::
 
-   * :ref:`howto_add_project_dns_entry_on_mac`
-   * :ref:`howto_add_project_dns_entry_on_win`
+   * :ref:`howto_add_project_hosts_entry_on_mac`
+   * :ref:`howto_add_project_hosts_entry_on_win`
 
 Remove Devilbox CA from your browser
 ------------------------------------
