@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _start_the_devilbox:
 
 ******************
@@ -10,10 +12,11 @@ your hands dirty.
 .. note::
 
    Starting and stopping containers is done via ``docker-compose``. If you have never worked with
-   it before, have a look at their documentation for an
-   `overview <https://docs.docker.com/compose/reference/overview/>`_,
-   `up <https://docs.docker.com/compose/reference/up/>`_ and
-   `stop <https://docs.docker.com/compose/reference/stop/>`_ commands.
+   it before, have a look at their documentation for
+   |ext_lnk_docker_compose_cmd_overview|, |ext_lnk_docker_compose_cmd_up|,
+   |ext_lnk_docker_compose_cmd_stop|, |ext_lnk_docker_compose_cmd_kill|,
+   |ext_lnk_docker_compose_cmd_rm|, |ext_lnk_docker_compose_cmd_logs| and
+   |ext_lnk_docker_compose_cmd_pull| commands.
 
 
 **Table of Contents**

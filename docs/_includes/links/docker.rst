@@ -71,7 +71,7 @@
 .. |ext_lnk_install_docker_toolbox_mac| raw:: html
 
    <a target="_blank" href="https://docs.docker.com/toolbox/toolbox_install_mac/">
-     Install Docker Toolbox on macOS <img src="/_static/img/icons/ext-link.svg" />
+     Install Docker Toolbox on MacOS <img src="/_static/img/icons/ext-link.svg" />
    </a>
 
 .. |ext_lnk_install_docker_toolbox_mac_native_vs_toolbox| raw:: html
@@ -114,28 +114,4 @@
 
    <a target="_blank" href="https://docs.docker.com/toolbox/toolbox_install_windows/#optional-add-shared-directories">
      Docker Toolbox on Windows: add shared directories <img src="/_static/img/icons/ext-link.svg" />
-   </a>
-
-
-..
-   ============================================================
-   Docker Compose
-   ============================================================
-
-.. |ext_lnk_install_docker_compose| raw:: html
-
-   <a target="_blank" href="https://docs.docker.com/compose/install/">
-     Install Docker Compose <img src="/_static/img/icons/ext-link.svg" />
-   </a>
-
-.. |ext_lnk_docker_cmpose_cmd_reference| raw:: html
-
-   <a target="_blank" href="https://docs.docker.com/compose/reference/">
-     Compose command-line reference <img src="/_static/img/icons/ext-link.svg" />
-   </a>
-
-.. |ext_lnk_docker_cmpose_env_file| raw:: html
-
-   <a target="_blank" href="https://docs.docker.com/compose/env-file/">
-     Declare default environment variables in file <img src="/_static/img/icons/ext-link.svg" />
    </a>

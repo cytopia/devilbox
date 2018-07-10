@@ -98,7 +98,8 @@ Additionally you will require ``git`` in order to clone the devilbox project.
 .. seealso::
 
    * |ext_lnk_install_docker|
-   * |ext_lnk_install_docker_compose|
+   * |ext_lnk_docker_compose_install|
+   * |ext_lnk_download_git_win|
    * :ref:`howto_find_docker_and_docker_compose_version`
 
 
@@ -255,12 +256,17 @@ Optional previous knowledge
 In order to easily work with the Devilbox you should already be familiar with the following:
 
 * Navigate on the command line
-* Docker Compose commands (``up``, ``stop``, ``kill``, ``rm``, ``logs``, ``pull``)
+* Docker Compose commands (|ext_lnk_docker_compose_cmd_up|, |ext_lnk_docker_compose_cmd_stop|,
+  |ext_lnk_docker_compose_cmd_kill|, |ext_lnk_docker_compose_cmd_rm|,
+  |ext_lnk_docker_compose_cmd_logs| and |ext_lnk_docker_compose_cmd_pull|)
 * Docker Compose ``.env`` file
 * Know how to use ``git``
 
+
+
+
 .. seealso::
 
-   * |ext_lnk_docker_cmpose_cmd_reference|
-   * |ext_lnk_docker_cmpose_env_file|
+   * |ext_lnk_docker_compose_cmd_reference|
+   * |ext_lnk_docker_compose_env_file|
    * :ref:`troubleshooting`

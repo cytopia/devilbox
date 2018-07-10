@@ -48,7 +48,7 @@ and in this case it is used as the main configuration file for the Devilbox by p
 of settings (such as which version to start up).
 
 .. seealso::
-   * |ext_lnk_docker_cmpose_env_file|
+   * |ext_lnk_docker_compose_env_file|
    * :ref:`env_file`
 
 

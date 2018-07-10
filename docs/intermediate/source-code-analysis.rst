@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _source_code_analysis:
 
 ********************
@@ -36,7 +38,7 @@ workspace and its files. You can for example check for:
 
 Some of the bundled tools even allow for automatic fixing.
 
-.. seealso:: `awesome-ci <https://github.com/cytopia/awesome-ci>`_
+.. seealso:: |ext_lnk_tool_awesome_ci|
 
 .. code-block:: bash
 
@@ -75,7 +77,7 @@ PHPCS
 
 PHPCS is a code style analyser for PHP.
 
-.. seealso:: `PHPCS <https://github.com/squizlabs/PHP_CodeSniffer>`_
+.. seealso:: |ext_lnk_tool_phpcs|
 
 .. code-block:: bash
 
@@ -94,7 +96,7 @@ ESLint
 
 ESLint is a Javascript static source code analyzer.
 
-.. seealso:: `ESLint <https://eslint.org>`_
+.. seealso:: |ext_lnk_tool_eslint|
 
 .. code-block:: bash
 

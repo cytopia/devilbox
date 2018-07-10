@@ -1,3 +1,7 @@
+.. include:: /_includes/all.rst
+
+.. _devilbox_intranet:
+
 *****************
 Devilbox intranet
 *****************
@@ -75,7 +79,7 @@ Third-party tools
 phpMyAdmin
 ----------
 
-`phpMyAdmin <https://www.phpmyadmin.net/>`_ is a free software tool written in PHP,
+|ext_lnk_tool_phpmyadmin| is a free software tool written in PHP,
 intended to handle the administration of MySQL over the Web. phpMyAdmin supports a wide range
 of operations on MySQL and MariaDB. Frequently used operations (managing databases, tables,
 columns, relations, indexes, users, permissions, etc) can be performed via the user interface,
@@ -85,7 +89,7 @@ while you still have the ability to directly execute any SQL statement.
 Adminer
 -------
 
-`Adminer <https://www.adminer.org/>`_ (formerly phpMinAdmin) is a full-featured database
+|ext_lnk_tool_adminer| (formerly phpMinAdmin) is a full-featured database
 management tool written in PHP. Conversely to phpMyAdmin, it consist of a single file ready to
 deploy to the target server. Adminer is available for MySQL, MariaDB, PostgreSQL, SQLite, MS SQL,
 Oracle, Firebird, SimpleDB, Elasticsearch and MongoDB.
@@ -94,7 +98,7 @@ Oracle, Firebird, SimpleDB, Elasticsearch and MongoDB.
 OpcacheGUI
 ----------
 
-`OpcacheGui <https://github.com/amnuts/opcache-gui>`_ is a clean and responsive interface for
+|ext_lnk_tool_opcachegui| is a clean and responsive interface for
 Zend OPcache information, showing statistics, settings and cached files, and providing a real-time
 update for the information (using jQuery and React).
 

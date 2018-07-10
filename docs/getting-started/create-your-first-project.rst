@@ -201,6 +201,7 @@ their articles:
    * :ref:`example_setup_laravel`
    * :ref:`example_setup_phalcon`
    * :ref:`example_setup_photon_cms`
+   * :ref:`example_setup_shopware`
    * :ref:`example_setup_symfony`
    * :ref:`example_setup_typo3`
    * :ref:`example_setup_wordpress`
