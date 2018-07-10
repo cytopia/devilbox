@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _example_setup_drupal:
 
 ************
@@ -6,7 +8,7 @@ Setup Drupal
 
 This example will use ``drush`` to install Drupal from within the PHP container.
 
-.. seealso:: `Official Drupal Documentation <https://www.drupal.org/docs/7/install>`_
+.. seealso:: |ext_lnk_example_drupal_documentation|
 
 
 **Table of Contents**

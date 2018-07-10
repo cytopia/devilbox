@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _example_setup_symfony:
 
 *************
@@ -6,7 +8,7 @@ Setup Symfony
 
 This example will use ``symfony`` to install Symfony from within the PHP container.
 
-.. seealso:: `Official Symfony Documentation <https://symfony.com/doc/current/setup.html>`_
+.. seealso:: |ext_lnk_example_symfony_documentation|
 
 
 **Table of Contents**

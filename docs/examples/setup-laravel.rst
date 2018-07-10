@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _example_setup_laravel:
 
 *************
@@ -6,7 +8,7 @@ Setup Laravel
 
 This example will use ``laravel`` to install Laravel from within the PHP container.
 
-.. seealso:: `Official Laravel Documentation <https://laravel.com/docs/5.4/installation>`_
+.. seealso:: |ext_lnk_example_laravel_documentation|
 
 
 **Table of Contents**

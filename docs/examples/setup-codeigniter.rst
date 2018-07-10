@@ -1,11 +1,12 @@
+.. include:: /_includes/all.rst
+
 .. _example_setup_codeigniter:
 
 *****************
 Setup CodeIgniter
 *****************
 
-
-.. seealso:: `Official CodeIgniter Documentation <https://www.codeigniter.com/user_guide/installation/index.html>`_
+.. seealso:: |ext_lnk_example_codeignitor_documentation|
 
 
 **Table of Contents**

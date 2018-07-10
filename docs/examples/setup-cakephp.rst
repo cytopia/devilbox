@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _example_setup_cakephp:
 
 *************
@@ -6,7 +8,7 @@ Setup CakePHP
 
 This example will use ``composer`` to install CakePHP from within the PHP container.
 
-.. seealso:: `Official CakePHP Documentation <https://book.cakephp.org/3.0/en/installation.html>`_
+.. seealso:: |ext_lnk_example_cakephp_documentation|
 
 
 **Table of Contents**

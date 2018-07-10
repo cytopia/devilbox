@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _example_setup_shopware:
 
 **************
@@ -7,8 +9,8 @@ Setup Shopware
 This example will use ``git`` to install Shopware from within the PHP container.
 
 .. seealso::
-   * `Official Shopware Documentation <https://en-community.shopware.com/Shopware-5-Installer_detail_1351_730.html/sCoreId,bdd630e6d079964f3f697fccff83a987>`_
-   * `Shopware Github repository <https://github.com/shopware/shopware>`_
+   * |ext_lnk_example_shopware_documentation|
+   * |ext_lnk_example_shopware_github|
 
 
 **Table of Contents**
@@ -111,7 +113,7 @@ following line to your host operating systems ``/etc/hosts`` file
 ---------------------------------------
 
 All set now, you can visit http://my-sw.loc in your browser and follow the installation steps as
-described in the `Official Shopware Documentation <https://en-community.shopware.com/Shopware-5-Installer_detail_1351_730.html/sCoreId,bdd630e6d079964f3f697fccff83a987>`_:
+described in the |ext_lnk_example_shopware_documentation|:
 
 .. important::
    When setting up database connection use the following values:

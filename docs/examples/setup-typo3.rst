@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _example_setup_typo3:
 
 ***********
@@ -6,7 +8,7 @@ Setup Typo3
 
 This example will use ``composer`` to install Typo3 from within the PHP container.
 
-.. seealso:: `Official Typo3 Documentation <https://docs.typo3.org/typo3cms/InstallationGuide/Index.html>`_
+.. seealso:: |ext_lnk_example_typo3_documentation|
 
 
 **Table of Contents**

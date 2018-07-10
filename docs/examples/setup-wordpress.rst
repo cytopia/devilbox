@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _example_setup_wordpress:
 
 ***************
@@ -6,7 +8,7 @@ Setup Wordpress
 
 This example will use ``git`` to install Wordpress from within the PHP container.
 
-.. seealso:: `Official Wordpress Documentation <https://codex.wordpress.org/Installing_WordPress>`_
+.. seealso:: |ext_lnk_example_wordpress_documentation|
 
 
 **Table of Contents**

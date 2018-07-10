@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _example_setup_photon_cms:
 
 ****************
@@ -6,7 +8,7 @@ Setup Photon CMS
 
 This example will use ``photon`` cli to install Photon CMS from within the PHP container.
 
-.. seealso:: `Official Photon CMS Documentation <https://photoncms.com/resources/installing>`_
+.. seealso:: |ext_lnk_example_photon_cms|
 
 
 **Table of Contents**

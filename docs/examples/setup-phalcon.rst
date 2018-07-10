@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _example_setup_phalcon:
 
 *************
@@ -6,7 +8,7 @@ Setup Phalcon
 
 This example will use ``phalcon`` to install Phalcon from within the PHP container.
 
-.. seealso:: `Official Phalcon Documentation <https://docs.phalconphp.com/en/3.2/devtools-usage>`_
+.. seealso:: |ext_lnk_example_phalcon_documentation|
 
 
 **Table of Contents**

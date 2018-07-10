@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _example_setup_zend:
 
 **********
@@ -6,7 +8,7 @@ Setup Zend
 
 This example will use ``composer`` to install Zend from within the PHP container.
 
-.. seealso:: `Official Zend Documentation <https://docs.zendframework.com/tutorials/getting-started/skeleton-application/>`_
+.. seealso:: |ext_lnk_example_zend_documentation|
 
 
 **Table of Contents**

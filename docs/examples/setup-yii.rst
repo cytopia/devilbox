@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _example_setup_yii:
 
 *********
@@ -6,7 +8,7 @@ Setup Yii
 
 This example will use ``composer`` to install Yii from within the PHP container.
 
-.. seealso:: `Official Yii Documentation <https://www.yiiframework.com/doc/guide/2.0/en/start-installation>`_
+.. seealso:: |ext_lnk_example_yii_documentation|
 
 
 **Table of Contents**

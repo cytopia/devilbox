@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _example_setup_joomla:
 
 ************
@@ -6,7 +8,7 @@ Setup Joomla
 
 This example will install Joomla from within the PHP container.
 
-.. seealso:: `Official Joomla Documentation <https://docs.joomla.org/J3.x:Installing_Joomla>`_
+.. seealso:: |ext_lnk_example_joomla_documentation|
 
 
 **Table of Contents**
