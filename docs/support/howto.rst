@@ -24,6 +24,7 @@ The How to section gathers information about various topics, that might need to 
    :glob:
 
    /howto/devilbox/*
+   /howto/xdebug/*
 
 .. toctree::
    :caption: Docker Toolbox

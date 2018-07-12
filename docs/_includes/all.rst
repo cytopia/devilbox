@@ -29,3 +29,4 @@
 .. include:: /_includes/links/ssh.rst
 .. include:: /_includes/links/tools.rst
 .. include:: /_includes/links/uid.rst
+.. include:: /_includes/links/xdebug.rst
