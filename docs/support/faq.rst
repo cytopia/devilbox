@@ -189,6 +189,12 @@ Does it work with Photon CMS?
 Yes, see :ref:`example_setup_photon_cms`
 
 
+Does it work with Shopware?
+---------------------------
+
+Yes, see :ref:`example_setup_shopware`
+
+
 Does it work with Symfony?
 --------------------------
 
