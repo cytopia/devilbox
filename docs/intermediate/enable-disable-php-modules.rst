@@ -9,7 +9,7 @@ Enable/disable PHP modules
 .. contents:: :local:
 
 .. seealso::
-   https://github.com/devilbox/docker-php-fpm#php-modules
+   https://github.com/devilbox/docker-php-fpm#user-content-php-modules
      Follow the link to see all available PHP modules for each different PHP-FPM server version.
 
 
