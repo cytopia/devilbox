@@ -1,5 +1,7 @@
 :orphan:
 
+.. include:: /_includes/all.rst
+
 .. _howto_add_custom_dns_server_on_android:
 
 ********************************
@@ -48,4 +50,4 @@ If the above does not work for you or you just want another App that makes it ev
 DNS settings, you can search the Playstore for many available DNS changer Apps. They also work
 on non-rooted Androids.
 
-.. seealso:: `DNS Changer <https://play.google.com/store/apps/details?id=com.burakgon.dnschanger>`_
+.. seealso:: |ext_lnk_app_android_dns_changer|

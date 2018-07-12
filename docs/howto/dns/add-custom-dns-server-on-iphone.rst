@@ -1,5 +1,7 @@
 :orphan:
 
+.. include:: /_includes/all.rst
+
 .. _howto_add_custom_dns_server_on_iphone:
 
 *******************************
@@ -44,4 +46,4 @@ If the above does not work for you or you just want another App that makes it ev
 DNS settings, you can search the AppStore for many available DNS changer Apps. They also work
 on non-rooted iPhones.
 
-.. seealso:: `DNS Override <https://itunes.apple.com/us/app/dns-override/id1060830093>`_
+.. seealso:: |ext_lnk_app_iphone_dns_override|
