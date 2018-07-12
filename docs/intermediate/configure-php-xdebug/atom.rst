@@ -83,6 +83,9 @@ Docker on Linux
 Docker for Mac
 --------------
 
+Via host alias address
+^^^^^^^^^^^^^^^^^^^^^^
+
 .. important::
    Ensure you have created an :ref:`howto_host_address_alias_on_mac` and
    ``10.254.254.254`` is aliased to your localhost.
@@ -95,7 +98,7 @@ Docker for Mac
    xdebug.remote_enable=1
    xdebug.remote_port=9000
 
-   # The MacOS way
+   # The MacOS way (host alias)
    xdebug.remote_connect_back=0
    xdebug.remote_host=10.254.254.254
 
@@ -105,6 +108,34 @@ Docker for Mac
 
    # Optional: Set to true to auto-start xdebug
    xdebug.remote_autostart=false
+
+Via CNAME alias
+^^^^^^^^^^^^^^^
+
+Docker for Mac received many default CNAMEs throughout its versions. The most recent and active
+is ``host.docker.internal``. So instead of creating an host alias, you could also try if the CNAME
+is a working solution:
+
+.. code-block:: ini
+   :caption: xdebug.ini
+   :emphasize-lines: 6-7,11
+
+   # Defaults
+   xdebug.remote_enable=1
+   xdebug.remote_port=9000
+
+   # The MacOS way (CNAME)
+   xdebug.remote_connect_back=0
+   xdebug.remote_host=host.docker.internal
+
+   # idekey value is specific to each editor
+   # Verify with Atom documentation
+   xdebug.idekey=xdebug-atom
+
+   # Optional: Set to true to auto-start xdebug
+   xdebug.remote_autostart=false
+
+.. seealso:: CNAME for :ref:`connect_to_host_os_docker_for_mac`
 
 
 Docker for Windows

@@ -41,6 +41,8 @@ same behaviour:
 * CNAME: ``docker.for.lin.localhost``
 
 
+.. _connect_to_host_os_docker_for_mac:
+
 Docker for Mac
 ==============
 
