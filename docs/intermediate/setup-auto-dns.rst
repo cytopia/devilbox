@@ -129,7 +129,7 @@ Assuming the Docker Toolbox IP is ``192.168.99.100`` your forwards must be as fo
 +----------------+-----------+-----------+---------+
 
 .. seealso::
-   * :ref:`howto_ssh_port_forward_from_docker_toolbox_to_host`
+   * :ref:`howto_ssh_port_forward_on_docker_toolbox_from_host`
    * :ref:`howto_find_docker_toolbox_ip_address`
 
 

@@ -136,7 +136,7 @@ follows:
 .. seealso::
 
    * :ref:`howto_find_docker_toolbox_ip_address`
-   * :ref:`howto_ssh_port_forward_from_docker_toolbox_to_host`
+   * :ref:`howto_ssh_port_forward_on_docker_toolbox_from_host`
    * :ref:`setup_auto_dns`
 
 

@@ -16,7 +16,12 @@ SSH into Docker Toolbox
 Requirements
 ============
 
-You shell must have an SSH client (the ``ssh`` command).
+You shell must have an SSH client (the ``ssh`` command or equivalent).
+
+.. seealso::
+   * :ref:`howto_open_terminal_on_mac`
+   * :ref:`howto_open_terminal_on_win`
+   * :ref:`howto_find_docker_toolbox_ip_address`
 
 
 Manual

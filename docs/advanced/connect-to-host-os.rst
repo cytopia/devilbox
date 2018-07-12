@@ -19,6 +19,12 @@ Prerequisites
 When you want to connect from inside a Docker container to a port on your host operating system,
 ensure the host service is listening on all interfaces for simplicity.
 
+The following sections will give you the IP address and/or the CNAME where the host os can be
+reached from within a container.
+
+
+.. _connect_to_host_os_docker_on_linux:
+
 Docker on Linux
 ===============
 
@@ -43,17 +49,17 @@ always point to the IP address of your host operating system. Depending on the D
 CNAME will differ:
 
 Docker 18.03.0-ce+ and Docker compose 1.20.1+
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------
 
 CNAME: ``host.docker.internal``
 
 Docker 17.12.0-ce+ and Docker compose 1.18.0+
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------
 
 CNAME: ``docker.for.mac.host.internal``
 
 Docker 17.06.0-ce+ and Docker compose 1.14.0+
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------
 
 CNAME: ``docker.for.mac.localhost``
 
@@ -68,14 +74,14 @@ CNAME will differ:
 .. important:: Ensure your firewall is not blocking Docker to host connections.
 
 Docker 18.03.0-ce+ and Docker compose 1.20.1+
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------
 
 * CNAME: ``docker.for.win.host.internal``
 * CNAME: ``host.docker.internal``
 
 
 Docker 17.06.0-ce+ and Docker compose 1.14.0+
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------
 
 CNAME: ``docker.for.win.host.localhost``
 
@@ -88,42 +94,73 @@ Docker Toolbox
 Docker Toolbox behaves the same way as Docker on Linux, with one major difference.
 The Devilbox IP address or the custom provided CNAMEs actually refer to the Docker Toolbox machine.
 
-In order to connect from inside the Docker container inside Docker Toolbox to your host OS,
-you need to create a remote port-forward from your host OS to the Docker Toolbox machine.
-In other words, you need to make the service from your host OS available inside the Docker Toolbox
-machine.
+In order to connect from inside the Docker container (which is inside the Docker Toolbox machine)
+to your host os, you need to create:
 
-Let's assume you have a service on your host, listening on ``127.0.0.1`` on port ``7771`` and
-want to forward that to port ``7772`` on the Docker Toolbox machine, so that the Docker container
-can access port ``7772`` via the Devilbox bridge IP (``172.16.238.1``).
+1. either a **local** port-forward on the **Docker Toolbox** machine (``ssh -L``)
+2. or a **remote** port-forward on your **host os** (``ssh -R``)
 
-You will have to paste the following into a terminal on your host:
+.. seealso:: |ext_lnk_ssh_tunnelling_for_fun_and_profit|
+
+
+For both examples we assume the following:
+
+* MySQL database exists on your host os and listens on ``127.0.0.1`` on port ``3306``
+* Docker Toolbox IP address is ``192.168.99.100``
+* Host IP address where SSH is listening on ``172.16.0.1``
+* Host SSH username is ``user``
+* Devilbox Docker container wants to access MySQL on host os
+
+
+Local port forward on Docker Toolbox
+------------------------------------
+
+.. important::
+   For that to work, your host operating system requires an SSH server to be up and running.
+
++----------------+----------------+--------------+--------------------+--------------+
+| Initiator      | From host      | From port    | To host            | To port      |
++================+================+==============+====================+==============+
+| Docker Toolbox | ``127.0.0.1``  | ``3306``     | ``192.168.99.100`` | ``3306``     |
++----------------+----------------+--------------+--------------------+--------------+
 
 .. code-block:: bash
 
-   # Change any of those three values
-   LOCAL_ADDR=127.0.0.1     # On what IP address does the service bind to locally (on your MacOS)
-   LOCAL_PORT=7771          # On what port does the service listen locally (on your MacOS)
-   REMOTE_PORT=7772         # On what port it should listen in the Docker Toolbox machine
-
-   # Fixed Devilbox network IP
-   REMOTE_ADDR=172.16.238.1 # On what IP it should bind on the Docker Toolbox machine (Devilbox network IP)
-
-   # Docker Toolbox defines
-   USER=$(docker-machine inspect $docker_machine_name --format={{.Driver.SSHUser}})
-   HOST=$(docker-machine active)
-   PORT=$(docker-machine inspect $docker_machine_name --format={{.Driver.SSHPort}})
-   KEY=$(docker-machine inspect $docker_machine_name --format={{.Driver.SSHKeyPath}})
-
-   ssh -i ${KEY} -p ${PORT} \
-       -R ${REMOTE_ADDR}:${REMOVE_PORT}:${LOCAL_HOST}:${LOCAL_PORT} \
-       ${USER}@${HOST}
+   # From Docker Toolbox forward port 3306 (on host 172.16.0.1) to myself (192.168.99.100)
+   toolbox> ssh -L 3306:127.0.0.1:3306 user@172.16.0.1
 
 .. seealso::
+   * :ref:`howto_find_docker_toolbox_ip_address`
    * :ref:`howto_ssh_into_docker_toolbox`
-   * :ref:`howto_ssh_port_forward_from_docker_toolbox_to_host`
-   * :ref:`howto_ssh_port_forward_from_host_to_docker_toolbox`
-   * :ref:`howto_open_terminal_on_mac`
-   * :ref:`howto_open_terminal_on_win`
-   * |ext_lnk_ssh_tunnelling_for_fun_and_profit|
-   * |ext_lnk_stackoverflow_ssh_into_docker_machine|
+   * :ref:`howto_ssh_port_forward_on_docker_toolbox_from_host`
+
+Remote port-forward on host os
+------------------------------
+
+.. important::
+   For that to work, your host operating system requires an SSH client (``ssh`` binary).
+
++----------------+----------------+--------------+--------------------+--------------+
+| Initiator      | From host      | From port    | To host            | To port      |
++================+================+==============+====================+==============+
+| Host os        | ``127.0.0.1``  | ``3306``     | ``192.168.99.100`` | ``3306``     |
++----------------+----------------+--------------+--------------------+--------------+
+
+.. code-block:: bash
+
+   # From host os forward port 3306 (from loopback 127.0.0.1) to Docker Toolbox (192.168.99.100)
+   host> ssh -R 3306:127.0.0.1:3306 docker@192.168.99.100
+
+.. seealso::
+   * :ref:`howto_find_docker_toolbox_ip_address`
+   * :ref:`howto_ssh_into_docker_toolbox`
+   * :ref:`howto_ssh_port_forward_on_host_to_docker_toolbox`
+
+Post steps
+----------
+
+With either of the above you have achieved the exact behaviour as
+:ref:`connect_to_host_os_docker_on_linux` for one single service/port (MySQL port 3306).
+
+You must now follow the steps for :ref:`connect_to_host_os_docker_on_linux` to actually connect
+to that service from within the Devilbox Docker container.
