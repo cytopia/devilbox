@@ -16,6 +16,9 @@ This tutorial shows you how to enable and use Xdebug with the Devilbox.
 
 .. contents:: :local:
 
+
+.. _configure_php_xdebug_enable_xdebug:
+
 Enable Xdebug
 =============
 
