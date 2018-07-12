@@ -1388,10 +1388,10 @@ changing the server name or adding locations to other assets.
      When you want to find out more how to actually customize each virtual host to its own need,
      read up more on:
 
-     * :ref:`customize_all_virtual_hosts_globally`
      * :ref:`customize_specific_virtual_host`
      * :ref:`example_add_sub_domains`
-
+..
+     * :ref:`customize_all_virtual_hosts_globally`
 
 MySQL
 -----

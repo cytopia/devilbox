@@ -15,9 +15,9 @@ supplying custom configurations.
    Devilbox Auto-vhost generation feature. If you want to custimize your current virtual hosts
    have a look at:
 
-   * :ref:`customize_all_virtual_hosts_globally`
    * :ref:`customize_specific_virtual_host`
-
+..
+   * :ref:`customize_all_virtual_hosts_globally`
 
 **Table of Contents**
 

@@ -85,9 +85,10 @@ host is ready to be served with your custom domain.
    :maxdepth: 2
    :numbered:
 
-   vhost-gen/customize-all-virtual-hosts-globally
    vhost-gen/customize-specific-virtual-host
    vhost-gen/example-add-subdomains
+..
+   vhost-gen/customize-all-virtual-hosts-globally
 
 
 .. toctree::
@@ -95,12 +96,13 @@ host is ready to be served with your custom domain.
    :maxdepth: 2
    :numbered:
 
-   corporate-usage/deploy-devilbox-via-ansible
    corporate-usage/shared-devilbox-server-in-lan
+   corporate-usage/use-external-databases
+..
+   corporate-usage/deploy-devilbox-via-ansible
    corporate-usage/access-colleagues-devilbox
    corporate-usage/access-devilbox-from-android
    corporate-usage/access-devilbox-from-iphone
-   corporate-usage/use-external-databases
 
 
 .. toctree::

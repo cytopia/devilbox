@@ -140,11 +140,11 @@ Actual setup
    After settings this up, follow the above guides for **Docker for Mac** or **Docker for Windows**
    to finish the setup.
 
+..
+   Access for other network devices
 
-Access for other network devices
-================================
-
-.. seealso::
+..
+   seealso::
    * :ref:`access_devilbox_from_android`
    * :ref:`access_devilbox_from_iphone`
    * :ref:`access_colleagues_devilbox`
