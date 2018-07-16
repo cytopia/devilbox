@@ -35,6 +35,7 @@ services:
   # ------------------------------------------------------------
   bind:
     image: cytopia/bind:0.15
+    restart: always
     ports:
       # [local-machine:]local-port:docker-port
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND:-1053}:53/tcp"
