@@ -95,7 +95,6 @@ services:
   # ------------------------------------------------------------
   php:
     image: devilbox/php-fpm:${PHP_SERVER:-7.0}-work
-    restart: always
 
     ##
     ## All .env variables
@@ -206,7 +205,6 @@ services:
   # ------------------------------------------------------------
   httpd:
     image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.17
-    restart: always
 
     environment:
 
