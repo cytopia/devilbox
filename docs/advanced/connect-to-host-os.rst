@@ -13,6 +13,7 @@ This section explains how to connect from inside a Devilbox container to the hos
 
 .. contents:: :local:
 
+
 Prerequisites
 =============
 
@@ -65,6 +66,8 @@ Docker 17.06.0-ce+ and Docker compose 1.14.0+
 
 CNAME: ``docker.for.mac.localhost``
 
+
+.. _connect_to_host_os_docker_for_win:
 
 Docker for Windows
 ==================
