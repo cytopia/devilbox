@@ -35,6 +35,37 @@ Any Docker container on host os
    and be able to use it.
 
 
+Add Docker container to Devilbox network
+========================================
+
+The Devilbox defines its own bridge network, usually called ``devilbox_app_net``.
+
+.. note::
+   The name may vary depending on the name of the Devilbox directory. It assembles itself by
+   ``<Devilbox_dir_name>_app_net``.
+
+1. Start the Devilbox
+2. Start your container of choice
+
+   .. code-block:: bash
+
+      host> docker run -d --name mycontainer
+
+3. Attach your container to the Devilbox network
+
+   .. code-block:: bash
+
+      host> docker network connect devilbox_app_net mycontainer
+
+Once you have done that, ``mycontainer`` is then part of the internal Devilbox network
+and is able to resolve Devilbox container by its name and vice-versa.
+
+4. Connect from Devilbox PHP container to ``mycontainer``
+
+   From inside the PHP container, you can then refer to your container by its hostname
+   ``mycontainer``
+
+
 Add Docker container to Devilbox stack
 ======================================
 
