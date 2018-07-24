@@ -1,5 +1,7 @@
 :orphan:
 
+.. include:: /_includes/all.rst
+
 .. _howto_add_custom_dns_server_on_linux:
 
 ******************************
@@ -123,4 +125,4 @@ Once done, you can verify if the new DNS settings are effective:
 
    host> systemd-resolve --status
 
-.. seealso:: `Archlinux Wiki: resolv.conf <https://wiki.archlinux.org/index.php/Dhcpcd#resolv.conf>`_
+.. seealso:: |ext_lnk_dns_archlinux_wiki_resolv_conf|

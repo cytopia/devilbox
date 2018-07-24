@@ -22,6 +22,7 @@
    ============================================================
 
 .. include:: /_includes/links/apps.rst
+.. include:: /_includes/links/dns.rst
 .. include:: /_includes/links/docker.rst
 .. include:: /_includes/links/docker-compose.rst
 .. include:: /_includes/links/examples.rst
