@@ -206,3 +206,15 @@
    <a target="_blank" href="https://github.com/amnuts/opcache-gui">
      OpcacheGui <img src="/_static/img/icons/ext-link.svg" />
    </a>
+
+
+..
+   ============================================================
+   Projects
+   ============================================================
+
+.. |ext_lnk_project_vhost_gen| raw:: html
+
+   <a target="_blank" href="https://github.com/devilbox/vhost-gen">
+     vhost-gen <img src="/_static/img/icons/ext-link.svg" />
+   </a>

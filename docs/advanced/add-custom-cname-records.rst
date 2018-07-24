@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _add_custom_cname_records:
 
 ****************************
@@ -5,7 +7,7 @@ Add custom CNAME DNS entries
 ****************************
 
 You can add an infinite number of custom
-`CNAME <https://en.wikipedia.org/wiki/CNAME_record>`_ records that will be available in your
+|ext_lnk_wikipedia_cname| records that will be available in your
 running Docker container.
 If Auto-DNS is turned on, those records will be available on your host operating system as well.
 

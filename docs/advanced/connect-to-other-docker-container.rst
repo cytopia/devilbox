@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _connect_to_other_docker_container:
 
 *********************************
@@ -24,7 +26,7 @@ Any Docker container on host os
 
 2. Once you are able to connect to the host os, start any other Docker container and make its
    port that you want to access available to your host os by specifying ``-p``.
-   An example with e.g. an external `Grafana <https://hub.docker.com/r/grafana/grafana/>`_ container
+   An example with e.g. an external |ext_lnk_docker_image_grafana| container
    might look like this:
 
    .. code-block:: bash

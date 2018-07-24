@@ -13,7 +13,7 @@ If this file does not exist at the root of your Devilbox git directory, then cop
 to ``.env`` to initially create it with sane defaults.
 
 .. seealso::
-   what is the `.env <https://docs.docker.com/compose/env-file/>`_ file?
+   what is the |ext_lnk_docker_compose_env| file?
 
 .. note::
    Use your browsers search function to quickly find the desired variable name.
@@ -233,11 +233,10 @@ this project visible to everyone in your corporate LAN.
 .. warning::
    Do not use ``dev`` as a domain suffix (I know, it's tempting).
    It has been registered by
-   `Google <https://icannwiki.org/.dev>`_ and they advertise the
-   `HSTS header <https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security>`_
+   |ext_lnk_domain_dev| and they advertise the |ext_lnk_ssl_wiki_hsts|
    which makes your browser redirect every http request to https.
 
-   **See also:** `This blog post <https://ma.ttias.be/chrome-force-dev-domains-https-via-preloaded-hsts>`_
+   **See also:** |ext_lnk_ssl_blog_chrome_dev_hsts|
 
 .. warning::
    Do not use ``localhost`` as a domain suffix.
@@ -245,9 +244,7 @@ this project visible to everyone in your corporate LAN.
    should be redirected to the systems loopback interface.
    Docker has already released a commit preventing the use of ``localhost`` on MacOS.
 
-   **See also:** `RFC Draft <https://tools.ietf.org/html/draft-west-let-localhost-be-localhost-06>`_
-   and
-   `Docker Release notes <https://docs.docker.com/docker-for-mac/release-notes/#docker-community-edition-17120-ce-mac46-2018-01-09>`_
+   **See also:** |ext_lnk_domain_rfc_localhost| and |ext_lnk_domain_docker_rel_notes_localhost|
 
 .. _env_extra_hosts:
 
@@ -314,7 +311,7 @@ A few examples for adding extra hosts:
 
 .. seealso::
 
-   This resembles the feature of `Docker Compose: extra_hosts <https://docs.docker.com/compose/compose-file/#external_links>`_ to add external links.
+   This resembles the feature of |ext_lnk_docker_compose_extra_hosts| to add external links.
 
 .. seealso:: :ref:`connect_to_external_hosts`
 
@@ -399,7 +396,7 @@ This is especially useful to keep PHP and database timezones in sync.
 | ``TIMEZONE``          | valid timezone | ``Europe/Berlin`` |
 +-----------------------+----------------+-------------------+
 
-Have a look at Wikipedia to get a list of valid timezones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+Have a look at Wikipedia to get a list of valid timezones: |ext_lnk_doc_wiki_database_timezones|
 
 .. note::
    It is always a good practice not to assume a specific timezone anyway and store all values
@@ -646,7 +643,7 @@ All values are already available in the ``.env`` file and just need to be commen
 .. note::
    This is the official PostgreSQL server which might already have other tags available,
    check their official website for even more versions.
-   https://hub.docker.com/_/postgres/
+   |ext_lnk_docker_image_postgres|
 
 
 .. _env_redis_server:
@@ -678,7 +675,7 @@ All values are already available in the ``.env`` file and just need to be commen
 .. note::
    This is the official Redis server which might already have other tags available,
    check their official website for even more versions.
-   https://hub.docker.com/_/redis/
+   |ext_lnk_docker_image_redis|
 
 
 .. _env_memcd_server:
@@ -729,7 +726,7 @@ All values are already available in the ``.env`` file and just need to be commen
 .. note::
    This is the official Memcached server which might already have other tags available,
    check their official website for even more versions.
-   https://hub.docker.com/_/memcached/
+   |ext_lnk_docker_image_memcached|
 
 
 .. _env_mongo_server:
@@ -762,7 +759,7 @@ All values are already available in the ``.env`` file and just need to be commen
 .. note::
    This is the official MongoDB server which might already have other tags available,
    check their official website for even more versions.
-   https://hub.docker.com/_/mongo/
+   |ext_lnk_docker_image_mongodb|
 
 
 Docker host mounts
@@ -1380,7 +1377,7 @@ servers virtual host to anything from adding rewrite rules, overwriting director
 changing the server name or adding locations to other assets.
 
 .. seealso::
-   The whole process is based on a project called `vhost-gen <https://github.com/devilbox/vhost-gen>`_.
+   The whole process is based on a project called |ext_lnk_project_vhost_gen|.
    A virtual host generator for Apache 2.2, Apache 2.4 and any Nginx version.
 
 .. seealso::
@@ -1431,7 +1428,7 @@ As the Devilbox is intended to be used for development, this feature is turned o
 **MySQL documentation:**
     "The general query log is a general record of what mysqld is doing. The server writes information to this log when clients connect or disconnect, and it logs each SQL statement received from clients. The general query log can be very useful when you suspect an error in a client and want to know exactly what the client sent to mysqld."
 
-    -- https://dev.mysql.com/doc/refman/5.7/en/query-log.html
+    -- |ext_lnk_doc_mysql_query_log|
 
 PostgreSQL
 ----------
@@ -1550,8 +1547,8 @@ This variable controls the DNS TTL in seconds. If empty or removed it will fallb
 
 .. seealso::
 
-   * `BIND TTL <http://www.zytrax.com/books/dns/apa/ttl.html>`_
-   * `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+   * |ext_lnk_doc_bind_ttl|
+   * |ext_lnk_doc_bind_soa|
 
 BIND_REFRESH_TIME
 ^^^^^^^^^^^^^^^^^
@@ -1564,7 +1561,7 @@ This variable controls the DNS Refresh time in seconds. If empty or removed it w
 | ``BIND_REFRESH_TIME``    | integer              | empty               |
 +--------------------------+----------------------+---------------------+
 
-.. seealso:: `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+.. seealso:: |ext_lnk_doc_bind_soa|
 
 BIND_RETRY_TIME
 ^^^^^^^^^^^^^^^
@@ -1577,7 +1574,7 @@ This variable controls the DNS Retry time in seconds. If empty or removed it wil
 | ``BIND_RETRY_TIME``      | integer              | empty               |
 +--------------------------+----------------------+---------------------+
 
-.. seealso:: `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+.. seealso:: |ext_lnk_doc_bind_soa|
 
 BIND_EXPIRY_TIME
 ^^^^^^^^^^^^^^^^
@@ -1590,7 +1587,7 @@ This variable controls the DNS Expiry time in seconds. If empty or removed it wi
 | ``BIND_EXPIRY_TIME``     | integer              | empty               |
 +--------------------------+----------------------+---------------------+
 
-.. seealso:: `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+.. seealso:: |ext_lnk_doc_bind_soa|
 
 BIND_MAX_CACHE_TIME
 ^^^^^^^^^^^^^^^^^^^
@@ -1603,4 +1600,4 @@ This variable controls the DNS Max Cache time in seconds. If empty or removed it
 | ``BIND_MAX_CACHE_TIME``  | integer              | empty               |
 +--------------------------+----------------------+---------------------+
 
-.. seealso:: `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+.. seealso:: |ext_lnk_doc_bind_soa|

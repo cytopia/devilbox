@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _add_your_own_docker_image:
 
 *************************
@@ -118,7 +120,7 @@ Two new services
 CockroachDB example
 -------------------
 
-Gather the requirements for the `Cockroach DB <https://hub.docker.com/r/cockroachdb/cockroach/>`_
+Gather the requirements for the |ext_lnk_docker_image_cockroach|
 Docker image:
 
 1. Name: ``cockroach``

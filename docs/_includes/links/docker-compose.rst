@@ -67,3 +67,15 @@
    <a target="_blank" href="https://docs.docker.com/compose/env-file/">
      Declare default environment variables in file <img src="/_static/img/icons/ext-link.svg" />
    </a>
+
+.. |ext_lnk_docker_compose_env| raw:: html
+
+   <a target="_blank" href="https://docs.docker.com/compose/env-file/">
+     .env <img src="/_static/img/icons/ext-link.svg" />
+   </a>
+
+.. |ext_lnk_docker_compose_extra_hosts| raw:: html
+
+   <a target="_blank" href="https://docs.docker.com/compose/compose-file/#external_links">
+     Docker Compose: extra_hosts <img src="/_static/img/icons/ext-link.svg" />
+   </a>
