@@ -218,3 +218,15 @@
    <a target="_blank" href="https://github.com/devilbox/vhost-gen">
      vhost-gen <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
+
+.. |ext_lnk_project_watcherd| raw:: html
+
+   <a target="_blank" href="https://github.com/devilbox/watcherd">
+     watcherd <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_project_watcherp| raw:: html
+
+   <a target="_blank" href="https://github.com/devilbox/watcherp">
+     watcherp <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>

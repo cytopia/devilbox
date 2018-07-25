@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _features:
 
 ********
@@ -92,7 +94,7 @@ each Apache..., each Nginx... you get the idea.
 Project specific configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Even down to projects, the Devilbox allows for full customization when it comes to virtual host
-settings via `vhost-gen <https://github.com/devilbox/vhost-gen>`_.
+settings via |ext_lnk_project_vhost_gen|.
 
 
 Intranet
@@ -105,10 +107,8 @@ port exposures, hostnames and any errors including how they can be resolved.
 
 Third-party tools
 ^^^^^^^^^^^^^^^^^
-Mandatory web projects are also shipped:
-`phpMyAdmin <https://www.phpmyadmin.net>`_,
-`Adminer <https://www.adminer.org>`_ and
-`OpcacheGui <https://github.com/amnuts/opcache-gui>`_ as well as a web GUI to view all sent emails.
+Mandatory web projects are also shipped: |ext_lnk_tool_phpmyadmin|, |ext_lnk_tool_adminer| and
+|ext_lnk_tool_opcachegui| as well as a web GUI to view all sent emails.
 
 
 Dockerized

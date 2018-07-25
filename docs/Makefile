@@ -48,6 +48,8 @@ help:
 #     warning and sphinx-build exits with exit status 1.
 
 
+linkcheck2:
+	./linkcheck.sh
 
 build:
 	sphinx-build -a -E -n -j auto -q -W . _build/html

@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _customize_specific_virtual_host:
 
 *******************************
@@ -26,9 +28,9 @@ listening ports.
    If you intend to use ``vhost-gen`` for your own projects, have a look at its project page and
    its sister projects:
 
-   * `vhost-gen <https://github.com/devilbox/vhost-gen>`_
-   * `watcherd <https://github.com/devilbox/watcherd>`_
-   * `watcherp <https://github.com/devilbox/watcherp>`_
+   * |ext_lnk_project_vhost_gen|
+   * |ext_lnk_project_watcherd|
+   * |ext_lnk_project_watcherp|
 
 
 Where do I find templates

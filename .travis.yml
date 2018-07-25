@@ -187,6 +187,7 @@ script:
         cd docs/;
         make build;
         make linkcheck;
+        make linkcheck2;
     else
         .tests/test_single.sh . "${S1}" "${V1}" "${S2}" "${V2}";
     fi
