@@ -49,7 +49,7 @@ help:
 
 
 linkcheck2:
-	./linkcheck.sh -r 10 -t 10 _includes/
+	./linkcheck.sh -r 10 -t 10 -e rst _includes/
 
 build:
 	sphinx-build -a -E -n -j auto -q -W . _build/html

@@ -20,7 +20,7 @@ SEARCH_PATH="."
 ###
 ### Comma separated list of file extensions to scan for urls
 ###
-EXTENSIONS="rst"
+EXTENSIONS=""
 
 
 ###
@@ -137,18 +137,27 @@ gather_urls() {
 	local reg_exclude="${3}"
 
 	local url_regex="http(s)?:\/\/[-=?:,._/#0-9a-zA-Z]+"
+	local find_ext=
 	local find_cmd=
 
-	find_cmd="find ${path} \( -iname \*.${extensions//,/ -o -iname \\*.} \) -exec grep -Eo '${url_regex}' {} \;"
+	if [ -n "${extensions}" ]; then
+		find_ext="\( -iname \*.${extensions//,/ -o -iname \\*.} \)"
+	fi
+
+	find_cmd="find ${path} ${find_ext} -type f -exec grep --binary-files=without-match -Eo '${url_regex}' '{}' \;"
+	>&2 echo "\$ ${find_cmd}"
 
 	# Loop through uniqued URLs
-	for url in $(eval "${find_cmd}" | sort -u); do
-		# Remove any trailing: [,.]
-		url="$( echo "${url}" | sed 's/[,.]$//g')"
+	for url in $(eval "${find_cmd}" 2>/dev/null | sort -u); do
+		# Ignore any 'Binary file...' results
+		if echo "${url}" | grep -Eq '^htt'; then
+			# Remove any trailing: [,.]
+			url="$( echo "${url}" | sed 's/[,.]$//g')"
 
-		# Ignore URLs excluded by regex
-		if ! echo "${url}" | grep -qE "${reg_exclude}"; then
-			echo "${url}"
+			# Ignore URLs excluded by regex
+			if ! echo "${url}" | grep -qE "${reg_exclude}"; then
+				echo "${url}"
+			fi
 		fi
 	done
 }
