@@ -1,9 +1,12 @@
-**********************
-devilbox documentation
-**********************
 .. :hidden:
 
-.. image:: img/banner.png
+.. include:: /_includes/all.rst
+
+**********************
+Devilbox documentation
+**********************
+
+|img_banner|
 
 The Devilbox is a modern dockerized LAMP and MEAN stack for local development on Linux, MacOS
 and Windows.
@@ -19,89 +22,100 @@ host is ready to be served with your custom domain.
 
 .. important::
    :ref:`read_first`
-     Ensure you have read this document to understand how this documentation works.
+    Ensure you have read this document to understand how this documentation works.
 
 
 .. toctree::
    :maxdepth: 2
-   :caption: About
 
-   about/read-first
-   about/features
+   read-first
+   features
+   devilbox-purpose
+
 
 .. toctree::
+   :caption: Getting started
    :maxdepth: 2
    :numbered:
-   :caption: Getting started
 
+   getting-started/prerequisites
    getting-started/install-the-devilbox
-   getting-started/update-the-devilbox
    getting-started/start-the-devilbox
+   getting-started/devilbox-intranet
    getting-started/directory-overview
    getting-started/create-your-first-project
-   getting-started/read-log-files
-   getting-started/email-catch-all
    getting-started/enter-the-php-container
-   getting-started/the-intranet
-   getting-started/best-practice
+   getting-started/change-container-versions
+
+
+.. toctree::
+   :caption: Intermediate
+   :maxdepth: 2
+   :numbered:
+
+   intermediate/setup-auto-dns
+   intermediate/setup-valid-https
+   intermediate/configure-php-xdebug
+   intermediate/enable-disable-php-modules
+   intermediate/read-log-files
+   intermediate/email-catch-all
+   intermediate/add-custom-environment-variables
+   intermediate/work-inside-the-php-container
+   intermediate/source-code-analysis
+   intermediate/best-practice
+
+
+.. toctree::
+   :caption: Advanced
+   :maxdepth: 2
+   :numbered:
+
+   advanced/customize-php-globally
+   advanced/customize-webserver-globally
+   advanced/connect-to-host-os
+   advanced/connect-to-other-docker-container
+   advanced/connect-to-external-hosts
+   advanced/add-custom-cname-records
+   advanced/add-your-own-docker-image
+   advanced/overwrite-existing-docker-image
+
+
+.. toctree::
+   :caption: vhost-gen
+   :maxdepth: 2
+   :numbered:
+
+   vhost-gen/customize-specific-virtual-host
+   vhost-gen/example-add-subdomains
+..
+   vhost-gen/customize-all-virtual-hosts-globally
+
+
+.. toctree::
+   :caption: Corporate Usage
+   :maxdepth: 2
+   :numbered:
+
+   corporate-usage/shared-devilbox-server-in-lan
+   corporate-usage/use-external-databases
+..
+   corporate-usage/deploy-devilbox-via-ansible
+   corporate-usage/access-colleagues-devilbox
+   corporate-usage/access-devilbox-from-android
+   corporate-usage/access-devilbox-from-iphone
 
 
 .. toctree::
    :caption: Maintenance
    :maxdepth: 2
 
+   maintenance/checkout-different-devilbox-release
+   maintenance/remove-stopped-container
+   maintenance/update-the-devilbox
+   maintenance/remove-the-devilbox
    maintenance/backup-and-restore-mysql
    maintenance/backup-and-restore-pgsql
    maintenance/backup-and-restore-mongo
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Tutorials
-
-   tutorials/communicating-with-external-hosts
-   tutorials/add-your-own-docker-image
-   tutorials/overwrite-existing-docker-image
-   tutorials/adding-subdomains
-   tutorials/change-container-versions
-   tutorials/work-inside-the-container
-   tutorials/enable-xdebug
-   tutorials/custom-environment-variables
-   tutorials/static-code-analysis
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Examples
-
-   examples/setup-cakephp
-   examples/setup-codeigniter
-   examples/setup-drupal
-   examples/setup-joomla
-   examples/setup-laravel
-   examples/setup-phalcon
-   examples/setup-photon-cms
-   examples/setup-symfony
-   examples/setup-wordpress
-   examples/setup-yii
-   examples/setup-zend
-   examples/setup-other-frameworks
-
-
-.. toctree::
-   :caption: Project configuration
-   :maxdepth: 2
-
-   configuration-project/dns-records
-   configuration-project/custom-vhost
-
-
-.. toctree::
-   :caption: Global configuration
-   :maxdepth: 2
-
-   configuration-global/https-ssl
-   configuration-global/auto-dns
 
 
 .. toctree::
@@ -120,27 +134,40 @@ host is ready to be served with your custom domain.
 
 
 .. toctree::
-   :caption: Readings
    :maxdepth: 2
+   :caption: Examples
 
-   installation/docker-installation
-   installation/docker-toolbox
-   readings/available-container
-   readings/available-tools
-   readings/remove-stopped-container
-   readings/syncronize-container-permissions
+   examples/setup-cakephp
+   examples/setup-codeigniter
+   examples/setup-drupal
+   examples/setup-joomla
+   examples/setup-laravel
+   examples/setup-phalcon
+   examples/setup-photon-cms
+   examples/setup-shopware
+   examples/setup-symfony
+   examples/setup-typo3
+   examples/setup-wordpress
+   examples/setup-yii
+   examples/setup-zend
+   examples/setup-other-frameworks
 
 
 .. toctree::
-   :caption: Advanced
+   :caption: Readings
    :maxdepth: 2
+
+   readings/syncronize-container-permissions
+   readings/available-container
+   readings/available-tools
 
 
 .. toctree::
    :caption: Support
-   :maxdepth: 2
+   :maxdepth: 1
 
-   support/faq
-   support/troubleshooting
-   support/blogs-videos-and-use-cases
    support/artwork
+   support/blogs-videos-and-use-cases
+   support/troubleshooting
+   support/faq
+   support/howto
