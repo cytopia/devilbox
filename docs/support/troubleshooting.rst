@@ -40,6 +40,43 @@ updates to Docker itself. If those exist, try to revert them and see if that was
 I heard many bug stories from fellow Windows users so far.
 A good contact point for that is the Docker forum itself: https://forums.docker.com/c/docker-for-windows
 
+A few general things you should always do before attempting to open up issues are:
+
+**1. Used default settings from env-example**
+
+   Try using the exact settings from ``env-example`` as variables might have been updated in git.
+
+   .. code-block:: bash
+
+      # Ensure everything is stopped
+      host> cp env-example .env
+
+**2. Clean, updated and minimal start**
+
+   .. code-block:: bash
+
+      # Ensure everything is stopped
+      host> docker-compose stop
+      host> docker-compose kill
+      host> docker-compose rm -f
+
+      # Ensure everything is updated
+      host> docker-compose pull
+
+      # Start again
+      host> docker-compose up php httpd bind
+
+**3. Reset Docker credentials:**
+
+   As it might sound strange, this fix might indeed solve a lot of problems on Windows.
+   Go to your Docker settings and reset your credentials.
+
+**4. Shared volumes:**
+
+   Ensure all your Devilbox data (Devilbox directory and project directory) are within the volumes
+   that are shared by Docker. If not add those in the Docker settings.
+
+
 Address already in use
 ----------------------
 
