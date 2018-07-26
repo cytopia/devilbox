@@ -53,7 +53,7 @@ Configuration
 **1. Install vscode-php-debug**
 
 
-   .. seealso:: `vscode-php-debug <https://github.com/felixfbecker/vscode-php-debug>`_
+   .. seealso:: |ext_lnk_xdebug_ide_vscode_php_debug|
 
 **2. Configure launch.json**
 

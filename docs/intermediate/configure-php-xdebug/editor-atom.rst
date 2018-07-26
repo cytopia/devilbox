@@ -52,7 +52,7 @@ Configuration
 
 **1. Install php-debug for Atom**
 
-   .. seealso:: `php-debug <https://atom.io/packages/php-debug>`_
+   .. seealso:: |ext_lnk_xdebug_ide_atom_php_debug|
 
 **2. Configure path mapping in config.cson or ui**
 

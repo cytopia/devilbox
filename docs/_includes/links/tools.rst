@@ -11,7 +11,7 @@
 
 .. |ext_lnk_tool_linuxbrew| raw:: html
 
-   <a target="_blank" href="http://linuxbrew.sh">
+   <a target="_blank" href="https://linuxbrew.sh">
      Linux brew <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
@@ -87,6 +87,24 @@
      MD linter <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_tool_mongodump| raw:: html
+
+   <a target="_blank" href="https://docs.mongodb.com/manual/reference/program/mongodump/">
+     mongodump <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_tool_mongorestore| raw:: html
+
+   <a target="_blank" href="https://docs.mongodb.com/manual/reference/program/mongorestore/">
+     mongorestore <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_tool_mysqldump| raw:: html
+
+   <a target="_blank" href="https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html">
+     mysqldump <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_tool_mysqldump_secure| raw:: html
 
    <a target="_blank" href="https://mysqldump-secure.org">
@@ -123,6 +141,18 @@
      PHP Code Beautifier and Fixer <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_tool_pg_dump| raw:: html
+
+   <a target="_blank" href="https://www.postgresql.org/docs/current/static/backup-dump.html">
+     pg_dump <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_tool_pgsql_restore| raw:: html
+
+   <a target="_blank" href="https://www.postgresql.org/docs/current/static/backup-dump.html#BACKUP-DUMP-RESTORE">
+     pgsql <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_tool_photon| raw:: html
 
    <a target="_blank" href="https://photoncms.com/resources/installing">
@@ -131,7 +161,7 @@
 
 .. |ext_lnk_tool_sass| raw:: html
 
-   <a target="_blank" href="http://sass-lang.com">
+   <a target="_blank" href="https://sass-lang.com">
      Sass <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 

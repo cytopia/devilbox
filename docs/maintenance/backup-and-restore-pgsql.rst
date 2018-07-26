@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _backup_and_restore_pgsql:
 
 *****************************
@@ -24,9 +26,8 @@ Backup
 pg_dump
 -------
 
-`pg_dump <https://www.postgresql.org/docs/current/static/backup-dump.html>`_ is bundled with
-each PHP container and reay to use. To backup a database named ``my_db_name`` follow the below
-listed example:
+|ext_lnk_tool_pg_dump| is bundled with each PHP container and reay to use.
+To backup a database named ``my_db_name`` follow the below listed example:
 
 .. code-block:: bash
 
@@ -39,17 +40,11 @@ listed example:
    # Run pg_dump
    devilbox@php-7.1.6 in /shared/httpd $ pg_dump -h pgsql -U postgres -W my_db_name > /shared/backups/pgsql/my_db_name.sql
 
-To find out more about the configuration and options of pg_dump, visit its project page under:
-https://www.postgresql.org/docs/current/static/backup-dump.html.
-
-
 Adminer
 -------
 
-If you do not like to use the command line for backups, you can use
-`Adminer <https://www.adminer.org>`_. It comes bundled with the devilbox intranet.
-
-To find out more about the usage of Adminer, visit its project page under: https://www.adminer.org.
+If you do not like to use the command line for backups, you can use |ext_lnk_tool_adminer|.
+It comes bundled with the devilbox intranet.
 
 
 Restore
@@ -59,7 +54,7 @@ psql
 ----
 
 In order to restore or import PostgreSQL databases on the command line, you need to use
-`psql <https://www.postgresql.org/docs/current/static/backup-dump.html#BACKUP-DUMP-RESTORE>`_.
+|ext_lnk_tool_pgsql_restore|.
 Here are a few examples for different file types:
 
 ``*.sql`` file
@@ -108,6 +103,6 @@ Here are a few examples for different file types:
 Adminer
 -------
 
-`Adminer <https://www.adminer.org>`_ supports importing of plain (``*.sql``) or gzipped compressed
+|ext_lnk_tool_adminer| supports importing of plain (``*.sql``) or gzipped compressed
 (``*.sql.gz``) files out-of-the-box. Simply select the compressed or uncompressed file and press
 ``Execute`` in the import section of the web interface.

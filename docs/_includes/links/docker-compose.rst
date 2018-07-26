@@ -79,3 +79,10 @@
    <a target="_blank" href="https://docs.docker.com/compose/compose-file/#external_links">
      Docker Compose: extra_hosts <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
+
+.. |ext_lnk_docker_compose_extends| raw:: html
+
+   <a target="_blank" href="https://docs.docker.com/compose/extends/">
+     Docker Compose: Share Compose configurations between files and projects <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+

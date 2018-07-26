@@ -22,64 +22,27 @@ Supported host OS
 The Devilbox runs on all major operating systems which provide ``Docker`` and ``Docker Compose``.
 See the matrix below for supported versions:
 
-+----------------+---------------------+---------------------+-------------+
-| OS             | Version             | Type                | Recommended |
-+================+=====================+=====================+=============+
-| |img_logo_lin| | Any                 | |tbl_docker_lin|    | yes         |
-+----------------+---------------------+---------------------+-------------+
-|                |                     |                     |             |
-+----------------+---------------------+---------------------+-------------+
-| |img_logo_mac| | Any                 | |tbl_docker_mac|    | yes         |
-|                |                     +---------------------+-------------+
-|                |                     | |tbl_docker_tb_mac| |             |
-+----------------+---------------------+---------------------+-------------+
-|                |                     |                     |             |
-+----------------+---------------------+---------------------+-------------+
-| |img_logo_win| | Windows 7           | |tbl_docker_tb_win| |             |
-|                +---------------------+---------------------+-------------+
-|                | Windows 10          | |tbl_docker_win|    | yes         |
-|                |                     +---------------------+-------------+
-|                |                     | |tbl_docker_tb_win| |             |
-|                +---------------------+---------------------+-------------+
-|                | Windows Server 2016 | |tbl_docker_win_ee| | yes         |
-+----------------+---------------------+---------------------+-------------+
-
-.. |tbl_docker_lin| raw:: html
-
-  <a target="_blank" href="https://docs.docker.com/install/#server">
-    Docker <img src="/_static/img/icons/ext-link.svg" />
-  </a>
-
-.. |tbl_docker_mac| raw:: html
-
-  <a target="_blank" href="https://docs.docker.com/docker-for-mac/install/">
-    Docker for Mac <img src="/_static/img/icons/ext-link.svg" />
-  </a>
-
-.. |tbl_docker_tb_mac| raw:: html
-
-  <a target="_blank" href="https://docs.docker.com/toolbox/toolbox_install_mac/">
-    Docker Toolbox <img src="/_static/img/icons/ext-link.svg" />
-  </a>
-
-.. |tbl_docker_win| raw:: html
-
-  <a target="_blank" href="https://docs.docker.com/docker-for-windows/install/">
-    Docker for Windows <img src="/_static/img/icons/ext-link.svg" />
-  </a>
-
-.. |tbl_docker_tb_win| raw:: html
-
-  <a target="_blank" href="https://docs.docker.com/toolbox/toolbox_install_windows/">
-    Docker Toolbox <img src="/_static/img/icons/ext-link.svg" />
-  </a>
-
-.. |tbl_docker_win_ee| raw:: html
-
-  <a target="_blank" href="https://www.docker.com/docker-windows-server">
-    Docker EE <img src="/_static/img/icons/ext-link.svg" />
-  </a>
-
++----------------+---------------------+--------------------------------+-------------+
+| OS             | Version             | Type                           | Recommended |
++================+=====================+================================+=============+
+| |img_logo_lin| | Any                 | |ext_lnk_prereq_docker_lin|    | yes         |
++----------------+---------------------+--------------------------------+-------------+
+|                |                     |                                |             |
++----------------+---------------------+--------------------------------+-------------+
+| |img_logo_mac| | Any                 | |ext_lnk_prereq_docker_mac|    | yes         |
+|                |                     +--------------------------------+-------------+
+|                |                     | |ext_lnk_prereq_docker_mac_tb| |             |
++----------------+---------------------+--------------------------------+-------------+
+|                |                     |                                |             |
++----------------+---------------------+--------------------------------+-------------+
+| |img_logo_win| | Windows 7           | |ext_lnk_prereq_docker_win_tb| | yes         |
+|                +---------------------+--------------------------------+-------------+
+|                | Windows 10          | |ext_lnk_prereq_docker_win|    | yes         |
+|                |                     +--------------------------------+-------------+
+|                |                     | |ext_lnk_prereq_docker_win_tb| |             |
+|                +---------------------+--------------------------------+-------------+
+|                | Windows Server 2016 | |ext_lnk_prereq_docker_win_ee| | yes         |
++----------------+---------------------+--------------------------------+-------------+
 
 
 Required software

@@ -29,7 +29,7 @@ Consider the following ``xdebug.ini`` as an example:
    xdebug.idekey="PHPSTORM"
    xdebug.remote_log=/var/log/php/xdebug.log
 
-.. seealso:: https://xdebug.org/docs/all_settings
+.. seealso:: |ext_lnk_xdebug_settings|
 
 default_enable
 --------------
@@ -59,9 +59,9 @@ this setting unchanged.
 remote_autostart
 ----------------
 Normally you need to use a specific HTTP GET/POST variable to start remote debugging (see
-`Remote Debugging <https://xdebug.org/docs/remote#browser_session>`_). When this setting is set to
-``1``, Xdebug will always attempt to start a remote debugging session and try to connect to a client,
-even if the GET/POST/COOKIE variable was not present.
+|ext_lnk_xdebug_remote_debugging|). When this setting is set to ``1``, Xdebug will always attempt
+to start a remote debugging session and try to connect to a client, even if the GET/POST/COOKIE
+variable was not present.
 
 idekey
 ------

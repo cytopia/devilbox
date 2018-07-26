@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _setup_valid_https:
 
 *****************
@@ -30,8 +32,8 @@ Certificate Authority
 ---------------------
 
 When the Devilbox starts up for the first time, it will generate a
-`Certificate Authority <https://en.wikipedia.org/wiki/Certificate_authority>`_ and will store its
-public and private key in ``./ca/`` within the Devilbox git directory.
+|ext_lnk_ssl_certificate_authority| and will store its public and private key in ``./ca/`` within
+the Devilbox git directory.
 
 The keys are only generated if they don't exist and kept permanently if you don't delete them
 manually, i.e. they are not overwritten.
@@ -67,7 +69,7 @@ Import the CA into your browser
    Importing the CA into the browser is also recommended and required for the Devilbox
    intranet page to work properly.
    You may also import the CA into your Operating System's Keystore. Information on that
-   is available at `GFI Root Certificate guide <https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html>`_
+   is available at |ext_lnk_ssl_gfi_root_cert_guide|.
 
 Chrome / Chromium
 -----------------

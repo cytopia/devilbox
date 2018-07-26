@@ -54,7 +54,7 @@ Configuration
 
    Use Sublime's Package Control to search for and install ``Xdebug Client``.
 
-   .. seealso:: `Xdebug Client <https://github.com/martomo/SublimeTextXdebug>`_
+   .. seealso:: |ext_lnk_xdebug_ide_sublime_xdebug_client|
 
 **2. Configure Xdebug.sublime-settings**
 

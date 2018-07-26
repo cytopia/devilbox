@@ -22,6 +22,7 @@
    ============================================================
 
 .. include:: /_includes/links/apps.rst
+.. include:: /_includes/links/blogs.rst
 .. include:: /_includes/links/dns.rst
 .. include:: /_includes/links/documentation.rst
 .. include:: /_includes/links/docker.rst
@@ -29,6 +30,7 @@
 .. include:: /_includes/links/docker-images.rst
 .. include:: /_includes/links/examples.rst
 .. include:: /_includes/links/git.rst
+.. include:: /_includes/links/prerequistes.rst
 .. include:: /_includes/links/ssh.rst
 .. include:: /_includes/links/ssl.rst
 .. include:: /_includes/links/tools.rst
