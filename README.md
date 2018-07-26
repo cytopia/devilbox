@@ -2,7 +2,7 @@
     <h1 align="center">The Devilbox</h1>
 </p>
 
-![Devilbox](docs/img/devilbox-banner.png)
+![Devilbox](docs/img/banner.png)
 
 **[Usage](#usage)** |
 **[Community](#community)** |
@@ -13,7 +13,7 @@
 **[Logos](#logos)** |
 **[License](#license)**
 
-![Devilbox](docs/_static/img/devilbox-dash-full.png)
+![Devilbox](docs/_includes/figures/devilbox/devilbox-intranet-dash-all.png)
 
 [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox)
 [![Documentation Status](https://readthedocs.org/projects/devilbox/badge/?version=latest)](https://devilbox.readthedocs.io)
@@ -21,7 +21,7 @@
 [![type](https://img.shields.io/badge/type-Docker-orange.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-<img width="200" style="width:200px;" src="docs/_static/img/global-configuration/https-ssl-address-bar.png" />
+<img width="200" style="width:200px;" src="docs/_includes/figures/https/https-ssl-address-bar.png" />
 
 The devilbox is a modern and highly customisable **dockerized PHP stack** supporting full **LAMP** and **MEAN** and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an **unlimited number of projects** for which vhosts, **SSL certificates** and **DNS records** are created automatically. Email catch-all and popular development tools will be at your service as well.  Configuration is not necessary, as everything is pre-setup with mass virtual hosting.
 
@@ -99,7 +99,7 @@ The above will start all containers, you can however also just start the contain
 ```shell
 $ docker-compose up httpd php mysql redis
 ```
-![Devilbox](docs/_static/img/devilbox-dash-selective.png)
+![Devilbox](docs/img/devilbox-dash-selective.png)
 
 #### Run different versions
 
