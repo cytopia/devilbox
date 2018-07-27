@@ -3,6 +3,12 @@
    Command line tools
    ============================================================
 
+.. |ext_lnk_tool_ansible| raw:: html
+
+   <a target="_blank" href="https://www.ansible.com/">
+     Ansible <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_tool_awesome_ci| raw:: html
 
    <a target="_blank" href="https://github.com/cytopia/awesome-ci">
@@ -13,6 +19,12 @@
 
    <a target="_blank" href="https://linuxbrew.sh">
      Linux brew <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_tool_codecept| raw:: html
+
+   <a target="_blank" href="https://codeception.com/">
+     Codeception <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
 .. |ext_lnk_tool_composer| raw:: html
@@ -139,6 +151,12 @@
 
    <a target="_blank" href="https://github.com/squizlabs/PHP_CodeSniffer">
      PHP Code Beautifier and Fixer <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_tool_phpunit| raw:: html
+
+   <a target="_blank" href="https://phpunit.de/">
+     PHPUnit <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
 .. |ext_lnk_tool_pg_dump| raw:: html
