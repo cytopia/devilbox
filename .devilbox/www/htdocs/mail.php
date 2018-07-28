@@ -157,7 +157,7 @@ $messages = $MyMbox->get($sortOrderArr);
 						<tbody>
 							<?php foreach ($messages as $data): ?>
 								<?php
-									$message = $data['raw'];
+									$message = htmlentities($data['raw']);
 									$structure = $data['decoded'];
 								 ?>
 								<tr id="<?php echo $data['num'];?>" class="subject">
@@ -167,17 +167,17 @@ $messages = $MyMbox->get($sortOrderArr);
 										<small><?php echo date('Y-m-d', strtotime($structure->headers['date']));?></small>
 									</td>
 									<td><?php echo htmlentities($structure->headers['from']);?></td>
-									<td><?php echo $structure->headers['x-original-to'];?></td>
-									<td><?php echo $structure->headers['subject'];?></td>
+									<td><?php echo htmlentities($structure->headers['x-original-to']);?></td>
+									<td><?php echo htmlentities($structure->headers['subject']);?></td>
 								</tr>
 								<tr></tr>
 								<tr id="mail-<?php echo $data['num'];?>" style="display:none">
 									<td></td>
 									<td colspan="4">
 										<?php if (isset($structure->body)): ?>
-											<?php echo $structure->body ?>
+											<?php echo htmlentities($structure->body) ?>
 										<?php elseif(isset($structure->parts[1]->body)): ?>
-											<?php echo $structure->parts[1]->body ?>
+											<?php echo htmlentities($structure->parts[1]->body) ?>
 										<?php elseif(isset($structure->parts[0]->body)): ?>
 											<?php echo htmlentities($structure->parts[0]->body) ?>
 										<?php else: ?>
