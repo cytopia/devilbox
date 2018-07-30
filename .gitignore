@@ -82,6 +82,7 @@ docker-compose.override.yml
 # Ignore documentation sphinx build
 /docs/_build/
 /docs/make.bat
+/docs/linkcheck
 *.rst.todo
 
 # Keep folders

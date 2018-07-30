@@ -132,7 +132,7 @@
 .. |ext_lnk_tool_npm| raw:: html
 
    <a target="_blank" href="https://www.npmjs.com">
-     Node <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+     NPM <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
 .. |ext_lnk_tool_phalcon| raw:: html
@@ -229,6 +229,12 @@
 
    <a target="_blank" href="https://yarnpkg.com/en">
      Yarn <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_tool_github_issues| raw:: html
+
+   <a target="_blank" href="https://github.com/cytopia/devilbox/issues">
+     Github <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
 

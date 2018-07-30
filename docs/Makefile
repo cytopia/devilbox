@@ -49,7 +49,13 @@ help:
 
 
 linkcheck2:
-	./linkcheck.sh -r 10 -t 10 -e rst _includes/
+ifeq ($(wildcard file1),)
+	bash -c 'curl -Ss -o linkcheck https://raw.githubusercontent.com/cytopia/linkcheck/master/linkcheck 2>/dev/null'
+else
+	bash -c 'curl -Ss -o linkcheck -z linkcheck https://raw.githubusercontent.com/cytopia/linkcheck/master/linkcheck 2>/dev/null'
+endif
+	chmod +x linkcheck
+	./linkcheck -r 30 -t 30 -e rst _includes/
 
 build:
 	sphinx-build -a -E -n -j auto -q -W . _build/html

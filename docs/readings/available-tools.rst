@@ -16,9 +16,9 @@ The PHP container is your workhorse and these are your tools:
 +----------------------+---------------------------------------+
 | Binary               | Tool                                  |
 +======================+=======================================+
-| various binaries     | |ext_lnk_tool_awesome_ci|             |
-+----------------------+---------------------------------------+
 | ``ansible``          | |ext_lnk_tool_ansible|                |
++----------------------+---------------------------------------+
+| various binaries     | |ext_lnk_tool_awesome_ci|             |
 +----------------------+---------------------------------------+
 | ``brew``             | |ext_lnk_tool_linuxbrew|              |
 +----------------------+---------------------------------------+
@@ -92,9 +92,8 @@ The PHP container is your workhorse and these are your tools:
 +----------------------+---------------------------------------+
 
 .. note::
-   If you are in need of other tools, open up an issue at
-   `Github <https://github.com/cytopia/devilbox/issues>`_ and ask for it,
-   this can usually be implemented very quickly.
+   If you are in need of other tools, open up an issue at |ext_lnk_tool_github_issues|
+   and ask for it, this can usually be implemented very quickly.
 
 .. seealso::
    If you ever feel those tools are out-dated, simply update your Docker images.

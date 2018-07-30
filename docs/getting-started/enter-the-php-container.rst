@@ -1,3 +1,5 @@
+.. _enter_the_php_container:
+
 ***********************
 Enter the PHP container
 ***********************
