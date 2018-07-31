@@ -39,14 +39,15 @@ The following configuration will be used:
 Walk through
 ============
 
-It will be ready in six simple steps:
+It will be ready in seven simple steps:
 
 1. Enter the PHP container
 2. Create a new VirtualHost directory
 3. Download Wordpress via ``git``
 4. Symlink webroot directory
-5. Setup DNS record
-6. Visit http://my-wp.loc in your browser
+5. Add MySQL database
+6. Setup DNS record
+7. Visit http://my-wp.loc in your browser
 
 
 1. Enter the PHP container
@@ -133,7 +134,15 @@ As you can see from the above directory structure, ``htdocs`` is available in it
 path and points to the frameworks entrypoint.
 
 
-5. DNS record
+5. Add MySQL Database
+---------------------
+
+.. code-block:: bash
+
+   devilbox@php-7.0.20 in /shared/httpd/my-cake $ mysql -u root -h 127.0.0.1 -p -e 'CREATE DATABASE my_wp;'
+
+
+6. DNS record
 -------------
 
 If you **have** Auto DNS configured already, you can skip this section, because DNS entries will
@@ -154,9 +163,39 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
    * :ref:`setup_auto_dns`
 
 
-6. Open your browser
+7. Open your browser
 --------------------
 
-Open your browser at http://my-wp.loc or https://my-wp.loc
+Open your browser at http://my-wp.loc or https://my-wp.loc and follow the installation steps.
 
 .. seealso:: :ref:`setup_valid_https`
+
+**(1/7) Choose your desired Wordpress language**
+
+.. include:: /_includes/figures/examples/wordpress/01-choose-language.rst
+
+**(2/7) Read pre-installation information**
+
+.. include:: /_includes/figures/examples/wordpress/02-overview.rst
+
+**(3/7) Setup database connection**
+
+.. important:: Choose ``127.0.0.1`` as the database host
+
+.. include:: /_includes/figures/examples/wordpress/03-setup-database.rst
+
+**(4/7) Database setup post screen**
+
+.. include:: /_includes/figures/examples/wordpress/04-finished-database.rst
+
+**(5/7) Start Wordpress installation**
+
+.. include:: /_includes/figures/examples/wordpress/05-installation.rst
+
+**(6/7) Installation success view**
+
+.. include:: /_includes/figures/examples/wordpress/06-finished-installation.rst
+
+**(7/7) Login to Admin panel**
+
+.. include:: /_includes/figures/examples/wordpress/07-login.rst
