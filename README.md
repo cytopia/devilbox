@@ -338,40 +338,93 @@ The following tools will assist you on creating new projects easily as well as h
     <td>A set of tools for static code analysis:<br/><br/><code>file-cr</code>, <code>file-crlf</code>, <code>file-empty</code>, <code>file-nullbyte-char</code>, <code>file-trailing-newline</code>, <code>file-trailing-single-newline</code>, <code>file-trailing-space</code>, <code>file-utf8</code>, <code>file-utf8-bom</code>, <code>git-conflicts</code>, <code>git-ignored</code>, <code>inline-css</code>, <code>inline-js</code>, <code>regex-grep</code>, <code>regex-perl</code>, <code>syntax-bash</code>, <code>syntax-css</code>, <code>syntax-js</code>, <code>syntax-json</code>, <code>syntax-markdown</code>, <code>syntax-perl</code>, <code>syntax-php</code>, <code>syntax-python</code>, <code>syntax-ruby</code>, <code>syntax-scss</code>, <code>syntax-sh</code></td>
   </tr>
   <tr>
+    <td>:wrench: <a href="https://github.com/nvie/gitflow">git flow</a></td>
+    <td><code>git-flow</code> is a Git extensions to provide high-level repository operations for Vincent Driessen's branching model.</td>
+  </tr>
+  <tr>
+    <td>:wrench: <a href="https://github.com/zaach/jsonlint">json lint</a></td>
+    <td><code>jsonlint</code> is a command line linter for JSON files.</td>
+  </tr>
+  <tr>
     <td>:wrench: <a href="https://github.com/laravel/installer">laravel installer</a></td>
     <td><code>laravel</code> is a command line tool that lets you easily install the Laravel framework.</td>
+  </tr>
+  <tr>
+    <td>:wrench: <a href="https://linuxbrew.sh/">linuxbrew</a></td>
+    <td><code>brew</code> is a MacOS Homenbrew clone for Linux.</td>
+  </tr>
+  <tr>
+    <td>:wrench: <a href="https://github.com/DavidAnson/markdownlint">markdownlint</a></td>
+    <td><code>markdownlint</code> is a markdown linter.</td>
+  </tr>
+  <tr>
+    <td>:wrench: <a href="https://github.com/markdownlint/markdownlint">mdl</a></td>
+    <td><code>mdl</code> is a markdown linter.</td>
   </tr>
   <tr>
     <td>:wrench: <a href="https://github.com/phalcon/phalcon-devtools">phalcon devtools</a></td>
     <td><code>phalcon</code> is a command line tool that lets you easily install the PhalconPHP framework.</td>
   </tr>
   <tr>
+    <td>:wrench: <a href="https://github.com/photoncms/installer">photon installer</a></td>
+    <td><code>photon</code> is a command line tool that lets you easily install the PhotonCMS.</td>
+  </tr>
+  <tr>
+    <td>:wrench: <a href="https://github.com/squizlabs/PHP_CodeSniffer">php code sniffer</a></td>
+    <td><code>phpcs</code> is a command line tool that tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.</td>
+  </tr>
+  <tr>
+    <td>:wrench: <a href="https://github.com/squizlabs/PHP_CodeSniffer">php code beautifier</a></td>
+    <td><code>phpcbf</code> is a command line tool that automatically correct coding standard violations.</td>
+  </tr>
+  <tr>
+    <td>:wrench: <a href="https://github.com/brigade/scss-lint/">scss-lint</a></td>
+    <td><code>scss-lint</code> is a css/scss linter.</td>
+  </tr>
+  <tr>
     <td>:wrench: <a href="https://github.com/symfony/symfony-installer">symfony installer</a></td>
     <td><code>symfony</code> is a command line tool that lets you easily install the Symfony framework.</td>
   </tr>
   <tr>
+    <td>:wrench: <a href="https://github.com/jonas/tig">tig</a></td>
+    <td><code>tig</code> is a text-mode interface for git.</td>
+  </tr>
+  <tr>
     <td>:wrench: <a href="https://wp-cli.org">wp-cli</a></td>
     <td><code>wp</code> is a command line tool that lets you easily install Wordpress.</td>
+  </tr>
+  <tr>
+    <td>:wrench: <a href="https://github.com/adrienverge/yamllint">yamllint</a></td>
+    <td><code>yamllint</code> is a linter for yaml files.</td>
   </tr>
 </tbody>
 </table>
 
 Well-known and popular tools will be at your service as well:
 
+<a target="_blank" title="Ansible" href="https://www.ansible.com/"><img width="64" style="width:64px" src="docs/img/logo_tools/ansible.png" alt="Devilbox"/></a>
+<a target="_blank" title="CodeCeption" href="https://codeception.com/"><img width="64" style="width:64px" src="docs/img/logo_tools/codeception.png" alt="Devilbox"/></a>
 <a target="_blank" title="Composer" href="https://getcomposer.org"><img width="64" style="width:64px" src="docs/img/logo_tools/composer.png" alt="Devilbox"/></a>
 <a target="_blank" title="Drupal Console" href="https://drupalconsole.com"><img width="64" style="battery" src="docs/img/logo_tools/drupal-console.png" alt="Devilbox"/></a>
 <a target="_blank" title="Drush" href="https://www.drupal.org/project/drush"><img width="64" style="width:64px;" src="docs/img/logo_tools/drush.png" alt="Devilbox"/></a>
+<a target="_blank" title="ESLint" href="https://eslint.org/"><img width="64" style="width:64px;" src="docs/img/logo_tools/eslint.png" alt="Devilbox"/></a>
 <a target="_blank" title="Git" href="https://git-scm.com"><img width="64" style="width:64px;" src="docs/img/logo_tools/git.png" alt="Devilbox"/></a>
+<a target="_blank" title="Gulp" href="https://gulpjs.com/"><img width="64" style="width:64px;" src="docs/img/logo_tools/gulp.png" alt="Devilbox"/></a>
+<a target="_blank" title="Grunt" href="https://gruntjs.com/"><img width="64" style="width:64px;" src="docs/img/logo_tools/grunt.png" alt="Devilbox"/></a>
 <a target="_blank" title="mysqldump-secure" href="https://mysqldump-secure.org"><img width="64" style="width:64px;" src="docs/img/logo_tools/mysqldump-secure.png" alt="Devilbox"/></a>
 <a target="_blank" title="NodeJS" href="https://nodejs.org"><img width="64" style="width:64px;" src="docs/img/logo_tools/nodejs.png" alt="Devilbox"/></a>
 <a target="_blank" title="NPM" href="https://www.npmjs.com"><img width="64" style="width:64px;" src="docs/img/logo_tools/npm.png" alt="Devilbox"/></a>
+<a target="_blank" title="PHPUnit" href="https://phpunit.de/"><img width="64" style="width:64px;" src="docs/img/logo_tools/phpunit.png" alt="Devilbox"/></a>
+<a target="_blank" title="Sass" href="https://sass-lang.com/"><img width="64" style="width:64px;" src="docs/img/logo_tools/sass.png" alt="Devilbox"/></a>
+<a target="_blank" title="Webpack" href="https://webpack.js.org/"><img width="64" style="width:64px;" src="docs/img/logo_tools/webpack.png" alt="Devilbox"/></a>
+<a target="_blank" title="Yarn" href="https://yarnpkg.com/en/"><img width="64" style="width:64px;" src="docs/img/logo_tools/yarn.png" alt="Devilbox"/></a>
 
 
 #### Available PHP Modules
 
 The devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks.
 
-> *amqp, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dba, dom, enchant, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, interbase, intl, json, ldap, libxml, mbstring, mcrypt, memcache, memcached, mongodb, msgpack, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_dblib, PDO_Firebird, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, snmp, soap, sockets, SPL, sqlite3, standard, swoole, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib*
+> *amqp, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dba, dom, enchant, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, interbase, intl, json, ldap, libxml, mbstring, mcrypt, memcache, memcached, mongodb, msgpack, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_dblib, PDO_Firebird, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, snmp, soap, sockets, sodium, SPL, sqlite3, standard, swoole, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib*
 
 #### Custom PHP Modules
 
@@ -382,11 +435,16 @@ You can also copy any custom modules into `mod/(php-fpm)-<VERSION>` and add a cu
 As far as tested there are no limitations and you can use any Framework or CMS just as you would on your live environment. Below are a few examples of extensively tested Frameworks and CMS:
 
 [![CakePHP](docs/img/logo_fw/cake.png)](https://cakephp.org)
+[![CakePHP](docs/img/logo_fw/codeigniter.png)](https://www.codeigniter.com/)
 [![Drupal](docs/img/logo_fw/drupal.png)](https://www.drupal.org)
 [![Joomla](docs/img/logo_fw/joomla.png)](https://www.joomla.org)
 [![Laravel](docs/img/logo_fw/laravel.png)](https://laravel.com)
 [![Phalcon](docs/img/logo_fw/phalcon.png)](https://phalconphp.com)
+[![PhotonCMS](docs/img/logo_fw/photoncms.png)](https://www.photonics.com/)
+[![PrestaShop](docs/img/logo_fw/prestashop.png)](https://www.prestashop.com/en)
+[![Shopware](docs/img/logo_fw/shopware.png)](https://en.shopware.com/)
 [![Symfony](docs/img/logo_fw/symfony.png)](https://symfony.com)
+[![Typo3](docs/img/logo_fw/typo3.png)](https://typo3.org/)
 [![Wordpress](docs/img/logo_fw/wordpress.png)](https://wordpress.org)
 [![Yii](docs/img/logo_fw/yii.png)](http://www.yiiframework.com)
 [![Zend](docs/img/logo_fw/zend.png)](https://framework.zend.com)

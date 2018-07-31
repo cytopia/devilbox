@@ -189,6 +189,12 @@ Does it work with Photon CMS?
 Yes, see :ref:`example_setup_photon_cms`
 
 
+Does it work with PrestaShop?
+-----------------------------
+
+Yes, see :ref:`example_setup_presta_shop`
+
+
 Does it work with Shopware?
 ---------------------------
 
