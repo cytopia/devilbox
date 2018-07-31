@@ -16,11 +16,11 @@ a customized virtual host config via ``vhost-gen``.
 .. contents:: :local:
 
 
-Single sub domain for one project
-=================================
+Simple sub domains for one project
+==================================
 
-When you just want to serve your project under a sub domain, you simply name your project directory
-by the name of it. See the following examples how you build up your project URL.
+When you just want to serve your project under different sub domains, you simply name your project
+directory by the name of it. See the following examples how you build up your project URL.
 
 +----------------+----------------+-------------------------------+
 | Project dir    | ``TLD_SUFFIX`` | Project URL                   |
@@ -47,11 +47,67 @@ create. Generically, it looks like this:
 | <dir-name>     | ``<tld>``      | ``http://<dir-name>.<tld>``   |
 +----------------+----------------+-------------------------------+
 
+.. important::
+   The project directories must be real directories and not symlinks!
+   See example below for how to set it up.
 
-Multiple sub domains for one project
-====================================
 
-When you want to have multiple domains and/or sub domains for one project (such as in the
+Example
+-------
+
+Prerequisite
+^^^^^^^^^^^^
+
+Let's assume the following settings.
+
++-------------------------------+--------------------------------------+
+| Variable                      | Value                                |
++===============================+======================================+
+| :ref:`env_tld_suffix`         | ``loc``                              |
++-------------------------------+--------------------------------------+
+| :ref:`env_httpd_docroot_dir`  | ``htdocs``                           |
++-------------------------------+--------------------------------------+
+| Project name / directory      | ``my-test``                          |
++-------------------------------+--------------------------------------+
+| Sub domain 1 / directory      | ``api.my-test``                      |
++-------------------------------+--------------------------------------+
+| Sub domain 2 / directory      | ``www.my-test``                      |
++-------------------------------+--------------------------------------+
+
+* Project which holds the data is ``my-test``
+* Web root of ``my-test`` is in ``my-test/FRAMEWORK/public``
+* Same project should be available under ``api.my-test`` and ``www.my-test``
+
+Directory structure
+^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   host> tree -L 2
+   .
+   ├── my-test
+   │   ├── FRAMEWORK
+   │   └── htdocs -> FRAMEWORK/public
+   ├── api.my-test
+   │   └── htdocs -> ../my-test/FRAMEWORK/public
+   └── www.my-test
+       └── htdocs -> ../my-test/FRAMEWORK/public
+
+* ``my-test``, ``api.my-test`` and ``www.my-test`` must be **normal directories** (not symlinks).
+* The *framework data* resided in ``my-test``.
+* Each projects ``htdocs`` directory is a symlink pointing to the web root of the *framework* in ``my-test``
+
+With this structure you will have three domains available pointing to the same project:
+
+* http://my-test.loc
+* http://api.my-test.loc
+* http://www.my-test.loc
+
+
+Complex sub domains for one project
+===================================
+
+When you want to have more complex sub domains for one project (such as in the
 case of Wordpress multi-sites), you will need to customize your virtual host config for this
 project and make the web server allow to serve your files by different server names.
 
