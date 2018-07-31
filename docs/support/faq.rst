@@ -177,6 +177,12 @@ Does it work with Laravel?
 Yes, see :ref:`example_setup_laravel`
 
 
+Does it work with Magento?
+--------------------------
+
+Yes, see :ref:`example_setup_magento`
+
+
 Does it work with Phalcon?
 --------------------------
 

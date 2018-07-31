@@ -44,6 +44,8 @@ The PHP container is your workhorse and these are your tools:
 +----------------------+---------------------------------------+
 | ``laravel``          | |ext_lnk_tool_laravel|                |
 +----------------------+---------------------------------------+
+| ``linkcheck``        | |ext_lnk_tool_linkcheck|              |
++----------------------+---------------------------------------+
 | ``mdl``              | |ext_lnk_tool_mdl|                    |
 +----------------------+---------------------------------------+
 | ``mdlint``           | |ext_lnk_tool_mdlint|                 |
