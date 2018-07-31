@@ -199,6 +199,7 @@ their articles:
    * :ref:`example_setup_drupal`
    * :ref:`example_setup_joomla`
    * :ref:`example_setup_laravel`
+   * :ref:`example_setup_magento`
    * :ref:`example_setup_phalcon`
    * :ref:`example_setup_photon_cms`
    * :ref:`example_setup_presta_shop`

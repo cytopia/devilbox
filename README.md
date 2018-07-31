@@ -350,6 +350,10 @@ The following tools will assist you on creating new projects easily as well as h
     <td><code>laravel</code> is a command line tool that lets you easily install the Laravel framework.</td>
   </tr>
   <tr>
+    <td>:wrench: <a href="https://github.com/cytopia/linkcheck">linkcheck</a></td>
+    <td><code>linkcheck</code> is a command line tool that searches for URLs in files (optionally limited by extension) and validates their HTTP status code.</td>
+  </tr>
+  <tr>
     <td>:wrench: <a href="https://linuxbrew.sh/">linuxbrew</a></td>
     <td><code>brew</code> is a MacOS Homenbrew clone for Linux.</td>
   </tr>
@@ -439,6 +443,7 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 [![Drupal](docs/img/logo_fw/drupal.png)](https://www.drupal.org)
 [![Joomla](docs/img/logo_fw/joomla.png)](https://www.joomla.org)
 [![Laravel](docs/img/logo_fw/laravel.png)](https://laravel.com)
+[![Magento](docs/img/logo_fw/magento.png)](https://magento.com)
 [![Phalcon](docs/img/logo_fw/phalcon.png)](https://phalconphp.com)
 [![PhotonCMS](docs/img/logo_fw/photoncms.png)](https://www.photonics.com/)
 [![PrestaShop](docs/img/logo_fw/prestashop.png)](https://www.prestashop.com/en)

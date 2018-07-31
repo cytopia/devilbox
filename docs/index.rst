@@ -142,6 +142,7 @@ host is ready to be served with your custom domain.
    examples/setup-drupal
    examples/setup-joomla
    examples/setup-laravel
+   examples/setup-magento
    examples/setup-phalcon
    examples/setup-photon-cms
    examples/setup-presta-shop

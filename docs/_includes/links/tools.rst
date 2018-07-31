@@ -87,6 +87,12 @@
      Laravel installer <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_tool_linkcheck| raw:: html
+
+   <a target="_blank" href="https://github.com/cytopia/linkcheck">
+     linkcheck <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_tool_mdl| raw:: html
 
    <a target="_blank" href="https://github.com/markdownlint/markdownlint">
