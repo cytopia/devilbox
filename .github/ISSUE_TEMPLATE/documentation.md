@@ -5,20 +5,24 @@ about: Anything related to the Devilbox documentation
 ---
 
 <!---
-1. Verify first that your issue/request is not already reported on GitHub.
+1. Verify first that your question is not already reported on GitHub.
 
-2. Fill out all required information below, otherwise it might take more time to properly handle this bug
+2. Verify that your question is not covered in the docs: https://devilbox.readthedocs.io
+
+3. PLEASE FILL OUT ALL REQUIRED INFORMATION BELOW! Otherwise it might take more time to properly handle this question.
 -->
+
 
 #### ISSUE TYPE
 <!-- DO NOT CHANGE THIS -->
  - Documentation
+<!-- DO NOT CHANGE THIS -->
 
 
 #### SUMMARY
-<!-- 
-Find the Documentation here: https://readthedocs.org/projects/devilbox/
+<!-- Add your information here -->
 
-Explain what is missing or wrong in the documentation and how it should be
--->
+
+#### Goal
+<!-- Explain what you actually want to accomplish -->
 
