@@ -53,8 +53,8 @@ separetely.
 
 Virtual host domains
 ^^^^^^^^^^^^^^^^^^^^
-Each of your virtual host will have its own domain. TLD can be freely chosen, such as ``*.loc``,
-``*.local``, ``*.com``, ``*.org`` or whatever you require.
+Each of your virtual host will have its own domain. TLD can be freely chosen, such as ``*.loc`` or
+``*.local``. Be aware that some TLD's can cause problems. Read more here: :ref:`_env_tld_suffix`.
 
 
 Service and version choice
