@@ -37,9 +37,22 @@ See the directory structure for PHP configuration directories inside ``./cfg/`` 
 Customization is achieved by placing a file into ``cfg/php-ini-X.X/`` (where ``X.X`` stands for
 your PHP version).  The file must end by ``.ini`` in order to be sourced by the PHP-FPM server.
 
-Each of the PHP ini configuration directories already contain an example file:
-``devilbox-custom.ini-example``, that can simply be renamed to ``devilbox-custom.ini``.
-This file holds some example values that can be adjusted or commented out.
+Each of the PHP ini configuration directories already contains two example files:
+``devilbox-php.ini-default`` and ``devilbox-php.ini-xdebug``.
+
+**devilbox-php.ini-default**
+
+This file holds the exact settings that are currently in place by each PHP-FPM container.
+Copy it (do not simply rename it) to a different file ending by ``.ini`` and start adjusting it.
+
+**devilbox-php.ini-xdebug**
+
+This file holds some sane example configuration to get you started with Xdebug.
+Copy it (do not simply rename it) to a different file ending by ``.ini`` and start adjusting it.
+
+.. important:: For Xdebug to work, there are other changes requires as well: :ref:`configure_php_xdebug`
+
+**How to apply the settings**
 
 In order for the changes to be applied, you will have to restart the Devilbox.
 

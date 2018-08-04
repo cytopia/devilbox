@@ -44,11 +44,29 @@ See the directory structure for PHP-FPM configuration directories inside ``./cfg
 Customization is achieved by placing a file into ``cfg/php-fpm-X.X/`` (where ``X.X`` stands for
 your PHP version).  The file must end by ``.conf`` in order to be sourced by the PHP-FPM server.
 
-Each of the PHP-FPM conf configuration directories already contain an example file:
-``devilbox-custom.conf-example``, that can simply be renamed to ``devilbox-custom.conf``.
-This file holds some example values that can be adjusted or commented out.
+Each of the PHP-FPM conf configuration directories already contains three example file:
+``devilbox-fpm.conf-default``, ``devilbox-fpm.conf-pm_dynamic`` and ``devilbox-fpm.conf-pm_ondemand``.
+
+**devilbox-fpm.conf-default**
+
+This file holds the exact settings that are currently in place by each PHP-FPM container.
+Copy it (do not simply rename it) to a different file ending by ``.conf`` and start adjusting it.
+
+**devilbox-fpm.conf-pm_dynamic**
+
+This file holds some sane example configuration to switch PHP-FPM scheduler to ``dynamic``
+(The default is ``ondemand``).
+Copy it (do not simply rename it) to a different file ending by ``.conf`` and start adjusting it.
+
+**devilbox-fpm.conf-pm_ondemand**
+
+This file holds the current default values for the PHP-FPM scheduler which is using ``ondemand``.
+Copy it (do not simply rename it) to a different file ending by ``.conf`` and start adjusting it.
+
+**How to apply the settings**
 
 In order for the changes to be applied, you will have to restart the Devilbox.
+
 
 .. seealso::
    To find out about all available PHP-FPM directives, global or pool specific have a look
