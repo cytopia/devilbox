@@ -481,21 +481,21 @@ You can also copy any custom modules into `mod/(php-fpm)-<VERSION>` and add a cu
 
 As far as tested there are no limitations and you can use any Framework or CMS just as you would on your live environment. Below are a few examples of extensively tested Frameworks and CMS:
 
-[![CakePHP](docs/img/logo_fw/cake.png)](https://cakephp.org)
-[![CakePHP](docs/img/logo_fw/codeigniter.png)](https://www.codeigniter.com/)
-[![Drupal](docs/img/logo_fw/drupal.png)](https://www.drupal.org)
-[![Joomla](docs/img/logo_fw/joomla.png)](https://www.joomla.org)
-[![Laravel](docs/img/logo_fw/laravel.png)](https://laravel.com)
-[![Magento](docs/img/logo_fw/magento.png)](https://magento.com)
-[![Phalcon](docs/img/logo_fw/phalcon.png)](https://phalconphp.com)
-[![PhotonCMS](docs/img/logo_fw/photoncms.png)](https://www.photonics.com/)
-[![PrestaShop](docs/img/logo_fw/prestashop.png)](https://www.prestashop.com/en)
-[![Shopware](docs/img/logo_fw/shopware.png)](https://en.shopware.com/)
-[![Symfony](docs/img/logo_fw/symfony.png)](https://symfony.com)
-[![Typo3](docs/img/logo_fw/typo3.png)](https://typo3.org/)
-[![Wordpress](docs/img/logo_fw/wordpress.png)](https://wordpress.org)
-[![Yii](docs/img/logo_fw/yii.png)](http://www.yiiframework.com)
-[![Zend](docs/img/logo_fw/zend.png)](https://framework.zend.com)
+<a target="_blank" title="CakePHP" href="https://cakephp.org"><img width="64" style="width:64px" src="docs/img/logo_fw/cake.png" alt="Devilbox"/></a>
+<a target="_blank" title="CodeIgniter" href="https://www.codeigniter.com"><img width="64" style="width:64px" src="docs/img/logo_fw/codeigniter.png" alt="Devilbox"/></a>
+<a target="_blank" title="Drupal" href="https://www.drupal.org"><img width="64" style="width:64px" src="docs/img/logo_fw/drupal.png" alt="Devilbox"/></a>
+<a target="_blank" title="Joomla" href="https://www.joomla.org"><img width="64" style="width:64px" src="docs/img/logo_fw/joomla.png" alt="Devilbox"/></a>
+<a target="_blank" title="Laravel" href="https://laravel.com"><img width="64" style="width:64px" src="docs/img/logo_fw/laravel.png" alt="Devilbox"/></a>
+<a target="_blank" title="Magento" href="https://magento.com"><img width="64" style="width:64px" src="docs/img/logo_fw/magento.png" alt="Devilbox"/></a>
+<a target="_blank" title="PhalconPHP" href="https://phalconphp.com"><img width="64" style="width:64px" src="docs/img/logo_fw/phalcon.png" alt="Devilbox"/></a>
+<a target="_blank" title="PhotonCMS" href="https://photoncms.com"><img width="64" style="width:64px" src="docs/img/logo_fw/photoncms.png" alt="Devilbox"/></a>
+<a target="_blank" title="PrestaShop" href="https://www.prestashop.com/en"><img width="64" style="width:64px" src="docs/img/logo_fw/prestashop.png" alt="Devilbox"/></a>
+<a target="_blank" title="Shopware" href="https://en.shopware.com"><img width="64" style="width:64px" src="docs/img/logo_fw/shopware.png" alt="Devilbox"/></a>
+<a target="_blank" title="Symfony" href="https://symfony.com"><img width="64" style="width:64px" src="docs/img/logo_fw/symfony.png" alt="Devilbox"/></a>
+<a target="_blank" title="Typo3" href="https://typo3.org"><img width="64" style="width:64px" src="docs/img/logo_fw/typo3.png" alt="Devilbox"/></a>
+<a target="_blank" title="Wordpress" href="https://wordpress.org"><img width="64" style="width:64px" src="docs/img/logo_fw/wordpress.png" alt="Devilbox"/></a>
+<a target="_blank" title="Yii" href="http://www.yiiframework.com"><img width="64" style="width:64px" src="docs/img/logo_fw/yii.png" alt="Devilbox"/></a>
+<a target="_blank" title="Zend" href="https://framework.zend.com"><img width="64" style="width:64px" src="docs/img/logo_fw/zend.png" alt="Devilbox"/></a>
 
 
 ## Intranet overview
