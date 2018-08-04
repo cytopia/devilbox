@@ -77,7 +77,15 @@ Find documentation and help here
 
 You are up and running in four simple steps:
 
-```shell
+> **See documentation:**
+>
+> * [Install the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/install-the-devilbox.html)
+> * [Start the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html)
+> * [.env file](https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html)
+
+##### Linux and MacOS
+
+```bash
 # Get the Devilbox
 $ git clone https://github.com/cytopia/devilbox
 $ cd devilbox
@@ -92,17 +100,22 @@ $ vim .env
 $ docker-compose up
 ```
 
-> **See documentation:**
->
-> * [Install the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/install-the-devilbox.html)
-> * [Start the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html)
+##### Windows
 
+1. Clone https://github.com/cytopia/devilbox to `C:\devilbox` with [Git for Windows](https://git-scm.com/download/win)
+2. Copy `C:\devilbox\env-example` to `C:\devilbox\.env`
+3. Adjust `C:\devilbox\.env` with your favourite editor
+4. [Open terminal on Windows](https://devilbox.readthedocs.io/en/latest/howto/terminal/open-terminal-on-win.html) and type:
+```bash
+C:\> cd C:\devilbox
+C:\devilbox> docker-compose up
+```
 
 #### Selective start
 
 The above will start all containers, you can however also just start the containers you actually need. This is achieved by simply specifying them in the docker-compose command.
 
-```shell
+```bash
 $ docker-compose up httpd php mysql redis
 ```
 > **See documentation:**
@@ -253,15 +266,27 @@ Furthermore PHP 5.2 does only work with Apache 2.4, Nginx stable and Nginx mainl
 
 #### Enter the container
 
-You can also work directly inside the php container. Simply use the bundled scripts `shell.sh`. The `PS1` will automatically be populated with current chosen php version.
-```shell
+You can also work directly inside the php container. Simply use the bundled scripts `shell.sh` (or `shell.bat` for Windows).
+The `PS1` will automatically be populated with current chosen php version.
+
+##### Linux and MacOS
+```bash
 # Enter as user devilbox (normal operation / development)
 host> ./shell.sh
 devilbox@php-7.0.19 in /shared/httpd $
+
+# Become root user (do root stuff)
+devilbox@php-7.0.19 in /shared/httpd $ sudo su -
+root@php-7.0.19 in /shared/httpd $
 ```
-```shell
-# Enter as root user (do root stuff)
-host> ./shell.sh
+
+##### Windows
+```bash
+# Enter as user devilbox (normal operation / development)
+C:\devilbox> shell.bat
+devilbox@php-7.0.19 in /shared/httpd $
+
+# Become root user (do root stuff)
 devilbox@php-7.0.19 in /shared/httpd $ sudo su -
 root@php-7.0.19 in /shared/httpd $
 ```
