@@ -29,7 +29,11 @@ Furthermore, the Devilbox provides an **identical** and **reproducable developme
 
 **Requirements**
 
-![Linux](https://raw.githubusercontent.com/cytopia/icons/master/64x64/linux.png) ![Windows](https://raw.githubusercontent.com/cytopia/icons/master/64x64/windows.png) ![OSX](https://raw.githubusercontent.com/cytopia/icons/master/64x64/osx.png)
+![Linux](https://raw.githubusercontent.com/cytopia/icons/master/64x64/linux.png)
+![OSX](https://raw.githubusercontent.com/cytopia/icons/master/64x64/osx.png)
+![Windows](https://raw.githubusercontent.com/cytopia/icons/master/64x64/windows.png)
+![Plus](https://raw.githubusercontent.com/cytopia/icons/master/64x64/plus.png)
+![Docker](https://raw.githubusercontent.com/cytopia/icons/master/64x64/docker.png)
 
 * [Docker Engine 1.12.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
 * [Docker Compose 1.9.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
