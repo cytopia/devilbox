@@ -249,6 +249,7 @@ services:
       ##
       ## PHP-FPM Remote Server
       ##
+      - COMPAT=${PHP_SERVER:-7.0}
       - PHP_FPM_ENABLE=1
       - PHP_FPM_SERVER_ADDR=php
       - PHP_FPM_SERVER_PORT=9000
