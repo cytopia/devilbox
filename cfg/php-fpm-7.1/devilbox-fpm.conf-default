@@ -43,7 +43,7 @@ request_terminate_timeout = 120s
 ; the request may be ignored so that retries may succeed.
 ; This should not be greater than `cat /proc/sys/net/core/somaxconn`, otherwise connections
 ; are silently truncated
-listen.backlog = 128
+listen.backlog = 1024
 
 
 ; static - the number of child processes is fixed (pm.max_children).

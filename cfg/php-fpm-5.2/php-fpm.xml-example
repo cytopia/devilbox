@@ -40,7 +40,7 @@
 
 			<value name="listen_options">
 				Set listen(2) backlog
-				<value name="backlog">128</value>
+				<value name="backlog">1024</value>
 				Set permissions for unix socket, if one used.
 				In Linux read/write permissions must be set in order to allow connections from web server.
 				Many BSD-derrived systems allow connections regardless of permissions.
