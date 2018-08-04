@@ -223,12 +223,6 @@ this project visible to everyone in your corporate LAN.
 +-------------+----------------+---------------------------+
 | www.test    | ``local``      | ``http://www.test.local`` |
 +-------------+----------------+---------------------------+
-| my-test     | ``net``        | ``http://my-test.net``    |
-+-------------+----------------+---------------------------+
-| example     | ``com``        | ``http://example.com``    |
-+-------------+----------------+---------------------------+
-| www.test    | ``org``        | ``http://www.test.org``   |
-+-------------+----------------+---------------------------+
 
 .. warning::
    Do not use ``dev`` as a domain suffix (I know, it's tempting).
@@ -245,6 +239,15 @@ this project visible to everyone in your corporate LAN.
    Docker has already released a commit preventing the use of ``localhost`` on MacOS.
 
    **See also:** |ext_lnk_domain_rfc_localhost| and |ext_lnk_domain_docker_rel_notes_localhost|
+
+.. warning::
+   **Do not use official domain endings** such as ``.com``, ``.org``, ``.net``, etc.
+   If you do, all name resolutions to any ``.com`` address (e.g.: google.com) will be resolved
+   to the Devilbox's PHP server IP address.
+
+   The bundled DNS server does a catch-all on the given TLD_SUFFIX and resolves everything
+   below it to the PHP container.
+
 
 .. _env_extra_hosts:
 

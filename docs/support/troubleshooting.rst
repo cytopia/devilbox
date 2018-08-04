@@ -136,6 +136,32 @@ This error occurs when using ``localhost`` as the :ref:`env_tld_suffix`.
    * https://github.com/cytopia/devilbox/issues/291
 
 
+SSL issues
+==========
+
+unable to get local issuer certificate
+--------------------------------------
+
+.. code-block:: bash
+
+   Errors occurred when trying to connect to www.example.com:
+   cURL error 77: error setting certificate verify locations: CAfile: certificate ./ca/cacert.pem CApath: /etc/ssl/certs
+
+This issue might arise if you set :ref:`env_tld_suffix` to an official top level domain such as ``.com``.
+What happens is that the bundled DNS server does a catch-all on the TLD and redirects all name
+resolution to the Devilbox's PHP container IP address.
+
+If you want to access ``https://www.example.com`` in that case, the request goes to the PHP
+container which does not have a valid SSL certificate for that domain.
+
+**Do not user official TLD's** for :ref:`env_tld_suffix`.
+
+.. seealso::
+
+   * :ref:`env_tld_suffix`
+   * https://github.com/cytopia/devilbox/issues/275
+
+
 Web server issues
 =================
 
