@@ -31,6 +31,7 @@ See the directory structure for PHP-FPM configuration directories inside ``./cfg
 
    host> ls -l path/to/devilbox/cfg/ | grep 'php-fpm'
 
+   drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-fpm-5.2/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-fpm-5.3/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-fpm-5.4/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-fpm-5.5/

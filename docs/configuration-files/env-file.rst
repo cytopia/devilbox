@@ -525,20 +525,28 @@ PHP_SERVER
 
 This variable choses your desired PHP-FPM version to be started.
 
-+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
-| Name                    | Allowed values                                                                                                                                                     | Default value   |
-+=========================+====================================================================================================================================================================+=================+
-| ``PHP_SERVER``          | ``php-fpm-5.3`` |br| ``php-fpm-5.4`` |br| ``php-fpm-5.5`` |br| ``php-fpm-5.6`` |br| ``php-fpm-7.0`` |br| ``php-fpm-7.1`` |br| ``php-fpm-7.2`` |br| ``php-fpm-7.2`` | ``php-fpm-7.1`` |
-+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
++-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+| Name                    | Allowed values                                                                                                                                                                          | Default value   |
++=========================+=========================================================================================================================================================================================+=================+
+| ``PHP_SERVER``          | ``php-fpm-5.2`` |br| ``php-fpm-5.3`` |br| ``php-fpm-5.4`` |br| ``php-fpm-5.5`` |br| ``php-fpm-5.6`` |br| ``php-fpm-7.0`` |br| ``php-fpm-7.1`` |br| ``php-fpm-7.2`` |br| ``php-fpm-7.3`` | ``php-fpm-7.1`` |
++-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+
+.. important::
+   **PHP 5.2** is available to use, but it is not officially supported. The Devilbox intranet does
+   not work with this version as PHP 5.2 does not support namespaces. Furthermore PHP 5.2 does only
+   work with Apache 2.4, Nginx stable and Nginx mainline. It does not work with Apache 2.2.
+   **Use at your own risk.**
+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
 
 .. code-block:: bash
    :caption: .env
-   :emphasize-lines: 7
+   :emphasize-lines: 9
 
    host> grep PHP_SERVER .env
 
+   #PHP_SERVER=php-fpm-5.2
    #PHP_SERVER=php-fpm-5.3
    #PHP_SERVER=php-fpm-5.4
    #PHP_SERVER=php-fpm-5.5

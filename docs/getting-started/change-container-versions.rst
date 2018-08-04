@@ -77,8 +77,9 @@ It will look something like this:
 
 .. code-block:: bash
    :caption: .env
-   :emphasize-lines: 6
+   :emphasize-lines: 7
 
+   #PHP_SERVER=5.2
    #PHP_SERVER=5.3
    #PHP_SERVER=5.4
    #PHP_SERVER=5.5
@@ -99,8 +100,9 @@ In order to enable PHP 5.5, you would change the ``.env`` file like this:
 
 .. code-block:: bash
    :caption: .env
-   :emphasize-lines: 3
+   :emphasize-lines: 4
 
+   #PHP_SERVER=5.2
    #PHP_SERVER=5.3
    #PHP_SERVER=5.4
    PHP_SERVER=5.5
@@ -216,8 +218,9 @@ Consider this ``.env`` file:
 
 .. code-block:: bash
    :caption: .env
-   :emphasize-lines: 3,5
+   :emphasize-lines: 4,6
 
+   #PHP_SERVER=5.2
    #PHP_SERVER=5.3
    #PHP_SERVER=5.4
    PHP_SERVER=5.5
