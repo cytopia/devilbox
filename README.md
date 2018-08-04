@@ -92,6 +92,12 @@ $ vim .env
 $ docker-compose up
 ```
 
+> **See documentation:**
+>
+> * [Install the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/install-the-devilbox.html)
+> * [Start the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html)
+
+
 #### Selective start
 
 The above will start all containers, you can however also just start the containers you actually need. This is achieved by simply specifying them in the docker-compose command.
@@ -99,6 +105,11 @@ The above will start all containers, you can however also just start the contain
 ```shell
 $ docker-compose up httpd php mysql redis
 ```
+> **See documentation:**
+>
+> * [Start only some container](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html#start-some-container)
+
+
 ![Devilbox](docs/img/devilbox-dash-selective.png)
 
 #### Run different versions
@@ -237,6 +248,12 @@ root@php-7.0.19 in /shared/httpd $
 
 Your projects can be found in `/shared/httpd`. DNS records are automatically available inside the php container. Also every other service will be available on `127.0.0.1` inside the php container (tricky socat port-forwarding).
 
+> **See documentation:**
+>
+> * [Work inside the PHP container](https://devilbox.readthedocs.io/en/latest/intermediate/work-inside-the-php-container.html)
+> * [Directory overview](https://devilbox.readthedocs.io/en/latest/getting-started/directory-overview.html)
+
+
 #### Quick Video intro
 
 [![Devilbox setup and workflow](docs/img/devilbox_01-setup-and-workflow.png "devilbox - setup and workflow")](https://www.youtube.com/watch?v=reyZMyt2Zzo)
@@ -302,6 +319,12 @@ The devilbox has everything setup for you. The only thing you will have to insta
 </tbody>
 </table>
 
+> **See documentation:**
+>
+> * [Setup Auto DNS](https://devilbox.readthedocs.io/en/latest/intermediate/setup-auto-dns.html)
+> * [Setup valid HTTPS](https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html)
+> * [Configure Xdebug](https://devilbox.readthedocs.io/en/latest/intermediate/configure-php-xdebug.html)
+> * [Customize PHP](https://devilbox.readthedocs.io/en/latest/advanced/customize-php-globally.html)
 
 #### Batteries
 
