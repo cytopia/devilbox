@@ -18,12 +18,14 @@
 [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox)
 [![Documentation Status](https://readthedocs.org/projects/devilbox/badge/?version=latest)](https://devilbox.readthedocs.io)
 ![Tag](https://img.shields.io/github/tag/cytopia/devilbox.svg)
-[![type](https://img.shields.io/badge/type-Docker-orange.svg)](https://www.docker.com/)
+[![type](https://img.shields.io/badge/type-Docker-red.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 <img width="200" style="width:200px;" src="docs/_includes/figures/https/https-ssl-address-bar.png" />
 
-The Devilbox is a modern and highly customisable **dockerized PHP stack** supporting full **LAMP** and **MEAN** and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an **unlimited number of projects** for which vhosts, **SSL certificates** and **DNS records** are created automatically. Email catch-all and popular development tools will be at your service as well.  Configuration is not necessary, as everything is pre-setup with mass virtual hosting.
+The Devilbox is a modern and highly customisable **dockerized PHP stack** supporting full **LAMP** and **MEAN** and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an **unlimited number of projects** for which **vhosts**, **SSL certificates** and **DNS records** are created automatically. Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
+
+Furthermore, the Devilbox provides an **identical** and **reproducable development environment** for different host operating systems.
 
 **Requirements**
 
@@ -75,13 +77,10 @@ Find documentation and help here
 
 #### Quick start
 
-You are up and running in four simple steps:
-
-> **See documentation:**
->
-> * [Install the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/install-the-devilbox.html)
-> * [Start the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html)
-> * [.env file](https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html)
+> **Documentation:**
+> [Install the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/install-the-devilbox.html) |
+> [Start the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html) |
+> [.env file](https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html)
 
 ##### Linux and MacOS
 
@@ -118,9 +117,8 @@ The above will start all containers, you can however also just start the contain
 ```bash
 $ docker-compose up httpd php mysql redis
 ```
-> **See documentation:**
->
-> * [Start only some container](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html#start-some-container)
+> **Documentation:**
+> [Start only some container](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html#start-some-container)
 
 
 ![Devilbox](docs/img/devilbox-dash-selective.png)
@@ -259,44 +257,33 @@ Every single attachable container comes with many different versions. In order t
 <strong><sup>[1]</sup></strong> <strong>PHP 5.2</strong> is available to use, but it is not officially supported. The Devilbox intranet does not work with this version as PHP 5.2 does not support namespaces.
 Furthermore PHP 5.2 does only work with Apache 2.4, Nginx stable and Nginx mainline. It does not work with Apache 2.2. Use at your own risk.
 
-> **See documentation:**
->
-> * [Change container versions](https://devilbox.readthedocs.io/en/latest/getting-started/change-container-versions.html)
+> **Documentation:**
+> [Change container versions](https://devilbox.readthedocs.io/en/latest/getting-started/change-container-versions.html)
 
 
 #### Enter the container
 
 You can also work directly inside the php container. Simply use the bundled scripts `shell.sh` (or `shell.bat` for Windows).
 The `PS1` will automatically be populated with current chosen php version.
+Navigate the the Devilbox directory and type the below listed command:
 
 ##### Linux and MacOS
 ```bash
-# Enter as user devilbox (normal operation / development)
 host> ./shell.sh
 devilbox@php-7.0.19 in /shared/httpd $
-
-# Become root user (do root stuff)
-devilbox@php-7.0.19 in /shared/httpd $ sudo su -
-root@php-7.0.19 in /shared/httpd $
 ```
 
 ##### Windows
 ```bash
-# Enter as user devilbox (normal operation / development)
 C:\devilbox> shell.bat
 devilbox@php-7.0.19 in /shared/httpd $
-
-# Become root user (do root stuff)
-devilbox@php-7.0.19 in /shared/httpd $ sudo su -
-root@php-7.0.19 in /shared/httpd $
 ```
 
 Your projects can be found in `/shared/httpd`. DNS records are automatically available inside the php container. Also every other service will be available on `127.0.0.1` inside the php container (tricky socat port-forwarding).
 
-> **See documentation:**
->
-> * [Work inside the PHP container](https://devilbox.readthedocs.io/en/latest/intermediate/work-inside-the-php-container.html)
-> * [Directory overview](https://devilbox.readthedocs.io/en/latest/getting-started/directory-overview.html)
+> **Documentation:**
+> [Work inside the PHP container](https://devilbox.readthedocs.io/en/latest/intermediate/work-inside-the-php-container.html) |
+> [Directory overview](https://devilbox.readthedocs.io/en/latest/getting-started/directory-overview.html)
 
 
 #### Quick Video intro
@@ -309,9 +296,8 @@ Your projects can be found in `/shared/httpd`. DNS records are automatically ava
 
 The Devilbox has everything setup for you. The only thing you will have to install is [Docker](https://docs.docker.com/engine/installation/) and [Docker Compose](https://docs.docker.com/compose/install/). Virtual hosts and DNS entries will be created automatically, just by adding new project folders.
 
-> **See documentation:**
->
-> * [Devilbox Prerequisites](https://devilbox.readthedocs.io/en/latest/getting-started/prerequisites.html)
+> **Documentation:**
+> [Devilbox Prerequisites](https://devilbox.readthedocs.io/en/latest/getting-started/prerequisites.html)
 
 #### Features
 
@@ -368,12 +354,11 @@ The Devilbox has everything setup for you. The only thing you will have to insta
 </tbody>
 </table>
 
-> **See documentation:**
->
-> * [Setup Auto DNS](https://devilbox.readthedocs.io/en/latest/intermediate/setup-auto-dns.html)
-> * [Setup valid HTTPS](https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html)
-> * [Configure Xdebug](https://devilbox.readthedocs.io/en/latest/intermediate/configure-php-xdebug.html)
-> * [Customize PHP](https://devilbox.readthedocs.io/en/latest/advanced/customize-php-globally.html)
+> **Documentation:**
+> [Setup Auto DNS](https://devilbox.readthedocs.io/en/latest/intermediate/setup-auto-dns.html) |
+> [Setup valid HTTPS](https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html) |
+> [Configure Xdebug](https://devilbox.readthedocs.io/en/latest/intermediate/configure-php-xdebug.html) |
+> [Customize PHP](https://devilbox.readthedocs.io/en/latest/advanced/customize-php-globally.html)
 
 #### Batteries
 
@@ -502,7 +487,10 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 
 > *amqp, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dba, dom, enchant, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, interbase, intl, json, ldap, libxml, mbstring, mcrypt, memcache, memcached, mongodb, msgpack, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_dblib, PDO_Firebird, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, snmp, soap, sockets, sodium, SPL, sqlite3, standard, swoole, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib*
 
-**See [PHP-FPM Docker image](https://github.com/devilbox/docker-php-fpm)**
+PHP modules can be enabled or disabled on demand to reflect the state of your target environment.
+
+> **Documentation:**
+> [Enable/disable PHP modules](https://devilbox.readthedocs.io/en/latest/intermediate/enable-disable-php-modules.html)
 
 
 #### Custom PHP Modules
@@ -529,7 +517,7 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 <a target="_blank" title="Yii" href="http://www.yiiframework.com"><img width="64" style="width:64px" src="docs/img/logo_fw/yii.png" alt="Devilbox"/></a>
 <a target="_blank" title="Zend" href="https://framework.zend.com"><img width="64" style="width:64px" src="docs/img/logo_fw/zend.png" alt="Devilbox"/></a>
 
-> **See documentation:**<br/>
+> **Documentation:**<br/>
 > [Setup CakePHP](https://devilbox.readthedocs.io/en/latest/examples/setup-cakephp.html) |
 > [Setup CodeIgniter](https://devilbox.readthedocs.io/en/latest/examples/setup-codeigniter.html) |
 > [Setup Drupal](https://devilbox.readthedocs.io/en/latest/examples/setup-drupal.html) |
@@ -549,7 +537,7 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 
 ## Intranet overview
 
-The Devilbox comes with a pre-configured intranet on `http://localhost`. This can be explicitly disabled or password-protected. The intranet will not only show you, the chosen configuration, but also validate the status of the current configuration, such as if **DNS records** exists (on host and container), are directories properly set-up. Additionally it provides external tools to let you interact with databases and emails.
+The Devilbox comes with a pre-configured intranet on `http://localhost` and `https://localhost`. This can be explicitly disabled or password-protected. The intranet will not only show you, the chosen configuration, but also validate the status of the current configuration, such as if **DNS records** exists (on host and container), are directories properly set-up. Additionally it provides external tools to let you interact with databases and emails.
 
 * **Virtual Host overview** (validates directories and DNS)
 * **Database overview** (MySQL, PgSQL, Redis, Memcache, ...)
@@ -559,9 +547,9 @@ The Devilbox comes with a pre-configured intranet on `http://localhost`. This ca
 * **[Adminer](https://www.adminer.org)**
 * **[OpcacheGUI](https://github.com/PeeHaa/OpCacheGUI)**
 
-> **See documentation:**
->
-> * [Devilbox Intranet](https://devilbox.readthedocs.io/en/latest/getting-started/devilbox-intranet.html)
+> **Documentation:**
+> [Devilbox Intranet](https://devilbox.readthedocs.io/en/latest/getting-started/devilbox-intranet.html)
+
 
 ## Screenshots
 
