@@ -94,7 +94,7 @@ services:
   # PHP / HHVM
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER:-7.0}-work
+    image: devilbox/php-fpm:${PHP_SERVER:-7.0}-work-0.29
 
     ##
     ## All .env variables
@@ -173,7 +173,7 @@ services:
       - ${DEVILBOX_PATH}/log/php-fpm-${PHP_SERVER}:/var/log/php
 
       # Mount Mail directory
-      #- ${DEVILBOX_PATH}/run/mail:/var/mail
+      - ${DEVILBOX_PATH}/mail:/var/mail
 
       # Mount DB Backup directory
       - ${DEVILBOX_PATH}/backups:/shared/backups
@@ -204,7 +204,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.18
+    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.21
 
     environment:
 
@@ -249,9 +249,11 @@ services:
       ##
       ## PHP-FPM Remote Server
       ##
+      - COMPAT=${PHP_SERVER:-7.0}
       - PHP_FPM_ENABLE=1
       - PHP_FPM_SERVER_ADDR=php
       - PHP_FPM_SERVER_PORT=9000
+      - PHP_FPM_TIMEOUT=${HTTPD_TIMEOUT_TO_PHP_FPM:-180}
 
     ports:
       # ---- Format: ----

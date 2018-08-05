@@ -125,6 +125,7 @@ you want. See :ref:`env_tld_suffix`.
 
 .. warning::
    Be aware not to use ``dev`` or ``localhost``. See :ref:`env_tld_suffix` for more details.
+   Also do not use any official domain TLDs such as ``com``, ``net``, ``org``, etc.
 
 
 Can I just start PHP and MySQL instead of all container?

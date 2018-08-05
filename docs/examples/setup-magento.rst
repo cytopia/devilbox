@@ -178,4 +178,7 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
 All set now, you can visit http://my-magento.loc or https://my-magento.loc in your browser
 and follow the installation steps.
 
+.. important::
+   Use ``127.0.0.1`` for the MySQL database hostname.
+
 .. seealso:: :ref:`setup_valid_https`

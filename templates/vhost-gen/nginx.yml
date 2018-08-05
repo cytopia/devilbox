@@ -112,10 +112,14 @@ features:
         try_files $uri = 404;
         include fastcgi_params;
 
+        # https://stackoverflow.com/questions/1733306/nginx-errors-readv-and-recv-failed/51457613#51457613
+        fastcgi_keep_conn off;
+
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_split_path_info ^(.+\.php)(.*)$;
 
         fastcgi_pass __PHP_ADDR__:__PHP_PORT__;
+        fastcgi_read_timeout __PHP_TIMEOUT__;
 
         fastcgi_index index.php;
         fastcgi_intercept_errors on;

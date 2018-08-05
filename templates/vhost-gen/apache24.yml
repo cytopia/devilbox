@@ -120,14 +120,19 @@ features:
 
   # PHP-FPM will not be applied to a reverse proxy!
   php_fpm: |
+    # In case for PHP-FPM 5.2 compatibility use 'GENERIC' instead of 'FPM'
+    # https://httpd.apache.org/docs/2.4/mod/mod_proxy_fcgi.html#proxyfcgibackendtype
+    ProxyFCGIBackendType FPM
+
     # PHP-FPM Definition
     <FilesMatch \.php$>
         Require all granted
         SetHandler proxy:fcgi://__PHP_ADDR__:__PHP_PORT__
     </FilesMatch>
 
-    # enablereuse requires Apache 2.4.11 or later
-    <Proxy "fcgi://__PHP_ADDR__:__PHP_PORT__/" enablereuse=on max=10>
+    <Proxy "fcgi://__PHP_ADDR__:__PHP_PORT__/">
+        ProxySet timeout=__PHP_TIMEOUT__
+        ProxySet connectiontimeout=__PHP_TIMEOUT__
     </Proxy>
 
     # If the php file doesn't exist, disable the proxy handler.

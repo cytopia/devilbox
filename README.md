@@ -18,16 +18,22 @@
 [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox)
 [![Documentation Status](https://readthedocs.org/projects/devilbox/badge/?version=latest)](https://devilbox.readthedocs.io)
 ![Tag](https://img.shields.io/github/tag/cytopia/devilbox.svg)
-[![type](https://img.shields.io/badge/type-Docker-orange.svg)](https://www.docker.com/)
+[![type](https://img.shields.io/badge/type-Docker-red.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 <img width="200" style="width:200px;" src="docs/_includes/figures/https/https-ssl-address-bar.png" />
 
-The devilbox is a modern and highly customisable **dockerized PHP stack** supporting full **LAMP** and **MEAN** and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an **unlimited number of projects** for which vhosts, **SSL certificates** and **DNS records** are created automatically. Email catch-all and popular development tools will be at your service as well.  Configuration is not necessary, as everything is pre-setup with mass virtual hosting.
+The Devilbox is a modern and highly customisable **dockerized PHP stack** supporting full **LAMP** and **MEAN** and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an **unlimited number of projects** for which **vhosts**, **SSL certificates** and **DNS records** are created automatically. Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
+
+Furthermore, the Devilbox provides an **identical** and **reproducable development environment** for different host operating systems.
 
 **Requirements**
 
-![Linux](https://raw.githubusercontent.com/cytopia/icons/master/64x64/linux.png) ![Windows](https://raw.githubusercontent.com/cytopia/icons/master/64x64/windows.png) ![OSX](https://raw.githubusercontent.com/cytopia/icons/master/64x64/osx.png)
+![Linux](https://raw.githubusercontent.com/cytopia/icons/master/64x64/linux.png)
+![OSX](https://raw.githubusercontent.com/cytopia/icons/master/64x64/osx.png)
+![Windows](https://raw.githubusercontent.com/cytopia/icons/master/64x64/windows.png)
+![Plus](https://raw.githubusercontent.com/cytopia/icons/master/64x64/plus.png)
+![Docker](https://raw.githubusercontent.com/cytopia/icons/master/64x64/docker.png)
 
 * [Docker Engine 1.12.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
 * [Docker Compose 1.9.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
@@ -75,10 +81,15 @@ Find documentation and help here
 
 #### Quick start
 
-You are up and running in four simple steps:
+> **Documentation:**
+> [Install the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/install-the-devilbox.html) |
+> [Start the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html) |
+> [.env file](https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html)
 
-```shell
-# Get the devilbox
+##### Linux and MacOS
+
+```bash
+# Get the Devilbox
 $ git clone https://github.com/cytopia/devilbox
 $ cd devilbox
 
@@ -92,13 +103,28 @@ $ vim .env
 $ docker-compose up
 ```
 
+##### Windows
+
+1. Clone https://github.com/cytopia/devilbox to `C:\devilbox` with [Git for Windows](https://git-scm.com/download/win)
+2. Copy `C:\devilbox\env-example` to `C:\devilbox\.env`
+3. Adjust `C:\devilbox\.env` with your favourite editor
+4. [Open terminal on Windows](https://devilbox.readthedocs.io/en/latest/howto/terminal/open-terminal-on-win.html) and type:
+```bash
+C:\> cd C:\devilbox
+C:\devilbox> docker-compose up
+```
+
 #### Selective start
 
 The above will start all containers, you can however also just start the containers you actually need. This is achieved by simply specifying them in the docker-compose command.
 
-```shell
+```bash
 $ docker-compose up httpd php mysql redis
 ```
+> **Documentation:**
+> [Start only some container](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html#start-some-container)
+
+
 ![Devilbox](docs/img/devilbox-dash-selective.png)
 
 #### Run different versions
@@ -124,7 +150,7 @@ Every single attachable container comes with many different versions. In order t
     <tr>
       <td><a target="_blank" title="Apache 2.2"       href="https://github.com/devilbox/docker-apache-2.2">2.2</a></td>
       <td><a target="_blank" title="Nginx stable"     href="https://github.com/devilbox/docker-nginx-stable">stable</a></td>
-      <td><a target="_blank" title="PHP 5.3"          href="https://github.com/devilbox/docker-php-fpm">5.3</a></td>
+      <td><a target="_blank" title="PHP 5.2"          href="https://github.com/devilbox/docker-php-fpm">5.2</a><sup>[1]</sup></td>
       <td><a target="_blank" title="MySQL 5.5"        href="https://github.com/cytopia/docker-mysql-5.5">5.5</a></td>
       <td><a target="_blank" title="MariaDB 5.5"      href="https://github.com/cytopia/docker-mariadb-5.5">5.5</a></td>
       <td><a target="_blank" title="PerconaDB 5.5"    href="https://github.com/cytopia/docker-percona-5.5">5.5</a></td>
@@ -136,7 +162,7 @@ Every single attachable container comes with many different versions. In order t
     <tr>
       <td><a target="_blank" title="Apache 2.4"       href="https://github.com/devilbox/docker-apache-2.4">2.4</a></td>
       <td><a target="_blank" title="Nginx mainline"   href="https://github.com/devilbox/docker-nginx-mainline">mainline</a></td>
-      <td><a target="_blank" title="PHP 5.4"          href="https://github.com/devilbox/docker-php-fpm">5.4</a></td>
+      <td><a target="_blank" title="PHP 5.3"          href="https://github.com/devilbox/docker-php-fpm">5.3</a></td>
       <td><a target="_blank" title="MySQL 5.6"        href="https://github.com/cytopia/docker-mysql-5.6">5.6</a></td>
       <td><a target="_blank" title="MariaDB 10.0"     href="https://github.com/cytopia/docker-mariadb-10.0">10.0</a></td>
       <td><a target="_blank" title="PerconaDB 5.6"    href="https://github.com/cytopia/docker-percona-5.6">5.6</a></td>
@@ -148,7 +174,7 @@ Every single attachable container comes with many different versions. In order t
     <tr>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PHP 5.5"          href="https://github.com/devilbox/docker-php-fpm">5.5</a></td>
+      <td><a target="_blank" title="PHP 5.4"          href="https://github.com/devilbox/docker-php-fpm">5.4</a></td>
       <td><a target="_blank" title="MySQL 5.7"        href="https://github.com/cytopia/docker-mysql-5.7">5.7</a></td>
       <td><a target="_blank" title="MariaDB 10.1"     href="https://github.com/cytopia/docker-mariadb-10.1">10.1</a></td>
       <td><a target="_blank" title="PerconaDB 5.7"    href="https://github.com/cytopia/docker-percona-5.7">5.7</a></td>
@@ -160,7 +186,7 @@ Every single attachable container comes with many different versions. In order t
     <tr>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PHP 5.6"          href="https://github.com/devilbox/docker-php-fpm">5.6</a></td>
+      <td><a target="_blank" title="PHP 5.5"          href="https://github.com/devilbox/docker-php-fpm">5.5</a></td>
       <td><a target="_blank" title="MySQL 8.0"        href="https://github.com/cytopia/docker-mysql-8.0">8.0</a></td>
       <td><a target="_blank" title="MariaDB 10.2"     href="https://github.com/cytopia/docker-mariadb-10.2">10.2</a></td>
       <td></td>
@@ -172,7 +198,7 @@ Every single attachable container comes with many different versions. In order t
     <tr>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PHP 7.0"          href="https://github.com/devilbox/docker-php-fpm">7.0</a></td>
+      <td><a target="_blank" title="PHP 5.6"          href="https://github.com/devilbox/docker-php-fpm">5.6</a></td>
       <td></td>
       <td><a target="_blank" title="MariaDB 10.3"     href="https://github.com/cytopia/docker-mariadb-10.3">10.3</a></td>
       <td></td>
@@ -184,7 +210,7 @@ Every single attachable container comes with many different versions. In order t
     <tr>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PHP 7.1"          href="https://github.com/devilbox/docker-php-fpm">7.1</a></td>
+      <td><a target="_blank" title="PHP 7.0"          href="https://github.com/devilbox/docker-php-fpm">7.0</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -196,13 +222,25 @@ Every single attachable container comes with many different versions. In order t
     <tr>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PHP 7.2"          href="https://github.com/devilbox/docker-php-fpm">7.2</a></td>
+      <td><a target="_blank" title="PHP 7.1"          href="https://github.com/devilbox/docker-php-fpm">7.1</a></td>
       <td></td>
       <td></td>
       <td></td>
       <td><a target="_blank" title="PgSQL 10.0"       href="https://github.com/docker-library/postgres">10.0</a></td>
       <td></td>
       <td><a target="_blank" title="Memcached latest" href="https://github.com/docker-library/memcached">latest</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><a target="_blank" title="PHP 7.2"          href="https://github.com/devilbox/docker-php-fpm">7.2</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td></td>
     </tr>
     <tr>
@@ -220,22 +258,37 @@ Every single attachable container comes with many different versions. In order t
   </tbody>
 </table>
 
+<strong><sup>[1]</sup></strong> <strong>PHP 5.2</strong> is available to use, but it is not officially supported. The Devilbox intranet does not work with this version as PHP 5.2 does not support namespaces.
+Furthermore PHP 5.2 does only work with Apache 2.4, Nginx stable and Nginx mainline. It does not work with Apache 2.2. Use at your own risk.
+
+> **Documentation:**
+> [Change container versions](https://devilbox.readthedocs.io/en/latest/getting-started/change-container-versions.html)
+
+
 #### Enter the container
 
-You can also work directly inside the php container. Simply use the bundled scripts `shell.sh`. The `PS1` will automatically be populated with current chosen php version.
-```shell
-# Enter as user devilbox (normal operation / development)
+You can also work directly inside the php container. Simply use the bundled scripts `shell.sh` (or `shell.bat` for Windows).
+The `PS1` will automatically be populated with current chosen php version.
+Navigate the the Devilbox directory and type the below listed command:
+
+##### Linux and MacOS
+```bash
 host> ./shell.sh
 devilbox@php-7.0.19 in /shared/httpd $
 ```
-```shell
-# Enter as root user (do root stuff)
-host> ./shell.sh
-devilbox@php-7.0.19 in /shared/httpd $ sudo su -
-root@php-7.0.19 in /shared/httpd $
+
+##### Windows
+```bash
+C:\devilbox> shell.bat
+devilbox@php-7.0.19 in /shared/httpd $
 ```
 
 Your projects can be found in `/shared/httpd`. DNS records are automatically available inside the php container. Also every other service will be available on `127.0.0.1` inside the php container (tricky socat port-forwarding).
+
+> **Documentation:**
+> [Work inside the PHP container](https://devilbox.readthedocs.io/en/latest/intermediate/work-inside-the-php-container.html) |
+> [Directory overview](https://devilbox.readthedocs.io/en/latest/getting-started/directory-overview.html)
+
 
 #### Quick Video intro
 
@@ -245,7 +298,10 @@ Your projects can be found in `/shared/httpd`. DNS records are automatically ava
 
 ## Feature overview
 
-The devilbox has everything setup for you. The only thing you will have to install is [docker](https://docs.docker.com/engine/installation/) and [docker-compose](https://docs.docker.com/compose/install/). Virtual hosts and DNS entries will be created automatically, just by adding new project folders.
+The Devilbox has everything setup for you. The only thing you will have to install is [Docker](https://docs.docker.com/engine/installation/) and [Docker Compose](https://docs.docker.com/compose/install/). Virtual hosts and DNS entries will be created automatically, just by adding new project folders.
+
+> **Documentation:**
+> [Devilbox Prerequisites](https://devilbox.readthedocs.io/en/latest/getting-started/prerequisites.html)
 
 #### Features
 
@@ -261,7 +317,7 @@ The devilbox has everything setup for you. The only thing you will have to insta
   </tr>
   <tr>
     <td>:star: Unlimited vhosts</td>
-    <td>Run as many projects as you need with a single instance of the devilbox.</td>
+    <td>Run as many projects as you need with a single instance of the Devilbox.</td>
   </tr>
   <tr>
     <td>:star: Custom vhosts</td>
@@ -302,6 +358,11 @@ The devilbox has everything setup for you. The only thing you will have to insta
 </tbody>
 </table>
 
+> **Documentation:**
+> [Setup Auto DNS](https://devilbox.readthedocs.io/en/latest/intermediate/setup-auto-dns.html) |
+> [Setup valid HTTPS](https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html) |
+> [Configure Xdebug](https://devilbox.readthedocs.io/en/latest/intermediate/configure-php-xdebug.html) |
+> [Customize PHP](https://devilbox.readthedocs.io/en/latest/advanced/customize-php-globally.html)
 
 #### Batteries
 
@@ -426,9 +487,15 @@ Well-known and popular tools will be at your service as well:
 
 #### Available PHP Modules
 
-The devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks.
+The Devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks.
 
 > *amqp, apcu, bcmath, bz2, calendar, Core, ctype, curl, date, dba, dom, enchant, exif, fileinfo, filter, ftp, gd, gettext, gmp, hash, iconv, igbinary, imagick, imap, interbase, intl, json, ldap, libxml, mbstring, mcrypt, memcache, memcached, mongodb, msgpack, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_dblib, PDO_Firebird, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, phalcon, Phar, posix, pspell, readline, recode, redis, Reflection, session, shmop, SimpleXML, snmp, soap, sockets, sodium, SPL, sqlite3, standard, swoole, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, wddx, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, Zend OPcache, zip, zlib*
+
+PHP modules can be enabled or disabled on demand to reflect the state of your target environment.
+
+> **Documentation:**
+> [Enable/disable PHP modules](https://devilbox.readthedocs.io/en/latest/intermediate/enable-disable-php-modules.html)
+
 
 #### Custom PHP Modules
 
@@ -438,26 +505,43 @@ You can also copy any custom modules into `mod/(php-fpm)-<VERSION>` and add a cu
 
 As far as tested there are no limitations and you can use any Framework or CMS just as you would on your live environment. Below are a few examples of extensively tested Frameworks and CMS:
 
-[![CakePHP](docs/img/logo_fw/cake.png)](https://cakephp.org)
-[![CakePHP](docs/img/logo_fw/codeigniter.png)](https://www.codeigniter.com/)
-[![Drupal](docs/img/logo_fw/drupal.png)](https://www.drupal.org)
-[![Joomla](docs/img/logo_fw/joomla.png)](https://www.joomla.org)
-[![Laravel](docs/img/logo_fw/laravel.png)](https://laravel.com)
-[![Magento](docs/img/logo_fw/magento.png)](https://magento.com)
-[![Phalcon](docs/img/logo_fw/phalcon.png)](https://phalconphp.com)
-[![PhotonCMS](docs/img/logo_fw/photoncms.png)](https://www.photonics.com/)
-[![PrestaShop](docs/img/logo_fw/prestashop.png)](https://www.prestashop.com/en)
-[![Shopware](docs/img/logo_fw/shopware.png)](https://en.shopware.com/)
-[![Symfony](docs/img/logo_fw/symfony.png)](https://symfony.com)
-[![Typo3](docs/img/logo_fw/typo3.png)](https://typo3.org/)
-[![Wordpress](docs/img/logo_fw/wordpress.png)](https://wordpress.org)
-[![Yii](docs/img/logo_fw/yii.png)](http://www.yiiframework.com)
-[![Zend](docs/img/logo_fw/zend.png)](https://framework.zend.com)
+<a target="_blank" title="CakePHP" href="https://cakephp.org"><img width="64" style="width:64px" src="docs/img/logo_fw/cake.png" alt="Devilbox"/></a>
+<a target="_blank" title="CodeIgniter" href="https://www.codeigniter.com"><img width="64" style="width:64px" src="docs/img/logo_fw/codeigniter.png" alt="Devilbox"/></a>
+<a target="_blank" title="Drupal" href="https://www.drupal.org"><img width="64" style="width:64px" src="docs/img/logo_fw/drupal.png" alt="Devilbox"/></a>
+<a target="_blank" title="Joomla" href="https://www.joomla.org"><img width="64" style="width:64px" src="docs/img/logo_fw/joomla.png" alt="Devilbox"/></a>
+<a target="_blank" title="Laravel" href="https://laravel.com"><img width="64" style="width:64px" src="docs/img/logo_fw/laravel.png" alt="Devilbox"/></a>
+<a target="_blank" title="Magento" href="https://magento.com"><img width="64" style="width:64px" src="docs/img/logo_fw/magento.png" alt="Devilbox"/></a>
+<a target="_blank" title="PhalconPHP" href="https://phalconphp.com"><img width="64" style="width:64px" src="docs/img/logo_fw/phalcon.png" alt="Devilbox"/></a>
+<a target="_blank" title="PhotonCMS" href="https://photoncms.com"><img width="64" style="width:64px" src="docs/img/logo_fw/photoncms.png" alt="Devilbox"/></a>
+<a target="_blank" title="PrestaShop" href="https://www.prestashop.com/en"><img width="64" style="width:64px" src="docs/img/logo_fw/prestashop.png" alt="Devilbox"/></a>
+<a target="_blank" title="Shopware" href="https://en.shopware.com"><img width="64" style="width:64px" src="docs/img/logo_fw/shopware.png" alt="Devilbox"/></a>
+<a target="_blank" title="Symfony" href="https://symfony.com"><img width="64" style="width:64px" src="docs/img/logo_fw/symfony.png" alt="Devilbox"/></a>
+<a target="_blank" title="Typo3" href="https://typo3.org"><img width="64" style="width:64px" src="docs/img/logo_fw/typo3.png" alt="Devilbox"/></a>
+<a target="_blank" title="Wordpress" href="https://wordpress.org"><img width="64" style="width:64px" src="docs/img/logo_fw/wordpress.png" alt="Devilbox"/></a>
+<a target="_blank" title="Yii" href="http://www.yiiframework.com"><img width="64" style="width:64px" src="docs/img/logo_fw/yii.png" alt="Devilbox"/></a>
+<a target="_blank" title="Zend" href="https://framework.zend.com"><img width="64" style="width:64px" src="docs/img/logo_fw/zend.png" alt="Devilbox"/></a>
+
+> **Documentation:**<br/>
+> [Setup CakePHP](https://devilbox.readthedocs.io/en/latest/examples/setup-cakephp.html) |
+> [Setup CodeIgniter](https://devilbox.readthedocs.io/en/latest/examples/setup-codeigniter.html) |
+> [Setup Drupal](https://devilbox.readthedocs.io/en/latest/examples/setup-drupal.html) |
+> [Setup Joomla](https://devilbox.readthedocs.io/en/latest/examples/setup-joomla.html) |
+> [Setup Laravel](https://devilbox.readthedocs.io/en/latest/examples/setup-laravel.html) |
+> [Setup Magento](https://devilbox.readthedocs.io/en/latest/examples/setup-magento.html) |
+> [Setup PhalconPHP](https://devilbox.readthedocs.io/en/latest/examples/setup-phalcon.html) |
+> [Setup PhotonCMS](https://devilbox.readthedocs.io/en/latest/examples/setup-photon-cms.html) |
+> [Setup PrestaShop](https://devilbox.readthedocs.io/en/latest/examples/setup-presta-shop.html) |
+> [Setup Shopware](https://devilbox.readthedocs.io/en/latest/examples/setup-shopware.html) |
+> [Setup Symfony](https://devilbox.readthedocs.io/en/latest/examples/setup-symfony.html) |
+> [Setup Typo3](https://devilbox.readthedocs.io/en/latest/examples/setup-typo3.html) |
+> [Setup Wordpress](https://devilbox.readthedocs.io/en/latest/examples/setup-wordpress.html) |
+> [Setup Yii](https://devilbox.readthedocs.io/en/latest/examples/setup-yii.html) |
+> [Setup Zend](https://devilbox.readthedocs.io/en/latest/examples/setup-zend.html)
 
 
 ## Intranet overview
 
-The devilbox comes with a pre-configured intranet on `http://localhost`. This can be explicitly disabled or password-protected. The intranet will not only show you, the chosen configuration, but also validate the status of the current configuration, such as if **DNS records** exists (on host and container), are directories properly set-up. Additionally it provides external tools to let you interact with databases and emails.
+The Devilbox comes with a pre-configured intranet on `http://localhost` and `https://localhost`. This can be explicitly disabled or password-protected. The intranet will not only show you, the chosen configuration, but also validate the status of the current configuration, such as if **DNS records** exists (on host and container), are directories properly set-up. Additionally it provides external tools to let you interact with databases and emails.
 
 * **Virtual Host overview** (validates directories and DNS)
 * **Database overview** (MySQL, PgSQL, Redis, Memcache, ...)
@@ -466,6 +550,9 @@ The devilbox comes with a pre-configured intranet on `http://localhost`. This ca
 * **[phpMyAdmin](https://www.phpmyadmin.net)**
 * **[Adminer](https://www.adminer.org)**
 * **[OpcacheGUI](https://github.com/PeeHaa/OpCacheGUI)**
+
+> **Documentation:**
+> [Devilbox Intranet](https://devilbox.readthedocs.io/en/latest/getting-started/devilbox-intranet.html)
 
 
 ## Screenshots
@@ -505,7 +592,7 @@ To increase visibility and bug-free operation:
 * Open up issues for bugs and feature requests
 * Clone this project and submit fixes or features
 
-Additionally you can [subscribe to devilbox on CodeTriage](https://www.codetriage.com/cytopia/devilbox),
+Additionally you can [subscribe to Devilbox on CodeTriage](https://www.codetriage.com/cytopia/devilbox),
 read up on [CONTRIBUTING.md](CONTRIBUTING.md) and check the [ROADMAP](https://github.com/cytopia/devilbox/issues/23) about what is already planned for the near future.
 
 

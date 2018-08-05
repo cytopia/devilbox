@@ -22,21 +22,21 @@ Simple sub domains for one project
 When you just want to serve your project under different sub domains, you simply name your project
 directory by the name of it. See the following examples how you build up your project URL.
 
-+----------------+----------------+-------------------------------+
-| Project dir    | ``TLD_SUFFIX`` | Project URL                   |
-+================+================+===============================+
-| my-test        | ``loc``        | ``http://my-test.loc``        |
-+----------------+----------------+-------------------------------+
-| www.my-test    | ``loc``        | ``http://www.my-test.loc``    |
-+----------------+----------------+-------------------------------+
-| t1.www.my-test | ``loc``        | ``http://t1.www.my-test.loc`` |
-+----------------+----------------+-------------------------------+
-| my-test        | ``com``        | ``http://my-test.com``        |
-+----------------+----------------+-------------------------------+
-| www.my-test    | ``com``        | ``http://www.my-test.com``    |
-+----------------+----------------+-------------------------------+
-| t2.www.my-test | ``com``        | ``http://t2.www.my-test.com`` |
-+----------------+----------------+-------------------------------+
++----------------+----------------+---------------------------------+
+| Project dir    | ``TLD_SUFFIX`` | Project URL                     |
++================+================+=================================+
+| my-test        | ``loc``        | ``http://my-test.loc``          |
++----------------+----------------+---------------------------------+
+| www.my-test    | ``loc``        | ``http://www.my-test.loc``      |
++----------------+----------------+---------------------------------+
+| t1.www.my-test | ``loc``        | ``http://t1.www.my-test.loc``   |
++----------------+----------------+---------------------------------+
+| my-test        | ``local``      | ``http://my-test.local``        |
++----------------+----------------+---------------------------------+
+| www.my-test    | ``local``      | ``http://www.my-test.local``    |
++----------------+----------------+---------------------------------+
+| t2.www.my-test | ``local``      | ``http://t2.www.my-test.local`` |
++----------------+----------------+---------------------------------+
 
 Whatever name you want to have in front of the ``TLD_SUFFIX`` is actually just the directory you
 create. Generically, it looks like this:

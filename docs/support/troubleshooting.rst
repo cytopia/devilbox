@@ -136,6 +136,32 @@ This error occurs when using ``localhost`` as the :ref:`env_tld_suffix`.
    * https://github.com/cytopia/devilbox/issues/291
 
 
+SSL issues
+==========
+
+unable to get local issuer certificate
+--------------------------------------
+
+.. code-block:: bash
+
+   Errors occurred when trying to connect to www.example.com:
+   cURL error 77: error setting certificate verify locations: CAfile: certificate ./ca/cacert.pem CApath: /etc/ssl/certs
+
+This issue might arise if you set :ref:`env_tld_suffix` to an official top level domain such as ``.com``.
+What happens is that the bundled DNS server does a catch-all on the TLD and redirects all name
+resolution to the Devilbox's PHP container IP address.
+
+If you want to access ``https://www.example.com`` in that case, the request goes to the PHP
+container which does not have a valid SSL certificate for that domain.
+
+**Do not user official TLD's** for :ref:`env_tld_suffix`.
+
+.. seealso::
+
+   * :ref:`env_tld_suffix`
+   * https://github.com/cytopia/devilbox/issues/275
+
+
 Web server issues
 =================
 
@@ -181,10 +207,12 @@ Check your Docker settings to allow shared volumes for the path of the Devilbox 
 This error occurs when the upstream PHP-FPM server takes longer to execute a script,
 than the timeout value set in the web server for PHP-FPM to answer.
 
-For that to fix one must increase the PHP-FPM/Proxy timeout settings on the virtual host.
+For that to fix one must increase the PHP-FPM/Proxy timeout settings in the ``.env`` file.
+:ref:`env_httpd_timeout_to_php_fpm`
 
 .. seealso::
 
+   * :ref:`env_httpd_timeout_to_php_fpm`
    * https://github.com/cytopia/devilbox/issues/280
    * https://github.com/cytopia/devilbox/issues/234
 

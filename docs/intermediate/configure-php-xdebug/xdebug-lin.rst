@@ -51,9 +51,10 @@ The following example show how to configure PHP Xdebug for PHP 5.6:
 
    .. code-block:: ini
       :caption: xdebug.ini
-      :emphasize-lines: 6,10
+      :emphasize-lines: 7,11
 
       # Defaults
+      xdebug.default_enable=1
       xdebug.remote_enable=1
       xdebug.remote_port=9000
 
