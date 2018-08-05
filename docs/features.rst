@@ -37,13 +37,13 @@ imported into your local browser to make all certificates valid and trusted.
 Automated DNS records
 ^^^^^^^^^^^^^^^^^^^^^
 The built-in DNS server will automatically make any DNS record available to your host system by
-using a wild-card DNS record.
+using a wild-card DNS record.  This removes the need to create developer DNS records
+in ``/etc/hosts``.
 
 Email catch-all
 ^^^^^^^^^^^^^^^
 All outgoing emails originating from your projects are intercepted, stored locally and
-can be viewed within the bundled intranet. This removes the need to create developer DNS records
-in ``/etc/hosts``.
+can be viewed within the bundled intranet.
 
 Log files
 ^^^^^^^^^
