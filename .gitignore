@@ -31,6 +31,11 @@
 # Ignore compose override file
 docker-compose.override.yml
 
+# Ignore custom global vhost gen templates
+/cfg/vhost-gen/apache22.conf
+/cfg/vhost-gen/apache24.conf
+/cfg/vhost-gen/nginx.conf
+
 # Ignore custom HTTPD configs
 /cfg/apache-2.2/*.conf
 /cfg/apache-2.4/*.conf
