@@ -218,6 +218,16 @@ HTML;
 
 
 
+	public function getFooterScripts()
+	{
+		$html = <<<HTML
+			<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+			<script src="/vendor/tether/tether.min.js"></script>
+			<script src="/vendor/bootstrap/bootstrap.min.js"></script>
+HTML;
+		return $html;
+	}
+
 	public function getFooter()
 	{
 		$render_time = round((microtime(true) - $GLOBALS['TIME_START']), 2);
@@ -234,12 +244,8 @@ HTML;
 					</ul>
 				</div>
 			</nav>
-
-			<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
-			<script src="/vendor/tether/tether.min.js"></script>
-			<script src="/vendor/bootstrap/bootstrap.min.js"></script>
 HTML;
-		return $html;
+		return $html . $this->getFooterScripts();
 	}
 
 

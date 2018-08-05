@@ -84,96 +84,74 @@ $messages = $MyMbox->get($sortOrderArr);
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color:#FFFFFF;">
 	<head>
 		<?php echo loadClass('Html')->getHead(true); ?>
 	</head>
 
-	<body>
-		<?php echo loadClass('Html')->getNavbar(); ?>
+	<body style="margin-bottom: 0 !important">
+					<table class="table table-striped table-hover" id="emails">
+						<thead class="thead-inverse">
+							<tr>
+								<th>#</th>
+								<th>Date <?php echo $orderDate;?></th>
+								<th>From <?php echo $orderFrom;?></th>
+								<th>To <?php echo $orderTo;?></th>
+								<th>Subject <?php echo $orderSubj;?></th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach ($messages as $data): ?>
+								<?php
+									$message = htmlentities($data['raw']);
+									$structure = $data['decoded'];
+								 ?>
+								<tr id="<?php echo $data['num'];?>" class="subject">
+									<td><?php echo $data['num'];?></td>
+									<td>
+										<?php echo date('H:i', strtotime($structure->headers['date']));?><br/>
+										<small><?php echo date('Y-m-d', strtotime($structure->headers['date']));?></small>
+									</td>
+									<td><?php echo htmlentities($structure->headers['from']);?></td>
+									<td><?php echo htmlentities($structure->headers['x-original-to']);?></td>
+									<td><?php echo htmlentities($structure->headers['subject']);?></td>
+								</tr>
+								<tr></tr>
+								<tr id="mail-<?php echo $data['num'];?>" style="display:none">
+									<td></td>
+									<td colspan="4">
+										<?php if (isset($structure->body)): ?>
+											<?php echo ($structure->body) ?>
+										<?php elseif(isset($structure->parts[1]->body)): ?>
+											<?php echo ($structure->parts[1]->body) ?>
+										<?php elseif(isset($structure->parts[0]->body)): ?>
+											<?php echo ($structure->parts[0]->body) ?>
+										<?php else: ?>
+											<?php echo '<div class="alert alert-warning" role="alert">
+												No valid body found
+											</div>' ?>
+										<?php endif; ?>
+										<hr>
+										<p><a class="btn btn-primary" data-toggle="collapse" href="#email-<?php echo $data['num'];?>" aria-expanded="false" aria-controls="email-<?php echo $data['num'];?>">Raw source</a></p>
+										<div class="collapse" id="email-<?php echo $data['num'];?>"><pre><?php echo $message;?></pre></div>
+									</td>
+								</tr>
+							<?php endforeach; ?>
+						</tbody>
+					</table>
 
-		<div class="container">
-			<h1>Mail</h1>
-			<br/>
-			<br/>
-
-			<div class="row">
-				<div class="col-md-12">
-					<h3>Send test Email</h3>
-					<br/>
-				</div>
-			</div>
-
-
-			<div class="row">
-				<div class="col-md-12">
-
-					<form class="form-inline">
-						<div class="form-group">
-							<label class="sr-only" for="exampleInputEmail1">Email to</label>
-							<input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter to email">
-						</div>
-
-						<div class="form-group">
-							<label class="sr-only" for="exampleInputEmail2">Subject</label>
-							<input name="subject" type="text" class="form-control" id="exampleInputEmail2" placeholder="Subject">
-						</div>
-
-						<div class="form-group">
-							<label class="sr-only" for="exampleInputEmail3">Message</label>
-							<input name="message" type="text" class="form-control" id="exampleInputEmail3" placeholder="Message">
-						</div>
-
-						<button type="submit" class="btn btn-primary">Send Email</button>
-					</form>
-					<br/>
-					<br/>
-
-				</div>
-			</div>
-
-
-			<div class="row">
-				<div class="col-md-12">
-					<h3>Received Emails</h3>
-					<br/>
-				</div>
-			</div>
-
-			<iframe seamless="seamless" id="received" src="/_iframe_mail.php" frameborder="0" scrolling="no" height="100%" width="100%" style="width:100%; height:100%;margin:0px;border:0px;"></iframe>
-
-
-
-
-
-		</div><!-- /.container -->
-		<?php echo loadClass('Html')->getFooter(); ?>
+		<?php echo loadClass('Html')->getFooterScripts(); ?>
 		<script>
 		$(function() {
-			// Add click event to iframe
-			var iframe = $('#received');
-			iframe.on('load', function() {
-				resize();
-				iframe.contents().click(function (event) {
-					iframe.trigger('click');
-				});
-			});
-			function resize() {
-				var table	= iframe.contents().find("#emails");
-				var height	= table.height();
-				iframe.css("height", height + "px");
-			};
+			$('.subject').each(function() {
+				$(this).click(function() {
+					var id = ($(this).attr('id'));
+					$('#mail-'+id).toggle();
 
-			// iframe onclick
-			iframe.click(function () {
-				resize();
-
-				setTimeout(function() {
-					resize();
-				}, 500);
-			});
+				})
+			})
+			// Handler for .ready() called.
 		});
-
 		</script>
 	</body>
 </html>
