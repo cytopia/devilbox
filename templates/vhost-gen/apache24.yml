@@ -131,6 +131,8 @@ features:
     </FilesMatch>
 
     <Proxy "fcgi://__PHP_ADDR__:__PHP_PORT__/">
+        ProxySet timeout=__PHP_TIMEOUT__
+        ProxySet connectiontimeout=__PHP_TIMEOUT__
     </Proxy>
 
     # If the php file doesn't exist, disable the proxy handler.

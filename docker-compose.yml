@@ -204,7 +204,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.20
+    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.21
 
     environment:
 
@@ -253,6 +253,7 @@ services:
       - PHP_FPM_ENABLE=1
       - PHP_FPM_SERVER_ADDR=php
       - PHP_FPM_SERVER_PORT=9000
+      - PHP_FPM_TIMEOUT=${HTTPD_TIMEOUT_TO_PHP_FPM:-180}
 
     ports:
       # ---- Format: ----

@@ -207,10 +207,12 @@ Check your Docker settings to allow shared volumes for the path of the Devilbox 
 This error occurs when the upstream PHP-FPM server takes longer to execute a script,
 than the timeout value set in the web server for PHP-FPM to answer.
 
-For that to fix one must increase the PHP-FPM/Proxy timeout settings on the virtual host.
+For that to fix one must increase the PHP-FPM/Proxy timeout settings in the ``.env`` file.
+:ref:`env_httpd_timeout_to_php_fpm`
 
 .. seealso::
 
+   * :ref:`env_httpd_timeout_to_php_fpm`
    * https://github.com/cytopia/devilbox/issues/280
    * https://github.com/cytopia/devilbox/issues/234
 

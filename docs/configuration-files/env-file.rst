@@ -1401,6 +1401,32 @@ changing the server name or adding locations to other assets.
 ..
      * :ref:`customize_all_virtual_hosts_globally`
 
+.. _env_httpd_timeout_to_php_fpm:
+
+HTTPD_TIMEOUT_TO_PHP_FPM
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+This variable specifies after how many seconds the webserver should quit an unanswered connection
+to PHP-FPM.
+
+Ensure that this value is higher than PHP's ``max_execution_time``, otherwise the PHP script
+could still run and the webserver will simply drop the connection before getting an answer
+by PHP.
+
+If ``HTTPD_TIMEOUT_TO_PHP_FPM`` is smaller then ``max_execution_time`` and a script runs longer
+than ``max_execution_time``, you will get a: ``504 Gateway timeout`` in the browser.
+
+If ``HTTPD_TIMEOUT_TO_PHP_FPM`` is greater then ``max_execution_time`` and a script runs longer
+than ``max_execution_time``, you will get a proper PHP error message in the browser.
+
+
++------------------------------+-------------------+------------------+
+| Name                         | Allowed values    | Default value    |
++==============================+===================+==================+
+| ``HTTPD_TIMEOUT_TO_PHP_FPM`` | positive integer  | ``180``          |
++------------------------------+-------------------+------------------+
+
+
 MySQL
 -----
 

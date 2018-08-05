@@ -120,7 +120,7 @@ features:
   # PHP-FPM will not be applied to a reverse proxy!
   php_fpm: |
     # PHP-FPM Definition
-    ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://__PHP_ADDR__:__PHP_PORT____DOCUMENT_ROOT__/$1
+    ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://__PHP_ADDR__:__PHP_PORT____DOCUMENT_ROOT__/$1 timeout=__PHP_TIMEOUT__
 
   alias: |
     # Alias Definition
