@@ -276,17 +276,26 @@ You can also work directly inside the php container. Simply use the bundled scri
 The `PS1` will automatically be populated with current chosen php version.
 Navigate the the Devilbox directory and type the below listed command:
 
-##### Linux and MacOS
-```bash
-host> ./shell.sh
-devilbox@php-7.0.19 in /shared/httpd $
-```
-
-##### Windows
-```bash
-C:\devilbox> shell.bat
-devilbox@php-7.0.19 in /shared/httpd $
-```
+<table width="100%" style="width:100%; display:table;">
+ <thead>
+  <tr>
+   <th width="50%" style="width:33%;">Linux and MacOS</th>
+   <th width="50%" style="width:33%;">Windows</th>
+  </tr>
+ </thead>
+ <tbody style="vertical-align: bottom;">
+  <tr>
+   <td>
+    <pre>host> ./shell.sh
+devilbox@php-7.0.19 in /shared/httpd $</pre>
+   </td>
+   <td>
+    <pre>C:\devilbox> shell.bat
+devilbox@php-7.0.19 in /shared/httpd $</pre>
+   </td>
+  </tr>
+ </tbody>
+</table>
 
 Your projects can be found in `/shared/httpd`. DNS records are automatically available inside the php container. Also every other service will be available on `127.0.0.1` inside the php container (tricky socat port-forwarding).
 
