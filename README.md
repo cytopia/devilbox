@@ -88,34 +88,26 @@ Find documentation and help here
    <th width="50%" style="width:33%;">Windows</th>
   </tr>
  </thead>
- <tbody style="vertical-align: top;">
+ <tbody style="vertical-align: bottom;">
   <tr>
    <td>
-    <div class="highlight highlight-source-shell"><pre>
-<span class="pl-c"><span class="pl-c">#</span> Get the Devilbox</span>
-$ git clone https://github.com/cytopia/devilbox
+    <pre># Get the Devilbox
+$ git clone https://github.com/cytopia/devilbox</pre>
+<pre># Create docker-compose environment file
 $ cd devilbox
-
-<span class="pl-c"><span class="pl-c">#</span> Create docker-compose environment file</span>
-$ cp env-example .env
-
-<span class="pl-c"><span class="pl-c">#</span> Edit your configuration</span>
-$ vim .env
-
-<span class="pl-c"><span class="pl-c">#</span> Start all container</span>
-$ docker-compose up<pre></div>
+$ cp env-example .env</pre>
+<pre># Edit your configuration
+$ vim .env</pre>
+<pre># Start all container
+$ docker-compose up</pre>
    </td>
    <td>
-    <ol>
-     <li>Clone https://github.com/cytopia/devilbox to <code>C:\devilbox</code> with <a href="https://git-scm.com/download/win">Git for Windows</a></li>
-     <li>Copy <code>C:\devilbox\env-example</code> to <code>C:\devilbox\.env</code></li>
-     <li>Edit <code>C:\devilbox\.env</code></li>
-	 <li><a href="https://devilbox.readthedocs.io/en/latest/howto/terminal/open-terminal-on-win.html">Open terminal on Windows</a> and type:</li>
-    </ol>
-    <div class="highlight highlight-source-shell"><pre>
-<span class="pl-c"><span class="pl-c">#</span> Start all container</span>
-C:\devilbox> docker-compose up
-<pre></div>
+    1. Clone <code>https://github.com/cytopia/devilbox</code> to <code>C:\devilbox</code> with <a href="https://git-scm.com/downloads">Git for Windows</a><br/><br/>
+    2. Copy <code>C:\devilbox\env-example</code> to <code>C:\devilbox\.env</code><br/><br/>
+    3. Edit <code>C:\devilbox\.env</code><br/><br/>
+    4. <a href="https://devilbox.readthedocs.io/en/latest/howto/terminal/open-terminal-on-win.html">Open a terminal on Windows</a> and type:<br/><br/><br/>
+    <pre># Start all container
+C:\devilbox> docker-compose up</pre></div>
    </td>
   </tr>
  </tbody>
