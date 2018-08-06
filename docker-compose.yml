@@ -206,7 +206,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.21
+    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.22
 
     environment:
 
@@ -280,6 +280,9 @@ services:
 
       # Mount custom web server config directory
       - ${DEVILBOX_PATH}/cfg/${HTTPD_SERVER}:/etc/httpd-custom.d
+
+      # Mount custom vhost-templates
+      - ${DEVILBOX_PATH}/cfg/vhost-gen:/etc/vhost-gen.d
 
       # Mount logs
       - ${DEVILBOX_PATH}/log/${HTTPD_SERVER}:/var/log/${HTTPD_SERVER}

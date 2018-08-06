@@ -81,38 +81,43 @@ Find documentation and help here
 
 #### Quick start
 
+<table width="100%" style="width:100%; display:table;">
+ <thead>
+  <tr>
+   <th width="50%" style="width:33%;">Linux and MacOS</th>
+   <th width="50%" style="width:33%;">Windows</th>
+  </tr>
+ </thead>
+ <tbody style="vertical-align: bottom;">
+  <tr>
+   <td>
+    <pre># Get the Devilbox
+$ git clone https://github.com/cytopia/devilbox</pre>
+<pre># Create docker-compose environment file
+$ cd devilbox
+$ cp env-example .env</pre>
+<pre># Edit your configuration
+$ vim .env</pre>
+<pre># Start all container
+$ docker-compose up</pre>
+   </td>
+   <td>
+    1. Clone <code>https://github.com/cytopia/devilbox</code> to <code>C:\devilbox</code> with <a href="https://git-scm.com/downloads">Git for Windows</a><br/><br/>
+    2. Copy <code>C:\devilbox\env-example</code> to <code>C:\devilbox\.env</code><br/><br/>
+    3. Edit <code>C:\devilbox\.env</code><br/><br/>
+    4. <a href="https://devilbox.readthedocs.io/en/latest/howto/terminal/open-terminal-on-win.html">Open a terminal on Windows</a> and type:<br/><br/><br/>
+    <pre># Start all container
+C:\devilbox> docker-compose up</pre></div>
+   </td>
+  </tr>
+ </tbody>
+</table>
+
 > **Documentation:**
 > [Install the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/install-the-devilbox.html) |
 > [Start the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html) |
 > [.env file](https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html)
 
-##### Linux and MacOS
-
-```bash
-# Get the Devilbox
-$ git clone https://github.com/cytopia/devilbox
-$ cd devilbox
-
-# Create docker-compose environment file
-$ cp env-example .env
-
-# Edit your configuration
-$ vim .env
-
-# Start all containers
-$ docker-compose up
-```
-
-##### Windows
-
-1. Clone https://github.com/cytopia/devilbox to `C:\devilbox` with [Git for Windows](https://git-scm.com/download/win)
-2. Copy `C:\devilbox\env-example` to `C:\devilbox\.env`
-3. Adjust `C:\devilbox\.env` with your favourite editor
-4. [Open terminal on Windows](https://devilbox.readthedocs.io/en/latest/howto/terminal/open-terminal-on-win.html) and type:
-```bash
-C:\> cd C:\devilbox
-C:\devilbox> docker-compose up
-```
 
 #### Selective start
 
@@ -271,17 +276,26 @@ You can also work directly inside the php container. Simply use the bundled scri
 The `PS1` will automatically be populated with current chosen php version.
 Navigate the the Devilbox directory and type the below listed command:
 
-##### Linux and MacOS
-```bash
-host> ./shell.sh
-devilbox@php-7.0.19 in /shared/httpd $
-```
-
-##### Windows
-```bash
-C:\devilbox> shell.bat
-devilbox@php-7.0.19 in /shared/httpd $
-```
+<table width="100%" style="width:100%; display:table;">
+ <thead>
+  <tr>
+   <th width="50%" style="width:33%;">Linux and MacOS</th>
+   <th width="50%" style="width:33%;">Windows</th>
+  </tr>
+ </thead>
+ <tbody style="vertical-align: bottom;">
+  <tr>
+   <td>
+    <pre>host> ./shell.sh
+devilbox@php-7.0.19 in /shared/httpd $</pre>
+   </td>
+   <td>
+    <pre>C:\devilbox> shell.bat
+devilbox@php-7.0.19 in /shared/httpd $</pre>
+   </td>
+  </tr>
+ </tbody>
+</table>
 
 Your projects can be found in `/shared/httpd`. DNS records are automatically available inside the php container. Also every other service will be available on `127.0.0.1` inside the php container (tricky socat port-forwarding).
 

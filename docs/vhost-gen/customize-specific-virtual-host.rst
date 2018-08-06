@@ -1,6 +1,6 @@
 .. include:: /_includes/all.rst
 
-.. _customize_specific_virtual_host:
+.. _vhost_gen_customize_specific_virtual_host:
 
 *******************************
 Customize specific virtual host
@@ -37,9 +37,7 @@ Where do I find templates
 -------------------------
 
 The latest version of vhost-gen templates are shipped in the Devilbox git directory under
-``templates/vhost-gen``. You can however also download them directly from its own git directory.
-
-.. seealso:: https://github.com/devilbox/vhost-gen/tree/master/etc/templates.
+``cfg/vhost-gen/``.
 
 
 How does it work
@@ -47,7 +45,7 @@ How does it work
 
 By default new virtual hosts are automatically generated and enabled by vhost-gen and watcherp
 using the vanilla templates which are glued into the webserver Docker images. The used templates
-are exactly the same as what you will find in ``templates/vhost-gen``.
+are exactly the same as what you will find in ``cfg/vhost-gen/``.
 
 This ensures to have equal and sane default virtual host for all of your projects.
 If you want to have a different virtual host configuration for a specific project of yours,
@@ -72,7 +70,7 @@ Let's assume the following default values and one project named ``project-1``:
 +===============================+=======================================================+
 | Devilbox path                 | ``/home/user/devilbox``                               |
 +-------------------------------+-------------------------------------------------------+
-| Templates to copy from        | ``/home/user/devilbox/templates/vhost-gen``           |
+| Templates to copy from        | ``/home/user/devilbox/cfg/vhost-gen``                 |
 +-------------------------------+-------------------------------------------------------+
 | Project name                  | ``project-1``                                         |
 +-------------------------------+-------------------------------------------------------+
@@ -121,7 +119,7 @@ Then you can copy the templates.
 
 .. code-block:: bash
 
-   host> cp templates/vhost-gen/* ./data/www/project-1/.devilbox
+   host> cp cfg/vhost-gen/*.yml-example ./data/www/project-1/.devilbox
 
 .. note::
    You actually only need to copy the template of your chosen webserver (either Apache 2.2,
@@ -414,4 +412,5 @@ Further readings
 .. seealso::
    Have a look at the following examples which involve customizing vhost-gen templates:
 
-   * :ref:`example_add_sub_domains`
+   * :ref:`vhost_gen_virtual_host_templates`
+   * :ref:`vhost_gen_example_add_sub_domains`

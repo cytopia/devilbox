@@ -85,10 +85,10 @@ host is ready to be served with your custom domain.
    :maxdepth: 2
    :numbered:
 
+   vhost-gen/virtual-host-templates
+   vhost-gen/customize-all-virtual-hosts-globally
    vhost-gen/customize-specific-virtual-host
    vhost-gen/example-add-subdomains
-..
-   vhost-gen/customize-all-virtual-hosts-globally
 
 
 .. toctree::
