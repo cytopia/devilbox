@@ -81,38 +81,51 @@ Find documentation and help here
 
 #### Quick start
 
+<table width="100%" style="width:100%; display:table;">
+ <thead>
+  <tr>
+   <th width="50%" style="width:33%;">Linux and MacOS</th>
+   <th width="50%" style="width:33%;">Windows</th>
+  </tr>
+ </thead>
+ <tbody style="vertical-align: top;">
+  <tr>
+   <td>
+    <div class="highlight highlight-source-shell"><pre>
+<span class="pl-c"><span class="pl-c">#</span> Get the Devilbox</span>
+$ git clone https://github.com/cytopia/devilbox
+$ cd devilbox
+
+<span class="pl-c"><span class="pl-c">#</span> Create docker-compose environment file</span>
+$ cp env-example .env
+
+<span class="pl-c"><span class="pl-c">#</span> Edit your configuration</span>
+$ vim .env
+
+<span class="pl-c"><span class="pl-c">#</span> Start all container</span>
+$ docker-compose up<pre></div>
+   </td>
+   <td>
+    <ol>
+     <li>Clone https://github.com/cytopia/devilbox to <code>C:\devilbox</code> with <a href="https://git-scm.com/download/win">Git for Windows</a></li>
+     <li>Copy <code>C:\devilbox\env-example</code> to <code>C:\devilbox\.env</code></li>
+     <li>Edit <code>C:\devilbox\.env</code></li>
+	 <li><a href="https://devilbox.readthedocs.io/en/latest/howto/terminal/open-terminal-on-win.html">Open terminal on Windows</a> and type:</li>
+    </ol>
+    <div class="highlight highlight-source-shell"><pre>
+<span class="pl-c"><span class="pl-c">#</span> Start all container</span>
+C:\devilbox> docker-compose up
+<pre></div>
+   </td>
+  </tr>
+ </tbody>
+</table>
+
 > **Documentation:**
 > [Install the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/install-the-devilbox.html) |
 > [Start the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html) |
 > [.env file](https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html)
 
-##### Linux and MacOS
-
-```bash
-# Get the Devilbox
-$ git clone https://github.com/cytopia/devilbox
-$ cd devilbox
-
-# Create docker-compose environment file
-$ cp env-example .env
-
-# Edit your configuration
-$ vim .env
-
-# Start all containers
-$ docker-compose up
-```
-
-##### Windows
-
-1. Clone https://github.com/cytopia/devilbox to `C:\devilbox` with [Git for Windows](https://git-scm.com/download/win)
-2. Copy `C:\devilbox\env-example` to `C:\devilbox\.env`
-3. Adjust `C:\devilbox\.env` with your favourite editor
-4. [Open terminal on Windows](https://devilbox.readthedocs.io/en/latest/howto/terminal/open-terminal-on-win.html) and type:
-```bash
-C:\> cd C:\devilbox
-C:\devilbox> docker-compose up
-```
 
 #### Selective start
 
