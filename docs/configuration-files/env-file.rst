@@ -1349,7 +1349,7 @@ you will have to create a directory by whatever name you chose for that variable
    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
 
 Now you need to copy the ``vhost-gen`` templates into the ``.devilbox`` directory. The templates
-are available in the Devilbox git directory under ``templates/vhost-gen/``.
+are available in the Devilbox git directory under ``cfg/vhost-gen/``.
 
 By copying those files into your project template directory, nothing will change, these are the
 default templates that will create the virtual host exactly the same way as if they were not
@@ -1362,7 +1362,7 @@ present.
    host> cd path/to/devilbox
 
    # Copy templates to your project directory
-   host> cp templates/vhost-gen/* data/www/my-first-project/.devilbox/
+   host> cp cfg/vhost-gen/*.yml data/www/my-first-project/.devilbox/
 
 
 Let's have a look how the directory is actually built up:
@@ -1396,10 +1396,11 @@ changing the server name or adding locations to other assets.
      When you want to find out more how to actually customize each virtual host to its own need,
      read up more on:
 
-     * :ref:`customize_specific_virtual_host`
-     * :ref:`example_add_sub_domains`
-..
-     * :ref:`customize_all_virtual_hosts_globally`
+   * vhost-gen: :ref:`vhost_gen_virtual_host_templates`
+   * vhost-gen: :ref:`vhost_gen_customize_all_virtual_hosts_globally`
+   * vhost-gen: :ref:`vhost_gen_customize_specific_virtual_host`
+   * vhost-gen: :ref:`vhost_gen_example_add_sub_domains`
+
 
 .. _env_httpd_timeout_to_php_fpm:
 

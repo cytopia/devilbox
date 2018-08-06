@@ -1,6 +1,6 @@
 .. include:: /_includes/all.rst
 
-.. _example_add_sub_domains:
+.. _vhost_gen_example_add_sub_domains:
 
 ************************
 Example: add sub domains
@@ -121,7 +121,11 @@ you the option to customize the virtual host of this specific project.
    :ref:`customize_all_virtual_hosts_globally` and :ref:`customize_specific_virtual_host`
 
 .. note::
-   :ref:`customize_specific_virtual_host`
+   :ref:`vhost_gen_virtual_host_templates`
+     Ensure you have read and understand how to customize virtual hosts globally with ``vhost-gen``.
+   :ref:`vhost_gen_customize_all_virtual_hosts_globally`
+     Ensure you have read and understand how to customize virtual hosts globally with ``vhost-gen``.
+   :ref:`vhost_gen_customize_specific_virtual_host`
      Ensure you have read and understand how to customize your virtual host with ``vhost-gen``.
    :ref:`env_httpd_template_dir`
      Ensure you know what this variable does inside your ``.env`` file.
@@ -178,7 +182,7 @@ Ensure that the default ``vhost-gen`` templates have been copied to your project
    host> mkdir ./data/www/project-1/.devilbox
 
    # Copy vhost-gen templates
-   host> cp templates/vhost-gen/* ./data/www/project-1/.devilbox
+   host> cp cfg/vhost-gen/*.yml ./data/www/project-1/.devilbox
 
 By having done all prerequisite, your project should be available under http://my-project-1.loc
 
@@ -566,7 +570,7 @@ your new vhost-gen template has been read and the changes have applied.
 Checklist
 ---------
 
-1. Template files are copied from ``templates/vhost-gen/*`` to your project template dir (as
+1. Template files are copied from ``cfg/vhost-gen/*`` to your project template dir (as
    specified in ``.env`` via ``HTTPD_TEMPLATE_DIR``)
 2. Ensure the vhost-gen yaml files are valid (No tab characters)
 3. When templates are edited, the Devilbox is either restarted or the project directory is renamed

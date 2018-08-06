@@ -6,15 +6,14 @@ Web server settings can be applied globally, which will affect the web server be
 but not the vhost configuration. Configuration can be done for each version separetely, which means
 each web server can have its own profile of customized settings.
 
-..
-   In order to customize the vhosts, have a look at the following links:
-   * :ref:`customize_specific_virtual_host`
-   * :ref:`customize_all_virtual_hosts_globally`
-
 .. seealso::
-   In order to customize a specific vhosts, have a look at the following link:
+   In order to customize the vhosts, have a look at the following links:
 
-   * :ref:`customize_specific_virtual_host`
+   * vhost-gen: :ref:`vhost_gen_virtual_host_templates`
+   * vhost-gen: :ref:`vhost_gen_customize_all_virtual_hosts_globally`
+   * vhost-gen: :ref:`vhost_gen_customize_specific_virtual_host`
+   * vhost-gen: :ref:`vhost_gen_example_add_sub_domains`
+
 
 **Table of Contents**
 

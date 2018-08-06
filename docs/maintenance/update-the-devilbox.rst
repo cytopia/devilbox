@@ -85,7 +85,7 @@ Keep ``vhost-gen`` templates in sync
 .. important::
    Whenever you check out a different version, make sure that the vhost-gen templates that have
    been copied to any virtual hosts are up-to-date with the templates provided in
-   ``templates/vhost-gen/``.
+   ``cfg/vhost-gen/``.
 
 
 Recreate container

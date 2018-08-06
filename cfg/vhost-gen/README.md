@@ -1,5 +1,6 @@
 # Global vhost-gen configurations
 
+Enabling templates in this directory will change the webserver vhost configuration globally for all projects which do not have their own specific vhost-gen template in place.
 
 In order for template files to be picked up by the web server they must have the correct name.
 
