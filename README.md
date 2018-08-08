@@ -521,6 +521,7 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 
 <a target="_blank" title="CakePHP" href="https://cakephp.org"><img width="64" style="width:64px" src="docs/img/logo_fw/cake.png" alt="Devilbox"/></a>
 <a target="_blank" title="CodeIgniter" href="https://www.codeigniter.com"><img width="64" style="width:64px" src="docs/img/logo_fw/codeigniter.png" alt="Devilbox"/></a>
+<a target="_blank" title="CraftCMS" href="https://craftcms.com/"><img width="64" style="width:64px" src="docs/img/logo_fw/craftcms.png" alt="Devilbox"/></a>
 <a target="_blank" title="Drupal" href="https://www.drupal.org"><img width="64" style="width:64px" src="docs/img/logo_fw/drupal.png" alt="Devilbox"/></a>
 <a target="_blank" title="Joomla" href="https://www.joomla.org"><img width="64" style="width:64px" src="docs/img/logo_fw/joomla.png" alt="Devilbox"/></a>
 <a target="_blank" title="Laravel" href="https://laravel.com"><img width="64" style="width:64px" src="docs/img/logo_fw/laravel.png" alt="Devilbox"/></a>
@@ -538,6 +539,7 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 > **Documentation:**<br/>
 > [Setup CakePHP](https://devilbox.readthedocs.io/en/latest/examples/setup-cakephp.html) |
 > [Setup CodeIgniter](https://devilbox.readthedocs.io/en/latest/examples/setup-codeigniter.html) |
+> [Setup CraftCMS](https://devilbox.readthedocs.io/en/latest/examples/setup-craftcms.html) |
 > [Setup Drupal](https://devilbox.readthedocs.io/en/latest/examples/setup-drupal.html) |
 > [Setup Joomla](https://devilbox.readthedocs.io/en/latest/examples/setup-joomla.html) |
 > [Setup Laravel](https://devilbox.readthedocs.io/en/latest/examples/setup-laravel.html) |

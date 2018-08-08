@@ -196,6 +196,7 @@ their articles:
 
    * :ref:`example_setup_cakephp`
    * :ref:`example_setup_codeigniter`
+   * :ref:`example_setup_craftcms`
    * :ref:`example_setup_drupal`
    * :ref:`example_setup_joomla`
    * :ref:`example_setup_laravel`
