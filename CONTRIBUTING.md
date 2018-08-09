@@ -21,3 +21,19 @@ Please see [ROADMAP](https://github.com/cytopia/devilbox/issues/23) for what is 
 * [ ] Better layout
 * [ ] Better logos
 * [ ] Try to remove as much vendor dependencies as possible
+
+## Updating Vendors
+
+#### phpMyAdmin
+
+The following settings must be applied to `config.inc.php`:
+```php
+<?php
+$cfg['TempDir'] = '/tmp';
+$cfg['CheckConfigurationPermissions'] = false;
+
+$cfg['blowfish_secret'] = 'add whatever value here';
+
+$cfg['Servers'][$i]['host'] = 'mysql';
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
+```
