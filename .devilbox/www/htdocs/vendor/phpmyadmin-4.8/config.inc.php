@@ -14,6 +14,8 @@
  * Custom overwrites
  */
 $cfg['TempDir'] = '/tmp';
+$cfg['CheckConfigurationPermissions'] = false;
+
 
 /**
  * This is needed for cookie based authentication to encrypt password in
