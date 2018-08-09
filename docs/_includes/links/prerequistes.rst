@@ -30,6 +30,6 @@
 
 .. |ext_lnk_prereq_docker_win_ee| raw:: html
 
-   <a target="_blank" href="https://www.docker.com/docker-windows-server">
+   <a target="_blank" href="https://www.docker.com/products/orchestration">
      Docker EE <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
