@@ -185,7 +185,9 @@ before_script:
 script:
   - if [ "${S1}" = "DOCUMENTATION" ]; then
         cd docs/;
-        sphinx-build -a -W -E -j auto -n -v . _build/html/;
+        make build;
+        make linkcheck;
+        make linkcheck2;
     else
         .tests/test_single.sh . "${S1}" "${V1}" "${S2}" "${V2}";
     fi

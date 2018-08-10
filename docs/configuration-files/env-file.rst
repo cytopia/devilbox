@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _env_file:
 
 *********
@@ -5,10 +7,13 @@
 *********
 
 All docker-compose configuration is done inside the ``.env`` file which simply defines key-value
-variables parsed to docker-compose.yml.
+pairs evaluated by docker-compose.yml.
 
-.. note::
-   what is the `.env <https://docs.docker.com/compose/env-file/>`_ file?
+If this file does not exist at the root of your Devilbox git directory, then copy ``env-example``
+to ``.env`` to initially create it with sane defaults.
+
+.. seealso::
+   what is the |ext_lnk_docker_compose_env| file?
 
 .. note::
    Use your browsers search function to quickly find the desired variable name.
@@ -218,21 +223,14 @@ this project visible to everyone in your corporate LAN.
 +-------------+----------------+---------------------------+
 | www.test    | ``local``      | ``http://www.test.local`` |
 +-------------+----------------+---------------------------+
-| my-test     | ``net``        | ``http://my-test.net``    |
-+-------------+----------------+---------------------------+
-| example     | ``com``        | ``http://example.com``    |
-+-------------+----------------+---------------------------+
-| www.test    | ``org``        | ``http://www.test.org``   |
-+-------------+----------------+---------------------------+
 
 .. warning::
    Do not use ``dev`` as a domain suffix (I know, it's tempting).
    It has been registered by
-   `Google <https://icannwiki.org/.dev>`_ and they advertise the
-   `HSTS header <https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security>`_
+   |ext_lnk_domain_dev| and they advertise the |ext_lnk_ssl_wiki_hsts|
    which makes your browser redirect every http request to https.
 
-   **See also:** `This blog post <https://ma.ttias.be/chrome-force-dev-domains-https-via-preloaded-hsts>`_
+   **See also:** |ext_lnk_ssl_blog_chrome_dev_hsts|
 
 .. warning::
    Do not use ``localhost`` as a domain suffix.
@@ -240,9 +238,16 @@ this project visible to everyone in your corporate LAN.
    should be redirected to the systems loopback interface.
    Docker has already released a commit preventing the use of ``localhost`` on MacOS.
 
-   **See also:** `RFC Draft <https://tools.ietf.org/html/draft-west-let-localhost-be-localhost-06>`_
-   and
-   `Docker Release notes <https://docs.docker.com/docker-for-mac/release-notes/#docker-community-edition-17120-ce-mac46-2018-01-09>`_
+   **See also:** |ext_lnk_domain_rfc_localhost| and |ext_lnk_domain_docker_rel_notes_localhost|
+
+.. warning::
+   **Do not use official domain endings** such as ``.com``, ``.org``, ``.net``, etc.
+   If you do, all name resolutions to any ``.com`` address (e.g.: google.com) will be resolved
+   to the Devilbox's PHP server IP address.
+
+   The bundled DNS server does a catch-all on the given TLD_SUFFIX and resolves everything
+   below it to the PHP container.
+
 
 .. _env_extra_hosts:
 
@@ -309,9 +314,9 @@ A few examples for adding extra hosts:
 
 .. seealso::
 
-   This resembles the feature of `Docker Compose: extra_hosts <https://docs.docker.com/compose/compose-file/#external_links>`_ to add external links.
+   This resembles the feature of |ext_lnk_docker_compose_extra_hosts| to add external links.
 
-.. seealso:: :ref:`communicating_with_external_hosts`
+.. seealso:: :ref:`connect_to_external_hosts`
 
 
 .. _env_new_uid:
@@ -394,7 +399,7 @@ This is especially useful to keep PHP and database timezones in sync.
 | ``TIMEZONE``          | valid timezone | ``Europe/Berlin`` |
 +-----------------------+----------------+-------------------+
 
-Have a look at Wikipedia to get a list of valid timezones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+Have a look at Wikipedia to get a list of valid timezones: |ext_lnk_doc_wiki_database_timezones|
 
 .. note::
    It is always a good practice not to assume a specific timezone anyway and store all values
@@ -449,7 +454,7 @@ hostname.
 * ``DEVILBOX_UI_SSL_CN=localhost,*.localhost,devilbox,*.devilbox``
 * ``DEVILBOX_UI_SSL_CN=intranet.example.com``
 
-.. seealso:: :ref:`configuration_https_ssl`
+.. seealso:: :ref:`setup_valid_https`
 
 
 .. _env_devilbox_ui_protect:
@@ -523,20 +528,28 @@ PHP_SERVER
 
 This variable choses your desired PHP-FPM version to be started.
 
-+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
-| Name                    | Allowed values                                                                                                                                                     | Default value   |
-+=========================+====================================================================================================================================================================+=================+
-| ``PHP_SERVER``          | ``php-fpm-5.3`` |br| ``php-fpm-5.4`` |br| ``php-fpm-5.5`` |br| ``php-fpm-5.6`` |br| ``php-fpm-7.0`` |br| ``php-fpm-7.1`` |br| ``php-fpm-7.2`` |br| ``php-fpm-7.2`` | ``php-fpm-7.1`` |
-+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
++-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+| Name                    | Allowed values                                                                                                                                                                          | Default value   |
++=========================+=========================================================================================================================================================================================+=================+
+| ``PHP_SERVER``          | ``php-fpm-5.2`` |br| ``php-fpm-5.3`` |br| ``php-fpm-5.4`` |br| ``php-fpm-5.5`` |br| ``php-fpm-5.6`` |br| ``php-fpm-7.0`` |br| ``php-fpm-7.1`` |br| ``php-fpm-7.2`` |br| ``php-fpm-7.3`` | ``php-fpm-7.1`` |
++-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+
+.. important::
+   **PHP 5.2** is available to use, but it is not officially supported. The Devilbox intranet does
+   not work with this version as PHP 5.2 does not support namespaces. Furthermore PHP 5.2 does only
+   work with Apache 2.4, Nginx stable and Nginx mainline. It does not work with Apache 2.2.
+   **Use at your own risk.**
+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
 
 .. code-block:: bash
    :caption: .env
-   :emphasize-lines: 7
+   :emphasize-lines: 9
 
    host> grep PHP_SERVER .env
 
+   #PHP_SERVER=php-fpm-5.2
    #PHP_SERVER=php-fpm-5.3
    #PHP_SERVER=php-fpm-5.4
    #PHP_SERVER=php-fpm-5.5
@@ -641,7 +654,7 @@ All values are already available in the ``.env`` file and just need to be commen
 .. note::
    This is the official PostgreSQL server which might already have other tags available,
    check their official website for even more versions.
-   https://hub.docker.com/_/postgres/
+   |ext_lnk_docker_image_postgres|
 
 
 .. _env_redis_server:
@@ -673,7 +686,7 @@ All values are already available in the ``.env`` file and just need to be commen
 .. note::
    This is the official Redis server which might already have other tags available,
    check their official website for even more versions.
-   https://hub.docker.com/_/redis/
+   |ext_lnk_docker_image_redis|
 
 
 .. _env_memcd_server:
@@ -724,7 +737,7 @@ All values are already available in the ``.env`` file and just need to be commen
 .. note::
    This is the official Memcached server which might already have other tags available,
    check their official website for even more versions.
-   https://hub.docker.com/_/memcached/
+   |ext_lnk_docker_image_memcached|
 
 
 .. _env_mongo_server:
@@ -757,7 +770,7 @@ All values are already available in the ``.env`` file and just need to be commen
 .. note::
    This is the official MongoDB server which might already have other tags available,
    check their official website for even more versions.
-   https://hub.docker.com/_/mongo/
+   |ext_lnk_docker_image_mongodb|
 
 
 Docker host mounts
@@ -989,7 +1002,7 @@ Open the command prompt and type the following:
    TCP    0.0.0.0:1875        0.0.0.0:0            LISTENING
 
 .. warning::
-   :ref:`docker_toolbox`
+   :ref:`howto_docker_toolbox_and_the_devilbox`
       When using Docker Toobox ensure that ports are exposed to all interfaces.
       See :ref:`env_local_listen_addr`
 
@@ -997,6 +1010,8 @@ Open the command prompt and type the following:
    Before setting the ports, ensure that they are not already in use on your host operating
    system by other services.
 
+
+.. _env_host_port_httpd:
 
 HOST_PORT_HTTPD
 ---------------
@@ -1010,6 +1025,7 @@ else if 80 is already in use on your host operating system.
 | ``HOST_PORT_HTTPD``  | ``1`` - ``65535`` | ``80``           |
 +----------------------+-------------------+------------------+
 
+.. _env_host_port_httpd_ssl:
 
 HOST_PORT_HTTPD_SSL
 -------------------
@@ -1109,7 +1125,7 @@ to something else if ``53`` is already in use on your host operating system.
    on port ``53`` which would result in a failure when this BIND server is starting.
 
    You only need to set BIND to port ``53`` when you want to use the ``Auto-DNS`` feautre of the
-   Devilbox. When doing so, read this article with care: :ref:`global_configuration_auto_dns`.
+   Devilbox. When doing so, read this article with care: :ref:`setup_auto_dns`.
 
 
 Container settings
@@ -1117,6 +1133,8 @@ Container settings
 
 PHP
 ---
+
+.. _env_file_php_modules_enable:
 
 PHP_MODULES_ENABLE
 ^^^^^^^^^^^^^^^^^^
@@ -1140,6 +1158,8 @@ Example:
 
    # Enable ionCube
    PHP_MODULES_ENABLE=ioncube
+
+.. _env_file_php_modules_disable:
 
 PHP_MODULES_DISABLE
 ^^^^^^^^^^^^^^^^^^^
@@ -1196,11 +1216,13 @@ This will then output ``development``.
 .. note::
    Add as many custom environment variables as you require.
 
-.. seealso:: :ref:`tutorial_custom_environment_variables`
+.. seealso:: :ref:`add_custom_environment_variables`
 
 
 Web server
 ----------
+
+.. _env_httpd_docroot_dir:
 
 HTTPD_DOCROOT_DIR
 ^^^^^^^^^^^^^^^^^
@@ -1282,7 +1304,6 @@ As you can see, the web server is still able to server the files from the ``htdo
 this time however, ``htdocs`` itself is a symlink pointing to a much deeper and nested location
 inside an actual framework directory.
 
-
 .. _env_httpd_template_dir:
 
 HTTPD_TEMPLATE_DIR
@@ -1328,7 +1349,7 @@ you will have to create a directory by whatever name you chose for that variable
    drwxr-xr-x 2 cytopia cytopia 4096 Mar 12 23:05 htdocs/
 
 Now you need to copy the ``vhost-gen`` templates into the ``.devilbox`` directory. The templates
-are available in the Devilbox git directory under ``templates/vhost-gen/``.
+are available in the Devilbox git directory under ``cfg/vhost-gen/``.
 
 By copying those files into your project template directory, nothing will change, these are the
 default templates that will create the virtual host exactly the same way as if they were not
@@ -1341,7 +1362,7 @@ present.
    host> cd path/to/devilbox
 
    # Copy templates to your project directory
-   host> cp templates/vhost-gen/* data/www/my-first-project/.devilbox/
+   host> cp cfg/vhost-gen/*.yml data/www/my-first-project/.devilbox/
 
 
 Let's have a look how the directory is actually built up:
@@ -1367,17 +1388,44 @@ servers virtual host to anything from adding rewrite rules, overwriting director
 changing the server name or adding locations to other assets.
 
 .. seealso::
-   The whole process is based on a project called `vhost-gen <https://github.com/devilbox/vhost-gen>`_.
+   The whole process is based on a project called |ext_lnk_project_vhost_gen|.
    A virtual host generator for Apache 2.2, Apache 2.4 and any Nginx version.
 
 .. seealso::
    **Customize your virtual host**
      When you want to find out more how to actually customize each virtual host to its own need,
-     read up more on :ref:`custom_vhost`.
-   **Tutorials**
-     Also have a look at this tutorial which is a walk-through showing you how to modify
-     a virtual host and make it serve all files for multiple sub domains (server names):
-     :ref:`tutorial_adding_sub_domains`
+     read up more on:
+
+   * vhost-gen: :ref:`vhost_gen_virtual_host_templates`
+   * vhost-gen: :ref:`vhost_gen_customize_all_virtual_hosts_globally`
+   * vhost-gen: :ref:`vhost_gen_customize_specific_virtual_host`
+   * vhost-gen: :ref:`vhost_gen_example_add_sub_domains`
+
+
+.. _env_httpd_timeout_to_php_fpm:
+
+HTTPD_TIMEOUT_TO_PHP_FPM
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+This variable specifies after how many seconds the webserver should quit an unanswered connection
+to PHP-FPM.
+
+Ensure that this value is higher than PHP's ``max_execution_time``, otherwise the PHP script
+could still run and the webserver will simply drop the connection before getting an answer
+by PHP.
+
+If ``HTTPD_TIMEOUT_TO_PHP_FPM`` is smaller then ``max_execution_time`` and a script runs longer
+than ``max_execution_time``, you will get a: ``504 Gateway timeout`` in the browser.
+
+If ``HTTPD_TIMEOUT_TO_PHP_FPM`` is greater then ``max_execution_time`` and a script runs longer
+than ``max_execution_time``, you will get a proper PHP error message in the browser.
+
+
++------------------------------+-------------------+------------------+
+| Name                         | Allowed values    | Default value    |
++==============================+===================+==================+
+| ``HTTPD_TIMEOUT_TO_PHP_FPM`` | positive integer  | ``180``          |
++------------------------------+-------------------+------------------+
 
 
 MySQL
@@ -1418,7 +1466,7 @@ As the Devilbox is intended to be used for development, this feature is turned o
 **MySQL documentation:**
     "The general query log is a general record of what mysqld is doing. The server writes information to this log when clients connect or disconnect, and it logs each SQL statement received from clients. The general query log can be very useful when you suspect an error in a client and want to know exactly what the client sent to mysqld."
 
-    -- https://dev.mysql.com/doc/refman/5.7/en/query-log.html
+    -- |ext_lnk_doc_mysql_query_log|
 
 PostgreSQL
 ----------
@@ -1537,8 +1585,8 @@ This variable controls the DNS TTL in seconds. If empty or removed it will fallb
 
 .. seealso::
 
-   * `BIND TTL <http://www.zytrax.com/books/dns/apa/ttl.html>`_
-   * `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+   * |ext_lnk_doc_bind_ttl|
+   * |ext_lnk_doc_bind_soa|
 
 BIND_REFRESH_TIME
 ^^^^^^^^^^^^^^^^^
@@ -1551,7 +1599,7 @@ This variable controls the DNS Refresh time in seconds. If empty or removed it w
 | ``BIND_REFRESH_TIME``    | integer              | empty               |
 +--------------------------+----------------------+---------------------+
 
-.. seealso:: `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+.. seealso:: |ext_lnk_doc_bind_soa|
 
 BIND_RETRY_TIME
 ^^^^^^^^^^^^^^^
@@ -1564,7 +1612,7 @@ This variable controls the DNS Retry time in seconds. If empty or removed it wil
 | ``BIND_RETRY_TIME``      | integer              | empty               |
 +--------------------------+----------------------+---------------------+
 
-.. seealso:: `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+.. seealso:: |ext_lnk_doc_bind_soa|
 
 BIND_EXPIRY_TIME
 ^^^^^^^^^^^^^^^^
@@ -1577,7 +1625,7 @@ This variable controls the DNS Expiry time in seconds. If empty or removed it wi
 | ``BIND_EXPIRY_TIME``     | integer              | empty               |
 +--------------------------+----------------------+---------------------+
 
-.. seealso:: `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
+.. seealso:: |ext_lnk_doc_bind_soa|
 
 BIND_MAX_CACHE_TIME
 ^^^^^^^^^^^^^^^^^^^
@@ -1590,13 +1638,4 @@ This variable controls the DNS Max Cache time in seconds. If empty or removed it
 | ``BIND_MAX_CACHE_TIME``  | integer              | empty               |
 +--------------------------+----------------------+---------------------+
 
-.. seealso:: `BIND SOA <http://www.zytrax.com/books/dns/ch8/soa.html>`_
-
-
-
-
-
-
-.. |br| raw:: html
-
-   <br />
+.. seealso:: |ext_lnk_doc_bind_soa|
