@@ -175,7 +175,7 @@ services:
       - ${DEVILBOX_PATH}/log/php-fpm-${PHP_SERVER}:/var/log/php:z
 
       # Mount Mail directory
-      - ${DEVILBOX_PATH}/mail:/var/mail
+      - ${DEVILBOX_PATH}/mail:/var/mail:z
 
       # Mount DB Backup directory
       - ${DEVILBOX_PATH}/backups:/shared/backups:z
