@@ -1,3 +1,5 @@
+.. include:: /_includes/all.rst
+
 .. _docker_compose_override_yml:
 
 ***************************
@@ -14,7 +16,7 @@ By default, this file does not exist and you must create it. You can either copy
 .. contents:: :local:
 
 
-.. seealso:: Official Docker documentation: `Share Compose configurations between files and projects <https://docs.docker.com/compose/extends>`_
+.. seealso:: |ext_lnk_docker_compose_extends|
 
 
 Create docker-compose.override.yml

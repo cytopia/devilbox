@@ -15,6 +15,8 @@
  * cookie. Needs to be 32 chars long.
  */
 $cfg['blowfish_secret'] = 'GObO60^(04#^5637%fdUGo(*6$%6#dy4'; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
+$cfg['CheckConfigurationPermissions'] = false;
+
 
 /**
  * Servers configuration

@@ -6,7 +6,9 @@ FAQ
 
 Find common questions and answers here.
 
-.. seealso:: :ref:`troubleshooting`
+.. seealso::
+   * :ref:`howto`
+   * :ref:`troubleshooting`
 
 
 **Table of Contents**
@@ -20,7 +22,7 @@ General
 Are there any differences between native Docker and Docker Toolbox?
 -------------------------------------------------------------------
 
-Yes, read :ref:`docker_toolbox` to find out more.
+Yes, read :ref:`howto_docker_toolbox_and_the_devilbox` to find out more.
 
 
 .. _faq_data_dir_separated_by_version:
@@ -123,6 +125,7 @@ you want. See :ref:`env_tld_suffix`.
 
 .. warning::
    Be aware not to use ``dev`` or ``localhost``. See :ref:`env_tld_suffix` for more details.
+   Also do not use any official domain TLDs such as ``com``, ``net``, ``org``, etc.
 
 
 Can I just start PHP and MySQL instead of all container?
@@ -139,7 +142,7 @@ You need a valid DNS entry for every project that points to the Httpd server. As
 don't exists by default, you will have to create them. However, the Devilbox has a bundled DNS
 server that can automate this for you. The only thing you have to do for that to work is to add
 this DNS server's IP address to your ``/etc/resolv.conf``.
-See :ref:`global_configuration_auto_dns` for detailed instructions.
+See :ref:`setup_auto_dns` for detailed instructions.
 
 
 Compatibility
@@ -149,6 +152,18 @@ Does it work with CakePHP?
 --------------------------
 
 Yes, see :ref:`example_setup_cakephp`
+
+
+Does it work with Codeigniter?
+------------------------------
+
+Yes, see :ref:`example_setup_codeigniter`
+
+
+Does it work with CraftCMS?
+---------------------------
+
+Yes, see :ref:`example_setup_craftcms`
 
 
 Does it work with Drupal?
@@ -169,16 +184,46 @@ Does it work with Laravel?
 Yes, see :ref:`example_setup_laravel`
 
 
+Does it work with Magento?
+--------------------------
+
+Yes, see :ref:`example_setup_magento`
+
+
 Does it work with Phalcon?
 --------------------------
 
 Yes, see :ref:`example_setup_phalcon`
 
 
+Does it work with Photon CMS?
+-----------------------------
+
+Yes, see :ref:`example_setup_photon_cms`
+
+
+Does it work with PrestaShop?
+-----------------------------
+
+Yes, see :ref:`example_setup_presta_shop`
+
+
+Does it work with Shopware?
+---------------------------
+
+Yes, see :ref:`example_setup_shopware`
+
+
 Does it work with Symfony?
 --------------------------
 
 Yes, see :ref:`example_setup_symfony`
+
+
+Does it work with Typo3?
+------------------------
+
+Yes, see :ref:`example_setup_typo3`
 
 
 Does it work with Wordpress?
@@ -197,3 +242,8 @@ Does it work with Zend?
 -----------------------
 
 Yes, see :ref:`example_setup_zend`
+
+Does it work with other Frameworks?
+-----------------------------------
+
+Yes, see :ref:`example_setup_other_frameworks`

@@ -85,6 +85,7 @@ services:
       docker.for.lin.host.internal: 172.16.238.1
       docker.for.lin.localhost: 172.16.238.1
 
+    hostname: bind
     networks:
       app_net:
         ipv4_address: 172.16.238.100
@@ -94,8 +95,7 @@ services:
   # PHP / HHVM
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER:-7.0}-work
-    restart: always
+    image: devilbox/php-fpm:${PHP_SERVER:-7.0}-work-0.30
 
     ##
     ## All .env variables
@@ -156,6 +156,7 @@ services:
       docker.for.lin.host.internal: 172.16.238.1
       docker.for.lin.localhost: 172.16.238.1
 
+    hostname: php
     networks:
       app_net:
         ipv4_address: 172.16.238.10
@@ -174,7 +175,7 @@ services:
       - ${DEVILBOX_PATH}/log/php-fpm-${PHP_SERVER}:/var/log/php:z
 
       # Mount Mail directory
-      #- ${DEVILBOX_PATH}/run/mail:/var/mail
+      - ${DEVILBOX_PATH}/mail:/var/mail:z
 
       # Mount DB Backup directory
       - ${DEVILBOX_PATH}/backups:/shared/backups:z
@@ -205,8 +206,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.17
-    restart: always
+    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.22
 
     environment:
 
@@ -251,9 +251,11 @@ services:
       ##
       ## PHP-FPM Remote Server
       ##
+      - COMPAT=${PHP_SERVER:-7.0}
       - PHP_FPM_ENABLE=1
       - PHP_FPM_SERVER_ADDR=php
       - PHP_FPM_SERVER_PORT=9000
+      - PHP_FPM_TIMEOUT=${HTTPD_TIMEOUT_TO_PHP_FPM:-180}
 
     ports:
       # ---- Format: ----
@@ -261,6 +263,7 @@ services:
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_HTTPD}:80"
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_HTTPD_SSL}:443"
 
+    hostname: httpd
     networks:
       app_net:
         ipv4_address: 172.16.238.11
@@ -277,6 +280,9 @@ services:
 
       # Mount custom web server config directory
       - ${DEVILBOX_PATH}/cfg/${HTTPD_SERVER}:/etc/httpd-custom.d:z
+
+      # Mount custom vhost-templates
+      - ${DEVILBOX_PATH}/cfg/vhost-gen:/etc/vhost-gen.d
 
       # Mount logs
       - ${DEVILBOX_PATH}/log/${HTTPD_SERVER}:/var/log/${HTTPD_SERVER}:z
@@ -326,6 +332,7 @@ services:
       # [local-machine:]local-port:docker-port
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MYSQL}:3306"
 
+    hostname: mysql
     networks:
       app_net:
         ipv4_address: 172.16.238.12
@@ -369,6 +376,7 @@ services:
       # [local-machine:]local-port:docker-port
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_PGSQL}:5432"
 
+    hostname: pgsql
     networks:
       app_net:
         ipv4_address: 172.16.238.13
@@ -399,6 +407,7 @@ services:
       # [local-machine:]local-port:docker-port
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_REDIS}:6379"
 
+    hostname: redis
     networks:
       app_net:
         ipv4_address: 172.16.238.14
@@ -426,6 +435,7 @@ services:
       # [local-machine:]local-port:docker-port
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MEMCD}:11211"
 
+    hostname: memcd
     networks:
       app_net:
         ipv4_address: 172.16.238.15
@@ -453,6 +463,7 @@ services:
       # [local-machine:]local-port:docker-port
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MONGO}:27017"
 
+    hostname: mongo
     networks:
       app_net:
         ipv4_address: 172.16.238.16

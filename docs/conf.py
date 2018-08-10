@@ -21,14 +21,14 @@ from recommonmark.parser import CommonMarkParser
 
 # -- Project information -----------------------------------------------------
 
-project = u'devilbox'
+project = u'Devilbox'
 copyright = u'2018, cytopia'
 author = u'cytopia'
 
 # The short X.Y version
-version = u''
+version = u'1.0'
 # The full version, including alpha/beta/rc tags
-release = u''
+release = u'1.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -75,10 +75,32 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path .
-exclude_patterns = [u'_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = [
+    u'_build/*',
+    u'_includes/*',
+    u'Thumbs.db',
+    u'.DS_Store'
+]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
+
+rst_epilog = """
+.. |psf| replace:: Devilbox
+"""
+
+
+# -- Options for Link check -------------------------------------------------
+
+# http://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-the-linkcheck-builder
+linkcheck_ignore = [
+    r'http(s)?://localhost(/)?.*',
+    r'http(s)?://127\.0\.0\.1(/)?.*',
+    r'http(s)?://.+\.loc$'
+]
+linkcheck_retries = 5
+linkcheck_timeout = 60
+linkcheck_anchors = True
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -111,7 +133,7 @@ html_theme_options = {
     'logo_only': False,
     'display_version': True,
     'prev_next_buttons_location': 'bottom',
-    #'style_external_links': False,
+    #'style_external_links': True,
     #'vcs_pageview_mode': '',
     # Toc options
     'collapse_navigation': False,
@@ -137,7 +159,12 @@ html_static_path = ['_static']
 # html_sidebars = {}
 
 def setup(app):
-    app.add_stylesheet('css/custom.css')
+    '''Include custom css file'''
+    app.add_stylesheet('css/devilbox.css')
+
+
+# If true, “Created using Sphinx” is shown in the HTML footer. Default is True.
+html_show_sphinx = False
 
 
 # -- Options for HTMLHelp output ---------------------------------------------
@@ -170,8 +197,13 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'devilbox.tex', u'devilbox Documentation',
-     u'cytopia', 'manual'),
+    (
+        master_doc,
+        'devilbox.tex',
+        u'Devilbox Documentation',
+        u'cytopia',
+        'manual'
+    ),
 ]
 
 
@@ -180,8 +212,13 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'devilbox', u'devilbox Documentation',
-     [author], 1)
+    (
+        master_doc,
+        'devilbox',
+        u'Devilbox Documentation',
+        [author],
+        1
+    )
 ]
 
 
@@ -191,7 +228,13 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'devilbox', u'devilbox Documentation',
-     author, 'devilbox', 'One line description of project.',
-     'Miscellaneous'),
+    (
+        master_doc,
+        'devilbox',
+        u'Devilbox Documentation',
+        author,
+        'devilbox',
+        'A modern dockerized LAMP and MEAN stack alternative to XAMPP',
+        'Miscellaneous'
+    ),
 ]

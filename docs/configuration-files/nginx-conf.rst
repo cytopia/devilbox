@@ -13,7 +13,12 @@ supplying custom configurations.
 .. important::
    You could actually also create virtual hosts here, but it is recommended to use the
    Devilbox Auto-vhost generation feature. If you want to custimize your current virtual hosts
-   have a look at :ref:`custom_vhost`.
+   have a look at:
+
+   * vhost-gen: :ref:`vhost_gen_virtual_host_templates`
+   * vhost-gen: :ref:`vhost_gen_customize_all_virtual_hosts_globally`
+   * vhost-gen: :ref:`vhost_gen_customize_specific_virtual_host`
+   * vhost-gen: :ref:`vhost_gen_example_add_sub_domains`
 
 
 **Table of Contents**

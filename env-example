@@ -219,6 +219,11 @@ DEVILBOX_UI_ENABLE=1
 ###
 ### 1.1 Choose PHP Server Image
 ###
+### Note: PHP 5.2 is not officially supported. Intranet won't work (due to lack of namespace support).
+###       PHP 5.2 only works with Apache 2.4, Nginx stable and Nginx mainline.
+###       Use at your own risk.
+###
+#PHP_SERVER=5.2
 #PHP_SERVER=5.3
 #PHP_SERVER=5.4
 #PHP_SERVER=5.5
@@ -471,6 +476,16 @@ HTTPD_DOCROOT_DIR=htdocs
 ### When changing this value, restart the devilbox.
 ###
 HTTPD_TEMPLATE_DIR=.devilbox
+
+
+###
+### Webserver timeout (in seconds) to upstream PHP-FPM server
+###
+### This value should be greater than PHP's max_execution_time,
+### otherwise the php script could still run and the webserver will
+### simply drop the connection before getting an answer by PHP.
+###
+HTTPD_TIMEOUT_TO_PHP_FPM=180
 
 
 
