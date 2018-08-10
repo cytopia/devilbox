@@ -166,37 +166,37 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount custom intranet
-      - ${DEVILBOX_PATH}/.devilbox/www:/var/www/default:ro,z
+      - ${DEVILBOX_PATH}/.devilbox/www:/var/www/default:ro${MOUNT_OPTIONS}
 
       # Mount custom mass virtual hosting
-      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:z
+      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:rw${MOUNT_OPTIONS}
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/php-fpm-${PHP_SERVER}:/var/log/php:z
+      - ${DEVILBOX_PATH}/log/php-fpm-${PHP_SERVER}:/var/log/php:rw${MOUNT_OPTIONS}
 
       # Mount Mail directory
-      - ${DEVILBOX_PATH}/mail:/var/mail:z
+      - ${DEVILBOX_PATH}/mail:/var/mail:rw${MOUNT_OPTIONS}
 
       # Mount DB Backup directory
-      - ${DEVILBOX_PATH}/backups:/shared/backups:z
+      - ${DEVILBOX_PATH}/backups:/shared/backups:rw${MOUNT_OPTIONS}
 
       # Mount devilbox user-defined *.ini files in order
       # to overwrite the default PHP.ini configuration
-      - ${DEVILBOX_PATH}/cfg/php-ini-${PHP_SERVER}:/etc/php-custom.d:ro,z
+      - ${DEVILBOX_PATH}/cfg/php-ini-${PHP_SERVER}:/etc/php-custom.d:ro${MOUNT_OPTIONS}
 
       # Mount devilbox user-defined PHP-FPM *.conf files in order
       # to overwrite the default PHP-FPM configuration
-      - ${DEVILBOX_PATH}/cfg/php-fpm-${PHP_SERVER}:/etc/php-fpm-custom.d:ro,z
+      - ${DEVILBOX_PATH}/cfg/php-fpm-${PHP_SERVER}:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
 
       # Mount devilbox user-defined *.so files in order
       # to load custom PHP modules
-      - ${DEVILBOX_PATH}/mod/php-fpm-${PHP_SERVER}:/usr/lib64/php/custom-modules:ro,z
+      - ${DEVILBOX_PATH}/mod/php-fpm-${PHP_SERVER}:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
 
       # Mount devilbox user-defined bash config
-      - ${DEVILBOX_PATH}/bash:/etc/bashrc-devilbox.d:z
+      - ${DEVILBOX_PATH}/bash:/etc/bashrc-devilbox.d:rw${MOUNT_OPTIONS}
 
       # Certificate Authority public key
-      - ${DEVILBOX_PATH}/ca:/ca:z
+      - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -273,22 +273,22 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount custom intranet
-      - ${DEVILBOX_PATH}/.devilbox/www:/var/www/default:ro,z
+      - ${DEVILBOX_PATH}/.devilbox/www:/var/www/default:ro${MOUNT_OPTIONS}
 
       # Mount custom mass virtual hosting
-      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:z
+      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:rw${MOUNT_OPTIONS}
 
       # Mount custom web server config directory
-      - ${DEVILBOX_PATH}/cfg/${HTTPD_SERVER}:/etc/httpd-custom.d:z
+      - ${DEVILBOX_PATH}/cfg/${HTTPD_SERVER}:/etc/httpd-custom.d:rw${MOUNT_OPTIONS}
 
       # Mount custom vhost-templates
-      - ${DEVILBOX_PATH}/cfg/vhost-gen:/etc/vhost-gen.d
+      - ${DEVILBOX_PATH}/cfg/vhost-gen:/etc/vhost-gen.d:rw${MOUNT_OPTIONS}
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/${HTTPD_SERVER}:/var/log/${HTTPD_SERVER}:z
+      - ${DEVILBOX_PATH}/log/${HTTPD_SERVER}:/var/log/${HTTPD_SERVER}:rw${MOUNT_OPTIONS}
 
       # Certificate Authority public key
-      - ${DEVILBOX_PATH}/ca:/ca:z
+      - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -342,17 +342,17 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/${MYSQL_SERVER}:/var/log/mysql:z
+      - ${DEVILBOX_PATH}/log/${MYSQL_SERVER}:/var/log/mysql:rw${MOUNT_OPTIONS}
 
       # Mount devilbox default overwrites
-      - ${DEVILBOX_PATH}/.devilbox/etc/${MYSQL_SERVER}:/etc/mysql/conf.d:ro,z
+      - ${DEVILBOX_PATH}/.devilbox/etc/${MYSQL_SERVER}:/etc/mysql/conf.d:ro${MOUNT_OPTIONS}
 
       # Mount devilbox user-defined cnf files in order
       # to overwrite the MySQL server configuration
-      - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER}:/etc/mysql/docker-default.d:ro,z
+      - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER}:/etc/mysql/docker-default.d:ro${MOUNT_OPTIONS}
 
       # Mount MySQL Data directory
-      - ${HOST_PATH_MYSQL_DATADIR}/${MYSQL_SERVER}:/var/lib/mysql:z
+      - ${HOST_PATH_MYSQL_DATADIR}/${MYSQL_SERVER}:/var/lib/mysql:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -386,10 +386,10 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/pgsql-${PGSQL_SERVER}:/var/log/postgresql:z
+      - ${DEVILBOX_PATH}/log/pgsql-${PGSQL_SERVER}:/var/log/postgresql:rw${MOUNT_OPTIONS}
 
       # Mount PostgreSQL Data directory
-      - ${HOST_PATH_PGSQL_DATADIR}/${PGSQL_SERVER}:/var/lib/postgresql/data/pgdata:z
+      - ${HOST_PATH_PGSQL_DATADIR}/${PGSQL_SERVER}:/var/lib/postgresql/data/pgdata:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -417,7 +417,7 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/redis-${REDIS_SERVER}:/var/log/redis:z
+      - ${DEVILBOX_PATH}/log/redis-${REDIS_SERVER}:/var/log/redis:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -445,7 +445,7 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/memcd-${MEMCD_SERVER}:/var/log/memcd:z
+      - ${DEVILBOX_PATH}/log/memcd-${MEMCD_SERVER}:/var/log/memcd:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -473,7 +473,7 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount MongoDB Data directory
-      - ${HOST_PATH_MONGO_DATADIR}/${MONGO_SERVER}:/data/db:z
+      - ${HOST_PATH_MONGO_DATADIR}/${MONGO_SERVER}:/data/db:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind

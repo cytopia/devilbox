@@ -335,6 +335,26 @@ MONGO_SERVER=3.7
 ################################################################################
 
 ###
+### Global mount options
+###
+### Note: When adding custom mount options, ensure to start with a
+###       leading ',' (comma), as those options are prepended to already
+###       existing mount options.
+###
+### Note: If no mount options are specified, leave this variable empty
+###       and do not add a leading ',' (comman).
+###
+### MOUNT_OPTIONS=,cached
+### MOUNT_OPTIONS=
+###
+### Example: Allow to share mounts accross container with SELINUX enabled
+###
+### MOUNT_OPTIONS=,z
+###
+MOUNT_OPTIONS=
+
+
+###
 ### Local filesystem path to www projects.
 ###
 ### Note: When changing this variable you must re-create the container.
