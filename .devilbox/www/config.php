@@ -127,12 +127,26 @@ function loadClass($class) {
 				break;
 
 			case 'Redis':
+
+				// Check if redis is using a password
+				$REDIS_ROOT_PASSWORD = '';
+
+				$_REDIS_ARGS = loadClass('Helper')->getEnv('REDIS_ARGS');
+				$_REDIS_PASS = preg_split("/--requirepass\s+/",  $_REDIS_ARGS);
+				if (is_array($_REDIS_PASS) && count($_REDIS_PASS)) {
+					// In case the option is specified multiple times, use the last effective one.
+					$_REDIS_PASS = $_REDIS_PASS[count($_REDIS_PASS)-1];
+					if (strlen($_REDIS_PASS) > 0) {
+						$REDIS_ROOT_PASSWORD = $_REDIS_PASS;
+					}
+				}
+
 				loadFile($class, $cnt_dir);
-				if(loadClass('Helper')->getEnv('REDIS_ROOT_PASSWORD') == ''){
+				if ($REDIS_ROOT_PASSWORD == '') {
 					$_LOADED_LIBS[$class] = \devilbox\Redis::getInstance($GLOBALS['REDIS_HOST_NAME']);
-				}else{
+				} else {
 					$_LOADED_LIBS[$class] = \devilbox\Redis::getInstance($GLOBALS['REDIS_HOST_NAME'], array(
-						'pass' => loadClass('Helper')->getEnv('REDIS_ROOT_PASSWORD'),
+						'pass' => $REDIS_ROOT_PASSWORD,
 					));
 				}
 				break;
@@ -149,7 +163,7 @@ function loadClass($class) {
 
 			// Get optional docker classes
 			default:
-				// Redis
+				// Unknown class
 				exit('Class does not exist: '.$class);
 		}
 		return $_LOADED_LIBS[$class];
