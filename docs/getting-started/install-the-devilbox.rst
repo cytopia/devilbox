@@ -99,6 +99,30 @@ Open the ``.env`` file with your favorite text editor and adjust those values:
    * :ref:`syncronize_container_permissions`
 
 
+OS specific setup
+=================
+
+Linux: SELinux
+--------------
+
+If you have SELinux enabled, you will also have to adjust the :ref:`env_mount_options` to allow
+shared mounts among multiple container:
+
+.. code-block:: bash
+   :caption: .env
+   :emphasize-lines: 3
+
+   host> vi .env
+
+   MOUNT_OPTIONS=,z
+
+.. seealso::
+   * https://github.com/cytopia/devilbox/issues/255
+   * :ref:`env_mount_options`
+   * |ext_lnk_docker_selinux_label|
+   * |ext_lnk_docker_mount_z_flag|
+
+
 Checklist
 =========
 
