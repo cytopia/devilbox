@@ -589,9 +589,12 @@ HOST_PORT_REDIS=6379
 ###
 ###   REDIS_ARGS=--requirepass my-redis-root-password
 ###
+### Example: Verbosity
+###
+###   REDIS_ARGS=--loglevel verbose
 ###
 REDIS_ARGS=
-#REDIS_ARGS=--requirepass my-redis-root-password
+#REDIS_ARGS=--loglevel verbose --requirepass my-redis-root-password
 
 
 
