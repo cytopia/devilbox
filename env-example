@@ -577,6 +577,26 @@ HOST_PORT_PGSQL=5432
 HOST_PORT_REDIS=6379
 
 
+###
+### Custom startup arguments
+###
+### Apply custom startup arguments to redis
+###
+### Example: Password protection
+###   Add password protection to the Redis server by specifying it should
+###   require a password.
+###   Note: Do not add quotes or spaces to the password
+###
+###   REDIS_ARGS=--requirepass my-redis-root-password
+###
+### Example: Verbosity
+###
+###   REDIS_ARGS=--loglevel verbose
+###
+REDIS_ARGS=
+#REDIS_ARGS=--loglevel verbose --requirepass my-redis-root-password
+
+
 
 ################################################################################
 ###

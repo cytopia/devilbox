@@ -1542,6 +1542,47 @@ connect to PostgreSQL and will not be able to display information inside the bun
    Keep this variable in sync with the actual PostgreSQL password.
 
 
+.. _env_redis:
+
+Redis
+-----
+
+REDIS_ARGS
+^^^^^^^^^^
+
+This option lets you add extra startup parameters to Redis. This could include adding a password
+protection to Redis or increasing its verbosity.
+
++-------------------------+------------------------------------------+----------------+
+| Name                    | Allowed values                           | Default value  |
++=========================+==========================================+================+
+| ``REDIS_ARGS``          | valid ``redis-server`` startup parameter | empty          |
++-------------------------+------------------------------------------+----------------+
+
+Example: Adding password protection
+"""""""""""""""""""""""""""""""""""
+
+.. code-block:: bash
+
+   REDIS_ARGS=--requirepass my-redis-root-password
+
+.. important:: Do not quote the password and do not use spaces inside the password.
+
+Example: Increasing verbosity
+"""""""""""""""""""""""""""""
+
+.. code-block:: bash
+
+   REDIS_ARGS=--loglevel verbose
+
+Example: Combining options
+""""""""""""""""""""""""""
+
+.. code-block:: bash
+
+   REDIS_ARGS=--loglevel verbose --requirepass my-redis-root-password
+
+
 Bind
 ----
 
