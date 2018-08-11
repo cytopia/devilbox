@@ -787,6 +787,40 @@ downloading libraries with ``composer`` and others.
 Being able to do that on both sides, removes the need to install any development tools (except your
 IDE/editor) on your host and have everything fully encapsulated into the containers itself.
 
+.. _env_mount_options:
+
+MOUNT_OPTIONS
+-------------
+
+This variable allows you to add custom mount options/flags to all mounted directories.
+Initially only ``rw`` or ``ro`` are applied to mount points, you can however extend this
+before starting up the Devilbox.
+
+
++------------------------------+--------------------+----------------+
+| Name                         | Allowed values     | Default value  |
++==============================+====================+================+
+| ``MOUNT_OPTIONS``            | valid mount option | empty          |
++------------------------------+--------------------+----------------+
+
+If you are on Linux with SELinux enabled, you will want to set this value to ``,z`` to modify
+SELinux labels in order to share mounts among multiple container.
+
+.. seealso::
+   * |ext_lnk_docker_bind_propagation|
+   * |ext_lnk_docker_selinux_label|
+   * |ext_lnk_docker_mount_z_flag|
+
+.. important::
+   When adding custom mount options, ensure to start with a leading ``,``, as those options
+   are prepended to already existing options.
+
+   .. code-block:: bash
+
+      MOUNT_OPTIONS=,z
+      MOUNT_OPTIONS=,cached
+
+
 
 .. _env_httpd_datadir:
 

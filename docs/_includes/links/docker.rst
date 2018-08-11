@@ -115,3 +115,26 @@
    <a target="_blank" href="https://docs.docker.com/toolbox/toolbox_install_windows/#optional-add-shared-directories">
      Docker Toolbox on Windows: add shared directories <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
+
+..
+   ============================================================
+   Docker Documention
+   ============================================================
+
+.. |ext_lnk_docker_bind_propagation| raw:: html
+
+   <a target="_blank" href="https://docs.docker.com/storage/bind-mounts/#configure-bind-propagation">
+     Docker: Configure bind propagation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_docker_selinux_label| raw:: html
+
+   <a target="_blank" href="https://docs.docker.com/storage/bind-mounts/#configure-the-selinux-label">
+     Docker: Configure the selinux label <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_docker_mount_z_flag| raw:: html
+
+   <a target="_blank" href="https://stackoverflow.com/questions/35218194/what-is-z-flag-in-docker-containers-volumes-from-option/35222815#35222815">
+     Stackoverflow: What is the z flag <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
