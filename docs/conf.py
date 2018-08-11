@@ -96,7 +96,8 @@ rst_epilog = """
 linkcheck_ignore = [
     r'http(s)?://localhost(/)?.*',
     r'http(s)?://127\.0\.0\.1(/)?.*',
-    r'http(s)?://.+\.loc$'
+    r'http(s)?://.+\.loc$',
+    r'http(s)?://.+\.loc/.+$'
 ]
 linkcheck_retries = 5
 linkcheck_timeout = 60
