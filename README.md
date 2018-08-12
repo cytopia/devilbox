@@ -326,8 +326,8 @@ The Devilbox has everything setup for you. The only thing you will have to insta
     <td>New virtual hosts are created automatically and instantly whenever you add a project directory. This is done internally via <a href="https://travis-ci.org/devilbox/vhost-gen">vhost-gen</a> and <a href="https://github.com/devilbox/watcherd">watcherd</a>.</td>
   </tr>
   <tr>
-    <td>:star: Automated SSL certificate generation</td>
-    <td>SSL certificates are automatically created for each vhost and signed by the Devilbox CA.</td>
+    <td>:star: Automated SSL certs</td>
+    <td>Valid SSL certificates for HTTPS are automatically created for each vhost and signed by the Devilbox CA.</td>
   </tr>
   <tr>
     <td>:star: Unlimited vhosts</td>
