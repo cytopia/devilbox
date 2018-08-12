@@ -26,6 +26,14 @@ env:
   - S1=DOCUMENTATION
 
   ###
+  ### Update script
+  ###
+  - S1=UPDATE V1=php
+  - S1=UPDATE V1=httpd
+  - S1=UPDATE V1=mysql
+  - S1=UPDATE V1=rest
+
+  ###
   ### The matrix specifies 2 versions to compare against each other.
   ### As PHP (any version) needs to be able to run with everything,
   ### I am going to test any PHP version against any other service.
@@ -188,6 +196,8 @@ script:
         make build;
         make linkcheck;
         make linkcheck2;
+    elif [ "${S1}" = "UPDATE" ]; then
+        ./update-docker.sh "${V1}";
     else
         .tests/test_single.sh . "${S1}" "${V1}" "${S2}" "${V2}";
     fi

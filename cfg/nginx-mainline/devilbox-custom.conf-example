@@ -11,8 +11,6 @@
 charset utf-8;
 
 send_timeout 60;
-keepalive_timeout 10;
 
-sendfile        off;
 tcp_nopush      on;
 tcp_nodelay     on;

@@ -83,18 +83,22 @@ host is ready to be served with your custom domain.
 .. toctree::
    :caption: vhost-gen
    :maxdepth: 2
-   :numbered:
 
    vhost-gen/virtual-host-templates
    vhost-gen/customize-all-virtual-hosts-globally
    vhost-gen/customize-specific-virtual-host
    vhost-gen/example-add-subdomains
 
+.. toctree::
+   :caption: Add custom container
+   :maxdepth: 2
+
+   custom-container/integrate-mailhog
+
 
 .. toctree::
    :caption: Corporate Usage
    :maxdepth: 2
-   :numbered:
 
    corporate-usage/shared-devilbox-server-in-lan
    corporate-usage/use-external-databases

@@ -20,6 +20,3 @@ MaxKeepAliveRequests 100
 
 EnableMMAP Off
 EnableSendfile Off
-
-XSendFile On
-XSendFilePath /shared/httpd

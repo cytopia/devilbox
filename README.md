@@ -326,8 +326,8 @@ The Devilbox has everything setup for you. The only thing you will have to insta
     <td>New virtual hosts are created automatically and instantly whenever you add a project directory. This is done internally via <a href="https://travis-ci.org/devilbox/vhost-gen">vhost-gen</a> and <a href="https://github.com/devilbox/watcherd">watcherd</a>.</td>
   </tr>
   <tr>
-    <td>:star: Automated SSL certificate generation</td>
-    <td>SSL certificates are automatically created for each vhost and signed by the Devilbox CA.</td>
+    <td>:star: Automated SSL certs</td>
+    <td>Valid SSL certificates for HTTPS are automatically created for each vhost and signed by the Devilbox CA.</td>
   </tr>
   <tr>
     <td>:star: Unlimited vhosts</td>
@@ -380,26 +380,29 @@ The Devilbox has everything setup for you. The only thing you will have to insta
 
 #### Batteries
 
-<table>
-<tbody>
-  <tr>
-    <td>:open_file_folder:</td>
-    <td><a href="https://www.phpmyadmin.net">phpMyAdmin</a></td>
-  </tr>
-  <tr>
-    <td>:open_file_folder:</td>
-    <td><a href="https://www.adminer.org">Adminer</a></td>
-  </tr>
-  <tr>
-    <td>:bar_chart:</td>
-    <td><a href="https://github.com/PeeHaa/OpCacheGUI">OpCache GUI</a></td>
-  </tr>
-  <tr>
-    <td>:email:</td>
-    <td>Mail viewer</td>
-  </tr>
+The following batteries are available in the Devilbox intranet by default:
+
+<table width="100%" style="width:100%; display:table;">
+<tbody style="text-align:center;">
+ <tr>
+  <td><a href="https://www.adminer.org"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/adminer.png" alt="Adminer" /></a></td>
+  <td><a href="https://www.phpmyadmin.net"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phpmyadmin.png" alt="phpMyAdmin" /></a></td>
+  <td><a href="https://github.com/sasanrose/phpredmin"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phpredmin.png" alt="phpRedMin" /></a></td>
+  <td><a href="https://github.com/PeeHaa/OpCacheGUI"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/opcachegui.png" alt="OpCacheGUI" /></a></td>
+  <td><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/email.png" alt="Mail viewer" /></td>
+ </tr>
+ <tr>
+  <td><a href="https://www.adminer.org">Adminer</a></td>
+  <td><a href="https://www.phpmyadmin.net">phpMyAdmin</a></td>
+  <td><a href="https://github.com/sasanrose/phpredmin">phpRedMin</a></td>
+  <td><a href="https://github.com/PeeHaa/OpCacheGUI">OpCache GUI</a></td>
+  <td>Mail viewer</td>
+ </tr>
 </tbody>
 </table>
+
+> **Documentation:**
+> [Devilbox Intranet](https://devilbox.readthedocs.io/en/latest/getting-started/devilbox-intranet.html)
 
 
 #### Tools
@@ -498,6 +501,9 @@ Well-known and popular tools will be at your service as well:
 <a target="_blank" title="Webpack" href="https://webpack.js.org/"><img width="64" style="width:64px;" src="docs/img/logo_tools/webpack.png" alt="Devilbox"/></a>
 <a target="_blank" title="Yarn" href="https://yarnpkg.com/en/"><img width="64" style="width:64px;" src="docs/img/logo_tools/yarn.png" alt="Devilbox"/></a>
 
+> **Documentation:**
+> [Available Tools](https://devilbox.readthedocs.io/en/latest/readings/available-tools.html)
+
 
 #### Available PHP Modules
 
@@ -563,8 +569,9 @@ The Devilbox comes with a pre-configured intranet on `http://localhost` and `htt
 * **Database overview** (MySQL, PgSQL, Redis, Memcache, ...)
 * **Email overview**
 * **Info pages** (Httpd, MySQL, PgSQL, Redis, Memcache, ...)
-* **[phpMyAdmin](https://www.phpmyadmin.net)**
 * **[Adminer](https://www.adminer.org)**
+* **[phpMyAdmin](https://www.phpmyadmin.net)**
+* **[phpRedMin](https://github.com/sasanrose/phpredmin)**
 * **[OpcacheGUI](https://github.com/PeeHaa/OpCacheGUI)**
 
 > **Documentation:**
