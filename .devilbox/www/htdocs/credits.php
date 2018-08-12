@@ -87,6 +87,11 @@
 								<td>GPL 2.0</td>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a href="https://github.com/phpmyadmin/phpmyadmin">phpmyadmin/phpmyadmin</a></td>
 							</tr>
+							<tr>
+								<td>PHPRedMin</td>
+								<td>BSD 3-Clause License</td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a href="https://github.com/sasanrose/phpredmin">sasanrose/phpredmin</a></td>
+							</tr>
 						</tbody>
 					</table>
 				</div>

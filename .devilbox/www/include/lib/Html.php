@@ -85,13 +85,18 @@ class Html
 			'name' => 'Tools',
 			'menu' => array(
 				array(
+					'name' => 'Adminer',
+					'path' => '/vendor/adminer-4.6.2-en.php',
+					'target' => '_blank'
+				),
+				array(
 					'name' => 'phpMyAdmin',
 					'path' => '__PHPMYADMIN__',
 					'target' => '_blank'
 				),
 				array(
-					'name' => 'Adminer',
-					'path' => '/vendor/adminer-4.6.2-en.php',
+					'name' => 'PHPRedMin',
+					'path' => '/vendor/phpredmin/public/index.php',
 					'target' => '_blank'
 				),
 				array(
