@@ -1,0 +1,148 @@
+.action {
+	color: #000;
+	text-decoration: none;
+}
+.action:hover {
+	color: #000;
+	text-decoration: none;
+}
+textarea {
+	width: 232px;
+}
+.nav-pills>li.server>a {
+    padding-right: 6px;
+    font-size: 90%;
+}
+.nav-pills>li.database .label {
+    margin-top: -2px;
+}
+.terminal {
+    margin-left: 0;
+    background-color: #f5f5f5;
+    color: #657b83;
+    padding: 10px;
+    font-family: monospace;
+}
+.terminal-console {
+    border: #ddd 1px solid;
+    height: 370px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    overflow-y: scroll;
+}
+.terminal-command-line {
+    color: #002b36;
+    background-color: #f5f5f5;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-left: #ddd 1px solid;
+    border-right: #ddd 1px solid;
+    border-bottom: #ddd 1px solid;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+#terminal-input {
+    color: #002b36;
+    background-color: #f5f5f5;
+    border: 0px;
+}
+.dark_theme  #terminal-input { background-color: #696969 !important; color: #D2D2D2; }
+.dark_theme .terminal { background-color: #3C3C3C !important; color: #D2D2D2; }
+.dark_theme .terminal-console { border: #2D2D2D 1px solid !important; }
+.dark_theme .terminal-command-line {
+    background-color: #696969 !important;
+    border-color:  #2D2D2D !important;
+}
+.terminal-prompt {
+    padding-top: 5px;
+    padding-left: 4px;
+}
+.ajax-loading {
+    background-image: url(../img/ajax-loader.gif);
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+.term_theme {
+    display: inline-block;
+    font-size: 1px;
+    overflow: hidden;
+    text-indent: 100px;
+    width: 12px;
+    height: 12px;
+}
+#term_light, #term_dark {
+    outline: 1px solid #B4B4B4;
+    border: 1px solid #fff;
+    margin-left: 7px;
+}
+#term_light:hover, #term_dark:hover {
+    outline-color: #3C3C3C;
+}
+#term_light {
+    background-color: #A5A5A5;
+    background: -moz-linear-gradient(left top, #fff, #A5A5A5);
+    background: -ms-linear-gradient(left top, #fff, #A5A5A5);
+    background: -webkit-linear-gradient(left top, #fff, #A5A5A5);
+}
+#term_dark {
+    background-color: #000;
+    background: -moz-linear-gradient(left top, #A5A5A5, #000);
+    background: -ms-linear-gradient(left top, #A5A5A5, #000);
+    background: -webkit-linear-gradient(left top, #A5A5A5, #000);
+}
+.terminal-clear {
+    color: #657b83;
+    float: left;
+    margin: 10px;
+    cursor: pointer;
+}
+#dbTabs {
+    margin-right: -15px;
+    margin-top: -42px;
+}
+
+#dbTabs ul {
+    margin: 0px 0px 0px 15px;
+    padding-top: 30px;
+    width: 100%;
+}
+
+#redisTab {
+    margin: 0px; 
+}
+
+.tab-content {
+    padding: 10px 0 0 20px;
+}
+
+#srvList { 
+    margin-right: -31px;
+    padding: 0 31px 100% 0;
+    border-right: 1px solid #ddd;
+}
+
+#mainContainer {
+    padding-left: 1em;
+}
+
+#mainContainer > h3 {
+    margin-left: -14px;
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    padding: 10px 0 0 15px;
+    margin-top: 0px;
+    border-radius: 4px 0 0 0;
+}
+
+#dbTabs .nav-tabs > .active > a:hover {
+    cursor: pointer;
+}
+
+.dropdown-menu li>a.danger-action {
+    color: #d62728;
+}
+
+.dropdown-menu li>a.warning-action {
+    color: #c67605;
+}
