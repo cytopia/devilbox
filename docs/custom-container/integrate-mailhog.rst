@@ -44,13 +44,26 @@ must be copied into the root of the Devilbox git directory.
 +-----------------------+-------------------------------------------------+
 
 
+TL;DR
+=====
+
+Copy and paste this block from the root of your Devilbox git directory:
+
+.. code-block:: bash
+
+   cp compose/docker-compose.override.yml-mailhog docker-compose.override.yml
+   printf "[mail function]\nsendmail_path = '/usr/local/bin/mhsendmail --smtp-addr=\"mailhog:1025\"'" > cfg/php-ini-7.2/mailhog.ini
+   docker-compose stop
+   docker-compose up -d php httpd bind mysql mailhog
+
+
 Instructions
 ============
 
 Copy example docker-compose.override.yml
 ----------------------------------------
 
-Copy the mailhog Docker Compose overwrite file into the root of the Devilbox git directory.
+Copy the MailHog Docker Compose overwrite file into the root of the Devilbox git directory.
 
 .. code-block:: bash
 
@@ -106,7 +119,7 @@ Add ``HOST_PORT_CUSTOM_MAILHOG`` to *.env* and customize its value.
 Start the Devilbox
 ------------------
 
-The final step is to start the Devilbox with mailhog.
+The final step is to start the Devilbox with MailHog.
 
 Let's assume you want to start ``php``, ``httpd``, ``bind``, ``mysql`` and ``mailhog``.
 
