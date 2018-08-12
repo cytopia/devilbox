@@ -76,6 +76,15 @@ The following example shows you the info page for MySQL:
 Third-party tools
 =================
 
+Adminer
+-------
+
+|ext_lnk_tool_adminer| (formerly phpMinAdmin) is a full-featured database
+management tool written in PHP. Conversely to phpMyAdmin, it consist of a single file ready to
+deploy to the target server. Adminer is available for MySQL, MariaDB, PostgreSQL, SQLite, MS SQL,
+Oracle, Firebird, SimpleDB, Elasticsearch and MongoDB.
+
+
 phpMyAdmin
 ----------
 
@@ -86,13 +95,10 @@ columns, relations, indexes, users, permissions, etc) can be performed via the u
 while you still have the ability to directly execute any SQL statement.
 
 
-Adminer
--------
+phpRedMin
+----------
 
-|ext_lnk_tool_adminer| (formerly phpMinAdmin) is a full-featured database
-management tool written in PHP. Conversely to phpMyAdmin, it consist of a single file ready to
-deploy to the target server. Adminer is available for MySQL, MariaDB, PostgreSQL, SQLite, MS SQL,
-Oracle, Firebird, SimpleDB, Elasticsearch and MongoDB.
+|ext_lnk_tool_phpredmin| is a simple web interface to manage and monitor your Redis.
 
 
 OpcacheGUI
