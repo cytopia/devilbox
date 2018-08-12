@@ -3,10 +3,10 @@
 .. _custom_container_ingegrate_mailhog:
 
 *****************
-Integrate Mailhog
+Integrate MailHog
 *****************
 
-This section will guide you through getting Mailhog integrated into the Devilbox.
+This section will guide you through getting MailHog integrated into the Devilbox.
 
 .. seealso:: |ext_lnk_container_mailhog|
 
@@ -22,7 +22,7 @@ Overview
 The Devilbox ships various example configurations to overwrite the default stack. Those files are
 located under ``compose/`` in the Devilbox git directory.
 
-In case of Mailhog, the file is ``compose/docker-compose.override.yml-mailhog``. This file
+In case of MailHog, the file is ``compose/docker-compose.override.yml-mailhog``. This file
 must be copied into the root of the Devilbox git directory.
 
 +-----------------------+-------------------------------------------------+
@@ -32,11 +32,13 @@ must be copied into the root of the Devilbox git directory.
 +-----------------------+-------------------------------------------------+
 | Container IP address  | ``172.16.238.201``                              |
 +-----------------------+-------------------------------------------------+
-| Exposed port          | ``8025``                                        |
+| Exposed port          | ``8025`` (can be changed via ``.env``)          |
 +-----------------------+-------------------------------------------------+
 | Available at          | ``http://localhost:8025``                       |
 +-----------------------+-------------------------------------------------+
 | Container name        | ``mailhog``                                     |
++-----------------------+-------------------------------------------------+
+| ``.env`` variable     | ``HOST_PORT_CUSTOM_MAILHOG``                    |
 +-----------------------+-------------------------------------------------+
 | Further configuration | php.ini settings need to be applied per version |
 +-----------------------+-------------------------------------------------+
@@ -87,6 +89,20 @@ Add the following content to the newly created ini file:
 .. seealso:: :ref:`php_ini`
 
 
+``.env`` settings
+-----------------
+
+By Default MailHog is using the host port ``8025``, this can be adjusted in the ``.env`` file.
+Add ``HOST_PORT_CUSTOM_MAILHOG`` to *.env* and customize its value.
+
+.. code-block:: bash
+   :caption: .env
+
+   HOST_PORT_CUSTOM_MAILHOG=8025
+
+.. seealso:: :ref:`env_file`
+
+
 Start the Devilbox
 ------------------
 
@@ -105,4 +121,4 @@ Functionality
 -------------
 
 * Once the Devilbox is running, visit http://localhost:8025 in your browser.
-* Any email send by any of the Devilbox managed projects will then appear in Mailhog
+* Any email send by any of the Devilbox managed projects will then appear in MailHog

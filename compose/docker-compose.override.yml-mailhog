@@ -5,7 +5,7 @@ services:
     hostname: mailhog
     image: mailhog/mailhog:latest
     ports:
-      - "${LOCAL_LISTEN_ADDR}8025:8025"
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_CUSTOM_MAILHOG:-8025}:8025"
     networks:
       app_net:
         ipv4_address: 172.16.238.201
