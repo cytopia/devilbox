@@ -24,16 +24,26 @@
 						<table class="table table-striped ">
 							<thead class="thead-inverse ">
 								<tr>
+									<th>DB</th>
 									<th>Key</th>
 									<th>Value</th>
 								</th>
 							</thead>
 							<tbody>
-								<?php foreach (loadClass('Redis')->getKeys() as $key => $value): ?>
-									<tr>
-										<td><?php echo $key;?></td>
-										<td><?php print_r($value);?></td>
+								<?php foreach (loadClass('Redis')->getKeys() as $db_name => $keys): ?>
+									<tr class="table-info">
+										<th colspan="3">
+											<?php echo $db_name;?>
+										</th>
 									</tr>
+									<?php foreach ($keys as $key=> $val): ?>
+										<tr>
+											<td></td>
+											<td><?php echo $key;?></td>
+											<td><code><?php print_r($val);?></code></td>
+										</tr>
+									<?php endforeach; ?>
+
 								<?php endforeach; ?>
 							</tbody>
 						</table>
