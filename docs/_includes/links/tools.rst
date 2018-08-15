@@ -296,15 +296,3 @@
    <a target="_blank" href="https://github.com/devilbox/watcherp">
      watcherp <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
-
-
-..
-   ============================================================
-   Additional container
-   ============================================================
-
-.. |ext_lnk_container_mailhog| raw:: html
-
-   <a target="_blank" href="https://github.com/mailhog/MailHog">
-     MailHog <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
-   </a>

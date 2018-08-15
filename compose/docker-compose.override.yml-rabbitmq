@@ -1,0 +1,22 @@
+version: '2.1'
+
+services:
+  rabbit:
+    image: rabbitmq:${RABBIT_SERVER:-management}
+    hostname: rabbit
+    environment:
+      - RABBITMQ_DEFAULT_VHOST=${RABBIT_DEFAULT_VHOST:-my_vhost}
+      - RABBITMQ_DEFAULT_USER=${RABBIT_DEFAULT_USER:-guest}
+      - RABBITMQ_DEFAULT_PASS=${RABBIT_DEFAULT_PASS:-guest}
+    ports:
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_RABBIT:-5672}:5672"
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_RABBIT_MGMT:-15672}:15672"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.210
+    volumes:
+      - ${HOST_PATH_RABBIT_DATADIR:-./data/rabbit}/${RABBIT_SERVER:-management}:/var/lib/rabbitmq
+    depends_on:
+      - bind
+      - php
+      - httpd

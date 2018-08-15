@@ -21,3 +21,33 @@
    <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">
      Wikipedia: List of database timezones <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
+
+
+..
+   ============================================================
+   Additional container
+   ============================================================
+
+.. |ext_lnk_mailhog_github| raw:: html
+
+   <a target="_blank" href="https://github.com/mailhog/MailHog">
+     Github: MailHog <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_mailhog_dockerhub| raw:: html
+
+   <a target="_blank" href="https://hub.docker.com/r/mailhog/mailhog/">
+     Dockerhub: MailHog <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_rabbitmq_github| raw:: html
+
+   <a target="_blank" href="https://github.com/rabbitmq/rabbitmq-server">
+     Github: RabbitMQ <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_rabbitmq_dockerhub| raw:: html
+
+   <a target="_blank" href="https://hub.docker.com/_/rabbitmq/">
+     Dockerhub: RabbitMQ <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
