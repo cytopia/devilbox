@@ -40,21 +40,14 @@ These container are well integrated into the Devilbox intranet and are considere
 Additional container
 ====================
 
-Additional container that are not yet integrated into the Devilbox intranet and are less
-frequently used are also available.
+Additional container that are not yet integrated into the Devilbox intranet are also available.
 Those container come via ``docker-compose.override.yml`` and must explicitly be enabled.
 They are disabled by default to prevent accidentally starting too many container and making your
 computer unresponsive.
 
-+---------------------------+----------+----------+----------------+
-| Container                 | Name     | Hostname | IP Address     |
-+===========================+==========+==========+================+
-| MailHog                   | mailhog  | mailhog  | 172.16.238.200 |
-+---------------------------+----------+----------+----------------+
-| RabbitMQ                  | rabbit   | rabbit   | 172.16.238.210 |
-+---------------------------+----------+----------+----------------+
+.. include:: /_includes/snippets/additional-container.rst
 
 .. seealso::
-   * :ref:`custom_container_enable_all_container`
+   * :ref:`custom_container_enable_all_additional_container`
    * :ref:`custom_container_enable_mailhog`
    * :ref:`custom_container_enable_rabbitmq`

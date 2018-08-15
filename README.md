@@ -269,6 +269,36 @@ Furthermore PHP 5.2 does only work with Apache 2.4, Nginx stable and Nginx mainl
 > **Documentation:**
 > [Change container versions](https://devilbox.readthedocs.io/en/latest/getting-started/change-container-versions.html)
 
+#### Additional services
+
+Additionally to the default stack, there are a variety of other services that can be easily enabled and started.
+
+<table>
+ <thead>
+  <tr>
+   <th>MailHog</th>
+   <th>RabbitMQ</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>v1.0.0</td>
+   <td>3.6</td>
+  </tr>
+  <tr>
+   <td>latest</td>
+   <td>3.7</td>
+  </tr>
+  <tr>
+   <td></td>
+   <td>latest</td>
+  </tr>
+ </tbody>
+</table>
+
+> **Documentation:**
+> [Enable custom container](https://devilbox.readthedocs.io/en/latest/custom-container/enable-all-container.html)
+
 
 #### Enter the container
 
