@@ -90,10 +90,12 @@ host is ready to be served with your custom domain.
    vhost-gen/example-add-subdomains
 
 .. toctree::
-   :caption: Add custom container
+   :caption: Enable custom container
    :maxdepth: 2
 
-   custom-container/integrate-mailhog
+   custom-container/enable-all-container
+   custom-container/enable-mailhog
+   custom-container/enable-rabbitmq
 
 
 .. toctree::
