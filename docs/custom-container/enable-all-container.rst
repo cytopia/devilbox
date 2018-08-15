@@ -40,7 +40,7 @@ container you want to run.
 
 
 Configure additional container
-=============================
+==============================
 
 The additional container also provide many configuration options just as the default ones do.
 That includes, but is not limited to:
