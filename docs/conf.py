@@ -77,7 +77,7 @@ language = None
 # This pattern also affects html_static_path and html_extra_path .
 exclude_patterns = [
     u'_build/*',
-    u'_includes/*',
+    u'_includes/**',
     u'Thumbs.db',
     u'.DS_Store'
 ]
