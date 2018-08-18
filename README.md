@@ -44,20 +44,12 @@ Furthermore, the Devilbox provides an **identical** and **reproducable developme
 
 The Devilbox ships the following pre-configured Docker container in any available version.
 
-**Apache** |
-**Nginx** |
-**PHP** |
-**Bind** |
-**MySQL** |
-**MariaDB** |
-**PerconaDB** |
-**PostgreSQL** |
-**Redis** |
-**Memcached** |
-**MongoDB** |
-**MailHog** |
-**RabbitMQ** |
-**Solr**
+| Web server | SQL        | NoSQL     | Queue & Search | Misc    |
+|------------|------------|-----------|----------------|---------|
+| Apache     | MariaDB    | Memcached | RabbitMQ       | Bind    |
+| Nginx      | MySQL      | MongoDB   | Solr           | MailHog |
+|            | PerconaDB  | Redis     |                | PHP     |
+|            | PostgreSQL |           |                |         |
 
 > **Documentation:**
 > [Available Container](https://devilbox.readthedocs.io/en/latest/readings/available-container.html)
