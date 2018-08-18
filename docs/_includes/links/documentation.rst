@@ -51,3 +51,15 @@
    <a target="_blank" href="https://hub.docker.com/_/rabbitmq/">
      Dockerhub: RabbitMQ <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
+
+.. |ext_lnk_solr_github| raw:: html
+
+   <a target="_blank" href="https://github.com/apache/lucene-solr">
+     Github: Solr <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_solr_dockerhub| raw:: html
+
+   <a target="_blank" href="https://hub.docker.com/_/solr/">
+     Dockerhub: Solr <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>

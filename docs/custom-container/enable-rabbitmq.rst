@@ -70,7 +70,7 @@ Additionally the following ``.env`` variables can be created for easy configurat
 +------------------------------+-------------------+----------------------------------------------------------------------------+
 | ``HOST_PATH_RABBIT_DATADIR`` | ``./data/rabbit`` | Default mount point for persistent data.                                   |
 +------------------------------+-------------------+----------------------------------------------------------------------------+
-| ``rabbit_default_vhost``     | ``my_vhost``      | Default RabbitMQ vhost name. (not a webserver vhost name)                  |
+| ``RABBIT_DEFAULT_VHOST``     | ``my_vhost``      | Default RabbitMQ vhost name. (not a webserver vhost name)                  |
 +------------------------------+-------------------+----------------------------------------------------------------------------+
 | ``RABBIT_DEFAULT_USER``      | ``guest``         | Default username for Admin WebUI.                                          |
 +------------------------------+-------------------+----------------------------------------------------------------------------+

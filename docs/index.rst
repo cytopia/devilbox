@@ -96,6 +96,7 @@ host is ready to be served with your custom domain.
    custom-container/enable-all-container
    custom-container/enable-mailhog
    custom-container/enable-rabbitmq
+   custom-container/enable-solr
 
 
 .. toctree::

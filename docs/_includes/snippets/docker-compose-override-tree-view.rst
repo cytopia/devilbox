@@ -11,8 +11,9 @@ However, each example also exists in its standalone file as shown below:
    ├── docker-compose.override.yml-all
    ├── docker-compose.override.yml-mailhog
    ├── docker-compose.override.yml-rabbitmq
+   ├── docker-compose.override.yml-solr
    └── README.md
 
-   0 directories, 4 files
+   0 directories, 5 files
 
 .. seealso:: :ref:`custom_container_enable_all_additional_container`
