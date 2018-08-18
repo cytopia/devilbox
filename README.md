@@ -283,24 +283,24 @@ Additionally to the default stack, there are a variety of other services that ca
  </thead>
  <tbody>
   <tr>
-   <td>v1.0.0</td>
-   <td>3.6</td>
-   <td>5</td>
+   <td><a target="_blank" title="MailHog v1.0.0"  href="https://github.com/mailhog/MailHog">v1.0.0</a></td>
+   <td><a target="_blank" title="RabbitMQ 3.6"    href="https://github.com/rabbitmq/rabbitmq-server">3.6</a></td>
+   <td><a target="_blank" title="Solr 5"          href="https://github.com/apache/lucene-solr">5</a></td>
   </tr>
   <tr>
-   <td>latest</td>
-   <td>3.7</td>
-   <td>6</td>
-  </tr>
-  <tr>
-   <td></td>
-   <td>latest</td>
-   <td>7</td>
+   <td><a target="_blank" title="MailHog latest"  href="https://github.com/mailhog/MailHog">latest</a></td>
+   <td><a target="_blank" title="RabbitMQ 3.7"    href="https://github.com/rabbitmq/rabbitmq-server">3.7</a></td>
+   <td><a target="_blank" title="Solr 6"          href="https://github.com/apache/lucene-solr">6</a></td>
   </tr>
   <tr>
    <td></td>
+   <td><a target="_blank" title="RabbitMQ latest" href="https://github.com/rabbitmq/rabbitmq-server">latest</a></td>
+   <td><a target="_blank" title="Solr 7"          href="https://github.com/apache/lucene-solr">7</a></td>
+  </tr>
+  <tr>
    <td></td>
-   <td>latest</td>
+   <td></td>
+   <td><a target="_blank" title="Solr latest"     href="https://github.com/apache/lucene-solr">latest</a></td>
   </tr>
  </tbody>
 </table>
