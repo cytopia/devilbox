@@ -278,18 +278,27 @@ Additionally to the default stack, there are a variety of other services that ca
   <tr>
    <th>MailHog</th>
    <th>RabbitMQ</th>
+   <th>Solr</th>
   </tr>
  </thead>
  <tbody>
   <tr>
    <td>v1.0.0</td>
    <td>3.6</td>
+   <td>5</td>
   </tr>
   <tr>
    <td>latest</td>
    <td>3.7</td>
+   <td>6</td>
   </tr>
   <tr>
+   <td></td>
+   <td>latest</td>
+   <td>7</td>
+  </tr>
+  <tr>
+   <td></td>
    <td></td>
    <td>latest</td>
   </tr>

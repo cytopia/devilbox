@@ -1,0 +1,24 @@
+version: '2.1'
+
+services:
+  solr:
+    image: solr:${SOLR_SERVER:-latest}
+    hostname: solr
+    ports:
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_SOLR:-8983}:8983"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.220
+    volumes:
+      - data-solr:/opt/solr/server/solr/mycores
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - ${SOLR_CORE_NAME:-devilbox}
+    depends_on:
+      - bind
+      - php
+      - httpd
+
+volumes:
+  data-solr:
