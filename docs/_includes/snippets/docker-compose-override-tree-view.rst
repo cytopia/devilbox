@@ -9,11 +9,12 @@ However, each example also exists in its standalone file as shown below:
    host> tree -L 1 compose/
    compose/
    ├── docker-compose.override.yml-all
+   ├── docker-compose.override.yml-blackfire
    ├── docker-compose.override.yml-mailhog
    ├── docker-compose.override.yml-rabbitmq
    ├── docker-compose.override.yml-solr
    └── README.md
 
-   0 directories, 5 files
+   0 directories, 6 files
 
 .. seealso:: :ref:`custom_container_enable_all_additional_container`
