@@ -107,28 +107,31 @@ Find documentation and help here
  </thead>
  <tbody style="vertical-align: bottom;">
   <tr>
-   <td>
-    <pre># Get the Devilbox
-$ git clone https://github.com/cytopia/devilbox</pre>
-<pre># Create docker-compose environment file
+   <td><pre># Get the Devilbox
+$ git clone https://github.com/cytopia/devilbox</pre></td>
+   <td>1. Clone <code>https://github.com/cytopia/devilbox</code> to <code>C:\devilbox</code> with <a href="https://git-scm.com/downloads">Git for Windows</a></td>
+  </tr>
+  <tr>
+   <td><pre># Create docker-compose environment file
 $ cd devilbox
-$ cp env-example .env</pre>
-<pre># Edit your configuration
-$ vim .env</pre>
-<pre># Start all container
-$ docker-compose up</pre>
-   </td>
-   <td>
-    1. Clone <code>https://github.com/cytopia/devilbox</code> to <code>C:\devilbox</code> with <a href="https://git-scm.com/downloads">Git for Windows</a><br/><br/>
-    2. Copy <code>C:\devilbox\env-example</code> to <code>C:\devilbox\.env</code><br/><br/>
-    3. Edit <code>C:\devilbox\.env</code><br/><br/>
-    4. <a href="https://devilbox.readthedocs.io/en/latest/howto/terminal/open-terminal-on-win.html">Open a terminal on Windows</a> and type:<br/><br/><br/>
-    <pre># Start all container
-C:\devilbox> docker-compose up</pre></div>
-   </td>
+$ cp env-example .env</pre></td>
+   <td>2. Copy <code>C:\devilbox\env-example</code> to <code>C:\devilbox\.env</code></td>
+  </tr>
+  <tr>
+   <td><pre># Edit your configuration
+$ vim .env</pre></td>
+   <td>3. Edit <code>C:\devilbox\.env</code></td>
+  </tr>
+  <tr>
+   <td><pre># Start all container
+$ docker-compose up</pre></td>
+   <td><pre># Start all container [1]
+C:\devilbox> docker-compose up</pre></td>
   </tr>
  </tbody>
 </table>
+
+\[1\] <a href="https://devilbox.readthedocs.io/en/latest/howto/terminal/open-terminal-on-win.html">Open a terminal on Windows</a>
 
 > **Documentation:**
 > [Install the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/install-the-devilbox.html) |
