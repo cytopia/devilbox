@@ -101,8 +101,8 @@ Find documentation and help here
 <table width="100%" style="width:100%; display:table;">
  <thead>
   <tr>
-   <th width="50%" style="width:33%;">Linux and MacOS</th>
-   <th width="50%" style="width:33%;">Windows</th>
+   <th width="50%" style="width:50%;">Linux and MacOS</th>
+   <th width="50%" style="width:50%;">Windows</th>
   </tr>
  </thead>
  <tbody style="vertical-align: bottom;">
