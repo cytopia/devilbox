@@ -40,6 +40,18 @@
      Dockerhub: MailHog <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_blackfire_github| raw:: html
+
+   <a target="_blank" href="https://github.com/blackfireio/docker">
+     Github: Blackfire <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_blackfire_dockerhub| raw:: html
+
+   <a target="_blank" href="https://hub.docker.com/r/blackfire/blackfire/">
+     Dockerhub: Blackfire <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_rabbitmq_github| raw:: html
 
    <a target="_blank" href="https://github.com/rabbitmq/rabbitmq-server">

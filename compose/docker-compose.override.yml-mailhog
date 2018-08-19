@@ -8,7 +8,7 @@ services:
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MAILHOG:-8025}:8025"
     networks:
       app_net:
-        ipv4_address: 172.16.238.200
+        ipv4_address: 172.16.238.201
     depends_on:
       - bind
       - php

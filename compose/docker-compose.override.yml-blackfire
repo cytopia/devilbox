@@ -1,0 +1,16 @@
+version: '2.1'
+
+services:
+  blackfire:
+    image: blackfire/blackfire:${BLACKFIRE:-latest}
+    hostname: blackfire
+    environment:
+      - BLACKFIRE_SERVER_ID=${BLACKFIRE_SERVER_ID:-id}
+      - BLACKFIRE_SERVER_TOKEN=${BLACKFIRE_SERVER_TOKEN:-token}
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.200
+    depends_on:
+      - bind
+      - php
+      - httpd

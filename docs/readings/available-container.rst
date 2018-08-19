@@ -49,5 +49,7 @@ computer unresponsive.
 
 .. seealso::
    * :ref:`custom_container_enable_all_additional_container`
+   * :ref:`custom_container_enable_blackfire`
    * :ref:`custom_container_enable_mailhog`
    * :ref:`custom_container_enable_rabbitmq`
+   * :ref:`custom_container_enable_solr`

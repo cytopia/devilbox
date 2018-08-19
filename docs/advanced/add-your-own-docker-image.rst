@@ -126,7 +126,7 @@ Docker image:
 1. Name: ``cockroach``
 2. Image: ``cockroachdb/cockroach``
 3. Tag: ``latest``
-4. IP: ``172.16.238.200``
+4. IP: ``172.16.238.240``
 
 Now add the information to ``docker-compose.override.yml``:
 
@@ -142,7 +142,7 @@ Now add the information to ``docker-compose.override.yml``:
        command: start --insecure
        networks:
          app_net:
-           ipv4_address: 172.16.238.200
+           ipv4_address: 172.16.238.240
        # For ease of use always automatically start these:
        depends_on:
          - bind
