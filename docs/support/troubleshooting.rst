@@ -217,6 +217,25 @@ For that to fix one must increase the PHP-FPM/Proxy timeout settings in the ``.e
    * https://github.com/cytopia/devilbox/issues/234
 
 
+PHP issues
+==========
+
+Fatal error: Cannot redeclare go()
+----------------------------------
+
+If you encounter this error, it is most likely that your current project declares the
+PHP function ``go()`` and that you have enabled the ``swoole`` module which also provides
+an implementation of that function.
+
+To mitigate that issue, make sure that the ``swoole`` module is disabled in ``.env``.
+
+
+.. seealso::
+
+   * :ref:`env_file_php_modules_disable`
+   * https://github.com/getkirby/kirby/issues/643
+
+
 Database issues
 ===============
 

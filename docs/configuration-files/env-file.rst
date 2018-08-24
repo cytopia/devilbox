@@ -1203,7 +1203,7 @@ Disable any PHP modules in a comma separated list.
 +-------------------------+--------------------------------------+------------------+
 | Name                    | Allowed values                       | Default value    |
 +=========================+======================================+==================+
-| ``PHP_MODULES_DISABLE`` | comma separated list of module names | empty            |
+| ``PHP_MODULES_DISABLE`` | comma separated list of module names | ``swoole``       |
 +-------------------------+--------------------------------------+------------------+
 
 Example:
