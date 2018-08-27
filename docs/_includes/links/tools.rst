@@ -257,13 +257,13 @@
 
 .. |ext_lnk_tool_phpmyadmin| raw:: html
 
-   <a target="_blank" href="https://github.com/sasanrose/phpredmin">
+   <a target="_blank" href="https://www.phpmyadmin.net">
      phpRedMin <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
 .. |ext_lnk_tool_phpredmin| raw:: html
 
-   <a target="_blank" href="https://www.phpmyadmin.net">
+   <a target="_blank" href="https://github.com/sasanrose/phpredmin">
      phpMyAdmin <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
