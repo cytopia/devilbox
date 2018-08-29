@@ -454,7 +454,7 @@ PHP_MODULES_ENABLE=
 ###
 ### PHP_MODULES_DISABLE=xdebug,imagick,swoole
 ###
-PHP_MODULES_DISABLE=
+PHP_MODULES_DISABLE=swoole
 
 
 ###
