@@ -237,7 +237,7 @@ here).
      __CUSTOM__
      </VirtualHost>
 
-All you will have to do, is to add another ``ServerName`` directive:
+All you will have to do, is to add a``ServerAlias`` directive:
 
 .. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/apache22.yml
@@ -246,7 +246,7 @@ All you will have to do, is to add another ``ServerName`` directive:
    vhost: |
      <VirtualHost __DEFAULT_VHOST__:__PORT__>
          ServerName   __VHOST_NAME__
-         ServerName   www.__VHOST_NAME__
+         ServerAlias  www.__VHOST_NAME__
 
          CustomLog  "__ACCESS_LOG__" combined
          ErrorLog   "__ERROR_LOG__"
@@ -314,7 +314,7 @@ here).
      __CUSTOM__
      </VirtualHost>
 
-All you will have to do, is to add another ``ServerName`` directive which does catch-all:
+All you will have to do, is to add a ``ServerAlias`` directive which does catch-all:
 
 .. code-block:: yaml
    :caption: /home/user/devilbox/data/www/project-1/.devilbox/apache22.yml
@@ -323,7 +323,7 @@ All you will have to do, is to add another ``ServerName`` directive which does c
    vhost: |
      <VirtualHost __DEFAULT_VHOST__:__PORT__>
          ServerName   __VHOST_NAME__
-         ServerName   *.__VHOST_NAME__
+         ServerAlias  *.__VHOST_NAME__
 
          CustomLog  "__ACCESS_LOG__" combined
          ErrorLog   "__ERROR_LOG__"
