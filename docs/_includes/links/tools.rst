@@ -33,6 +33,12 @@
      Composer <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_tool_dep| raw:: html
+
+   <a target="_blank" href="https://deployer.org/">
+     Deployer <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_tool_drush| raw:: html
 
    <a target="_blank" href="https://www.drush.org">
