@@ -26,6 +26,8 @@ The PHP container is your workhorse and these are your tools:
 +----------------------+---------------------------------------+
 | ``composer``         | |ext_lnk_tool_composer|               |
 +----------------------+---------------------------------------+
+| ``dep``              | |ext_lnk_tool_dep|                    |
++----------------------+---------------------------------------+
 | ``drush``            | |ext_lnk_tool_drush|                  |
 +----------------------+---------------------------------------+
 | ``drupal``           | |ext_lnk_tool_drupal_console|         |
