@@ -346,17 +346,17 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/${MYSQL_SERVER:-mariadb-10.1}:/var/log/mysql:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/log/${MYSQL_SERVER:-mariadb-10.3}:/var/log/mysql:rw${MOUNT_OPTIONS}
 
       # Mount devilbox default overwrites
-      - ${DEVILBOX_PATH}/.devilbox/etc/${MYSQL_SERVER:-mariadb-10.1}:/etc/mysql/conf.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/.devilbox/etc/${MYSQL_SERVER:-mariadb-10.3}:/etc/mysql/conf.d:ro${MOUNT_OPTIONS}
 
       # Mount devilbox user-defined cnf files in order
       # to overwrite the MySQL server configuration
-      - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER:-mariadb-10.1}:/etc/mysql/docker-default.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER:-mariadb-10.3}:/etc/mysql/docker-default.d:ro${MOUNT_OPTIONS}
 
       # Mount MySQL Data directory
-      - devilbox-${MYSQL_SERVER:-mariadb-10.1}:/var/lib/mysql:rw${MOUNT_OPTIONS}
+      - devilbox-${MYSQL_SERVER:-mariadb-10.3}:/var/lib/mysql:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -390,10 +390,10 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/pgsql-${PGSQL_SERVER:-9.6}:/var/log/postgresql:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/log/pgsql-${PGSQL_SERVER:-latest}:/var/log/postgresql:rw${MOUNT_OPTIONS}
 
       # Mount PostgreSQL Data directory
-      - devilbox-pgsql-${PGSQL_SERVER:-9.6}:/var/lib/postgresql/data/pgdata:rw${MOUNT_OPTIONS}
+      - devilbox-pgsql-${PGSQL_SERVER:-latest}:/var/lib/postgresql/data/pgdata:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -426,7 +426,7 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/redis-${REDIS_SERVER}:/var/log/redis:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/log/redis-${REDIS_SERVER:-latest}:/var/log/redis:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -528,6 +528,7 @@ volumes:
   # ------------------------------------------------------------
   # Postgres
   # ------------------------------------------------------------
+  devilbox-pgsql-9.0:
   devilbox-pgsql-9.1:
   devilbox-pgsql-9.2:
   devilbox-pgsql-9.3:
@@ -540,17 +541,18 @@ volumes:
   devilbox-pgsql-10.3:
   devilbox-pgsql-10.4:
   devilbox-pgsql-10.5:
+  devilbox-pgsql-latest:
 
   # ------------------------------------------------------------
   # MongoDB
   # ------------------------------------------------------------
+  devilbox-mongo-2.2:
+  devilbox-mongo-2.4:
+  devilbox-mongo-2.6:
   devilbox-mongo-2.8:
   devilbox-mongo-3.0:
   devilbox-mongo-3.2:
   devilbox-mongo-3.4:
-  devilbox-mongo-3.5:
   devilbox-mongo-3.6:
-  devilbox-mongo-3.7:
   devilbox-mongo-4.0:
-  devilbox-mongo-4.1:
   devilbox-mongo-latest:
