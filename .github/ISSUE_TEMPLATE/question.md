@@ -1,6 +1,6 @@
 ---
 name: ❔ Question
-about: General question
+about: Everything works and you just have a question regarding the Devilbox
 
 ---
 

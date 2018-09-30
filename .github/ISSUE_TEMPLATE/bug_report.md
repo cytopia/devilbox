@@ -1,6 +1,6 @@
 ---
 name: 🐛 Bug report
-about: Create a report to help us improve
+about: Something is not working? Create a report to help us improve
 
 ---
 
@@ -13,38 +13,69 @@ about: Create a report to help us improve
 -->
 
 
-#### ISSUE TYPE
+### ISSUE TYPE
 <!-- DO NOT CHANGE THIS -->
  - Bug Report
 <!-- DO NOT CHANGE THIS -->
 
 
-#### OS / ENVIRONMENT
+### Checklist
+<!-- ENSURE YOU HAVE DONE THE FOLLOWING -->
+* [ ] `.env` file is attached
+* [ ] `docker-compose.override.yml` is attached (if it exists)
+* [ ] Custom configs from `cfg/` dir are attached (if customized)
+* [ ] `docker-compose logs` and `log/` output is added
+* [ ] I've looked through the docs: https://devilbox.readthedocs.io/en/latest/
+* [ ] I've looked through existing issues: https://github.com/cytopia/devilbox/issues
+
+
+### OS / ENVIRONMENT
 <!-- COMPLETE ALL 6 BULLET POINTS BELOW: -->
-1. Host operating system: 
-2. Native Docker or Docker Toolbox: 
+1. Host operating system and version: 
+2. (Windows) Native Docker or Docker Toolbox: 
 3. Docker version: 
 4. Docker Compose version: 
-5. What containers are running: 
-6. Container versions: 
+5. (Linux) Is SELinux enabled?:
+6. What git commit hash are you on?:
 
 
-#### SUMMARY
+### SUMMARY
 <!-- Explain the problem briefly -->
 
 
-#### STEPS TO REPRODUCE
+### STEPS TO REPRODUCE
 <!-- Show exactly how to reproduce the problem -->
+<!-- Make this as detailed as possible and be sure that others can fully reproduce this issue -->
 
 
-#### EXPECTED BEHAVIOUR
+### EXPECTED BEHAVIOUR
 <!-- What is the expected behaviour? -->
 
 
-#### ACTUAL BEHAVIOUR
+### ACTUAL BEHAVIOUR
 <!-- What is the actual behaviour? -->
 
 
-#### OTHER INFORMATION
-<!-- Add anything else here, such as all non-default customization you have already made -->
+### OTHER INFORMATION
 
+#### Start command
+<!-- Add the command you have used to start the devilbox -->
+```
+$ docker-compose up...
+```
+
+#### File and user permissions (Linux & MacOS)
+<!-- User and group information -->
+```
+$ id
+```
+
+<!-- File permissions of the Devilbox directory -->
+```
+$ ls -la
+```
+
+<!-- File permissions of your projects -->
+```
+$ ls -la data/www
+```
