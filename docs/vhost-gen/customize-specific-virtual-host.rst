@@ -159,7 +159,7 @@ needs to be in place for what webserver version.
 +================+==================+
 | Apache 2.2     | ``apache22.yml`` |
 +----------------+------------------+
-| Apache 2.4     | ``apache22.yml`` |
+| Apache 2.4     | ``apache24.yml`` |
 +----------------+------------------+
 | Nginx stable   | ``nginx.yml``    |
 +----------------+------------------+
