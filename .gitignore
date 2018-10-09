@@ -13,15 +13,16 @@
 # CUSTOM
 ######################################
 
-# Ignore variable dat
+# Ignore variable data
 /.env
-/log/[a-z0-9-]*
-/data/mongo/*
-/data/mysql/*
-/data/pqsql/*
-/data/www/*
-/data/rabbit/*
 /backups/*
+/log/[a-z0-9-]*
+
+# Ignore Data dirs
+/data/mysql/*
+/data/pgsql/*
+/data/rabbit/*
+/data/www/*
 
 # Ignore Certificate Authority
 /ca/*
@@ -30,7 +31,7 @@
 /mail/*
 
 # Ignore compose override file
-docker-compose.override.yml
+/docker-compose.override.yml
 
 # Ignore custom global vhost gen templates
 /cfg/vhost-gen/apache22.conf
@@ -66,7 +67,6 @@ docker-compose.override.yml
 /cfg/php-ini-7.1/*.ini
 /cfg/php-ini-7.2/*.ini
 /cfg/php-ini-7.3/*.ini
-#/cfg/hhvm-latest/*.ini
 
 # Ignore custom PHP-FPM configs
 /cfg/php-fpm-5.2/php-fpm.xml
@@ -78,7 +78,6 @@ docker-compose.override.yml
 /cfg/php-fpm-7.1/*.conf
 /cfg/php-fpm-7.2/*.conf
 /cfg/php-fpm-7.3/*.conf
-#/cfg/hhvm-latest/*.conf
 
 # Ignore custom PHP-FPM modules
 /mod/php-fpm-5.2/*.so
@@ -90,7 +89,6 @@ docker-compose.override.yml
 /mod/php-fpm-7.1/*.so
 /mod/php-fpm-7.2/*.so
 /mod/php-fpm-7.3/*.so
-#/mod/hhvm-latest/*.so
 
 # Ignore custom bash and other confi files
 /bash/*
