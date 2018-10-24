@@ -534,7 +534,7 @@ The following tools will assist you on creating new projects easily as well as h
   </tr>
   <tr>
     <td>:wrench: <a href="https://wp-cli.org">wp-cli</a></td>
-    <td><code>wp</code> is a command line tool that lets you easily install Wordpress.</td>
+    <td><code>wp</code> is a command line tool that lets you easily install WordPress.</td>
   </tr>
   <tr>
     <td>:wrench: <a href="https://github.com/adrienverge/yamllint">yamllint</a></td>
@@ -599,7 +599,7 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 <a target="_blank" title="Shopware" href="https://en.shopware.com"><img width="64" style="width:64px" src="docs/img/logo_fw/shopware.png" alt="Devilbox"/></a>
 <a target="_blank" title="Symfony" href="https://symfony.com"><img width="64" style="width:64px" src="docs/img/logo_fw/symfony.png" alt="Devilbox"/></a>
 <a target="_blank" title="Typo3" href="https://typo3.org"><img width="64" style="width:64px" src="docs/img/logo_fw/typo3.png" alt="Devilbox"/></a>
-<a target="_blank" title="Wordpress" href="https://wordpress.org"><img width="64" style="width:64px" src="docs/img/logo_fw/wordpress.png" alt="Devilbox"/></a>
+<a target="_blank" title="WordPress" href="https://wordpress.org"><img width="64" style="width:64px" src="docs/img/logo_fw/wordpress.png" alt="Devilbox"/></a>
 <a target="_blank" title="Yii" href="http://www.yiiframework.com"><img width="64" style="width:64px" src="docs/img/logo_fw/yii.png" alt="Devilbox"/></a>
 <a target="_blank" title="Zend" href="https://framework.zend.com"><img width="64" style="width:64px" src="docs/img/logo_fw/zend.png" alt="Devilbox"/></a>
 
@@ -617,7 +617,7 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 > [Setup Shopware](https://devilbox.readthedocs.io/en/latest/examples/setup-shopware.html) |
 > [Setup Symfony](https://devilbox.readthedocs.io/en/latest/examples/setup-symfony.html) |
 > [Setup Typo3](https://devilbox.readthedocs.io/en/latest/examples/setup-typo3.html) |
-> [Setup Wordpress](https://devilbox.readthedocs.io/en/latest/examples/setup-wordpress.html) |
+> [Setup WordPress](https://devilbox.readthedocs.io/en/latest/examples/setup-wordpress.html) |
 > [Setup Yii](https://devilbox.readthedocs.io/en/latest/examples/setup-yii.html) |
 > [Setup Zend](https://devilbox.readthedocs.io/en/latest/examples/setup-zend.html)
 
