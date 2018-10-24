@@ -8,7 +8,7 @@ Setup Symfony
 
 This example will use ``symfony`` to install Symfony from within the Devilbox PHP container.
 
-After completing the below listed steps, you will have a working Laravel setup ready to be
+After completing the below listed steps, you will have a working Symfony setup ready to be
 served via http and https.
 
 .. seealso:: |ext_lnk_example_symfony_documentation|
