@@ -22,7 +22,8 @@
 [![type](https://img.shields.io/badge/type-Docker-red.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-<img width="200" style="width:200px;" src="docs/_includes/figures/https/https-ssl-address-bar.png" />
+<img width="200" style="width:200px;" src="docs/_includes/figures/https/https-ssl-address-bar.png" /><br/>
+<small><sub>Support for <a href="https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html">valid https</a> out of the box.</sub></small>
 
 The Devilbox is a modern and highly customisable **dockerized PHP stack** supporting full **LAMP** and **MEAN** and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an **unlimited number of projects** for which **vhosts**, **SSL certificates** and **DNS records** are created automatically. Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
 
@@ -58,7 +59,13 @@ The Devilbox ships the following pre-configured Docker container in any availabl
 
 ## Community
 
-Find documentation and help here
+The Devilbox has a lot of features reaching from a simple single-user development environment that
+works out of the box up to a shared development infrastructure for a corporate network.
+
+In order to be aware about all that features, ensure to have skimmed over the
+[documentation](https://devilbox.readthedocs.io), so you know what can be done and how that might
+simplify your every-day life. If you ever run into any unforseen issues, feel free to join the
+[chat](https://gitter.im/devilbox/Lobby) and get support quickly.
 
 <table width="100%" style="width:100%; display:table;">
  <thead>
