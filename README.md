@@ -411,7 +411,7 @@ The Devilbox has everything setup for you. The only thing you will have to insta
   </tr>
   <tr>
     <td>:star: Auto DNS</td>
-    <td>An integraded BIND server is able to create DNS entries automatically for your chosen domains.</td>
+    <td>An integrated BIND server is able to create DNS entries automatically for your chosen domains.</td>
   </tr>
   <tr>
     <td>:star: Custom PHP config</td>
