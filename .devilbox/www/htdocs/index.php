@@ -391,8 +391,16 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 										<td id="app_drupalc"></td>
 									</tr>
 									<tr>
-										<th>drush</th>
-										<td id="app_drush"></td>
+										<th>drush7</th>
+										<td id="app_drush7"></td>
+									</tr>
+									<tr>
+										<th>drush8</th>
+										<td id="app_drush8"></td>
+									</tr>
+									<tr>
+										<th>drush9</th>
+										<td id="app_drush9"></td>
 									</tr>
 									<tr>
 										<th>git</th>
@@ -907,7 +915,9 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 			}
 			updateVersions('composer');
 			updateVersions('drupalc');
-			updateVersions('drush');
+			updateVersions('drush7');
+			updateVersions('drush8');
+			updateVersions('drush9');
 			updateVersions('git');
 			updateVersions('laravel');
 			updateVersions('mds');
