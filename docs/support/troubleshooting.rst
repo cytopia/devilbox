@@ -116,6 +116,21 @@ This simply means your Docker and/or Docker Compose versions are outdated.
 
 .. seealso:: :ref:`prerequisites`
 
+
+Performance
+===========
+
+Performance issues on Docker for Mac
+------------------------------------
+
+By default Docker for Mac has performance issues on mounted directories with a lot of files inside.
+To overcome this issue you can apply different kinds of caching options to the mount points.
+
+.. seealso::
+   * :ref:`install_the_devilbox_osx_performance`
+   * :ref:`env_mount_options`
+
+
 DNS issues
 ==========
 
