@@ -122,6 +122,33 @@ shared mounts among multiple container:
    * |ext_lnk_docker_selinux_label|
    * |ext_lnk_docker_mount_z_flag|
 
+.. _install_the_devilbox_osx_performance:
+
+OSX: Performance
+----------------
+
+Out of the box, Docker for Mac has some performance issues when it comes to mount directories with
+a lot of files inside. To mitigate this issue, you can adjust the caching settings for mounted
+directories.
+
+To do so, you will want to adjust the :ref:`env_mount_options` to allow caching on mounts.
+
+.. code-block:: bash
+   :caption: .env
+   :emphasize-lines: 3
+
+   host> vi .env
+
+   MOUNT_OPTIONS=,cached
+
+Ensure to read the links below to understand why this problem exists and how the fix works.
+The Docker documentation will also give you alternative caching options to consider.
+
+.. seealso::
+   * https://github.com/cytopia/devilbox/issues/105#issuecomment-426229921
+   * https://forums.docker.com/t/file-access-in-mounted-volumes-extremely-slow-cpu-bound/8076/281
+   * https://docs.docker.com/docker-for-mac/osxfs-caching/#tuning-with-consistent-cached-and-delegated-configurations
+   * :ref:`env_mount_options`
 
 Checklist
 =========
