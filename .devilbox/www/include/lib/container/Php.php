@@ -45,9 +45,9 @@ class Php extends BaseClass implements BaseInterface
 		$output = loadClass('Helper')->exec('composer --version', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
-	public function getDrushVersion()
+	public function getDrushVersion($version)
 	{
-		$output = loadClass('Helper')->exec('drush --version', $output);
+		$output = loadClass('Helper')->exec('drush'.$version.' --version', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
 	public function getDrupalConsoleVersion()

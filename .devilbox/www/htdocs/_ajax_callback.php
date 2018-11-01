@@ -48,9 +48,19 @@ if (loadClass('Helper')->isLoggedIn()) {
 				$_GET['software'] => (($version = loadClass('Php')->getDrupalConsoleVersion()) !== false) ? $version : $no
 			));
 		}
-		else if ($_GET['software'] == 'drush') {
+		else if ($_GET['software'] == 'drush7') {
 			echo json_encode(array(
-				$_GET['software'] => (($version = loadClass('Php')->getDrushVersion()) !== false) ? $version : $no
+				$_GET['software'] => (($version = loadClass('Php')->getDrushVersion(7)) !== false) ? $version : $no
+			));
+		}
+		else if ($_GET['software'] == 'drush8') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getDrushVersion(8)) !== false) ? $version : $no
+			));
+		}
+		else if ($_GET['software'] == 'drush9') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getDrushVersion(9)) !== false) ? $version : $no
 			));
 		}
 		else if ($_GET['software'] == 'git') {
