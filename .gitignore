@@ -67,6 +67,7 @@
 /cfg/php-ini-7.1/*.ini
 /cfg/php-ini-7.2/*.ini
 /cfg/php-ini-7.3/*.ini
+/cfg/php-ini-7.4/*.ini
 
 # Ignore custom PHP-FPM configs
 /cfg/php-fpm-5.2/php-fpm.xml
@@ -78,6 +79,7 @@
 /cfg/php-fpm-7.1/*.conf
 /cfg/php-fpm-7.2/*.conf
 /cfg/php-fpm-7.3/*.conf
+/cfg/php-fpm-7.4/*.conf
 
 # Ignore custom PHP-FPM modules
 /mod/php-fpm-5.2/*.so
@@ -89,6 +91,7 @@
 /mod/php-fpm-7.1/*.so
 /mod/php-fpm-7.2/*.so
 /mod/php-fpm-7.3/*.so
+/mod/php-fpm-7.4/*.so
 
 # Ignore custom bash and other confi files
 /bash/*

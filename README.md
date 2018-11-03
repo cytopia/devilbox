@@ -284,11 +284,26 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td></td>
     </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><a target="_blank" title="PHP 7.4"          href="https://github.com/devilbox/docker-php-fpm">7.4</a><sup>[2]</sup></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
   </tbody>
 </table>
 
 <strong><sup>[1]</sup></strong> <strong>PHP 5.2</strong> is available to use, but it is not officially supported. The Devilbox intranet does not work with this version as PHP 5.2 does not support namespaces.
 Furthermore PHP 5.2 does only work with Apache 2.4, Nginx stable and Nginx mainline. It does not work with Apache 2.2. Use at your own risk.
+
+<strong><sup>[2]</sup></strong> <strong>PHP 7.4</strong> is the upcoming unreleased version of PHP, which is directly built out of their [master](https://github.com/php/php-src/) branch.
+It will improve every day as the image is rebuilt every day from the latest commits.
 
 > **Documentation:**
 > [Change container versions](https://devilbox.readthedocs.io/en/latest/getting-started/change-container-versions.html)

@@ -33,6 +33,7 @@ See the directory structure for PHP configuration directories inside ``./cfg/`` 
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-ini-7.1/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-ini-7.2/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-ini-7.3/
+   drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-ini-7.4/
 
 Customization is achieved by placing a file into ``cfg/php-ini-X.X/`` (where ``X.X`` stands for
 your PHP version).  The file must end by ``.ini`` in order to be sourced by the PHP-FPM server.
