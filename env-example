@@ -628,7 +628,7 @@ HOST_PORT_MONGO=27017
 
 ################################################################################
 ###
-### 10. Bind Docker Settings
+### 10. AutoDNS Settings
 ###
 ################################################################################
 
@@ -636,6 +636,19 @@ HOST_PORT_MONGO=27017
 ### Expose Bind Port to Host
 ###
 HOST_PORT_BIND=1053
+
+###
+### The IP address to which direct all DNS resolutions.
+###
+### This settings really depend on where you want to access your Devilbox projects
+### from your host computer's browser.
+###
+### If you access the Devilbox on 127.0.0.1, then set this to 127.0.0.1
+### If however you're running Docker Toolbox and the Devilbox IP address is something
+### like 192.168.99.100, then set it to 192.168.99.100. (Note, this is only an example)
+### In case of Docker Toolbox, you will have to find out the IP address first.
+###
+AUTODNS_HOST_ADDRESS=127.0.0.1
 
 ###
 ### Add comma separated DNS server from which you want to receive DNS

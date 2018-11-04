@@ -18,6 +18,5 @@ services:
         ipv4_address: 172.16.238.200
     # (Optional) For ease of use always automatically start these:
     depends_on:
-      - bind
       - php
       - httpd
