@@ -2,13 +2,13 @@
 
 .. _example_setup_magento:
 
-*************
-Setup Magento
-*************
+****************
+Setup Magento 2
+****************
 
-This example will use ``git`` and ``composer`` to install Magento from within the Devilbox PHP container.
+This example will use ``git`` and ``composer`` to install Magento 2 from within the Devilbox PHP container.
 
-After completing the below listed steps, you will have a working Magento setup ready to be
+After completing the below listed steps, you will have a working Magento 2 setup ready to be
 served via http and https.
 
 .. seealso:: |ext_lnk_example_magento_documentation|
@@ -43,7 +43,7 @@ It will be ready in eight simple steps:
 
 1. Enter the PHP container
 2. Create a new VirtualHost directory
-3. Install Magento via ``git`` and ``composer``
+3. Install Magento 2 via ``git`` and ``composer``
 4. Symlink webroot directory
 5. Add MySQL database
 6. Setup DNS record
