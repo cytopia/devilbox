@@ -164,7 +164,7 @@ Open your browser at http://my-phalcon.loc or https://my-phalcon.loc
 
 
 7. Create custom vhost config file (Nginx Only)
---------------------
+-----------------------------------------------
 
 By default routes will not work if using Nginx. To fix this, you will need to create a custom vhost configuration.
 
