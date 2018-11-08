@@ -26,7 +26,7 @@
 									<th>DocumentRoot</th>
 									<th>Valid</th>
 									<th>URL</th>
-								</th>
+								</tr>
 							</thead>
 							<tbody>
 								<?php
