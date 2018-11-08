@@ -8,7 +8,7 @@ Setup Phalcon
 
 This example will use ``phalcon`` to install Phalcon from within the Devilbox PHP container.
 
-After completing the below listed steps, you will have a working Laravel setup ready to be
+After completing the below listed steps, you will have a working Phalcon setup ready to be
 served via http and https.
 
 .. seealso:: |ext_lnk_example_phalcon_documentation|
@@ -47,6 +47,7 @@ It will be ready in six simple steps:
 4. Symlink webroot directory
 5. Setup DNS record
 6. Visit http://my-phalcon.loc in your browser
+7. (Nginx) Create custom vhost config file
 
 
 1. Enter the PHP container
@@ -160,3 +161,27 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
 Open your browser at http://my-phalcon.loc or https://my-phalcon.loc
 
 .. seealso:: :ref:`setup_valid_https`
+
+
+7. Create custom vhost config file (Nginx Only)
+--------------------
+
+By default routes will not work if using Nginx. To fix this, you will need to create a custom vhost configuration.
+
+In your project folder, you will need to create a folder called .devilbox unless you changed `HTTPD_TEMPLATE_DIR` in your .env
+
+Copy the default nginx config from ./cfg/vhost-gen/nginx.yml-example to ./data/www/my-project/.devilbox/nginx.yml
+
+Carefully edit the nginx.yml file and change:
+
+try_files $uri $uri/ /index.php$is_args$args;
+to
+try_files $uri $uri/ /index.php?_url=$uri&$args;
+
+and
+
+location ~ \.php?$ {
+to
+location ~ [^/]\.php(/|$) {
+
+save the file as nginx.yml and ensure not to use any tabs in the file or devilbox will not use the custom configuration. You can use yamllint nginx.yml to check the file before restarting devilbox.
