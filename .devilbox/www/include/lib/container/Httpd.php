@@ -65,7 +65,7 @@ class Httpd extends BaseClass implements BaseInterface
 			while (false !== ($directory = readdir($handle))) {
 				if ($this->_is_valid_dir($docRoot . DIRECTORY_SEPARATOR . $directory) && $directory != '.' && $directory != '..') {
 
-					$vhosts[] = array(
+					$vhosts[$directory] = array(
 						'name'		=> $directory,
 						'domain'	=> $directory .'.' . $this->getTldSuffix(),
 						'href'		=> 'http://' . $directory . '.' . $this->getTldSuffix()
@@ -73,6 +73,9 @@ class Httpd extends BaseClass implements BaseInterface
 				}
 			}
 		}
+
+		ksort($vhosts);
+
 		return $vhosts;
 	}
 
