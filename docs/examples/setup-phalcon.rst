@@ -174,14 +174,14 @@ Copy the default nginx config from ./cfg/vhost-gen/nginx.yml-example to ./data/w
 
 Carefully edit the nginx.yml file and change:
 
-try_files $uri $uri/ /index.php$is_args$args;
+``try_files $uri $uri/ /index.php$is_args$args;``
 to
-try_files $uri $uri/ /index.php?_url=$uri&$args;
+``try_files $uri $uri/ /index.php?_url=$uri&$args;``
 
 and
 
-location ~ \.php?$ {
+``location ~ \.php?$ {``
 to
-location ~ [^/]\.php(/|$) {
+``location ~ [^/]\.php(/|$) {``
 
-save the file as nginx.yml and ensure not to use any tabs in the file or devilbox will not use the custom configuration. You can use yamllint nginx.yml to check the file before restarting devilbox.
+save the file as nginx.yml and ensure not to use any tabs in the file or devilbox will not use the custom configuration. You can use ``yamllint nginx.yml`` whilst inside the Devilbox shell to check the file before restarting devilbox.
