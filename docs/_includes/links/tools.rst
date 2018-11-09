@@ -173,13 +173,13 @@
 
 .. |ext_lnk_tool_pg_dump| raw:: html
 
-   <a target="_blank" href="https://www.postgresql.org/docs/current/static/backup-dump.html">
+   <a target="_blank" href="https://www.postgresql.org/docs/current/backup-dump.html">
      pg_dump <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
 .. |ext_lnk_tool_pgsql_restore| raw:: html
 
-   <a target="_blank" href="https://www.postgresql.org/docs/current/static/backup-dump.html#BACKUP-DUMP-RESTORE">
+   <a target="_blank" href="https://www.postgresql.org/docs/current/backup-dump.html#BACKUP-DUMP-RESTORE">
      pgsql <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
