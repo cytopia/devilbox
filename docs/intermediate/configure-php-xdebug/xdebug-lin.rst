@@ -53,19 +53,19 @@ The following example show how to configure PHP Xdebug for PHP 5.6:
       :caption: xdebug.ini
       :emphasize-lines: 7,11
 
-      # Defaults
+      ; Defaults
       xdebug.default_enable=1
       xdebug.remote_enable=1
       xdebug.remote_port=9000
 
-      # The Linux way
+      ; The Linux way
       xdebug.remote_connect_back=1
 
-      # idekey value is specific to each editor
-      # Verify with your IDE/editor documentation
+      ; idekey value is specific to each editor
+      ; Verify with your IDE/editor documentation
       xdebug.idekey=PHPSTORM
 
-      # Optional: Set to true to auto-start xdebug
+      ; Optional: Set to true to auto-start xdebug
       xdebug.remote_autostart=false
 
 **3. Configure your IDE/editor**
