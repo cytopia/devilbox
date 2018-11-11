@@ -25,22 +25,20 @@
 version: '2.1'
 
 
-################################################################################
+###################################################################################################
 # SERVICES
-################################################################################
+###################################################################################################
 services:
 
   # ------------------------------------------------------------
-  # Bind (DNS Server)
+  # Internal DNS for PHP container (Required)
   # ------------------------------------------------------------
-  bind:
+  # This container must always run and is only intended for the
+  # PHP-FPM container so that they are able to resolve custom
+  # DNS and direct all requests to the Devilbox http server.
+  intdns:
     image: cytopia/bind:0.15
     restart: always
-    ports:
-      # [local-machine:]local-port:docker-port
-      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND:-1053}:53/tcp"
-      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND:-1053}:53/udp"
-
     environment:
       ##
       ## Debug?
@@ -48,9 +46,16 @@ services:
       - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
 
       ##
-      ## Bind wildcard/host settings
+      ## ---- THIS LINE MAKES THE MAGIC HAPPEN ----
       ##
-      - WILDCARD_DNS=${TLD_SUFFIX:-loc}=127.0.0.1
+      ## Ensure all wildcard DNS requests from the PHP-Container
+      ## resolve to the Devilbox http server
+      ##
+      - WILDCARD_DNS=${TLD_SUFFIX:-loc}=172.16.238.11
+
+      ##
+      ## Add extra hosts to be resolvable
+      ##
       - EXTRA_HOSTS=${EXTRA_HOSTS}
 
       ##
@@ -85,10 +90,80 @@ services:
       docker.for.lin.host.internal: 172.16.238.1
       docker.for.lin.localhost: 172.16.238.1
 
-    hostname: bind
+    hostname: intdns
     networks:
       app_net:
         ipv4_address: 172.16.238.100
+
+
+  # ------------------------------------------------------------
+  # AutoDNS: DNS for your host operating system (Optional)
+  # ------------------------------------------------------------
+  # This container is intended to provide Auto-DNS for your
+  # host operating system, if you wish so.
+  autodns:
+    image: cytopia/bind:0.15
+    ports:
+      # [local-machine:]local-port:docker-port
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND:-1053}:53/tcp"
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND:-1053}:53/udp"
+
+    environment:
+      ##
+      ## Debug?
+      ##
+      - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
+
+      ##
+      ## ---- THIS LINE MAKES THE MAGIC HAPPEN ----
+      ##
+      ## This line assigns the IP address on which the Devilbox is available
+      ## to your host operating system.
+      ## Bind wildcard/host settings
+      ##
+      - WILDCARD_DNS=${TLD_SUFFIX:-loc}=${AUTODNS_HOST_ADDRESS}
+
+      ##
+      ## Add extra hosts to be resolvable
+      ##
+      - EXTRA_HOSTS=${EXTRA_HOSTS}
+
+      ##
+      ## Forwarding
+      ##
+      - DNS_FORWARDER=${BIND_DNS_RESOLVER:-8.8.8.8,8.8.4.4}
+
+      ##
+      ## Security
+      ##
+      - DNSSEC_VALIDATE=${BIND_DNSSEC_VALIDATE:-no}
+
+      ##
+      ## Time settings
+      ##
+      - TTL_TIME=${BIND_TTL_TIME}
+      - REFRESH_TIME=${BIND_REFRESH_TIME}
+      - RETRY_TIME=${BIND_RETRY_TIME}
+      - EXPIRY_TIME=${BIND_EXPIRY_TIME}
+      - MAX_CACHE_TIME=${BIND_MAX_CACHE_TIME}
+
+      ##
+      ## Query log
+      ##
+      - DOCKER_LOGS=${BIND_LOG_DNS_QUERIES}
+
+    dns:
+      - 127.0.0.1
+
+    # MacOS and Windows have this by default, this hack also allows it for Linux
+    extra_hosts:
+      docker.for.lin.host.internal: 172.16.238.1
+      docker.for.lin.localhost: 172.16.238.1
+
+    hostname: autodns
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.101
 
 
   # ------------------------------------------------------------
@@ -199,7 +274,7 @@ services:
       - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
 
     depends_on:
-      - bind
+      - intdns
 
 
   # ------------------------------------------------------------
@@ -291,7 +366,6 @@ services:
       - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
 
     depends_on:
-      - bind
       - php
 
 
@@ -355,7 +429,6 @@ services:
       - ${HOST_PATH_MYSQL_DATADIR}/${MYSQL_SERVER}:/var/lib/mysql:rw${MOUNT_OPTIONS}
 
     depends_on:
-      - bind
       - php
       - httpd
 
@@ -392,7 +465,6 @@ services:
       - ${HOST_PATH_PGSQL_DATADIR}/${PGSQL_SERVER}:/var/lib/postgresql/data/pgdata:rw${MOUNT_OPTIONS}
 
     depends_on:
-      - bind
       - php
       - httpd
 
@@ -425,7 +497,6 @@ services:
       - ${DEVILBOX_PATH}/log/redis-${REDIS_SERVER}:/var/log/redis:rw${MOUNT_OPTIONS}
 
     depends_on:
-      - bind
       - php
       - httpd
 
@@ -453,7 +524,6 @@ services:
       - ${DEVILBOX_PATH}/log/memcd-${MEMCD_SERVER}:/var/log/memcd:rw${MOUNT_OPTIONS}
 
     depends_on:
-      - bind
       - php
       - httpd
 
@@ -481,14 +551,13 @@ services:
       - ${HOST_PATH_MONGO_DATADIR}/${MONGO_SERVER}:/data/db:rw${MOUNT_OPTIONS}
 
     depends_on:
-      - bind
       - php
       - httpd
 
 
-################################################################################
+###################################################################################################
 # NETWORK
-################################################################################
+###################################################################################################
 networks:
   app_net:
     driver: bridge
