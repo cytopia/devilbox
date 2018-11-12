@@ -11,7 +11,7 @@ This example will use ``git`` and ``composer`` to install Magento 2 from within 
 After completing the below listed steps, you will have a working Magento 2 setup ready to be
 served via http and https.
 
-.. seealso:: |ext_lnk_example_magento_documentation|
+.. seealso:: |ext_lnk_example_magento2_documentation|
 
 
 **Table of Contents**
@@ -82,24 +82,24 @@ The vhost directory defines the name under which your project will be available.
 .. seealso:: :ref:`env_tld_suffix`
 
 
-3. Install Magento
-------------------
+3. Install Magento 2
+--------------------
 
-Navigate into your newly created vhost directory and install Magento with ``git``.
+Navigate into your newly created vhost directory and install Magento 2 with ``git``.
 
 .. code-block:: bash
 
    devilbox@php-7.1.20 in /shared/httpd $ cd my-magento
 
-   # Download Magento with git
+   # Download Magento 2 via git
    devilbox@php-7.1.20 in /shared/httpd/my-magento $ git clone https://github.com/magento/magento2
 
    # Checkout the latest stable git tag
    devilbox@php-7.1.20 in /shared/httpd/my-magento $ cd magento2
-   devilbox@php-7.1.20 in /shared/httpd/my-magento $ git checkout 2.2.5
+   devilbox@php-7.1.20 in /shared/httpd/my-magento/magento2 $ git checkout 2.2.5
 
    # Install dependencies with Composer
-   devilbox@php-7.1.20 in /shared/httpd/my-magento $ composer install
+   devilbox@php-7.1.20 in /shared/httpd/my-magento/magento2 $ composer install
 
 How does the directory structure look after installation:
 

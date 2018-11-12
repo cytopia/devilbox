@@ -34,10 +34,10 @@
      Official Laravel Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
-.. |ext_lnk_example_magento_documentation| raw:: html
+.. |ext_lnk_example_magento2_documentation| raw:: html
 
-   <a target="_blank" href="https://devdocs.magento.com/guides/m1x/install/installing.html">
-     Official Magento Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   <a target="_blank" href="https://devdocs.magento.com/guides/v2.2/install-gde/bk-install-guide.html">
+     Official Magento 2 Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
 .. |ext_lnk_example_phalcon_documentation| raw:: html
