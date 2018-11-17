@@ -280,7 +280,8 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td>...</td>
       <td></td>
-      <td><a target="_blank" title="MongoDB 4.0"      href="https://github.com/docker-library/mongo">4.0</a></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td></td>
@@ -304,7 +305,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="PgSQL latest"     href="https://github.com/docker-library/postgres">latest</a></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="MongoDB latest"   href="https://github.com/docker-library/mongo">latest</a></td>
+      <td></td>
     </tr>
     <tr>
       <td></td>
