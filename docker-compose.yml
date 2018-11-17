@@ -175,7 +175,7 @@ services:
       - ${DEVILBOX_PATH}/log/php-fpm-${PHP_SERVER:-7.0}:/var/log/php:rw${MOUNT_OPTIONS}
 
       # Mount Mail directory
-      - ${DEVILBOX_PATH}/mail:/var/mail:rw${MOUNT_OPTIONS}
+      - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
 
       # Mount DB Backup directory
       - ${DEVILBOX_PATH}/backups:/shared/backups:rw${MOUNT_OPTIONS}
@@ -510,6 +510,11 @@ networks:
 ################################################################################
 volumes:
   # ------------------------------------------------------------
+  # Misc
+  # ------------------------------------------------------------
+  devilbox-mail:
+
+  # ------------------------------------------------------------
   # MySQL
   # ------------------------------------------------------------
   devilbox-mysql-5.5:
@@ -531,24 +536,39 @@ volumes:
   devilbox-pgsql-9.0:
   devilbox-pgsql-9.1:
   devilbox-pgsql-9.2:
+  devilbox-pgsql-9.2-alpine:
   devilbox-pgsql-9.3:
+  devilbox-pgsql-9.3-alpine:
   devilbox-pgsql-9.4:
+  devilbox-pgsql-9.4-alpine:
   devilbox-pgsql-9.5:
+  devilbox-pgsql-9.5-alpine:
   devilbox-pgsql-9.6:
+  devilbox-pgsql-9.6-alpine:
   devilbox-pgsql-10.0:
+  devilbox-pgsql-10.0-alpine:
   devilbox-pgsql-10.1:
+  devilbox-pgsql-10.1-alpine:
   devilbox-pgsql-10.2:
+  devilbox-pgsql-10.2-alpine:
   devilbox-pgsql-10.3:
+  devilbox-pgsql-10.3-alpine:
   devilbox-pgsql-10.4:
+  devilbox-pgsql-10.4-alpine:
   devilbox-pgsql-10.5:
+  devilbox-pgsql-10.5-alpine:
+  devilbox-pgsql-10.6:
+  devilbox-pgsql-10.6-alpine:
+  devilbox-pgsql-11.0:
+  devilbox-pgsql-11.0-alpine:
+  devilbox-pgsql-11.1:
+  devilbox-pgsql-11.1-alpine:
   devilbox-pgsql-latest:
+  devilbox-pgsql-alpine:
 
   # ------------------------------------------------------------
   # MongoDB
   # ------------------------------------------------------------
-  devilbox-mongo-2.2:
-  devilbox-mongo-2.4:
-  devilbox-mongo-2.6:
   devilbox-mongo-2.8:
   devilbox-mongo-3.0:
   devilbox-mongo-3.2:
