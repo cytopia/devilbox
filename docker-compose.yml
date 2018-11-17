@@ -569,9 +569,6 @@ volumes:
   # ------------------------------------------------------------
   # MongoDB
   # ------------------------------------------------------------
-  devilbox-mongo-2.2:
-  devilbox-mongo-2.4:
-  devilbox-mongo-2.6:
   devilbox-mongo-2.8:
   devilbox-mongo-3.0:
   devilbox-mongo-3.2:
