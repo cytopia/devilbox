@@ -19,6 +19,7 @@
 /log/[a-z0-9-]*
 
 # Ignore Data dirs
+/data/mongo/*
 /data/mysql/*
 /data/pgsql/*
 /data/rabbit/*
