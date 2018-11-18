@@ -26,12 +26,49 @@ env:
   - S1=DOCUMENTATION
 
   ###
-  ### Update script
+  ### Check Update script
   ###
   - S1=UPDATE V1=php
   - S1=UPDATE V1=httpd
   - S1=UPDATE V1=mysql
   - S1=UPDATE V1=rest
+
+  ###
+  ### Test various Docker/DockerCompose versions
+  ###
+  ### Docker versions:  https://github.com/docker/docker-ce/releases
+  ### Compose versions: https://github.com/docker/compose/releases
+  ###
+  # Latest Docker version against various DockerCompose versions
+  - S1=DOCKER V1=2 S2=COMPOSE V2=1
+  - S1=DOCKER V1=2 S2=COMPOSE V2=2
+  - S1=DOCKER V1=2 S2=COMPOSE V2=3
+  - S1=DOCKER V1=2 S2=COMPOSE V2=4
+  - S1=DOCKER V1=2 S2=COMPOSE V2=5
+  # 2nd Latest Docker version against various DockerCompose versions
+  - S1=DOCKER V1=3 S2=COMPOSE V2=1
+  - S1=DOCKER V1=3 S2=COMPOSE V2=2
+  - S1=DOCKER V1=3 S2=COMPOSE V2=3
+  - S1=DOCKER V1=3 S2=COMPOSE V2=4
+  - S1=DOCKER V1=3 S2=COMPOSE V2=5
+  # 3rd Latest Docker version against various DockerCompose versions
+  - S1=DOCKER V1=4 S2=COMPOSE V2=1
+  - S1=DOCKER V1=4 S2=COMPOSE V2=2
+  - S1=DOCKER V1=4 S2=COMPOSE V2=3
+  - S1=DOCKER V1=4 S2=COMPOSE V2=4
+  - S1=DOCKER V1=4 S2=COMPOSE V2=5
+  # 4th Latest Docker version against various DockerCompose versions
+  - S1=DOCKER V1=5 S2=COMPOSE V2=1
+  - S1=DOCKER V1=5 S2=COMPOSE V2=2
+  - S1=DOCKER V1=5 S2=COMPOSE V2=3
+  - S1=DOCKER V1=5 S2=COMPOSE V2=4
+  - S1=DOCKER V1=5 S2=COMPOSE V2=5
+  # 5th Latest Docker version against various DockerCompose versions
+  - S1=DOCKER V1=6 S2=COMPOSE V2=1
+  - S1=DOCKER V1=6 S2=COMPOSE V2=2
+  - S1=DOCKER V1=6 S2=COMPOSE V2=3
+  - S1=DOCKER V1=6 S2=COMPOSE V2=4
+  - S1=DOCKER V1=6 S2=COMPOSE V2=5
 
   ###
   ### The matrix specifies 2 versions to compare against each other.
@@ -82,32 +119,6 @@ env:
   - S1=PHP V1=7.3 S2=HTTPD V2=nginx-mainline
   - S1=PHP V1=7.4 S2=HTTPD V2=nginx-mainline
 
-  ###
-  ### MYSQL
-  ###
-  - S1=PHP V1=7.2 S2=MYSQL V2=mysql-5.5
-  - S1=PHP V1=7.2 S2=MYSQL V2=mysql-5.6
-  - S1=PHP V1=7.2 S2=MYSQL V2=mysql-5.7
-  - S1=PHP V1=7.2 S2=MYSQL V2=mysql-8.0
-  - S1=PHP V1=7.2 S2=MYSQL V2=mariadb-5.5
-  - S1=PHP V1=7.2 S2=MYSQL V2=mariadb-10.0
-  - S1=PHP V1=7.2 S2=MYSQL V2=mariadb-10.1
-  - S1=PHP V1=7.2 S2=MYSQL V2=mariadb-10.2
-  - S1=PHP V1=7.2 S2=MYSQL V2=mariadb-10.3
-  - S1=PHP V1=7.2 S2=MYSQL V2=percona-5.5
-  - S1=PHP V1=7.2 S2=MYSQL V2=percona-5.6
-  - S1=PHP V1=7.2 S2=MYSQL V2=percona-5.7
-
-  ###
-  ### PostgreSQL
-  ###
-  - S1=PHP V1=7.2 S2=PGSQL V2=9.2
-  - S1=PHP V1=7.2 S2=PGSQL V2=9.3
-  - S1=PHP V1=7.2 S2=PGSQL V2=9.4
-  - S1=PHP V1=7.2 S2=PGSQL V2=9.5
-  - S1=PHP V1=7.2 S2=PGSQL V2=9.6
-  - S1=PHP V1=7.2 S2=PGSQL V2=10.0
-
 
 ###
 ### Installation
@@ -115,44 +126,45 @@ env:
 install:
   # Install dependencies for documentation
   - if [ "${S1}" = "DOCUMENTATION" ]; then
-      max=100; i=0;
-      while [ $i -lt $max ]; do
-        if pip install sphinx; then break; else i=$((i+1)); fi
-      done;
-
-      max=100; i=0;
-      while [ $i -lt $max ]; do
-        if pip install sphinx-autobuild; then break; else i=$((i+1)); fi
-      done;
-
-      max=100; i=0;
-      while [ $i -lt $max ]; do
-        if pip install recommonmark; then break; else i=$((i+1)); fi
-      done;
-
-      max=100; i=0;
-      while [ $i -lt $max ]; do
-        if pip install sphinx_rtd_theme; then break; else i=$((i+1)); fi
-      done;
+      max=100; i=0; while [ $i -lt $max ]; do if pip install sphinx; then break; else i=$((i+1)); fi done;
+      max=100; i=0; while [ $i -lt $max ]; do if pip install sphinx-autobuild; then break; else i=$((i+1)); fi done;
+      max=100; i=0; while [ $i -lt $max ]; do if pip install recommonmark; then break; else i=$((i+1)); fi done;
+      max=100; i=0; while [ $i -lt $max ]; do if pip install sphinx_rtd_theme; then break; else i=$((i+1)); fi done;
     fi
 
-  # Install dependencies for docker/docker-compose
-  - if [ "${S1}" != "DOCUMENTATION" ]; then
-      max=100; i=0;
-      while [ $i -lt $max ]; do
-        if sudo apt-get update; then break; else i=$((i+1)); fi
-      done;
+  # Determine latest Docker version
+  - set -e;
+    DOCKER_APT="";
+    if [ "${S1}" = "DOCKER" ]; then
+      DOCKER_VERSION="$( curl -sS https://raw.githubusercontent.com/cytopia/tools/master/docker-versions | sh -s "${V1}" | grep -oE '[.0-9]+' )";
+      DOCKER_APT="$( apt-cache madison docker-ce | grep "${DOCKER_VERSION}" | awk -F '|' '{ print $2}' | head -1 | xargs )";
+    fi;
+    if [ -n "${DOCKER_APT}" ]; then
+      DOCKER_APT="=${DOCKER_APT}";
+    fi;
+    echo "${COMPOSE_APT}";
 
-      max=100; i=0;
-      while [ $i -lt $max ]; do
-        if sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce; then break; else i=$((i+1)); fi
-      done;
+  # Determine latest Docker Compose version
+  - set -e;
+    if [ "${S2}" = "COMPOSE" ]; then
+      COMPOSE_VERSION="$( curl -sS https://raw.githubusercontent.com/cytopia/tools/master/docker-compose-versions | sh -s "${V2}" )";
+    else
+      COMPOSE_VERSION="$( curl -sS https://raw.githubusercontent.com/cytopia/tools/master/docker-compose-versions | sh -s 1 )";
+    fi;
+    echo "${COMPOSE_VERSION}";
 
-      max=100; i=0;
-      while [ $i -lt $max ]; do
-        if curl -L --retry 100 --retry-max-time 0 https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > docker-compose; then break; else i=$((i+1)); fi
+  # Install Docker and Docker Compose
+  - set -e;
+    if [ "${S1}" != "DOCUMENTATION" ]; then
+      max=100; i=0; while [ $i -lt $max ]; do
+        if sudo apt-get update -qq; then break; else i=$((i+1)); fi;
       done;
-
+      max=100; i=0; while [ $i -lt $max ]; do
+        if sudo apt-get -y -qq -o Dpkg::Options::="--force-confnew" install docker-ce${DOCKER_APT}; then break; else i=$((i+1)); fi;
+      done;
+      max=100; i=0; while [ $i -lt $max ]; do
+        if curl -L --retry 100 --retry-max-time 0 https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose; then break; else i=$((i+1)); fi;
+      done;
       chmod +x docker-compose;
       sudo mv -f docker-compose /usr/local/bin;
     fi
@@ -164,18 +176,16 @@ install:
 before_script:
   # Disable services enabled by default
   # http://docs.travis-ci.com/user/database-setup/#MySQL
-  - sudo /etc/init.d/mysql      stop || true
-  - sudo /etc/init.d/postgresql stop || true
-  - sudo /etc/init.d/memcached  stop || true
-  - sudo /etc/init.d/redis      stop || true
-  - sudo /etc/init.d/mongodb    stop || true
-
   - sudo service mysql      stop || true
   - sudo service postgresql stop || true
   - sudo service memcached  stop || true
   - sudo service redis      stop || true
   - sudo service mongodb    stop || true
-  - netstat -tulpn
+  - netstat -tuln
+
+  # Ensure Docker is restarted
+  - sudo service docker stop  || true
+  - sudo service docker start || true
 
   # Show Python/pip
   - if [ "${S1}" = "DOCUMENTATION" ]; then
@@ -202,6 +212,9 @@ script:
         make linkcheck2;
     elif [ "${S1}" = "UPDATE" ]; then
         ./update-docker.sh "${V1}";
+    elif [ "${S1}" = "DOCKER" ]; then
+        PHP="$(grep ^PHP_SERVER env-example | grep -Eo '[.0-9]+')";
+        .tests/test_single.sh . "PHP" "${PHP}" "PHP" "${PHP}";
     else
         .tests/test_single.sh . "${S1}" "${V1}" "${S2}" "${V2}";
     fi
