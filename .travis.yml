@@ -40,35 +40,35 @@ env:
   ### Compose versions: https://github.com/docker/compose/releases
   ###
   # Latest Docker version against various DockerCompose versions
+  - S1=DOCKER V1=1 S2=COMPOSE V2=1
+  - S1=DOCKER V1=1 S2=COMPOSE V2=2
+  - S1=DOCKER V1=1 S2=COMPOSE V2=3
+  - S1=DOCKER V1=1 S2=COMPOSE V2=4
+  - S1=DOCKER V1=1 S2=COMPOSE V2=5
+  # 2nd Latest Docker version against various DockerCompose versions
   - S1=DOCKER V1=2 S2=COMPOSE V2=1
   - S1=DOCKER V1=2 S2=COMPOSE V2=2
   - S1=DOCKER V1=2 S2=COMPOSE V2=3
   - S1=DOCKER V1=2 S2=COMPOSE V2=4
   - S1=DOCKER V1=2 S2=COMPOSE V2=5
-  # 2nd Latest Docker version against various DockerCompose versions
+  # 3rd Latest Docker version against various DockerCompose versions
   - S1=DOCKER V1=3 S2=COMPOSE V2=1
   - S1=DOCKER V1=3 S2=COMPOSE V2=2
   - S1=DOCKER V1=3 S2=COMPOSE V2=3
   - S1=DOCKER V1=3 S2=COMPOSE V2=4
   - S1=DOCKER V1=3 S2=COMPOSE V2=5
-  # 3rd Latest Docker version against various DockerCompose versions
+  # 4th Latest Docker version against various DockerCompose versions
   - S1=DOCKER V1=4 S2=COMPOSE V2=1
   - S1=DOCKER V1=4 S2=COMPOSE V2=2
   - S1=DOCKER V1=4 S2=COMPOSE V2=3
   - S1=DOCKER V1=4 S2=COMPOSE V2=4
   - S1=DOCKER V1=4 S2=COMPOSE V2=5
-  # 4th Latest Docker version against various DockerCompose versions
+  # 5th Latest Docker version against various DockerCompose versions
   - S1=DOCKER V1=5 S2=COMPOSE V2=1
   - S1=DOCKER V1=5 S2=COMPOSE V2=2
   - S1=DOCKER V1=5 S2=COMPOSE V2=3
   - S1=DOCKER V1=5 S2=COMPOSE V2=4
   - S1=DOCKER V1=5 S2=COMPOSE V2=5
-  # 5th Latest Docker version against various DockerCompose versions
-  - S1=DOCKER V1=6 S2=COMPOSE V2=1
-  - S1=DOCKER V1=6 S2=COMPOSE V2=2
-  - S1=DOCKER V1=6 S2=COMPOSE V2=3
-  - S1=DOCKER V1=6 S2=COMPOSE V2=4
-  - S1=DOCKER V1=6 S2=COMPOSE V2=5
 
   ###
   ### The matrix specifies 2 versions to compare against each other.
@@ -132,17 +132,17 @@ install:
       max=100; i=0; while [ $i -lt $max ]; do if pip install sphinx_rtd_theme; then break; else i=$((i+1)); fi done;
     fi
 
-  # Determine latest Docker version
+  # Determine latest Docker version in apt
   - set -e;
     DOCKER_APT="";
     if [ "${S1}" = "DOCKER" ]; then
-      DOCKER_VERSION="$( curl -sS https://raw.githubusercontent.com/cytopia/tools/master/docker-versions | sh -s "${V1}" | grep -oE '[.0-9]+' )";
-      DOCKER_APT="$( apt-cache madison docker-ce | grep "${DOCKER_VERSION}" | awk -F '|' '{ print $2}' | head -1 | xargs )";
+      max=100; i=0; while [ $i -lt $max ]; do if sudo apt-get update -qq; then break; else i=$((i+1)); fi; done;
+      DOCKER_APT="$( curl -sS https://raw.githubusercontent.com/cytopia/tools/master/docker-apt-versions | sh -s "${V1}" )";
     fi;
     if [ -n "${DOCKER_APT}" ]; then
       DOCKER_APT="=${DOCKER_APT}";
     fi;
-    echo "${COMPOSE_APT}";
+    echo "${DOCKER_APT}";
 
   # Determine latest Docker Compose version
   - set -e;
@@ -213,8 +213,17 @@ script:
     elif [ "${S1}" = "UPDATE" ]; then
         ./update-docker.sh "${V1}";
     elif [ "${S1}" = "DOCKER" ]; then
-        PHP="$(grep ^PHP_SERVER env-example | grep -Eo '[.0-9]+')";
-        .tests/test_single.sh . "PHP" "${PHP}" "PHP" "${PHP}";
+        cd .tests/;
+        make init;
+        make start;
+        make info;
+        make test;
     else
-        .tests/test_single.sh . "${S1}" "${V1}" "${S2}" "${V2}";
+        cd .tests/;
+        make init;
+        make configure SRV="${S1}_SERVER" VER="${V1}";
+        make configure SRV="${S2}_SERVER" VER="${V2}";
+        make start;
+        make info;
+        make test;
     fi
