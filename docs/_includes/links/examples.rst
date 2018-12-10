@@ -60,7 +60,7 @@
 
 .. |ext_lnk_example_shopware_documentation| raw:: html
 
-   <a target="_blank" href="https://en-community.shopware.com/Shopware-5-Installer_detail_1351_730.html/sCoreId,bdd630e6d079964f3f697fccff83a987">
+   <a target="_blank" href="https://docs.shopware.com/en/shopware-5-en/first-steps/installing-shopware?category=shopware-5-en/getting-started">
      Official Shopware Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
