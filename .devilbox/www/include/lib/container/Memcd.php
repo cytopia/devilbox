@@ -43,7 +43,7 @@ class Memcd extends BaseClass implements BaseInterface
 
 			if (empty($list)) {
 				$memcd->setOption(\Memcached::OPT_LIBKETAMA_COMPATIBLE, true);
-				$memcd->setOption(\Memcached::OPT_BINARY_PROTOCOL, false);
+				$memcd->setOption(\Memcached::OPT_BINARY_PROTOCOL, true);
 				$memcd->addServer($hostname, 11211);
 			}
 
@@ -67,11 +67,15 @@ class Memcd extends BaseClass implements BaseInterface
 				$this->_connect_errno = 3;
 				return;
 			}
+			$memcd->getDelayed(array('devilbox-version'));
+			if (!$memcd->fetchAll()) {
+				$memcd->set('devilbox-version', $GLOBALS['DEVILBOX_VERSION'].' ('.$GLOBALS['DEVILBOX_DATE'].')');
+			}
 			$this->_memcached = $memcd;
 		} else {
 
 			$ret = 0;
-			loadClass('Helper')->exec('echo "stats" | nc 127.0.0.1 11211', $ret);
+			loadClass('Helper')->exec('echo "stats" | nc '.$hostname.' 11211', $ret);
 			if ($ret == 0) {
 				$this->_memcached = true;
 			}
@@ -104,14 +108,22 @@ class Memcd extends BaseClass implements BaseInterface
 		$store = array();
 		if (class_exists('Memcached')) {
 			if ($this->_memcached) {
-				if (!($keys = $this->_memcached->getAllKeys())) {
-					$keys = array();
+				$this->_memcached->setOption(\Memcached::OPT_BINARY_PROTOCOL, true);
+
+				$output = array();
+				exec('printf "stats cachedump 1 0\nquit\n" | nc memcd 11211 | grep -E \'^ITEM\'', $output);
+				foreach ($output as $line) {
+					$matches = array();
+					preg_match('/(^ITEM)\s*(.+?)\s*\[([0-9]+\s*b);\s*([0-9]+\s*s)\s*\]/', $line, $matches);
+					$key = $matches[2];
+					$store[] = array(
+						'key' => $key,
+						'size' => $matches[3],
+						'ttl' =>  $matches[4],
+						'val' => $this->_memcached->get($key)
+					);
 				}
-				$this->_memcached->getDelayed($keys);
-				$store = $this->_memcached->fetchAll();
-				if (!is_array($store)) {
-					$store = array();
-				}
+				return $store;
 			}
 		}
 		return $store;
@@ -126,14 +138,14 @@ class Memcd extends BaseClass implements BaseInterface
 			}
 		} else {
 			$ret = 0;
-			$output = loadClass('Helper')->exec('echo "stats" | nc 127.0.0.1 11211 | sed "s/^STAT[[:space:]]*//g" | grep -v "END"', $ret);
+			$output = loadClass('Helper')->exec('echo "stats" | nc memcd 11211 | sed "s/^STAT[[:space:]]*//g" | grep -v "END"', $ret);
 			if ($ret == 0) {
 				$output = explode("\n", $output);
 				foreach ($output as $line) {
 					$tmp = explode(' ', $line);
 					$key = isset($tmp[0]) ? $tmp[0] : '';
 					$val = isset($tmp[1]) ? $tmp[1] : '';
-					$stats['127.0.0.1'][$key] = $val;
+					$stats['memcd'][$key] = $val;
 				}
 			}
 		}
@@ -165,51 +177,13 @@ class Memcd extends BaseClass implements BaseInterface
 			return $this->_can_connect[$hostname];
 		}
 
-		if (class_exists('Memcached')) {
-			// Silence errors and try to connect
-			//error_reporting(-1);
-			$memcd = new \Memcached();
-			$memcd->resetServerList();
-
-
-			if (!$memcd->addServer($hostname, 11211)) {
-				$memcd->quit();
-				$err = 'Failed to connect to Memcached host on '.$hostname;
-				$this->_can_connect[$hostname] = false;
-				$this->_can_connect_err[$hostname] = $err;
-				return false;
-			}
-
-			$stats = $memcd->getStats();
-			if (!isset($stats[$hostname.':11211'])) {
-				$err = 'Failed to connect to Memcached host on '.$hostname;
-				$this->_can_connect[$hostname] = false;
-			}
-			else if (!isset($stats[$hostname.':11211']['pid'])) {
-				$err = 'Failed to connect to Memcached host on '.$hostname;
-				$this->_can_connect[$hostname] = false;
-			}
-			else if ($stats[$hostname.':11211']['pid'] < 1) {
-				$err = 'Failed to connect to Memcached host on '.$hostname;
-				$this->_can_connect[$hostname] = false;
-			}
-			else {
-				$this->_can_connect[$hostname] = true;
-			}
-
-			$memcd->quit();
-
-			$this->_can_connect_err[$hostname] = $err;
+		$ret = 0;
+		loadClass('Helper')->exec('echo "stats" | nc '.$hostname.' 11211', $ret);
+		if ($ret == 0) {
+			$this->_can_connect[$hostname] = true;
 		} else {
-
-			$ret = 0;
-			loadClass('Helper')->exec('echo "stats" | nc '.$hostname.' 11211', $ret);
-			if ($ret == 0) {
-				$this->_can_connect[$hostname] = true;
-			} else {
-				$err = 'Failed to connect to Memcached host on '.$hostname;
-				$this->_can_connect[$hostname] = false;
-			}
+			$err = 'Failed to connect to Memcached host on '.$hostname;
+			$this->_can_connect[$hostname] = false;
 		}
 
 		return $this->_can_connect[$hostname];
@@ -247,7 +221,7 @@ class Memcd extends BaseClass implements BaseInterface
 				}
 			}
 		} else {
-			$version = loadClass('Helper')->exec('echo "version" | nc 127.0.0.1 11211 | grep -oE "[0-9.-]+"', $ret);
+			$version = loadClass('Helper')->exec('echo "version" | nc memcd 11211 | grep -oE "[0-9.-]+"', $ret);
 			$this->_version = $version;
 		}
 		return $this->_version;
