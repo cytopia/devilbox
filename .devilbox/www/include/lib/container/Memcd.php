@@ -67,8 +67,6 @@ class Memcd extends BaseClass implements BaseInterface
 				$this->_connect_errno = 3;
 				return;
 			}
-
-			$memcd->set('devilbox-version', $GLOBALS['DEVILBOX_VERSION'].' ('.$GLOBALS['DEVILBOX_DATE'].')');
 			$this->_memcached = $memcd;
 		} else {
 
