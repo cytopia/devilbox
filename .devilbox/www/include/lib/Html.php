@@ -86,7 +86,7 @@ class Html
 			'menu' => array(
 				array(
 					'name' => 'Adminer',
-					'path' => '/vendor/adminer-4.6.2-en.php',
+					'path' => '/vendor/adminer-4.7.0-en.php',
 					'target' => '_blank'
 				),
 				array(
