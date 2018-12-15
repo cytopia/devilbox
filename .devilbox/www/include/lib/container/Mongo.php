@@ -91,10 +91,9 @@ class Mongo extends BaseClass implements BaseInterface
 	 */
 	private function command($command)
 	{
-		$cmd = new \MongoDB\Driver\Command($command);
-
 		if ($this->_mongo) {
 			try {
+				$cmd = new \MongoDB\Driver\Command($command);
 				$cursor = $this->_mongo->executeCommand('admin', $cmd);
 				return $cursor->toArray();
 			} catch(\MongoDB\Driver\Exception $e) {
