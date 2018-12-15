@@ -17,9 +17,11 @@ printf "[TEST] dvlbox-ok"
 TEST_OK="$( curl -sS localhost/index.php | grep -c 'dvlbox-ok' || true )"
 if [ "${TEST_OK}" != "${NUM_OK}" ]; then
 	# 2nd Try
+	sleep 1
 	TEST_OK="$( curl -sS localhost/index.php | grep -c 'dvlbox-ok' || true )"
 	if [ "${TEST_OK}" != "${NUM_OK}" ]; then
 		# 3rd Try
+		sleep 1
 		TEST_OK="$( curl -sS localhost/index.php | grep -c 'dvlbox-ok' || true )"
 		if [ "${TEST_OK}" != "${NUM_OK}" ]; then
 			printf "\r[FAIL] dvlbox-ok\n"
@@ -45,9 +47,11 @@ printf "[TEST] dvlbox-err"
 TEST_ERR="$( curl -sS localhost/index.php | grep -c 'dvlbox-err' || true )"
 if [ "${TEST_ERR}" != "${NUM_ERR}" ]; then
 	# 2nd Try
+	sleep 1
 	TEST_ERR="$( curl -sS localhost/index.php | grep -c 'dvlbox-err' || true )"
 	if [ "${TEST_ERR}" != "${NUM_ERR}" ]; then
 		# 3rd Try
+		sleep 1
 		TEST_ERR="$( curl -sS localhost/index.php | grep -c 'dvlbox-err' || true )"
 		if [ "${TEST_ERR}" != "${NUM_ERR}" ]; then
 			printf "\r[FAIL] dvlbox-err\n"

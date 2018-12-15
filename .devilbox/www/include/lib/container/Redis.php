@@ -70,6 +70,17 @@ class Redis extends BaseClass implements BaseInterface
 	 * Select functions
 	 *
 	 *********************************************************************************/
+	public function flushDB($db)
+	{
+		if ($this->_redis) {
+			if ( !$this->_redis->select($db) ) {
+				return FALSE;
+			}
+			return $this->_redis->flushDb();
+		} else {
+			return FALSE;
+		}
+	}
 
 	public function getInfo()
 	{
@@ -101,7 +112,35 @@ class Redis extends BaseClass implements BaseInterface
 				$this->_redis->select($db);
 				$keys = $this->_redis->keys('*');
 				foreach ($keys as $key) {
-					$store[$db][$key] = $this->_redis->get($key);
+
+					switch($this->_redis->type($key)) {
+						case \Redis::REDIS_STRING:
+							$dtype = 'string';
+							break;
+						case \Redis::REDIS_SET:
+							$dtype = 'set';
+							break;
+						case \Redis::REDIS_LIST:
+							$dtype = 'list';
+							break;
+						case \Redis::REDIS_ZSET:
+							$dtype = 'zset';
+							break;
+						case \Redis::REDIS_HASH:
+							$dtype = 'hash';
+							break;
+						case \Redis::REDIS_NOT_FOUND:
+							$dtype = 'other';
+							break;
+						default:
+							$dtype = 'unknown';
+					}
+					$store[$db][] = array(
+						'name' => $key,
+						'val'  => $this->_redis->get($key),
+						'type' => $dtype,
+						'ttl'  => $this->_redis->ttl($key)
+					);
 				}
 			}
 		}
