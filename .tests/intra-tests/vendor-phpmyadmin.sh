@@ -5,6 +5,12 @@ set -u
 set -o pipefail
 
 
+#
+# NOTE: Parsing curl to tac to circumnvent "failed writing body"
+# https://stackoverflow.com/questions/16703647/why-curl-return-and-error-23-failed-writing-body
+#
+
+
 ###
 ### Retrieve URL for current PHP version.
 ### Older PHP versions are presented a link with a different version due to compatibility.
@@ -39,13 +45,13 @@ fi
 
 printf "[TEST] Fetch ${URL}"
 # 1st Try
-if ! curl -sS localhost${URL} | grep -Eiq "welcome to.+phpMyAdmin"; then
+if ! curl -sS localhost${URL} | tac | tac | grep -Eiq "welcome to.+phpMyAdmin"; then
 	# 2nd Try
 	sleep 1
-	if ! curl -sS localhost${URL} | grep -Eiq "welcome to.+phpMyAdmin"; then
+	if ! curl -sS localhost${URL} | tac | tac | grep -Eiq "welcome to.+phpMyAdmin"; then
 		# 3rd Try
 		sleep 1
-		if ! curl -sS localhost${URL} | grep -Eiq "welcome to.+phpMyAdmin"; then
+		if ! curl -sS localhost${URL} | tac | tac | grep -Eiq "welcome to.+phpMyAdmin"; then
 			printf "\r[FAIL] Fetch ${URL}\n"
 			curl -sS localhost/${URL} || true
 			curl -sSI localhost/${URL} || true
