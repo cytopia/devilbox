@@ -75,7 +75,7 @@ class Memcd extends BaseClass implements BaseInterface
 		} else {
 
 			$ret = 0;
-			loadClass('Helper')->exec('echo "stats" | nc '.$hostname.' 11211', $ret);
+			loadClass('Helper')->exec('printf "stats\nquit\n" | nc '.$hostname.' 11211', $ret);
 			if ($ret == 0) {
 				$this->_memcached = true;
 			}
@@ -106,24 +106,55 @@ class Memcd extends BaseClass implements BaseInterface
 	public function getKeys()
 	{
 		$store = array();
+
+		// CLI seems to only sometimes get the results, so we will just loop a bit
+		// It's a very quick operation anyway.
+		$cli_retries = 100;
+
+		// Memcached >= 1.5
+		for ($i=0; $i<$cli_retries; $i++) {
+
+			$output = array();
+			exec('printf "stats cachedump 1 0\nquit\n" | nc memcd 11211 | grep -E \'^ITEM\'', $output);
+			foreach ($output as $line) {
+				$matches = array();
+				preg_match('/(^ITEM)\s*(.+?)\s*\[([0-9]+\s*b);\s*([0-9]+\s*s)\s*\]/', $line, $matches);
+				$key = $matches[2];
+				$store[] = array(
+					'key' => $key,
+					'val' => $this->_memcached->get($key),
+					'ttl' =>  $matches[4],
+					'size' => $matches[3],
+				);
+			}
+			// If we actually got a result, we can break here
+			if (count($store)) {
+				return $store;
+			}
+		}
+
+		// This will only work for Memcached < 1.5
 		if (class_exists('Memcached')) {
 			if ($this->_memcached) {
-				$this->_memcached->setOption(\Memcached::OPT_BINARY_PROTOCOL, true);
 
-				$output = array();
-				exec('printf "stats cachedump 1 0\nquit\n" | nc memcd 11211 | grep -E \'^ITEM\'', $output);
-				foreach ($output as $line) {
-					$matches = array();
-					preg_match('/(^ITEM)\s*(.+?)\s*\[([0-9]+\s*b);\s*([0-9]+\s*s)\s*\]/', $line, $matches);
-					$key = $matches[2];
-					$store[] = array(
-						'key' => $key,
-						'size' => $matches[3],
-						'ttl' =>  $matches[4],
-						'val' => $this->_memcached->get($key)
-					);
+				// Ensure we retrieve data not in binary
+				$this->_memcached->setOption(\Memcached::OPT_BINARY_PROTOCOL, false);
+
+				if (!($keys = $this->_memcached->getAllKeys())) {
+					$keys = array();
 				}
-				return $store;
+				$this->_memcached->getDelayed($keys, true);
+				$data = $this->_memcached->fetchAll();
+				if (is_array($data)) {
+					for ($i=0; $size=count($data), $i<$size; $i++) {
+						$store[$i]['key'] = $data[$i]['key'];
+						$store[$i]['val'] = $data[$i]['value'];
+						$store[$i]['ttl'] = '?';
+						$store[$i]['size'] = strlen($data[$i]['value']);
+					}
+				}
+				// Revert Memcachd protocol
+				$this->_memcached->setOption(\Memcached::OPT_BINARY_PROTOCOL, true);
 			}
 		}
 		return $store;
@@ -138,7 +169,7 @@ class Memcd extends BaseClass implements BaseInterface
 			}
 		} else {
 			$ret = 0;
-			$output = loadClass('Helper')->exec('echo "stats" | nc memcd 11211 | sed "s/^STAT[[:space:]]*//g" | grep -v "END"', $ret);
+			$output = loadClass('Helper')->exec('printf "stats\nquit\n" | nc memcd 11211 | sed "s/^STAT[[:space:]]*//g" | grep -v "END"', $ret);
 			if ($ret == 0) {
 				$output = explode("\n", $output);
 				foreach ($output as $line) {
@@ -178,7 +209,7 @@ class Memcd extends BaseClass implements BaseInterface
 		}
 
 		$ret = 0;
-		loadClass('Helper')->exec('echo "stats" | nc '.$hostname.' 11211', $ret);
+		loadClass('Helper')->exec('printf "stats\nquit\n" | nc '.$hostname.' 11211', $ret);
 		if ($ret == 0) {
 			$this->_can_connect[$hostname] = true;
 		} else {
@@ -221,7 +252,7 @@ class Memcd extends BaseClass implements BaseInterface
 				}
 			}
 		} else {
-			$version = loadClass('Helper')->exec('echo "version" | nc memcd 11211 | grep -oE "[0-9.-]+"', $ret);
+			$version = loadClass('Helper')->exec('printf "version\nquit\n" | nc memcd 11211 | grep -oE "[0-9.-]+"', $ret);
 			$this->_version = $version;
 		}
 		return $this->_version;
