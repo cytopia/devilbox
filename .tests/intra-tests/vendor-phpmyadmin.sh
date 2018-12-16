@@ -144,6 +144,24 @@ while true; do
 		printf "\`"
 		continue;
 	fi
+	# Ensure Token does not contain '+'
+	if echo "${TOKEN}" | grep -q "+"; then
+		rm -f cookie.txt
+		printf "+"
+		continue;
+	fi
+	# Ensure Token does not contain ';'
+	if echo "${TOKEN}" | grep -q ";"; then
+		rm -f cookie.txt
+		printf ";"
+		continue;
+	fi
+	# Ensure Token does not contain '%'
+	if echo "${TOKEN}" | grep -q "%"; then
+		rm -f cookie.txt
+		printf "%%"
+		continue;
+	fi
 	# Ensure Token does not contain ']'
 	if echo "${TOKEN}" | grep -q "\]"; then
 		rm -f cookie.txt
