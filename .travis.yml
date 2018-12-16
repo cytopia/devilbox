@@ -124,19 +124,22 @@ env:
 ### Installation
 ###
 install:
+  # Update Debian/Ubuntu package index
+  - if [ "${S1}" != "DOCUMENTATION" ]; then
+      until sudo apt-get update -qq; do sleep 1; done
+    fi
+
   # Install dependencies for documentation
   - if [ "${S1}" = "DOCUMENTATION" ]; then
-      max=100; i=0; while [ $i -lt $max ]; do if pip install sphinx; then break; else i=$((i+1)); fi done;
-      max=100; i=0; while [ $i -lt $max ]; do if pip install sphinx-autobuild; then break; else i=$((i+1)); fi done;
-      max=100; i=0; while [ $i -lt $max ]; do if pip install recommonmark; then break; else i=$((i+1)); fi done;
-      max=100; i=0; while [ $i -lt $max ]; do if pip install sphinx_rtd_theme; then break; else i=$((i+1)); fi done;
+      until pip install sphinx; do sleep 1; done;
+      until pip install sphinx-autobuild; do sleep 1; done;
+      until pip install recommonmark; do sleep 1; done;
+      until pip install sphinx_rtd_theme; do sleep 1; done;
     fi
 
   # Determine latest Docker version in apt
-  - set -e;
-    DOCKER_APT="";
+  - DOCKER_APT="";
     if [ "${S1}" = "DOCKER" ]; then
-      max=100; i=0; while [ $i -lt $max ]; do if sudo apt-get update -qq; then break; else i=$((i+1)); fi; done;
       DOCKER_APT="$( curl -sS https://raw.githubusercontent.com/cytopia/tools/master/docker-apt-versions | sh -s "${V1}" )";
     fi;
     if [ -n "${DOCKER_APT}" ]; then
@@ -145,8 +148,7 @@ install:
     echo "${DOCKER_APT}";
 
   # Determine latest Docker Compose version
-  - set -e;
-    if [ "${S2}" = "COMPOSE" ]; then
+  - if [ "${S2}" = "COMPOSE" ]; then
       COMPOSE_VERSION="$( curl -sS https://raw.githubusercontent.com/cytopia/tools/master/docker-compose-versions | sh -s "${V2}" )";
     else
       COMPOSE_VERSION="$( curl -sS https://raw.githubusercontent.com/cytopia/tools/master/docker-compose-versions | sh -s 1 )";
@@ -154,17 +156,9 @@ install:
     echo "${COMPOSE_VERSION}";
 
   # Install Docker and Docker Compose
-  - set -e;
-    if [ "${S1}" != "DOCUMENTATION" ]; then
-      max=100; i=0; while [ $i -lt $max ]; do
-        if sudo apt-get update -qq; then break; else i=$((i+1)); fi;
-      done;
-      max=100; i=0; while [ $i -lt $max ]; do
-        if sudo apt-get -y -qq -o Dpkg::Options::="--force-confnew" install docker-ce${DOCKER_APT}; then break; else i=$((i+1)); fi;
-      done;
-      max=100; i=0; while [ $i -lt $max ]; do
-        if curl -L --retry 100 --retry-max-time 0 https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose; then break; else i=$((i+1)); fi;
-      done;
+  - if [ "${S1}" != "DOCUMENTATION" ]; then
+      until sudo apt-get -y -qq -o Dpkg::Options::="--force-confnew" install docker-ce${DOCKER_APT}; do sleep 1; done;
+      until curl -L -sS --retry 100 --retry-max-time 0 https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose; do sleep 1; done;
       chmod +x docker-compose;
       sudo mv -f docker-compose /usr/local/bin;
     fi

@@ -25,6 +25,8 @@
 							<thead class="thead-inverse ">
 								<tr>
 									<th>Key</th>
+									<th>Size</th>
+									<th>TTL</th>
 									<th>Value</th>
 								</th>
 							</thead>
@@ -32,7 +34,9 @@
 								<?php foreach (loadClass('Memcd')->getKeys() as $data): ?>
 									<tr>
 										<td><?php print_r($data['key']);?></td>
-										<td><?php print_r($data['value']);?></td>
+										<td><?php print_r($data['size']);?></td>
+										<td><?php print_r($data['ttl']);?></td>
+										<td><?php print_r($data['val']);?></td>
 									</tr>
 								<?php endforeach; ?>
 							</tbody>
