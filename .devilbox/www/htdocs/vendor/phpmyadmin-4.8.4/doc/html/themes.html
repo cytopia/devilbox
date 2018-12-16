@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Custom Themes &#8212; phpMyAdmin 4.8.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '4.8.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="top" title="phpMyAdmin 4.8.4 documentation" href="index.html" />
+    <link rel="up" title="User Guide" href="user.html" />
+    <link rel="next" title="Other sources of information" href="other.html" />
+    <link rel="prev" title="Import and export" href="import_export.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="other.html" title="Other sources of information"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="import_export.html" title="Import and export"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">phpMyAdmin 4.8.4 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="user.html" accesskey="U">User Guide</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="custom-themes">
+<span id="themes"></span><h1>Custom Themes<a class="headerlink" href="#custom-themes" title="Permalink to this headline">¶</a></h1>
+<p>phpMyAdmin comes with support for third party themes. You can download
+additonal themes from our website at &lt;<a class="reference external" href="https://www.phpmyadmin.net/themes/">https://www.phpmyadmin.net/themes/</a>&gt;.</p>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Themes are configured with <span class="target" id="index-0"></span><a class="reference internal" href="config.html#cfg_ThemeManager"><code class="xref config config-option docutils literal"><span class="pre">$cfg['ThemeManager']</span></code></a> and
+<span class="target" id="index-1"></span><a class="reference internal" href="config.html#cfg_ThemeDefault"><code class="xref config config-option docutils literal"><span class="pre">$cfg['ThemeDefault']</span></code></a>.  Under <code class="file docutils literal"><span class="pre">./themes/</span></code>, you should not
+delete the directory <code class="docutils literal"><span class="pre">pmahomme</span></code> or its underlying structure, because this is
+the system theme used by phpMyAdmin. <code class="docutils literal"><span class="pre">pmahomme</span></code> contains all images and
+styles, for backwards compatibility and for all themes that would not include
+images or css-files.  If <span class="target" id="index-2"></span><a class="reference internal" href="config.html#cfg_ThemeManager"><code class="xref config config-option docutils literal"><span class="pre">$cfg['ThemeManager']</span></code></a> is enabled, you
+can select your favorite theme on the main page. Your selected theme will be
+stored in a cookie.</p>
+</div>
+<div class="section" id="creating-custom-theme">
+<h2>Creating custom theme<a class="headerlink" href="#creating-custom-theme" title="Permalink to this headline">¶</a></h2>
+<p>To create a theme:</p>
+<ul class="simple">
+<li>make a new subdirectory (for example &#8220;your_theme_name&#8221;) under <code class="file docutils literal"><span class="pre">./themes/</span></code>.</li>
+<li>copy the files and directories from <code class="docutils literal"><span class="pre">pmahomme</span></code> to &#8220;your_theme_name&#8221;</li>
+<li>edit the css-files in &#8220;your_theme_name/css&#8221;</li>
+<li>put your new images in &#8220;your_theme_name/img&#8221;</li>
+<li>edit <code class="file docutils literal"><span class="pre">layout.inc.php</span></code> in &#8220;your_theme_name&#8221;</li>
+<li>edit <code class="file docutils literal"><span class="pre">theme.json</span></code> in &#8220;your_theme_name&#8221; to contain theme metadata (see below)</li>
+<li>make a new screenshot of your theme and save it under
+&#8220;your_theme_name/screen.png&#8221;</li>
+</ul>
+<div class="section" id="theme-metadata">
+<h3>Theme metadata<a class="headerlink" href="#theme-metadata" title="Permalink to this headline">¶</a></h3>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 4.8.0: </span>Before 4.8.0 the theme metadata was passed in the <code class="file docutils literal"><span class="pre">info.inc.php</span></code> file.
+It has been replaced by <code class="file docutils literal"><span class="pre">theme.json</span></code> to allow easier parsing (without
+need to handle PHP code) and to support additional features.</p>
+</div>
+<p>In theme directory there is file <code class="file docutils literal"><span class="pre">theme.json</span></code> which contains theme
+metadata. Currently it consists of:</p>
+<dl class="describe">
+<dt>
+<code class="descname">name</code></dt>
+<dd><p>Display name of the theme.</p>
+<p><strong>This field is required.</strong></p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">version</code></dt>
+<dd><p>Theme version, can be quite arbirary and does not have to match phpMyAdmin version.</p>
+<p><strong>This field is required.</strong></p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">desciption</code></dt>
+<dd><p>Theme description. this will be shown on the website.</p>
+<p><strong>This field is required.</strong></p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">author</code></dt>
+<dd><p>Theme author name.</p>
+<p><strong>This field is required.</strong></p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">url</code></dt>
+<dd><p>Link to theme author website. It&#8217;s good idea to have way for getting
+support there.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">supports</code></dt>
+<dd><p>Array of supported phpMyAdmin major versions.</p>
+<p><strong>This field is required.</strong></p>
+</dd></dl>
+
+<p>For example, the definition for Original theme shipped with phpMyAdnin 4.8:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Original&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;4.8&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Original phpMyAdmin theme&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;phpMyAdmin developers&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.phpmyadmin.net/&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;supports&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;4.8&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sharing-images">
+<h3>Sharing images<a class="headerlink" href="#sharing-images" title="Permalink to this headline">¶</a></h3>
+<p>If you do not want to use your own symbols and buttons, remove the
+directory &#8220;img&#8221; in &#8220;your_theme_name&#8221;. phpMyAdmin will use the
+default icons and buttons (from the system-theme <code class="docutils literal"><span class="pre">pmahomme</span></code>).</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Custom Themes</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#creating-custom-theme">Creating custom theme</a><ul>
+<li><a class="reference internal" href="#theme-metadata">Theme metadata</a></li>
+<li><a class="reference internal" href="#sharing-images">Sharing images</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="import_export.html"
+                        title="previous chapter">Import and export</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="other.html"
+                        title="next chapter">Other sources of information</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/themes.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="other.html" title="Other sources of information"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="import_export.html" title="Import and export"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">phpMyAdmin 4.8.4 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="user.html" >User Guide</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2012 - 2018, The phpMyAdmin devel team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+{# Invisible characters will make javascript crash #}
+{% spaceless %}
+<script type="text/javascript">
+var designer_config = {{ designer_config | raw }};
+</script>
+{% endspaceless %}
