@@ -99,4 +99,28 @@ if [[ ! ${DISABLED_VERSIONS[*]} =~ ${PHP_VERSION} ]]; then
 		printf "\r[OK]   Xdebug default disabled (1 round)\n"
 	fi
 
+	###
+	### Xdebug autostart disabled
+	###
+	printf "[TEST] Xdebug autostart disabled"
+	# 1st Try
+	if ! curl -sS localhost/info_php.php | tac | tac | grep 'xdebug\.remote_autostart' | grep -Eq 'Off.+Off'; then
+		# 2nd Try
+		sleep 1
+		if ! curl -sS localhost/info_php.php | tac | tac | grep 'xdebug\.remote_autostart' | grep -Eq 'Off.+Off'; then
+			# 3rd Try
+			sleep 1
+			if ! curl -sS localhost/info_php.php | tac | tac | grep 'xdebug\.remote_autostart' | grep -Eq 'Off.+Off'; then
+				printf "\r[FAIL] Xdebug autostart disabled\n"
+				curl -sS localhost/info_php.php | tac | tac | grep 'xdebug' || true
+				exit 1
+			else
+				printf "\r[OK]   Xdebug autostart disabled (3 rounds)\n"
+			fi
+		else
+			printf "\r[OK]   Xdebug autostart disabled (2 rounds)\n"
+		fi
+	else
+		printf "\r[OK]   Xdebug autostart disabled (1 round)\n"
+	fi
 fi
