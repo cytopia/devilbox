@@ -2,7 +2,7 @@
 
 
 // Check if redis is using a password
-$REDIS_ROOT_PASSWORD = null;
+$REDIS_ROOT_PASSWORD = '';
 
 $_REDIS_ARGS = getenv('REDIS_ARGS');
 $_REDIS_PASS = preg_split("/--requirepass\s+/",  $_REDIS_ARGS);
@@ -34,13 +34,13 @@ $config = array(
     'database'  => array(
         'driver' => 'redis',
         'mysql'  => array(
-            'host'     => 'localhost',
+            'host'     => 'mysql',
             'username' => 'root',
-            'password' => 'root'
+            'password' => getenv('MYSQL_ROOT_PASSWORD')
         ),
         'redis' => array(
             array(
-                'host'     => 'localhost',
+                'host'     => 'redis',
                 'port'     => '6379',
                 'password' => $REDIS_ROOT_PASSWORD,
                 'database' => 0,
