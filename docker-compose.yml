@@ -206,7 +206,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.22
+    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.23
 
     environment:
 
