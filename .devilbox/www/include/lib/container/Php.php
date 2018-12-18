@@ -37,57 +37,57 @@ class Php extends BaseClass implements BaseInterface
 	}
 	public function getGitVersion()
 	{
-		$output = loadClass('Helper')->exec('git --version', $output);
+		$output = loadClass('Helper')->exec('git --version 2>/dev/null', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
 	public function getComposerVersion()
 	{
-		$output = loadClass('Helper')->exec('composer --version', $output);
+		$output = loadClass('Helper')->exec('composer --version 2>/dev/null', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
 	public function getDrushVersion($version)
 	{
-		$output = loadClass('Helper')->exec('drush'.$version.' --version', $output);
+		$output = loadClass('Helper')->exec('drush '.$version.' --version 2>/dev/null', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
 	public function getDrupalConsoleVersion()
 	{
-		$output = loadClass('Helper')->exec('drupal --version | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"', $output);
+		$output = loadClass('Helper')->exec('drupal --version  2>/dev/null | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+[-rc0-9.]*/', $output);
 	}
 	public function getNodeVersion()
 	{
-		$output = loadClass('Helper')->exec('node --version', $output);
+		$output = loadClass('Helper')->exec('node --version 2>/dev/null', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
 	public function getNpmVersion()
 	{
-		$output = loadClass('Helper')->exec('npm --version', $output);
+		$output = loadClass('Helper')->exec('npm --version 2>/dev/null', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
 	public function getLaravelVersion()
 	{
-		$output = loadClass('Helper')->exec('laravel --version', $output);
+		$output = loadClass('Helper')->exec('laravel --version 2>/dev/null', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
 	public function getMdsVersion()
 	{
-		$output = loadClass('Helper')->exec('mysqldump-secure --version', $output);
+		$output = loadClass('Helper')->exec('mysqldump-secure --version 2>/dev/null', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
 	public function getPhalconVersion()
 	{
-		$output = loadClass('Helper')->exec('phalcon --version', $output);
+		$output = loadClass('Helper')->exec('phalcon --version 2>/dev/null', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
 	public function getSymfonyVersion()
 	{
-		$output = loadClass('Helper')->exec('symfony --version', $output);
+		$output = loadClass('Helper')->exec('symfony --version 2>/dev/null', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
 	public function getWpcliVersion()
 	{
-		$output = loadClass('Helper')->exec('wp --version', $output);
+		$output = loadClass('Helper')->exec('wp --version 2>/dev/null', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
 
