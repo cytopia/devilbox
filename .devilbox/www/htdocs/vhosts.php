@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php echo loadClass('Html')->getHead(); ?>
+		<?php echo loadClass('Html')->getHead(true); ?>
 	</head>
 
 	<body>
@@ -24,6 +24,7 @@
 								<tr>
 									<th>Project</th>
 									<th>DocumentRoot</th>
+									<th>Config</th>
 									<th>Valid</th>
 									<th>URL</th>
 								</tr>
@@ -40,6 +41,12 @@
 									<tr>
 										<td><?php echo $vHost['name'];?></td>
 										<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR');?>/<?php echo $vHost['name'];?>/<?php echo loadClass('Helper')->getEnv('HTTPD_DOCROOT_DIR');?></td>
+										<td>
+											<a title="Virtual host: <?php echo $vHost['name'];?>.conf" target="_blank" href="/vhost.d/<?php echo $vHost['name'];?>.conf"><i class="fa fa-cog" aria-hidden="true"></i></a>
+											<?php if (($vhostGen = loadClass('Httpd')->getVhostgenTemplatePath($vHost['name'])) !== false): ?>
+												<a title="vhost-gen: <?php echo basename($vhostGen);?> for <?php echo $vHost['name'];?>" href="/info_vhostgen.php?name=<?php echo $vHost['name'];?>"><i class="fa fa-filter" aria-hidden="true"></i></a>
+											<?php endif; ?>
+										</td>
 										<td class="text-xs-center text-xs-small" id="valid-<?php echo $vHost['name'];?>">&nbsp;&nbsp;&nbsp;</td>
 										<td id="href-<?php echo $vHost['name'];?>"><?php echo $filler;?></td>
 									</tr>
