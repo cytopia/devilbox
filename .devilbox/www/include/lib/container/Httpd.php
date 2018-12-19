@@ -165,6 +165,35 @@ class Httpd extends BaseClass implements BaseInterface
 		return $version;
 	}
 
+	public function getVhostgenTemplateName()
+	{
+		$httpd = strtolower($this->getName());
+		if ($httpd == 'nginx') {
+			return 'nginx.yml';
+		}
+		$version = $this->getVersion();
+
+		if (preg_match('/^2\.2.*/', $version)) {
+			return 'apache22.yml';
+		} elseif (preg_match('/^2\.4.*/', $version)) {
+			return 'apache24.yml';
+		} else {
+			return false;
+		}
+	}
+
+	public function getVhostgenTemplatePath($vhost)
+	{
+		if (!($name = $this->getVhostgenTemplateName())) {
+			return false;
+		}
+		$dir = loadClass('Helper')->getEnv('HTTPD_TEMPLATE_DIR');
+
+		if (is_file('/shared/httpd/'.$vhost.'/'.$dir.'/'.$name)) {
+			return '/shared/httpd/'.$vhost.'/'.$dir.'/'.$name;
+		}
+		return false;
+	}
 
 
 	/*********************************************************************************
