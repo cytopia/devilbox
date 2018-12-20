@@ -197,16 +197,16 @@ env:
 ###
 install:
   # Update Debian/Ubuntu package index
-  - if [ "${S1}" != "DOCUMENTATION" ]; then
-      until sudo apt-get update -qq; do sleep 1; done
+  - if [ "${S1}" != "DOCUMENTATION" ] && [ "${S1}" != "UPDATE" ]; then
+      until sudo apt-get update -qq; do sleep 5; done
     fi
 
   # Install dependencies for documentation
   - if [ "${S1}" = "DOCUMENTATION" ]; then
-      until pip install sphinx; do sleep 1; done;
-      until pip install sphinx-autobuild; do sleep 1; done;
-      until pip install recommonmark; do sleep 1; done;
-      until pip install sphinx_rtd_theme; do sleep 1; done;
+      until pip install sphinx; do sleep 5; done;
+      until pip install sphinx-autobuild; do sleep 5; done;
+      until pip install recommonmark; do sleep 5; done;
+      until pip install sphinx_rtd_theme; do sleep 5; done;
     fi
 
   # Determine latest Docker version in apt
@@ -228,9 +228,9 @@ install:
     echo "${COMPOSE_VERSION}";
 
   # Install Docker and Docker Compose
-  - if [ "${S1}" != "DOCUMENTATION" ]; then
-      until sudo apt-get -y -qq -o Dpkg::Options::="--force-confnew" install docker-ce${DOCKER_APT}; do sleep 1; done;
-      until curl -L -sS --retry 100 --retry-max-time 0 https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose; do sleep 1; done;
+  - if [ "${S1}" != "DOCUMENTATION" ] && [ "${S1}" != "UPDATE" ]; then
+      until sudo apt-get -y -qq -o Dpkg::Options::="--force-confnew" install docker-ce${DOCKER_APT}; do sleep 5; done;
+      until curl -L -sS https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose; do sleep 5; done;
       chmod +x docker-compose;
       sudo mv -f docker-compose /usr/local/bin;
     fi
