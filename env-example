@@ -264,42 +264,51 @@ MYSQL_SERVER=mariadb-10.3
 ###
 ### 1.4 Choose PostgreSQL Server Image
 ###
+### IMPORTANT: You may use Alpine based images by appending "-alpine", but they might cause
+###            issues on DockerToolbox or OSX: https://github.com/docker/toolbox/issues/510
+###
 #PGSQL_SERVER=9.0
 #PGSQL_SERVER=9.1
-#PGSQL_SERVER=9.2-alpine
-#PGSQL_SERVER=9.3-alpine
-#PGSQL_SERVER=9.4-alpine
-#PGSQL_SERVER=9.5-alpine
-#PGSQL_SERVER=9.6-alpine
-#PGSQL_SERVER=10.0-alpine
-#PGSQL_SERVER=10.1-alpine
-#PGSQL_SERVER=10.2-alpine
-#PGSQL_SERVER=10.3-alpine
-#PGSQL_SERVER=10.4-alpine
-#PGSQL_SERVER=10.5-alpine
-#PGSQL_SERVER=10.6-alpine
-#PGSQL_SERVER=11.0-alpine
-PGSQL_SERVER=11.1-alpine
-#PGSQL_SERVER=alpine
+#PGSQL_SERVER=9.2
+#PGSQL_SERVER=9.3
+#PGSQL_SERVER=9.4
+#PGSQL_SERVER=9.5
+#PGSQL_SERVER=9.6
+#PGSQL_SERVER=10.0
+#PGSQL_SERVER=10.1
+#PGSQL_SERVER=10.2
+#PGSQL_SERVER=10.3
+#PGSQL_SERVER=10.4
+#PGSQL_SERVER=10.5
+#PGSQL_SERVER=10.6
+#PGSQL_SERVER=11.0
+PGSQL_SERVER=11.1
+#PGSQL_SERVER=latest
 
 
 ###
 ### 1.5 Choose Redis Server Image
 ###
+### IMPORTANT: You may use Alpine based images by appending "-alpine", but they might cause
+###            issues on DockerToolbox or OSX: https://github.com/docker/toolbox/issues/510
+###
 #REDIS_SERVER=2.8
-#REDIS_SERVER=3.0-alpine
-#REDIS_SERVER=3.2-alpine
-#REDIS_SERVER=4.0-alpine
-REDIS_SERVER=5.0-alpine
-#REDIS_SERVER=alpine
+#REDIS_SERVER=3.0
+#REDIS_SERVER=3.2
+#REDIS_SERVER=4.0
+REDIS_SERVER=5.0
+#REDIS_SERVER=latest
 
 
 ###
 ### 1.6 Choose Memcached Server Image
 ###
-#MEMCD_SERVER=1.4-alpine
-MEMCD_SERVER=1.5-alpine
-#MEMCD_SERVER=alpine
+### IMPORTANT: You may use Alpine based images by appending "-alpine", but they might cause
+###            issues on DockerToolbox or OSX: https://github.com/docker/toolbox/issues/510
+###
+#MEMCD_SERVER=1.4
+MEMCD_SERVER=1.5
+#MEMCD_SERVER=latest
 
 
 ###
