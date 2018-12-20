@@ -186,7 +186,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="PgSQL 9.0"        href="https://github.com/docker-library/postgres">9.0</a></td>
       <td><a target="_blank" title="Redis 2.8"        href="https://github.com/docker-library/redis">2.8</a></td>
       <td><a target="_blank" title="Memcached 1.4"    href="https://github.com/docker-library/memcached">1.4</a></td>
-      <td><a target="_blank" title="MongoDB 2.2"      href="https://github.com/docker-library/mongo">2.2</a></td>
+      <td><a target="_blank" title="MongoDB 2.8"      href="https://github.com/docker-library/mongo">2.8</a></td>
     </tr>
     <tr>
       <td><a target="_blank" title="Apache 2.4"       href="https://github.com/devilbox/docker-apache-2.4">2.4</a></td>
@@ -198,7 +198,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="PgSQL 9.1"        href="https://github.com/docker-library/postgres">9.1</a></td>
       <td><a target="_blank" title="Redis 3.0"        href="https://github.com/docker-library/redis">3.0</a></td>
       <td><a target="_blank" title="Memcached 1.5"    href="https://github.com/docker-library/memcached">1.5</a></td>
-      <td><a target="_blank" title="MongoDB 2.4"      href="https://github.com/docker-library/mongo">2.4</a></td>
+      <td><a target="_blank" title="MongoDB 3.0"      href="https://github.com/docker-library/mongo">3.0</a></td>
     </tr>
     <tr>
       <td></td>
@@ -210,7 +210,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="PgSQL 9.2"        href="https://github.com/docker-library/postgres">9.2</a></td>
       <td><a target="_blank" title="Redis 3.2"        href="https://github.com/docker-library/redis">3.2</a></td>
       <td><a target="_blank" title="Memcached latest" href="https://github.com/docker-library/memcached">latest</a></td>
-      <td><a target="_blank" title="MongoDB 2.6"      href="https://github.com/docker-library/mongo">2.6</a></td>
+      <td><a target="_blank" title="MongoDB 3.2"      href="https://github.com/docker-library/mongo">3.2</a></td>
     </tr>
     <tr>
       <td></td>
@@ -222,7 +222,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="PgSQL 9.3"        href="https://github.com/docker-library/postgres">9.3</a></td>
       <td><a target="_blank" title="Redis 4.0"        href="https://github.com/docker-library/redis">4.0</a></td>
       <td></td>
-      <td><a target="_blank" title="MongoDB 2.8"      href="https://github.com/docker-library/mongo">2.8</a></td>
+      <td><a target="_blank" title="MongoDB 3.4"      href="https://github.com/docker-library/mongo">3.4</a></td>
     </tr>
     <tr>
       <td></td>
@@ -234,7 +234,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="PgSQL 9.4"        href="https://github.com/docker-library/postgres">9.4</a></td>
       <td><a target="_blank" title="Redis 5.0"        href="https://github.com/docker-library/redis">5.0</a></td>
       <td></td>
-      <td><a target="_blank" title="MongoDB 3.0"      href="https://github.com/docker-library/mongo">3.0</a></td>
+      <td><a target="_blank" title="MongoDB 3.6"      href="https://github.com/docker-library/mongo">3.6</a></td>
     </tr>
     <tr>
       <td></td>
@@ -246,7 +246,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="PgSQL 9.5"        href="https://github.com/docker-library/postgres">9.5</a></td>
       <td><a target="_blank" title="Redis latest"     href="https://github.com/docker-library/redis">latest</a></td>
       <td></td>
-      <td><a target="_blank" title="MongoDB 3.2"      href="https://github.com/docker-library/mongo">3.2</a></td>
+      <td><a target="_blank" title="MongoDB 4.0"      href="https://github.com/docker-library/mongo">4.0</a></td>
     </tr>
     <tr>
       <td></td>
@@ -258,7 +258,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="PgSQL 9.6"        href="https://github.com/docker-library/postgres">9.6</a></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="MongoDB 3.4"      href="https://github.com/docker-library/mongo">3.4</a></td>
+      <td><a target="_blank" title="MongoDB latest"   href="https://github.com/docker-library/mongo">latest</a></td>
     </tr>
     <tr>
       <td></td>
@@ -270,7 +270,7 @@ Every single attachable container comes with many different versions. In order t
       <td>...</td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="MongoDB 3.6"      href="https://github.com/docker-library/mongo">3.6</a></td>
+      <td></td>
     </tr>
     <tr>
       <td></td>
@@ -282,7 +282,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="PgSQL 11.1"       href="https://github.com/docker-library/postgres">11.1</a></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="MongoDB 4.0"      href="https://github.com/docker-library/mongo">4.0</a></td>
+      <td></td>
     </tr>
     <tr>
       <td></td>
@@ -294,7 +294,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="PgSQL latest"     href="https://github.com/docker-library/postgres">latest</a></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="MongoDB latest"   href="https://github.com/docker-library/mongo">latest</a></td>
+      <td></td>
     </tr>
   </tbody>
 </table>
