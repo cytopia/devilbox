@@ -95,7 +95,7 @@ services:
   # PHP / HHVM
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER:-7.2}-work-0.56
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.56
 
     ##
     ## All .env variables
@@ -206,7 +206,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.24
+    image: devilbox/${HTTPD_SERVER}:0.24
 
     environment:
 
@@ -251,7 +251,7 @@ services:
       ##
       ## PHP-FPM Remote Server
       ##
-      - COMPAT=${PHP_SERVER:-7.0}
+      - COMPAT=${PHP_SERVER}
       - PHP_FPM_ENABLE=1
       - PHP_FPM_SERVER_ADDR=php
       - PHP_FPM_SERVER_PORT=9000
@@ -299,7 +299,7 @@ services:
   # MySQL Database
   # ------------------------------------------------------------
   mysql:
-    image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
+    image: cytopia/${MYSQL_SERVER}:latest
 
     environment:
 
@@ -364,7 +364,7 @@ services:
   # PostgreSQL
   # ------------------------------------------------------------
   pgsql:
-    image: postgres:${PGSQL_SERVER:-9.6}
+    image: postgres:${PGSQL_SERVER}
 
     environment:
 
@@ -401,7 +401,7 @@ services:
   # Redis
   # ------------------------------------------------------------
   redis:
-    image: redis:${REDIS_SERVER:-3.2}
+    image: redis:${REDIS_SERVER}
 
     # Apply custom arguments to redis startup
     command: redis-server ${REDIS_ARGS:- }
@@ -434,7 +434,7 @@ services:
   # Memcached
   # ------------------------------------------------------------
   memcd:
-    image: memcached:${MEMCD_SERVER:-latest}
+    image: memcached:${MEMCD_SERVER}
 
     ports:
       # [local-machine:]local-port:docker-port
@@ -462,7 +462,7 @@ services:
   # MongoDB
   # ------------------------------------------------------------
   mongo:
-    image: mongo:${MONGO_SERVER:-latest}
+    image: mongo:${MONGO_SERVER}
 
     ports:
       # [local-machine:]local-port:docker-port
