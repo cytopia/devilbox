@@ -253,9 +253,9 @@ HTTPD_SERVER=nginx-stable
 #MYSQL_SERVER=mysql-8.0
 #MYSQL_SERVER=mariadb-5.5
 #MYSQL_SERVER=mariadb-10.0
-MYSQL_SERVER=mariadb-10.1
+#MYSQL_SERVER=mariadb-10.1
 #MYSQL_SERVER=mariadb-10.2
-#MYSQL_SERVER=mariadb-10.3
+MYSQL_SERVER=mariadb-10.3
 #MYSQL_SERVER=percona-5.5
 #MYSQL_SERVER=percona-5.6
 #MYSQL_SERVER=percona-5.7
@@ -264,57 +264,74 @@ MYSQL_SERVER=mariadb-10.1
 ###
 ### 1.4 Choose PostgreSQL Server Image
 ###
+### IMPORTANT: Apline based images might cause issues on Docker Toolbox or OSX
+###            https://github.com/docker/toolbox/issues/510
+###
+#PGSQL_SERVER=9.0
 #PGSQL_SERVER=9.1
 #PGSQL_SERVER=9.2
+#PGSQL_SERVER=9.2-alpine
 #PGSQL_SERVER=9.3
+#PGSQL_SERVER=9.3-alpine
 #PGSQL_SERVER=9.4
+#PGSQL_SERVER=9.4-alpine
 #PGSQL_SERVER=9.5
-PGSQL_SERVER=9.6
+#PGSQL_SERVER=9.5-alpine
+#PGSQL_SERVER=9.6
+#PGSQL_SERVER=9.6-alpine
 #PGSQL_SERVER=10.0
+#PGSQL_SERVER=10.0-alpine
 #PGSQL_SERVER=10.1
+#PGSQL_SERVER=10.1-alpine
 #PGSQL_SERVER=10.2
+#PGSQL_SERVER=10.2-alpine
 #PGSQL_SERVER=10.3
+#PGSQL_SERVER=10.3-alpine
+#PGSQL_SERVER=10.4
+#PGSQL_SERVER=10.4-alpine
+#PGSQL_SERVER=10.5
+#PGSQL_SERVER=10.5-alpine
+#PGSQL_SERVER=10.6
+#PGSQL_SERVER=10.6-alpine
+#PGSQL_SERVER=11.0
+#PGSQL_SERVER=11.0-alpine
+PGSQL_SERVER=11.1
+#PGSQL_SERVER=11.1-alpine
+#PGSQL_SERVER=latest
+#PGSQL_SERVER=alpine
 
 
 ###
 ### 1.5 Choose Redis Server Image
 ###
+### IMPORTANT: Apline based images might cause issues on Docker Toolbox or OSX
+###            https://github.com/docker/toolbox/issues/510
+###
 #REDIS_SERVER=2.8
 #REDIS_SERVER=3.0
+#REDIS_SERVER=3.0-alpine
 #REDIS_SERVER=3.2
-REDIS_SERVER=4.0
-#REDIS_SERVER=5.0-rc
+#REDIS_SERVER=3.2-alpine
+#REDIS_SERVER=4.0
+#REDIS_SERVER=4.0-alpine
+REDIS_SERVER=5.0
+#REDIS_SERVER=5.0-alpine
+#REDIS_SERVER=latest
+#REDIS_SERVER=alpine
 
 
 ###
 ### 1.6 Choose Memcached Server Image
 ###
-#MEMCD_SERVER=1.4.21
-#MEMCD_SERVER=1.4.22
-#MEMCD_SERVER=1.4.23
-#MEMCD_SERVER=1.4.24
-#MEMCD_SERVER=1.4.25
-#MEMCD_SERVER=1.4.26
-#MEMCD_SERVER=1.4.27
-#MEMCD_SERVER=1.4.28
-#MEMCD_SERVER=1.4.29
-#MEMCD_SERVER=1.4.30
-#MEMCD_SERVER=1.4.31
-#MEMCD_SERVER=1.4.32
-#MEMCD_SERVER=1.4.33
-#MEMCD_SERVER=1.4.34
-#MEMCD_SERVER=1.4.35
-#MEMCD_SERVER=1.4.36
-#MEMCD_SERVER=1.4.37
-#MEMCD_SERVER=1.4.38
-#MEMCD_SERVER=1.4.39
-#MEMCD_SERVER=1.5.0
-#MEMCD_SERVER=1.5.1
-#MEMCD_SERVER=1.5.2
-#MEMCD_SERVER=1.5.3
-#MEMCD_SERVER=1.5.4
-MEMCD_SERVER=1.5.5
+### IMPORTANT: Apline based images might cause issues on Docker Toolbox or OSX
+###            https://github.com/docker/toolbox/issues/510
+###
+#MEMCD_SERVER=1.4
+#MEMCD_SERVER=1.4-alpine
+MEMCD_SERVER=1.5
+#MEMCD_SERVER=1.5-alpine
 #MEMCD_SERVER=latest
+#MEMCD_SERVER=alpine
 
 
 ###
@@ -324,9 +341,9 @@ MEMCD_SERVER=1.5.5
 #MONGO_SERVER=3.0
 #MONGO_SERVER=3.2
 #MONGO_SERVER=3.4
-#MONGO_SERVER=3.5
 #MONGO_SERVER=3.6
-MONGO_SERVER=3.7
+MONGO_SERVER=4.0
+#MONGO_SERVER=latest
 
 
 
