@@ -169,7 +169,6 @@ env:
   - S1=PHP V1=7.2 S2=PGSQL V2=11.1-alpine
   # PHP 7.2 vs Redis
   - S1=PHP V1=7.2 S2=REDIS V2=2.8
-  - S1=PHP V1=7.2 S2=REDIS V2=2.8-alpine
   - S1=PHP V1=7.2 S2=REDIS V2=3.0
   - S1=PHP V1=7.2 S2=REDIS V2=3.0-alpine
   - S1=PHP V1=7.2 S2=REDIS V2=3.2
