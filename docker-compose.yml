@@ -95,7 +95,7 @@ services:
   # PHP / HHVM
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.56
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.57
 
     ##
     ## All .env variables
