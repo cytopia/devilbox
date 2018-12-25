@@ -95,7 +95,7 @@ services:
   # PHP / HHVM
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.58
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.59
 
     ##
     ## All .env variables
@@ -191,6 +191,9 @@ services:
       # Mount devilbox user-defined *.so files in order
       # to load custom PHP modules
       - ${DEVILBOX_PATH}/mod/php-fpm-${PHP_SERVER}:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
+
+      # Mount devilbox user-defined PHP-FPM startup *.sh scripts
+      - ${DEVILBOX_PATH}/cfg/php-startup-${PHP_SERVER}:/startup.d:rw${MOUNT_OPTIONS}
 
       # Mount devilbox user-defined bash config
       - ${DEVILBOX_PATH}/bash:/etc/bashrc-devilbox.d:rw${MOUNT_OPTIONS}
