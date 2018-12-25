@@ -472,7 +472,7 @@ PHP_MODULES_ENABLE=
 ###
 ### PHP_MODULES_DISABLE=xdebug,imagick,swoole
 ###
-PHP_MODULES_DISABLE=rdkafka,swoole
+PHP_MODULES_DISABLE=pdo_sqlsrv,sqlsrv,rdkafka,swoole
 
 
 ###
