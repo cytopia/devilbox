@@ -82,6 +82,18 @@
 /cfg/php-fpm-7.3/*.conf
 /cfg/php-fpm-7.4/*.conf
 
+# Ignore custom PHP-FPM startup scripts
+/cfg/php-fpm-5.2/*.sh
+/cfg/php-fpm-5.3/*.sh
+/cfg/php-fpm-5.4/*.sh
+/cfg/php-fpm-5.5/*.sh
+/cfg/php-fpm-5.6/*.sh
+/cfg/php-fpm-7.0/*.sh
+/cfg/php-fpm-7.1/*.sh
+/cfg/php-fpm-7.2/*.sh
+/cfg/php-fpm-7.3/*.sh
+/cfg/php-fpm-7.4/*.sh
+
 # Ignore custom PHP-FPM modules
 /mod/php-fpm-5.2/*.so
 /mod/php-fpm-5.3/*.so
