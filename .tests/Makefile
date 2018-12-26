@@ -80,7 +80,7 @@ pull:
 	@echo "####################################################################################################"
 	@echo "# PULLING LATEST CONTAINER"
 	@echo "####################################################################################################"
-	cd $(DEVILBOX_PATH) && docker-compose pull
+	cd $(DEVILBOX_PATH) && until docker-compose pull; do sleep 1; done
 	@echo
 	@echo
 
