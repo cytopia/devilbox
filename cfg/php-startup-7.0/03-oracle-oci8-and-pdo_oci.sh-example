@@ -19,7 +19,7 @@ curl -o /tmp/oracle-instantclient18.3-devel-18.3.0.0.0-2.x86_64.rpm https://yum.
 alien -i /tmp/oracle-instantclient18.3-basiclite-18.3.0.0.0-2.x86_64.rpm
 alien -i /tmp/oracle-instantclient18.3-devel-18.3.0.0.0-2.x86_64.rpm
 
-# Rempve RPMs
+# Remove RPMs
 rm -f /tmp/oracle-instantclient18.3-basiclite-18.3.0.0.0-2.x86_64.rpm
 rm -f /tmp/oracle-instantclient18.3-devel-18.3.0.0.0-2.x86_64.rpm
 
