@@ -3,8 +3,6 @@
 # https://yum.oracle.com/repo/OracleLinux/OL7/oracle/instantclient/x86_64/
 #
 
-#curl -sS http://yum.oracle.com/RPM-GPG-KEY-oracle-ol7 2>/dev/null | APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1 apt-key add -
-
 # Install 'alien' to install rpm packages
 apt-get update -q
 DEBIAN_FRONTEND=noninteractive apt-get install -qq -y --no-install-recommends --no-install-suggests alien
@@ -24,16 +22,12 @@ rm -f /tmp/oracle-instantclient18.3-basiclite-18.3.0.0.0-2.x86_64.rpm
 rm -f /tmp/oracle-instantclient18.3-devel-18.3.0.0.0-2.x86_64.rpm
 
 # Necessary symlinks
-ln -s /usr/lib/oracle/18.3/client64/lib/libmql1.so /usr/lib/
-ln -s /usr/lib/oracle/18.3/client64/lib/libipc1.so /usr/lib/
-ln -s /usr/lib/oracle/18.3/client64/lib/libnnz18.so /usr/lib/
-ln -s /usr/lib/oracle/18.3/client64/lib/libons.so /usr/lib/
-ln -s /usr/lib/oracle/18.3/client64/lib/libclntshcore.so.18.1 /usr/lib/
+ln -s /usr/lib/oracle/18.3/client64/lib/*.so* /usr/lib/
 
 # Build and install PHP extension oci8
-docker-php-ext-configure oci8 --with-oci8=instantclient
+docker-php-ext-configure oci8 --with-oci8=instantclient,/usr/lib/oracle/18.3/client64/lib/,18.3
 docker-php-ext-install oci8
 
 # Build and install PHP extension pdo_oci
-docker-php-ext-configure pdo_oci --with-pdo-oci=instantclient,/usr,18.3
+docker-php-ext-configure pdo_oci --with-pdo-oci=instantclient,/usr/lib/oracle/18.3/client64/lib/,18.3
 docker-php-ext-install pdo_oci
