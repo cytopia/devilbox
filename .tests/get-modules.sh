@@ -1,18 +1,22 @@
 #!/usr/bin/env bash
 
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+COMPOSEPATH="${SCRIPTPATH}/.."
+PHP_TAG="$( grep 'devilbox/php' "${COMPOSEPATH}/docker-compose.yml" | sed 's/^.*-work-//g' )"
+
 ###
 ### Get PHP modules (5 rounds)
 ###
 
-if ! PHP52="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '52-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+if ! PHP52="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '52-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 	sleep 5;
-	if ! PHP52="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '52-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+	if ! PHP52="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '52-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 		sleep 5;
-		if ! PHP52="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '52-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+		if ! PHP52="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '52-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 			sleep 5;
-			if ! PHP52="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '52-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+			if ! PHP52="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '52-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 				sleep 5;
-				if ! PHP52="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '52-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+				if ! PHP52="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '52-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 					>&2 echo "Failed to retrieve modules for PHP 5.2"
 					exit 1
 				fi
@@ -20,15 +24,15 @@ if ! PHP52="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-f
 		fi
 	fi
 fi
-if ! PHP53="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '53-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+if ! PHP53="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '53-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 	sleep 5;
-	if ! PHP53="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '53-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+	if ! PHP53="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '53-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 		sleep 5;
-		if ! PHP53="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '53-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+		if ! PHP53="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '53-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 			sleep 5;
-			if ! PHP53="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '53-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+			if ! PHP53="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '53-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 				sleep 5;
-				if ! PHP53="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '53-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+				if ! PHP53="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '53-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 					>&2 echo "Failed to retrieve modules for PHP 5.3"
 					exit 1
 				fi
@@ -36,15 +40,15 @@ if ! PHP53="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-f
 		fi
 	fi
 fi
-if ! PHP54="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '54-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+if ! PHP54="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '54-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 	sleep 5;
-	if ! PHP54="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '54-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+	if ! PHP54="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '54-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 		sleep 5;
-		if ! PHP54="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '54-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+		if ! PHP54="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '54-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 			sleep 5;
-			if ! PHP54="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '54-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+			if ! PHP54="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '54-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 				sleep 5;
-				if ! PHP54="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '54-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+				if ! PHP54="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '54-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 					>&2 echo "Failed to retrieve modules for PHP 5.4"
 					exit 1
 				fi
@@ -52,15 +56,15 @@ if ! PHP54="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-f
 		fi
 	fi
 fi
-if ! PHP55="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '55-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+if ! PHP55="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '55-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 	sleep 5;
-	if ! PHP55="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '55-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+	if ! PHP55="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '55-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 		sleep 5;
-		if ! PHP55="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '55-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+		if ! PHP55="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '55-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 			sleep 5;
-			if ! PHP55="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '55-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+			if ! PHP55="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '55-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 				sleep 5;
-				if ! PHP55="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '55-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+				if ! PHP55="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '55-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 					>&2 echo "Failed to retrieve modules for PHP 5.5"
 					exit 1
 				fi
@@ -68,15 +72,15 @@ if ! PHP55="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-f
 		fi
 	fi
 fi
-if ! PHP56="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '56-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+if ! PHP56="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '56-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 	sleep 5;
-	if ! PHP56="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '56-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+	if ! PHP56="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '56-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 		sleep 5;
-		if ! PHP56="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '56-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+		if ! PHP56="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '56-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 			sleep 5;
-			if ! PHP56="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '56-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+			if ! PHP56="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '56-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 				sleep 5;
-				if ! PHP56="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '56-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+				if ! PHP56="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '56-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 					>&2 echo "Failed to retrieve modules for PHP 5.6"
 					exit 1
 				fi
@@ -84,15 +88,15 @@ if ! PHP56="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-f
 		fi
 	fi
 fi
-if ! PHP70="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '70-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+if ! PHP70="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '70-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 	sleep 5;
-	if ! PHP70="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '70-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+	if ! PHP70="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '70-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 		sleep 5;
-		if ! PHP70="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '70-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+		if ! PHP70="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '70-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 			sleep 5;
-			if ! PHP70="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '70-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+			if ! PHP70="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '70-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 				sleep 5;
-				if ! PHP70="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '70-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+				if ! PHP70="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '70-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 					>&2 echo "Failed to retrieve modules for PHP 7.0"
 					exit 1
 				fi
@@ -100,15 +104,15 @@ if ! PHP70="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-f
 		fi
 	fi
 fi
-if ! PHP71="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '71-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+if ! PHP71="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '71-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 	sleep 5;
-	if ! PHP71="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '71-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+	if ! PHP71="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '71-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 		sleep 5;
-		if ! PHP71="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '71-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+		if ! PHP71="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '71-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 			sleep 5;
-			if ! PHP71="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '71-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+			if ! PHP71="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '71-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 				sleep 5;
-				if ! PHP71="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '71-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+				if ! PHP71="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '71-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 					>&2 echo "Failed to retrieve modules for PHP 7.1"
 					exit 1
 				fi
@@ -116,15 +120,15 @@ if ! PHP71="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-f
 		fi
 	fi
 fi
-if ! PHP72="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '72-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+if ! PHP72="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '72-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 	sleep 5;
-	if ! PHP72="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '72-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+	if ! PHP72="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '72-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 		sleep 5;
-		if ! PHP72="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '72-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+		if ! PHP72="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '72-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 			sleep 5;
-			if ! PHP72="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '72-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+			if ! PHP72="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '72-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 				sleep 5;
-				if ! PHP72="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '72-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+				if ! PHP72="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '72-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 					>&2 echo "Failed to retrieve modules for PHP 7.2"
 					exit 1
 				fi
@@ -132,15 +136,15 @@ if ! PHP72="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-f
 		fi
 	fi
 fi
-if ! PHP73="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '73-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+if ! PHP73="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '73-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 	sleep 5;
-	if ! PHP73="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '73-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+	if ! PHP73="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '73-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 		sleep 5;
-		if ! PHP73="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '73-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+		if ! PHP73="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '73-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 			sleep 5;
-			if ! PHP73="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '73-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+			if ! PHP73="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '73-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 				sleep 5;
-				if ! PHP73="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '73-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+				if ! PHP73="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '73-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 					>&2 echo "Failed to retrieve modules for PHP 7.3"
 					exit 1
 				fi
@@ -148,15 +152,15 @@ if ! PHP73="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-f
 		fi
 	fi
 fi
-if ! PHP74="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '74-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+if ! PHP74="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '74-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 	sleep 5;
-	if ! PHP74="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '74-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+	if ! PHP74="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '74-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 		sleep 5;
-		if ! PHP74="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '74-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+		if ! PHP74="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '74-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 			sleep 5;
-			if ! PHP74="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '74-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+			if ! PHP74="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '74-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 				sleep 5;
-				if ! PHP74="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/master/README.md | tac | tac | grep -E '74-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+				if ! PHP74="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '74-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
 					>&2 echo "Failed to retrieve modules for PHP 7.4"
 					exit 1
 				fi
