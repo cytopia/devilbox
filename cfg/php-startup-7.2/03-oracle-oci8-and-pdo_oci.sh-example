@@ -14,6 +14,7 @@ curl -o /tmp/oracle-instantclient18.3-basiclite-18.3.0.0.0-2.x86_64.rpm https://
 curl -o /tmp/oracle-instantclient18.3-devel-18.3.0.0.0-2.x86_64.rpm https://yum.oracle.com/repo/OracleLinux/OL7/oracle/instantclient/x86_64/getPackage/oracle-instantclient18.3-devel-18.3.0.0.0-2.x86_64.rpm
 
 # Install RPMs
+rpm --import http://yum.oracle.com/RPM-GPG-KEY-oracle-ol7
 alien -i /tmp/oracle-instantclient18.3-basiclite-18.3.0.0.0-2.x86_64.rpm
 alien -i /tmp/oracle-instantclient18.3-devel-18.3.0.0.0-2.x86_64.rpm
 
