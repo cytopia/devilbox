@@ -70,6 +70,7 @@ host is ready to be served with your custom domain.
    :maxdepth: 2
    :numbered:
 
+   advanced/custom-startup-commands
    advanced/customize-php-globally
    advanced/customize-webserver-globally
    advanced/connect-to-host-os
