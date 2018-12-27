@@ -16,15 +16,15 @@ cd "${COMPOSEPATH}" && docker-compose exec -T php bash -c "find /startup.d/*.sh-
 	echo "# ----------------------------------------------------------------------------------------"
 	echo "# [TEST] ${f}"
 	echo "# ----------------------------------------------------------------------------------------"
-	if ! docker exec -t ${CONTAINER} bash "${f}"; then
+	if ! docker exec -t ${CONTAINER} bash "${f}" "ACCEPT_EULA=1"; then
 		sleep 5
-		if ! docker exec -t ${CONTAINER} bash "${f}"; then
+		if ! docker exec -t ${CONTAINER} bash "${f}" "ACCEPT_EULA=1"; then
 			sleep 5
-			if ! docker exec -t ${CONTAINER} bash "${f}"; then
+			if ! docker exec -t ${CONTAINER} bash "${f}" "ACCEPT_EULA=1"; then
 				sleep 5
-				if ! docker exec -t ${CONTAINER} bash "${f}"; then
+				if ! docker exec -t ${CONTAINER} bash "${f}" "ACCEPT_EULA=1"; then
 					sleep 5
-					if ! docker exec -t ${CONTAINER} bash "${f}"; then
+					if ! docker exec -t ${CONTAINER} bash "${f}" "ACCEPT_EULA=1"; then
 						echo "[FAIl] ${f}"
 						exit 1
 					fi

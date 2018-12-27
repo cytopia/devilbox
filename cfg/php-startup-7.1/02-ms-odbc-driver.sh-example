@@ -32,6 +32,11 @@ MSODBC_URL="https://packages.microsoft.com/debian/8/prod/pool/main/m/msodbcsql17
 ###
 ### Pre-flight check
 ###
+if [ "${#}" = "1" ]; then
+	if [ "${1}" = "ACCEPT_EULA=1" ]; then
+		ACCEPT_EULA=Y
+	fi
+fi
 if [ "${ACCEPT_EULA}" != "Y" ]; then
 	echo "MS ODBC EULA not accepted. Aborting installation."
 	exit 0
