@@ -4,6 +4,7 @@
 
 SHELL := /bin/bash
 
+.PHONY: update-readme
 
 # -------------------------------------------------------------------------------------------------
 # Variables
@@ -28,7 +29,8 @@ VHOST   = $(PROJECT).loc
 update-readme:
 	cat "../README.md" \
 		| perl -00 -pe "s/<!-- modules -->.*<!-- \/modules -->/<!-- modules -->\n$$(./get-modules.sh)\n<!-- \/modules -->/s" \
-		> "../README.md"
+		> "../README.md.tmp"
+	yes | mv -f "../README.md.tmp" "../README.md"
 
 # -------------------------------------------------------------------------------------------------
 # Testing Targets
