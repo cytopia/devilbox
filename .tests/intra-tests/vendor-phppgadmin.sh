@@ -93,9 +93,9 @@ if ! curl -sS localhost${URL}intro.php | tac | tac | grep -Eiq "welcome to phpPg
 		# 3rd Try
 		sleep 1
 		if ! curl -sS localhost${URL}intro.php | tac | tac | grep -Eiq "welcome to phpPgAdmin"; then
-			printf "\r[FAIL] Fetch ${URL}\n"
-			curl -sS localhost/${URL}into.php || true
-			curl -sSI localhost/${URL}into.php || true
+			printf "\r[FAIL] Fetch ${URL}intro.php\n"
+			curl -sS localhost/${URL}intro.php || true
+			curl -sSI localhost/${URL}intro.php || true
 			exit 1
 		else
 			printf "\r[OK]   Fetch ${URL}intro.php (3 rounds)\n"
