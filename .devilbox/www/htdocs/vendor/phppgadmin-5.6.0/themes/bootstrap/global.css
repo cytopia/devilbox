@@ -1,0 +1,321 @@
+@import url(../global.css);
+@import url(//maxcdn.bootstrapcdn.com/bootstrap/3.2.2/css/bootstrap.min.css);
+/**
+ * Default style sheet
+ */
+frame {border-right: 1px solid #CCC;}
+.label {
+	color:#336699 !important;
+	font-size: 12px;
+}
+
+/** ELEMENTS */
+body {
+	background-color: #FFFFFF;
+	margin:	4px;
+	padding: 0px;
+}
+
+body.browser {
+	background-color: #FFFFFF !important;
+	font-size: 12px !important; /*1em;*/
+	border-right: 1px #c0c0c0;
+}
+body.bottombar {
+	background-color: #f9f9f9;
+	margin:	0px;
+	padding: 0px;
+	/*font-size: smaller; /*1em;*/
+	text-align: left;
+}
+h2 {
+	color: #336699 !important
+
+	font-weight: bold;
+	border: 2px solid #DFFBFD;
+	background-color: #FDFDFD;
+	padding: 2px 1em;
+	margin: 0 0 1ex 0;
+}
+h3 {
+	color: #336699 !important;
+	font-size: small;
+	
+	font-weight: bold;
+}
+table.error {background-color: #F9FFFF}
+table.error td {background-color: #F9FFFF}
+table.navbar {background-color: #F9FFFF}
+table.navbar td {
+	height:	25px;
+	color: #000000;
+	background-color: #FDFDFD;
+	text-align: center;
+	
+	font-size: smaller; /* 0.9em */
+	font-weight: bold;
+}
+table.navbar td.active {background-color: #F9FFFF}
+th.data {
+	color: #000000;
+	background-color: #F9FFFF;
+	font-size: smaller; /* 0.9em */
+	padding:3px;
+}
+th.data a:active, th.data a:link, th.data a:visited, th.data a:hover {
+	font-weight: bold;
+}
+td.dat {
+	color: #ff0;
+	text-align: center;
+}
+th.required {text-decoration: underline}
+td.topbar {
+	background-color: #f9f9f9;
+	margin:	0px	0px;
+	padding: 0px;
+	
+	font-size: smaller; /*0.8em;*/
+	text-align: left;
+}
+
+td.data1 {
+	padding:2px;
+}
+
+ul.toplink,ul.navlink {
+	list-style: none;
+	margin:0;padding:0;
+}
+ul.navlink{margin:20px 0}
+ul.toplink li, ul.navlink li {
+	display:inline;
+	border-left:1px solid #000000;
+	margin:0;padding: 0 2px 0 5px;
+}
+ul.toplink li:first-child, ul.navlink li:first-child {
+	border: none;
+	padding-left:0;
+}
+tr.data1, tr.data2, tr.data3 {
+	color: #000000;
+	
+	font-size: smaller; /*0.8em;*/
+}
+
+tr.data1 td, tr.data2 td, tr.data3 td {
+	padding:2px 4px;
+	border: 1px solid #EEE;
+}
+
+tr.data1 td.opbutton1, tr.data2 td.opbutton2, tr.data3 td.opbutton3 {
+	padding:2px 4px;
+	border: 0 none;
+	white-space: nowrap;
+	border-radius:2px;
+}
+
+tr.data1 td.opbutton1 a, tr.data2 td.opbutton2 a, tr.data3 td.opbutton3 a {
+-webkit-background-clip: border-box;
+-webkit-background-origin: padding-box;
+-webkit-background-size: auto;
+-webkit-user-select: none;
+background-attachment: scroll;
+background-clip: border-box;
+background-color: rgb(66, 139, 202);
+background-image: none;
+background-origin: padding-box;
+background-size: auto;
+border: 1px solid #999;
+border-radius:3px;
+
+cursor: pointer;
+display: inline-block;
+font-size: 11px;
+font-weight: normal;
+height: 22px;
+line-height: 18px;
+margin-bottom: 0px;
+padding-bottom: 1px;
+padding-left: 5px;
+padding-right: 5px;
+padding-top: 1px;
+text-align: center;
+text-decoration: none;
+vertical-align: middle;
+white-space: nowrap;
+color:#fff !important;
+}
+
+
+tr.data1:hover, tr.data2:hover, tr.data3:hover {
+	background-color: #DDD;
+}
+.row1, .data1 {
+	background-color: #FFF;
+	text-align: left;
+}
+.row2, .data2 {
+	background-color: #F9FFFF;
+	text-align: left;
+}
+.row3, .data3 {background-color: #FDFDFD}
+td.opbutton1 {
+	color: #000000;
+	border-top:	1px solid #FFFFFF;
+	border-right: 1px solid	#706D41;
+	border-bottom: 1px solid #706D41;
+	border-left: 1px solid #FFFFFF;
+	cursor:	pointer;
+	
+	font-size: smaller; /*0.8em;*/
+	padding-left: 6px;
+	padding-right: 6px;
+	text-align: center;
+}
+td.opbutton2 {
+	color: #000000;
+	border-top:	1px solid #FFFFFF;
+	border-right: 1px solid	#706D41;
+	border-bottom: 1px solid #706D41;
+	border-left: 1px solid #FFFFFF;
+	cursor:	pointer;
+	
+	font-size: smaller; /*0.8em;*/
+	padding-left: 6px;
+	padding-right: 6px;
+	text-align: center;
+}
+.topbar {border: 2px solid #f9f9f9}
+.topbar, .topbar * {
+	background-color: #f9f9f9;
+}
+.topbar .platform, .topbar .host, .topbar .username {
+	font-weight: bold;
+}
+.topbar, .trail {
+	margin-bottom: 2px;
+}
+.topbar, .trail, .tab {
+	padding: 2px 1ex;
+	/*font-size: smaller;*/
+}
+.trail, .tab {
+	border: 2px solid #DFFBFD;
+	background-color: #FDFDFD;
+}
+.trail .crumb {background-color: #FDFDFD}
+.crumb, .tab {
+	vertical-align: top;
+}
+.crumb .icon {
+	vertical-align: middle;
+	margin: 0 2px;
+}
+table.tabs {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1ex;
+}
+.tab {text-align: center}
+.tabs .active {background-color: #F9FFFF}
+.tab .icon {display: block}
+a:active {
+	color: #989973;
+	
+	font-weight: normal;
+	text-decoration: underline;
+}
+a,a:link {
+	color: #336699;
+	
+	text-decoration: none;
+}
+a:visited {
+	color: #336699;
+	
+	text-decoration: none;
+}
+a:hover {
+	color: #cc0000;
+	
+	text-decoration: none;
+}
+a.navlink:link, a.toplink:link, ul.navlink li a, ul.toplink li a {
+	color: #336699;
+	
+	font-weight: bold;
+	text-decoration: none;
+}
+a.navlink:visited, a.toplink:visited, ul.navlink li a:visited, ul.toplink li a:visited {
+	color: #336699;
+	
+	font-weight: bold;
+	text-decoration: none;
+}
+a.navlink:hover, a.toplink:hover, ul.navlink li a:hover, ul.toplink li a:hover {
+	color: #cc0000;
+	
+	font-weight: bold;
+	text-decoration: none;
+}
+a.navlink:active, a.toplink:active, ul.navlink li a:active, ul.toplink li a:active {
+	color: #cc0000;
+	
+	font-weight: bold;
+	text-decoration: none;
+}
+.active a {font-weight: bold}
+a.help {
+	color: #E68800;
+	font-size: smaller;
+	vertical-align: super;
+	text-decoration: none;
+}
+pre {font-size: 110%}
+pre.data {
+	
+	font-size: 100%;
+}
+pre.error {
+	font-family: "Lucida Console", "Courier New", "DejaVu Sans Mono", monospace;
+	font-size: 120%;
+}
+.intro li {font-weight: bold}
+.ac_field {border:1px solid #D9D95F}
+.bottom_link {
+	background: #eee;
+	border-top: 1px dotted #999;
+	border-left: 1px dotted #999;
+	font-size: smaller;
+}
+
+/** FK browsing **/
+div#root > div.fk {
+	border: 1px solid #000;
+}
+div.fk {
+    background: #fff;
+	border-left: 1px solid #000;
+	padding: 5px;
+}
+div.logo {
+	background-color: #f9f9f9;
+	margin:	0px;
+	padding: 0px;
+	
+	background-size: 99% 90%;
+	font-size: smaller; /* 1em; */
+	border: none;
+	margin-bottom: 2px;
+	background-image: url('../../images/themes/bootstrap/title.png');
+	background-repeat: none;
+	height: 50px;
+}
+div.logo a {
+	display: block;
+	height: 100%;
+	color: transparent;
+}
+
+.opbutton2, .opbutton1 {width:50px;}

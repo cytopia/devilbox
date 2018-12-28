@@ -1,0 +1,242 @@
+PHPPGADMIN TODO LIST FOR DEVELOPERS
+-----------------------------------
+
+phpPgAdmin is an open source project which means that if you see something on 
+this list that you would like to implement, just send us a patch.  You can find
+our project page here:
+
+	https://github.com/phppgadmin/phppgadmin
+
+An item is marked 'claimed' when a username in brackets is put after the TODO
+item. If you want to work a claimed item, please contact the developers list.
+
+An item is marked with a '-' if it has been completed.
+
+Cluster
+-------
+* Allow reading of postgresql.conf and pg_hba.conf per pg_read_file() in 8.1
+* Support pg_reload_conf(), pg_rotate_logfile() 8.1 commands
+* Add support for default db to connect to on login page (we had several users complaining about that lately)
+
+
+Export
+------
+
+* Switch to SPARQL format:
+  http://www.w3.org/TR/2005/WD-rdf-sparql-XMLres-20050801/
+
+  Actually...SQL/XML is maybe better.
+
+Import
+------
+
+* Allow import of data via compressed (bzip/gzip/zip) files
+
+Users
+-----
+
+* user variables (eg. ALTER USER SET .. TO ...)
+
+
+Groups
+------
+
+
+Roles
+-----
+
+
+Permissions
+-----------
+
+* Grant ... on all tables, views, ... to user, group, public
+
+
+Databases
+---------
+
+* Add alter database variables
+* Add database stats
+* REASSIGN OWNED & DROP OWNED support for 8.2+ 
+	- http://www.postgresql.org/docs/8.2/interactive/sql-reassign-owned.html
+	- http://www.postgresql.org/docs/8.2/interactive/sql-drop-owned.html
+
+
+Schemas
+-------
+
+
+Large Objects
+-------------
+
+* Add support for large objects
+  (review patch from Dmitry Koterov https://github.com/DmitryKoterov/phppgadmin/commit/3072e666bd2b291feb91823b41f1fdb8ec7f492d )
+
+Tables
+------
+
+* Rewrite WITHOUT OIDs with more natural WITH OIDS
+* Allow FKs during create table (Jawed)
+* When adding a column or creating a table, prevent size on non-size types (eg. integer(2)).  You can find these by looking at format_type in the postgresql source code.
+* Add WITH storage_parameter option to create table [8.2]
+* Add last vacuum and analyze information from statistics tables [8.2]
+* Restrict operators (from $selectOps array) to appropriate types (ie. no LIKE for int4 fields)
+* Alter column should handle types with implicit cast types distinctly from those requiring a USING clause
+* Where ENUM types are an option, restrict choice to enum values [8.3]
+
+Columns
+-------
+
+* Add column constraints during creation and altering of columns 
+
+
+Views
+-----
+
+* Support temporary views per 8.1?
+* Support updateable views, see http://gerrybthunkings.blogspot.com/2010/01/how-should-postgresql-pgadmin-iii-deal.html
+* Support Materialized Views
+
+Sequences
+---------
+
+
+Functions
+---------
+
+* Remove options for OUT/INOUT params in older servers
+* Clean up javascript html spec warnings
+* GUC settings [8.3]
+* Default param values
+
+Indexes 
+-------
+
+* Support 8.1 Reindex System commands
+* Expressional indexes
+* Create Index Asc/Desc, Nulls First/Last [8.3]
+
+
+Types
+-----
+
+* Suppres psuedo-type options in type list for creating composite types. (done ?)
+
+
+Operators
+---------
+
+* Create
+* Create/Alter/Drop Operator Family
+
+
+Operator Classes
+----------------
+
+* Create
+
+
+Triggers
+--------
+
+* Allow functions from other schemas.
+* Support replica trigger modes (8.3) 
+
+
+Aggregates
+----------
+
+* Allow for multi-column aggregates [8.2]
+* Rewrite the aggregate edition page ! It is using input tetxt everywhere presently, even for owner and schéma !
+
+
+Languages
+---------
+
+* Drop
+* Create
+* Alter owner [8.3]
+* Alter name [8.3]
+
+
+Domains
+-------
+
+* Alter DOMAIN SET SCHEMA support
+
+Conversions
+-----------
+
+* Properties
+* Drop
+* Create
+
+
+Casts
+-----
+
+* Properties
+* Drop
+* Create
+
+
+Full Text Search (8.3)
+----------------------
+
+* Create/Alter/Drop parser 
+* Alter Owner 
+
+
+Miscellaneous
+-------------
+
+* Audit for PHP 5.3.x compatability 
+* Support 8.1 standard compliant strings (E'')
+* Support per-database connection limits per 8.1
+* Put a 'What's blocking this query' on Processes view
+* Show prepared statements on database view [8.2]
+* Show cursors on database view [8.2]
+* Show NOTICES on queries in SQL window/file
+* Printable view of things
+* Show comments for all objects (Dan Boren)
+* Allow setting/dropping comments for all objects (Dan Boren)
+* Show owner for all objects
+* Allow changing owner for objects that have this feature [7.4+ generally]
+* Add CASCADE option to Truncate [8.2]
+* Add ONLY option to Truncate [8.4]
+* Add information about synch tool to TRANSLATORS
+* Translated FAQ
+* Pull FAQ/HISTORY/CREDITS/etc... from CVS for website. 
+* Add support for csvlogs [8.3]
+* Add executed file scripts in history 
+
+Exotic
+------
+
+* Pivot reports (ADODB has a feature for this)
+* Parameterized reports (use prepared queries)
+* Full web accessability conformance
+
+Principles
+----------
+
+* register_globals off support
+* maximum error_reporting support - enforces code quality, reduces bugs and 
+  improves security
+* PHP 5.0 features used
+* No HTML font, colour, layout tags.  Use CSS for everything
+* One day we should make it all XHTML
+* everything properly escaped - prevent sql injection and cross-site scripting 
+  probs
+* everything properly schema qualified 
+* Support Postgres 8.4 and upwards
+* psql -E is a cool way of seeing how to do schema queries
+* Checking out older versions of describe.c in src/bin/psql in the postgres 
+  distro is a good way of seeing how to query older versions of postgres for 
+  schema information
+* Put functions in the highest class possible.  For instance, simple selects 
+  should be in Postgres, whereas something that works for < 8.2 should be in the 
+  8.1 class.  This will minimise bugs and duplicated code.
+* Adhere to current coding standards
+* Avoid using global variables if possible
+
