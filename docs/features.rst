@@ -107,8 +107,9 @@ port exposures, hostnames and any errors including how they can be resolved.
 
 Third-party tools
 ^^^^^^^^^^^^^^^^^
-Mandatory web projects are also shipped: |ext_lnk_tool_phpmyadmin|, |ext_lnk_tool_adminer| and
-|ext_lnk_tool_opcachegui| as well as a web GUI to view all sent emails.
+Mandatory web projects are also shipped: |ext_lnk_tool_phpmyadmin|, |ext_lnk_tool_phppgadmin|,
+|ext_lnk_tool_phpredmin|, |ext_lnk_tool_adminer| and |ext_lnk_tool_opcachegui| as well as a web GUI
+to view all sent emails.
 
 
 Dockerized

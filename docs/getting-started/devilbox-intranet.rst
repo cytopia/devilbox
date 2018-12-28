@@ -95,6 +95,13 @@ columns, relations, indexes, users, permissions, etc) can be performed via the u
 while you still have the ability to directly execute any SQL statement.
 
 
+phpPgAdmin
+----------
+
+|ext_lnk_tool_phppgadmin| is a web-based administration tool for PostgreSQL. It is perfect for
+PostgreSQL DBAs, newbies, and hosting services.
+
+
 phpRedMin
 ----------
 

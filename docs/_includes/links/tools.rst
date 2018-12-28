@@ -267,6 +267,12 @@
      phpMyAdmin <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_tool_phppgadmin| raw:: html
+
+   <a target="_blank" href="http://phppgadmin.sourceforge.net/doku.php">
+     phpPgAdmin <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_tool_phpredmin| raw:: html
 
    <a target="_blank" href="https://github.com/sasanrose/phpredmin">
