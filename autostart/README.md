@@ -1,4 +1,4 @@
-# Custom startup scripts (per PHP version)
+# Custom startup scripts (global)
 
 Any script inside this directory ending by `.sh` will be executed during the PHP container startup.
 This is useful to apply your custom settings such as installing software that usually requires
@@ -20,8 +20,8 @@ su -c 'cd /shared/httpd/node/node; pm2 start index.js' -l devilbox
 
 ## Note
 
-This directory will startup commands only for a specific PHP version. If you want to run commands
-for all versions , go to `autostart/` in the root of the Devilbox git directory.
+This directory will startup commands for all PHP versions. If you want to selectively run commands
+for a specific version, go to `cfg/php-startup-X.Y/`.
 
 
 ## Important

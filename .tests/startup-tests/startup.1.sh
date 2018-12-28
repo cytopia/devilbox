@@ -9,7 +9,7 @@ COMPOSEPATH="${SCRIPTPATH}/../../"
 CONTAINER="$( cd "${COMPOSEPATH}" && docker-compose ps -q php )"
 
 #FILES="$()"
-cd "${COMPOSEPATH}" && docker-compose exec -T php bash -c "find /startup.d/*.sh-example -type f -print0 2>/dev/null" \
+cd "${COMPOSEPATH}" && docker-compose exec -T php bash -c "find /startup.1.d/*.sh-example -type f -print0 2>/dev/null" \
 	| xargs -0 -n 1 echo \
 	| while read f; do
 

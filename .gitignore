@@ -83,6 +83,7 @@
 /cfg/php-fpm-7.4/*.conf
 
 # Ignore custom PHP-FPM startup scripts
+/autostart/*.sh
 /cfg/php-startup-5.2/*.sh
 /cfg/php-startup-5.3/*.sh
 /cfg/php-startup-5.4/*.sh
