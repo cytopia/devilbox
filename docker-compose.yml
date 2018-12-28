@@ -35,6 +35,7 @@ services:
   # ------------------------------------------------------------
   bind:
     image: cytopia/bind:0.15
+    hostname: bind
     restart: always
     ports:
       # [local-machine:]local-port:docker-port
@@ -85,17 +86,17 @@ services:
       docker.for.lin.host.internal: 172.16.238.1
       docker.for.lin.localhost: 172.16.238.1
 
-    hostname: bind
     networks:
       app_net:
         ipv4_address: 172.16.238.100
 
 
   # ------------------------------------------------------------
-  # PHP / HHVM
+  # PHP
   # ------------------------------------------------------------
   php:
     image: devilbox/php-fpm:${PHP_SERVER}-work-0.64
+    hostname: php
 
     ##
     ## All .env variables
@@ -156,7 +157,6 @@ services:
       docker.for.lin.host.internal: 172.16.238.1
       docker.for.lin.localhost: 172.16.238.1
 
-    hostname: php
     networks:
       app_net:
         ipv4_address: 172.16.238.10
@@ -210,6 +210,7 @@ services:
   # ------------------------------------------------------------
   httpd:
     image: devilbox/${HTTPD_SERVER}:0.24
+    hostname: httpd
 
     environment:
 
@@ -266,7 +267,6 @@ services:
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_HTTPD}:80"
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_HTTPD_SSL}:443"
 
-    hostname: httpd
     networks:
       app_net:
         ipv4_address: 172.16.238.11
@@ -303,6 +303,7 @@ services:
   # ------------------------------------------------------------
   mysql:
     image: cytopia/${MYSQL_SERVER}:latest
+    hostname: mysql
 
     environment:
 
@@ -335,7 +336,6 @@ services:
       # [local-machine:]local-port:docker-port
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MYSQL}:3306"
 
-    hostname: mysql
     networks:
       app_net:
         ipv4_address: 172.16.238.12
@@ -368,6 +368,7 @@ services:
   # ------------------------------------------------------------
   pgsql:
     image: postgres:${PGSQL_SERVER}
+    hostname: pgsql
 
     environment:
 
@@ -379,7 +380,6 @@ services:
       # [local-machine:]local-port:docker-port
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_PGSQL}:5432"
 
-    hostname: pgsql
     networks:
       app_net:
         ipv4_address: 172.16.238.13
@@ -405,6 +405,7 @@ services:
   # ------------------------------------------------------------
   redis:
     image: redis:${REDIS_SERVER}
+    hostname: redis
 
     # Apply custom arguments to redis startup
     command: redis-server ${REDIS_ARGS:- }
@@ -415,7 +416,6 @@ services:
       # [local-machine:]local-port:docker-port
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_REDIS}:6379"
 
-    hostname: redis
     networks:
       app_net:
         ipv4_address: 172.16.238.14
@@ -438,12 +438,12 @@ services:
   # ------------------------------------------------------------
   memcd:
     image: memcached:${MEMCD_SERVER}
+    hostname: memcd
 
     ports:
       # [local-machine:]local-port:docker-port
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MEMCD}:11211"
 
-    hostname: memcd
     networks:
       app_net:
         ipv4_address: 172.16.238.15
@@ -466,12 +466,12 @@ services:
   # ------------------------------------------------------------
   mongo:
     image: mongo:${MONGO_SERVER}
+    hostname: mongo
 
     ports:
       # [local-machine:]local-port:docker-port
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MONGO}:27017"
 
-    hostname: mongo
     networks:
       app_net:
         ipv4_address: 172.16.238.16
