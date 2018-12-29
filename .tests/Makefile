@@ -217,7 +217,8 @@ test-vhost:
 		$(PHP_FILES), \
 		printf "[TEST] docker-compose exec php curl -sS http://$(VHOST)/$(file)"; \
 		cd $(CURRENT_PATH) && $(MAKE) _clean-round >/dev/null; \
-		if ! cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS http://$(VHOST)/$(file) | grep -qE '^OK$$'; then \
+		cd $(DEVILBOX_PATH); \
+		if ! docker-compose exec php curl -sS http://$(VHOST)/$(file) | grep -qE '^OK$$'; then \
 			printf "\r[FAIL] docker-compose exec php curl -sS http://$(VHOST)/$(file)\n"; \
 			cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS http://$(VHOST)/$(file); \
 			cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS -I http://$(VHOST)/$(file); \
@@ -236,7 +237,8 @@ test-vhost:
 		$(PHP_FILES), \
 		printf "[TEST] docker-compose exec php curl -sS https://$(VHOST)/$(file)"; \
 		cd $(CURRENT_PATH) && $(MAKE) _clean-round >/dev/null; \
-		if ! cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS https://$(VHOST)/$(file) | grep -qE '^OK$$'; then \
+		cd $(DEVILBOX_PATH); \
+		if ! docker-compose exec php curl -sS https://$(VHOST)/$(file) | grep -qE '^OK$$'; then \
 			printf "\r[FAIL] docker-compose exec php curl -sS https://$(VHOST)/$(file)\n"; \
 			cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS https://$(VHOST)/$(file); \
 			cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS -I https://$(VHOST)/$(file); \
@@ -255,7 +257,8 @@ test-vhost:
 		$(PHP_FILES), \
 		printf "[TEST] docker-compose exec php php /shared/httpd/$(PROJECTV)/htdocs/$(file)"; \
 		cd $(CURRENT_PATH) && $(MAKE) _clean-round >/dev/null; \
-		if ! cd $(DEVILBOX_PATH) && docker-compose exec php php /shared/httpd/$(PROJECTV)/htdocs/$(file) | grep -q '^OK$$'; then \
+		cd $(DEVILBOX_PATH); \
+		if ! docker-compose exec php php /shared/httpd/$(PROJECTV)/htdocs/$(file) | grep -q '^OK$$'; then \
 			printf "\r[TEST] docker-compose exec php php /shared/httpd/$(PROJECTV)/htdocs/$(file)\n"; \
 			cd $(DEVILBOX_PATH) && docker-composeexec php php /shared/httpd/$(PROJECTV)/htdocs/$(file); \
 			cd $(CURRENT_PATH) && $(MAKE) _logs; \
