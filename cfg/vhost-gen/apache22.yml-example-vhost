@@ -92,6 +92,7 @@ vhost_type:
     ProxyPass __LOCATION__ __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT____LOCATION__
     ProxyPassReverse __LOCATION__ __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT____LOCATION__
 
+
 ###
 ### Optional features to be enabled in vHost
 ###
