@@ -25,7 +25,12 @@
 <img width="200" style="width:200px;" src="docs/_includes/figures/https/https-ssl-address-bar.png" /><br/>
 <small><sub>Support for <a href="https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html">valid https</a> out of the box.</sub></small>
 
-The Devilbox is a modern and highly customisable **dockerized PHP stack** supporting full **LAMP** and **MEAN** and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an **unlimited number of projects** for which **vhosts**, **SSL certificates** and **DNS records** are created automatically. Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
+The Devilbox is a modern and highly customisable **dockerized PHP stack** supporting full **LAMP**
+and **MEAN** and running on all major platforms.  The main goal is to easily switch and combine
+any version required for local development. It supports an **unlimited number of projects** for
+which **vhosts**, **SSL certificates** and **DNS records** are created automatically.
+**Reverse proxies** per project are supported to ensure listening server such as NodeJS can also be reached.
+Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
 
 Furthermore, the Devilbox provides an **identical** and **reproducible development environment** for different host operating systems.
 
@@ -411,12 +416,20 @@ The Devilbox has everything setup for you. The only thing you will have to insta
     <td>You can overwrite and customise the default applied vhost configuration for every single vhost.</td>
   </tr>
   <tr>
+    <td>:star: Reverse proxy</td>
+    <td>Have your NodeJS application served with a nice domain name and valid HTTPS.</td>
+  </tr>
+  <tr>
     <td>:star: Custom domains</td>
     <td>Choose whatever development domain you desire: <code>*.loc</code>, <code>*.local</code>, <code>*.dev</code> or use real domains as well: <code>*.example.com</code></td>
   </tr>
   <tr>
     <td>:star: Auto DNS</td>
     <td>An integrated BIND server is able to create DNS entries automatically for your chosen domains.</td>
+  </tr>
+  <tr>
+    <td>:star: Auto start scripts</td>
+    <td>Custom startup scripts can be provided for all PHP container equally and also differently per PHP version to install custom software or automatically startup up your required tools.</td>
   </tr>
   <tr>
     <td>:star: Custom PHP config</td>
@@ -532,6 +545,10 @@ The following tools will assist you on creating new projects easily as well as h
   <tr>
     <td>:wrench: <a href="https://github.com/squizlabs/PHP_CodeSniffer">php code beautifier</a></td>
     <td><code>phpcbf</code> is a command line tool that automatically correct coding standard violations.</td>
+  </tr>
+  <tr>
+    <td>:wrench: <a href="https://github.com/Unitech/pm2">pm2</a></td>
+    <td><code>pm2</code> is Node.js Production Process Manager with a built-in Load Balancer.</td>
   </tr>
   <tr>
     <td>:wrench: <a href="https://github.com/brigade/scss-lint/">scss-lint</a></td>
@@ -734,6 +751,21 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 > [Setup WordPress](https://devilbox.readthedocs.io/en/latest/examples/setup-wordpress.html) |
 > [Setup Yii](https://devilbox.readthedocs.io/en/latest/examples/setup-yii.html) |
 > [Setup Zend](https://devilbox.readthedocs.io/en/latest/examples/setup-zend.html)
+
+#### Supported reverse proxied applications
+
+As far as tested there are no limitations and you can use any application that creates an open port.
+These ports will be reverse proxied by the web server and even allow you to use valid HTTPS for them.
+By the built-in autostart feature of the Devilbox you can ensure that your application automatically
+starts up as soon as you run `docker-compose up`.
+
+<a target="_blank" title="NodeJS" href="https://nodejs.org"><img width="64" style="width:64px;" src="docs/img/logo_tools/nodejs.png" alt="Devilbox"/></a>
+<a target="_blank" title="Sphinx" href="https://www.sphinx-doc.org/en/stable/"><img width="64" style="width:64px;" src="docs/img/logo_tools/sphinx.png" alt="Devilbox"/></a>
+
+> **Documentation:**<br/>
+> [Setup reverse proxy NodeJs](https://devilbox.readthedocs.io/en/latest/examples/setup-reverse-proxy-nodejs.html) |
+> [Setup reverse proxy Sphinx documentation](https://devilbox.readthedocs.io/en/latest/examples/setup-reverse-proxy-sphinx-docs.html)
+
 
 ## Intranet overview
 
