@@ -88,16 +88,10 @@ vhost_type:
   # Reverse Proxy (-r)
   rproxy: |
     # Define the vhost to reverse proxy
-    ProxyRequests off
-    ProxyPass __LOCATION__ __PROXY_PROTO://__PROXY_ADDR__:__PROXY_PORT__
-    ProxyHTMLURLMap __PROXY_PROTO://__PROXY_ADDR__:__PROXY_PORT__ __LOCATION__
-    <location __LOCATION__>
-        ProxyPassReverse /
-        SetOutputFilter  proxy-html
-        ProxyHTMLURLMap  /      __LOCATION__
-        ProxyHTMLURLMap  __LOCATION__  __LOCATION__
-        RequestHeader    unset  Accept-Encoding
-    </location>
+    ProxyRequests On
+    ProxyPreserveHost On
+    ProxyPass __LOCATION__ __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT____LOCATION__
+    ProxyPassReverse __LOCATION__ __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT____LOCATION__
 
 
 ###
