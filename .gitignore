@@ -118,6 +118,15 @@
 /docs/linkcheck
 *.rst.todo
 
+# Ignore vhost-gen files in test dir (copied on the fly)
+/.tests/vhost-tests/my-vhost/.devilbox/apache22.yml
+/.tests/vhost-tests/my-vhost/.devilbox/apache24.yml
+/.tests/vhost-tests/my-vhost/.devilbox/nginx.yml
+
+/.tests/vhost-tests/my-rhost/.devilbox/apache22.yml
+/.tests/vhost-tests/my-rhost/.devilbox/apache24.yml
+/.tests/vhost-tests/my-rhost/.devilbox/nginx.yml
+
 # Keep folders
 !.keepme
 
