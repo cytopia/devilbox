@@ -1,12 +1,22 @@
-.. _custom_startup_commands:
+.. _custom_scripts_per_php_version:
 
-***********************
-Custom startup commands
-***********************
+******************************
+Custom scripts per PHP version
+******************************
 
-You can provide custom startup commands via bash scripts to each of the PHP container.
+You can provide custom startup commands via bash scripts to each of the PHP container individually.
 This may be useful to specify additional software to install or additional settings to apply during
 the initial startup.
+
+
+.. seealso::
+   * :ref:`custom_scripts_globally` (equal for all PHP versions)
+   * :ref:`autostarting_nodejs_apps`
+
+
+.. note::
+   Per PHP version scripts are always executed **before** global scripts.
+
 
 **Table of Contents**
 
@@ -16,9 +26,15 @@ the initial startup.
 General
 =======
 
-You can add custom ``bash`` scripts for each PHP version separately. Provided scripts must end
-by the file extension ``.sh`` and should be executable. Anything not ending by ``.sh`` will be
-ignored.
+You can add custom shell scripts for each PHP version separately.
+
+.. important::
+   Provided scripts must end by the file extension ``.sh`` and should be executable.
+   Anything not ending by ``.sh`` will be ignored.
+
+.. important::
+   Provided scripts will be executed by the ``root`` user within the PHP container.
+
 
 Where
 -----
@@ -59,14 +75,12 @@ How
 ---
 
 The scripts will always be executed inside the PHP container (Debian Linux) and will be run with
-``root`` privileges.
+``root`` privileges. It is however possible to drop privileges within the script to have them
+executed as a normal user.
 
 
 Examples
 ========
-
-The following examples should already exist as example files within ``cfg/php-startup-X.Y``, but
-will covered here as well to show some real world examples of what can be done with startup scripts.
 
 Installing Microsoft ODBC driver
 --------------------------------
@@ -94,7 +108,7 @@ Paste the following into ``ms-obbc.sh`` and **ensure to accept the EULA** by cha
 ``ACCEPT_EULA=N`` to ``ACCEPT_EULA=Y``.
 
 .. code-block:: bash
-   :caption: ms-odbc.sh
+   :caption: cfg/php-startup-7.1/install-ms-odbc.sh
    :emphasize-lines: 18
 
    !/bin/bash
@@ -158,64 +172,21 @@ Paste the following into ``ms-obbc.sh`` and **ensure to accept the EULA** by cha
    The script will not work, if you have not accepted the EULA.
 
 
-Installing Oracle oci8 and pdo_oci PHP modules
-----------------------------------------------
+Running commands as devilbox user
+---------------------------------
 
-This example will install Oracle instaclient as well as PHP modules ``pdo_oci`` and ``oci8`` in
-order to use PHP to connect to Oracle. This startup script will only be provided to PHP 7.2
+As mentioned above, all scripts are run by the ``root`` user.
+If you do need something to be executed as the normal user: ``devilbox``, you can simply ``su``
+inside the shell script.
 
-
-.. code-block:: bash
-
-   # Navigate to starup dir of PHP 7.2
-   host> cd path/to/devilbox/cfg/php-startup-7.2
-
-   # Create an .sh file
-   host> touch oracle.sh
-
-   # Open the file in your favourite editor
-   host> vi oracle.sh
-
-
-Paste the following into ``oracle.sh``:
+The following example will install ``grunt`` and start a NodeJS application as the devilbox user
+for the PHP 7.1 Docker container only.
 
 .. code-block:: bash
-   :caption: oracle.sh
+   :caption: cfg/php-startup-7.1/myscript.sh
 
-   #!/bin/bash
-   #
-   # https://yum.oracle.com/repo/OracleLinux/OL7/oracle/instantclient/x86_64/
-   #
+   # Install grunt as devilbox user
+   su -c "npm install grunt" -l devilbox
 
-   # Install 'alien' to install rpm packages
-   apt-get update -q
-   DEBIAN_FRONTEND=noninteractive apt-get install -qq -y --no-install-recommends --no-install-suggests alien
-
-   # Instantclient (basic lite)
-   curl -o /tmp/oracle-instantclient18.3-basiclite-18.3.0.0.0-2.x86_64.rpm https://yum.oracle.com/repo/OracleLinux/OL7/oracle/instantclient/x86_64/getPackage/oracle-instantclient18.3-basiclite-18.3.0.0.0-2.x86_64.rpm
-
-   # Instantclient (devel)
-   curl -o /tmp/oracle-instantclient18.3-devel-18.3.0.0.0-2.x86_64.rpm https://yum.oracle.com/repo/OracleLinux/OL7/oracle/instantclient/x86_64/getPackage/oracle-instantclient18.3-devel-18.3.0.0.0-2.x86_64.rpm
-
-   # Install RPMs
-   alien -i /tmp/oracle-instantclient18.3-basiclite-18.3.0.0.0-2.x86_64.rpm
-   alien -i /tmp/oracle-instantclient18.3-devel-18.3.0.0.0-2.x86_64.rpm
-
-   # Rempve RPMs
-   rm -f /tmp/oracle-instantclient18.3-basiclite-18.3.0.0.0-2.x86_64.rpm
-   rm -f /tmp/oracle-instantclient18.3-devel-18.3.0.0.0-2.x86_64.rpm
-
-   # Necessary symlinks
-   ln -s /usr/lib/oracle/18.3/client64/lib/libmql1.so /usr/lib/
-   ln -s /usr/lib/oracle/18.3/client64/lib/libipc1.so /usr/lib/
-   ln -s /usr/lib/oracle/18.3/client64/lib/libnnz18.so /usr/lib/
-   ln -s /usr/lib/oracle/18.3/client64/lib/libons.so /usr/lib/
-   ln -s /usr/lib/oracle/18.3/client64/lib/libclntshcore.so.18.1 /usr/lib/
-
-   # Build and install PHP extension oci8
-   docker-php-ext-configure oci8 --with-oci8=instantclient
-   docker-php-ext-install oci8
-
-   # Build and install PHP extension pdo_oci
-   docker-php-ext-configure pdo_oci --with-pdo-oci=instantclient,/usr,18.3
-   docker-php-ext-install pdo_oci
+   # Start a NodeJS application with pm2 as devilbox user
+   su -c "cd /shared/httpd/my-node/src/; pm2 start index.js" -l devilbox

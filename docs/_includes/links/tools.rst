@@ -189,6 +189,12 @@
      Photon CMS cli <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_tool_pm2| raw:: html
+
+   <a target="_blank" href="https://github.com/Unitech/pm2">
+     pm2 <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_tool_sass| raw:: html
 
    <a target="_blank" href="https://sass-lang.com">
