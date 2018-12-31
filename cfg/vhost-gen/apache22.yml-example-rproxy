@@ -1,0 +1,127 @@
+---
+
+# Apache 2.2 Reverse Proxy Template defintion for vhost-gen.py
+#
+# The 'feature' section contains optional features that can be enabled via
+# conf.yml and will then be replaced into the main vhost ('structure' section)
+# into their corresponding position:
+#
+#    __XDOMAIN_REQ__
+#    __ALIASES__
+#    __DENIES__
+#    __STATUS__
+#
+# The features itself also contain variables to be adjusted in conf.yml
+# and will then be replaced in their corresponding feature section
+# before being replaced into the vhost section (if enabled):
+#
+# XDomain:
+#    __REGEX__
+# Alias:
+#    __REGEX__
+#    __PATH__
+# Deny:
+#    __REGEX__
+# Status:
+#    __REGEX__
+#
+# Variables to be replaced directly in the vhost configuration can also be set
+# in conf.yml and include:
+#    __VHOST_NAME__
+#    __DOCUMENT_ROOT__
+#    __INDEX__
+#    __ACCESS_LOG__
+#    __ERROR_LOG__
+#
+
+
+###
+### Basic vHost skeleton
+###
+vhost: |
+  <VirtualHost __DEFAULT_VHOST__:__PORT__>
+      ServerName   __VHOST_NAME__
+
+      CustomLog  "__ACCESS_LOG__" combined
+      ErrorLog   "__ERROR_LOG__"
+
+      # Reverse Proxy definition (Ensure to adjust the port, currently '8000')
+      ProxyRequests On
+      ProxyPreserveHost On
+      ProxyPass / http://php:8000/
+      ProxyPassReverse / http://php:8000/
+
+  __REDIRECT__
+  __SSL__
+  __ALIASES__
+  __DENIES__
+  __SERVER_STATUS__
+      # Custom directives
+  __CUSTOM__
+  </VirtualHost>
+
+###
+### vHost Type (normal or reverse proxy)
+###
+vhost_type:
+  docroot: ""
+  rproxy: ""
+
+###
+### Optional features to be enabled in vHost
+###
+features:
+
+  # SSL Configuration
+  ssl: |
+    SSLEngine on
+    SSLCertificateFile    "__SSL_PATH_CRT__"
+    SSLCertificateKeyFile "__SSL_PATH_KEY__"
+    SSLProtocol           __SSL_PROTOCOLS__
+    SSLHonorCipherOrder   __SSL_HONOR_CIPHER_ORDER__
+    SSLCipherSuite        __SSL_CIPHERS__
+
+  # Redirect to SSL directive
+  redirect: |
+    RedirectMatch (.*) https://__VHOST_NAME__:__SSL_PORT__$1
+
+  # PHP-FPM left empty, as we are an reverse proxy configuration
+  php_fpm: ""
+
+  alias: |
+    # Alias Definition
+    Alias "__ALIAS__" "__PATH____ALIAS__"
+    <Location "__ALIAS__">
+    __XDOMAIN_REQ__
+    </Location>
+    <Directory "__PATH____ALIAS__">
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+  deny: |
+    # Deny Definition
+    <FilesMatch "__REGEX__">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+
+  server_status: |
+    # Status Page
+    <Location __REGEX__>
+        SetHandler server-status
+        Order allow,deny
+        Allow from all
+    </Location>
+
+  xdomain_request: |
+    # Allow cross domain request from these hosts
+    SetEnvIf Origin "__REGEX__" AccessControlAllowOrigin=$0
+    Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+    Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
+    Header always set Access-Control-Max-Age "0"
+    Header always set Access-Control-Allow-Headers "x-requested-with, Content-Type, origin, authorization, accept, client-security-token"
+    # Added a rewrite to respond with a 200 SUCCESS on every OPTIONS request.
+    RewriteEngine On
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]

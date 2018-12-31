@@ -40,6 +40,14 @@ To backup a database named ``my_db_name`` follow the below listed example:
    # Run pg_dump
    devilbox@php-7.1.6 in /shared/httpd $ pg_dump -h pgsql -U postgres -W my_db_name > /shared/backups/pgsql/my_db_name.sql
 
+
+phpPgAdmin
+----------
+
+If you do not like to use the command line for backups, you can use |ext_lnk_tool_phppgadmin|.
+It comes bundled with the devilbox intranet.
+
+
 Adminer
 -------
 
@@ -98,6 +106,14 @@ Here are a few examples for different file types:
 
    # Start the import
    devilbox@php-7.1.6 in /shared/httpd $ tar xzOf /shared/backups/pgsql/my_db_name.sql.tar.gz | psql -h pgsql -U postgres -W my_db_name
+
+
+phpPgAdmin
+----------
+
+|ext_lnk_tool_phppgadmin| supports importing many different formats out-of-the-box.
+Simply select the compressed or uncompressed file and press ``Go`` in the import section of
+the web interface.
 
 
 Adminer

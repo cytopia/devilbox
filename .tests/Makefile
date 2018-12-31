@@ -4,6 +4,7 @@
 
 SHELL := /bin/bash
 
+.PHONY: update-readme
 
 # -------------------------------------------------------------------------------------------------
 # Variables
@@ -18,8 +19,10 @@ DEVILBOX_NAME  = $(shell cd $(DEVILBOX_PATH); basename $$(pwd))
 DOCKER_NETWORK = $(shell docker network ls --filter name='$(DEVILBOX_NAME)' --quiet)
 
 # Devilbox test settings
-PROJECT = vhost-tests
-VHOST   = $(PROJECT).loc
+PROJECTV = my-vhost
+PROJECTR = my-rhost
+VHOST    = $(PROJECTV).loc
+RHOST    = $(PROJECTR).loc
 
 
 # -------------------------------------------------------------------------------------------------
@@ -28,7 +31,8 @@ VHOST   = $(PROJECT).loc
 update-readme:
 	cat "../README.md" \
 		| perl -00 -pe "s/<!-- modules -->.*<!-- \/modules -->/<!-- modules -->\n$$(./get-modules.sh)\n<!-- \/modules -->/s" \
-		> "../README.md"
+		> "../README.md.tmp"
+	yes | mv -f "../README.md.tmp" "../README.md"
 
 # -------------------------------------------------------------------------------------------------
 # Testing Targets
@@ -46,11 +50,19 @@ init:
 
 	@# Ensure .env file exists
 	install -m 0644 $(DEVILBOX_PATH)/env-example $(DEVILBOX_PATH)/.env
+	@# Ensure project vhost-gen files exist (vhost)
+	install -m 0644 $(DEVILBOX_PATH)/cfg/vhost-gen/apache22.yml-example-vhost $(CURRENT_PATH)/vhost-tests/$(PROJECTV)/.devilbox/apache22.yml
+	install -m 0644 $(DEVILBOX_PATH)/cfg/vhost-gen/apache24.yml-example-vhost $(CURRENT_PATH)/vhost-tests/$(PROJECTV)/.devilbox/apache24.yml
+	install -m 0644 $(DEVILBOX_PATH)/cfg/vhost-gen/nginx.yml-example-vhost $(CURRENT_PATH)/vhost-tests/$(PROJECTV)/.devilbox/nginx.yml
+	@# Ensure project vhost-gen files exist (rhost)
+	install -m 0644 $(DEVILBOX_PATH)/cfg/vhost-gen/apache22.yml-example-rproxy $(CURRENT_PATH)/vhost-tests/$(PROJECTR)/.devilbox/apache22.yml
+	install -m 0644 $(DEVILBOX_PATH)/cfg/vhost-gen/apache24.yml-example-rproxy $(CURRENT_PATH)/vhost-tests/$(PROJECTR)/.devilbox/apache24.yml
+	install -m 0644 $(DEVILBOX_PATH)/cfg/vhost-gen/nginx.yml-example-rproxy $(CURRENT_PATH)/vhost-tests/$(PROJECTR)/.devilbox/nginx.yml
 	@# Set bind port
 	echo "HOST_PORT_BIND=53" >> $(DEVILBOX_PATH)/.env
 	@# Set data dir
 	sed -i'' 's/^HOST_PATH_HTTPD_DATADIR=/#HOST_PATH_HTTPD_DATADIR=/g' $(DEVILBOX_PATH)/.env
-	echo "HOST_PATH_HTTPD_DATADIR=.tests" >> $(DEVILBOX_PATH)/.env
+	echo "HOST_PATH_HTTPD_DATADIR=.tests/vhost-tests" >> $(DEVILBOX_PATH)/.env
 	@# Set uid/gid
 	sed -i'' 's/^NEW_UID=.*/NEW_UID=$(MY_UID)/g' $(DEVILBOX_PATH)/.env
 	sed -i'' 's/^NEW_GID=.*/NEW_GID=$(MY_GID)/g' $(DEVILBOX_PATH)/.env
@@ -144,31 +156,7 @@ info:
 ###
 ### Run tests
 ###
-test: test-vhost test-intra test-startup
-
-
-test-intra:
-	@echo "####################################################################################################"
-	@echo "# RUNNING TESTS: INTRANET"
-	@echo "####################################################################################################"
-	@echo
-
-	@# Gather files to test
-	$(eval SH_FILES := $(notdir $(wildcard $(CURRENT_PATH)/intra-tests/*.sh)))
-
-	@$(foreach file,\
-		$(SH_FILES), \
-		echo "# ----------------------------------------------------------------------------------------"; \
-		echo "# [intra] $(file)"; \
-		echo "# ----------------------------------------------------------------------------------------"; \
-		cd $(CURRENT_PATH) && $(MAKE) _clean-round >/dev/null; \
-		if ! $(CURRENT_PATH)/intra-tests/$(file); then \
-			cd $(CURRENT_PATH) && $(MAKE) _logs; \
-			exit 1; \
-		fi; \
-		echo; \
-	)
-	@echo
+test: test-vhost test-rhost test-intra test-startup
 
 
 test-vhost:
@@ -181,7 +169,7 @@ test-vhost:
 	$(eval HTTPD_SERVER := $(shell grep -E '^HTTPD_SERVER' $(DEVILBOX_PATH)/.env | sed 's/.*=//g'))
 
 	@# Gather files to test
-	$(eval PHP_FILES := $(notdir $(wildcard $(CURRENT_PATH)/$(PROJECT)/htdocs/*.php)))
+	$(eval PHP_FILES := $(notdir $(wildcard $(CURRENT_PATH)/vhost-tests/$(PROJECTV)/htdocs/*.php)))
 
 	@echo "# ----------------------------------------------------------------------------------------"
 	@echo "# [vhost] Test curl HTTP from Docker host"
@@ -229,7 +217,8 @@ test-vhost:
 		$(PHP_FILES), \
 		printf "[TEST] docker-compose exec php curl -sS http://$(VHOST)/$(file)"; \
 		cd $(CURRENT_PATH) && $(MAKE) _clean-round >/dev/null; \
-		if ! cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS http://$(VHOST)/$(file) | grep -qE '^OK$$'; then \
+		cd $(DEVILBOX_PATH); \
+		if ! docker-compose exec php curl -sS http://$(VHOST)/$(file) | grep -qE '^OK$$'; then \
 			printf "\r[FAIL] docker-compose exec php curl -sS http://$(VHOST)/$(file)\n"; \
 			cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS http://$(VHOST)/$(file); \
 			cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS -I http://$(VHOST)/$(file); \
@@ -248,7 +237,8 @@ test-vhost:
 		$(PHP_FILES), \
 		printf "[TEST] docker-compose exec php curl -sS https://$(VHOST)/$(file)"; \
 		cd $(CURRENT_PATH) && $(MAKE) _clean-round >/dev/null; \
-		if ! cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS https://$(VHOST)/$(file) | grep -qE '^OK$$'; then \
+		cd $(DEVILBOX_PATH); \
+		if ! docker-compose exec php curl -sS https://$(VHOST)/$(file) | grep -qE '^OK$$'; then \
 			printf "\r[FAIL] docker-compose exec php curl -sS https://$(VHOST)/$(file)\n"; \
 			cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS https://$(VHOST)/$(file); \
 			cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS -I https://$(VHOST)/$(file); \
@@ -265,16 +255,70 @@ test-vhost:
 	@echo "# ----------------------------------------------------------------------------------------"
 	@$(foreach file,\
 		$(PHP_FILES), \
-		printf "[TEST] docker-compose exec php php /shared/httpd/$(PROJECT)/htdocs/$(file)"; \
+		printf "[TEST] docker-compose exec php php /shared/httpd/$(PROJECTV)/htdocs/$(file)"; \
 		cd $(CURRENT_PATH) && $(MAKE) _clean-round >/dev/null; \
-		if ! cd $(DEVILBOX_PATH) && docker-compose exec php php /shared/httpd/$(PROJECT)/htdocs/$(file) | grep -q '^OK$$'; then \
-			printf "\r[TEST] docker-compose exec php php /shared/httpd/$(PROJECT)/htdocs/$(file)\n"; \
-			cd $(DEVILBOX_PATH) && docker-composeexec php php /shared/httpd/$(PROJECT)/htdocs/$(file); \
+		cd $(DEVILBOX_PATH); \
+		if ! docker-compose exec php php /shared/httpd/$(PROJECTV)/htdocs/$(file) | grep -q '^OK$$'; then \
+			printf "\r[TEST] docker-compose exec php php /shared/httpd/$(PROJECTV)/htdocs/$(file)\n"; \
+			cd $(DEVILBOX_PATH) && docker-composeexec php php /shared/httpd/$(PROJECTV)/htdocs/$(file); \
 			cd $(CURRENT_PATH) && $(MAKE) _logs; \
 			exit 1; \
 		else \
-			printf "\r[OK]   docker-compose exec php php /shared/httpd/$(PROJECT)/htdocs/$(file)\n"; \
+			printf "\r[OK]   docker-compose exec php php /shared/httpd/$(PROJECTV)/htdocs/$(file)\n"; \
 		fi; \
+	)
+	@echo
+
+
+test-rhost:
+	@echo "####################################################################################################"
+	@echo "# RUNNING TESTS: RHOST"
+	@echo "####################################################################################################"
+	@echo
+
+	@# Gather files to test
+	$(eval SH_FILES := $(notdir $(wildcard $(CURRENT_PATH)/vhost-tests/$(PROJECTR)/tests/*.sh)))
+
+	@echo "# ----------------------------------------------------------------------------------------"
+	@echo "# [rhost] Startup"
+	@echo "# ----------------------------------------------------------------------------------------"
+	@$(CURRENT_PATH)/vhost-tests/$(PROJECTR)/start-pm.sh
+
+	@$(foreach file,\
+		$(SH_FILES), \
+		echo; \
+		echo "# ----------------------------------------------------------------------------------------"; \
+		echo "# [rhost] $(file)"; \
+		echo "# ----------------------------------------------------------------------------------------"; \
+		cd $(CURRENT_PATH) && $(MAKE) _clean-round >/dev/null; \
+		if ! $(CURRENT_PATH)/vhost-tests/$(PROJECTR)/tests/$(file); then \
+			cd $(CURRENT_PATH) && $(MAKE) _logs; \
+			exit 1; \
+		fi \
+	)
+	@echo
+
+
+test-intra:
+	@echo "####################################################################################################"
+	@echo "# RUNNING TESTS: INTRANET"
+	@echo "####################################################################################################"
+	@echo
+
+	@# Gather files to test
+	$(eval SH_FILES := $(notdir $(wildcard $(CURRENT_PATH)/intra-tests/*.sh)))
+
+	@$(foreach file,\
+		$(SH_FILES), \
+		echo "# ----------------------------------------------------------------------------------------"; \
+		echo "# [intra] $(file)"; \
+		echo "# ----------------------------------------------------------------------------------------"; \
+		cd $(CURRENT_PATH) && $(MAKE) _clean-round >/dev/null; \
+		if ! $(CURRENT_PATH)/intra-tests/$(file); then \
+			cd $(CURRENT_PATH) && $(MAKE) _logs; \
+			exit 1; \
+		fi; \
+		echo; \
 	)
 	@echo
 
@@ -284,9 +328,20 @@ test-startup:
 	@echo "# RUNNING TESTS: STARTUP"
 	@echo "####################################################################################################"
 	@echo
-	@if ! $(CURRENT_PATH)startup-tests/startup.sh; then \
-		exit 1; \
-	fi
+
+	@# Gather files to test
+	$(eval SH_FILES := $(notdir $(wildcard $(CURRENT_PATH)/startup-tests/*.sh)))
+
+	@$(foreach file,\
+		$(SH_FILES), \
+		cd $(CURRENT_PATH) && $(MAKE) _clean-round >/dev/null; \
+		if ! $(CURRENT_PATH)/startup-tests/$(file); then \
+			cd $(CURRENT_PATH) && $(MAKE) _logs; \
+			exit 1; \
+		fi; \
+		echo; \
+	)
+	@echo
 
 
 # -------------------------------------------------------------------------------------------------
@@ -308,10 +363,10 @@ _clean-round:
 	@#cd $(DEVILBOX_PATH) && docker-compose exec httpd dd if=/dev/null of=/var/log/$(HTTPD_SERVER)/defaultlocalhost_ssl-access.log >/dev/null 2>&1 || true
 	@#cd $(DEVILBOX_PATH) && docker-compose exec httpd dd if=/dev/null of=/var/log/$(HTTPD_SERVER)/defaultlocalhost_ssl-error.log  >/dev/null 2>&1 || true
 
-	@#cd $(DEVILBOX_PATH) && docker-compose exec httpd dd if=/dev/null of=/var/log/$(HTTPD_SERVER)/$(PROJECT)-access.log >/dev/null 2>&1 || true
-	@#cd $(DEVILBOX_PATH) && docker-compose exec httpd dd if=/dev/null of=/var/log/$(HTTPD_SERVER)/$(PROJECT)-error.log  >/dev/null 2>&1 || true
-	@#cd $(DEVILBOX_PATH) && docker-compose exec httpd dd if=/dev/null of=/var/log/$(HTTPD_SERVER)/$(PROJECT)_ssl-access.log >/dev/null 2>&1 || true
-	@#cd $(DEVILBOX_PATH) && docker-compose exec httpd dd if=/dev/null of=/var/log/$(HTTPD_SERVER)/$(PROJECT)_ssl-error.log  >/dev/null 2>&1 || true
+	@#cd $(DEVILBOX_PATH) && docker-compose exec httpd dd if=/dev/null of=/var/log/$(HTTPD_SERVER)/$(PROJECTV)-access.log >/dev/null 2>&1 || true
+	@#cd $(DEVILBOX_PATH) && docker-compose exec httpd dd if=/dev/null of=/var/log/$(HTTPD_SERVER)/$(PROJECTV)-error.log  >/dev/null 2>&1 || true
+	@#cd $(DEVILBOX_PATH) && docker-compose exec httpd dd if=/dev/null of=/var/log/$(HTTPD_SERVER)/$(PROJECTV)_ssl-access.log >/dev/null 2>&1 || true
+	@#cd $(DEVILBOX_PATH) && docker-compose exec httpd dd if=/dev/null of=/var/log/$(HTTPD_SERVER)/$(PROJECTV)_ssl-error.log  >/dev/null 2>&1 || true
 
 
 _logs:
@@ -413,27 +468,51 @@ _logs:
 	@echo
 
 	@echo "# ----------------------------------------------------------------------------------------"
-	@echo "# [HTTPD] $(PROJECT)-access.log"
+	@echo "# [HTTPD] $(PROJECTV)-access.log"
 	@echo "# ----------------------------------------------------------------------------------------"
-	cd $(DEVILBOX_PATH) && docker-compose exec httpd cat /var/log/$(HTTPD_SERVER)/$(PROJECT)-access.log || true
+	cd $(DEVILBOX_PATH) && docker-compose exec httpd cat /var/log/$(HTTPD_SERVER)/$(PROJECTV)-access.log || true
 	@echo
 
 	@echo "# ----------------------------------------------------------------------------------------"
-	@echo "# [HTTPD] $(PROJECT)-error.log"
+	@echo "# [HTTPD] $(PROJECTV)-error.log"
 	@echo "# ----------------------------------------------------------------------------------------"
-	cd $(DEVILBOX_PATH) && docker-compose exec httpd cat /var/log/$(HTTPD_SERVER)/$(PROJECT)-error.log || true
+	cd $(DEVILBOX_PATH) && docker-compose exec httpd cat /var/log/$(HTTPD_SERVER)/$(PROJECTV)-error.log || true
 	@echo
 
 	@echo "# ----------------------------------------------------------------------------------------"
-	@echo "# [HTTPD] $(PROJECT)_ssl-access.log"
+	@echo "# [HTTPD] $(PROJECTV)_ssl-access.log"
 	@echo "# ----------------------------------------------------------------------------------------"
-	cd $(DEVILBOX_PATH) && docker-compose exec httpd cat /var/log/$(HTTPD_SERVER)/$(PROJECT)_ssl-access.log || true
+	cd $(DEVILBOX_PATH) && docker-compose exec httpd cat /var/log/$(HTTPD_SERVER)/$(PROJECTV)_ssl-access.log || true
 	@echo
 
 	@echo "# ----------------------------------------------------------------------------------------"
-	@echo "# [HTTPD] $(PROJECT)_ssl-error.log"
+	@echo "# [HTTPD] $(PROJECTV)_ssl-error.log"
 	@echo "# ----------------------------------------------------------------------------------------"
-	cd $(DEVILBOX_PATH) && docker-compose exec httpd cat /var/log/$(HTTPD_SERVER)/$(PROJECT)_ssl-error.log || true
+	cd $(DEVILBOX_PATH) && docker-compose exec httpd cat /var/log/$(HTTPD_SERVER)/$(PROJECTV)_ssl-error.log || true
+	@echo
+
+	@echo "# ----------------------------------------------------------------------------------------"
+	@echo "# [HTTPD] $(PROJECTR)-access.log"
+	@echo "# ----------------------------------------------------------------------------------------"
+	cd $(DEVILBOX_PATH) && docker-compose exec httpd cat /var/log/$(HTTPD_SERVER)/$(PROJECTR)-access.log || true
+	@echo
+
+	@echo "# ----------------------------------------------------------------------------------------"
+	@echo "# [HTTPD] $(PROJECTR)-error.log"
+	@echo "# ----------------------------------------------------------------------------------------"
+	cd $(DEVILBOX_PATH) && docker-compose exec httpd cat /var/log/$(HTTPD_SERVER)/$(PROJECTR)-error.log || true
+	@echo
+
+	@echo "# ----------------------------------------------------------------------------------------"
+	@echo "# [HTTPD] $(PROJECTR)_ssl-access.log"
+	@echo "# ----------------------------------------------------------------------------------------"
+	cd $(DEVILBOX_PATH) && docker-compose exec httpd cat /var/log/$(HTTPD_SERVER)/$(PROJECTR)_ssl-access.log || true
+	@echo
+
+	@echo "# ----------------------------------------------------------------------------------------"
+	@echo "# [HTTPD] $(PROJECTR)_ssl-error.log"
+	@echo "# ----------------------------------------------------------------------------------------"
+	cd $(DEVILBOX_PATH) && docker-compose exec httpd cat /var/log/$(HTTPD_SERVER)/$(PROJECTR)_ssl-error.log || true
 	@echo
 
 
