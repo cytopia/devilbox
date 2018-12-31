@@ -1,13 +1,12 @@
 ---
 
-# Apache 2.2 vHost Template defintion for vhost-gen.py
+# Apache 2.2 Reverse Proxy Template defintion for vhost-gen.py
 #
 # The 'feature' section contains optional features that can be enabled via
 # conf.yml and will then be replaced into the main vhost ('structure' section)
 # into their corresponding position:
 #
 #    __XDOMAIN_REQ__
-#    __PHP_FPM__
 #    __ALIASES__
 #    __DENIES__
 #    __STATUS__
@@ -16,9 +15,6 @@
 # and will then be replaced in their corresponding feature section
 # before being replaced into the vhost section (if enabled):
 #
-# PHP-FPM:
-#    __PHP_ADDR__
-#    __PHP_PORT__
 # XDomain:
 #    __REGEX__
 # Alias:
@@ -36,8 +32,6 @@
 #    __INDEX__
 #    __ACCESS_LOG__
 #    __ERROR_LOG__
-#    __PHP_ADDR__
-#    __PHP_PORT__
 #
 
 
