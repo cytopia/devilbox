@@ -35,6 +35,8 @@ You can verifiy that the path is actually ``./data/www/`` by checking your ``.en
    HOST_PATH_HTTPD_DATADIR=./data/www
 
 
+.. _getting_started_directory_overview_project_directory:
+
 Project directory
 =================
 

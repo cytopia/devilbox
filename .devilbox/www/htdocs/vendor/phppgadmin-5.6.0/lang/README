@@ -1,0 +1,14 @@
+Translators
+-----------
+
+Please read the TRANSLATORS file in the top directory.
+
+To check your translation:
+
+cd lang
+php langcheck <language> (eg. 'french');
+
+To synchronize your translation with english.php:
+
+cd lang
+./synch <language> (eg. 'polish');

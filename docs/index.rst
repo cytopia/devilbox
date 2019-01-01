@@ -81,13 +81,32 @@ host is ready to be served with your custom domain.
 
 
 .. toctree::
+   :caption: Autostart commands
+   :maxdepth: 2
+
+   autostart/custom-scripts-per-php-version
+   autostart/custom-scripts-globally
+   autostart/autostarting-nodejs-apps
+
+
+.. toctree::
    :caption: vhost-gen
    :maxdepth: 2
 
    vhost-gen/virtual-host-templates
    vhost-gen/customize-all-virtual-hosts-globally
    vhost-gen/customize-specific-virtual-host
+   vhost-gen/virtual-host-vs-reverse-proxy
    vhost-gen/example-add-subdomains
+
+
+.. toctree::
+   :caption: reverse-proxy
+   :maxdepth: 2
+
+   reverse-proxy/reverse-proxy-with-https
+   reverse-proxy/reverse-proxy-for-custom-docker
+
 
 .. toctree::
    :caption: Enable custom container
@@ -162,6 +181,13 @@ host is ready to be served with your custom domain.
    examples/setup-yii
    examples/setup-zend
    examples/setup-other-frameworks
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Examples - reverse proxy
+
+   examples/setup-reverse-proxy-nodejs
+   examples/setup-reverse-proxy-sphinx-docs
 
 
 .. toctree::
