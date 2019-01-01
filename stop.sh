@@ -1,3 +1,5 @@
 #!/bin/sh
-sudo docker stop $(sudo docker ps -a -q)
+DVL_PATH="${1:-/home/witek/Projects/devilbox}"
+cd "${DVL_PATH}"
+sudo docker-compose stop
 

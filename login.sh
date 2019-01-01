@@ -1,3 +1,4 @@
 #!/bin/sh
-sudo docker exec -it --user devilbox devilbox_php_1 bash
-
+DVL_PATH="${1:-/home/witek/Projects/devilbox}"
+cd "${DVL_PATH}"
+sudo docker-compose exec --user devilbox php bash -l
