@@ -60,37 +60,42 @@
 							<tr>
 								<td>Adminer</td>
 								<td>Apache License 2.0 or GPL 2</td>
-								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a href="https://github.com/vrana/adminer">vrana/adminer</a></td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/vrana/adminer">vrana/adminer</a></td>
 							</tr>
 							<tr>
 								<td>Bootstrap</td>
 								<td>MIT</td>
-								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a href="https://github.com/twbs/bootstrap">twbs/bootstrap</a></td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/twbs/bootstrap">twbs/bootstrap</a></td>
 							</tr>
 							<tr>
 								<td>Font Awesome (css)</td>
 								<td>MIT</td>
-								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a href="https://github.com/FortAwesome/Font-Awesome">FortAwesome/Font-Awesome</a></td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/FortAwesome/Font-Awesome">FortAwesome/Font-Awesome</a></td>
 							</tr>
 							<tr>
 								<td>Font Awesome (fonts)</td>
 								<td>SIL OFL 1.1</td>
-								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a href="https://github.com/FortAwesome/Font-Awesome">FortAwesome/Font-Awesome</a></td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/FortAwesome/Font-Awesome">FortAwesome/Font-Awesome</a></td>
 							</tr>
 							<tr>
 								<td>Opcache GUI</td>
 								<td>MIT</td>
-								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a href="https://github.com/amnuts/opcache-gui">amnuts/opcache-gui</a></td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/amnuts/opcache-gui">amnuts/opcache-gui</a></td>
 							</tr>
 							<tr>
 								<td>phpMyAdmin</td>
 								<td>GPL 2.0</td>
-								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a href="https://github.com/phpmyadmin/phpmyadmin">phpmyadmin/phpmyadmin</a></td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/phpmyadmin/phpmyadmin">phpmyadmin/phpmyadmin</a></td>
+							</tr>
+							<tr>
+								<td>phpPgAdmin</td>
+								<td>GPL 2.0</td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/phppgadmin/phppgadmin">phppgadmin/phppgadmin</a></td>
 							</tr>
 							<tr>
 								<td>PHPRedMin</td>
 								<td>BSD 3-Clause License</td>
-								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a href="https://github.com/sasanrose/phpredmin">sasanrose/phpredmin</a></td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/sasanrose/phpredmin">sasanrose/phpredmin</a></td>
 							</tr>
 						</tbody>
 					</table>

@@ -82,6 +82,19 @@
 /cfg/php-fpm-7.3/*.conf
 /cfg/php-fpm-7.4/*.conf
 
+# Ignore custom PHP-FPM startup scripts
+/autostart/*.sh
+/cfg/php-startup-5.2/*.sh
+/cfg/php-startup-5.3/*.sh
+/cfg/php-startup-5.4/*.sh
+/cfg/php-startup-5.5/*.sh
+/cfg/php-startup-5.6/*.sh
+/cfg/php-startup-7.0/*.sh
+/cfg/php-startup-7.1/*.sh
+/cfg/php-startup-7.2/*.sh
+/cfg/php-startup-7.3/*.sh
+/cfg/php-startup-7.4/*.sh
+
 # Ignore custom PHP-FPM modules
 /mod/php-fpm-5.2/*.so
 /mod/php-fpm-5.3/*.so
@@ -104,6 +117,15 @@
 /docs/make.bat
 /docs/linkcheck
 *.rst.todo
+
+# Ignore vhost-gen files in test dir (copied on the fly)
+/.tests/vhost-tests/my-vhost/.devilbox/apache22.yml
+/.tests/vhost-tests/my-vhost/.devilbox/apache24.yml
+/.tests/vhost-tests/my-vhost/.devilbox/nginx.yml
+
+/.tests/vhost-tests/my-rhost/.devilbox/apache22.yml
+/.tests/vhost-tests/my-rhost/.devilbox/apache24.yml
+/.tests/vhost-tests/my-rhost/.devilbox/nginx.yml
 
 # Keep folders
 !.keepme

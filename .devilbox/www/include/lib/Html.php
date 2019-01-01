@@ -95,6 +95,11 @@ class Html
 					'target' => '_blank'
 				),
 				array(
+					'name' => 'phpPgAdmin',
+					'path' => '__PHPPGADMIN__',
+					'target' => '_blank'
+				),
+				array(
 					'name' => 'PHPRedMin',
 					'path' => '/vendor/phpredmin/public/index.php',
 					'target' => '_blank'
@@ -384,6 +389,9 @@ HTML;
 					// Replace
 					if ($el['path'] == '__PHPMYADMIN__') {
 						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.5', '<')) ? '/vendor/phpmyadmin-4.0/index.php' : '/vendor/phpmyadmin-4.8.4/index.php';
+					}
+					if ($el['path'] == '__PHPPGADMIN__') {
+						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.2', '<')) ? '/vendor/phpmyadmin-4.0/' : '/vendor/phppgadmin-5.6.0/';
 					}
 					if ($el['path'] == '__ADMINER__') {
 						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) ? '/vendor/adminer-4.6.3-en.php' : '/vendor/adminer-4.7.0-en.php';

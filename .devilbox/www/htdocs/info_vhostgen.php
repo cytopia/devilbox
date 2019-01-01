@@ -47,7 +47,7 @@ $vhost = htmlentities($vhost);
 							<p>Note: If the resulting virtual host config does not reflect the vhost-gen template changes, you will need to restart the Devilbox.</p>
 							<a href="/vhosts.php"><i class="fa fa-chevron-left" aria-hidden="true"></i> Overview</a><br/>
 							<br/><h3>virtual host config</h3><br/>
-								<a title="Virtual host: <?php echo $vHost['name'];?>.conf" target="_blank" href="/vhost.d/<?php echo $vhost;?>.conf">
+								<a title="Virtual host: <?php echo $vhost;?>.conf" target="_blank" href="/vhost.d/<?php echo $vhost;?>.conf">
 									<i class="fa fa-external-link" aria-hidden="true"></i> <?php echo $vhost;?>.conf
 								</a>
 							<br/><br/><h3>vhost-gen config</h3><br/>

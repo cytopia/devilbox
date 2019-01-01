@@ -20,7 +20,7 @@ You can also build the documentation locally before pushing to ensure everything
 #### Requirements
 
 ```
-sudo pip install sphinx sphinx-autobuild
+sudo pip install sphinx sphinx-autobuild recommonmark
 sudo pip install sphinx_rtd_theme
 ```
 #### How to build and error-check

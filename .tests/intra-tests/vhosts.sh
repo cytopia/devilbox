@@ -11,7 +11,7 @@ set -o pipefail
 #
 
 
-VHOST="${1:-vhost-tests}"
+VHOST="${1:-my-vhost}"
 
 VHOST_GEN_URL="/info_vhostgen.php?name=${VHOST}"
 VHOST_URL="/vhost.d/${VHOST}.conf"

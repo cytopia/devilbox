@@ -6,6 +6,11 @@
 Blogs, Videos and Use-cases
 ***************************
 
+**Table of Contents**
+
+.. contents:: :local:
+
+
 Official videos
 ===============
 
@@ -14,6 +19,18 @@ even if the intranet UI has changed a bit.
 
 .. include:: /_includes/figures/blogs/youtube-setup-and-workflow.rst
 .. include:: /_includes/figures/blogs/youtube-email-catch-all.rst
+
+
+Conferences
+===========
+
+DrupalCamp Ghent 2018
+---------------------
+
+Simple local development with Devilbox:
+
+* |ext_lnk_blog_drupalcamp_ghent_2018_presentation|
+* |ext_lnk_blog_drupalcamp_ghent_2018_slides|
 
 
 Blog posts
