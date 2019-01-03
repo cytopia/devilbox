@@ -203,8 +203,9 @@ host is ready to be served with your custom domain.
    :caption: Support
    :maxdepth: 1
 
-   support/artwork
-   support/blogs-videos-and-use-cases
+   Devilbox Forums <https://devilbox.discourse.group/>
    support/troubleshooting
    support/faq
    support/howto
+   support/blogs-videos-and-use-cases
+   support/artwork
