@@ -25,15 +25,12 @@ class Pgsql extends BaseClass implements BaseInterface
 	 * Constructor Overwrite
 	 *
 	 *********************************************************************************/
-
-	/**
-	 * Use singleton getInstance() instead.
-	 *
-	 * @param string $user     Username
-	 * @param string $pass     Password
-	 * @param string $host     Host
-	 * @param string $database Database name
-	 */
+    /**
+     * Use singleton getInstance() instead.
+     *
+     * @param $hostname
+     * @param array $data
+     */
 	public function __construct($hostname, $data = array())
 	{
 		parent::__construct($hostname, $data);
@@ -84,7 +81,7 @@ class Pgsql extends BaseClass implements BaseInterface
 	 *
 	 * @param  string   $query    Postgres Query
 	 * @param  function $callback Callback function
-	 * @return mixed[]
+	 * @return bool|mixed[]
 	 */
 	public function select($query, $callback = null)
 	{
@@ -103,6 +100,7 @@ class Pgsql extends BaseClass implements BaseInterface
 
 		if ($callback) {
 			while ($row = pg_fetch_assoc($result)) {
+			    //?
 				$callback($row, $data);
 			}
 		} else {

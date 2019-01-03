@@ -20,13 +20,14 @@ class Mysql extends BaseClass implements BaseInterface
 	private $_link = null;
 
 
-
-	/*********************************************************************************
-	 *
-	 * Constructor Overwrite
-	 *
-	 *********************************************************************************/
-
+    /*********************************************************************************
+     *
+     * Constructor Overwrite
+     *
+     ********************************************************************************
+     * @param $hostname
+     * @param array $data
+     */
 	public function __construct($hostname, $data = array())
 	{
 		parent::__construct($hostname, $data);
@@ -88,6 +89,7 @@ class Mysql extends BaseClass implements BaseInterface
 
 		if ($callback) {
 			while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+			    //?
 				$callback($row, $data);
 			}
 		} else {

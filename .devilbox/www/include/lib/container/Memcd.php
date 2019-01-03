@@ -26,13 +26,12 @@ class Memcd extends BaseClass implements BaseInterface
 	 *
 	 *********************************************************************************/
 
-	/**
-	 * Use singleton getInstance() instead.
-	 *
-	 * @param string $user Username
-	 * @param string $pass Password
-	 * @param string $host Host
-	 */
+    /**
+     * Use singleton getInstance() instead.
+     *
+     * @param $hostname
+     * @param array $data
+     */
 	public function __construct($hostname, $data = array())
 	{
 		parent::__construct($hostname, $data);
@@ -51,19 +50,25 @@ class Memcd extends BaseClass implements BaseInterface
 			$stats = $memcd->getStats();
 			if (!isset($stats[$hostname.':11211'])) {
 				$memcd->quit();
+				// member has private access
 				$this->_connect_error = 'Failed to connect to Memcached host on '.$hostname.' (no connection array)';
+                // member has private access
 				$this->_connect_errno = 1;
 				return;
 			}
 			else if (!isset($stats[$hostname.':11211']['pid'])) {
 				$memcd->quit();
+                // member has private access
 				$this->_connect_error = 'Failed to connect to Memcached host on '.$hostname.' (no pid)';
+                // member has private access
 				$this->_connect_errno = 2;
 				return;
 			}
 			else if ($stats[$hostname.':11211']['pid'] < 1) {
 				$memcd->quit();
+                // member has private access
 				$this->_connect_error = 'Failed to connect to Memcached host on '.$hostname.' (invalid pid)';
+                // member has private access
 				$this->_connect_errno = 3;
 				return;
 			}
