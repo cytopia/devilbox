@@ -60,7 +60,7 @@ DEVILBOX_PATH=.
 ### If you are on windows, you will probably have to change
 ### it to the IP address of the docker machine.
 ###
-### a.) Leave blank, to listen on all interfaces (no trailing color ':')
+### a.) Leave blank, to listen on all interfaces (no trailing colon ':')
 ###    LOCAL_LISTEN_ADDR=
 ### b.) If an IP is specified, note the trailing colon ':'
 ###    LOCAL_LISTEN_ADDR=127.0.0.1:
