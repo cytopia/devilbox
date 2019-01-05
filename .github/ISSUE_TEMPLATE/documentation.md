@@ -1,6 +1,9 @@
 ---
-name: 📝 Documentation
+name: "\U0001F4DD Documentation"
 about: Anything related to the Devilbox documentation
+title: ''
+labels: documentation
+assignees: ''
 
 ---
 
@@ -25,4 +28,3 @@ about: Anything related to the Devilbox documentation
 
 #### Goal
 <!-- Explain what you actually want to accomplish -->
-
