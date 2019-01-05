@@ -1,0 +1,9 @@
+# IMPORTANT: The version must match the version of docker-compose.yml
+version: '2.1'
+
+# The following override shows an example that disables a service
+services:
+  pgsql:
+    image: alpine
+    entrypoint: []
+
