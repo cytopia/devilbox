@@ -40,7 +40,8 @@
 ###
 vhost: |
   <VirtualHost __DEFAULT_VHOST__:__PORT__>
-      ServerName   __VHOST_NAME__
+      ServerName __VHOST_NAME__
+      Protocols  __HTTP_PROTO__
 
       CustomLog  "__ACCESS_LOG__" combined
       ErrorLog   "__ERROR_LOG__"
