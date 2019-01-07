@@ -1,15 +1,28 @@
 ---
-name: ❔ Question
-about: Everything works and you just have a question regarding the Devilbox
+name: "❔ Question"
+about: 'Consider using the Devilbox Forum instead: https://devilbox.discourse.group/'
+title: ''
+labels: ''
+assignees: ''
 
 ---
 
+<!-- ---------- GITHUB QUESTIONS ARE DEPRECATED ---------- -->
+<!-- ---------- USE THE FORUM ---------- ->
+
+<!-- ---------- https://devilbox.discourse.group/ ---------- ->
+
+
 <!---
-1. Verify first that your question is not already reported on GitHub.
+1. A better place for questions is: https://devilbox.discourse.group/
 
-2. Verify that your question is not covered in the docs: https://devilbox.readthedocs.io
+2. VERIFY first that your question is not already reported on GitHub.
 
-3. PLEASE FILL OUT ALL REQUIRED INFORMATION BELOW! Otherwise it might take more time to properly handle this question.
+3. VERIFY that your question is not covered in the docs: https://devilbox.readthedocs.io
+
+4. VERIFY that your question is not covered in the forum: https://devilbox.discourse.group/
+
+5. PLEASE FILL OUT ALL REQUIRED INFORMATION BELOW! Otherwise it might take more time to properly handle this question.
 -->
 
 
@@ -25,4 +38,3 @@ about: Everything works and you just have a question regarding the Devilbox
 
 #### Goal
 <!-- Explain what you actually want to accomplish -->
-

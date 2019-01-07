@@ -73,7 +73,7 @@ In that newly created file, you can simply add the full paths (path inside the D
 of your Javascript files that need to be started. There is already one example which is not
 commented. Change this to your path and add as many lines as you have projects to startup.
 
-.. literalinclude:: ../../autostart/run-node-js-projects.sh
+.. literalinclude:: ../../autostart/run-node-js-projects.sh-example
    :caption: autostart/run-node-js-projects.sh
    :language: bash
    :emphasize-lines: 16
