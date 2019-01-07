@@ -65,38 +65,40 @@ The Devilbox has a lot of features reaching from a simple single-user developmen
 works out of the box up to a shared development infrastructure for a corporate network.
 
 In order to be aware about all that features, ensure to have skimmed over the
-[documentation](https://devilbox.readthedocs.io), so you know what can be done and how that might
+**[documentation](https://devilbox.readthedocs.io)**, so you know what can be done and how that might
 simplify your every-day life. If you ever run into any unforseen issues, feel free to join the
-[chat](https://gitter.im/devilbox/Lobby) and get support quickly.
+**[chat](https://gitter.im/devilbox/Lobby)** or visit the **[forums](https://devilbox.discourse.group)** and get community support quickly.
 
 <table width="100%" style="width:100%; display:table;">
  <thead>
   <tr>
-   <th width="33%" style="width:33%;"><h3><a href="https://devilbox.readthedocs.io" >Documentation</a></h3></th>
-   <th width="33%" style="width:33%;"><h3><a href="https://gitter.im/devilbox/Lobby" >Chat</a></h3></th>
-   <th width="33%" style="width:33%;"><h3>Forum</h3></th>
+   <th width="33%" style="width:33%;"><h3><a target="_blank" href="https://devilbox.readthedocs.io">Documentation</a></h3></th>
+   <th width="33%" style="width:33%;"><h3><a target="_blank" href="https://gitter.im/devilbox/Lobby">Chat</a></h3></th>
+   <th width="33%" style="width:33%;"><h3><a target="_blank" href="https://devilbox.discourse.group">Forum</a></h3></th>
   </tr>
  </thead>
  <tbody style="vertical-align: middle; text-align: center;">
   <tr>
    <td>
-    <a href="https://devilbox.readthedocs.io">
+    <a target="_blank" href="https://devilbox.readthedocs.io">
 	 <img title="Documentation" name="Documentation" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/readthedocs.png" />
     </a>
    </td>
    <td>
-    <a href="https://gitter.im/devilbox/Lobby">
+    <a target="_blank" href="https://gitter.im/devilbox/Lobby">
      <img title="Chat on Gitter" name="Chat on Gitter" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/gitter.png" />
     </a>
    </td>
    <td>
-    <img title="Forum" name="Forum" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discourse.png" />
+    <a target="_blank" href="https://devilbox.discourse.group">
+	 <img title="Devilbox Forums" name="Forum" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discourse.png" />
+	</a>
    </td>
   </tr>
   <tr>
-  <td><a href="https://devilbox.readthedocs.io">devilbox.readthedocs.io</a></td>
-  <td><a href="https://gitter.im/devilbox/Lobby">gitter.im/devilbox</a></td>
-  <td>coming soon</td>
+  <td><a target="_blank" href="https://devilbox.readthedocs.io">devilbox.readthedocs.io</a></td>
+  <td><a target="_blank" href="https://gitter.im/devilbox/Lobby">gitter.im/devilbox</a></td>
+  <td><a target="_blank" href="https://devilbox.discourse.group">devilbox.discourse.group</a></td>
   </tr>
  </tbody>
 </table>
@@ -400,6 +402,10 @@ The Devilbox has everything setup for you. The only thing you will have to insta
 <table>
 <tbody>
   <tr>
+    <td width="220" style="width:220px;">:star: HTTP/2 support</td>
+    <td>All HTTPS connections will offer <a href="https://en.wikipedia.org/wiki/HTTP/2">HTTP/2</a> as the default protocol, except for Apache 2.2 which does not support it.</td>
+  </tr>
+  <tr>
     <td width="220" style="width:220px;">:star: Auto virtual hosts</td>
     <td>New virtual hosts are created automatically and instantly whenever you add a project directory. This is done internally via <a href="https://travis-ci.org/devilbox/vhost-gen">vhost-gen</a> and <a href="https://github.com/devilbox/watcherd">watcherd</a>.</td>
   </tr>
@@ -421,7 +427,7 @@ The Devilbox has everything setup for you. The only thing you will have to insta
   </tr>
   <tr>
     <td>:star: Custom domains</td>
-    <td>Choose whatever development domain you desire: <code>*.loc</code>, <code>*.local</code>, <code>*.dev</code> or use real domains as well: <code>*.example.com</code></td>
+    <td>Choose whatever development domain you desire: <code>*.loc</code>, <code>*.dev</code> or use real domains as well: <code>*.example.com</code></td>
   </tr>
   <tr>
     <td>:star: Auto DNS</td>
@@ -649,6 +655,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | mysql          |    ✔    |    ✔    |    🗸    |    🗸    |    🗸    |         |         |         |         |         |
 | mysqli         |    ✔    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | mysqlnd        |         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
+| oci8           |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |
 | openssl        |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | pcntl          |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | pcre           |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
@@ -656,6 +663,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | pdo_dblib      |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | PDO_Firebird   |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | pdo_mysql      |    ✔    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
+| PDO_OCI        |         |         |         |         |         |    d    |    d    |    d    |    d    |    d    |
 | pdo_pgsql      |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | pdo_sqlite     |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | pdo_sqlsrv     |         |         |         |         |         |    d    |    d    |    d    |    d    |         |

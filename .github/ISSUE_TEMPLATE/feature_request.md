@@ -1,6 +1,9 @@
 ---
-name: ✨ Feature request
+name: "✨ Feature request"
 about: Suggest an idea for this project
+title: ''
+labels: feature
+assignees: ''
 
 ---
 
@@ -25,4 +28,3 @@ about: Suggest an idea for this project
 
 #### Goal
 <!-- Explain what you actually want to accomplish with that feature -->
-
