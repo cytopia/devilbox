@@ -178,6 +178,10 @@ class Mail_mimeDecode extends PEAR
         $this->_rfc822_bodies  = false;
     }
     // BC
+
+    /**
+     * @param $input
+     */
     function Mail_mimeDecode($input)
     {
         $this->__construct($input);
@@ -248,8 +252,9 @@ class Mail_mimeDecode extends PEAR
      * If it finds certain content-types it will call itself in a
      * recursive fashion
      *
-     * @param string Header section
-     * @param string Body section
+     * @param $headers
+     * @param $body
+     * @param string $default_ctype
      * @return object Results of decoding process
      * @access private
      */
@@ -332,7 +337,6 @@ class Mail_mimeDecode extends PEAR
                 case 'multipart/parallel':
                 case 'multipart/appledouble': // Appledouble mail
                 case 'multipart/report': // RFC1892
-                case 'multipart/signed': // PGP
                 case 'multipart/digest':
                 case 'multipart/alternative':
                 case 'multipart/related':

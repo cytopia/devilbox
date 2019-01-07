@@ -115,11 +115,11 @@ class Logger
 	 *********************************************************************************/
 
 
-
-	/**
-	 * Log errors
-	 * @param  string $message The message to log
-	 */
+    /**
+     * Log errors
+     * @param  string $message The message to log
+     * @return bool
+     */
 	public function error($message)
 	{
 		ob_start();

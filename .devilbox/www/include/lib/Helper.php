@@ -34,15 +34,13 @@ class Helper
 	private static $_instance = null;
 
 
-	/**
-	 * Generic singleton instance getter.
-	 * Make sure to overwrite this in your class
-	 * for a more complex initialization.
-	 *
-	 * @param string $hostname Hostname
-	 * @param array  $data Additional data (if required)
-	 * @return object|null
-	 */
+    /**
+     * Generic singleton instance getter.
+     * Make sure to overwrite this in your class
+     * for a more complex initialization.
+     *
+     * @return object|null
+     */
 	public static function getInstance()
 	{
 		if (self::$_instance === null) {
@@ -108,12 +106,12 @@ class Helper
 	}
 
 
-
-	/**
-	 * Retrieve the IP address of the container.
-	 *
-	 * @return string|boolean IP address or false
-	 */
+    /**
+     * Retrieve the IP address of the container.
+     *
+     * @param $hostname
+     * @return string|boolean IP address or false
+     */
 	public function getIpAddress($hostname)
 	{
 		// Request was already done before and is cached
@@ -123,6 +121,7 @@ class Helper
 
 		// New request, generic check
 		// Note the traiing dot to prevent recursive lookups
+        //TODO ?
 		//$ip = $this->exec('ping -c 1 '.$hostname.'. 2>/dev/null | grep -Eo \'[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\' | head -1');
 		$ip = gethostbyname($hostname.'');
 

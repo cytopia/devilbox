@@ -2,6 +2,10 @@
 
 namespace devilbox;
 
+/**
+ * Class Sort
+ * @package devilbox
+ */
 class Sort
 {
 

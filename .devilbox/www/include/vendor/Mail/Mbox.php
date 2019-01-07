@@ -210,6 +210,7 @@ class Mail_Mbox extends PEAR
      * Also, this function will process the Mbox and create a cache
      * that tells each message start and end bytes.
      *
+     * @param bool $create
      * @return boolean|PEAR_Error True if all went ok, PEAR_Error on failure
      * @access public
      */
@@ -908,4 +909,4 @@ class Mail_Mbox extends PEAR
         return $this->autoReopen;
     }
 }
-?>
+
