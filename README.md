@@ -553,6 +553,10 @@ The following tools will assist you on creating new projects easily as well as h
     <td><code>phpcbf</code> is a command line tool that automatically correct coding standard violations.</td>
   </tr>
   <tr>
+    <td>:wrench: <a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">php cs fixer</a></td>
+    <td><code>php-cs-fixer</code> is a tool to automatically fix PHP Coding Standards issues.</td>
+  </tr>
+  <tr>
     <td>:wrench: <a href="https://github.com/Unitech/pm2">pm2</a></td>
     <td><code>pm2</code> is Node.js Production Process Manager with a built-in Load Balancer.</td>
   </tr>
