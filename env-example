@@ -458,9 +458,11 @@ HOST_PATH_MONGO_DATADIR=./data/mongo
 ###
 ### Enable certain PHP modules which are not enabled by default
 ###
-### Currently the only module that can be enabled is 'ioncube'
+### Currently the only modules that can be enabled are 'ioncube' and 'blackfire'
+### Also ensure to disable xdebug when using any of the above:
+### https://xdebug.org/docs/install#compat
 ###
-### PHP_MODULES_ENABLE=ioncube
+### PHP_MODULES_ENABLE=ioncube, blackfire
 ###
 PHP_MODULES_ENABLE=
 
@@ -472,7 +474,7 @@ PHP_MODULES_ENABLE=
 ###
 ### PHP_MODULES_DISABLE=xdebug,imagick,swoole
 ###
-PHP_MODULES_DISABLE=blackfire,oci8,PDO_OCI,pdo_sqlsrv,sqlsrv,rdkafka,swoole
+PHP_MODULES_DISABLE=oci8,PDO_OCI,pdo_sqlsrv,sqlsrv,rdkafka,swoole
 
 
 ###
