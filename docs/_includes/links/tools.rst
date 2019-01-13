@@ -159,6 +159,12 @@
      PHP CodeSniffer <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_tool_php_cs_fixer| raw:: html
+
+   <a target="_blank" href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">
+     PHP-CS-Fixer <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_tool_phpcbf| raw:: html
 
    <a target="_blank" href="https://github.com/squizlabs/PHP_CodeSniffer">
