@@ -2,6 +2,7 @@
 <?php loadClass('Helper')->authPage(); ?>
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<?php echo loadClass('Html')->getHead(); ?>
 	</head>

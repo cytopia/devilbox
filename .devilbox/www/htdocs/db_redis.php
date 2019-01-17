@@ -59,7 +59,7 @@ if (isset($_GET['redisdb'])) {
 												Database: <?php echo $db_name; ?>&nbsp;&nbsp;&nbsp;&nbsp;
 												Items: <?php echo count($keys); ?>
 											</th>
-										</th>
+										</tr>
 										<tr class="table-info">
 											<tr>
 												<th>DB</th>

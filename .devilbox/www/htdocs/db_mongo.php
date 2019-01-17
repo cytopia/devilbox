@@ -23,7 +23,7 @@
 					<?php else: ?>
 						<table class="table table-striped ">
 							<thead class="thead-inverse ">
-								<tr>
+								<th>
 									<th>Name</th>
 									<th>Size</th>
 									<th>Empty</th>

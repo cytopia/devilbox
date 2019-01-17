@@ -50,6 +50,10 @@ $MONGO_HOST_NAME	= 'mongo';
 //
 // Lazy Container Loader
 //
+/**
+ * @param $class
+ * @param $base_path
+ */
 function loadFile($class, $base_path) {
 	static $_LOADED_FILE;
 
@@ -61,6 +65,12 @@ function loadFile($class, $base_path) {
 	$_LOADED_FILE[$class] = true;
 	return;
 }
+
+
+/**
+ * @param $class
+ * @return mixed
+ */
 function loadClass($class) {
 
 	static $_LOADED_LIBS;
