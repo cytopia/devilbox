@@ -1,0 +1,91 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# -------------------------------------------------------------------------------------------------
+# Default configuration
+# -------------------------------------------------------------------------------------------------
+# top-most EditorConfig file
+root = true
+
+# Default for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# -------------------------------------------------------------------------------------------------
+# Devilbox Intranet
+# -------------------------------------------------------------------------------------------------
+# Intranet CSS
+[.devilbox/www/htdocs/assets/css/*.css]
+indent_style = tab
+indent_size = 4
+
+# Intranet config
+[.devilbox/www/config.php]
+indent_style = tab
+indent_size = 4
+
+# Intranet libs
+[.devilbox/www/include/lib/**.php]
+indent_style = tab
+indent_size = 4
+
+# Intranet pages
+[.devilbox/www/htdocs/*.php]
+indent_style = tab
+indent_size = 4
+
+# -------------------------------------------------------------------------------------------------
+# Devilbox Git Repository
+# -------------------------------------------------------------------------------------------------
+[.travis.yml]
+indent_style = space
+indent_size = 2
+
+[.tests/**.{php,sh}]
+indent_style = tab
+indent_size = 4
+
+[Makefile]
+indent_style = tab
+indent_size = 4
+
+# -------------------------------------------------------------------------------------------------
+# Devilbox Configuration and Scripts
+# -------------------------------------------------------------------------------------------------
+[{docker-compose.yml,docker-compose-override.yml,docker-compose-override.yml-example}]
+indent_style = space
+indent_size = 2
+
+[compose/docker-compose.override.yml-*]
+indent_style = space
+indent_size = 2
+
+[cfg/vhost-gen/*.yml-*]
+indent_style = space
+indent_size = 2
+
+[{nginx.yml,apache22.yml,apache24.yml}]
+indent_style = space
+indent_size = 2
+
+[{shell.bat,shell.sh,update-docker.sh}]
+indent_style = tab
+indent_size = 4
+
+# -------------------------------------------------------------------------------------------------
+# Devilbox Documentation
+# -------------------------------------------------------------------------------------------------
+[*.md]
+indent_style = space
+trim_trailing_whitespace = false
+indent_size = 2
+
+[docs/**.py]
+indent_style = space
+indent_size = 4
+
+[docs/**.rst]
+indent_style = space
+indent_size = 4
