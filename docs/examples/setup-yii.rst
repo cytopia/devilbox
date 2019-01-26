@@ -8,7 +8,7 @@ Setup Yii
 
 This example will use ``composer`` to install Yii from within the Devilbox PHP container.
 
-After completing the below listed steps, you will have a working Laravel setup ready to be
+After completing the below listed steps, you will have a working Yii setup ready to be
 served via http and https.
 
 .. seealso:: |ext_lnk_example_yii_documentation|
