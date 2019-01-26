@@ -42,7 +42,7 @@
 
 .. |ext_lnk_example_phalcon_documentation| raw:: html
 
-   <a target="_blank" href="https://docs.phalconphp.com/en/3.2/devtools-usage">
+   <a target="_blank" href="https://docs.phalconphp.com/latest/en/devtools-usage">
      Official Phalcon Documentation  <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
