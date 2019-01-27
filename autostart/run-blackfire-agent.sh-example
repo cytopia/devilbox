@@ -15,30 +15,51 @@ fi
 
 
 ###
-### Default Variables
+### Blackfire Server (Agent) Variables
 ###
-# Blackfire ID via env: BLACKFIRE_SERVER_ID
-BF_ID=
-# Blackfire Token via env: BLACKFIRE_SERVER_TOKEN
-BF_TOKEN=
-# Loglevel (4: debug, 3: info, 2: warning, 1: error)
-BF_LOGLEVEL=2
+# Blackfire Server ID via env: BLACKFIRE_SERVER_ID
+BF_SERVER_ID=
+# Blackfire Server Token via env: BLACKFIRE_SERVER_TOKEN
+BF_SERVER_TOKEN=
+# Blackfire Server Loglevel (4: debug, 3: info, 2: warning, 1: error)
+BF_SERVER_LOGLEVEL=2
 
 
 ###
-### Get ID and Token
+### Blackfire Client (cli) Variables
 ###
-if BF_ID="$( env | grep -Eo '^BLACKFIRE_SERVER_ID=.*$' )"; then
-	BF_ID="${BF_ID#*=}"
+# Blackfire Client ID via env: BLACKFIRE_SERVER_ID
+BF_CLIENT_ID=
+# Blackfire Client Token via env: BLACKFIRE_SERVER_TOKEN
+BF_CLIENT_TOKEN=
+
+
+###
+### Get Server ID and Server Token
+###
+if BF_SERVER_ID="$( env | grep -Eo '^BLACKFIRE_SERVER_ID=.*$' )"; then
+	BF_SERVER_ID="${BF_SERVER_ID#*=}"
 fi
 
-if BF_TOKEN="$( env | grep -Eo '^BLACKFIRE_SERVER_TOKEN=.*$' )"; then
-	BF_TOKEN="${BF_TOKEN#*=}"
+if BF_SERVER_TOKEN="$( env | grep -Eo '^BLACKFIRE_SERVER_TOKEN=.*$' )"; then
+	BF_SERVER_TOKEN="${BF_SERVER_TOKEN#*=}"
 fi
 
 
 ###
-### Create Config
+### Get Client ID and Client Token
+###
+if BF_CLIENT_ID="$( env | grep -Eo '^BLACKFIRE_CLIENT_ID=.*$' )"; then
+	BF_CLIENT_ID="${BF_CLIENT_ID#*=}"
+fi
+
+if BF_CLIENT_TOKEN="$( env | grep -Eo '^BLACKFIRE_CLIENT_TOKEN=.*$' )"; then
+	BF_CLIENT_TOKEN="${BF_CLIENT_TOKEN#*=}"
+fi
+
+
+###
+### Create Server (Agent) Config
 ###
 {
 	echo "[blackfire]";
@@ -80,19 +101,19 @@ fi
 	echo "; setting: log-level";
 	echo "; desc   : log verbosity level (4: debug, 3: info, 2: warning, 1: error)";
 	echo "; default: 1";
-	echo "log-level=${BF_LOGLEVEL}";
+	echo "log-level=${BF_SERVER_LOGLEVEL}";
 	echo "";
 	echo ";";
 	echo "; setting: server-id";
 	echo "; desc   : Sets the server id used to authenticate with Blackfire API";
 	echo "; default:";
-	echo "server-id=${BF_ID}";
+	echo "server-id=${BF_SERVER_ID}";
 	echo "";
 	echo ";";
 	echo "; setting: server-token";
 	echo "; desc   : Sets the server token used to authenticate with Blackfire API. It is unsafe to set this from the command line";
 	echo "; default:";
-	echo "server-token=${BF_TOKEN}";
+	echo "server-token=${BF_SERVER_TOKEN}";
 	echo "";
 	echo ";";
 	echo "; setting: socket";
@@ -109,6 +130,62 @@ fi
 
 
 ###
+### Create Client (cli) Config
+###
+{
+	echo "[blackfire]";
+	echo ";";
+	echo "; This is a configuration file for Blackfire.";
+	echo ";";
+	echo "";
+	echo ";";
+	echo "; setting: ca-cert";
+	echo "; desc   : Sets the PEM encoded certificates to use";
+	echo "; default:";
+	echo "ca-cert=";
+	echo "";
+	echo ";";
+	echo "; setting: client-id";
+	echo "; desc   : Sets the Client ID used for API authentication";
+	echo "; default:";
+	echo "client-id=${BF_CLIENT_ID}";
+	echo "";
+	echo ";";
+	echo "; setting: client-token";
+	echo "; desc   : Sets the Client Token used for API authentication";
+	echo "; default:";
+	echo "client-token=${BF_CLIENT_TOKEN}";
+	echo "";
+	echo ";";
+	echo "; setting: endpoint";
+	echo "; desc   : Sets the API endpoint";
+	echo "; default: https://blackfire.io";
+	echo "endpoint=https://blackfire.io";
+	echo "";
+	echo ";";
+	echo "; setting: http-proxy";
+	echo "; desc   : Sets the HTTP proxy to use";
+	echo "; default:";
+	echo "http-proxy=";
+	echo "";
+	echo ";";
+	echo "; setting: https-proxy";
+	echo "; desc   : Sets the HTTPS proxy to use";
+	echo "; default:";
+	echo "https-proxy=";
+	echo "";
+	echo ";";
+	echo "; setting: timeout";
+	echo "; desc   : Sets the Blackfire API connection timeout";
+	echo "; default: 15s";
+	echo "timeout=15s";
+} > /home/devilbox/.blackfire.ini
+
+chown devilbox:devilbox /home/devilbox/.blackfire.ini
+chmod 0600 /home/devilbox/.blackfire.ini
+
+
+###
 ### Start agent
 ###
-/etc/init.d/blackfire-agent restart
+/etc/init.d/blackfire-agent restart || true
