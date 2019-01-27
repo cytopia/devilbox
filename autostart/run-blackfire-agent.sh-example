@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+
+set -e
+set -u
+set -o pipefail
+
+
+###
+### Pre-flight check
+###
+if ! command -v blackfire-agent >/dev/null 2>&1; then
+	echo "No blackfire-agent binary available, skipping initialization"
+	exit 0
+fi
+
+
+###
+### Default Variables
+###
+# Blackfire ID via env: BLACKFIRE_SERVER_ID
+BF_ID=
+# Blackfire Token via env: BLACKFIRE_SERVER_TOKEN
+BF_TOKEN=
+# Loglevel (4: debug, 3: info, 2: warning, 1: error)
+BF_LOGLEVEL=2
+
+
+###
+### Get ID and Token
+###
+if BF_ID="$( env | grep -Eo '^BLACKFIRE_SERVER_ID=.*$' )"; then
+	BF_ID="${BF_ID#*=}"
+fi
+
+if BF_TOKEN="$( env | grep -Eo '^BLACKFIRE_SERVER_TOKEN=.*$' )"; then
+	BF_TOKEN="${BF_TOKEN#*=}"
+fi
+
+
+###
+### Create Config
+###
+{
+	echo "[blackfire]";
+	echo ";";
+	echo "; This is a configuration file for Blackfire's Agent.";
+	echo ";";
+	echo "";
+	echo ";";
+	echo "; setting: ca-cert";
+	echo "; desc   : Sets the PEM encoded certificates";
+	echo "; default:";
+	echo "ca-cert=";
+	echo "";
+	echo ";";
+	echo "; setting: collector";
+	echo "; desc   : Sets the URL of Blackfire's data collector";
+	echo "; default: https://blackfire.io";
+	echo "collector=https://blackfire.io";
+	echo "";
+	echo ";";
+	echo "; setting: http-proxy";
+	echo "; desc   : Sets the HTTP proxy to use";
+	echo "; default:";
+	echo "http-proxy=";
+	echo "";
+	echo ";";
+	echo "; setting: https-proxy";
+	echo "; desc   : Sets the HTTPS proxy to use";
+	echo "; default:";
+	echo "https-proxy=";
+	echo "";
+	echo ";";
+	echo "; setting: log-file";
+	echo "; desc   : Sets the path of the log file. Use stderr to log to stderr";
+	echo "; default: stderr";
+	echo "log-file=stderr";
+	echo "";
+	echo ";";
+	echo "; setting: log-level";
+	echo "; desc   : log verbosity level (4: debug, 3: info, 2: warning, 1: error)";
+	echo "; default: 1";
+	echo "log-level=${BF_LOGLEVEL}";
+	echo "";
+	echo ";";
+	echo "; setting: server-id";
+	echo "; desc   : Sets the server id used to authenticate with Blackfire API";
+	echo "; default:";
+	echo "server-id=${BF_ID}";
+	echo "";
+	echo ";";
+	echo "; setting: server-token";
+	echo "; desc   : Sets the server token used to authenticate with Blackfire API. It is unsafe to set this from the command line";
+	echo "; default:";
+	echo "server-token=${BF_TOKEN}";
+	echo "";
+	echo ";";
+	echo "; setting: socket";
+	echo "; desc   : Sets the socket the agent should read traces from. Possible value can be a unix socket or a TCP address. ie: unix:///var/run/blackfire/agent.sock or tcp://127.0.0.1:8307";
+	echo "; default: unix:///var/run/blackfire/agent.sock";
+	echo "socket=unix:///var/run/blackfire/agent.sock";
+	echo "";
+	echo ";";
+	echo "; setting: spec";
+	echo "; desc   : Sets the path to the JSON specifications file";
+	echo "; default:";
+	echo "spec=";
+} > /etc/blackfire/agent
+
+
+###
+### Start agent
+###
+/etc/init.d/blackfire-agent restart
