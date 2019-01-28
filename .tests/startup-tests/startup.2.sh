@@ -16,16 +16,15 @@ cd "${COMPOSEPATH}" && docker-compose exec -T php bash -c "find /startup.2.d/*.s
 	echo "# ----------------------------------------------------------------------------------------"
 	echo "# [TEST] ${f}"
 	echo "# ----------------------------------------------------------------------------------------"
-	if ! docker exec -t ${CONTAINER} bash "${f}" | grep -q "No projects defined"; then
+	if ! docker exec -t ${CONTAINER} bash "${f}"; then
 		sleep 5
-		if ! docker exec -t ${CONTAINER} bash "${f}" | grep -q "No projects defined"; then
+		if ! docker exec -t ${CONTAINER} bash "${f}"; then
 			sleep 5
-			if ! docker exec -t ${CONTAINER} bash "${f}" | grep -q "No projects defined"; then
+			if ! docker exec -t ${CONTAINER} bash "${f}"; then
 				sleep 5
-				if ! docker exec -t ${CONTAINER} bash "${f}" | grep -q "No projects defined"; then
+				if ! docker exec -t ${CONTAINER} bash "${f}"; then
 					sleep 5
-					if ! docker exec -t ${CONTAINER} bash "${f}" | grep -q "No projects defined"; then
-						docker exec -t ${CONTAINER} bash "${f}" || true
+					if ! docker exec -t ${CONTAINER} bash "${f}"; then
 						echo "[FAIl] ${f}"
 						exit 1
 					fi
@@ -34,4 +33,6 @@ cd "${COMPOSEPATH}" && docker-compose exec -T php bash -c "find /startup.2.d/*.s
 		fi
 	fi
 	echo "[OK]   ${f}"
+	echo
+	echo
 done

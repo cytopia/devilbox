@@ -1183,7 +1183,7 @@ Enable any non-standard PHP modules in a comma separated list.
 +------------------------+--------------------------------------+------------------+
 
 .. note::
-   Currently only ``ioncube`` is available to enable.
+   Currently only ``ioncube`` and ``blackfire`` are available to enable.
 
 Example:
 
@@ -1194,6 +1194,33 @@ Example:
    # Enable ionCube
    PHP_MODULES_ENABLE=ioncube
 
+   # When enabling blackfire or ionCube you must also disable xdebug:
+   # https://xdebug.org/docs/install#compat
+   PHP_MODULES_DISABLE=xdebug
+
+.. code-block:: bash
+   :caption: .env
+   :emphasize-lines: 2
+
+   # Enable blackfire
+   PHP_MODULES_ENABLE=blackfire
+
+   # When enabling blackfire or ionCube you must also disable xdebug:
+   # https://xdebug.org/docs/install#compat
+   PHP_MODULES_DISABLE=xdebug
+
+.. code-block:: bash
+   :caption: .env
+   :emphasize-lines: 2
+
+   # Enable both, blackfire and ionCube
+   PHP_MODULES_ENABLE=blackfire,ioncube
+
+   # When enabling blackfire or ionCube you must also disable xdebug:
+   # https://xdebug.org/docs/install#compat
+   PHP_MODULES_DISABLE=xdebug
+
+
 .. _env_file_php_modules_disable:
 
 PHP_MODULES_DISABLE
@@ -1201,11 +1228,11 @@ PHP_MODULES_DISABLE
 
 Disable any PHP modules in a comma separated list.
 
-+-------------------------+--------------------------------------+-------------------------------------------------------------+
-| Name                    | Allowed values                       | Default value                                               |
-+=========================+======================================+=============================================================+
-| ``PHP_MODULES_DISABLE`` | comma separated list of module names | ``blackfire,oci8,PDO_OCI,pdo_sqlsrv,sqlsrv,rdkafka,swoole`` |
-+-------------------------+--------------------------------------+-------------------------------------------------------------+
++-------------------------+--------------------------------------+---------------------------------------------------+
+| Name                    | Allowed values                       | Default value                                     |
++=========================+======================================+===================================================+
+| ``PHP_MODULES_DISABLE`` | comma separated list of module names | ``oci8,PDO_OCI,pdo_sqlsrv,sqlsrv,rdkafka,swoole`` |
++-------------------------+--------------------------------------+---------------------------------------------------+
 
 Example:
 
