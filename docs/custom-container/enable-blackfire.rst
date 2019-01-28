@@ -138,9 +138,11 @@ we must configure its PHP settings. There is already a default template that you
 
    host> cp cfg/php-ini-7.2/devilbox-php.ini-blackfire cfg/php-ini-7.2/blackfire.ini
 
-.. note::
+.. seealso::
    The above example shows the procedure for PHP 7.2, if you are using a different version,
    you must navigate to its corresponding configuration directory.
+
+   Read more here: :ref:`php_ini`
 
 
 4. Configure blackfire cli (optional)
@@ -196,9 +198,13 @@ directory:
    # Copy php.ini into place
    cp cfg/php-ini-7.2/devilbox-php.ini-blackfire cfg/php-ini-7.2/blackfire.ini
 
-   # Create .env variable
+   # Set Blackfire server id and token
    echo "BLACKFIRE_SERVER_ID=<valid server id>"       >> .env
    echo "BLACKFIRE_SERVER_TOKEN=<valid server token>" >> .env
+
+   # Set Blackfire client id and token
+   echo "BLACKFIRE_CLIENT_ID=<valid client id>"       >> .env
+   echo "BLACKFIRE_CLIENT_TOKEN=<valid client token>" >> .env
 
    echo "#BLACKFIRE_SERVER=1.12.0"                    >> .env
    echo "#BLACKFIRE_SERVER=1.13.0"                    >> .env
@@ -211,8 +217,12 @@ directory:
    echo "#BLACKFIRE_SERVER=1.18.0"                    >> .env
    echo "BLACKFIRE_SERVER=latest"                     >> .env
 
-   echo "PHP_MODULES_ENABLE=blackfire"                >> .env
-   echo "PHP_MODULES_DISABLE=xdebug"                  >> .env
+   # Ensure blackfire is enabled and xdebug is disabled
+   # IMPORTANT: This replacement is only an example and will overwrite
+   #            all other enabled/disabled modules.
+   #            Do not do it this way.
+   sed -i'' 's/^PHP_MODULES_ENABLE=.*/PHP_MODULES_ENABLE=blackfire/g' .env
+   sed -i'' 's/^PHP_MODULES_DISABLE=.*/PHP_MODULES_ENABLE=xdebug/g' .env
 
    # Start container
    docker-compose up -d php httpd bind blackfire
