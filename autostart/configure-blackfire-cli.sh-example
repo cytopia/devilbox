@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+set -e
+set -u
+set -o pipefail
+
+
+###
+### Blackfire Client (cli) Variables
+###
+# Blackfire Client ID via env: BLACKFIRE_SERVER_ID
+BF_CLIENT_ID=
+# Blackfire Client Token via env: BLACKFIRE_SERVER_TOKEN
+BF_CLIENT_TOKEN=
+
+
+###
+### Get Client ID and Client Token
+###
+if BF_CLIENT_ID="$( env | grep -Eo '^BLACKFIRE_CLIENT_ID=.*$' )"; then
+	BF_CLIENT_ID="${BF_CLIENT_ID#*=}"
+fi
+
+if BF_CLIENT_TOKEN="$( env | grep -Eo '^BLACKFIRE_CLIENT_TOKEN=.*$' )"; then
+	BF_CLIENT_TOKEN="${BF_CLIENT_TOKEN#*=}"
+fi
+
+
+###
+### Create Client (cli) Config
+###
+{
+	echo "[blackfire]";
+	echo ";";
+	echo "; This is a configuration file for Blackfire.";
+	echo ";";
+	echo "";
+	echo ";";
+	echo "; setting: ca-cert";
+	echo "; desc   : Sets the PEM encoded certificates to use";
+	echo "; default:";
+	echo "ca-cert=";
+	echo "";
+	echo ";";
+	echo "; setting: client-id";
+	echo "; desc   : Sets the Client ID used for API authentication";
+	echo "; default:";
+	echo "client-id=${BF_CLIENT_ID}";
+	echo "";
+	echo ";";
+	echo "; setting: client-token";
+	echo "; desc   : Sets the Client Token used for API authentication";
+	echo "; default:";
+	echo "client-token=${BF_CLIENT_TOKEN}";
+	echo "";
+	echo ";";
+	echo "; setting: endpoint";
+	echo "; desc   : Sets the API endpoint";
+	echo "; default: https://blackfire.io";
+	echo "endpoint=https://blackfire.io";
+	echo "";
+	echo ";";
+	echo "; setting: http-proxy";
+	echo "; desc   : Sets the HTTP proxy to use";
+	echo "; default:";
+	echo "http-proxy=";
+	echo "";
+	echo ";";
+	echo "; setting: https-proxy";
+	echo "; desc   : Sets the HTTPS proxy to use";
+	echo "; default:";
+	echo "https-proxy=";
+	echo "";
+	echo ";";
+	echo "; setting: timeout";
+	echo "; desc   : Sets the Blackfire API connection timeout";
+	echo "; default: 15s";
+	echo "timeout=15s";
+} > /home/devilbox/.blackfire.ini
+
+chown devilbox:devilbox /home/devilbox/.blackfire.ini
+chmod 0600 /home/devilbox/.blackfire.ini
