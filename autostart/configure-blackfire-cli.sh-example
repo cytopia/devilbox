@@ -6,13 +6,23 @@ set -o pipefail
 
 
 ###
+### Pre-flight check
+###
+if ! command -v blackfire >/dev/null 2>&1; then
+	echo "No blackfire cli found, skipping configuration."
+	exit 0
+fi
+
+
+###
 ### Blackfire Client (cli) Variables
 ###
 # Blackfire Client ID via env: BLACKFIRE_SERVER_ID
 BF_CLIENT_ID=
 # Blackfire Client Token via env: BLACKFIRE_SERVER_TOKEN
 BF_CLIENT_TOKEN=
-
+# Blackfire client configuration file
+BF_CLIENT_INI="/home/devilbox/.blackfire.ini"
 
 ###
 ### Get Client ID and Client Token
@@ -76,7 +86,7 @@ fi
 	echo "; desc   : Sets the Blackfire API connection timeout";
 	echo "; default: 15s";
 	echo "timeout=15s";
-} > /home/devilbox/.blackfire.ini
+} > "${BF_CLIENT_INI}"
 
-chown devilbox:devilbox /home/devilbox/.blackfire.ini
-chmod 0600 /home/devilbox/.blackfire.ini
+chown devilbox:devilbox "${BF_CLIENT_INI}"
+chmod 0600 "${BF_CLIENT_INI}"
