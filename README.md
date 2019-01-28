@@ -81,7 +81,7 @@ simplify your every-day life. If you ever run into any unforseen issues, feel fr
   <tr>
    <td>
     <a target="_blank" href="https://devilbox.readthedocs.io">
-	 <img title="Documentation" name="Documentation" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/readthedocs.png" />
+     <img title="Documentation" name="Documentation" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/readthedocs.png" />
     </a>
    </td>
    <td>
@@ -91,8 +91,8 @@ simplify your every-day life. If you ever run into any unforseen issues, feel fr
    </td>
    <td>
     <a target="_blank" href="https://devilbox.discourse.group">
-	 <img title="Devilbox Forums" name="Forum" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discourse.png" />
-	</a>
+     <img title="Devilbox Forums" name="Forum" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discourse.png" />
+    </a>
    </td>
   </tr>
   <tr>
