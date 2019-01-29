@@ -12,6 +12,7 @@ This section will guide you through getting Solr integrated into the Devilbox.
    * |ext_lnk_solr_github|
    * |ext_lnk_solr_dockerhub|
    * :ref:`custom_container_enable_all_additional_container`
+   * :ref:`docker_compose_override_yml_how_does_it_work`
 
 
 **Table of Contents**
