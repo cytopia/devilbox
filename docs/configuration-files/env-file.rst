@@ -495,7 +495,7 @@ password by which it will be protected.
 .. _env_devilbox_ui_enable:
 
 DEVILBOX_UI_ENABLE
--------------------
+------------------
 
 In case you want to completely disable the Devilbox intranet, such as when running it on production,
 you need to set this variable to ``0``.
@@ -509,6 +509,20 @@ ordering their names alphabetically.
 +=========================+================+===================+
 | ``DEVILBOX_UI_ENABLE``  | ``0`` or ``1`` | ``1``             |
 +-------------------------+----------------+-------------------+
+
+
+DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN
+------------------------------------
+
+By default phpMyAdmin will autologin without having to specify username or password. The phpMyAdmin
+vendor is not protected once you protect the Intranet. If you want users to enter username and
+password here as well, you should set the value to ``0``.
+
++-------------------------------------------+----------------+-------------------+
+| Name                                      | Allowed values | Default value     |
++===========================================+================+===================+
+| ``DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN``  | ``0`` or ``1`` | ``1``             |
++-------------------------------------------+----------------+-------------------+
 
 
 Docker image versions
