@@ -12,6 +12,7 @@ This section will guide you through getting Blackfire integrated into the Devilb
    * |ext_lnk_blackfire_github|
    * |ext_lnk_blackfire_dockerhub|
    * :ref:`custom_container_enable_all_additional_container`
+   * :ref:`docker_compose_override_yml_how_does_it_work`
 
 
 **Table of Contents**

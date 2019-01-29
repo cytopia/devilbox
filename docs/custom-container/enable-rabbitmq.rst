@@ -12,6 +12,7 @@ This section will guide you through getting RabbitMQ integrated into the Devilbo
    * |ext_lnk_rabbitmq_github|
    * |ext_lnk_rabbitmq_dockerhub|
    * :ref:`custom_container_enable_all_additional_container`
+   * :ref:`docker_compose_override_yml_how_does_it_work`
 
 
 **Table of Contents**
