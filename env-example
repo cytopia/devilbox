@@ -128,7 +128,6 @@ TIMEZONE=Europe/Berlin
 
 
 
-
 ################################################################################
 ###
 ### INTRANET SETTINGS
@@ -201,6 +200,16 @@ DEVILBOX_UI_PASSWORD=password
 ###   DEVILBOX_UI_ENABLE=0
 ###
 DEVILBOX_UI_ENABLE=1
+
+
+###
+### Automatically be logged in into phpMyAdmin
+###
+### Example:
+###   DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN=1
+###   DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN=0
+###
+DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN=1
 
 
 

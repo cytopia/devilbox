@@ -30,10 +30,14 @@ $i = 0;
  * First server
  */
 $i++;
-/* Authentication type */
-$cfg['Servers'][$i]['auth_type'] = 'config';
-$cfg['Servers'][$i]['user'] = 'root';
-$cfg['Servers'][$i]['password'] = getenv('MYSQL_ROOT_PASSWORD');
+if (getenv('DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN') == 1) {
+    /* Authentication type */
+    $cfg['Servers'][$i]['auth_type'] = 'config';
+    $cfg['Servers'][$i]['user'] = 'root';
+    $cfg['Servers'][$i]['password'] = getenv('MYSQL_ROOT_PASSWORD');
+} else {
+    $cfg['Servers'][$i]['auth_type'] = 'cookie';
+}
 /* Server parameters */
 $cfg['Servers'][$i]['host'] = 'mysql';
 $cfg['Servers'][$i]['compress'] = false;
