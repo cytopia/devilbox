@@ -7,8 +7,10 @@
  */
 
 if (!ini_get('session.auto_start')) {
-	session_name('PPA_ID'); 
-	session_start();
+	if (session_id() == '') {
+		session_name('PPA_ID');
+		session_start();
+	}
 }
 unset($_SESSION);
 session_destroy();
