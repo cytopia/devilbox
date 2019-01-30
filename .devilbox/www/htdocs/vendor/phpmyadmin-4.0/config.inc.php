@@ -27,13 +27,21 @@ $i = 0;
  * First server
  */
 $i++;
+
 /* Authentication type */
-$cfg['Servers'][$i]['auth_type'] = 'cookie';
+if (getenv('DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN') == 1) {
+    $cfg['Servers'][$i]['auth_type'] = 'config';
+    $cfg['Servers'][$i]['user'] = 'root';
+    $cfg['Servers'][$i]['password'] = getenv('MYSQL_ROOT_PASSWORD');
+} else {
+    $cfg['Servers'][$i]['auth_type'] = 'cookie';
+}
+
 /* Server parameters */
 $cfg['Servers'][$i]['host'] = 'mysql';
 $cfg['Servers'][$i]['connect_type'] = 'tcp';
 $cfg['Servers'][$i]['compress'] = false;
-$cfg['Servers'][$i]['AllowNoPassword'] = TRUE;
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
 /* Select mysql if your server does not have mysqli */
 $cfg['Servers'][$i]['extension'] = 'mysqli';
 
