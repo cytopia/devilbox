@@ -277,7 +277,6 @@ fi
 #	printf "\r[OK]   Submit phpMyAdmin POST login (1 round)\n"
 #fi
 
-
 printf "[TEST] Evaluate successful phpMyAdmin login"
 # 1st Try
 if [ "$( curl -sS -c cookie.txt -b cookie.txt localhost${URL} | tac | tac  | grep -Ec "(Databases<.+SQL<.+Status<.+Users<.+Export<)|(\"User accounts\")" )" != "1" ]; then
@@ -302,3 +301,19 @@ else
 	printf "\r[OK]   Evaluate successful phpMyAdmin login (1 round)\n"
 fi
 rm -f cookie.txt || true
+
+
+###
+### File permissions
+###
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+DVLBOXPATH="${SCRIPTPATH}/../../"
+PHPMYADMINPATH="${DVLBOXPATH}/.devilbox/www/htdocs${URL%index\.php}"
+
+printf "[TEST] config.inc.php read-only file permissions"
+if [ "$( stat --format '%a' "${PHPMYADMINPATH}config.inc.php" )" != "444" ]; then
+	printf "\r[FAIL] config.inc.php read-only file permissions: permission not 444\n"
+	exit 1
+else
+	printf "\r[OK]   config.inc.php read-only file permissions: permission 444\n"
+fi
