@@ -6,10 +6,22 @@
 ###  All the following settings are applied during
 ###  $ docker-compose up
 ###
-###  No need to rebuild any dockers!
+###  No need to rebuild any docker images!
 ###
-###  For custom variables, scroll to the bottom
+###  IMPORTANT:
+###  ----------
+###  When changing any values ensure to stop, rm and restart:
+###  $ docker-compose stop
+###  $ docker-compose rm -f
+###  $ docker-compose up
 ###
+###  NOTE:
+###  -----
+###  For you own custom variables, scroll to the bottom
+###
+
+# The following line will disable any shellcheck warnings throughout this file
+# shellcheck disable=SC2034,SC2125
 
 
 ###
@@ -210,6 +222,16 @@ DEVILBOX_UI_ENABLE=1
 ###   DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN=0
 ###
 DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN=1
+
+
+###
+### Automatically be logged in into phpPgAdmin
+###
+### Example:
+###   DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN=1
+###   DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN=0
+###
+DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN=1
 
 
 
