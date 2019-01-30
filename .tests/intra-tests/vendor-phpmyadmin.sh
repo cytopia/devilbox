@@ -277,7 +277,6 @@ fi
 #	printf "\r[OK]   Submit phpMyAdmin POST login (1 round)\n"
 #fi
 
-
 printf "[TEST] Evaluate successful phpMyAdmin login"
 # 1st Try
 if [ "$( curl -sS -c cookie.txt -b cookie.txt localhost${URL} | tac | tac  | grep -Ec "(Databases<.+SQL<.+Status<.+Users<.+Export<)|(\"User accounts\")" )" != "1" ]; then
@@ -302,3 +301,110 @@ else
 	printf "\r[OK]   Evaluate successful phpMyAdmin login (1 round)\n"
 fi
 rm -f cookie.txt || true
+
+
+###
+### Configuration File
+###
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+DVLBOXPATH="${SCRIPTPATH}/../../"
+CONFIGPATH="${DVLBOXPATH}/.devilbox/www/htdocs${URL%index\.php}config.inc.php"
+
+printf "[TEST] config.inc.php exists"
+if [ ! -f "${CONFIGPATH}" ]; then
+	printf "\r[FAIL] config.inc.php exists: no\n"
+	exit 1
+else
+	printf "\r[OK]   config.inc.php exists: yes\n"
+fi
+
+
+# error_reporting(-1);
+printf "[TEST] config.inc.php check: error_reporting(-1);"
+if ! grep -q "^error_reporting(-1);" "${CONFIGPATH}"; then
+	printf "\r[FAIL] config.inc.php check: error_reporting(-1);\n"
+	cat "${CONFIGPATH}"
+	exit 1
+else
+	printf "\r[OK]   config.inc.php check: error_reporting(-1);\n"
+fi
+
+# $cfg['TempDir'] = '/tmp';
+printf "[TEST] config.inc.php check: \$cfg['TempDir'] = '/tmp';"
+if ! grep -q "^\$cfg\['TempDir'\]\s*=\s*'/tmp';" "${CONFIGPATH}"; then
+	printf "\r[FAIL] config.inc.php check: \$cfg['TempDir'] = '/tmp';\n"
+	cat "${CONFIGPATH}"
+	exit 1
+else
+	printf "\r[OK]   config.inc.php check: \$cfg['TempDir'] = '/tmp';\n"
+fi
+
+# $cfg['CheckConfigurationPermissions'] = false;
+printf "[TEST] config.inc.php check: \$cfg['CheckConfigurationPermissions'] = false;"
+if ! grep -q "^\$cfg\['CheckConfigurationPermissions'\]\s*=\s*false;" "${CONFIGPATH}"; then
+	printf "\r[FAIL] config.inc.php check: \$cfg['CheckConfigurationPermissions'] = false;\n"
+	cat "${CONFIGPATH}"
+	exit 1
+else
+	printf "\r[OK]   config.inc.php check: \$cfg['CheckConfigurationPermissions'] = false;\n"
+fi
+
+# $cfg['blowfish_secret'] = '...'
+printf "[TEST] config.inc.php check: \$cfg['blowfish_secret'] = '...';"
+if ! grep -qE '^\$cfg\['"'"'blowfish_secret'"'"'\]\s*=\s*'"'"'.{32,}'"'"';' "${CONFIGPATH}"; then
+	printf "\r[FAIL] config.inc.php check: \$cfg['blowfish_secret'] = '...';\n"
+	cat "${CONFIGPATH}"
+	exit 1
+else
+	printf "\r[OK]   config.inc.php check: \$cfg['blowfish_secret'] = '...';\n"
+fi
+
+# $cfg['SendErrorReports'] = 'never';
+printf "[TEST] config.inc.php check: \$cfg['SendErrorReports'] = 'never';"
+if ! grep -q "^\$cfg\['SendErrorReports'\]\s*=\s*'never';" "${CONFIGPATH}"; then
+	printf "\r[FAIL] config.inc.php check: \$cfg['SendErrorReports'] = 'never';\n"
+	cat "${CONFIGPATH}"
+	exit 1
+else
+	printf "\r[OK]   config.inc.php check: \$cfg['SendErrorReports'] = 'never';\n"
+fi
+
+# $cfg['Servers'][$i]['host'] = 'mysql';
+printf "[TEST] config.inc.php check: \$cfg['Servers'][\$i]['host'] = 'mysql';"
+if ! grep -q "^\$cfg\['Servers'\]\[\$i\]\['host'\]\s*=\s*'mysql';" "${CONFIGPATH}"; then
+	printf "\r[FAIL] config.inc.php check: \$cfg['Servers'][\$i]['host'] = 'mysql';\n"
+	cat "${CONFIGPATH}"
+	exit 1
+else
+	printf "\r[OK]   config.inc.php check: \$cfg['Servers'][\$i]['host'] = 'mysql';\n"
+fi
+
+# $cfg['Servers'][$i]['connect_type'] = 'tcp';
+printf "[TEST] config.inc.php check: \$cfg['Servers'][\$i]['connect_type'] = 'tcp';"
+if ! grep -q "^\$cfg\['Servers'\]\[\$i\]\['connect_type'\]\s*=\s*'tcp';" "${CONFIGPATH}"; then
+	printf "\r[FAIL] config.inc.php check: \$cfg['Servers'][\$i]['connect_type'] = 'tcp';\n"
+	cat "${CONFIGPATH}"
+	exit 1
+else
+	printf "\r[OK]   config.inc.php check: \$cfg['Servers'][\$i]['connect_type'] = 'tcp';\n"
+fi
+
+# $cfg['Servers'][$i]['compress'] = false;
+printf "[TEST] config.inc.php check: \$cfg['Servers'][\$i]['compress'] = false;"
+if ! grep -q "^\$cfg\['Servers'\]\[\$i\]\['compress'\]\s*=\s*false;" "${CONFIGPATH}"; then
+	printf "\r[FAIL] config.inc.php check: \$cfg['Servers'][\$i]['compress'] = false;\n"
+	cat "${CONFIGPATH}"
+	exit 1
+else
+	printf "\r[OK]   config.inc.php check: \$cfg['Servers'][\$i]['compress'] = false;\n"
+fi
+
+# $cfg['Servers'][$i]['AllowNoPassword'] = true;
+printf "[TEST] config.inc.php check: \$cfg['Servers'][\$i]['compress'] = false;"
+if ! grep -q "^\$cfg\['Servers'\]\[\$i\]\['AllowNoPassword'\]\s*=\s*true;" "${CONFIGPATH}"; then
+	printf "\r[FAIL] config.inc.php check: \$cfg['Servers'][\$i]['AllowNoPassword'] = true;\n"
+	cat "${CONFIGPATH}"
+	exit 1
+else
+	printf "\r[OK]   config.inc.php check: \$cfg['Servers'][\$i]['AllowNoPassword'] = true;\n"
+fi

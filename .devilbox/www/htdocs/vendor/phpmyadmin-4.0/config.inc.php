@@ -10,12 +10,10 @@
  * @package PhpMyAdmin
  */
 
-/**
- * This is needed for cookie based authentication to encrypt password in
- * cookie. Needs to be 32 chars long.
- */
-$cfg['blowfish_secret'] = 'GObO60^(04#^5637%fdUGo(*6$%6#dy4'; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
+error_reporting(-1);
+$cfg['TempDir'] = '/tmp';
 $cfg['CheckConfigurationPermissions'] = false;
+$cfg['blowfish_secret'] = 'GObO60^(04#^5637%fdUGo(*6$%6#dy4';
 
 
 /**
@@ -36,7 +34,6 @@ if (getenv('DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN') == 1) {
 } else {
     $cfg['Servers'][$i]['auth_type'] = 'cookie';
 }
-
 /* Server parameters */
 $cfg['Servers'][$i]['host'] = 'mysql';
 $cfg['Servers'][$i]['connect_type'] = 'tcp';
@@ -142,7 +139,17 @@ $cfg['SaveDir'] = '';
  */
 //$cfg['QueryHistoryMax'] = 100;
 
-/*
+/**
+ * Whether or not to query the user before sending the error report to
+ * the phpMyAdmin team when a JavaScript error occurs
+ *
+ * Available options
+ * ('ask' | 'always' | 'never')
+ * default = 'ask'
+ */
+$cfg['SendErrorReports'] = 'never';
+
+/**
  * You can find more configuration options in the documentation
  * in the doc/ folder or at <https://docs.phpmyadmin.net/>.
  */
