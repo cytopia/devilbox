@@ -525,6 +525,20 @@ password here as well, you should set the value to ``0``.
 +-------------------------------------------+----------------+-------------------+
 
 
+DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN
+------------------------------------
+
+By default phpPgAdmin will autologin without having to specify username or password. The phpPgAdmin
+vendor is not protected once you protect the Intranet. If you want users to enter username and
+password here as well, you should set the value to ``0``.
+
++-------------------------------------------+----------------+-------------------+
+| Name                                      | Allowed values | Default value     |
++===========================================+================+===================+
+| ``DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN``  | ``0`` or ``1`` | ``1``             |
++-------------------------------------------+----------------+-------------------+
+
+
 Docker image versions
 =====================
 
