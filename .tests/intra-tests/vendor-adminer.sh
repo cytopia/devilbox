@@ -10,6 +10,33 @@ set -o pipefail
 # https://stackoverflow.com/questions/16703647/why-curl-return-and-error-23-failed-writing-body
 #
 
+###
+### Get current PHP version
+###
+
+printf "[TEST] Get PHP version"
+# 1st Try
+if ! PHP_VERSION="$( curl -sS localhost/index.php | tac | tac | grep -Eo 'PHP.*?\([.0-9]+' | grep -Eo '\([.0-9]+' | grep -Eo '[0-9]+\.[0-9]+' )"; then
+	# 2nd Try
+	sleep 1
+	if ! PHP_VERSION="$( curl -sS localhost/index.php | tac | tac | grep -Eo 'PHP.*?\([.0-9]+' | grep -Eo '\([.0-9]+' | grep -Eo '[0-9]+\.[0-9]+' )"; then
+		# 3rd Try
+		sleep 1
+		if ! PHP_VERSION="$( curl -sS localhost/index.php | tac | tac | grep -Eo 'PHP.*?\([.0-9]+' | grep -Eo '\([.0-9]+' | grep -Eo '[0-9]+\.[0-9]+' )"; then
+			printf "\r[FAIL] Get PHP version\n"
+			curl -sS localhost/index.php | tac | tac | grep -Eo 'PHP.*?\([.0-9]+' || true
+			exit 1
+		else
+			printf "\r[OK]   Get PHP version (3 rounds): %s\n" "${PHP_VERSION}"
+		fi
+	else
+		printf "\r[OK]   Get PHP version (2 rounds): %s\n" "${PHP_VERSION}"
+	fi
+else
+	printf "\r[OK]   Get PHP version (1 round): %s\n" "${PHP_VERSION}"
+fi
+
+
 
 ###
 ### Retrieve URL for current Adminer version.
