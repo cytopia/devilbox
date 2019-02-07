@@ -6,10 +6,22 @@
 ###  All the following settings are applied during
 ###  $ docker-compose up
 ###
-###  No need to rebuild any dockers!
+###  No need to rebuild any docker images!
 ###
-###  For custom variables, scroll to the bottom
+###  IMPORTANT:
+###  ----------
+###  When changing any values ensure to stop, rm and restart:
+###  $ docker-compose stop
+###  $ docker-compose rm -f
+###  $ docker-compose up
 ###
+###  NOTE:
+###  -----
+###  For you own custom variables, scroll to the bottom
+###
+
+# The following line will disable any shellcheck warnings throughout this file
+# shellcheck disable=SC2034,SC2125
 
 
 ###
@@ -60,7 +72,7 @@ DEVILBOX_PATH=.
 ### If you are on windows, you will probably have to change
 ### it to the IP address of the docker machine.
 ###
-### a.) Leave blank, to listen on all interfaces (no trailing color ':')
+### a.) Leave blank, to listen on all interfaces (no trailing colon ':')
 ###    LOCAL_LISTEN_ADDR=
 ### b.) If an IP is specified, note the trailing colon ':'
 ###    LOCAL_LISTEN_ADDR=127.0.0.1:
@@ -125,7 +137,6 @@ NEW_GID=1000
 ### Timezone for all dockers and service config files
 ###
 TIMEZONE=Europe/Berlin
-
 
 
 
@@ -201,6 +212,26 @@ DEVILBOX_UI_PASSWORD=password
 ###   DEVILBOX_UI_ENABLE=0
 ###
 DEVILBOX_UI_ENABLE=1
+
+
+###
+### Automatically be logged in into phpMyAdmin
+###
+### Example:
+###   DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN=1
+###   DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN=0
+###
+DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN=1
+
+
+###
+### Automatically be logged in into phpPgAdmin
+###
+### Example:
+###   DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN=1
+###   DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN=0
+###
+DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN=1
 
 
 
@@ -458,9 +489,11 @@ HOST_PATH_MONGO_DATADIR=./data/mongo
 ###
 ### Enable certain PHP modules which are not enabled by default
 ###
-### Currently the only module that can be enabled is 'ioncube'
+### Currently the only modules that can be enabled are 'ioncube' and 'blackfire'
+### Also ensure to disable xdebug when using any of the above:
+### https://xdebug.org/docs/install#compat
 ###
-### PHP_MODULES_ENABLE=ioncube
+### PHP_MODULES_ENABLE=ioncube, blackfire
 ###
 PHP_MODULES_ENABLE=
 

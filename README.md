@@ -18,9 +18,12 @@
 
 [![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox)
 [![Documentation Status](https://readthedocs.org/projects/devilbox/badge/?version=latest)](https://devilbox.readthedocs.io)
-![Tag](https://img.shields.io/github/tag/cytopia/devilbox.svg)
-[![type](https://img.shields.io/badge/type-Docker-red.svg)](https://www.docker.com/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Release](https://img.shields.io/github/release/cytopia/devilbox.svg?colorB=orange)](https://github.com/cytopia/devilbox/releases)
+[![PreRelease](https://img.shields.io/github/release/cytopia/devilbox.svg?colorB=red&label=prelease&style=flat)](https://github.com/cytopia/devilbox/releases)
+[![Gitter](https://badges.gitter.im/devilbox/Lobby.svg)](https://gitter.im/devilbox/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Discourse](https://img.shields.io/discourse/https/devilbox.discourse.group/status.svg?colorB=%234CB697)](https://devilbox.discourse.group)
+[![type](https://img.shields.io/badge/type-Docker-blue.svg)](https://www.docker.com/)
+[![License](https://img.shields.io/badge/license-MIT-%233DA639.svg)](https://opensource.org/licenses/MIT)
 
 <img width="200" style="width:200px;" src="docs/_includes/figures/https/https-ssl-address-bar.png" /><br/>
 <small><sub>Support for <a href="https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html">valid https</a> out of the box.</sub></small>
@@ -44,6 +47,14 @@ Furthermore, the Devilbox provides an **identical** and **reproducible developme
 
 * [Docker Engine 1.12.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
 * [Docker Compose 1.9.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
+
+**Important**
+
+Before updating the Devilbox ensure to always check for breaking changes until the stable release is out:
+
+1. [Forum: Announcements](https://devilbox.discourse.group/c/announcements)
+2. [Changelog](CHANGELOG.md)
+3. [Updating](UPDATING.md)
 
 ## Available Container
 
@@ -81,7 +92,7 @@ simplify your every-day life. If you ever run into any unforseen issues, feel fr
   <tr>
    <td>
     <a target="_blank" href="https://devilbox.readthedocs.io">
-	 <img title="Documentation" name="Documentation" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/readthedocs.png" />
+     <img title="Documentation" name="Documentation" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/readthedocs.png" />
     </a>
    </td>
    <td>
@@ -91,8 +102,8 @@ simplify your every-day life. If you ever run into any unforseen issues, feel fr
    </td>
    <td>
     <a target="_blank" href="https://devilbox.discourse.group">
-	 <img title="Devilbox Forums" name="Forum" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discourse.png" />
-	</a>
+     <img title="Devilbox Forums" name="Forum" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discourse.png" />
+    </a>
    </td>
   </tr>
   <tr>
@@ -402,6 +413,10 @@ The Devilbox has everything setup for you. The only thing you will have to insta
 <table>
 <tbody>
   <tr>
+    <td width="220" style="width:220px;">:star: HTTP/2 support</td>
+    <td>All HTTPS connections will offer <a href="https://en.wikipedia.org/wiki/HTTP/2">HTTP/2</a> as the default protocol, except for Apache 2.2 which does not support it.</td>
+  </tr>
+  <tr>
     <td width="220" style="width:220px;">:star: Auto virtual hosts</td>
     <td>New virtual hosts are created automatically and instantly whenever you add a project directory. This is done internally via <a href="https://travis-ci.org/devilbox/vhost-gen">vhost-gen</a> and <a href="https://github.com/devilbox/watcherd">watcherd</a>.</td>
   </tr>
@@ -423,7 +438,7 @@ The Devilbox has everything setup for you. The only thing you will have to insta
   </tr>
   <tr>
     <td>:star: Custom domains</td>
-    <td>Choose whatever development domain you desire: <code>*.loc</code>, <code>*.local</code>, <code>*.dev</code> or use real domains as well: <code>*.example.com</code></td>
+    <td>Choose whatever development domain you desire: <code>*.loc</code>, <code>*.dev</code> or use real domains as well: <code>*.example.com</code></td>
   </tr>
   <tr>
     <td>:star: Auto DNS</td>
@@ -549,6 +564,10 @@ The following tools will assist you on creating new projects easily as well as h
     <td><code>phpcbf</code> is a command line tool that automatically correct coding standard violations.</td>
   </tr>
   <tr>
+    <td>:wrench: <a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">php cs fixer</a></td>
+    <td><code>php-cs-fixer</code> is a tool to automatically fix PHP Coding Standards issues.</td>
+  </tr>
+  <tr>
     <td>:wrench: <a href="https://github.com/Unitech/pm2">pm2</a></td>
     <td><code>pm2</code> is Node.js Production Process Manager with a built-in Load Balancer.</td>
   </tr>
@@ -612,6 +631,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | apc            |         |    🗸    |    🗸    |    🗸    |    🗸    |         |         |         |         |         |
 | apcu           |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
 | bcmath         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
+| blackfire      |         |         |         |         |    d    |    d    |    d    |    d    |    d    |         |
 | bz2            |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | calendar       |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | Core           |         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
@@ -623,6 +643,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | enchant        |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | ereg           |         |    ✔    |    ✔    |    ✔    |    ✔    |         |         |         |         |         |
 | exif           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
+| FFI            |         |         |         |         |         |         |         |         |         |    🗸    |
 | fileinfo       |    🗸    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | filter         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | ftp            |    🗸    |    🗸    |    🗸    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
@@ -633,7 +654,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | iconv          |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | igbinary       |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | imagick        |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
-| imap           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
+| imap           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
 | interbase      |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | intl           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | ioncube        |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |         |         |
@@ -641,7 +662,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | ldap           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | libxml         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | mbstring       |    ✔    |    🗸    |    🗸    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
-| mcrypt         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
+| mcrypt         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
 | memcache       |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
 | memcached      |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | mhash          |         |         |         |         |    ✔    |         |         |         |         |         |
@@ -817,6 +838,15 @@ A few examples of how the built-in intranet looks like.
 The Devilbox is still a young project with a long roadmap of features to come. Features are
 decided by you - **the community**, so any kind of contribution is welcome.
 
+[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/0)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/0)
+[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/1)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/1)
+[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/2)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/2)
+[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/3)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/3)
+[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/4)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/4)
+[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/5)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/5)
+[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/6)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/6)
+[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/7)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/7)
+
 To increase visibility and bug-free operation:
 
 * Star this project
@@ -834,6 +864,6 @@ Logos and banners can be found at **[devilbox/artwork](https://github.com/devilb
 
 ## License
 
-[MIT License](LICENSE.md)
+**[MIT License](LICENSE.md)**
 
-Copyright (c) 2016 [cytopia](https://github.com/cytopia)
+Copyright (c) 2016 **[cytopia](https://github.com/cytopia)**

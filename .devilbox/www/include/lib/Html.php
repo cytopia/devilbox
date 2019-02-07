@@ -394,7 +394,7 @@ HTML;
 						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.2', '<')) ? '/vendor/phpmyadmin-4.0/' : '/vendor/phppgadmin-5.6.0/';
 					}
 					if ($el['path'] == '__ADMINER__') {
-						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) ? '/vendor/adminer-4.6.3-en.php' : '/vendor/adminer-4.7.0-en.php';
+						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) ? '/vendor/adminer-4.6.3-en.php' : '/vendor/adminer-4.7.1-en.php';
 					}
 
 					$target = isset($el['target']) ? 'target="'.$el['target'].'"' : '';

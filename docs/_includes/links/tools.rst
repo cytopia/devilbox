@@ -35,7 +35,7 @@
 
 .. |ext_lnk_tool_dep| raw:: html
 
-   <a target="_blank" href="https://deployer.org/">
+   <a target="_blank" href="https://deployer.org">
      Deployer <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
@@ -157,6 +157,12 @@
 
    <a target="_blank" href="https://github.com/squizlabs/PHP_CodeSniffer">
      PHP CodeSniffer <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_tool_php_cs_fixer| raw:: html
+
+   <a target="_blank" href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">
+     PHP-CS-Fixer <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
 .. |ext_lnk_tool_phpcbf| raw:: html

@@ -10,12 +10,10 @@
  * @package PhpMyAdmin
  */
 
-/**
- * This is needed for cookie based authentication to encrypt password in
- * cookie. Needs to be 32 chars long.
- */
-$cfg['blowfish_secret'] = 'GObO60^(04#^5637%fdUGo(*6$%6#dy4'; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
+error_reporting(-1);
+$cfg['TempDir'] = '/tmp';
 $cfg['CheckConfigurationPermissions'] = false;
+$cfg['blowfish_secret'] = 'GObO60^(04#^5637%fdUGo(*6$%6#dy4';
 
 
 /**
@@ -27,13 +25,20 @@ $i = 0;
  * First server
  */
 $i++;
+
 /* Authentication type */
-$cfg['Servers'][$i]['auth_type'] = 'cookie';
+if (getenv('DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN') == 1) {
+    $cfg['Servers'][$i]['auth_type'] = 'config';
+    $cfg['Servers'][$i]['user'] = 'root';
+    $cfg['Servers'][$i]['password'] = getenv('MYSQL_ROOT_PASSWORD');
+} else {
+    $cfg['Servers'][$i]['auth_type'] = 'cookie';
+}
 /* Server parameters */
 $cfg['Servers'][$i]['host'] = 'mysql';
 $cfg['Servers'][$i]['connect_type'] = 'tcp';
 $cfg['Servers'][$i]['compress'] = false;
-$cfg['Servers'][$i]['AllowNoPassword'] = TRUE;
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
 /* Select mysql if your server does not have mysqli */
 $cfg['Servers'][$i]['extension'] = 'mysqli';
 
@@ -134,7 +139,17 @@ $cfg['SaveDir'] = '';
  */
 //$cfg['QueryHistoryMax'] = 100;
 
-/*
+/**
+ * Whether or not to query the user before sending the error report to
+ * the phpMyAdmin team when a JavaScript error occurs
+ *
+ * Available options
+ * ('ask' | 'always' | 'never')
+ * default = 'ask'
+ */
+$cfg['SendErrorReports'] = 'never';
+
+/**
  * You can find more configuration options in the documentation
  * in the doc/ folder or at <https://docs.phpmyadmin.net/>.
  */

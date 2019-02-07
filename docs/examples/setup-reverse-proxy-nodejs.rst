@@ -113,8 +113,8 @@ The vhost directory defines the name under which your project will be available.
      response.end("Hello World\n");
    });
 
-   // Listen on port 3000
-   server.listen(3000);
+   // Listen on port 4000
+   server.listen(4000);
 
 4. Create *virtual* docroot directory
 -------------------------------------

@@ -96,7 +96,7 @@ By default the :ref:`env_httpd_template_dir` value is ``.devilbox``. This is def
 ``.env`` file. Feel free to change it to whatever directory name you prefer, but keep in mind that
 it will change the `Project template path` which you need to create yourself.
 
-For this example we will keep the default value for the sake of simplicity: ``.devilxbox``.
+For this example we will keep the default value for the sake of simplicity: ``.devilbox``.
 
 .. note::
    The :ref:`env_httpd_template_dir` value is a global setting and will affect all projects.
@@ -119,7 +119,7 @@ Then you can copy the templates.
 
 .. code-block:: bash
 
-   host> cp cfg/vhost-gen/*.yml-example ./data/www/project-1/.devilbox
+   host> cp cfg/vhost-gen/*.yml-example-* ./data/www/project-1/.devilbox
 
 .. note::
    You actually only need to copy the template of your chosen webserver (either Apache 2.2,

@@ -55,7 +55,7 @@ else
 	bash -c 'curl -Ss -o linkcheck -z linkcheck https://raw.githubusercontent.com/cytopia/linkcheck/master/linkcheck 2>/dev/null'
 endif
 	chmod +x linkcheck
-	./linkcheck -k -r 60 -t 30 -e rst _includes/
+	./linkcheck -l -k -r 60 -t 30 -e rst _includes/
 
 build:
 	sphinx-build -a -E -n -j auto -q -W . _build/html
