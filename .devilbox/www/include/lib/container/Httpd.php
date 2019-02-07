@@ -60,10 +60,11 @@ class Httpd extends BaseClass implements BaseInterface
 	{
 		$docRoot	= $this->_docRoot;
 		$vhosts		= array();
+		$htdocs		= loadClass('Helper')->getEnv('HTTPD_DOCROOT_DIR');
 
 		if ($handle = opendir($docRoot)) {
 			while (false !== ($directory = readdir($handle))) {
-				if ($this->_is_valid_dir($docRoot . DIRECTORY_SEPARATOR . $directory) && $directory != '.' && $directory != '..') {
+				if ($this->_is_valid_dir($docRoot . DIRECTORY_SEPARATOR . $directory. "/". $htdocs) && $directory != '.' && $directory != '..') {
 
 					$vhosts[$directory] = array(
 						'name'		=> $directory,
