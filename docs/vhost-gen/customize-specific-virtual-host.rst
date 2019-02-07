@@ -119,7 +119,7 @@ Then you can copy the templates.
 
 .. code-block:: bash
 
-   host> cp cfg/vhost-gen/*.yml-example ./data/www/project-1/.devilbox
+   host> cp cfg/vhost-gen/*.yml-example-* ./data/www/project-1/.devilbox
 
 .. note::
    You actually only need to copy the template of your chosen webserver (either Apache 2.2,
