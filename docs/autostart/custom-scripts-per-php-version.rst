@@ -56,6 +56,7 @@ See the directory structure for PHP startup script directories inside ``./cfg/``
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-startup-7.2/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-startup-7.3/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-startup-7.4/
+   drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 php-startup-8.0/
 
 
 Custom scripts are added by placing a file into ``cfg/php-startup-X.X/`` (where ``X.X`` stands for

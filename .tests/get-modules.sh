@@ -169,6 +169,23 @@ if ! PHP74_BASE="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-
 		fi
 	fi
 fi
+if ! PHP80_BASE="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '80-base' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+	sleep 5;
+	if ! PHP80_BASE="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '80-base' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+		sleep 5;
+		if ! PHP80_BASE="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '80-base' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+			sleep 5;
+			if ! PHP80_BASE="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '80-base' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+				sleep 5;
+				if ! PHP80_BASE="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '80-base' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+					>&2 echo "Failed to retrieve modules for PHP 8.0"
+					exit 1
+				fi
+			fi
+		fi
+	fi
+fi
+
 
 ###
 ### Get PHP mods modules (5 rounds)
@@ -334,12 +351,28 @@ if ! PHP74_MODS="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-
 		fi
 	fi
 fi
+if ! PHP80_MODS="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '80-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+	sleep 5;
+	if ! PHP80_MODS="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '80-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+		sleep 5;
+		if ! PHP80_MODS="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '80-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+			sleep 5;
+			if ! PHP80_MODS="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '80-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+				sleep 5;
+				if ! PHP80_MODS="$( curl -sS  https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md | tac | tac | grep -E '80-mods' | sed -e 's/.*">//g' -e 's/<.*//g' )"; then
+					>&2 echo "Failed to retrieve modules for PHP 8.0"
+					exit 1
+				fi
+			fi
+		fi
+	fi
+fi
 
 
 ###
 ### Todo: add ioncube
 ###
-MODS="$( echo "${PHP52_MODS}, ${PHP53_MODS}, ${PHP54_MODS}, ${PHP55_MODS}, ${PHP56_MODS}, ${PHP70_MODS}, ${PHP71_MODS}, ${PHP72_MODS}, ${PHP73_MODS}, ${PHP74_MODS}" | sed 's/,/\n/g' | sed -e 's/^\s*//g' -e 's/\s*$//g' | sort -u )"
+MODS="$( echo "${PHP52_MODS}, ${PHP53_MODS}, ${PHP54_MODS}, ${PHP55_MODS}, ${PHP56_MODS}, ${PHP70_MODS}, ${PHP71_MODS}, ${PHP72_MODS}, ${PHP73_MODS}, ${PHP74_MODS}, ${PHP80_MODS}" | sed 's/,/\n/g' | sed -e 's/^\s*//g' -e 's/\s*$//g' | sort -u )"
 
 
 ###
@@ -352,8 +385,8 @@ E="🗸"  # Enabled mods modules (can be disabled)
 D="d"  # Disabled modules (can be enabled)
 U=" "  # Unavailable
 
-echo "| Modules        | PHP 5.2 | PHP 5.3 | PHP 5.4 | PHP 5.5 | PHP 5.6 | PHP 7.0 | PHP 7.1 | PHP 7.2 | PHP 7.3 | PHP 7.4 |"
-echo "|----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|"
+echo "| Modules        | PHP 5.2 | PHP 5.3 | PHP 5.4 | PHP 5.5 | PHP 5.6 | PHP 7.0 | PHP 7.1 | PHP 7.2 | PHP 7.3 | PHP 7.4 | PHP 8.0 |"
+echo "|----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|"
 echo "${MODS}" | while read line; do
 	printf "| %-15s%s" "${line}" "|"
 
@@ -498,6 +531,21 @@ echo "${MODS}" | while read line; do
 			printf "    %s    |" "${D}"      # Currently disabled
 		else
 			if echo ",${PHP74_BASE}," | sed 's/,\s/,/g' | grep -Eq ",${line},"; then
+				printf "    %s    |" "${B}"  # Enabled, but cannot be disabled
+			else
+				printf "    %s    |" "${E}"  # Enabled, can be disabled
+			fi
+		fi
+	else
+		printf "    %s    |" "${U}"          # Not available
+	fi
+
+	# ---------- PHP 8.0 ----------#
+	if echo ",${PHP80_MODS}," | sed 's/,\s/,/g' | grep -Eq ",${line},"; then
+		if echo "${DISABLED}" | grep -Eq ",${line},"; then
+			printf "    %s    |" "${D}"      # Currently disabled
+		else
+			if echo ",${PHP80_BASE}," | sed 's/,\s/,/g' | grep -Eq ",${line},"; then
 				printf "    %s    |" "${B}"  # Enabled, but cannot be disabled
 			else
 				printf "    %s    |" "${E}"  # Enabled, can be disabled
