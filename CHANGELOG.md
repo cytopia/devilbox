@@ -16,6 +16,7 @@ major versions.
 - Use Docker volumes instead of directory mounts for stateful data (MySQL, PgSQL and MongoDB)
     - This fixes various mount issues on Windows: #175 #382
     - This improves general performance
+- Use Official MySQL, MariaDB and Percona Docker container
 
 
 ## v0.15.0 [unreleased]
