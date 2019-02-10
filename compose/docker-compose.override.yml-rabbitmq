@@ -15,8 +15,11 @@ services:
       app_net:
         ipv4_address: 172.16.238.210
     volumes:
-      - ${HOST_PATH_RABBIT_DATADIR:-./data/rabbit}/${RABBIT_SERVER:-management}:/var/lib/rabbitmq
+      - devilbox-rabbit:/var/lib/rabbitmq
     depends_on:
       - bind
       - php
       - httpd
+
+volumes:
+  devilbox-rabbit:
