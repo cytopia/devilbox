@@ -5,9 +5,7 @@ set -u
 set -o pipefail
 
 
-# There's currently an Issue with PHP 7.3, Xdebug and phpMyAdmin. It just segfaults,
-# so I will remove it from the checks.
-DISABLED_VERSIONS=("")
+DISABLED_VERSIONS=("8.0")
 
 #
 # NOTE: Parsing curl to tac to circumnvent "failed writing body"
