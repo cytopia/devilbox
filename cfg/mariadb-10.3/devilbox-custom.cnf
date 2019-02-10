@@ -1,5 +1,0 @@
-[mysqld]
-key_buffer_size=5M
-
-[mysqldump]
-;quick
