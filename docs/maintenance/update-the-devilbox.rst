@@ -137,13 +137,13 @@ You first need to find out the image name and then also the currently used image
    host> grep 'image:' docker-compose.yml
 
    image: cytopia/bind:0.11
-   image: devilbox/php-fpm:${PHP_SERVER:-7.0}-work
-   image: devilbox/${HTTPD_SERVER:-nginx-stable}:0.13
-   image: cytopia/${MYSQL_SERVER:-mariadb-10.1}:latest
-   image: postgres:${PGSQL_SERVER:-9.6}
-   image: redis:${REDIS_SERVER:-3.2}
-   image: memcached:${MEMCD_SERVER:-latest}
-   image: mongo:${MONGO_SERVER:-latest}
+   image: devilbox/php-fpm:${PHP_SERVER}-work
+   image: devilbox/${HTTPD_SERVER}:0.13
+   image: devilbox/mysql:${MYSQL_SERVER}
+   image: postgres:${PGSQL_SERVER}
+   image: redis:${REDIS_SERVER}
+   image: memcached:${MEMCD_SERVER}
+   image: mongo:${MONGO_SERVER}
 
 After having found the possible candidates, you will still have to find the corresponding value
 inside the ``..env`` file. Let's do it for the PHP image:
@@ -152,14 +152,14 @@ inside the ``..env`` file. Let's do it for the PHP image:
 
    host> grep '^PHP_SERVER' .env
 
-   PHP_SERVER=5.6
+   PHP_SERVER=7.2
 
-So now you can substitute the ``${PHP_SERVER}`` variable from the first command with ``5.6`` and
+So now you can substitute the ``${PHP_SERVER}`` variable from the first command with ``7.2`` and
 finally pull a newer version:
 
 .. code-block:: bash
 
-   host> docker pull devilbox/php-fpm:5.6-work
+   host> docker pull devilbox/php-fpm:7.2-work
 
 Not very efficient.
 

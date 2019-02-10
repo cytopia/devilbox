@@ -396,7 +396,7 @@ This is especially useful to keep PHP and database timezones in sync.
 +-----------------------+----------------+-------------------+
 | Name                  | Allowed values | Default value     |
 +=======================+================+===================+
-| ``TIMEZONE``          | valid timezone | ``Europe/Berlin`` |
+| ``TIMEZONE``          | valid timezone | ``UTC``           |
 +-----------------------+----------------+-------------------+
 
 Have a look at Wikipedia to get a list of valid timezones: |ext_lnk_doc_wiki_database_timezones|
@@ -627,7 +627,7 @@ This variable choses your desired MySQL server version to be started.
 +-------------------------+------------------------------------------------------------------------------------------------+------------------+
 | Name                    | Allowed values                                                                                 | Default value    |
 +=========================+================================================================================================+==================+
-| ``MYSQL_SERVER``        | ``mysql-5.5`` |br| ``mysql-5.6`` |br| ``mariadb-10.2`` |br| ``percona-5.7`` |br| and many more | ``mariadb-10.1`` |
+| ``MYSQL_SERVER``        | ``mysql-5.5`` |br| ``mysql-5.6`` |br| ``mariadb-10.2`` |br| ``percona-5.7`` |br| and many more | ``mariadb-10.3`` |
 +-------------------------+------------------------------------------------------------------------------------------------+------------------+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
@@ -644,12 +644,14 @@ All values are already available in the ``.env`` file and just need to be commen
    #MYSQL_SERVER=mysql-8.0
    #MYSQL_SERVER=mariadb-5.5
    #MYSQL_SERVER=mariadb-10.0
-   MYSQL_SERVER=mariadb-10.1
+   #MYSQL_SERVER=mariadb-10.1
    #MYSQL_SERVER=mariadb-10.2
-   #MYSQL_SERVER=mariadb-10.3
+   MYSQL_SERVER=mariadb-10.3
+   #MYSQL_SERVER=mariadb-10.4
    #MYSQL_SERVER=percona-5.5
    #MYSQL_SERVER=percona-5.6
    #MYSQL_SERVER=percona-5.7
+   #MYSQL_SERVER=percona-8.0
 
 
 .. _env_pgsql_server:
@@ -662,7 +664,7 @@ This variable choses your desired PostgreSQL server version to be started.
 +-------------------------+-------------------------------------------------------------------+------------------+
 | Name                    | Allowed values                                                    | Default value    |
 +=========================+===================================================================+==================+
-| ``PGSQL_SERVER``        | ``9.1`` |br| ``9.2`` |br| ``9.3`` |br| ``9.4`` |br| and many more | ``9.6``          |
+| ``PGSQL_SERVER``        | ``9.1`` |br| ``9.2`` |br| ``9.3`` |br| ``9.4`` |br| and many more | ``11.1``         |
 +-------------------------+-------------------------------------------------------------------+------------------+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
@@ -673,13 +675,38 @@ All values are already available in the ``.env`` file and just need to be commen
 
    host> grep PGSQL_SERVER .env
 
+   #PGSQL_SERVER=9.0
    #PGSQL_SERVER=9.1
    #PGSQL_SERVER=9.2
+   #PGSQL_SERVER=9.2-alpine
    #PGSQL_SERVER=9.3
+   #PGSQL_SERVER=9.3-alpine
    #PGSQL_SERVER=9.4
+   #PGSQL_SERVER=9.4-alpine
    #PGSQL_SERVER=9.5
-   PGSQL_SERVER=9.6
+   #PGSQL_SERVER=9.5-alpine
+   #PGSQL_SERVER=9.6
+   #PGSQL_SERVER=9.6-alpine
    #PGSQL_SERVER=10.0
+   #PGSQL_SERVER=10.0-alpine
+   #PGSQL_SERVER=10.1
+   #PGSQL_SERVER=10.1-alpine
+   #PGSQL_SERVER=10.2
+   #PGSQL_SERVER=10.2-alpine
+   #PGSQL_SERVER=10.3
+   #PGSQL_SERVER=10.3-alpine
+   #PGSQL_SERVER=10.4
+   #PGSQL_SERVER=10.4-alpine
+   #PGSQL_SERVER=10.5
+   #PGSQL_SERVER=10.5-alpine
+   #PGSQL_SERVER=10.6
+   #PGSQL_SERVER=10.6-alpine
+   #PGSQL_SERVER=11.0
+   #PGSQL_SERVER=11.0-alpine
+   PGSQL_SERVER=11.1
+   #PGSQL_SERVER=11.1-alpine
+   #PGSQL_SERVER=latest
+   #PGSQL_SERVER=alpine
 
 .. note::
    This is the official PostgreSQL server which might already have other tags available,
@@ -697,7 +724,7 @@ This variable choses your desired Redis server version to be started.
 +-------------------------+-------------------------------------------------------------------+------------------+
 | Name                    | Allowed values                                                    | Default value    |
 +=========================+===================================================================+==================+
-| ``REDIS_SERVER``        | ``2.8`` |br| ``3.0`` |br| ``3.2`` |br| ``4.0`` |br| and many more | ``4.0``          |
+| ``REDIS_SERVER``        | ``2.8`` |br| ``3.0`` |br| ``3.2`` |br| ``4.0`` |br| and many more | ``5.0``          |
 +-------------------------+-------------------------------------------------------------------+------------------+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
@@ -710,8 +737,15 @@ All values are already available in the ``.env`` file and just need to be commen
 
    #REDIS_SERVER=2.8
    #REDIS_SERVER=3.0
+   #REDIS_SERVER=3.0-alpine
    #REDIS_SERVER=3.2
-   REDIS_SERVER=4.0
+   #REDIS_SERVER=3.2-alpine
+   #REDIS_SERVER=4.0
+   #REDIS_SERVER=4.0-alpine
+   REDIS_SERVER=5.0
+   #REDIS_SERVER=5.0-alpine
+   #REDIS_SERVER=latest
+   #REDIS_SERVER=alpine
 
 .. note::
    This is the official Redis server which might already have other tags available,
@@ -726,11 +760,11 @@ MEMCD_SERVER
 
 This variable choses your desired Memcached server version to be started.
 
-+-------------------------+-------------------------------------------------------------------------------+------------------+
-| Name                    | Allowed values                                                                | Default value    |
-+=========================+===============================================================================+==================+
-| ``MEMCD_SERVER``        | ``1.4.21`` |br| ``1.4.22`` |br| ``1.4.23`` |br| ``1.4.24`` |br| and many more | ``1.5.2``        |
-+-------------------------+-------------------------------------------------------------------------------+------------------+
++-------------------------+---------------------------------------------------------------------------------------------+------------------+
+| Name                    | Allowed values                                                                              | Default value    |
++=========================+=============================================================================================+==================+
+| ``MEMCD_SERVER``        | ``1.4`` |br| ``1.4-alpine`` |br| ``1.5`` |br| ``1.5-alpine`` |br| ``latest`` and ``alpine`` | ``1.5``          |
++-------------------------+---------------------------------------------------------------------------------------------+------------------+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
 
@@ -740,29 +774,12 @@ All values are already available in the ``.env`` file and just need to be commen
 
    host> grep MEMCD_SERVER .env
 
-   #MEMCD_SERVER=1.4.21
-   #MEMCD_SERVER=1.4.22
-   #MEMCD_SERVER=1.4.23
-   #MEMCD_SERVER=1.4.24
-   #MEMCD_SERVER=1.4.25
-   #MEMCD_SERVER=1.4.26
-   #MEMCD_SERVER=1.4.27
-   #MEMCD_SERVER=1.4.28
-   #MEMCD_SERVER=1.4.29
-   #MEMCD_SERVER=1.4.30
-   #MEMCD_SERVER=1.4.31
-   #MEMCD_SERVER=1.4.32
-   #MEMCD_SERVER=1.4.33
-   #MEMCD_SERVER=1.4.34
-   #MEMCD_SERVER=1.4.35
-   #MEMCD_SERVER=1.4.36
-   #MEMCD_SERVER=1.4.37
-   #MEMCD_SERVER=1.4.38
-   #MEMCD_SERVER=1.4.39
-   #MEMCD_SERVER=1.5.0
-   #MEMCD_SERVER=1.5.1
-   MEMCD_SERVER=1.5.2
+   #MEMCD_SERVER=1.4
+   #MEMCD_SERVER=1.4-alpine
+   MEMCD_SERVER=1.5
+   #MEMCD_SERVER=1.5-alpine
    #MEMCD_SERVER=latest
+   #MEMCD_SERVER=alpine
 
 .. note::
    This is the official Memcached server which might already have other tags available,
@@ -777,11 +794,11 @@ MONGO_SERVER
 
 This variable choses your desired MongoDB server version to be started.
 
-+-------------------------+-------------------------------------------------------------------+------------------+
-| Name                    | Allowed values                                                    | Default value    |
-+=========================+===================================================================+==================+
-| ``MONGO_SERVER``        | ``2.8`` |br| ``3.0`` |br| ``3.2`` |br| ``3.4`` |br| and many more | ``3.4``          |
-+-------------------------+-------------------------------------------------------------------+------------------+
++-------------------------+----------------------------------------------------------------------------+------------------+
+| Name                    | Allowed values                                                             | Default value    |
++=========================+============================================================================+==================+
+| ``MONGO_SERVER``        | ``2.8`` |br| ``3.0`` |br| ``3.2`` |br| ``3.4`` |br| ``4.0`` and ``latest`` | ``4.0``          |
++-------------------------+----------------------------------------------------------------------------+------------------+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
 
@@ -794,8 +811,10 @@ All values are already available in the ``.env`` file and just need to be commen
    #MONGO_SERVER=2.8
    #MONGO_SERVER=3.0
    #MONGO_SERVER=3.2
-   MONGO_SERVER=3.4
-   #MONGO_SERVER=3.5
+   #MONGO_SERVER=3.4
+   #MONGO_SERVER=3.6
+   MONGO_SERVER=4.0
+   #MONGO_SERVER=latest
 
 .. note::
    This is the official MongoDB server which might already have other tags available,
@@ -901,135 +920,6 @@ always be ``/shared/httpd/``.
      Whenever you change this value you have to stop the Devilbox and also remove the stopped
      container via
      ``docker-compose rm``.
-
-
-.. _env_mysql_datadir:
-
-HOST_PATH_MYSQL_DATADIR
------------------------
-
-This is an absolute or relative path (relative to Devilbox git directory) to your MySQL data directory.
-
-* Relative path: relative to the devilbox git directory (Must start with ``.``)
-* Absolute path: Full path (Must start with ``/``)
-
-+------------------------------+----------------+------------------+
-| Name                         | Allowed values | Default value    |
-+==============================+================+==================+
-| ``HOST_PATH_MYSQL_DATADIR``  | valid path     | ``./data/mysql`` |
-+------------------------------+----------------+------------------+
-
-Each MySQL, MariaDB or PerconaDB version will have its own subdirectory, so when first running MySQL 5.5
-and then starting MySQL 5.6, you will have a different database with different data.
-
-Having each version separated from each other makes sure that you don't accidently upgrade
-from a lower to a higher version which might not be reversable. (MySQL auto-upgrade certain older
-data files to newer, but this process does not necessarily work the other way round and could result in failues).
-
-The directory structure will look something like this:
-
-.. code-block:: bash
-
-   host> ls -l ./data/mysql/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.0/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.1/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.2/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mariadb-10.3/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.5/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.6/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-5.7/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 mysql-8.0/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.5/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.6/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 percona-5.7/
-
-.. warning::
-   :ref:`remove_stopped_container`
-     Whenever you change this value you have to stop the Devilbox and also remove the stopped
-     container via
-     ``docker-compose rm``.
-
-
-.. _env_pgsql_datadir:
-
-HOST_PATH_PGSQL_DATADIR
------------------------
-
-This is an absolute or relative path (relative to Devilbox git directory) to your PostgreSQL data directory.
-
-* Relative path: relative to the devilbox git directory (Must start with ``.``)
-* Absolute path: Full path (Must start with ``/``)
-
-+------------------------------+----------------+------------------+
-| Name                         | Allowed values | Default value    |
-+==============================+================+==================+
-| ``HOST_PATH_PGSQL_DATADIR``  | valid path     | ``./data/pgsql`` |
-+------------------------------+----------------+------------------+
-
-Each PostgreSQL version will have its own subdirectory, so when first running PostgreSQL 9.1
-and then starting PostgreSQL 10.0, you will have a different database with different data.
-
-Having each version separated from each other makes sure that you don't accidently upgrade
-from a lower to a higher version which might not be reversable.
-
-The directory structure will look something like this:
-
-.. code-block:: bash
-
-   host> ls -l ./data/pgsql/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.1/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.2/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.3/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.4/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.5/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 9.6/
-
-.. warning::
-   :ref:`remove_stopped_container`
-     Whenever you change this value you have to stop the Devilbox and also remove the stopped
-     container via
-     ``docker-compose rm``.
-
-
-.. _env_mongo_datadir:
-
-HOST_PATH_MONGO_DATADIR
------------------------
-
-This is an absolute or relative path (relative to Devilbox git directory) to your MongoDB data directory.
-
-* Relative path: relative to the devilbox git directory (Must start with ``.``)
-* Absolute path: Full path (Must start with ``/``)
-
-+------------------------------+----------------+------------------+
-| Name                         | Allowed values | Default value    |
-+==============================+================+==================+
-| ``HOST_PATH_MONGO_DATADIR``  | valid path     | ``./data/mongo`` |
-+------------------------------+----------------+------------------+
-
-Each MongoDB version will have its own subdirectory, so when first running MongoDB 2.8
-and then starting MongoDB 3.5, you will have a different database with different data.
-
-Having each version separated from each other makes sure that you don't accidently upgrade
-from a lower to a higher version which might not be reversable.
-
-The directory structure will look something like this:
-
-.. code-block:: bash
-
-   host> ls -l ./data/mongo/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 2.8/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.0/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.2/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.4/
-   drwxrwxr-x 6 48 48 4096 Jun 21 08:47 3.5/
-
-.. warning::
-   :ref:`remove_stopped_container`
-     Whenever you change this value you have to stop the Devilbox and also remove the stopped
-     container via
-     ``docker-compose rm``.
-
 
 Docker host ports
 =================
@@ -1541,23 +1431,6 @@ be able to display information inside the bundled intranet.
 .. warning::
    Keep this variable in sync with the actual MySQL root password.
 
-
-MYSQL_GENERAL_LOG
-^^^^^^^^^^^^^^^^^
-
-This variable controls the logging behaviour of the MySQL server (MySQL, MariaDB and PerconaDB).
-As the Devilbox is intended to be used for development, this feature is turned on by default.
-
-+-------------------------+-------------------+---------------------+
-| Name                    | Allowed values    | Default value       |
-+=========================+===================+=====================+
-| ``MYSQL_GENERAL_LOG``   | ``0`` or ``1``    | ``0``               |
-+-------------------------+-------------------+---------------------+
-
-**MySQL documentation:**
-    "The general query log is a general record of what mysqld is doing. The server writes information to this log when clients connect or disconnect, and it logs each SQL statement received from clients. The general query log can be very useful when you suspect an error in a client and want to know exactly what the client sent to mysqld."
-
-    -- |ext_lnk_doc_mysql_query_log|
 
 PostgreSQL
 ----------

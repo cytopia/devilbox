@@ -303,35 +303,12 @@ services:
   # MySQL Database
   # ------------------------------------------------------------
   mysql:
-    image: cytopia/${MYSQL_SERVER}:latest
+    image: devilbox/mysql:${MYSQL_SERVER}
     hostname: mysql
 
     environment:
-
-      ##
-      ## Debug?
-      ##
-      - DEBUG_COMPOSE_ENTRYPOINT
-
-      ##
-      ## Adjust timezone
-      ##
-      - TIMEZONE
-
-      ##
-      ## Adjust Root password
-      ##
       - MYSQL_ROOT_PASSWORD
-
-      ##
-      ## Socket directory Path
-      ##
-      - MYSQL_SOCKET_DIR=/tmp/mysql
-
-      ##
-      ## Runtime settings
-      ##
-      - MYSQL_GENERAL_LOG=${MYSQL_GENERAL_LOG}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
 
     ports:
       # [local-machine:]local-port:docker-port
@@ -345,15 +322,8 @@ services:
       # ---- Format: ----
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
-      # Mount logs
-      - ${DEVILBOX_PATH}/log/${MYSQL_SERVER}:/var/log/mysql:rw${MOUNT_OPTIONS}
-
-      # Mount devilbox default overwrites
-      - ${DEVILBOX_PATH}/.devilbox/etc/${MYSQL_SERVER}:/etc/mysql/conf.d:ro${MOUNT_OPTIONS}
-
       # Mount devilbox user-defined cnf files in order
-      # to overwrite the MySQL server configuration
-      - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER}:/etc/mysql/docker-default.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER}:/etc/mysql/conf.d:ro${MOUNT_OPTIONS}
 
       # Mount MySQL Data directory
       - devilbox-${MYSQL_SERVER}:/var/lib/mysql:rw${MOUNT_OPTIONS}
@@ -526,9 +496,11 @@ volumes:
   devilbox-mariadb-10.1:
   devilbox-mariadb-10.2:
   devilbox-mariadb-10.3:
+  devilbox-mariadb-10.4:
   devilbox-percona-5.5:
   devilbox-percona-5.6:
   devilbox-percona-5.7:
+  devilbox-percona-8.0:
 
   # ------------------------------------------------------------
   # Postgres
