@@ -5,10 +5,13 @@ set -u
 set -o pipefail
 
 
+DISABLED_VERSIONS_MONGO=("7.3")
+
 #
 # NOTE: Parsing curl to tac to circumnvent "failed writing body"
 # https://stackoverflow.com/questions/16703647/why-curl-return-and-error-23-failed-writing-body
 #
+
 
 ###
 ### Get current PHP version
@@ -150,13 +153,18 @@ fi
 
 
 ###
-### Test Adminer MongoDB login
+### Ensure only to check against desired versions
 ###
-DISABLED_VERSIONS=("7.3")
-if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_VERSION} ]]; then
-	echo "Skipping Adminer Mongo login test for PHP 7.3"
+
+if [[ ${DISABLED_VERSIONS_MONGO[*]} =~ ${PHP_VERSION} ]]; then
+	echo "Skipping Adminer Mongo login test for PHP ${PHP_VERSION}"
 	exit 0
 fi
+
+
+###
+### Test Adminer MongoDB login
+###
 
 printf "[TEST] Adminer Mongo login"
 # 1st Try

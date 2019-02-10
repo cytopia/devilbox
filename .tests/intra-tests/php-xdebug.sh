@@ -5,8 +5,7 @@ set -u
 set -o pipefail
 
 
-DISABLED_VERSIONS=("7.4")
-
+DISABLED_VERSIONS=("7.4" "8.0")
 
 #
 # NOTE: Parsing curl to tac to circumnvent "failed writing body"
@@ -46,81 +45,84 @@ fi
 ###
 ### https://stackoverflow.com/a/15394738
 ###
+if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_VERSION} ]]; then
+	printf "[SKIP] Skipping all checks for PHP ${PHP_VERSION}\n"
+	exit 0
+fi
 
-if [[ ! ${DISABLED_VERSIONS[*]} =~ ${PHP_VERSION} ]]; then
 
-	###
-	### Xdebug available
-	###
-	printf "[TEST] Xdebug available"
-	# 1st Try
+
+###
+### Xdebug available
+###
+printf "[TEST] Xdebug available"
+# 1st Try
+if ! curl -sS localhost/info_php.php | tac | tac | grep -q 'xdebug\.remote_enable'; then
+	# 2nd Try
+	sleep 1
 	if ! curl -sS localhost/info_php.php | tac | tac | grep -q 'xdebug\.remote_enable'; then
-		# 2nd Try
+		# 3rd Try
 		sleep 1
 		if ! curl -sS localhost/info_php.php | tac | tac | grep -q 'xdebug\.remote_enable'; then
-			# 3rd Try
-			sleep 1
-			if ! curl -sS localhost/info_php.php | tac | tac | grep -q 'xdebug\.remote_enable'; then
-				printf "\r[FAIL] Xdebug available\n"
-				curl -sS localhost/info_php.php | tac | tac | grep 'xdebug' || true
-				exit 1
-			else
-				printf "\r[OK]   Xdebug available (3 rounds)\n"
-			fi
+			printf "\r[FAIL] Xdebug available\n"
+			curl -sS localhost/info_php.php | tac | tac | grep 'xdebug' || true
+			exit 1
 		else
-			printf "\r[OK]   Xdebug available (2 rounds)\n"
+			printf "\r[OK]   Xdebug available (3 rounds)\n"
 		fi
 	else
-		printf "\r[OK]   Xdebug available (1 round)\n"
+		printf "\r[OK]   Xdebug available (2 rounds)\n"
 	fi
+else
+	printf "\r[OK]   Xdebug available (1 round)\n"
+fi
 
-	###
-	### Xdebug default disabled
-	###
-	printf "[TEST] Xdebug default disabled"
-	# 1st Try
+###
+### Xdebug default disabled
+###
+printf "[TEST] Xdebug default disabled"
+# 1st Try
+if ! curl -sS localhost/info_php.php | tac | tac | grep 'xdebug\.remote_enable' | grep -Eq 'Off.+Off'; then
+	# 2nd Try
+	sleep 1
 	if ! curl -sS localhost/info_php.php | tac | tac | grep 'xdebug\.remote_enable' | grep -Eq 'Off.+Off'; then
-		# 2nd Try
+		# 3rd Try
 		sleep 1
 		if ! curl -sS localhost/info_php.php | tac | tac | grep 'xdebug\.remote_enable' | grep -Eq 'Off.+Off'; then
-			# 3rd Try
-			sleep 1
-			if ! curl -sS localhost/info_php.php | tac | tac | grep 'xdebug\.remote_enable' | grep -Eq 'Off.+Off'; then
-				printf "\r[FAIL] Xdebug default disabled\n"
-				curl -sS localhost/info_php.php | tac | tac | grep 'xdebug' || true
-				exit 1
-			else
-				printf "\r[OK]   Xdebug default disabled (3 rounds)\n"
-			fi
+			printf "\r[FAIL] Xdebug default disabled\n"
+			curl -sS localhost/info_php.php | tac | tac | grep 'xdebug' || true
+			exit 1
 		else
-			printf "\r[OK]   Xdebug default disabled (2 rounds)\n"
+			printf "\r[OK]   Xdebug default disabled (3 rounds)\n"
 		fi
 	else
-		printf "\r[OK]   Xdebug default disabled (1 round)\n"
+		printf "\r[OK]   Xdebug default disabled (2 rounds)\n"
 	fi
+else
+	printf "\r[OK]   Xdebug default disabled (1 round)\n"
+fi
 
-	###
-	### Xdebug autostart disabled
-	###
-	printf "[TEST] Xdebug autostart disabled"
-	# 1st Try
+###
+### Xdebug autostart disabled
+###
+printf "[TEST] Xdebug autostart disabled"
+# 1st Try
+if ! curl -sS localhost/info_php.php | tac | tac | grep 'xdebug\.remote_autostart' | grep -Eq 'Off.+Off'; then
+	# 2nd Try
+	sleep 1
 	if ! curl -sS localhost/info_php.php | tac | tac | grep 'xdebug\.remote_autostart' | grep -Eq 'Off.+Off'; then
-		# 2nd Try
+		# 3rd Try
 		sleep 1
 		if ! curl -sS localhost/info_php.php | tac | tac | grep 'xdebug\.remote_autostart' | grep -Eq 'Off.+Off'; then
-			# 3rd Try
-			sleep 1
-			if ! curl -sS localhost/info_php.php | tac | tac | grep 'xdebug\.remote_autostart' | grep -Eq 'Off.+Off'; then
-				printf "\r[FAIL] Xdebug autostart disabled\n"
-				curl -sS localhost/info_php.php | tac | tac | grep 'xdebug' || true
-				exit 1
-			else
-				printf "\r[OK]   Xdebug autostart disabled (3 rounds)\n"
-			fi
+			printf "\r[FAIL] Xdebug autostart disabled\n"
+			curl -sS localhost/info_php.php | tac | tac | grep 'xdebug' || true
+			exit 1
 		else
-			printf "\r[OK]   Xdebug autostart disabled (2 rounds)\n"
+			printf "\r[OK]   Xdebug autostart disabled (3 rounds)\n"
 		fi
 	else
-		printf "\r[OK]   Xdebug autostart disabled (1 round)\n"
+		printf "\r[OK]   Xdebug autostart disabled (2 rounds)\n"
 	fi
+else
+	printf "\r[OK]   Xdebug autostart disabled (1 round)\n"
 fi

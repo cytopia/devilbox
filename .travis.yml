@@ -93,6 +93,7 @@ env:
   - S1=PHP V1=7.2 S2=HTTPD V2=apache-2.2
   - S1=PHP V1=7.3 S2=HTTPD V2=apache-2.2
   - S1=PHP V1=7.4 S2=HTTPD V2=apache-2.2
+  - S1=PHP V1=8.0 S2=HTTPD V2=apache-2.2
   # PHP vs Apache 2.4
   - S1=PHP V1=5.3 S2=HTTPD V2=apache-2.4
   - S1=PHP V1=5.4 S2=HTTPD V2=apache-2.4
@@ -103,6 +104,7 @@ env:
   - S1=PHP V1=7.2 S2=HTTPD V2=apache-2.4
   - S1=PHP V1=7.3 S2=HTTPD V2=apache-2.4
   - S1=PHP V1=7.4 S2=HTTPD V2=apache-2.4
+  - S1=PHP V1=8.0 S2=HTTPD V2=apache-2.4
   # PHP vs Nginx stable
   - S1=PHP V1=5.3 S2=HTTPD V2=nginx-stable
   - S1=PHP V1=5.4 S2=HTTPD V2=nginx-stable
@@ -113,6 +115,7 @@ env:
   - S1=PHP V1=7.2 S2=HTTPD V2=nginx-stable
   - S1=PHP V1=7.3 S2=HTTPD V2=nginx-stable
   - S1=PHP V1=7.4 S2=HTTPD V2=nginx-stable
+  - S1=PHP V1=8.0 S2=HTTPD V2=nginx-stable
   # PHP vs Nginx mainline
   - S1=PHP V1=5.3 S2=HTTPD V2=nginx-mainline
   - S1=PHP V1=5.4 S2=HTTPD V2=nginx-mainline
@@ -123,6 +126,7 @@ env:
   - S1=PHP V1=7.2 S2=HTTPD V2=nginx-mainline
   - S1=PHP V1=7.3 S2=HTTPD V2=nginx-mainline
   - S1=PHP V1=7.4 S2=HTTPD V2=nginx-mainline
+  - S1=PHP V1=8.0 S2=HTTPD V2=nginx-mainline
 
   ###
   ### Test all other bundled services
