@@ -45,7 +45,7 @@ services:
       app_net:
         ipv4_address: 172.16.238.210
     volumes:
-      - ${HOST_PATH_RABBIT_DATADIR:-./data/rabbit}/${RABBIT_SERVER:-management}:/var/lib/rabbitmq
+      - devilbox-rabbit:/var/lib/rabbitmq
     depends_on:
       - bind
       - php
@@ -60,7 +60,7 @@ services:
       app_net:
         ipv4_address: 172.16.238.220
     volumes:
-      - data-solr:/opt/solr/server/solr/mycores
+      - devilbox-solr:/opt/solr/server/solr/mycores
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
@@ -71,4 +71,5 @@ services:
       - httpd
 
 volumes:
-  data-solr:
+  devilbox-rabbit:
+  devilbox-solr:
