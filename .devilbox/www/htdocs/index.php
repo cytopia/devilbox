@@ -679,14 +679,14 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 											<?php if ($avail_mysql): ?>
 												<tr>
 													<th>mysql</th>
-													<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_MYSQL_DATADIR').'/'.loadClass('Helper')->getEnv('MYSQL_SERVER'); ?></td>
+													<td>Docker volume</td>
 													<td>/var/lib/mysql</td>
 												</tr>
 											<?php endif; ?>
 											<?php if ($avail_pgsql): ?>
 												<tr>
 													<th>pgsql</th>
-													<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_PGSQL_DATADIR').'/'.loadClass('Helper')->getEnv('PGSQL_SERVER'); ?></td>
+													<td>Docker volume</td>
 													<td>/var/lib/postgresql/data/pgdata</td>
 												</tr>
 											<?php endif; ?>
@@ -707,7 +707,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 											<?php if ($avail_mongo): ?>
 												<tr>
 													<th>mongo</th>
-													<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_MONGO_DATADIR'); ?></td>
+													<td>Docker volume</td>
 													<td>/data/db</td>
 												</tr>
 											<?php endif; ?>
