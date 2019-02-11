@@ -114,8 +114,25 @@ class Memcd extends BaseClass implements BaseInterface
 		// Memcached >= 1.5
 		for ($i=0; $i<$cli_retries; $i++) {
 
+			// Get item number to trigger with stats cachedump
 			$output = array();
-			exec('printf "stats cachedump 1 0\nquit\n" | nc memcd 11211 | grep -E \'^ITEM\'', $output);
+			exec('printf "stats items\nquit\n" | nc memcd 11211 | grep -E \'items:[0-9]+:number\s[0-9]+\'', $output);
+			$num1 = 1;
+			$num2 = 0;
+			if (isset($output[0])) {
+				$matches = array();
+				preg_match('/items:([0-9]+):number\s([0-9]+)/', $output[0], $matches);
+				if (isset($matches[1])) {
+					$num1 = $matches[1];
+				}
+				if (isset($matches[2])) {
+					$num2 = $matches[2];
+				}
+			}
+
+			// Trigger stats cachedump on item number
+			$output = array();
+			exec('printf "stats cachedump '.$num1.' '.$num2.' \nquit\n" | nc memcd 11211 | grep -E \'^ITEM\'', $output);
 			foreach ($output as $line) {
 				$matches = array();
 				preg_match('/(^ITEM)\s*(.+?)\s*\[([0-9]+\s*b);\s*([0-9]+\s*s)\s*\]/', $line, $matches);
