@@ -156,7 +156,69 @@ info:
 ###
 ### Run tests
 ###
-test: test-vhost test-rhost test-intra test-startup
+test: test-ssl test-vhost test-rhost test-intra test-startup
+
+
+test-ssl:
+	@echo "####################################################################################################"
+	@echo "# RUNNING TESTS: SSL"
+	@echo "####################################################################################################"
+	@echo
+	@# ---------- curl from host ----------
+	@printf "[TEST] curl -sS --cacert ../ca/devilbox-ca.crt https://localhost/index.php"
+	@if ! curl -sS -o /dev/null --cacert ../ca/devilbox-ca.crt https://localhost/index.php; then \
+		sleep 1; \
+		if ! curl -sS -o >/dev/null --cacert ../ca/devilbox-ca.crt https://localhost/index.php; then \
+			sleep 1; \
+			if ! curl -sS -o /dev/null --cacert ../ca/devilbox-ca.crt https://localhost/index.php; then \
+				printf "\r[FAIL] curl -sS --cacert ../ca/devilbox-ca.crt https://localhost/index.php\n"; \
+				\
+				printf "\n[INFO] curl -I -sS --cacert ../ca/devilbox-ca.crt https://google.com\n"; \
+				curl -I -sS --cacert ../ca/devilbox-ca.crt https://google.com || true; \
+				\
+				printf "\n[INFO] curl -I -sS  https://google.com\n"; \
+				curl -I -sS  https://google.com || true; \
+				\
+				exit 1; \
+			else \
+				printf "\r[OK]   curl -sS --cacert ../ca/devilbox-ca.crt https://localhost/index.php (3 rounds)\n"; \
+			fi \
+		else \
+			printf "\r[OK]   curl -sS --cacert ../ca/devilbox-ca.crt https://localhost/index.php (2 rounds)\n"; \
+		fi \
+	else \
+		printf "\r[OK]   curl -sS --cacert ../ca/devilbox-ca.crt https://localhost/index.php (1 round)\n"; \
+	fi
+	@# ---------- curl from Docker ----------
+	@printf "[TEST] docker-compose exec php curl -sS https://httpd/index.php";
+	@if ! sh -c "cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS -o /dev/null https://httpd/index.php"; then \
+		sleep 1; \
+		if ! sh -c "cd $(DEVILBOX_PATH) && docker-compose exec php curl -o /dev/null -sS https://httpd/index.php"; then \
+			sleep 1; \
+			if ! sh -c "cd $(DEVILBOX_PATH) && docker-compose exec php curl -o >/dev/null -sS https://httpd/index.php"; then \
+				printf "\r[FAIL] docker-compose exec php curl -sS https://httpd/index.php\n"; \
+				\
+				printf "\n[INFO] docker-compose exec php curl -I -sS --cacert /ca/devilbox-ca.crt https://httpd/index.php\n"; \
+				sh -c "cd $(DEVILBOX_PATH) && docker-compose exec php curl -I -sS --cacert /ca/devilbox-ca.crt https://httpd/index.php" || true; \
+				\
+				printf "\n[INFO] docker-compose exec php curl -I -sS --cacert /ca/devilbox-ca.crt https://google.com\n"; \
+				sh -c "cd $(DEVILBOX_PATH) && docker-compose exec php curl -I -sS --cacert /ca/devilbox-ca.crt https://google.com" || true; \
+				\
+				printf "\n[INFO] docker-compose exec php curl -I -sS https://google.com\n"; \
+				sh -c "cd $(DEVILBOX_PATH) && docker-compose exec php curl -I -sS https://google.com" || true; \
+				\
+				exit 1; \
+			else \
+				printf "\r[OK]   docker-compose exec php curl -sS https://httpd/index.php (3 rounds)\n"; \
+			fi \
+		else \
+			printf "\r[OK]   docker-compose exec php curl -sS https://httpd/index.php (2 rounds)\n"; \
+		fi \
+	else \
+		printf "\r[OK]   docker-compose exec php curl -sS https://httpd/index.php (1 round)\n"; \
+	fi
+	@echo
+	@echo
 
 
 test-vhost:
