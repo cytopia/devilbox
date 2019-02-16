@@ -517,44 +517,56 @@ _logs:
 
 
 _wait:
-	@printf "Waiting for container to be ready ";
+	@printf "Waiting for HTTP 200 ";
 	@# [HTTPD] Test for HTTP Status 200
 	@until curl -sS -o /dev/null -I -w "%{http_code}" localhost 2>/dev/null | grep -q '200'; do \
 		printf "."; \
 		sleep 1; \
 	done;
+	@printf "\n";
 
 	@# [PHP] Test for HTTP content
+	@printf "Waiting for Intranet to be ready ";
 	@until curl -sS localhost 2>/dev/null | grep -q 'dvlbox-ok'; do \
 		printf "."; \
 		sleep 1; \
 	done;
+	@printf "\n";
 
-	@# Add 20 more seconds for other services (e.g.: db) to initialize properly
+	@# Add 20 more seconds just to be sure
+	@printf "Waiting for initial setup ";
 	@for i in $$(seq 1 20); do \
 		printf "."; \
 		sleep 1; \
 	done;
+	@printf "\n";
 
 	@# [MongoDB] Test for MongoDB connection
+	@printf "Waiting for MongoDB connection to be ready ";
 	@until cd $(DEVILBOX_PATH) && docker-compose exec php mongofiles --host=mongo list >/dev/null 2>&2; do \
 		printf "."; \
 		sleep 1; \
 	done;
+	@printf "\n";
 
 	@# [MYSQL] Test for MySQL connection
+	@printf "Waiting for MySQL connection to be ready ";
 	@until cd $(DEVILBOX_PATH) && docker-compose exec php mysql --user=root --password='' --host=mysql -e 'show databases;' 2>&1 | grep -q mysql; do \
 		printf "."; \
 		sleep 1; \
 	done;
+	@printf "\n";
 
 	@# [PGSQL] Test for PGSQL connection
+	@printf "Waiting for PostgreSQL connection to be ready ";
 	@until cd $(DEVILBOX_PATH) && docker-compose exec php pg_isready --host=pgsql >/dev/null 2>&1; do \
 		printf "."; \
 		sleep 1; \
 	done;
+	@printf "\n";
 
 	@# Add 40 more seconds just to be sure
+	@printf "Waiting for additional warm-up time ";
 	@for i in $$(seq 1 40); do \
 		printf "."; \
 		sleep 1; \
