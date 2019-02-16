@@ -171,7 +171,7 @@ DNS_CHECK_TIMEOUT=1
 ### This has nothing to do for SSL certificates for projects, it is just for the intranet
 ### itself.
 ###
-DEVILBOX_UI_SSL_CN=localhost,*.localhost,devilbox,*.devilbox
+DEVILBOX_UI_SSL_CN=localhost,*.localhost,devilbox,*.devilbox,httpd
 
 
 ###

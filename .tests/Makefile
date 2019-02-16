@@ -156,7 +156,69 @@ info:
 ###
 ### Run tests
 ###
-test: test-vhost test-rhost test-intra test-startup
+test: test-ssl test-vhost test-rhost test-intra test-startup
+
+
+test-ssl:
+	@echo "####################################################################################################"
+	@echo "# RUNNING TESTS: SSL"
+	@echo "####################################################################################################"
+	@echo
+	@# ---------- curl from host ----------
+	@printf "[TEST] curl -sS --cacert ../ca/devilbox-ca.crt https://localhost/index.php"
+	@if ! curl -sS -o /dev/null --cacert ../ca/devilbox-ca.crt https://localhost/index.php; then \
+		sleep 1; \
+		if ! curl -sS -o >/dev/null --cacert ../ca/devilbox-ca.crt https://localhost/index.php; then \
+			sleep 1; \
+			if ! curl -sS -o /dev/null --cacert ../ca/devilbox-ca.crt https://localhost/index.php; then \
+				printf "\r[FAIL] curl -sS --cacert ../ca/devilbox-ca.crt https://localhost/index.php\n"; \
+				\
+				printf "\n[INFO] curl -I -sS --cacert ../ca/devilbox-ca.crt https://google.com\n"; \
+				curl -I -sS --cacert ../ca/devilbox-ca.crt https://google.com || true; \
+				\
+				printf "\n[INFO] curl -I -sS  https://google.com\n"; \
+				curl -I -sS  https://google.com || true; \
+				\
+				exit 1; \
+			else \
+				printf "\r[OK]   curl -sS --cacert ../ca/devilbox-ca.crt https://localhost/index.php (3 rounds)\n"; \
+			fi \
+		else \
+			printf "\r[OK]   curl -sS --cacert ../ca/devilbox-ca.crt https://localhost/index.php (2 rounds)\n"; \
+		fi \
+	else \
+		printf "\r[OK]   curl -sS --cacert ../ca/devilbox-ca.crt https://localhost/index.php (1 round)\n"; \
+	fi
+	@# ---------- curl from Docker ----------
+	@printf "[TEST] docker-compose exec php curl -sS https://httpd/index.php";
+	@if ! sh -c "cd $(DEVILBOX_PATH) && docker-compose exec php curl -sS -o /dev/null https://httpd/index.php"; then \
+		sleep 1; \
+		if ! sh -c "cd $(DEVILBOX_PATH) && docker-compose exec php curl -o /dev/null -sS https://httpd/index.php"; then \
+			sleep 1; \
+			if ! sh -c "cd $(DEVILBOX_PATH) && docker-compose exec php curl -o >/dev/null -sS https://httpd/index.php"; then \
+				printf "\r[FAIL] docker-compose exec php curl -sS https://httpd/index.php\n"; \
+				\
+				printf "\n[INFO] docker-compose exec php curl -I -sS --cacert /ca/devilbox-ca.crt https://httpd/index.php\n"; \
+				sh -c "cd $(DEVILBOX_PATH) && docker-compose exec php curl -I -sS --cacert /ca/devilbox-ca.crt https://httpd/index.php" || true; \
+				\
+				printf "\n[INFO] docker-compose exec php curl -I -sS --cacert /ca/devilbox-ca.crt https://google.com\n"; \
+				sh -c "cd $(DEVILBOX_PATH) && docker-compose exec php curl -I -sS --cacert /ca/devilbox-ca.crt https://google.com" || true; \
+				\
+				printf "\n[INFO] docker-compose exec php curl -I -sS https://google.com\n"; \
+				sh -c "cd $(DEVILBOX_PATH) && docker-compose exec php curl -I -sS https://google.com" || true; \
+				\
+				exit 1; \
+			else \
+				printf "\r[OK]   docker-compose exec php curl -sS https://httpd/index.php (3 rounds)\n"; \
+			fi \
+		else \
+			printf "\r[OK]   docker-compose exec php curl -sS https://httpd/index.php (2 rounds)\n"; \
+		fi \
+	else \
+		printf "\r[OK]   docker-compose exec php curl -sS https://httpd/index.php (1 round)\n"; \
+	fi
+	@echo
+	@echo
 
 
 test-vhost:
@@ -517,44 +579,56 @@ _logs:
 
 
 _wait:
-	@printf "Waiting for container to be ready ";
+	@printf "Waiting for HTTP 200 ";
 	@# [HTTPD] Test for HTTP Status 200
 	@until curl -sS -o /dev/null -I -w "%{http_code}" localhost 2>/dev/null | grep -q '200'; do \
 		printf "."; \
 		sleep 1; \
 	done;
+	@printf "\n";
 
 	@# [PHP] Test for HTTP content
+	@printf "Waiting for Intranet to be ready ";
 	@until curl -sS localhost 2>/dev/null | grep -q 'dvlbox-ok'; do \
 		printf "."; \
 		sleep 1; \
 	done;
+	@printf "\n";
 
-	@# Add 20 more seconds for other services (e.g.: db) to initialize properly
+	@# Add 20 more seconds just to be sure
+	@printf "Waiting for initial setup ";
 	@for i in $$(seq 1 20); do \
 		printf "."; \
 		sleep 1; \
 	done;
+	@printf "\n";
 
 	@# [MongoDB] Test for MongoDB connection
+	@printf "Waiting for MongoDB connection to be ready ";
 	@until cd $(DEVILBOX_PATH) && docker-compose exec php mongofiles --host=mongo list >/dev/null 2>&2; do \
 		printf "."; \
 		sleep 1; \
 	done;
+	@printf "\n";
 
 	@# [MYSQL] Test for MySQL connection
+	@printf "Waiting for MySQL connection to be ready ";
 	@until cd $(DEVILBOX_PATH) && docker-compose exec php mysql --user=root --password='' --host=mysql -e 'show databases;' 2>&1 | grep -q mysql; do \
 		printf "."; \
 		sleep 1; \
 	done;
+	@printf "\n";
 
 	@# [PGSQL] Test for PGSQL connection
+	@printf "Waiting for PostgreSQL connection to be ready ";
 	@until cd $(DEVILBOX_PATH) && docker-compose exec php pg_isready --host=pgsql >/dev/null 2>&1; do \
 		printf "."; \
 		sleep 1; \
 	done;
+	@printf "\n";
 
 	@# Add 40 more seconds just to be sure
+	@printf "Waiting for additional warm-up time ";
 	@for i in $$(seq 1 40); do \
 		printf "."; \
 		sleep 1; \
