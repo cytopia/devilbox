@@ -117,6 +117,7 @@ host is ready to be served with your custom domain.
    custom-container/enable-mailhog
    custom-container/enable-rabbitmq
    custom-container/enable-solr
+   custom-container/enable-varnish
 
 
 .. toctree::
