@@ -1,0 +1,21 @@
+version: '2.1'
+
+services:
+  varnish:
+    image: devilbox/varnish:${VARNISH_SERVER:-6}
+    hostname: varnish
+    ports:
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_VARNISH:-6081}:6081"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.230
+    environment:
+      - VARNISH_CONFIG=/etc/varnish/default.vcl
+      - CACHE_SIZE=${VARNISH_CACHE_SIZE:-128m}
+      - VARNISHD_PARAMS=${VARNISH_PARAMS:--p default_ttl=3600 -p default_grace=3600}
+      - BACKEND_HOST=httpd
+      - BACKEND_PORT=80
+    depends_on:
+      - bind
+      - php
+      - httpd

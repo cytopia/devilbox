@@ -40,6 +40,7 @@ major versions.
     - MailHog
     - RabbitMQ
     - Solr
+    - Varnish
 - New binaries
     - `blackfire`
     - `dep` (Deployer)

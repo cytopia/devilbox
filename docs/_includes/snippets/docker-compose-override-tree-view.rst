@@ -13,6 +13,7 @@ However, each example also exists in its standalone file as shown below:
    ├── docker-compose.override.yml-mailhog
    ├── docker-compose.override.yml-rabbitmq
    ├── docker-compose.override.yml-solr
+   ├── docker-compose.override.yml-varnish
    └── README.md
 
    0 directories, 6 files

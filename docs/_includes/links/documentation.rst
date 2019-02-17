@@ -75,3 +75,15 @@
    <a target="_blank" href="https://hub.docker.com/_/solr/">
      Dockerhub: Solr <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
+
+.. |ext_lnk_varnish_github| raw:: html
+
+   <a target="_blank" href="https://github.com/varnishcache/varnish-cache/">
+     Github: Varnish <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_varnish_dockerhub| raw:: html
+
+   <a target="_blank" href="https://hub.docker.com/r/devilbox/varnish/">
+     Dockerhub: Varnish <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
