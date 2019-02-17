@@ -111,11 +111,42 @@ Add the following variables to ``.env`` and adjust them to your needs:
    VARNISH_SERVER=6
 
    # Varnish settings
+   VARNISH_CONFIG=/etc/varnish/default.vcl
    VARNICS_CACHE_SIZE=128m
    VARNISH_PARAMS=-p default_ttl=3600 -p default_grace=3600
    HOST_PORT_VARNISH=6081
 
 .. seealso:: :ref:`env_file`
+
+
+3. Custom Varnish config (optional)
+-----------------------------------
+
+Varnish comes with a pretty generic default configuration that should fit most frameworks or CMS's.
+If you do however want to provide your own custom Varnish configuration, you can do so for each
+Varnish version separately.
+
+1. Place any ``*.vcl`` files in to the Varnish configuration directories (found in ``cfg/``).
+
+.. code-block:: bash
+
+   host> tree -L 1 cfg/ | grep varnish
+   ├── varnish-4
+   ├── varnish-5
+   ├── varnish-6
+
+2. The ``varnish-X/`` directory will be mounted into ``/etc/varnish.d/`` into the running Varnish container
+3. Adjust the ``VARNISH_CONFIG`` variable to point to your custom Varnish config file.
+
+3.1 Example
+^^^^^^^^^^^
+
+For this example we will assume you are using  Varnish 6
+
+1. Add ``my-varnish.vcl`` into ``cfg/varnish-6/``
+2. Set ``VARNISH_CONFIG`` to ``/etc/varnish.d/my-varnish.vcl``
+3. Ensure that the Backend server points to ``httpd`` in your custom varnish config
+4. Ensure that the Backend port points to ``80`` in your custom varnish config
 
 
 4. Start the Devilbox
@@ -150,6 +181,7 @@ directory:
    echo "#VARNISH_SERVER=5"                                         >> .env
    echo "VARNISH_SERVER=6"                                          >> .env
    echo "# Varnish settings"                                        >> .env
+   echo "VARNISH_CONFIG=/etc/varnish/default.vcl"                   >> .env
    echo "VARNICS_CACHE_SIZE=128m"                                   >> .env
    echo "VARNISH_PARAMS=-p default_ttl=3600 -p default_grace=3600"  >> .env
    echo "HOST_PORT_VARNISH=6081"                                    >> .env
