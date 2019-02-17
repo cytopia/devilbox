@@ -98,6 +98,11 @@
 /cfg/php-startup-7.4/*.sh
 /cfg/php-startup-8.0/*.sh
 
+# Ignorecustom Varnish configs
+/cfg/varnish-4/*.vcl
+/cfg/varnish-5/*.vcl
+/cfg/varnish-6/*.vcl
+
 # Ignore custom PHP-FPM modules
 /mod/php-fpm-5.2/*.so
 /mod/php-fpm-5.3/*.so
