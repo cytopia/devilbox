@@ -4,6 +4,10 @@
 version: '2.1'
 
 services:
+
+  # -----------------------------------------------------------------------------------------------
+  # ELK Stack
+  # -----------------------------------------------------------------------------------------------
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:${ELK_SERVER:-6.6.1}
     hostname: elastic
