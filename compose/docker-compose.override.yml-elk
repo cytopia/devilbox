@@ -1,0 +1,58 @@
+# vim: set ft=yaml:
+# https://www.docker.elastic.co
+
+version: '2.1'
+
+services:
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:${ELK_SERVER:-6.6.1}
+    hostname: elastic
+    ports:
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_ELK_ELASTIC:-9200}:9200"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.240
+    environment:
+      - TZ=${TIMEZONE:-UTC}
+      - discovery.type=single-node
+    volumes:
+      - data-elastic:/usr/share/elasticsearch/data
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash-oss:${ELK_SERVER:-6.6.1}
+    hostname: logstash
+    ports:
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_ELK_LOGSTASH:-9600}:9600"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.241
+    environment:
+      - TZ=${TIMEZONE:-UTC}
+      - LOG_LEVEL=info
+      - HTTP_HOST=0.0.0.0
+      - HTTP_PORT=9600
+      - CONFIG_RELOAD_AUTOMATIC=true
+      - CONFIG_RELOAD_INTERVAL=300
+      - DB_HOST=DATABASE-SERVER
+    volumes:
+      - data-logstash:/var/lib/logstash
+    depends_on:
+      - elastic
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:${ELK_SERVER:-6.6.1}
+    hostname: kibana
+    ports:
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_ELK_KIBANA:-5601}:5601"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.242
+    environment:
+      - TZ=${TIMEZONE:-UTC}
+      - ELASTICSEARCH_URL=http://elastic:9200
+    depends_on:
+      - elastic
+
+volumes:
+  data-elastic:
+  data-logstash:
