@@ -56,6 +56,7 @@ In order to fully customize each container, refer to their own documentation sec
 
 .. seealso::
    * :ref:`custom_container_enable_blackfire`
+   * :ref:`custom_container_enable_elk_stack`
    * :ref:`custom_container_enable_mailhog`
    * :ref:`custom_container_enable_rabbitmq`
    * :ref:`custom_container_enable_solr`
