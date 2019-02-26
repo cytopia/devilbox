@@ -87,3 +87,27 @@
    <a target="_blank" href="https://hub.docker.com/r/devilbox/varnish/">
      Dockerhub: Varnish <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
+
+.. |ext_lnk_elk_docker_registry| raw:: html
+
+   <a target="_blank" href="https://www.docker.elastic.co">
+     Elastic Docker: ELK <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_elk_elastic_github| raw:: html
+
+   <a target="_blank" href="https://github.com/elastic/elasticsearch">
+     GitHub: Elastic Search <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_elk_logstash_github| raw:: html
+
+   <a target="_blank" href="https://github.com/elastic/logstash">
+     GitHub: Logstash <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_elk_kibana_github| raw:: html
+
+   <a target="_blank" href="https://github.com/elastic/kibana">
+     GitHub: Kibana <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>

@@ -1,6 +1,11 @@
+# vim: set ft=yaml:
 version: '2.1'
 
 services:
+
+  # -----------------------------------------------------------------------------------------------
+  # Blackfire
+  # -----------------------------------------------------------------------------------------------
   blackfire:
     image: blackfire/blackfire:${BLACKFIRE:-latest}
     hostname: blackfire

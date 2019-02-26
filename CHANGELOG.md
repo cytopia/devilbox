@@ -37,6 +37,7 @@ major versions.
     - Alpine images where possible
 - Docker Compose overwrite images:
     - Blackfire
+    - ELK (Elastic Search, Logstash and Kibana)
     - MailHog
     - RabbitMQ
     - Solr

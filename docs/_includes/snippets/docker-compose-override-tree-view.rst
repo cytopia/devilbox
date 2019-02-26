@@ -10,12 +10,13 @@ However, each example also exists in its standalone file as shown below:
    compose/
    ├── docker-compose.override.yml-all
    ├── docker-compose.override.yml-blackfire
+   ├── docker-compose.override.yml-elk
    ├── docker-compose.override.yml-mailhog
    ├── docker-compose.override.yml-rabbitmq
    ├── docker-compose.override.yml-solr
    ├── docker-compose.override.yml-varnish
    └── README.md
 
-   0 directories, 6 files
+   0 directories, 8 files
 
 .. seealso:: :ref:`custom_container_enable_all_additional_container`
