@@ -90,7 +90,7 @@ services:
   # Varnish
   # -----------------------------------------------------------------------------------------------
   varnish:
-    image: devilbox/varnish:${VARNISH_SERVER:-6}
+    image: devilbox/varnish:${VARNISH_SERVER:-6}-0.3
     hostname: varnish
     ports:
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_VARNISH:-6081}:6081"
@@ -109,6 +109,31 @@ services:
       - bind
       - php
       - httpd
+
+  haproxy:
+    image: devilbox/haproxy:0.2
+    hostname: haproxy
+    ports:
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_HAPROXY:-8080}:80"
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_HAPROXY_SSL:-8443}:443"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.231
+    environment:
+      - BACKEND_ADDR=varnish
+      - BACKEND_PORT=6081
+      - DEVILBOX_UI_SSL_CN
+      - TLD_SUFFIX
+    volumes:
+      # Certificate Authority public key
+      - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
+      # Mount custom mass virtual hosting
+      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:rw${MOUNT_OPTIONS}
+    depends_on:
+      - bind
+      - php
+      - httpd
+      - varnish
 
   # -----------------------------------------------------------------------------------------------
   # ELK Stack
