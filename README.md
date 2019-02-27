@@ -56,7 +56,6 @@ Before updating the Devilbox ensure to always check for breaking changes until t
 2. [Changelog](CHANGELOG.md)
 3. [Updating](UPDATING.md)
 
-
 ## Architecture
 
 The Devilbox aims to be a swiss army knife for local development by providing you all the services
