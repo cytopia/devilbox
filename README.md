@@ -5,7 +5,7 @@
 ![Devilbox](docs/img/banner.png)
 
 **[Usage](#usage)** |
-**[Available Container](#available-container)** |
+**[Architecture](#architecture)** |
 **[Community](#community)** |
 **[Features](#feature-overview)** |
 **[Intranet](#intranet-overview)** |
@@ -56,16 +56,36 @@ Before updating the Devilbox ensure to always check for breaking changes until t
 2. [Changelog](CHANGELOG.md)
 3. [Updating](UPDATING.md)
 
-## Available Container
 
-The Devilbox ships the following pre-configured Docker container in any available version.
+## Architecture
 
-| Accel   | Frontend   | SQL        | NoSQL     | Queue & Search | ELK           | Misc      |
-|---------|------------|------------|-----------|----------------|---------------|-----------|
-| Varnish | Apache     | MariaDB    | Memcached | RabbitMQ       | ElasticSearch | Bind      |
-|         | Nginx      | MySQL      | MongoDB   | Solr           | Logstash      | Blackfire |
-|         | PHP        | PerconaDB  | Redis     |                | Kibana        | MailHog   |
-|         |            | PostgreSQL |           |                |               |           |
+The Devilbox aims to be a swiss army knife for local development by providing you all the services
+you would ever need. To get an idea about the architecture behind it and to also see what's available
+have a look at the following diagrams and tables.
+
+#### Smallest Stack
+This is the smallest possible and fully functional stack you can run:
+
+![Devilbox Stack](docs/img/devilbox-stack-smallest.svg)
+
+#### Full Stack
+To better understand what is actually possible have a look at the full example:
+
+![Devilbox Stack](docs/img/devilbox-stack-full.svg)
+
+#### Available Container
+
+The following table lists all integrated and pre-configured Docker container shipped by the Devilbox.
+Only the webserver and PHP container are mandatory, all others are optional and don't need to be started.
+
+Each of them is also available in multiple different versions in order to reflect your exact desired environment.
+
+| Accel   | Frontend   | SQL        | NoSQL     | Queue    | Search | ELK           | Utils     |
+|---------|------------|------------|-----------|----------|--------|---------------|-----------|
+| HAProxy | Apache     | MariaDB    | Memcached | RabbitMQ | Solr   | ElasticSearch | Bind      |
+| Varnish | Nginx      | MySQL      | MongoDB   |          |        | Logstash      | Blackfire |
+|         | PHP        | PerconaDB  | Redis     |          |        | Kibana        | MailHog   |
+|         |            | PostgreSQL |           |          |        |               |           |
 
 > **Documentation:**
 > [Available Container](https://devilbox.readthedocs.io/en/latest/readings/available-container.html)
@@ -342,6 +362,7 @@ Additionally to the default stack, there are a variety of other services that ca
    <th>MailHog</th>
    <th>RabbitMQ</th>
    <th>Solr</th>
+   <th>HAProxy</th>
    <th>Varnish</th>
   </tr>
  </thead>
@@ -352,6 +373,7 @@ Additionally to the default stack, there are a variety of other services that ca
    <td><a target="_blank" title="MailHog v1.0.0"   href="https://github.com/mailhog/MailHog">v1.0.0</a></td>
    <td><a target="_blank" title="RabbitMQ 3.6"     href="https://github.com/rabbitmq/rabbitmq-server">3.6</a></td>
    <td><a target="_blank" title="Solr 5"           href="https://github.com/apache/lucene-solr">5</a></td>
+   <td><a target="_blank" title="HAProxy 1.X"      href="https://github.com/devilbox/docker-haproxy">1.X</a></td>
    <td><a target="_blank" title="Varnish 4"        href="https://github.com/devilbox/docker-varnish">4</a></td>
   </tr>
   <tr>
@@ -360,6 +382,7 @@ Additionally to the default stack, there are a variety of other services that ca
    <td><a target="_blank" title="MailHog latest"   href="https://github.com/mailhog/MailHog">latest</a></td>
    <td><a target="_blank" title="RabbitMQ 3.7"     href="https://github.com/rabbitmq/rabbitmq-server">3.7</a></td>
    <td><a target="_blank" title="Solr 6"           href="https://github.com/apache/lucene-solr">6</a></td>
+   <td></td>
    <td><a target="_blank" title="Varnish 5"        href="https://github.com/devilbox/docker-varnish">5</a></td>
   </tr>
   <tr>
@@ -368,6 +391,7 @@ Additionally to the default stack, there are a variety of other services that ca
    <td></td>
    <td><a target="_blank" title="RabbitMQ latest"  href="https://github.com/rabbitmq/rabbitmq-server">latest</a></td>
    <td><a target="_blank" title="Solr 7"           href="https://github.com/apache/lucene-solr">7</a></td>
+   <td></td>
    <td><a target="_blank" title="Varnish 6"        href="https://github.com/devilbox/docker-varnish">6</a></td>
   </tr>
   <tr>
@@ -376,6 +400,7 @@ Additionally to the default stack, there are a variety of other services that ca
    <td></td>
    <td></td>
    <td><a target="_blank" title="Solr latest"      href="https://github.com/apache/lucene-solr">latest</a></td>
+   <td></td>
    <td><a target="_blank" title="Varnish latest"   href="https://github.com/devilbox/docker-varnish">latest</a></td>
   </tr>
  </tbody>
