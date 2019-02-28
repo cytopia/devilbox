@@ -27,6 +27,8 @@ stop all devilbox containers:
    # Stop containers
    host> cd path/to/devilbox
    host> docker-compose stop
+   # Remove stopped container (required)
+   host> docker-compose rm -f
 
    # Ensure containers are stopped
    host> docker-compose ps
@@ -99,7 +101,7 @@ recreated during the next start.
 
    # Remove anonymous volumes
    host> cd path/to/devilbox
-   host> docker-compose rm
+   host> docker-compose rm -f
 
 .. seealso::
    :ref:`remove_stopped_container`
@@ -210,3 +212,6 @@ Checklist Docker images
 =======================
 
 1. Ensure ``docker-compose pull`` or ``./update-docker.sh`` is executed
+2. Ensure ``docker-compose rm -f`` is executed after stopping the Devilbox
+
+.. seealso:: **Troubleshooting:** :ref:`troubleshooting_what_to_do_first`

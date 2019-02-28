@@ -69,6 +69,7 @@ For the first startup, foreground start is recommended to see any errors that mi
 
 * If you want to gracefully stop all container, hit ``Ctrl + c``
 * If you want to kill all container, hit ``Ctrl + c`` twice
+* Ensure to run ``docker-compose rm -f`` afterwards
 
 Background
 ----------
@@ -81,6 +82,7 @@ For consecutive startups you can send them into background (``-d``):
 
 * If you want to gracefully stop all container, enter ``docker-compose stop``
 * If you want to kill all container, enter ``docker-compose kil``
+* Ensure to run ``docker-compose rm -f`` afterwards
 
 
 Start some container
@@ -98,6 +100,7 @@ Foreground
 
 * If you want to gracefully stop all started container, hit ``Ctrl + c``
 * If you want to kill all started container, hit ``Ctrl + c`` twice
+* Ensure to run ``docker-compose rm -f`` afterwards
 
 Background
 ----------
@@ -108,6 +111,7 @@ Background
 
 * If you want to gracefully stop all container, enter ``docker-compose stop``
 * If you want to kill all container, enter ``docker-compose kil``
+* Ensure to run ``docker-compose rm -f`` afterwards
 
 .. seealso::
    :ref:`available_container`
@@ -115,12 +119,48 @@ Background
       they have to be specified.
 
 
+Stop and Restart
+================
+
+.. important::
+
+   When stopping or restarting the Devilbox, ensure to also **remove stopped container** before the
+   next startup to prevent orphaned runtime settings and always start fresh.
+
+   This will prevent many common Docker issues.
+
+.. seealso:: **Troubleshooting:** :ref:`troubleshooting_what_to_do_first`
+
+
+Stop all container
+------------------
+
+.. code-block:: bash
+
+   # Stop all container
+   host> docker-compose stop
+   # Remove stopped container (important!)
+   host> docker-compose rm -f
+
+Restart all container
+---------------------
+
+.. code-block:: bash
+
+   # Stop all container
+   host> docker-compose stop
+   # Remove stopped container (important!)
+   host> docker-compose rm -f
+   # Start all container
+   host> docker-compose up
+
+
 Open Devilbox intranet
 ======================
 
 Once ``docker-compose up`` has finished and all or the selected container are up and running,
 you can visit the Devilbox intranet with your favorite Web browser at http://localhost or
-http://127.0.0.1.
+http://127.0.0.1 (https://localhost or https:127.0.0.1 respectively).
 
 The Intranet start page will also show you all running and failed containers:
 
@@ -139,6 +179,8 @@ Checklist
 =========
 
 1. Docker container are started successfully with ``docker-compose up``
-2. Intranet is reachable via ``http://localhost``, ``http://127.0.0.1`` or Docker Toolbox IP address
+2. ``docker-compose rm -f`` is issued before restarting the Devilbox
+3. Intranet is reachable via ``http://localhost``, ``http://127.0.0.1`` or Docker Toolbox IP address
+4. Intranet is reachable via ``https://localhost``, ``https://127.0.0.1`` (HTTPS)
 
 .. seealso:: :ref:`troubleshooting`

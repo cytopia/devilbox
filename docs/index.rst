@@ -20,6 +20,10 @@ The only thing you will have to do is to create a new directory on the filesyste
 host is ready to be served with your custom domain.
 
 
+.. raw:: html
+
+   <img src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_diagrams/cytopia/01/png/architecture-full.png" />
+
 .. important::
    :ref:`read_first`
     Ensure you have read this document to understand how this documentation works.
