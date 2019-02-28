@@ -69,7 +69,7 @@ experience similar issues as well, check for any unattended Windows updates or
 updates to Docker itself. If those exist, try to revert them and see if that was the cause.
 
 I heard many bug stories from fellow Windows users so far.
-A good contact point for that is the Docker forum itself: https://forums.docker.com/c/docker-for-windows
+A good contact point for that is the Docker forum itself: https://forums.docker.com/c/docker-desktop-for-windows
 
 A few general things you should always do before attempting to open up issues are:
 

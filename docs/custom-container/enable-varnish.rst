@@ -8,6 +8,10 @@ Enable and configure Varnish
 
 This section will guide you through getting Varnish integrated into the Devilbox.
 
+As Varnish itself does not handle HTTPS, its Docker Compose override definition also defines an
+optional HAProxy that can be started and run in front of Varnish to provide HTTPS support and take
+care of the SSL offloading before requests hit Varnish.
+
 .. seealso::
    * |ext_lnk_varnish_github|
    * |ext_lnk_varnish_dockerhub|
@@ -29,8 +33,8 @@ Available overwrites
 .. include:: /_includes/snippets/docker-compose-override-tree-view.rst
 
 
-Varnish settings
-----------------
+Stack settings
+--------------
 
 In case of Varnish, the file is ``compose/docker-compose.override.yml-varnish``. This file
 must be copied into the root of the Devilbox git directory.
@@ -40,6 +44,13 @@ must be copied into the root of the Devilbox git directory.
 +=======================+======================================================================================================+
 | Example compose file  | ``compose/docker-compose.override.yml-all`` or |br| ``compose/docker-compose.override.yml-varnish``  |
 +-----------------------+------------------------------------------------------------------------------------------------------+
+
+Varnish
+^^^^^^^
+
++-----------------------+------------------------------------------------------------------------------------------------------+
+| What                  | How and where                                                                                        |
++=======================+======================================================================================================+
 | Container IP address  | ``172.16.238.230``                                                                                   |
 +-----------------------+------------------------------------------------------------------------------------------------------+
 | Container host name   | ``varnish``                                                                                          |
@@ -55,10 +66,34 @@ must be copied into the root of the Devilbox git directory.
 | Further configuration | none                                                                                                 |
 +-----------------------+------------------------------------------------------------------------------------------------------+
 
-Varnish env variables
----------------------
+HAProxy
+^^^^^^^
+
++-----------------------+------------------------------------------------------------------------------------------------------+
+| What                  | How and where                                                                                        |
++=======================+======================================================================================================+
+| Container IP address  | ``172.16.238.231``                                                                                   |
++-----------------------+------------------------------------------------------------------------------------------------------+
+| Container host name   | ``haproxy``                                                                                          |
++-----------------------+------------------------------------------------------------------------------------------------------+
+| Container name        | ``haproxy``                                                                                          |
++-----------------------+------------------------------------------------------------------------------------------------------+
+| Mount points          | none                                                                                                 |
++-----------------------+------------------------------------------------------------------------------------------------------+
+| Exposed port          | ``8080`` for HTTP and ``8443`` for HTTPS (can be changed via ``.env``)                               |
++-----------------------+------------------------------------------------------------------------------------------------------+
+| Available at          | ``http://localhost:8080``, ``http://localhost:8443`` (or via ``http:<project>.<TLD>:8080|8443``)     |
++-----------------------+------------------------------------------------------------------------------------------------------+
+| Further configuration | none                                                                                                 |
++-----------------------+------------------------------------------------------------------------------------------------------+
+
+Stack env variables
+-------------------
 
 Additionally the following ``.env`` variables can be created for easy configuration:
+
+Varnish
+^^^^^^^
 
 +------------------------------+-----------------------------------------------+--------------------------------------------------------------------+
 | Variable                     | Default value                                 | Description                                                        |
@@ -74,6 +109,16 @@ Additionally the following ``.env`` variables can be created for easy configurat
 | ``VARNISH_PARAMS``           | ``-p default_ttl=3600 -p default_grace=3600`` | Additional Varnish startup parameter.                              |
 +------------------------------+-----------------------------------------------+--------------------------------------------------------------------+
 
+HAProxy
+^^^^^^^
+
++------------------------------+-----------------------------------------------+-------------------------------------------------------------------------------+
+| Variable                     | Default value                                 | Description                                                                   |
++==============================+===============================================+===============================================================================+
+| ``HOST_PORT_HAPROXY``        | ``8080``                                      | Controls the host port on which HTTP requests will be available for HAProxy.  |
++------------------------------+-----------------------------------------------+-------------------------------------------------------------------------------+
+| ``HOST_PORT_HAPROXY_SSL``    | ``8443``                                      | Controls the host port on which HTTPS requests will be available for HAProxy. |
++------------------------------+-----------------------------------------------+-------------------------------------------------------------------------------+
 
 Instructions
 ============
@@ -97,8 +142,8 @@ Copy the Varnish Docker Compose overwrite file into the root of the Devilbox git
 2. Adjust ``.env`` settings (optional)
 --------------------------------------
 
-Varnish is using sane defaults, which can be changed by adding variables to the ``.env`` file
-and assigning custom values.
+Varnish and HAProxy are using sane defaults, which can be changed by adding variables to the
+``.env`` file and assigning custom values.
 
 Add the following variables to ``.env`` and adjust them to your needs:
 
@@ -115,6 +160,11 @@ Add the following variables to ``.env`` and adjust them to your needs:
    VARNICS_CACHE_SIZE=128m
    VARNISH_PARAMS=-p default_ttl=3600 -p default_grace=3600
    HOST_PORT_VARNISH=6081
+
+   # HAProxy settings
+   HOST_PORT_HAPROXY=8080
+   HOST_PORT_HAPROXY_SSL=8443
+
 
 .. seealso:: :ref:`env_file`
 
@@ -154,13 +204,25 @@ For this example we will assume you are using  Varnish 6
 
 The final step is to start the Devilbox with Varnish.
 
+.. seealso:: :ref:`start_the_devilbox`
+
+4.1 Varnish only
+^^^^^^^^^^^^^^^^
+
 Let's assume you want to start ``php``, ``httpd``, ``bind``, ``varnish``.
 
 .. code-block:: bash
 
    host> docker-compose up -d php httpd bind varnish
 
-.. seealso:: :ref:`start_the_devilbox`
+4.2 HTTPS offloading with HAProxy in front of Varnish
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you also want full HTTPS support, simply start HAproxy as well with Varnish.
+
+.. code-block:: bash
+
+   host> docker-compose up -d php httpd bind haproxy varnish
 
 
 TL;DR
@@ -185,6 +247,9 @@ directory:
    echo "VARNICS_CACHE_SIZE=128m"                                   >> .env
    echo "VARNISH_PARAMS=-p default_ttl=3600 -p default_grace=3600"  >> .env
    echo "HOST_PORT_VARNISH=6081"                                    >> .env
+   echo "# HAProxy settings"                                        >> .env
+   echo "HOST_PORT_HAPROXY=8080"                                    >> .env
+   echo "HOST_PORT_HAPROXY_SSL=8443"                                >> .env
 
    # Start container
    docker-compose up -d php httpd bind varnish

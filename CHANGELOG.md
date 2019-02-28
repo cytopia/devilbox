@@ -42,6 +42,7 @@ major versions.
     - RabbitMQ
     - Solr
     - Varnish
+    - HAProxy
 - New binaries
     - `blackfire`
     - `dep` (Deployer)

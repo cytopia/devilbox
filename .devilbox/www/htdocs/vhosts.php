@@ -110,6 +110,14 @@
 			 */
 			function checkDns(vhost) {
 				var xhttp = new XMLHttpRequest();
+				var proto;
+				var port;
+				var name = vhost + '.<?php echo loadClass('Httpd')->getTldSuffix();?>'
+
+				var url = window.location.href.split("/");
+				var tmp = url[2].split(":");
+				proto = url[0];
+				port = tmp.length == 2 ? ':' + tmp[1] : '';
 
 				// Timeout after XXX seconds and mark it invalid DNS
 				xhttp.timeout = <?php echo loadClass('Helper')->getEnv('DNS_CHECK_TIMEOUT');?>000;
@@ -125,12 +133,12 @@
 						if (el_valid.innerHTML != 'WARN') {
 							el_valid.innerHTML = 'OK';
 						}
-						el_href.innerHTML = '<a target="_blank" href="//'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix().loadClass('Httpd')->getPort();?>">'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix().loadClass('Httpd')->getPort();?></a>' + el_href.innerHTML;
+						el_href.innerHTML = '<a target="_blank" href="'+proto+'//'+name+port+'">'+name+port+'</a>' + el_href.innerHTML;
 					} else {
 						//console.log(vhost);
 					}
 				}
-				xhttp.open('POST', '//'+vhost+'.<?php echo loadClass('Httpd')->getTldSuffix().loadClass('Httpd')->getPort();?>/devilbox-api/status.json', true);
+				xhttp.open('POST', proto+'//'+name+port+'/devilbox-api/status.json', true);
 				xhttp.send();
 
 				// Timeout to abort in 1 second
