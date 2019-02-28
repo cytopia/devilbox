@@ -36,10 +36,6 @@ The log directory structure would look something like this:
    │   ├── defaultlocalhost-error.log
    │   ├── <project-name>-access.log    # Each project has its own access log
    │   ├── <project-name>-error.log     # Each project has its own error log
-   ├── mariadb-10.1/
-   │   ├── error.log
-   │   ├── query.log
-   │   ├── slow.log
    ├── php-fpm-7.1/
    │   ├── php-fpm.access
    │   ├── php-fpm.error
