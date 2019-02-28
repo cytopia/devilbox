@@ -70,10 +70,9 @@ fi
 ### MYSQL
 ###
 if [ "${WHICH}" = "all" ] || [ "${WHICH}" = "mysql" ]; then
-	SUFFIX="$( grep -E '^\s+image:\s+cytopia/\${MYSQL_SERVER' "${CWD}/docker-compose.yml" | sed 's/.*://g' )"
 	IMAGES="$( grep -Eo '^#*MYSQL_SERVER=[-a-z]+[.0-9]*' "${CWD}/env-example" | sed 's/.*=//g' )"
 	echo "${IMAGES}" | while read version ; do
-		docker pull cytopia/${version}:${SUFFIX}
+		docker pull devilbox/mysql:${version}
 	done
 fi
 

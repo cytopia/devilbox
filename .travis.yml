@@ -142,9 +142,12 @@ env:
   - S1=PHP V1=7.2 S2=MYSQL V2=mariadb-10.0
   - S1=PHP V1=7.2 S2=MYSQL V2=mariadb-10.1
   - S1=PHP V1=7.2 S2=MYSQL V2=mariadb-10.2
+  - S1=PHP V1=7.2 S2=MYSQL V2=mariadb-10.3
+  - S1=PHP V1=7.2 S2=MYSQL V2=mariadb-10.4
   - S1=PHP V1=7.2 S2=MYSQL V2=percona-5.5
   - S1=PHP V1=7.2 S2=MYSQL V2=percona-5.6
   - S1=PHP V1=7.2 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=7.2 S2=MYSQL V2=percona-8.0
   # PHP 7.2 vs PgSQL
   - S1=PHP V1=7.2 S2=PGSQL V2=9.0
   - S1=PHP V1=7.2 S2=PGSQL V2=9.1

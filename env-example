@@ -134,9 +134,9 @@ NEW_GID=1000
 
 
 ###
-### Timezone for all dockers and service config files
+### Timezone for PHP Docker container (system and php.ini)
 ###
-TIMEZONE=Europe/Berlin
+TIMEZONE=UTC
 
 
 
@@ -288,9 +288,11 @@ HTTPD_SERVER=nginx-stable
 #MYSQL_SERVER=mariadb-10.1
 #MYSQL_SERVER=mariadb-10.2
 MYSQL_SERVER=mariadb-10.3
+#MYSQL_SERVER=mariadb-10.4
 #MYSQL_SERVER=percona-5.5
 #MYSQL_SERVER=percona-5.6
 #MYSQL_SERVER=percona-5.7
+#MYSQL_SERVER=percona-8.0
 
 
 ###
@@ -416,70 +418,6 @@ MOUNT_OPTIONS=
 HOST_PATH_HTTPD_DATADIR=./data/www
 
 
-###
-### Local filesystem path to mysql/mariadb datadir.
-###
-### This can be an existing mysql data directory or empty.
-### If it already is a mysql data directory with content,
-### it will be mounted into the docker and used.
-###
-### If this directory is empty, a new mysql database will be
-### created.
-###
-### Note: Inside this path, a subdirectory with the mysql|mariadb
-###       version will be created where the actual data resides.
-###       This is to protect databases from being altered by
-###       newer or older mysql|mariadb server versions.
-###
-### Note: When changing this variable you must re-create the container.
-###       Simply remove it, it will be auto-created during the next start:
-###
-### $ docker-compose rm -f
-###
-HOST_PATH_MYSQL_DATADIR=./data/mysql
-
-
-###
-### Local filesystem path to postgresql datadir.
-###
-### This can be an existing postgresql data directory or empty.
-### If it already is a postgresql data directory with content,
-### it will be mounted into the docker and used.
-###
-### If this directory is empty, a new postgresql database will be
-### created.
-###
-### Note: Inside this path, a subdirectory with the postgresql
-###       version will be created where the actual data resides.
-###       This is to protect databases from being altered by
-###       newer or older postgres server versions.
-###
-### Note: When changing this variable you must re-create the container.
-###       Simply remove it, it will be auto-created during the next start:
-###
-### $ docker-compose rm -f
-###
-HOST_PATH_PGSQL_DATADIR=./data/pgsql
-
-
-###
-### Local filesystem path to mongodb datadir.
-###
-### This can be an existing mongodb data directory or empty.
-### If it already is a mongodb data directory with content,
-### it will be mounted into the docker and used.
-###
-### If this directory is empty, a new mongodb database will be
-### created.
-###
-### Note: When changing this variable you must re-create the container.
-###       Simply remove it, it will be auto-created during the next start:
-###
-### $ docker-compose rm -f
-###
-HOST_PATH_MONGO_DATADIR=./data/mongo
-
-
 
 ################################################################################
 ###
@@ -590,12 +528,6 @@ HTTPD_NGINX_WORKER_CONNECTIONS=1024
 ### will be applied
 ###
 MYSQL_ROOT_PASSWORD=
-
-
-###
-### Custom MySQL Runtime Settings
-###
-MYSQL_GENERAL_LOG=0
 
 
 ###
