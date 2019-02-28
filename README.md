@@ -65,12 +65,16 @@ have a look at the following diagrams and tables.
 #### Smallest Stack
 This is the smallest possible and fully functional stack you can run:
 
-![Devilbox Stack](docs/img/devilbox-stack-smallest.svg)
+<img width="300" style="width:300px" title="Devilbox stack" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_diagrams/cytopia/02/png/architecture-small.png" />
+
+> [Devilbox artwork](https://github.com/devilbox/artwork)
 
 #### Full Stack
 To better understand what is actually possible have a look at the full example:
 
-![Devilbox Stack](docs/img/devilbox-stack-full.svg)
+<img title="Devilbox stack" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_diagrams/cytopia/01/png/architecture-full.png" />
+
+> [Devilbox artwork](https://github.com/devilbox/artwork)
 
 #### Available Container
 
