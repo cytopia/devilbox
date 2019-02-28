@@ -30,6 +30,7 @@ assignees: ''
 * [ ] `docker-compose logs` and `log/` output is added
 * [ ] I've looked through the docs: https://devilbox.readthedocs.io/en/latest/
 * [ ] I've looked through existing issues: https://github.com/cytopia/devilbox/issues
+* [ ] I've read troubleshooting: https://devilbox.readthedocs.io/en/latest/support/troubleshooting.html
 
 
 ### OS / ENVIRONMENT

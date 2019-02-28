@@ -27,6 +27,37 @@ It will grow over time once there are more issues reported.
 .. contents:: :local:
 
 
+.. _troubleshooting_what_to_do_first:
+
+What to always do first
+=======================
+
+Before going into the issues below, always do the following
+
+**1. Ensure stopped container are removed**
+
+   .. code-block:: bash
+
+      # Ensure everything is stopped
+      host> docker-compose stop
+      host> docker-compose kill
+      host> docker-compose rm -f
+
+**2. Ensure config is normalized**
+
+   .. code-block:: bash
+
+      # Ensure .env file is normalized
+      host> cp env-example .env
+
+**3. Statup minimal**
+
+   .. code-block:: bash
+
+      # Test everything with the minimal stack
+      host> docker-compose up php httpd bind
+
+
 General
 =======
 
