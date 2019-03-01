@@ -31,6 +31,7 @@ See the directory structure for MySQL configuration directories inside ``./cfg/`
 
    host> ls -l path/to/devilbox/cfg/ | grep -E 'mysql|mariadb|percona'
 
+   drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mariadb-5.5/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mariadb-10.0/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mariadb-10.1/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mariadb-10.2/

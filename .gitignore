@@ -28,9 +28,6 @@
 # Ignore Certificate Authority
 /ca/*
 
-# Ignore emails
-/mail/*
-
 # Ignore compose override file
 /docker-compose.override.yml
 
@@ -50,7 +47,7 @@
 /cfg/mysql-5.6/*.cnf
 /cfg/mysql-5.7/*.cnf
 /cfg/mysql-8.0/*.cnf
-/cfg/mariadb-5/*.cnf
+/cfg/mariadb-5.5/*.cnf
 /cfg/mariadb-10.0/*.cnf
 /cfg/mariadb-10.1/*.cnf
 /cfg/mariadb-10.2/*.cnf

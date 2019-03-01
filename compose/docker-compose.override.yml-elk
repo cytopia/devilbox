@@ -20,7 +20,7 @@ services:
       - TZ=${TIMEZONE:-UTC}
       - discovery.type=single-node
     volumes:
-      - data-elastic:/usr/share/elasticsearch/data
+      - devilbox-elastic:/usr/share/elasticsearch/data
 
   logstash:
     image: docker.elastic.co/logstash/logstash-oss:${ELK_SERVER:-6.6.1}
@@ -39,7 +39,7 @@ services:
       - CONFIG_RELOAD_INTERVAL=300
       - DB_HOST=DATABASE-SERVER
     volumes:
-      - data-logstash:/var/lib/logstash
+      - devilbox-logstash:/var/lib/logstash
     depends_on:
       - elastic
 
@@ -58,5 +58,5 @@ services:
       - elastic
 
 volumes:
-  data-elastic:
-  data-logstash:
+  devilbox-elastic:
+  devilbox-logstash:

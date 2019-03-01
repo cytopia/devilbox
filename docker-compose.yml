@@ -175,7 +175,7 @@ services:
       - ${DEVILBOX_PATH}/log/php-fpm-${PHP_SERVER}:/var/log/php:rw${MOUNT_OPTIONS}
 
       # Mount Mail directory
-      - ${DEVILBOX_PATH}/mail:/var/mail:rw${MOUNT_OPTIONS}
+      - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
 
       # Mount DB Backup directory
       - ${DEVILBOX_PATH}/backups:/shared/backups:rw${MOUNT_OPTIONS}
@@ -503,3 +503,12 @@ networks:
       config:
         - subnet: 172.16.238.0/24
           gateway: 172.16.238.1
+
+################################################################################
+# VOLUMES
+################################################################################
+volumes:
+  # ------------------------------------------------------------
+  # Misc
+  # ------------------------------------------------------------
+  devilbox-mail:
