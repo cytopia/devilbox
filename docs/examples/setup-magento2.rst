@@ -35,6 +35,20 @@ The following configuration will be used:
    * On your host operating system, projects are by default in ``./data/www/`` inside the
      Devilbox git directory. This path can be changed via :ref:`env_httpd_datadir`.
 
+Requirements
+============
+
+This example requires to use **Apache 2.4**, as Magento does a lot of ``.htaccess`` magic by default
+and these files are not interpreted by **Nginx**.
+
+If you still want to use Nginx instead, you will have to overwrite your vhost configuration to
+ensure the ``.htaccess`` rules are glued into your Nginx vhost configuration.
+
+.. seealso::
+
+   * :ref:`vhost_gen_customize_specific_virtual_host`
+   * https://magento.stackexchange.com/questions/121758/how-to-configure-nginx-for-magento-2#121769
+
 
 Walk through
 ============
