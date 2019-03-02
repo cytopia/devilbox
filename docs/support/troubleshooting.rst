@@ -331,3 +331,23 @@ to read-only by applying the following ``chmod`` command.
 .. seealso::
    * :ref:`my_cnf`
    * https://github.com/cytopia/devilbox/issues/212
+
+
+Docker Toolbox
+==============
+
+ln: creating symbolic link `./foo': Read-only file system
+---------------------------------------------------------
+
+VirtualBox might not allow symlinks by default on other directories. This can however be fixed
+manually via.
+
+.. code-block:: bash
+
+   # <DIR> is the VirtualBox shared directory
+   host> VBoxManage setextradata default VBoxInternal2/SharedFoldersEnableSymlinksCreate/<DIR> 1
+
+
+.. seealso:: For detailed example see here:
+
+  * Docker Toolbox on Windows: :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
