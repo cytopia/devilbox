@@ -66,6 +66,8 @@ Additionally you will require ``git`` in order to clone the devilbox project.
    * :ref:`howto_find_docker_and_docker_compose_version`
 
 
+.. _prerequisites_docker_installation:
+
 Docker installation
 ===================
 
