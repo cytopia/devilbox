@@ -119,6 +119,8 @@ Background
       they have to be specified.
 
 
+.. _start_the_devilbox_stop_and_restart:
+
 Stop and Restart
 ================
 
