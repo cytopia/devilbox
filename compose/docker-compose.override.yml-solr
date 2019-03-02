@@ -15,7 +15,7 @@ services:
       app_net:
         ipv4_address: 172.16.238.220
     volumes:
-      - data-solr:/opt/solr/server/solr/mycores
+      - devilbox-solr:/opt/solr/server/solr/mycores
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
@@ -26,4 +26,4 @@ services:
       - httpd
 
 volumes:
-  data-solr:
+  devilbox-solr:
