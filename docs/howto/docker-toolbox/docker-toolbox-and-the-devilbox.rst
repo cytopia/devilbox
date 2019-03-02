@@ -170,4 +170,42 @@ have read, understood and applied the following:
     at ``/c/Users``. If your project lives elsewhere or needs access to other directories on the
     host filesystem, you can add them, using the VirtualBox UI."
 
-.. seealso:: |ext_lnk_install_docker_toolbox_win_shared_directory|
+
+.. _howto_docker_toolbox_and_the_devilbox_windows_symlinks:
+
+Symlinks
+^^^^^^^^
+
+VirtualBox might not allow symlinks by default on other directories. This can however be fixed
+manually. Let's assume You've added a shared folder ``D:/`` to VirtualBox on ``d``, you will then
+need to manually allow symlinks via ``VboxManage`` command:
+
+First check if symlinks are disabled
+
+.. code-block:: bash
+
+   host> VboxManage getextradata default enumerate
+
+   Key: VBoxInternal2/SharedFoldersEnableSymlinksCreate/d, Value: 0
+
+The ``Value: 0`` indicates that symlinks are not allowed. To enable it, do the folllowing:
+
+
+.. code-block:: bash
+
+   VBoxManage setextradata default VBoxInternal2/SharedFoldersEnableSymlinksCreate/d 1
+
+Now check again
+
+.. code-block:: bash
+
+   host> VboxManage getextradata default enumerate
+
+   Key: VBoxInternal2/SharedFoldersEnableSymlinksCreate/d, Value: 1
+
+The ``Value: 1`` now indicates that symlinks are allowed.
+
+.. seealso::
+   * |ext_lnk_install_docker_toolbox_win_shared_directory|
+   * https://github.com/cytopia/devilbox/issues/479
+   * https://www.virtualbox.org/ticket/10085
