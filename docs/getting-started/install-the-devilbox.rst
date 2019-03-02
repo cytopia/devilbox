@@ -52,6 +52,8 @@ of settings (such as which version to start up).
    * :ref:`env_file`
 
 
+.. _install_the_devilbox_set_uid_and_gid:
+
 Set uid and gid
 ===============
 

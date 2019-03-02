@@ -50,6 +50,7 @@ host is ready to be served with your custom domain.
    getting-started/create-your-first-project
    getting-started/enter-the-php-container
    getting-started/change-container-versions
+   getting-started/important
 
 
 .. toctree::
