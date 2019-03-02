@@ -336,8 +336,8 @@ to read-only by applying the following ``chmod`` command.
 Docker Toolbox
 ==============
 
-ln: creating symbolic link `./foo': Read-only file system
----------------------------------------------------------
+ln: creating symbolic link './foo': Read-only file system
+----------------------------------------------------------
 
 VirtualBox might not allow symlinks by default on other directories. This can however be fixed
 manually via.
