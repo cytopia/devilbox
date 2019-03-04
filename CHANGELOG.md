@@ -27,6 +27,8 @@ major versions.
 - Reverse Proxy support
 - Autostart scripts
 - Allow to enable/disable PHP modules
+- Allow to set Nginx worker_processes via .env
+- Allow to set Nginx worker_connections via .env
 - Intranet vendors
     - PHPRedMin
 - Mount options for volumes
@@ -88,6 +90,7 @@ major versions.
 - Fixed hostnames for all Docker container
 - PHP-FPM workers changed from `dynamic` to `ondemand`
 - Allow Apache to server underscore domains
+- Changed Nginx `client_max_body_size` to `0` to be in sync with Apache
 
 #### Fixed
 - break on errors in wrong vhost-gen overwrite
