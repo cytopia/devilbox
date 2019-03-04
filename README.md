@@ -462,11 +462,15 @@ The Devilbox has everything setup for you. The only thing you will have to insta
 <table>
 <tbody>
   <tr>
-    <td width="220" style="width:220px;">:star: HTTP/2 support</td>
+    <td width="220" style="width:220px;">:star: HTTPS support</td>
+    <td>HTTPS is available by default for all projects and the bundled Intranet.</td>
+  </tr>
+  <tr>
+    <td>:star: HTTP/2 support</td>
     <td>All HTTPS connections will offer <a href="https://en.wikipedia.org/wiki/HTTP/2">HTTP/2</a> as the default protocol, except for Apache 2.2 which does not support it.</td>
   </tr>
   <tr>
-    <td width="220" style="width:220px;">:star: Auto virtual hosts</td>
+    <td>:star: Auto virtual hosts</td>
     <td>New virtual hosts are created automatically and instantly whenever you add a project directory. This is done internally via <a href="https://travis-ci.org/devilbox/vhost-gen">vhost-gen</a> and <a href="https://github.com/devilbox/watcherd">watcherd</a>.</td>
   </tr>
   <tr>
