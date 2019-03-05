@@ -1518,6 +1518,47 @@ than ``max_execution_time``, you will get a proper PHP error message in the brow
 | ``HTTPD_TIMEOUT_TO_PHP_FPM`` | positive integer  | ``180``          |
 +------------------------------+-------------------+------------------+
 
+HTTPD_NGINX_WORKER_PROCESSES
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Defines the number of worker processes for Nginx, i.e, the number of CPU cores.
+
+The optimal value depends on many factors including (but not limited to) the number of CPU cores,
+the number of hard disk drives that store data, and load pattern. When one is in doubt, setting it
+to the number of available CPU cores would be a good start
+(the value “auto” will try to autodetect it).
+
++----------------------------------+-----------------------------+------------------+
+| Name                             | Allowed values              | Default value    |
++==================================+=============================+==================+
+| ``HTTPD_NGINX_WORKER_PROCESSES`` | positive integer \| `auto`  | ``auto``         |
++----------------------------------+-----------------------------+------------------+
+
+.. note:: This setting only applies to Nginx and has no effect for Apache.
+
+.. seealso:: https://nginx.org/en/docs/ngx_core_module.html#worker_processes
+
+
+HTTPD_NGINX_WORKER_CONNECTIONS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sets the maximum number of simultaneous connections that can be opened by a worker process.
+
+It should be kept in mind that this number includes all connections (e.g. connections with proxied
+servers, among others), not only connections with clients. Another consideration is that the actual
+number of simultaneous connections cannot exceed the current limit on the maximum number of open
+files, which can be changed by worker_rlimit_nofile.
+
++------------------------------------+-------------------+------------------+
+| Name                               | Allowed values    | Default value    |
++====================================+===================+==================+
+| ``HTTPD_NGINX_WORKER_CONNECTIONS`` | positive integer  | ``1024``         |
++------------------------------------+-------------------+------------------+
+
+.. note:: This setting only applies to Nginx and has no effect for Apache.
+
+.. seealso:: https://nginx.org/en/docs/ngx_core_module.html#worker_connections
+
 
 MySQL
 -----

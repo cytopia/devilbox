@@ -561,6 +561,18 @@ HTTPD_TEMPLATE_DIR=.devilbox
 HTTPD_TIMEOUT_TO_PHP_FPM=180
 
 
+###
+### NGINX ONLY
+###
+### Set worker_processes and worker_connections
+###
+### https://nginx.org/en/docs/ngx_core_module.html#worker_processes
+### https://nginx.org/en/docs/ngx_core_module.html#worker_connections
+###
+HTTPD_NGINX_WORKER_PROCESSES=auto
+HTTPD_NGINX_WORKER_CONNECTIONS=1024
+
+
 
 ################################################################################
 ###

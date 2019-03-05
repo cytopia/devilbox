@@ -210,7 +210,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER}:0.29
+    image: devilbox/${HTTPD_SERVER}:0.30
     hostname: httpd
 
     environment:
@@ -232,6 +232,12 @@ services:
       ##
       - NEW_UID
       - NEW_GID
+
+      ##
+      ## Nginx specific worker/connection settings
+      ##
+      - WORKER_PROCESSES=${HTTPD_NGINX_WORKER_PROCESSES:-auto}
+      - WORKER_CONNECTIONS=${HTTPD_NGINX_WORKER_CONNECTIONS:-1024}
 
       ##
       ## Disable default vhost?
