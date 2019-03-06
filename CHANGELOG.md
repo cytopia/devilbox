@@ -41,6 +41,7 @@ major versions.
     - Blackfire
     - ELK (Elastic Search, Logstash and Kibana)
     - MailHog
+    - Ngrok
     - RabbitMQ
     - Solr
     - Varnish

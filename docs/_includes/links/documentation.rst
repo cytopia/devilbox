@@ -40,6 +40,18 @@
      Dockerhub: MailHog <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_ngrok_github| raw:: html
+
+   <a target="_blank" href="https://github.com/devilbox/docker-ngrok">
+     Github: ngrok <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_ngrok_dockerhub| raw:: html
+
+   <a target="_blank" href="https://hub.docker.com/r/devilbox/ngrok/">
+     Dockerhub: ngrok <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_blackfire_github| raw:: html
 
    <a target="_blank" href="https://github.com/blackfireio/docker">
