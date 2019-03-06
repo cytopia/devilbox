@@ -88,7 +88,7 @@ Each of them is also available in multiple different versions in order to reflec
 | HAProxy | Apache     | MariaDB    | Memcached | RabbitMQ | Solr   | ElasticSearch | Bind      |
 | Varnish | Nginx      | MySQL      | MongoDB   |          |        | Logstash      | Blackfire |
 |         | PHP        | PerconaDB  | Redis     |          |        | Kibana        | MailHog   |
-|         |            | PostgreSQL |           |          |        |               |           |
+|         |            | PostgreSQL |           |          |        |               | Ngrok     |
 
 > **Documentation:**
 > [Available Container](https://devilbox.readthedocs.io/en/latest/readings/available-container.html)
@@ -363,6 +363,7 @@ Additionally to the default stack, there are a variety of other services that ca
    <th>Blackfire</th>
    <th>ELK</th>
    <th>MailHog</th>
+   <th>Ngrok</th>
    <th>RabbitMQ</th>
    <th>Solr</th>
    <th>HAProxy</th>
@@ -374,15 +375,17 @@ Additionally to the default stack, there are a variety of other services that ca
    <td><a target="_blank" title="Blackfire 1.8"    href="https://github.com/blackfireio/docker">1.8</a></td>
    <td><a target="_blank" title="ELK stack"        href="https://www.docker.elastic.co">5.x.y</a></td>
    <td><a target="_blank" title="MailHog v1.0.0"   href="https://github.com/mailhog/MailHog">v1.0.0</a></td>
+   <td><a target="_blank" title="Ngrok 2.x"        href="https://github.com/devilbox/docker-ngrok">2.x</a></td>
    <td><a target="_blank" title="RabbitMQ 3.6"     href="https://github.com/rabbitmq/rabbitmq-server">3.6</a></td>
    <td><a target="_blank" title="Solr 5"           href="https://github.com/apache/lucene-solr">5</a></td>
-   <td><a target="_blank" title="HAProxy 1.X"      href="https://github.com/devilbox/docker-haproxy">1.X</a></td>
+   <td><a target="_blank" title="HAProxy 1.x"      href="https://github.com/devilbox/docker-haproxy">1.x</a></td>
    <td><a target="_blank" title="Varnish 4"        href="https://github.com/devilbox/docker-varnish">4</a></td>
   </tr>
   <tr>
    <td>...</td>
    <td><a target="_blank" title="ELK stack"        href="https://www.docker.elastic.co">6.x.y</a></td>
    <td><a target="_blank" title="MailHog latest"   href="https://github.com/mailhog/MailHog">latest</a></td>
+   <td></td>
    <td><a target="_blank" title="RabbitMQ 3.7"     href="https://github.com/rabbitmq/rabbitmq-server">3.7</a></td>
    <td><a target="_blank" title="Solr 6"           href="https://github.com/apache/lucene-solr">6</a></td>
    <td></td>
@@ -392,6 +395,7 @@ Additionally to the default stack, there are a variety of other services that ca
    <td><a target="_blank" title="Blackfire 1.18.0" href="https://github.com/blackfireio/docker">1.18.0</a></td>
    <td><a target="_blank" title="ELK stack"        href="https://www.docker.elastic.co">7.x.y</a></td>
    <td></td>
+   <td></td>
    <td><a target="_blank" title="RabbitMQ latest"  href="https://github.com/rabbitmq/rabbitmq-server">latest</a></td>
    <td><a target="_blank" title="Solr 7"           href="https://github.com/apache/lucene-solr">7</a></td>
    <td></td>
@@ -399,6 +403,7 @@ Additionally to the default stack, there are a variety of other services that ca
   </tr>
   <tr>
    <td><a target="_blank" title="Blackfire latest" href="https://github.com/blackfireio/docker">latest</a></td>
+   <td></td>
    <td></td>
    <td></td>
    <td></td>

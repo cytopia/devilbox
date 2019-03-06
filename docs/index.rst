@@ -121,6 +121,7 @@ host is ready to be served with your custom domain.
    custom-container/enable-blackfire
    custom-container/enable-elk-stack
    custom-container/enable-mailhog
+   custom-container/enable-ngrok
    custom-container/enable-rabbitmq
    custom-container/enable-solr
    custom-container/enable-varnish
@@ -132,6 +133,7 @@ host is ready to be served with your custom domain.
 
    corporate-usage/shared-devilbox-server-in-lan
    corporate-usage/use-external-databases
+   corporate-usage/showcase-over-the-internet
 ..
    corporate-usage/deploy-devilbox-via-ansible
    corporate-usage/access-colleagues-devilbox
