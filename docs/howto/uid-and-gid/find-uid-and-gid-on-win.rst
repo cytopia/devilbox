@@ -1,5 +1,7 @@
 :orphan:
 
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
+
 .. _howto_find_uid_and_gid_on_win:
 
 *****************************************

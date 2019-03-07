@@ -1,6 +1,7 @@
 :orphan:
 
 .. include:: /_includes/all.rst
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
 .. _howto_open_terminal_on_win:
 

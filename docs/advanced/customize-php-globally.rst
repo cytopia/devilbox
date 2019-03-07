@@ -1,5 +1,6 @@
-.. _customize_php_globally:
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
+.. _customize_php_globally:
 
 **********************
 Customize PHP globally

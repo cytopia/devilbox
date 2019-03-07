@@ -1,3 +1,5 @@
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
+
 .. _vhost_gen_customize_all_virtual_hosts_globally:
 
 ************************************

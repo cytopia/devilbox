@@ -1,6 +1,7 @@
 :orphan:
 
 .. include:: /_includes/all.rst
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
 .. _howto_docker_toolbox_and_the_devilbox:
 
