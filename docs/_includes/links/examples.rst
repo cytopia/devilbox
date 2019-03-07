@@ -10,6 +10,12 @@
      Official CodeIgniter Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_example_contao_documentation| raw:: html
+
+   <a target="_blank" href="https://docs.contao.org/books/manual/current/en/01-installation/installing-contao.html">
+     Official Contao Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_example_craftcms_documentation| raw:: html
 
    <a target="_blank" href="https://docs.craftcms.com/v3/installation.html#step-1-download-craft">

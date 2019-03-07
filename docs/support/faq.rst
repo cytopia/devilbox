@@ -160,6 +160,12 @@ Does it work with Codeigniter?
 Yes, see :ref:`example_setup_codeigniter`
 
 
+Does it work with Contao?
+-------------------------
+
+Yes, see :ref:`example_setup_contao`
+
+
 Does it work with CraftCMS?
 ---------------------------
 
