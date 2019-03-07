@@ -186,8 +186,6 @@ installation steps as described in the |ext_lnk_example_shopware_documentation|:
    * Database pass: by default the root password is empty
    * Database name: ``my_sw``
 
-.. seealso:: :ref:`setup_valid_https`
-
 
 Encountered problems
 ====================
@@ -196,3 +194,9 @@ By the time of writing (2018-07-07) Shopware had loading issues with the combina
 and ``Apache 2.4``. Use any other combination.
 
 .. seealso:: https://github.com/cytopia/devilbox/issues/300
+
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

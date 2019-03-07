@@ -196,8 +196,6 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
 
 Open your browser at http://my-contao.loc or https://my-contao.loc and follow the installation steps.
 
-.. seealso:: :ref:`setup_valid_https`
-
 7.1 Frontend page
 ^^^^^^^^^^^^^^^^^
 
@@ -258,3 +256,9 @@ Installation is done, click on the ``Contao back end`` to continue to setup the 
 Use the admin user credentials created earlier to login in.
 
 .. include:: /_includes/figures/examples/contao/08-login-screen.rst
+
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

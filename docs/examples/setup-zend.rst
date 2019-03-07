@@ -170,4 +170,8 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
 
 Open your browser at http://my-zend.loc or https://my-zend.loc
 
-.. seealso:: :ref:`setup_valid_https`
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

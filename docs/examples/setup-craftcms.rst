@@ -242,4 +242,8 @@ To open the setup wizard, visit: http://my-craft.loc/admin/install or https://my
 
 All set now, you can visit http://my-craft.loc or https://my-craft.loc in your browser.
 
-.. seealso:: :ref:`setup_valid_https`
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

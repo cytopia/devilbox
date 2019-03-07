@@ -171,4 +171,8 @@ This will ensure that your host operating system's browser will direct any calls
 
 Open your browser at http://my-laravel.loc or https://my-laravel.loc
 
-.. seealso:: :ref:`setup_valid_https`
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

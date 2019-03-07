@@ -175,8 +175,6 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
 
 Open your browser at http://my-wp.loc or https://my-wp.loc and follow the installation steps.
 
-.. seealso:: :ref:`setup_valid_https`
-
 **(1/7) Choose your desired Wordpress language**
 
 .. include:: /_includes/figures/examples/wordpress/01-choose-language.rst
@@ -206,3 +204,9 @@ Open your browser at http://my-wp.loc or https://my-wp.loc and follow the instal
 **(7/7) Login to Admin panel**
 
 .. include:: /_includes/figures/examples/wordpress/07-login.rst
+
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

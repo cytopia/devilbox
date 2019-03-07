@@ -170,4 +170,8 @@ installation steps.
 .. note::
    When asked about MySQL hostname, choose ``127.0.0.1``.
 
-.. seealso:: :ref:`setup_valid_https`
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

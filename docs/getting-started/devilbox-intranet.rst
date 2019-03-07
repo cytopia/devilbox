@@ -77,6 +77,8 @@ The following example shows you the info page for MySQL:
 Third-party tools
 =================
 
+.. _devilbox_intranet_adminer:
+
 Adminer
 -------
 
@@ -85,6 +87,7 @@ management tool written in PHP. Conversely to phpMyAdmin, it consist of a single
 deploy to the target server. Adminer is available for MySQL, MariaDB, PostgreSQL, SQLite, MS SQL,
 Oracle, Firebird, SimpleDB, Elasticsearch and MongoDB.
 
+.. _devilbox_intranet_phpmyadmin:
 
 phpMyAdmin
 ----------
@@ -95,6 +98,7 @@ of operations on MySQL and MariaDB. Frequently used operations (managing databas
 columns, relations, indexes, users, permissions, etc) can be performed via the user interface,
 while you still have the ability to directly execute any SQL statement.
 
+.. _devilbox_intranet_phppgadmin:
 
 phpPgAdmin
 ----------
@@ -102,6 +106,7 @@ phpPgAdmin
 |ext_lnk_tool_phppgadmin| is a web-based administration tool for PostgreSQL. It is perfect for
 PostgreSQL DBAs, newbies, and hosting services.
 
+.. _devilbox_intranet_phpredmin:
 
 phpRedMin
 ----------

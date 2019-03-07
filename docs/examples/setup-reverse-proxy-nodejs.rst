@@ -410,9 +410,6 @@ All set now, you can visit http://my-node.loc or https://my-node.loc in your bro
 The NodeJS application has been started up automatically and the reverse proxy will direct all
 requests to it.
 
-.. seealso:: :ref:`setup_valid_https`
-
-
 
 Managing NodeJS
 ===============
@@ -439,3 +436,8 @@ with the available commands. A quick guide is below:
    │ index    │ 0  │ N/A     │ fork │ 1906 │ online │ 0       │ 42h    │ 0%  │ 39.7 MB   │ devilbox │ disabled │
    └──────────┴────┴─────────┴──────┴──────┴────────┴─────────┴────────┴─────┴───────────┴──────────┴──────────┘
 
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

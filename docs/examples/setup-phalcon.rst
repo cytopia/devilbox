@@ -167,8 +167,6 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
 
 Open your browser at http://my-phalcon.loc or https://my-phalcon.loc
 
-.. seealso:: :ref:`setup_valid_https`
-
 
 7. Create custom vhost config file (Nginx Only)
 -----------------------------------------------
@@ -192,3 +190,9 @@ to
 ``location ~ [^/]\.php(/|$) {``
 
 save the file as nginx.yml and ensure not to use any tabs in the file or devilbox will not use the custom configuration. You can use ``yamllint nginx.yml`` whilst inside the Devilbox shell to check the file before restarting devilbox.
+
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

@@ -194,4 +194,8 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
 All set now, you can visit http://my-presta.loc or https://my-presta.loc in your browser and
 follow the installation steps.
 
-.. seealso:: :ref:`setup_valid_https`
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

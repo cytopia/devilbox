@@ -186,8 +186,6 @@ To continue installing via the guided web install, you need to create a file cal
 
 Open your browser at http://my-typo.loc or https://my-typo.loc.
 
-.. seealso:: :ref:`setup_valid_https`
-
 
 8. Step through guided web installation
 ---------------------------------------
@@ -213,3 +211,9 @@ Open your browser at http://my-typo.loc or https://my-typo.loc.
 4. Installation complete
 
    * Create empty starting page
+
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst
