@@ -8,6 +8,13 @@ Setup Contao
 
 This example will use ``composer`` to install Contao CMS from within the Devilbox PHP container.
 
+.. important::
+   Using ``composer`` requires the underlying file system to support symlinks. If you
+   use **Docker Toolbox** you need to explicitly allow/enable this.
+   See below for instructions:
+
+   * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
+
 After completing the below listed steps, you will have a working Contao CMS setup ready to be
 served via http and https.
 
@@ -61,7 +68,7 @@ It will be ready in eight simple steps:
 4. Symlink webroot directory
 5. Add MySQL database
 6. Setup DNS record
-6. Visit http://my-contao.loc in your browser
+7. Visit http://my-contao.loc in your browser
 
 
 1. Enter the PHP container
@@ -146,6 +153,12 @@ How does the directory structure look after symlinking:
 
 As you can see from the above directory structure, ``htdocs`` is available in its expected
 path and points to the frameworks entrypoint.
+
+.. important::
+   When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**.
+   See below for instructions:
+
+   * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
 
 
 5. Add MySQL Database
