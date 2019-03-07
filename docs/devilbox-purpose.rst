@@ -1,3 +1,5 @@
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
+
 ****************
 Devilbox purpose
 ****************

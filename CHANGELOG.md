@@ -69,14 +69,15 @@ major versions.
     - `rdkafka`
     - `sqlsrv`
 - Framework documentation:
-    - Shopware CMS
-    - Presta Shop
-    - Photon CMS
     - Codeignitor
-    - Typo3
+    - Contao CMS
     - Craft CMS
     - NodeJS Reverse proxy
+    - Photon CMS
+    - Presta Shop
+    - Shopware CMS
     - Sphinx documentation Reverse proxy
+    - Typo3
 - GitHub Issue templates
 - Discourse forum link: https://devilbox.discourse.group
 

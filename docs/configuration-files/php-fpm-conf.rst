@@ -1,3 +1,5 @@
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
+
 .. _php_fpm_conf:
 
 ************

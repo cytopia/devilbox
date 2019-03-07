@@ -1,4 +1,5 @@
 .. include:: /_includes/all.rst
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
 .. _example_setup_typo3:
 
@@ -7,6 +8,13 @@ Setup Typo3
 ***********
 
 This example will use ``composer`` to install Typo3 from within the Devilbox PHP container.
+
+.. important::
+   Using ``composer`` requires the underlying file system to support symlinks. If you
+   use **Docker Toolbox** you need to explicitly allow/enable this.
+   See below for instructions:
+
+   * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
 
 After completing the below listed steps, you will have a working Laravel setup ready to be
 served via http and https.
@@ -134,6 +142,12 @@ How does the directory structure look after symlinking:
 As you can see from the above directory structure, ``htdocs`` is available in its expected
 path and points to the frameworks entrypoint.
 
+.. important::
+   When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**.
+   See below for instructions:
+
+   * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
+
 
 5. DNS record
 -------------
@@ -172,8 +186,6 @@ To continue installing via the guided web install, you need to create a file cal
 
 Open your browser at http://my-typo.loc or https://my-typo.loc.
 
-.. seealso:: :ref:`setup_valid_https`
-
 
 8. Step through guided web installation
 ---------------------------------------
@@ -199,3 +211,9 @@ Open your browser at http://my-typo.loc or https://my-typo.loc.
 4. Installation complete
 
    * Create empty starting page
+
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

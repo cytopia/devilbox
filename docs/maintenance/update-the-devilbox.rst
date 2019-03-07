@@ -1,3 +1,5 @@
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
+
 .. _update_the_devilbox:
 
 *******************

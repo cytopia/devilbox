@@ -1,4 +1,5 @@
 .. include:: /_includes/all.rst
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
 .. _example_setup_laravel:
 
@@ -133,6 +134,12 @@ How does the directory structure look after symlinking:
 As you can see from the above directory structure, ``htdocs`` is available in its expected
 path and points to the frameworks entrypoint.
 
+.. important::
+   When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**.
+   See below for instructions:
+
+   * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
+
 
 5. DNS record
 -------------
@@ -164,4 +171,8 @@ This will ensure that your host operating system's browser will direct any calls
 
 Open your browser at http://my-laravel.loc or https://my-laravel.loc
 
-.. seealso:: :ref:`setup_valid_https`
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

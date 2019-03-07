@@ -1,4 +1,5 @@
 .. include:: /_includes/all.rst
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
 .. _example_setup_codeigniter:
 
@@ -137,6 +138,12 @@ How does the directory structure look after symlinking:
 As you can see from the above directory structure, ``htdocs`` is available in its expected
 path and points to the frameworks entrypoint.
 
+.. important::
+   When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**.
+   See below for instructions:
+
+   * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
+
 
 5. Add MySQL Database
 ---------------------
@@ -208,3 +215,9 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
 All set now, you can visit http://my-ci.loc or https://my-ci.loc in your browser.
 
 .. seealso:: :ref:`setup_valid_https`
+
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

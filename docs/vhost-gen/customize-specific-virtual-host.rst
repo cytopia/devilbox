@@ -1,4 +1,5 @@
 .. include:: /_includes/all.rst
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
 .. _vhost_gen_customize_specific_virtual_host:
 

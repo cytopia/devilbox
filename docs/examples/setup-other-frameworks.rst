@@ -1,3 +1,5 @@
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
+
 .. _example_setup_other_frameworks:
 
 **********************

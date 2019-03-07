@@ -1,5 +1,7 @@
 :orphan:
 
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
+
 .. _howto_move_projects_to_a_different_directory:
 
 **************************************

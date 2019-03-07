@@ -1,3 +1,5 @@
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
+
 .. _custom_scripts_per_php_version:
 
 ******************************

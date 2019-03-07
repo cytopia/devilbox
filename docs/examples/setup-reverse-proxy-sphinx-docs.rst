@@ -1,4 +1,5 @@
 .. include:: /_includes/all.rst
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
 .. _example_setup_reverse_proxy_sphinx_docs:
 
@@ -422,7 +423,8 @@ All set now, you can visit http://my-sphinx.loc or https://my-sphinx.loc in your
 The Sphinx application has been started up automatically and the reverse proxy will direct all
 requests to it.
 
-.. seealso:: :ref:`setup_valid_https`
 
+Next steps
+==========
 
-
+.. include:: /_includes/snippets/examples/next-steps.rst

@@ -1,6 +1,7 @@
 :orphan:
 
 .. include:: /_includes/all.rst
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
 .. _howto_ssh_port_forward_on_host_to_docker_toolbox:
 

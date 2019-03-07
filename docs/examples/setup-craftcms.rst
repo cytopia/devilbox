@@ -1,4 +1,5 @@
 .. include:: /_includes/all.rst
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
 .. _example_setup_craftcms:
 
@@ -7,6 +8,13 @@ Setup CraftCMS
 **************
 
 This example will use ``composer`` to install CraftCMS from within the Devilbox PHP container.
+
+.. important::
+   Using ``composer`` requires the underlying file system to support symlinks. If you
+   use **Docker Toolbox** you need to explicitly allow/enable this.
+   See below for instructions:
+
+   * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
 
 After completing the below listed steps, you will have a working CraftCMS setup ready to be
 served via http and https.
@@ -134,6 +142,12 @@ How does the directory structure look after symlinking:
 As you can see from the above directory structure, ``htdocs`` is available in its expected
 path and points to the frameworks entrypoint.
 
+.. important::
+   When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**.
+   See below for instructions:
+
+   * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
+
 
 5. Add MySQL Database
 ---------------------
@@ -228,4 +242,8 @@ To open the setup wizard, visit: http://my-craft.loc/admin/install or https://my
 
 All set now, you can visit http://my-craft.loc or https://my-craft.loc in your browser.
 
-.. seealso:: :ref:`setup_valid_https`
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

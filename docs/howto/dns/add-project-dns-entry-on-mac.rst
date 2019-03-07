@@ -1,5 +1,7 @@
 :orphan:
 
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
+
 .. _howto_add_project_hosts_entry_on_mac:
 
 ********************************

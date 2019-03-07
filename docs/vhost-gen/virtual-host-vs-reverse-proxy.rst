@@ -1,3 +1,5 @@
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
+
 .. _vhost_gen_virtual_host_vs_reverse_proxy:
 
 *****************************

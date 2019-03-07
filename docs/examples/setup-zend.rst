@@ -1,4 +1,5 @@
 .. include:: /_includes/all.rst
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
 .. _example_setup_zend:
 
@@ -7,6 +8,13 @@ Setup Zend
 **********
 
 This example will use ``composer`` to install Zend from within the PHP container.
+
+.. important::
+   Using ``composer`` requires the underlying file system to support symlinks. If you
+   use **Docker Toolbox** you need to explicitly allow/enable this.
+   See below for instructions:
+
+   * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
 
 .. seealso:: |ext_lnk_example_zend_documentation|
 
@@ -129,6 +137,12 @@ How does the directory structure look after symlinking:
 As you can see from the above directory structure, ``htdocs`` is available in its expected
 path and points to the frameworks entrypoint.
 
+.. important::
+   When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**.
+   See below for instructions:
+
+   * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
+
 
 5. DNS record
 -------------
@@ -156,4 +170,8 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
 
 Open your browser at http://my-zend.loc or https://my-zend.loc
 
-.. seealso:: :ref:`setup_valid_https`
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

@@ -1,4 +1,5 @@
 .. include:: /_includes/all.rst
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
 .. _example_setup_phalcon:
 
@@ -133,6 +134,12 @@ How does the directory structure look after symlinking:
 As you can see from the above directory structure, ``htdocs`` is available in its expected
 path and points to the frameworks entrypoint.
 
+.. important::
+   When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**.
+   See below for instructions:
+
+   * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
+
 
 5. DNS record
 -------------
@@ -160,8 +167,6 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
 
 Open your browser at http://my-phalcon.loc or https://my-phalcon.loc
 
-.. seealso:: :ref:`setup_valid_https`
-
 
 7. Create custom vhost config file (Nginx Only)
 -----------------------------------------------
@@ -185,3 +190,9 @@ to
 ``location ~ [^/]\.php(/|$) {``
 
 save the file as nginx.yml and ensure not to use any tabs in the file or devilbox will not use the custom configuration. You can use ``yamllint nginx.yml`` whilst inside the Devilbox shell to check the file before restarting devilbox.
+
+
+Next steps
+==========
+
+.. include:: /_includes/snippets/examples/next-steps.rst

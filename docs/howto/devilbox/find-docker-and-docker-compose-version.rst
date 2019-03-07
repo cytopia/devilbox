@@ -1,5 +1,7 @@
 :orphan:
 
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
+
 .. _howto_find_docker_and_docker_compose_version:
 
 **************************************

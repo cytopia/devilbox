@@ -1,3 +1,5 @@
+.. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
+
 .. _shared_devilbox_server_in_lan:
 
 *****************************
