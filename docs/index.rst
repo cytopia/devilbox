@@ -219,3 +219,9 @@ host is ready to be served with your custom domain.
    support/howto
    support/blogs-videos-and-use-cases
    support/artwork
+
+.. toctree::
+   :caption: 3rd party projects
+   :maxdepth: 1
+
+   third-party/nginx-acme
