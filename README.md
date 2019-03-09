@@ -550,6 +550,7 @@ The following batteries are available in the Devilbox intranet by default:
   <td><a href="https://www.phpmyadmin.net"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phpmyadmin.png" alt="phpMyAdmin" /></a></td>
   <td><a href="http://phppgadmin.sourceforge.net"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phppgadmin.png" alt="phpPgAdmin" /></a></td>
   <td><a href="https://github.com/sasanrose/phpredmin"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phpredmin.png" alt="phpRedMin" /></a></td>
+  <td><a href="https://github.com/elijaa/phpmemcachedadmin"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phpmemcachedadmin.png" alt="PHPMemcachedAdmin" /></a></td>
   <td><a href="https://github.com/PeeHaa/OpCacheGUI"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/opcachegui.png" alt="OpCacheGUI" /></a></td>
   <td><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/email.png" alt="Mail viewer" /></td>
  </tr>
@@ -558,6 +559,7 @@ The following batteries are available in the Devilbox intranet by default:
   <td><a href="https://www.phpmyadmin.net">phpMyAdmin</a></td>
   <td><a href="http://phppgadmin.sourceforge.net">phpPgAdmin</a></td>
   <td><a href="https://github.com/sasanrose/phpredmin">phpRedMin</a></td>
+  <td><a href="https://github.com/elijaa/phpmemcachedadmin">PHPMemcached Admin</a></td>
   <td><a href="https://github.com/PeeHaa/OpCacheGUI">OpCache GUI</a></td>
   <td>Mail viewer</td>
  </tr>

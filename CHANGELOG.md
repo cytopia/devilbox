@@ -1,6 +1,6 @@
 # Changelog
 
-Make sure to have a look at [UPDATING](Updating.md) to see any required steps for updating
+Make sure to have a look at [UPDATING](https://github.com/cytopia/devilbox/blob/master/UPDATING.md) to see any required steps for updating
 major versions.
 
 ## [unreleasd]
@@ -18,11 +18,11 @@ major versions.
     - This improves general performance
 
 
-## v0.15.0 [unreleased]
+## v0.15.0
 
 #### Added
-- [CHANGELOG](CHANGELOG.md) by the standard of: https://keepachangelog.com
-- [UPDATING](UPDATING.md) provides information how to update between major versions
+- [CHANGELOG](https://github.com/cytopia/devilbox/blob/master/CHANGELOG.md) by the standard of: https://keepachangelog.com
+- [UPDATING](https://github.com/cytopia/devilbox/blob/master/UPDATING.md) provides information how to update between major versions
 - HTTP/2 support
 - Reverse Proxy support
 - Autostart scripts
@@ -100,4 +100,3 @@ major versions.
 - XSS vulnerability in email display
 - Various fixes in Documentation
 - vhost-gen fixes
-

@@ -27,4 +27,3 @@ you will be unable to access your current data:
 * [Backup Mysql](https://devilbox.readthedocs.io/en/latest/maintenance/backup-and-restore-mysql.html)
 * [Backup PostgreSQL](https://devilbox.readthedocs.io/en/latest/maintenance/backup-and-restore-pgsql.html)
 * [Backup MongoDB](https://devilbox.readthedocs.io/en/latest/maintenance/backup-and-restore-mongo.html)
-
