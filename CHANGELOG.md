@@ -31,6 +31,7 @@ major versions.
 - Allow to set Nginx worker_connections via .env
 - Intranet vendors
     - PHPRedMin
+    - PHPMemcachedAdmin
 - Mount options for volumes
 - Docker Compose images:
     - PHP 5.2

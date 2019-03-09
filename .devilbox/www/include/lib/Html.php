@@ -105,6 +105,11 @@ class Html
 					'target' => '_blank'
 				),
 				array(
+					'name' => 'PHPMemcachedAdmin',
+					'path' => '/vendor/phpmemcachedadmin-1.3.0/index.php',
+					'target' => '_blank'
+				),
+				array(
 					'name' => 'Opcache GUI',
 					'path' => '/opcache.php'
 				)
