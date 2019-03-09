@@ -10,7 +10,7 @@ major versions.
     - This fixes various issues with Docker Toolbox and DNS resolution: #119
 
 
-## v1.0.0-alpha1 [unreleased]
+## v1.0.0-alpha1
 
 #### Changed
 - Use Docker volumes instead of directory mounts for stateful data (MySQL, PgSQL and MongoDB)
