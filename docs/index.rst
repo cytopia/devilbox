@@ -224,4 +224,5 @@ host is ready to be served with your custom domain.
    :caption: 3rd party projects
    :maxdepth: 1
 
+   third-party/devilbox-cli
    third-party/nginx-acme
