@@ -83,6 +83,11 @@
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/amnuts/opcache-gui">amnuts/opcache-gui</a></td>
 							</tr>
 							<tr>
+								<td>PHPMemcachedAdmin</td>
+								<td>Apache 2.0</td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/elijaa/phpmemcachedadmin">elijaa/phpmemcachedadmin</a></td>
+							</tr>
+							<tr>
 								<td>phpMyAdmin</td>
 								<td>GPL 2.0</td>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/phpmyadmin/phpmyadmin">phpmyadmin/phpmyadmin</a></td>
