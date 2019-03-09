@@ -10,6 +10,7 @@ The Devilbox ships most common Web UIs accessible from the intranet.
    * :ref:`devilbox_intranet_phpmyadmin`
    * :ref:`devilbox_intranet_phppgadmin`
    * :ref:`devilbox_intranet_phpredmin`
+   * :ref:`devilbox_intranet_phpmemcachedadmin`
 
 Enhance the Devilbox
 --------------------

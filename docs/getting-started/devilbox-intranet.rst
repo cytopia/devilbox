@@ -113,6 +113,13 @@ phpRedMin
 
 |ext_lnk_tool_phpredmin| is a simple web interface to manage and monitor your Redis.
 
+.. _devilbox_intranet_phpmemcachedadmin:
+
+PHPMemcachedAdmin
+-----------------
+
+|ext_lnk_tool_phpmemcachedadmin| is a simple web interface to manage and monitor your Memcached.
+
 
 OpcacheGUI
 ----------

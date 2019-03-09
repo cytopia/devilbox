@@ -863,6 +863,7 @@ The Devilbox comes with a pre-configured intranet on `http://localhost` and `htt
 * **[phpMyAdmin](https://www.phpmyadmin.net)**
 * **[phpPgAdmin](http://phppgadmin.sourceforge.net)**
 * **[phpRedMin](https://github.com/sasanrose/phpredmin)**
+* **[PHPMemcachedAdmin](https://github.com/elijaa/phpmemcachedadmin)**
 * **[OpcacheGUI](https://github.com/PeeHaa/OpCacheGUI)**
 
 > **Documentation:**
