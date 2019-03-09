@@ -45,7 +45,7 @@ on your configuration:
 Only one of the options may be valid for your setup.
 
 DockerNAT IP address
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 1. Open command line
 2. Enter ``ipconfig``
@@ -58,7 +58,7 @@ DockerNAT IP address
 .. seealso:: :ref:`howto_open_terminal_on_win`
 
 Virtual Switch IP address
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When you have created a custom Virtual Switch for you Docker setup, you will have to gather the
 Virtual Switch IP address instead of the DockerNat IP address.
