@@ -41,7 +41,9 @@ div[class^='highlight'] {
 .highlight {
 	background-color: #ffffff !important;
 }
-
+.rst-content .code-block-caption {
+	text-align: left !important;
+}
 /*
 div.rtd-pro.rtd-pro-footer {
 	display: none;
