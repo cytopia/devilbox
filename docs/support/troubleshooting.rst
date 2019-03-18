@@ -287,6 +287,15 @@ To mitigate that issue, make sure that the ``swoole`` module is disabled in ``.e
 Database issues
 ===============
 
+Cannot connect to MySQL after restart
+-------------------------------------
+
+This error usually occurs when you import a MySQL dump including the mysql database itself, which
+will overwrite the user permissions and thus you won't be able to connect anymore with the settings
+specified in ``.env``.
+
+.. seealso:: https://github.com/cytopia/devilbox/issues/542
+
 Invalid bind mount spec
 -----------------------
 
