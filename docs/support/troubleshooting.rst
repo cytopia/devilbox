@@ -308,6 +308,13 @@ To mitigate that issue, make sure that the ``swoole`` module is disabled in ``.e
 Database issues
 ===============
 
+SQLSTATE[HY000] [1130] Host '172.16.238.10' is not allowed to connect to this MariaDB server
+--------------------------------------------------------------------------------------------
+
+.. seealso:: :ref:`troubleshooting_cant_connect_to_mysql_adter_restart`
+
+.. _troubleshooting_cant_connect_to_mysql_adter_restart:
+
 Cannot connect to MySQL after restart
 -------------------------------------
 
