@@ -94,6 +94,7 @@ major versions.
 - PHP-FPM workers changed from `dynamic` to `ondemand`
 - Allow Apache to server underscore domains
 - Changed Nginx `client_max_body_size` to `0` to be in sync with Apache
+- Document failing start behaviour of MySQL container
 
 #### Fixed
 - break on errors in wrong vhost-gen overwrite
