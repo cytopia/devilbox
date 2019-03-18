@@ -110,6 +110,27 @@ A few general things you should always do before attempting to open up issues ar
    that are shared by Docker. If not add those in the Docker settings.
 
 
+No Space left on Device
+-----------------------
+
+If on Docker for Mac you get an error during docker pull similar to the following one:
+
+.. code-block:: bash
+
+   write /var/lib/docker/tmp/GetImageBlob220119603: no space left on device
+
+It means the file where MacOS stores the docker images is full. The usual way is to delete
+unused images and volumes to free up space or increase this volumes size.
+
+However, depending on the version of Docker some of the above suggestions may not work and you
+have to get support from the docker/for-mac GitHub repository or forum.
+
+.. seealso::
+   * https://github.com/cytopia/devilbox/issues/539
+   * https://github.com/docker/for-mac/issues/371#issuecomment-242047368
+   * https://forums.docker.com/t/no-space-left-on-device-error/10894
+
+
 Address already in use
 ----------------------
 
