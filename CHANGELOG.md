@@ -10,6 +10,13 @@ major versions.
     - This fixes various issues with Docker Toolbox and DNS resolution: #119
 
 
+## v1.0.0
+
+#### Changed
+- Everything from v1.0.0-alpha1 has been backported
+- Everything from v0.15.0 has been backported
+
+
 ## v1.0.0-alpha1
 
 #### Changed
