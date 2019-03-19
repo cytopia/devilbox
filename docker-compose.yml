@@ -309,35 +309,12 @@ services:
   # MySQL Database
   # ------------------------------------------------------------
   mysql:
-    image: cytopia/${MYSQL_SERVER}:latest
+    image: devilbox/mysql:${MYSQL_SERVER}
     hostname: mysql
 
     environment:
-
-      ##
-      ## Debug?
-      ##
-      - DEBUG_COMPOSE_ENTRYPOINT
-
-      ##
-      ## Adjust timezone
-      ##
-      - TIMEZONE
-
-      ##
-      ## Adjust Root password
-      ##
       - MYSQL_ROOT_PASSWORD
-
-      ##
-      ## Socket directory Path
-      ##
-      - MYSQL_SOCKET_DIR=/tmp/mysql
-
-      ##
-      ## Runtime settings
-      ##
-      - MYSQL_GENERAL_LOG=${MYSQL_GENERAL_LOG}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
 
     ports:
       # [local-machine:]local-port:docker-port
@@ -351,18 +328,12 @@ services:
       # ---- Format: ----
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
-      # Mount logs
-      - ${DEVILBOX_PATH}/log/${MYSQL_SERVER}:/var/log/mysql:rw${MOUNT_OPTIONS}
-
-      # Mount devilbox default overwrites
-      - ${DEVILBOX_PATH}/.devilbox/etc/${MYSQL_SERVER}:/etc/mysql/conf.d:ro${MOUNT_OPTIONS}
-
       # Mount devilbox user-defined cnf files in order
       # to overwrite the MySQL server configuration
       - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER}:/etc/mysql/docker-default.d:ro${MOUNT_OPTIONS}
 
       # Mount MySQL Data directory
-      - ${HOST_PATH_MYSQL_DATADIR}/${MYSQL_SERVER}:/var/lib/mysql:rw${MOUNT_OPTIONS}
+      - devilbox-${MYSQL_SERVER}:/var/lib/mysql:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -399,7 +370,7 @@ services:
       - ${DEVILBOX_PATH}/log/pgsql-${PGSQL_SERVER}:/var/log/postgresql:rw${MOUNT_OPTIONS}
 
       # Mount PostgreSQL Data directory
-      - ${HOST_PATH_PGSQL_DATADIR}/${PGSQL_SERVER}:/var/lib/postgresql/data/pgdata:rw${MOUNT_OPTIONS}
+      - devilbox-pgsql-${PGSQL_SERVER}:/var/lib/postgresql/data/pgdata:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -426,13 +397,6 @@ services:
     networks:
       app_net:
         ipv4_address: 172.16.238.14
-
-    volumes:
-      # ---- Format: ----
-      # HOST-DIRECTORY : DOCKER-DIRECTORY
-
-      # Mount logs
-      - ${DEVILBOX_PATH}/log/redis-${REDIS_SERVER}:/var/log/redis:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -488,7 +452,7 @@ services:
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
       # Mount MongoDB Data directory
-      - ${HOST_PATH_MONGO_DATADIR}/${MONGO_SERVER}:/data/db:rw${MOUNT_OPTIONS}
+      - devilbox-mongo-${MONGO_SERVER}:/data/db:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -510,6 +474,7 @@ networks:
         - subnet: 172.16.238.0/24
           gateway: 172.16.238.1
 
+
 ################################################################################
 # VOLUMES
 ################################################################################
@@ -518,3 +483,68 @@ volumes:
   # Misc
   # ------------------------------------------------------------
   devilbox-mail:
+
+  # ------------------------------------------------------------
+  # MySQL
+  # ------------------------------------------------------------
+  devilbox-mysql-5.5:
+  devilbox-mysql-5.6:
+  devilbox-mysql-5.7:
+  devilbox-mysql-8.0:
+  devilbox-mariadb-5.5:
+  devilbox-mariadb-10.0:
+  devilbox-mariadb-10.1:
+  devilbox-mariadb-10.2:
+  devilbox-mariadb-10.3:
+  devilbox-mariadb-10.4:
+  devilbox-percona-5.5:
+  devilbox-percona-5.6:
+  devilbox-percona-5.7:
+  devilbox-percona-8.0:
+
+  # ------------------------------------------------------------
+  # Postgres
+  # ------------------------------------------------------------
+  devilbox-pgsql-9.0:
+  devilbox-pgsql-9.1:
+  devilbox-pgsql-9.2:
+  devilbox-pgsql-9.2-alpine:
+  devilbox-pgsql-9.3:
+  devilbox-pgsql-9.3-alpine:
+  devilbox-pgsql-9.4:
+  devilbox-pgsql-9.4-alpine:
+  devilbox-pgsql-9.5:
+  devilbox-pgsql-9.5-alpine:
+  devilbox-pgsql-9.6:
+  devilbox-pgsql-9.6-alpine:
+  devilbox-pgsql-10.0:
+  devilbox-pgsql-10.0-alpine:
+  devilbox-pgsql-10.1:
+  devilbox-pgsql-10.1-alpine:
+  devilbox-pgsql-10.2:
+  devilbox-pgsql-10.2-alpine:
+  devilbox-pgsql-10.3:
+  devilbox-pgsql-10.3-alpine:
+  devilbox-pgsql-10.4:
+  devilbox-pgsql-10.4-alpine:
+  devilbox-pgsql-10.5:
+  devilbox-pgsql-10.5-alpine:
+  devilbox-pgsql-10.6:
+  devilbox-pgsql-10.6-alpine:
+  devilbox-pgsql-11.0:
+  devilbox-pgsql-11.0-alpine:
+  devilbox-pgsql-11.1:
+  devilbox-pgsql-11.1-alpine:
+  devilbox-pgsql-latest:
+  devilbox-pgsql-alpine:
+
+  # ------------------------------------------------------------
+  # MongoDB
+  # ------------------------------------------------------------
+  devilbox-mongo-2.8:
+  devilbox-mongo-3.0:
+  devilbox-mongo-3.2:
+  devilbox-mongo-3.4:
+  devilbox-mongo-3.6:
+  devilbox-mongo-4.0:
+  devilbox-mongo-latest:

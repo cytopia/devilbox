@@ -10,12 +10,20 @@ major versions.
     - This fixes various issues with Docker Toolbox and DNS resolution: #119
 
 
-## v1.0.0-alpha1 [unreleased]
+## v1.0.0
+
+#### Changed
+- Everything from v1.0.0-alpha1 has been backported
+- Everything from v0.15.0 has been backported
+
+
+## v1.0.0-alpha1
 
 #### Changed
 - Use Docker volumes instead of directory mounts for stateful data (MySQL, PgSQL and MongoDB)
     - This fixes various mount issues on Windows: #175 #382
     - This improves general performance
+- Use Official MySQL, MariaDB and Percona Docker container
 
 
 ## v0.15.0

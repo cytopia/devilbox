@@ -19,10 +19,6 @@
 /log/[a-z0-9-]*
 
 # Ignore Data dirs
-/data/mongo/*
-/data/mysql/*
-/data/pgsql/*
-/data/rabbit/*
 /data/www/*
 
 # Ignore Certificate Authority
@@ -51,9 +47,12 @@
 /cfg/mariadb-10.0/*.cnf
 /cfg/mariadb-10.1/*.cnf
 /cfg/mariadb-10.2/*.cnf
+/cfg/mariadb-10.3/*.cnf
+/cfg/mariadb-10.4/*.cnf
 /cfg/percona-5.5/*.cnf
 /cfg/percona-5.6/*.cnf
 /cfg/percona-5.7/*.cnf
+/cfg/percona-8.0/*.cnf
 
 # Ignore custom PHP.ini configs
 /cfg/php-ini-5.2/*.ini

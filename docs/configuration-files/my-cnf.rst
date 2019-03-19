@@ -38,6 +38,7 @@ See the directory structure for MySQL configuration directories inside ``./cfg/`
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mariadb-10.1/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mariadb-10.2/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mariadb-10.3/
+   drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mariadb-10.4/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mysql-5.5/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mysql-5.6/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 mysql-5.7/
@@ -45,6 +46,7 @@ See the directory structure for MySQL configuration directories inside ``./cfg/`
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 percona-5.5/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 percona-5.6/
    drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 percona-5.7/
+   drwxr-xr-x  2 cytopia cytopia 4096 Mar  5 21:53 percona-8.0/
 
 Customization is achieved by placing a file into ``cfg/mysql-X.X/``, ``cfg/mariadb-X.X/`` or
 ``cfg/percona-X-X`` (where ``X.X`` stands for your MySQL version).
