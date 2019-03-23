@@ -3,21 +3,37 @@
 Make sure to have a look at [UPDATING](https://github.com/cytopia/devilbox/blob/master/UPDATING.md) to see any required steps for updating
 major versions.
 
-## [unreleasd]
+
+## Bugfix Release v1.0.1 (2019-03-24)
+
+This is a bugfix release and everybody is encouraged to upgrade to this tag as soon as possible.
+No explicit actions to be taken for updating.
+
+#### Fixed
+- [#373](https://github.com/cytopia/devilbox/issues/373) Read custom MySQL configuration
+- [#540](https://github.com/cytopia/devilbox/issues/540) Fix '&' password substitution in mysqldump-secure
+- [#209](https://github.com/cytopia/devilbox/issues/209) Documentation for Xdebug on Docker for Windows
 
 #### Changed
-- Split Bind container into internal DNS and autoDNS: #248
-    - This fixes various issues with Docker Toolbox and DNS resolution: #119
+- Updated MongoDB cli tools in PHP image
+- Updated PostgreSQL cli tools in PHP image
+- MySQL images are now bound to a specific Docker tag and are built nightly
+- [#506](https://github.com/cytopia/devilbox/issues/506) Documentation improvements for connecting to databases
+
+#### Added
+- [#536](https://github.com/cytopia/devilbox/issues/536) Added @vue/cli and @vue/cli-service-global
 
 
-## v1.0.0
+## Release v1.0.0 (2019-03-19)
+
+This is the first major stable release of the Devilbox.
 
 #### Changed
 - Everything from v1.0.0-alpha1 has been backported
 - Everything from v0.15.0 has been backported
 
 
-## v1.0.0-alpha1
+## Pre-Release v1.0.0-alpha1 (2019-03-09)
 
 #### Changed
 - Use Docker volumes instead of directory mounts for stateful data (MySQL, PgSQL and MongoDB)
@@ -26,7 +42,29 @@ major versions.
 - Use Official MySQL, MariaDB and Percona Docker container
 
 
-## v0.15.0
+## Release v0.15.0 (2019-03-09)
+
+This will be the last v0.x release.
+
+#### Fixed
+- break on errors in wrong vhost-gen overwrite
+- XSS vulnerability in email display
+- Various fixes in Documentation
+- vhost-gen fixes
+
+#### Changed
+- Use semantic versioning
+    - This allows for faster releases
+    - This allows for better visibility of breaking changes (note that breaking changes might still occur before release v1.0.0)
+- Autologin for phpMyAdmin
+- Autologin for phpPgAdmin
+- Intranet to show vhost and vhost-gen overwrite config per vhost
+- Allow to specify Redis startup arguments (e.g.: password)
+- Fixed hostnames for all Docker container
+- PHP-FPM workers changed from `dynamic` to `ondemand`
+- Allow Apache to server underscore domains
+- Changed Nginx `client_max_body_size` to `0` to be in sync with Apache
+- Document failing start behaviour of MySQL container
 
 #### Added
 - [CHANGELOG](https://github.com/cytopia/devilbox/blob/master/CHANGELOG.md) by the standard of: https://keepachangelog.com
@@ -45,6 +83,7 @@ major versions.
     - PHP 5.2
     - PHP 5.3
     - PHP 7.4
+    - PHP 8.0
     - Alpine images where possible
 - Docker Compose overwrite images:
     - Blackfire
@@ -89,23 +128,3 @@ major versions.
     - Typo3
 - GitHub Issue templates
 - Discourse forum link: https://devilbox.discourse.group
-
-#### Changed
-- Use semantic versioning
-    - This allows for faster releases
-    - This allows for better visibility of breaking changes (note that breaking changes might still occur before release v1.0.0)
-- Autologin for phpMyAdmin
-- Autologin for phpPgAdmin
-- Intranet to show vhost and vhost-gen overwrite config per vhost
-- Allow to specify Redis startup arguments (e.g.: password)
-- Fixed hostnames for all Docker container
-- PHP-FPM workers changed from `dynamic` to `ondemand`
-- Allow Apache to server underscore domains
-- Changed Nginx `client_max_body_size` to `0` to be in sync with Apache
-- Document failing start behaviour of MySQL container
-
-#### Fixed
-- break on errors in wrong vhost-gen overwrite
-- XSS vulnerability in email display
-- Various fixes in Documentation
-- vhost-gen fixes
