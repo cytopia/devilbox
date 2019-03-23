@@ -36,41 +36,14 @@ Gather Host IP address
 On Windows you will have to manually retrieve the IP address to which Xdebug should connect to
 via ``xdebug.remote_host``.
 
-When gathering the Windows host IP address you will need to distinguish between two cases depending
-on your configuration:
-
-1. DockerNat IP address (no custom configuration applied)
-2. Virtual Switch IP address (you have created a Virtual Switch to allow Internet access to your container)
-
-Only one of the options may be valid for your setup.
-
-DockerNAT IP address
-^^^^^^^^^^^^^^^^^^^^
-
-1. Open command line
-2. Enter ``ipconfig``
-3. Look for the IP4 address in ``DockerNAT`` (e.g.: ``192.168.0.12``)
-
-   .. important::
-      ``192.168.0.12`` is meant as an example and will eventually differ on your system.
-      Ensure you substitute it with the correct IP address.
-
-.. seealso:: :ref:`howto_open_terminal_on_win`
-
-Virtual Switch IP address
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-When you have created a custom Virtual Switch for you Docker setup, you will have to gather the
-Virtual Switch IP address instead of the DockerNat IP address.
-
-Let's assume you have created the switch by the name **New Virtual Switch** as follows:
+When you have done no custom configuration in your Virtual Switch manager, Docker for Windows will
+use the ``Default Switch`` automatically.
 
    .. include:: /_includes/figures/xdebug/windows/virtual-switch-manager.rst
 
-
 1. Open command line
 2. Enter ``ipconfig``
-3. Look for the IP4 address in ``New Virtual Switch`` (e.g.: ``192.168.0.12``)
+3. Look for the IP4 address in ``Default Switch`` (e.g.: ``192.168.0.12``)
 
    .. include:: /_includes/figures/xdebug/windows/ipconfig.rst
 
