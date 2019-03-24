@@ -56,6 +56,8 @@ If you want to checkout a specific release tag (such as ``0.12.1``), do a ``git 
 
    # Checkout release
    host> cd path/to/devilbox
+   # Ensure you have latest from remote
+   host> git fetch
    host> git checkout 0.12.1
 
 
