@@ -171,70 +171,35 @@ See the following table for a few examples:
 IP address mappings
 -------------------
 
-The following table shows a mapping of IP addresses of available service from the perspective
-of your host operating system and from within the PHP container.
+The following table shows a mapping of IP addresses and hostnames. In other words, when you are inside
+the PHP container, you can reach the services via the below defined IP addresses or hostnames:
 
-+--------------+-----------------+------------------------------+
-| Service      | IP from host os | IP from within PHP container |
-+==============+=================+==============================+
-| PHP          | ``127.0.0.1``   | ``127.0.0.1``                |
-+--------------+-----------------+------------------------------+
-| Apache/Nginx | ``127.0.0.1``   | ``127.0.0.1``                |
-+--------------+-----------------+------------------------------+
-| MySQL        | ``127.0.0.1``   | ``127.0.0.1``                |
-+--------------+-----------------+------------------------------+
-| PostgreSQL   | ``127.0.0.1``   | ``127.0.0.1``                |
-+--------------+-----------------+------------------------------+
-| Redis        | ``127.0.0.1``   | ``127.0.0.1``                |
-+--------------+-----------------+------------------------------+
-| Memcached    | ``127.0.0.1``   | ``127.0.0.1``                |
-+--------------+-----------------+------------------------------+
-| MongoDB      | ``127.0.0.1``   | ``127.0.0.1``                |
-+--------------+-----------------+------------------------------+
+.. include:: /_includes/snippets/core-container.rst
 
-As you can see, everyhing is available under ``127.0.0.1``.
+.. note:: It is recommended to use hostnames as they can be remembered much easiert.
 
-The PHP container is using ``socat`` to forward the services from all other available containers
-to its own ``127.0.0.1`` address.
-
-An example to access the MySQL database from either host or within the PHP container is the same:
+An example to access the MySQL database from within the PHP container:
 
 .. code-block:: bash
 
    # Access MySQL from your host operating system
-   host> mysql -h 127.0.0.1
+   host> mysql -h 127.0.0.1 -u root -p
 
    # Access MySQL from within the PHP container
-   devilbox@php-7.0.19 in /shared/httpd $ mysql -h 127.0.0.1
-
-.. important::
-   Do not use ``localhost`` to access the services, it does not map to ``127.0.0.1`` on
-   all cases.
+   devilbox@php-7.0.19 in /shared/httpd $ mysql -h mysql -u root -p
 
 So when setting up a configuration file from your PHP project you would for example use
-``127.0.0.`` as the host for your MySQL database connection:
+``mysql`` as the host for your MySQL database connection:
 
 .. code-block:: php
 
    <?php
    // MySQL server connection
-   mysql_host = '127.0.0.1';
+   mysql_host = 'mysql';
    mysql_port = '3306';
    mysql_user = 'someusername';
    mysql_pass = 'somepassword';
    ?>
-
-Imagine your PHP framework ships a command line tool to run database migration. You could run
-it from your host operating system or from within the PHP container. It would work from both
-sides as the connection to the database is exactly the same locally or within the container.
-
-You could also even switch between the Devilbox and a locally installed LAMP stack
-and still use the same configuration.
-
-.. important::
-   The mapping of ``127.0.0.1`` to your host operating system does not work with
-   Docker Toolbox out of the box. In order to achieve the same behaviour read up on:
-   :ref:`howto_docker_toolbox_and_the_devilbox`.
 
 
 Port mappings
@@ -283,7 +248,5 @@ Checklist
 2. You know how to become root inside the PHP container
 3. You know how to leave the container
 4. You know that file and directory permissions are synronized
-5. You know that ``127.0.0.1`` is available on your host and inside the PHP container
-6. You know that ports are the same inside the container and on your host os
-7. You know that project urls are available inside the container and on your host
-8. You know about the limitations of :ref:`howto_docker_toolbox_and_the_devilbox`
+5. You know by what hostnames you can reach a specific service
+6. You know that project urls are available inside the container and on your host
