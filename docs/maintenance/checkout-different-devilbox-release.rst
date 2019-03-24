@@ -17,7 +17,7 @@ this specific git tag.
 
    host> cd path/to/devilbox
    # Ensure you have latest from remote
-   host> git pull
+   host> git fetch
    # Switch to this release
    host> git checkout v1.0.1
 
