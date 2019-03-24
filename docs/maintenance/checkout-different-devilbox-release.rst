@@ -10,13 +10,16 @@ You now have the devilbox downloaded at the latest version (``git master branch`
 bugfixes frequently. If you however want to stay on a stable release, you need to check out a
 specific ``git tag``.
 
-Lets say you want your devilbox setup to be at release ``0.12.1``, all you have to do is to check out
+Lets say you want your devilbox setup to be at release ``v1.0.1``, all you have to do is to check out
 this specific git tag.
 
 .. code-block:: bash
 
    host> cd path/to/devilbox
-   host> git checkout 0.12.1
+   # Ensure you have latest from remote
+   host> git pull
+   # Switch to this release
+   host> git checkout v1.0.1
 
 
 .. warning::
