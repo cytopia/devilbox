@@ -3,6 +3,11 @@
 Make sure to have a look at [UPDATING](https://github.com/cytopia/devilbox/blob/master/UPDATING.md) to see any required steps for updating
 major versions.
 
+## [Unreleased]
+
+#### Fixed
+- Fixed various typos in documentation
+
 
 ## Bugfix Release v1.0.1 (2019-03-24)
 
