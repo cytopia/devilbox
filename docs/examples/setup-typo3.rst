@@ -4,10 +4,10 @@
 .. _example_setup_typo3:
 
 ***********
-Setup Typo3
+Setup TYPO3
 ***********
 
-This example will use ``composer`` to install Typo3 from within the Devilbox PHP container.
+This example will use ``composer`` to install TYPO3 from within the Devilbox PHP container.
 
 .. important::
    Using ``composer`` requires the underlying file system to support symlinks. If you
@@ -51,7 +51,7 @@ It will be ready in eight simple steps:
 
 1. Enter the PHP container
 2. Create a new VirtualHost directory
-3. Install Typo3 via ``composer``
+3. Install TYPO3 via ``composer``
 4. Symlink webroot directory
 5. Setup DNS record
 6. Create ``FIRST_INSTALL`` file
@@ -91,10 +91,10 @@ The vhost directory defines the name under which your project will be available.
 .. seealso:: :ref:`env_tld_suffix`
 
 
-3. Install Typo3
+3. Install TYPO3
 ----------------
 
-Navigate into your newly created vhost directory and install Typo3 with ``composer``.
+Navigate into your newly created vhost directory and install TYPO3 with ``composer``.
 
 .. code-block:: bash
 
