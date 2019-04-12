@@ -146,7 +146,7 @@ path and points to the frameworks entrypoint.
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd/my-cake $ mysql -u root -h 127.0.0.1 -p -e 'CREATE DATABASE my_wp;'
+   devilbox@php-7.0.20 in /shared/httpd/my-wp $ mysql -u root -h 127.0.0.1 -p -e 'CREATE DATABASE my_wp;'
 
 
 6. DNS record
