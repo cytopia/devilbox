@@ -415,7 +415,7 @@ _clean-round:
 	$(eval HTTPD_SERVER := $(shell grep -E '^HTTPD_SERVER' $(DEVILBOX_PATH)/.env | sed 's/.*=//g'))
 	$(eval PHP_SERVER   := $(shell grep -E '^PHP_SERVER' $(DEVILBOX_PATH)/.env | sed 's/.*=//g'))
 
-	@> $(DEVILBOX_PATH)/mail/devilbox
+	@cd $(DEVILBOX_PATH) && docker-compose exec php truncate -s0 /var/mail/devilbox
 
 	@> $(DEVILBOX_PATH)/log/php-fpm-$(PHP_SERVER)/php-fpm.access
 	@> $(DEVILBOX_PATH)/log/php-fpm-$(PHP_SERVER)/php-fpm.error
