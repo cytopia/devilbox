@@ -1,13 +1,13 @@
 .. include:: /_includes/all.rst
 .. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
-.. _example_setup_typo3:
+.. _example_setup_processwire:
 
-***********
-Setup TYPO3
-***********
+*****************
+Setup ProcessWire
+*****************
 
-This example will use ``composer`` to install TYPO3 from within the Devilbox PHP container.
+This example will use ``composer`` to install ProcessWire from within the Devilbox PHP container.
 
 .. important::
    Using ``composer`` requires the underlying file system to support symlinks. If you
@@ -16,10 +16,10 @@ This example will use ``composer`` to install TYPO3 from within the Devilbox PHP
 
    * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
 
-After completing the below listed steps, you will have a working TYPO3 setup ready to be
+After completing the below listed steps, you will have a working ProcessWire setup ready to be
 served via http and https.
 
-.. seealso:: |ext_lnk_example_typo3_documentation|
+.. seealso:: |ext_lnk_example_processwire_documentation|
 
 
 **Table of Contents**
@@ -35,13 +35,27 @@ The following configuration will be used:
 +--------------+--------------------------+-------------+------------+---------------------------------------------+
 | Project name | VirtualHost directory    | Database    | TLD_SUFFIX | Project URL                                 |
 +==============+==========================+=============+============+=============================================+
-| my-typo      | /shared/httpd/my-typo    | my_typo     | loc        | http://my-typo.loc |br| https://my-typo.loc |
+| my-pw        | /shared/httpd/my-pw      | my_pw       | loc        | http://my-pw.loc |br| https://my-pw.loc     |
 +--------------+--------------------------+-------------+------------+---------------------------------------------+
 
 .. note::
    * Inside the Devilbox PHP container, projects are always in ``/shared/httpd/``.
    * On your host operating system, projects are by default in ``./data/www/`` inside the
      Devilbox git directory. This path can be changed via :ref:`env_httpd_datadir`.
+
+The following Devilbox configuration is required:
+
++-----------+--------------+-----------------------------------------------------------------------------------------------------+
+| Service   | Version      | Implications                                                                                        |
++===========+==============+=====================================================================================================+
+| Webserver | Apache 2.4   | Apache is required instead of Nginx as ProcessWire provides default ``.htaccess`` files for routing |
++-----------+--------------+-----------------------------------------------------------------------------------------------------+
+| PHP       | PHP-FPM 7.2  | Chosen for this example as it is the Devilbox default version                                       |
++-----------+--------------+-----------------------------------------------------------------------------------------------------+
+| Database  | MariaDB 10.3 | Chosen for this example as it is the Devilbox default version                                       |
++-----------+--------------+-----------------------------------------------------------------------------------------------------+
+
+.. note:: If you want to use Nginx instead, you will need to adjust the vhost congfiguration accordingly to ProcessWire requirements.
 
 
 Walk through
@@ -51,12 +65,11 @@ It will be ready in eight simple steps:
 
 1. Enter the PHP container
 2. Create a new VirtualHost directory
-3. Install TYPO3 via ``composer``
+3. Install ProcessWire via ``composer``
 4. Symlink webroot directory
 5. Setup DNS record
-6. Create ``FIRST_INSTALL`` file
-7. Open your browser
-8. Step through guided web installation
+6. Open your browser
+7. Step through guided web installation
 
 
 1. Enter the PHP container
@@ -86,28 +99,28 @@ The vhost directory defines the name under which your project will be available.
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd $ mkdir my-typo
+   devilbox@php-7.0.20 in /shared/httpd $ mkdir my-pw
 
 .. seealso:: :ref:`env_tld_suffix`
 
 
-3. Install TYPO3
-----------------
+3. Install ProcessWire
+----------------------
 
-Navigate into your newly created vhost directory and install TYPO3 with ``composer``.
+Navigate into your newly created vhost directory and install ProcessWire with ``composer``.
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd $ cd my-typo
-   devilbox@php-7.0.20 in /shared/httpd/my-typo $ composer create-project typo3/cms-base-distribution typo3
+   devilbox@php-7.0.20 in /shared/httpd $ cd my-pw
+   devilbox@php-7.0.20 in /shared/httpd/my-pw $ composer create-project processwire/processwire
 
 How does the directory structure look after installation:
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd/my-typo $ tree -L 1
+   devilbox@php-7.0.20 in /shared/httpd/my-pw $ tree -L 1
    .
-   └── typo3
+   └── processwire
 
    1 directory, 0 files
 
@@ -126,16 +139,16 @@ to its expected path.
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd/my-typo $ ln -s typo3/public htdocs
+   devilbox@php-7.0.20 in /shared/httpd/my-pw $ ln -s ln -s processwire htdocs
 
 How does the directory structure look after symlinking:
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd/my-typo $ tree -L 1
+   devilbox@php-7.0.20 in /shared/httpd/my-pw $ tree -L 1
    .
-   ├── typo3
-   └── htdocs -> typo3/public
+   ├── processwire
+   └── htdocs -> processwire
 
    2 directories, 0 files
 
@@ -161,7 +174,7 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
 .. code-block:: bash
    :caption: /etc/hosts
 
-   127.0.0.1 my-typo.loc
+   127.0.0.1 my-pw.loc
 
 .. seealso::
 
@@ -170,47 +183,28 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
    * :ref:`setup_auto_dns`
 
 
-6. Create ``FIRST_INSTALL`` file
---------------------------------
-
-To continue installing via the guided web install, you need to create a file called
-``FIRST_INSTALL`` in the document root.
-
-.. code-block:: bash
-
-   devilbox@php-7.0.20 in /shared/httpd/my-typo $ touch htdocs/FIRST_INSTALL
-
-
-7. Open your browser
+6. Open your browser
 --------------------
 
-Open your browser at http://my-typo.loc or https://my-typo.loc.
+Open your browser at http://my-pw.loc or https://my-pw.loc.
 
 
-8. Step through guided web installation
+7. Step through guided web installation
 ---------------------------------------
 
-1. Select database
+.. include:: /_includes/figures/examples/processwire/01-install-banner.rst
 
-   * Connection: Manually configured MySWQL TCP/IP connection
-   * Username: root
-   * Password
-   * Host: mysql
-   * Port: 3306
+.. include:: /_includes/figures/examples/processwire/02-profile-choice.rst
 
-2. Select database
+.. include:: /_includes/figures/examples/processwire/03-default-profile.rst
 
-   * Create a new database: ``typo3``
+.. include:: /_includes/figures/examples/processwire/04-compat-check.rst
 
-3. Create Administrative User / Specify Site Name
+.. include:: /_includes/figures/examples/processwire/05-general-setup.rst
 
-   * Username: admin
-   * Password: choose a secure password
-   * Site name: My Typo
+.. include:: /_includes/figures/examples/processwire/06-admin-setup.rst
 
-4. Installation complete
-
-   * Create empty starting page
+.. include:: /_includes/figures/examples/processwire/07-finished.rst
 
 
 Next steps

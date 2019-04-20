@@ -184,6 +184,7 @@ host is ready to be served with your custom domain.
    examples/setup-phalcon
    examples/setup-photon-cms
    examples/setup-presta-shop
+   examples/setup-processwire
    examples/setup-shopware
    examples/setup-symfony
    examples/setup-typo3
