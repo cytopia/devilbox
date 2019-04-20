@@ -3,6 +3,12 @@
    Command line tools
    ============================================================
 
+.. |ext_lnk_tool_angular_cli| raw:: html
+
+   <a target="_blank" href="https://cli.angular.io/">
+     Angular CLI <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_tool_ansible| raw:: html
 
    <a target="_blank" href="https://www.ansible.com/">
@@ -97,6 +103,12 @@
 
    <a target="_blank" href="https://github.com/cytopia/linkcheck">
      linkcheck <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_tool_lumen| raw:: html
+
+   <a target="_blank" href="https://lumen.laravel.com/docs/5.8#installing-lumen">
+     Laravel Lumen <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
 .. |ext_lnk_tool_mdl| raw:: html

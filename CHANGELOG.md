@@ -13,6 +13,8 @@ major versions.
 
 #### Added
 - Documentation: Setup ProcessWire
+- Tool: Angular CLI
+- Tool: Laravel Lumen
 
 
 
