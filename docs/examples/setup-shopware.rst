@@ -9,7 +9,7 @@ Setup Shopware
 
 This example will use ``git`` to install Shopware from within the Devilbox PHP container.
 
-After completing the below listed steps, you will have a working Laravel setup ready to be
+After completing the below listed steps, you will have a working Shopware setup ready to be
 served via http and https.
 
 .. seealso::

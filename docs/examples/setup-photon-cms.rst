@@ -9,7 +9,7 @@ Setup Photon CMS
 
 This example will use ``photon`` cli to install Photon CMS from within the Devilbox PHP container.
 
-After completing the below listed steps, you will have a working Laravel setup ready to be
+After completing the below listed steps, you will have a working Photon CMS setup ready to be
 served via http and https.
 
 .. seealso:: |ext_lnk_example_photon_cms|

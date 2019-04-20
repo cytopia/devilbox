@@ -216,6 +216,12 @@ Does it work with PrestaShop?
 Yes, see :ref:`example_setup_presta_shop`
 
 
+Does it work with ProcessWire?
+------------------------------
+
+Yes, see :ref:`example_setup_processwire`
+
+
 Does it work with Shopware?
 ---------------------------
 

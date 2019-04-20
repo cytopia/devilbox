@@ -64,6 +64,12 @@
      Official PrestaShop Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_example_processwire_documentation| raw:: html
+
+   <a target="_blank" href="https://processwire.com/docs/start/install/new/">
+     Official ProcessWire Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_example_shopware_documentation| raw:: html
 
    <a target="_blank" href="https://docs.shopware.com/en/shopware-5-en/first-steps/installing-shopware?category=shopware-5-en/getting-started">

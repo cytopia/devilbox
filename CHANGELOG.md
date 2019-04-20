@@ -3,15 +3,17 @@
 Make sure to have a look at [UPDATING](https://github.com/cytopia/devilbox/blob/master/UPDATING.md) to see any required steps for updating
 major versions.
 
+
+
 ## [Unreleased]
 
 #### Fixed
 - Fixed various typos in documentation
-
-
-## Unreleased
-
 - Fix CI tests: They still expected a mounted mail directory instead of a Docker volume
+
+#### Added
+- Documentation: Setup ProcessWire
+
 
 
 ## Bugfix Release v1.0.1 (2019-03-24)
@@ -34,6 +36,7 @@ No explicit actions to be taken for updating.
 - [#536](https://github.com/cytopia/devilbox/issues/536) Added @vue/cli and @vue/cli-service-global
 
 
+
 ## Release v1.0.0 (2019-03-19)
 
 This is the first major stable release of the Devilbox.
@@ -43,6 +46,7 @@ This is the first major stable release of the Devilbox.
 - Everything from v0.15.0 has been backported
 
 
+
 ## Pre-Release v1.0.0-alpha1 (2019-03-09)
 
 #### Changed
@@ -50,6 +54,7 @@ This is the first major stable release of the Devilbox.
     - This fixes various mount issues on Windows: #175 #382
     - This improves general performance
 - Use Official MySQL, MariaDB and Percona Docker container
+
 
 
 ## Release v0.15.0 (2019-03-09)
