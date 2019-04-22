@@ -49,6 +49,8 @@ The PHP container is your workhorse and these are your tools:
 +----------------------+---------------------------------------+
 | ``linkcheck``        | |ext_lnk_tool_linkcheck|              |
 +----------------------+---------------------------------------+
+| ``lumen``            | |ext_lnk_tool_lumen|                  |
++----------------------+---------------------------------------+
 | ``mdl``              | |ext_lnk_tool_mdl|                    |
 +----------------------+---------------------------------------+
 | ``mdlint``           | |ext_lnk_tool_mdlint|                 |
@@ -58,6 +60,8 @@ The PHP container is your workhorse and these are your tools:
 | ``mysql*``           | Various MySQL client tools            |
 +----------------------+---------------------------------------+
 | ``mysqldump-secure`` | |ext_lnk_tool_mysqldump_secure|       |
++----------------------+---------------------------------------+
+| ``ng``               | |ext_lnk_tool_angular_cli|            |
 +----------------------+---------------------------------------+
 | ``node``             | |ext_lnk_tool_node|                   |
 +----------------------+---------------------------------------+
