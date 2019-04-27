@@ -163,7 +163,7 @@ Open Devilbox intranet
 
 Once ``docker-compose up`` has finished and all or the selected container are up and running,
 you can visit the Devilbox intranet with your favorite Web browser at http://localhost or
-http://127.0.0.1 (https://localhost or https:127.0.0.1 respectively).
+http://127.0.0.1 (https://localhost or https://127.0.0.1 respectively).
 
 The Intranet start page will also show you all running and failed containers:
 
