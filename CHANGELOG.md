@@ -11,6 +11,7 @@ major versions.
 - Fixed various typos in documentation
 - Fix CI tests: They still expected a mounted mail directory instead of a Docker volume
 - Fix mods for PHP 8.0
+- Remove orphaned mentions of HOST_PATH_MYSQL_DATADIR
 
 #### Added
 - Documentation: Setup ProcessWire

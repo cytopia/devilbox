@@ -521,11 +521,15 @@ HTTPD_NGINX_WORKER_CONNECTIONS=1024
 ###
 ### MySQL root user password
 ###
-### If $HOST_PATH_MYSQL_DATADIR already contains an existing
-### mysql datadir, enter the password for the existing mysql database
+### The password is required for the initial creation of the MySQL database
+### as well as the Devilbox intranet to display schema and configuration settings.
 ###
-### If $HOST_PATH_MYSQL_DATADIR is empty, choose a new password that
-### will be applied
+### If you change your MySQL root user password via mysql cli, phpMyAdmin or other tools
+### after the database has been created, ensure to adjust the value here accordingly as well.
+###
+### If you only change this value here after the database has been created,
+### the MySQL root user password will not actually be changed and the Devilbox intranet
+### won't be able to connect to the MySQL service.
 ###
 MYSQL_ROOT_PASSWORD=
 
