@@ -5,7 +5,7 @@ set -u
 set -o pipefail
 
 
-DISABLED_VERSIONS_MONGO=("7.3")
+DISABLED_VERSIONS_MONGO=("")
 
 #
 # NOTE: Parsing curl to tac to circumnvent "failed writing body"
