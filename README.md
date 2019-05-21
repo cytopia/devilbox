@@ -58,11 +58,11 @@ have a look at the following diagrams and tables.
 
 <table width="100%" style="width:100%;display:table">
  <tr>
-  <td width="30%" style="width:30%; vertical-align:top;">
+  <td width="30%" valign="top" style="width:30%; vertical-align:top;">
    <h4>Smallest stack</h4>
    <p>This is the smallest possible and fully functional stack you can run</p>
   </td>
-  <td width="70%" style="width:70%; vertical-align:top;">
+  <td width="70%" valign="top" style="width:70%; vertical-align:top;">
    <h4>Full stack</h4>
    <p>To better understand what is actually possible have a look at the full example</p>
   </td>
