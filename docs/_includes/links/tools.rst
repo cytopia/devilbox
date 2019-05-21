@@ -273,6 +273,12 @@
      Yarn <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_tool_yq| raw:: html
+
+   <a target="_blank" href="https://github.com/mikefarah/yq">
+     yq <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_tool_github_issues| raw:: html
 
    <a target="_blank" href="https://github.com/cytopia/devilbox/issues">

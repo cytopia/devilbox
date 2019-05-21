@@ -48,31 +48,34 @@ Furthermore, the Devilbox provides an **identical** and **reproducible developme
 * [Docker Engine 1.12.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
 * [Docker Compose 1.9.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
 
-**Important**
-
-Before updating the Devilbox ensure to always check for breaking changes until the stable release is out:
-
-1. [Forum: Announcements](https://devilbox.discourse.group/c/announcements)
-2. [Changelog](CHANGELOG.md)
-3. [Updating](UPDATING.md)
-
 ## Architecture
+
+#### Available Stacks
 
 The Devilbox aims to be a swiss army knife for local development by providing you all the services
 you would ever need. To get an idea about the architecture behind it and to also see what's available
 have a look at the following diagrams and tables.
 
-#### Smallest Stack
-This is the smallest possible and fully functional stack you can run:
-
-<img width="300" style="width:300px" title="Devilbox stack" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_diagrams/cytopia/02/png/architecture-small.png" />
-
-> [Devilbox artwork](https://github.com/devilbox/artwork)
-
-#### Full Stack
-To better understand what is actually possible have a look at the full example:
-
-<img title="Devilbox stack" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_diagrams/cytopia/01/png/architecture-full.png" />
+<table width="100%" style="width:100%;display:table">
+ <tr>
+  <td width="30%" valign="top" style="width:30%; vertical-align:top;">
+   <h4>Smallest stack</h4>
+   <p>This is the smallest possible and fully functional stack you can run</p>
+  </td>
+  <td width="70%" valign="top" style="width:70%; vertical-align:top;">
+   <h4>Full stack</h4>
+   <p>To better understand what is actually possible have a look at the full example</p>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <img width="300" style="width:300px" title="Devilbox stack" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_diagrams/cytopia/02/png/architecture-small.png" />
+  </td>
+  <td>
+   <img title="Devilbox stack" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_diagrams/cytopia/01/png/architecture-full.png" />
+  </td>
+ </tr>
+</table>
 
 > [Devilbox artwork](https://github.com/devilbox/artwork)
 
@@ -106,9 +109,10 @@ simplify your every-day life. If you ever run into any unforseen issues, feel fr
 <table width="100%" style="width:100%; display:table;">
  <thead>
   <tr>
-   <th width="33%" style="width:33%;"><h3><a target="_blank" href="https://devilbox.readthedocs.io">Documentation</a></h3></th>
-   <th width="33%" style="width:33%;"><h3><a target="_blank" href="https://gitter.im/devilbox/Lobby">Chat</a></h3></th>
-   <th width="33%" style="width:33%;"><h3><a target="_blank" href="https://devilbox.discourse.group">Forum</a></h3></th>
+   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://devilbox.readthedocs.io">Documentation</a></h3></th>
+   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://gitter.im/devilbox/Lobby">Chat</a></h3></th>
+   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://devilbox.discourse.group">Forum</a></h3></th>
+   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://github.com/devilbox/flames">Flames</a></h3></th>
   </tr>
  </thead>
  <tbody style="vertical-align: middle; text-align: center;">
@@ -128,11 +132,17 @@ simplify your every-day life. If you ever run into any unforseen issues, feel fr
      <img title="Devilbox Forums" name="Forum" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discourse.png" />
     </a>
    </td>
+   <td>
+    <a target="_blank" href="https://github.com/devilbox/flames">
+     <img title="Devilbox Flames" name="Flames" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/flames2.png" />
+    </a>
+   </td>
   </tr>
   <tr>
   <td><a target="_blank" href="https://devilbox.readthedocs.io">devilbox.readthedocs.io</a></td>
   <td><a target="_blank" href="https://gitter.im/devilbox/Lobby">gitter.im/devilbox</a></td>
   <td><a target="_blank" href="https://devilbox.discourse.group">devilbox.discourse.group</a></td>
+  <td><a target="_blank" href="https://github.com/devilbox/flames">github.com/devilbox/flames</a></td>
   </tr>
  </tbody>
 </table>
@@ -151,15 +161,15 @@ simplify your every-day life. If you ever run into any unforseen issues, feel fr
  <tbody style="vertical-align: bottom;">
   <tr>
    <td>
-    <pre># Get the Devilbox
-$ git clone https://github.com/cytopia/devilbox</pre>
-<pre># Create docker-compose environment file
-$ cd devilbox
-$ cp env-example .env</pre>
-<pre># Edit your configuration
-$ vim .env</pre>
-<pre># Start all container
-$ docker-compose up</pre>
+<div class="highlight highlight-source-shell"><pre># Get the Devilbox
+git clone https://github.com/cytopia/devilbox</pre></div>
+<div class="highlight highlight-source-shell"><pre># Create docker-compose environment file
+cd devilbox
+cp env-example .env</pre></div>
+<div class="highlight highlight-source-shell"><pre># Edit your configuration
+vim .env</pre></div>
+<div class="highlight highlight-source-shell"><pre># Start all container
+docker-compose up</pre></div>
    </td>
    <td>
     1. Clone <code>https://github.com/cytopia/devilbox</code> to <code>C:\devilbox</code> with <a href="https://git-scm.com/downloads">Git for Windows</a><br/><br/>
@@ -183,7 +193,7 @@ C:\devilbox> docker-compose up</pre></div>
 The above will start all containers, you can however also just start the containers you actually need. This is achieved by simply specifying them in the docker-compose command.
 
 ```bash
-$ docker-compose up httpd php mysql redis
+docker-compose up httpd php mysql redis
 ```
 > **Documentation:**
 > [Start only some container](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html#start-some-container)
@@ -345,10 +355,9 @@ Every single attachable container comes with many different versions. In order t
   </tbody>
 </table>
 
-<strong><sup>[1]</sup></strong> <strong>PHP 5.2</strong> is available to use, but it is not officially supported. The Devilbox intranet does not work with this version as PHP 5.2 does not support namespaces.
-Furthermore PHP 5.2 does only work with Apache 2.4, Nginx stable and Nginx mainline. It does not work with Apache 2.2. Use at your own risk.
+<small><strong><sup>[1]</sup></strong> <strong>PHP 5.2</strong> is available to use, but it is not officially supported. The Devilbox intranet does not work with this version as PHP 5.2 does not support namespaces. Furthermore PHP 5.2 does only work with Apache 2.4, Nginx stable and Nginx mainline. It does not work with Apache 2.2. Use at your own risk.</small>
 
-<strong><sup>[2]</sup></strong> <strong>PHP 7.4</strong> and <strong>PHP 8.0</strong> are upcoming unreleased versions of PHP, which are directly built out of their [official git branches](https://github.com/php/php-src/) every night to assure you will leverage their latest features.
+<small><strong><sup>[2]</sup></strong> <strong>PHP 7.4</strong> and <strong>PHP 8.0</strong> are upcoming unreleased versions of PHP, which are directly built out of their [official git branches](https://github.com/php/php-src/) every night to assure you will leverage their latest features.</small>
 
 > **Documentation:**
 > [Change container versions](https://devilbox.readthedocs.io/en/latest/getting-started/change-container-versions.html)
@@ -433,12 +442,12 @@ Navigate the the Devilbox directory and type the below listed command:
  <tbody style="vertical-align: bottom;">
   <tr>
    <td>
-    <pre>host> ./shell.sh
-devilbox@php-7.0.19 in /shared/httpd $</pre>
+<div class="highlight highlight-source-shell"><pre>host> ./shell.sh
+devilbox@php-7.0.19 in /shared/httpd $</pre></div>
    </td>
    <td>
-    <pre>C:\devilbox> shell.bat
-devilbox@php-7.0.19 in /shared/httpd $</pre>
+<div class="highlight highlight-source-shell"><pre>C:\devilbox> shell.bat
+devilbox@php-7.0.19 in /shared/httpd $</pre></div>
    </td>
   </tr>
  </tbody>
@@ -525,6 +534,10 @@ The Devilbox has everything setup for you. The only thing you will have to insta
   <tr>
     <td>:star: Xdebug</td>
     <td>Xdebug and a full blown PHP-FPM server is ready to serve.</td>
+  </tr>
+  <tr>
+    <td>:star: Devilbox Flames</td>
+    <td>Devilbox community plugins a.k.a. Devilbox Flames.</td>
   </tr>
   <tr>
     <td>:star: Many more</td>
@@ -700,7 +713,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | date           |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | dba            |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | dom            |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
-| enchant        |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
+| enchant        |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
 | ereg           |         |    ✔    |    ✔    |    ✔    |    ✔    |         |         |         |         |         |         |
 | exif           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | FFI            |         |         |         |         |         |         |         |         |         |    🗸    |    🗸    |
@@ -732,6 +745,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | mysql          |    ✔    |    ✔    |    🗸    |    🗸    |    🗸    |         |         |         |         |         |         |
 | mysqli         |    ✔    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | mysqlnd        |         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
+| OAuth          |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
 | oci8           |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |
 | openssl        |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | pcntl          |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |

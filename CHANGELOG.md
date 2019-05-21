@@ -5,19 +5,26 @@ major versions.
 
 
 
-## [Unreleased]
+## Bugfix Release v1.0.2 (2019-05-21)
 
 #### Fixed
 - Fixed various typos in documentation
 - Fix CI tests: They still expected a mounted mail directory instead of a Docker volume
 - Fix mods for PHP 8.0
+- Make npm binaries available in $PATH
 - Remove orphaned mentions of HOST_PATH_MYSQL_DATADIR
+- Allow symlinks in autostart scripts
 
 #### Added
 - Documentation: Setup ProcessWire
 - Tool: Angular CLI
 - Tool: Laravel Lumen
+- Tool: [prestissimo](https://github.com/hirak/prestissimo)
+- Tool: [yq](https://github.com/mikefarah/yq)
+- Module: OAuth
 
+#### Removed
+- Enchant module for PHP 7.4 and PHP 8.0 (build breaks)
 
 
 ## Bugfix Release v1.0.1 (2019-03-24)

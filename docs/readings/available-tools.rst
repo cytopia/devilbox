@@ -105,6 +105,8 @@ The PHP container is your workhorse and these are your tools:
 +----------------------+---------------------------------------+
 | ``yarn``             | |ext_lnk_tool_yarn|                   |
 +----------------------+---------------------------------------+
+| ``yq``               | |ext_lnk_tool_yq|                     |
++----------------------+---------------------------------------+
 
 .. note::
    If you are in need of other tools, open up an issue at |ext_lnk_tool_github_issues|
