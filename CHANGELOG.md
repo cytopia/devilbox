@@ -5,7 +5,7 @@ major versions.
 
 
 
-## [Unreleased]
+## Bugfix Release v1.0.2 (2019-05-21)
 
 #### Fixed
 - Fixed various typos in documentation
