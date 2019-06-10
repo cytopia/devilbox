@@ -5,6 +5,12 @@ major versions.
 
 
 
+## Unreleased
+
+#### Added
+- Make Ngrok region configurable via `NGROK_REGION` env variable
+
+
 ## Bugfix Release v1.0.2 (2019-05-21)
 
 #### Fixed
