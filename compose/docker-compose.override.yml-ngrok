@@ -7,11 +7,12 @@ services:
   # Ngrok
   # -----------------------------------------------------------------------------------------------
   ngrok:
-    image: devilbox/ngrok:0.2
+    image: devilbox/ngrok:0.3
     hostname: ngrok
     environment:
       - HTTP_TUNNELS=${NGROK_HTTP_TUNNELS:-httpd:httpd:80}
       - AUTHTOKEN=${NGROK_AUTHTOKEN:-}
+      - REGION=${NGROK_REGION:-us}
     ports:
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_NGROK:-4040}:4040"
     networks:

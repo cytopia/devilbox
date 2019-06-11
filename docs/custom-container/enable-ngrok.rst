@@ -53,7 +53,7 @@ must be copied into the root of the Devilbox git directory.
 +-----------------------+-----------------------------------------------------------------------------------------------------+
 | Available at          | ``http://localhost:4040``                                                                           |
 +-----------------------+-----------------------------------------------------------------------------------------------------+
-| Further configuration | ``NGROK_HTTP_TUNNELS`` and ``NGROK_AUTHTOKEN``                                                      |
+| Further configuration | ``NGROK_HTTP_TUNNELS``, ``NGROK_AUTHTOKEN`` and ``NGROK_REGION``                                    |
 +-----------------------+-----------------------------------------------------------------------------------------------------+
 
 Ngrok env variables
@@ -61,15 +61,17 @@ Ngrok env variables
 
 Additionally the following ``.env`` variables can be created for easy configuration:
 
-+------------------------------+--------------------+----------------------------------------------------------------------+
-| Variable                     | Default value      | Description                                                          |
-+==============================+====================+======================================================================+
-| ``HOST_PORT_NGROK``          | ``4040``           | Controls the host port on which Ngrok admin UI will be available at. |
-+------------------------------+--------------------+----------------------------------------------------------------------+
-| ``NGROK_HTTP_TUNNELS``       | ``httpd:httpd:80`` | Defines one or more Ngrok tunnels (depending on your license)        |
-+------------------------------+--------------------+----------------------------------------------------------------------+
-| ``NGROK_AUTHTOKEN``          | empty              | Free or paid license token for Ngrok (can also be empty)             |
-+------------------------------+--------------------+----------------------------------------------------------------------+
++------------------------------+--------------------+----------------------------------------------------------------------------+
+| Variable                     | Default value      | Description                                                                |
++==============================+====================+============================================================================+
+| ``HOST_PORT_NGROK``          | ``4040``           | Controls the host port on which Ngrok admin UI will be available at.       |
++------------------------------+--------------------+----------------------------------------------------------------------------+
+| ``NGROK_HTTP_TUNNELS``       | ``httpd:httpd:80`` | Defines one or more Ngrok tunnels (depending on your license)              |
++------------------------------+--------------------+----------------------------------------------------------------------------+
+| ``NGROK_AUTHTOKEN``          | empty              | Free or paid license token for Ngrok (can also be empty)                   |
++------------------------------+--------------------+----------------------------------------------------------------------------+
+| ``NGROK_REGION``             | ``us``             | Choose the region where the ngrok client will connect to host its tunnels. |
++------------------------------+--------------------+----------------------------------------------------------------------------+
 
 NGROK_HTTP_TUNNELS
 ^^^^^^^^^^^^^^^^^^
@@ -182,6 +184,7 @@ directory:
    echo "NGROK_HTTP_TUNNELS=project1.loc:httpd:80"  >> .env
    echo "# No license token specified"              >> .env
    echo "NGROK_AUTHTOKEN="                          >> .env
+   echo "NGROK_REGION=us"                           >> .env
 
    # Start container
    docker-compose up -d php httpd bind ngrok
