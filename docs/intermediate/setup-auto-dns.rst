@@ -33,7 +33,7 @@ on ``0.0.0.0``. Additionally the DNS server port must be set to ``53`` (it is no
 Prerequisites
 -------------
 
-First ensure that :ref:`env_local_listen_addr` is either empty or listening on ``127.0.0.1``.
+First ensure that :ref:`env_local_listen_addr` is either empty or listening on ``127.0.0.1``. Also note that the address *must* have a colon (``:``) appended, this is not added automatically and is needed to conjoin the ip address and ports correctly.
 
 .. code-block:: bash
    :caption: .env
