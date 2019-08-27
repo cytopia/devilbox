@@ -70,7 +70,12 @@ indent_size = 2
 indent_style = space
 indent_size = 2
 
-[{shell.bat,shell.sh,update-docker.sh}]
+[{shell.sh,update-docker.sh}]
+indent_style = tab
+indent_size = 4
+
+[shell.bat]
+end_of_line = crlf
 indent_style = tab
 indent_size = 4
 
