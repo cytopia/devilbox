@@ -34,6 +34,13 @@ DEBUG_COMPOSE_ENTRYPOINT=1
 
 
 ###
+### Link your local ssh to configured(which did mounted ssh as volume) container
+###
+LOCAL_SSH_PATH=~/.ssh
+CONTAINER_SSH_PATH=/root/.ssh
+
+
+###
 ### Log to file or Docker logs.
 ###
 ### Logging to file means log files are available under log/
@@ -695,3 +702,33 @@ BIND_LOG_DNS_QUERIES=0
 ### <?php echo getenv('Foo'); ?> would produce: 'some value'
 ###
 #Foo=some value
+
+
+################################################################################
+###
+### 12. NodeJS Docker Settings
+###
+################################################################################
+
+###
+### Enter NodeJS version and folder name of your project that stands inside of the HOST_PATH_HTTPD_DATADIR path
+###
+NODE_VERSION=
+PROJECT_FOLDER_NAME=
+
+###
+### Enter the port number of the application host and port number of that you want to serve on your local machine
+###
+LISTEN_PORT_NODE=
+HOST_PORT_NODE=
+
+###
+### Scripts that will always be executed when container gets up
+### If you dont want to install packages everytime, leave the NODE_INSTALL_SCRIPT as default ':'
+###
+### Example values
+### NODE_INSTALL_SCRIPT=npm install YARN VERSION -> yarn
+### NODE_START_SCRIPT=npm run start YARN VERSION -> yarn start
+###
+NODE_START_SCRIPT=
+NODE_INSTALL_SCRIPT=
