@@ -460,6 +460,42 @@ services:
       - httpd
 
 
+  # -----------------------------------------------------------------------------------------------
+  # NodeJS
+  # -----------------------------------------------------------------------------------------------
+  nodejs:
+    image: node:${NODE_VERSION}
+    hostname: nodejs
+    working_dir: /var/www/${PROJECT_FOLDER_NAME}
+    command: >
+      bash -c "${NODE_INSTALL_SCRIPT} && ${NODE_START_SCRIPT}"
+    ports:
+      - "${HOST_PORT_NODE}:${LISTEN_PORT_NODE}"
+    volumes:
+      # Mount custom mass virtual hosting
+      - ${HOST_PATH_HTTPD_DATADIR}:/var/www:rw${MOUNT_OPTIONS}
+
+      # Mount custom intranet
+      - ${DEVILBOX_PATH}/.devilbox/www:/var/www/default:ro${MOUNT_OPTIONS}
+
+      # Mount DB Backup directory
+      - ${DEVILBOX_PATH}/backups:/shared/backups:rw${MOUNT_OPTIONS}
+
+      # Mount devilbox user-defined bash config
+      - ${DEVILBOX_PATH}/bash:/etc/bashrc-devilbox.d:rw${MOUNT_OPTIONS}
+
+      # Certificate Authority public key
+      - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
+
+      # Mount SSH
+      - ${LOCAL_SSH_PATH}:${CONTAINER_SSH_PATH}
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.17
+    depends_on:
+      - bind
+
+
 ################################################################################
 # NETWORK
 ################################################################################
