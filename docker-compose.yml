@@ -95,10 +95,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    build:
-      context: ./.docker/Containers/PHP/
-      args:
-        VERSION: "${PHP_SERVER}"
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.89
     hostname: php
 
     ##
@@ -204,9 +201,6 @@ services:
 
       # Certificate Authority public key
       - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
-
-      # Bind ssh
-      - ${SSH_PATH}:/root/.ssh
 
     depends_on:
       - bind
@@ -465,61 +459,6 @@ services:
       - php
       - httpd
 
-  # -----------------------------------------------------------------------------------------------
-  # Elasticsearch
-  # -----------------------------------------------------------------------------------------------
-  elastic:
-    image: elasticsearch:${ELK_SERVER}
-    hostname: elastic
-    ports:
-      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_ELK_ELASTIC:-9200}:9200"
-    networks:
-      app_net:
-        ipv4_address: 172.16.238.240
-    environment:
-      - TZ=${TIMEZONE:-UTC}
-      - discovery.type=single-node
-    volumes:
-      - ./devilbox-elastic:/usr/share/elasticsearch/data
-
-  debian:
-    build:
-      context: ./.docker/Containers/Debian
-      args:
-        DEBIAN_VERSION: ${DEBIAN_VERSION}
-        NODE_VERSION : ${NODE_VERSION}
-    container_name: debian
-    entrypoint: ["bash", "/root/entrypoint/stayWake.sh"]
-    tty: true
-    ports:
-      - "${DEBIAN_HOST_PORT}:${DEBIAN_LISTEN_PORT}"
-    volumes:
-      # Mount custom intranet
-      - ${DEVILBOX_PATH}/.devilbox/www:/var/www/default:ro${MOUNT_OPTIONS}
-
-      # Mount custom mass virtual hosting
-      - ${HOST_PATH_HTTPD_DATADIR}:/var/www:rw${MOUNT_OPTIONS}
-
-      # Mount Mail directory
-      - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
-
-      # Mount DB Backup directory
-      - ${DEVILBOX_PATH}/backups:/shared/backups:rw${MOUNT_OPTIONS}
-
-      # Mount devilbox user-defined bash config
-      - ${DEVILBOX_PATH}/bash:/etc/bashrc-devilbox.d:rw${MOUNT_OPTIONS}
-
-      # Certificate Authority public key
-      - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
-
-      # Mount SSH
-      - ${SSH_PATH}:/root/.ssh
-
-      # Mount devilbox user-defined startup *.sh scripts
-      - ./.docker/Entrypoints/Debian/stayWake.sh:/root/entrypoint/stayWake.sh
-    networks:
-      app_net:
-        ipv4_address: 172.16.238.243
 
 ################################################################################
 # NETWORK

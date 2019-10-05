@@ -21,9 +21,6 @@
 # Ignore Data dirs
 /data/www/*
 
-# Ignore devilbox-elastic folder
-/devilbox-elastic
-
 # Ignore Certificate Authority
 /ca/*
 

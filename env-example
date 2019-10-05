@@ -32,10 +32,6 @@
 ### 0: No
 DEBUG_COMPOSE_ENTRYPOINT=1
 
-###
-### Link your local ssh to configured(which did mounted ssh as volume) container
-###
-SSH_PATH=
 
 ###
 ### Log to file or Docker logs.
@@ -83,14 +79,6 @@ DEVILBOX_PATH=.
 ###
 LOCAL_LISTEN_ADDR=
 
-
-###
-### Configurations of Debian container
-###
-DEBIAN_HOST_PORT=
-DEBIAN_LISTEN_PORT=
-DEBIAN_VERSION=
-NODE_VERSION=
 
 ###
 ### This is the domain suffix your projects will be made available
@@ -293,13 +281,13 @@ HTTPD_SERVER=nginx-stable
 ###
 #MYSQL_SERVER=mysql-5.5
 #MYSQL_SERVER=mysql-5.6
-MYSQL_SERVER=mariadb-10.3
+#MYSQL_SERVER=mysql-5.7
 #MYSQL_SERVER=mysql-8.0
 #MYSQL_SERVER=mariadb-5.5
 #MYSQL_SERVER=mariadb-10.0
 #MYSQL_SERVER=mariadb-10.1
 #MYSQL_SERVER=mariadb-10.2
-#MYSQL_SERVER=mariadb-10.3
+MYSQL_SERVER=mariadb-10.3
 #MYSQL_SERVER=mariadb-10.4
 #MYSQL_SERVER=percona-5.5
 #MYSQL_SERVER=percona-5.6
@@ -685,24 +673,6 @@ BIND_MAX_CACHE_TIME=
 ### 0: No
 BIND_LOG_DNS_QUERIES=0
 
-# ELK stack general
-# See here for all versions: https://www.docker.elastic.co/
-#ELK_SERVER=6.1.4
-#ELK_SERVER=6.2.4
-#ELK_SERVER=6.3.2
-#ELK_SERVER=6.4.3
-#ELK_SERVER=6.5.4
-ELK_SERVER=
-
-
-# Elastic Search settings
-HOST_PORT_ELK_ELASTIC=
-
-# Logstash settings
-HOST_PORT_ELK_LOGSTASH=
-
-# Kibana settings
-HOST_PORT_ELK_KIBANA=
 
 
 ################################################################################
