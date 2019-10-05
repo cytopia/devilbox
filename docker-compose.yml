@@ -202,6 +202,9 @@ services:
       # Certificate Authority public key
       - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
 
+      # Mount SSH
+      - ${LOCAL_SSH_PATH}:${CONTAINER_SSH_PATH}
+
     depends_on:
       - bind
 
