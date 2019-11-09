@@ -188,9 +188,10 @@ class Httpd extends BaseClass implements BaseInterface
 			return false;
 		}
 		$dir = loadClass('Helper')->getEnv('HTTPD_TEMPLATE_DIR');
+		$cfg = '/shared/httpd/'.$vhost.'/'.$dir.'/'.$name;
 
-		if (is_file('/shared/httpd/'.$vhost.'/'.$dir.'/'.$name)) {
-			return '/shared/httpd/'.$vhost.'/'.$dir.'/'.$name;
+		if (is_file($cfg)) {
+			return $cfg;
 		}
 		return false;
 	}
