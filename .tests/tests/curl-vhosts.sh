@@ -75,6 +75,7 @@ TLD_SUFFIX="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "TLD_SUFFIX" )"
 ### Get vhost files
 ###
 FILES="$( find "${TESTS}" -name '*.php' | sort )"
+ERRORS=0
 
 
 echo
@@ -87,12 +88,12 @@ for file in ${FILES}; do
 	name="$( basename "${file}" )"
 
 	if ! run "curl -sS --fail --header 'Host: ${VHOST}.${TLD_SUFFIX}' 'http://localhost:${HOST_PORT_HTTPD}/${name}' | tac | tac | grep -E '^OK$' >/dev/null" "${RETRIES}"; then
-		run "curl --header 'Host: ${VHOST}.${TLD_SUFFIX}' 'http://localhost:${HOST_PORT_HTTPD}/${name}'"
-		exit 1
+		run "curl -sS --header 'Host: ${VHOST}.${TLD_SUFFIX}' 'http://localhost:${HOST_PORT_HTTPD}/${name}'"
+		ERRORS="$(( ERRORS + 1))"
 	fi
 	if ! run_fail "curl -sS --fail --header 'Host: ${VHOST}.${TLD_SUFFIX}' 'http://localhost:${HOST_PORT_HTTPD}/${name}' 2>&1 | tac | tac | grep -Ei 'fatal|except|err|warn|notice' >/dev/null" "${RETRIES}"; then
-		run "curl --header 'Host: ${VHOST}.${TLD_SUFFIX}' 'http://localhost:${HOST_PORT_HTTPD}/${name}'"
-		exit 1
+		run "curl -sS --header 'Host: ${VHOST}.${TLD_SUFFIX}' 'http://localhost:${HOST_PORT_HTTPD}/${name}'"
+		ERRORS="$(( ERRORS + 1))"
 	fi
 done
 
@@ -108,10 +109,12 @@ for file in ${FILES}; do
 
 	if ! run "docker-compose exec -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/${name}' | tac | tac | grep -E '^OK$' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
 		run "docker-compose exec -T php curl 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/${name}'" "1" "${DVLBOX_PATH}"
-		exit 1
+		ERRORS="$(( ERRORS + 1))"
 	fi
 	if ! run_fail "docker-compose exec -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/${name}' 2>&1 | tac | tac | grep -Ei 'fatal|except|err|war|notice' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
 		run "docker-compose exec -T php curl 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/${name}'" "1" "${DVLBOX_PATH}"
-		exit 1
+		ERRORS="$(( ERRORS + 1))"
 	fi
 done
+
+exit "${ERRORS}"

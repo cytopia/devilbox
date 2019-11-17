@@ -91,7 +91,7 @@ fi
 printf "[TEST] https vhost / from container"
 if ! run "docker-compose exec -T php curl -sS --fail 'https://${VHOST}.${TLD_SUFFIX}' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
 	printf "\\r[FAIL] https vhost / from container\\n"
-	run "docker-compose exec -T php curl -sv 'https://${VHOST}.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}" "0"
+	run "docker-compose exec -T php curl -v 'https://${VHOST}.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}" "0"
 	exit 1
 else
 	printf "\\r[OK]   https vhost / from container\\n"

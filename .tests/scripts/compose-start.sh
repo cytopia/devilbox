@@ -73,7 +73,7 @@ until curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}" 2>/dev/null | grep '
 	i=$(( i + 1 ))
 	if [ "${i}" -eq "60" ]; then
 		printf "[FAIL]\\n"
-		curl "http://localhost:${HOST_PORT_HTTPD}"
+		curl -sS "http://localhost:${HOST_PORT_HTTPD}"
 		exit 1
 	fi
 

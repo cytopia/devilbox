@@ -50,7 +50,7 @@ HOST_PORT_HTTPD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HOST_PORT_HTTPD" 
 printf "[TEST] Xdebug available"
 if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep -q 'xdebug.remote_enable'" "${RETRIES}" "" "0"; then
 	printf "\\r[FAIL] Xdebug available\\n"
-	curl "http://localhost:${HOST_PORT_HTTPD}/info_php.php" || true
+	run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' || true"
 	exit 1
 else
 	printf "\\r[OK]   Xdebug available\\n"
@@ -63,7 +63,7 @@ fi
 printf "[TEST] Xdebug default disabled"
 if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.remote_enable' | grep -Eq 'Off.+Off'" "${RETRIES}" "" "0"; then
 	printf "\\r[FAIL] Xdebug default disabled\\n"
-	curl "http://localhost:${HOST_PORT_HTTPD}/info_php.php | grep 'xdebug.remote_enable'" || true
+	run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.remote_enable' || true"
 	exit 1
 else
 	printf "\\r[OK]   Xdebug default disabled\\n"
@@ -76,7 +76,7 @@ fi
 printf "[TEST] Xdebug autostart disabled"
 if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.remote_autostart' | grep -Eq 'Off.+Off'" "${RETRIES}" "" "0"; then
 	printf "\\r[FAIL] Xdebug autostart disabled\\n"
-	curl "http://localhost:${HOST_PORT_HTTPD}/info_php.php | grep 'xdebug.remote_autostart'" || true
+	run "curl 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.remote_autostart' || true"
 	exit 1
 else
 	printf "\\r[OK]   Xdebug autostart disabled\\n"

@@ -56,8 +56,6 @@ fi
 ###
 ### Get required env values
 ###
-HTTPD_SERVER="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HTTPD_SERVER" )"
-HOST_PORT_HTTPD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HOST_PORT_HTTPD" )"
 TLD_SUFFIX="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "TLD_SUFFIX" )"
 HTTPD_DOCROOT_DIR="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HTTPD_DOCROOT_DIR" )"
 HTTPD_TEMPLATE_DIR="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HTTPD_TEMPLATE_DIR" )"
@@ -118,7 +116,7 @@ run "sleep 4"
 printf "[TEST] index.html should be served"
 if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep -E '^indexhtml$' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
 	printf "\\r[FAIL] index.html should be served\\n"
-    run "docker-compose exec --user devilbox -T php curl 'http://${VHOST}.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}"
+    run "docker-compose exec --user devilbox -T php curl -sS 'http://${VHOST}.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}"
 	exit 1
 else
 	printf "\\r[OK]   index.html should be served\\n"

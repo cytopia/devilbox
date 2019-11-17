@@ -127,63 +127,85 @@ jobs:
         run: |
           cd .tests/
           make test-smoke-modules
+        if: success() || failure()
 
       - name: Test Config
         shell: bash
         run: |
           cd .tests/
           make test-smoke-config
+        if: success() || failure()
 
       - name: Test Intranet
         shell: bash
         run: |
           cd .tests/
           make test-smoke-intranet
+        if: success() || failure()
 
       - name: Test Vendors
         shell: bash
         run: |
           cd .tests/
           make test-smoke-vendors
+        if: success() || failure()
 
       - name: Test Vhosts
         shell: bash
         run: |
           cd .tests/
           make test-smoke-vhosts
+        if: success() || failure()
 
       - name: Test Reverse Proxy
         shell: bash
         run: |
           cd .tests/
           make test-smoke-rproxies
+        if: success() || failure()
 
       - name: Test SSL
         shell: bash
         run: |
           cd .tests/
           make test-smoke-ssl
+        if: success() || failure()
 
       - name: Test Bind
         shell: bash
         run: |
           cd .tests/
           make test-smoke-bind
+        if: success() || failure()
 
       - name: Test Autostart
         shell: bash
         run: |
           cd .tests/
           make test-smoke-autostart
+        if: success() || failure()
 
       - name: "Test Framework: CakePHP"
         shell: bash
         run: |
           cd .tests/
           make test-smoke-framework-cakephp
+        if: success() || failure()
 
       - name: "Test Framework: Drupal"
         shell: bash
         run: |
           cd .tests/
           make test-smoke-framework-drupal
+        if: success() || failure()
+
+      # ------------------------------------------------------------
+      # Finish
+      # ------------------------------------------------------------
+
+      - name: "Finish: Docker logs"
+        shell: bash
+        run: |
+          cd .tests/
+          make logs
+        if: success() || failure()
