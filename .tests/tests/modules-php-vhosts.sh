@@ -18,7 +18,7 @@ DISABLED_VERSIONS=()
 
 echo
 echo "# --------------------------------------------------------------------------------------------------"
-echo "# [PHP cli] ${1:-}"
+echo "# [modules] php ${1:-}"
 echo "# --------------------------------------------------------------------------------------------------"
 echo
 
@@ -63,11 +63,11 @@ fi
 ###
 ### Get vhost files
 ###
-FILES="$( find "${TESTS}" -name '*.php' )"
+FILES="$( cd "${TESTS}" && find . -name '*.php' | sort )"
 
 for file in ${FILES}; do
-	name="$( basename "${file}" )"
-	if ! run "docker-compose exec -T --user devilbox php php /shared/httpd/${VHOST}/htdocs/${name} | grep -E '^OK$' > /dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
+	name="${file#./}"
+	if ! run "docker-compose exec -T --user devilbox php php /shared/httpd/${VHOST}/htdocs/${name} | grep -E '^(OK|SKIP)$'" "${RETRIES}" "${DVLBOX_PATH}"; then
 		run "docker-compose exec -T --user devilbox php php /shared/httpd/${VHOST}/htdocs/${name} || true" "1" "${DVLBOX_PATH}"
 		exit 1
 	fi

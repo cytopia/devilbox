@@ -61,8 +61,11 @@ logs:
 ###
 ###
 test-smoke-modules:
-	$(PWD)/tests/curl-vhosts.sh "modules"
-	$(PWD)/tests/php-vhosts.sh "modules"
+	$(PWD)/tests/modules-curl-vhosts.sh "modules"
+	$(PWD)/tests/modules-php-vhosts.sh "modules"
+	$(PWD)/tests/modules-fetch-tests.sh "modules-external"
+	$(PWD)/tests/modules-curl-vhosts.sh "modules-external"
+	$(PWD)/tests/modules-php-vhosts.sh "modules-external"
 
 
 ###
