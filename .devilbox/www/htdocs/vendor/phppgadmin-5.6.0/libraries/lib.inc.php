@@ -11,10 +11,7 @@
 
 	// cytopia edit
 	error_reporting(E_ERROR | E_WARNING | E_PARSE);
-	//error_reporting(E_ALL & ~E_DEPRECATED);
-	// Set error reporting level to max
-	//error_reporting(E_ALL);
- 
+
 	// Application name
 	$appName = 'phpPgAdmin';
 

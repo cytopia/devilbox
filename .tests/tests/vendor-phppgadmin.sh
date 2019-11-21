@@ -12,7 +12,7 @@ DVLBOX_PATH="$( cd "${SCRIPT_PATH}/../.." && pwd -P )"
 # shellcheck disable=SC1090
 . "${SCRIPT_PATH}/../scripts/.lib.sh"
 
-#RETRIES=10
+RETRIES=10
 DISABLED_VERSIONS=("8.0")
 
 
@@ -49,25 +49,17 @@ HOST_PORT_HTTPD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HOST_PORT_HTTPD" 
 ### Older PHP versions are presented a link with a different version due to compatibility.
 ###
 printf "[TEST] Retrieve phpPgAdmin URL"
-# 1st Try
-if ! URL="$( curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}/index.php" | grep -Eo "/vendor/phppgadmin-[.0-9]+/" )"; then
-	# 2nd Try
-	sleep 1
-	if ! URL="$( curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}/index.php" | grep -Eo "/vendor/phppgadmin-[.0-9]+/" )"; then
-		# 3rd Try
-		sleep 1
-		if ! URL="$( curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}/index.php" | grep -Eo "/vendor/phppgadmin-[.0-9]+/" )"; then
-			printf "\\r[FAILED] Retrieve phpMyAdmin URL\\n"
-			curl -sS "http://localhost:${HOST_PORT_HTTPD}/index.php" | grep -Eo "/vendor/phppgadmin-[.0-9]+/" || true
-			exit 1
-		else
-			printf "\\r[OK]   Retrieve phpPgAdmin URL (3 rounds): %s\\n" "${URL}"
-		fi
-	else
-		printf "\\r[OK]   Retrieve phpPgAdmin URL (2 rounds): %s\\n" "${URL}"
-	fi
+if ! URL="$( run "\
+	curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/index.php' \
+	| tac \
+	| tac \
+	| grep -Eo '/vendor/phppgadmin-[.0-9]+/'" \
+	"${RETRIES}" "" "0" )"; then
+	printf "\\r[FAILED] Retrieve phpPgAdmin URL\\n"
+	run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/index.php' || true"
+	exit 1
 else
-	printf "\\r[OK]   Retrieve phpPgAdmin URL (1 round): %s\\n" "${URL}n"
+	printf "\\r[OK]   Retrieve phpPgAdmin URL: %s\\n" "${URL}"
 fi
 
 
@@ -95,33 +87,6 @@ if ! curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}${URL}intro.php" | tac 
 	fi
 else
 	printf "\\r[OK]   Fetch %sintro.php (1 round)\\n" "${URL}"
-fi
-
-
-###
-### Evaluate successful phpPgAdmin login
-###
-printf "[TEST] Evaluate successful phpPgAdmin login"
-# 1st Try
-if [ "$(curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" | tac | tac | grep -Ec 'data">(Database|Owner|Collation|Tablespace)')" != "4" ]; then
-	# 2nd Try
-	sleep 1
-	if [ "$(curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" | tac | tac | grep -Ec 'data">(Database|Owner|Collation|Tablespace)')" != "4" ]; then
-		# 3rd Try
-		sleep 1
-		if [ "$(curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" | tac | tac | grep -Ec 'data">(Database|Owner|Collation|Tablespace)')" != "4" ]; then
-			printf "\\r[FAIL] Evaluate successful phpPgAdmin login\\n"
-			curl -sS "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" || true
-			curl -sS -I "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" || true
-			exit 1
-		else
-			printf "\\r[OK]   Evaluate successful phpPgAdmin login (3 rounds)\\n"
-		fi
-	else
-		printf "\\r[OK]   Evaluate successful phpPgAdmin login (2 rounds)\\n"
-	fi
-else
-	printf "\\r[OK]   Evaluate successful phpPgAdmin login (1 round)\\n"
 fi
 
 
@@ -230,3 +195,83 @@ fi
 #fi
 #
 #rm -f cookie.txt || true
+
+
+###
+### Configuration File
+###
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+DVLBOXPATH="${SCRIPTPATH}/../../"
+CONFIGPATH="${DVLBOXPATH}/.devilbox/www/htdocs${URL%index\.php}conf/config.inc.php"
+LIBPATH="${DVLBOXPATH}/.devilbox/www/htdocs${URL%index\.php}libraries/lib.inc.php"
+
+printf "[TEST] config.inc.php exists"
+if [ ! -f "${CONFIGPATH}" ]; then
+	printf "\\r[FAIL] config.inc.php exists: no\\n"
+	exit 1
+else
+	printf "\\r[OK]   config.inc.php exists: yes\\n"
+fi
+
+# $conf['servers'][0]['host'] = 'pgsql';
+printf "[TEST] config.inc.php check: \$conf['servers'][0]['host'] = 'pgsql';"
+if ! grep -E "^[[:space:]]*\\\$conf\\['servers'\\]\\[0\\]\\['host'\\][[:space:]]*=[[:space:]]*'pgsql';" "${CONFIGPATH}" >/dev/null; then
+	printf "\\r[FAIL] config.inc.php check: \$conf['servers'][0]['host'] = 'pgsql';\\n"
+	if ! grep 'servers' "${CONFIGPATH}"; then
+		cat "${CONFIGPATH}"
+	fi
+	exit 1
+else
+	printf "\\r[OK]   config.inc.php check: \$conf['servers'][0]['host'] = 'pgsql';\\n"
+fi
+
+# $conf['extra_login_security'] = false;
+printf "[TEST] config.inc.php check: \$conf['extra_login_security'] = false;"
+if ! grep -E "^[[:space:]]*\\\$conf\\['extra_login_security'\\][[:space:]]*=[[:space:]]*false;" "${CONFIGPATH}" >/dev/null; then
+	printf "\\r[FAIL] config.inc.php check: \$conf['extra_login_security'] = false;\\n"
+	if ! grep 'extra_login_security' "${CONFIGPATH}"; then
+		cat "${CONFIGPATH}"
+	fi
+	exit 1
+else
+	printf "\\r[OK]   config.inc.php check: \$conf['extra_login_security'] = false;\\n"
+fi
+
+# error_reporting(E_ERROR | E_WARNING | E_PARSE);
+printf "[TEST] lib.inc.php check: error_reporting(E_ERROR | E_WARNING | E_PARSE);"
+if ! grep -E "^[[:space:]]*error_reporting\\(E_ERROR[[:space:]]*\\|[[:space:]]*E_WARNING[[:space:]]*\\|[[:space:]]*E_PARSE\\);" "${LIBPATH}" >/dev/null; then
+	printf "\\r[FAIL] lib.inc.php check: error_reporting(E_ERROR | E_WARNING | E_PARSE);\\n"
+	if ! grep 'error_reporting' "${LIBPATH}"; then
+		cat "${LIBPATH}"
+	fi
+	exit 1
+else
+	printf "\\r[OK]   lib.inc.php check: error_reporting(E_ERROR | E_WARNING | E_PARSE);\\n"
+fi
+
+
+###
+### Evaluate successful phpPgAdmin login
+###
+printf "[TEST] Evaluate successful phpPgAdmin login"
+# 1st Try
+if [ "$(curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" | tac | tac | grep -Ec 'data">(Database|Owner|Collation|Tablespace)')" != "4" ]; then
+	# 2nd Try
+	sleep 1
+	if [ "$(curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" | tac | tac | grep -Ec 'data">(Database|Owner|Collation|Tablespace)')" != "4" ]; then
+		# 3rd Try
+		sleep 1
+		if [ "$(curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" | tac | tac | grep -Ec 'data">(Database|Owner|Collation|Tablespace)')" != "4" ]; then
+			printf "\\r[FAIL] Evaluate successful phpPgAdmin login\\n"
+			curl -sS "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" || true
+			curl -sS -I "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" || true
+			exit 1
+		else
+			printf "\\r[OK]   Evaluate successful phpPgAdmin login (3 rounds)\\n"
+		fi
+	else
+		printf "\\r[OK]   Evaluate successful phpPgAdmin login (2 rounds)\\n"
+	fi
+else
+	printf "\\r[OK]   Evaluate successful phpPgAdmin login (1 round)\\n"
+fi

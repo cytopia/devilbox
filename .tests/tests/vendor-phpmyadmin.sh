@@ -262,27 +262,6 @@ fi
 
 
 ###
-### Evaluate if we're logged in
-###
-printf "[TEST] Evaluate successful phpMyAdmin login"
-if [ "$( run "\
-	curl -sS --fail -c cookie.txt -b cookie.txt 'http://localhost:${HOST_PORT_HTTPD}${URL}' \
-	| tac \
-	| tac \
-	| grep -Ec '(Databases<.+SQL<.+Status<.+Users<.+Export<)|(\"User accounts\")'" \
-	"${RETRIES}" "" "0" )" != "1" ]; then
-	printf "\\r[FAIL] Evaluate successful phpMyAdmin login\\n"
-	run "curl -sS -c cookie.txt -b cookie.txt 'http://localhost:${HOST_PORT_HTTPD}${URL}' || true"
-	run "curl -sS -I -c cookie.txt -b cookie.txt 'http://localhost:${HOST_PORT_HTTPD}${URL}' || true"
-	rm -f cookie.txt || true
-	exit 1
-else
-	printf "\\r[OK]   Evaluate successful phpMyAdmin login\\n"
-fi
-rm -f cookie.txt || true
-
-
-###
 ### Configuration File
 ###
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
@@ -405,3 +384,24 @@ if ! grep "^\\\$cfg\\['Servers'\\]\\[\$i\\]\\['AllowNoPassword'\\][[:space:]]*=[
 else
 	printf "\\r[OK]   config.inc.php check: \$cfg['Servers'][\$i]['AllowNoPassword'] = true;\\n"
 fi
+
+
+###
+### Evaluate if we're logged in
+###
+printf "[TEST] Evaluate successful phpMyAdmin login"
+if [ "$( run "\
+	curl -sS --fail -c cookie.txt -b cookie.txt 'http://localhost:${HOST_PORT_HTTPD}${URL}' \
+	| tac \
+	| tac \
+	| grep -Ec '(Databases<.+SQL<.+Status<.+Users<.+Export<)|(\"User accounts\")'" \
+	"${RETRIES}" "" "0" )" != "1" ]; then
+	printf "\\r[FAIL] Evaluate successful phpMyAdmin login\\n"
+	run "curl -sS -c cookie.txt -b cookie.txt 'http://localhost:${HOST_PORT_HTTPD}${URL}' || true"
+	run "curl -sS -I -c cookie.txt -b cookie.txt 'http://localhost:${HOST_PORT_HTTPD}${URL}' || true"
+	rm -f cookie.txt || true
+	exit 1
+else
+	printf "\\r[OK]   Evaluate successful phpMyAdmin login\\n"
+fi
+rm -f cookie.txt || true
