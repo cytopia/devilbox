@@ -114,6 +114,7 @@ jobs:
             make configure KEY=MYSQL_ROOT_PASSWORD VAL=mysqlpass
             make configure KEY=PGSQL_ROOT_USER VAL=pgroot
             make configure KEY=PGSQL_ROOT_PASSWORD VAL=pgsqlpass
+            make configure KEY=DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN VAL=0
           fi
         env:
           PHP: ${{ matrix.php }}

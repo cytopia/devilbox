@@ -42,12 +42,16 @@ fi
 ### Get required env values
 ###
 HOST_PORT_HTTPD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HOST_PORT_HTTPD" )"
+MYSQL_ROOT_PASSWORD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "MYSQL_ROOT_PASSWORD" )"
+DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN" )"
 
 
-###
-### Retrieve URL for current PHP version.
-### Older PHP versions are presented a link with a different version due to compatibility.
-###
+# -------------------------------------------------------------------------------------------------
+# ENTRYPOINT: Version
+# -------------------------------------------------------------------------------------------------
+
+# Retrieve URL for current PHP version.
+# Older PHP versions are presented a link with a different version due to compatibility.
 printf "[TEST] Retrieve phpMyAdmin URL"
 if ! URL="$( run "\
 	curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/index.php' \
@@ -63,207 +67,10 @@ else
 fi
 
 
-####
-#### Ensure given phpMyAdmin version works
-####
-#
-#printf "[TEST] Fetch ${URL}"
-## 1st Try
-#if ! curl -sS localhost${URL} | tac | tac | grep -Eiq "welcome to.+phpMyAdmin"; then
-#	# 2nd Try
-#	sleep 1
-#	if ! curl -sS localhost${URL} | tac | tac | grep -Eiq "welcome to.+phpMyAdmin"; then
-#		# 3rd Try
-#		sleep 1
-#		if ! curl -sS localhost${URL} | tac | tac | grep -Eiq "welcome to.+phpMyAdmin"; then
-#			printf "\\r[FAIL] Fetch ${URL}\\n"
-#			curl -sS localhost/${URL} || true
-#			curl -sSI localhost/${URL} || true
-#			exit 1
-#		else
-#			printf "\\r[OK]   Fetch ${URL} (3 rounds)\\n"
-#		fi
-#	else
-#		printf "\\r[OK]   Fetch ${URL} (2 rounds)\\n"
-#	fi
-#else
-#	printf "\\r[OK]   Fetch ${URL} (1 round)\\n"
-#fi
-#
-#
-####
-#### Login
-####
-#
-#TOKEN=
-#printf "[TEST] Retrieve phpMyAdmin login page"
-#while true; do
-#	# Try again until it succeeds
-#	if ! CONTENT="$( curl -sS -c cookie.txt localhost${URL} )"; then
-#		rm -f cookie.txt
-#		printf "e"
-#		continue;
-#	fi
-#	# Extract the token
-#	if ! TOKEN="$( echo "${CONTENT}" \
-#		| grep -Eo "name=\"token\" value=\".+\"" \
-#		| head -1 \
-#		| grep -Eo "value=\".+\"" \
-#		| sed -e 's/^value="//g' -e 's/"$//g' )"; then
-#		rm -f cookie.txt
-#		printf "w"
-#		continue;
-#	fi
-#	# Ensure Token does not contain '!'
-#	if echo "${TOKEN}" | grep -q "!"; then
-#		rm -f cookie.txt
-#		printf "!"
-#		continue;
-#	fi
-#	# Ensure Token does not contain '&'
-#	if echo "${TOKEN}" | grep -q "&"; then
-#		rm -f cookie.txt
-#		printf "&"
-#		continue;
-#	fi
-#	# Ensure Token does not contain '?'
-#	if echo "${TOKEN}" | grep -q "?"; then
-#		rm -f cookie.txt
-#		printf "?"
-#		continue;
-#	fi
-#	# Ensure Token does not contain '"'
-#	if echo "${TOKEN}" | grep -q "\""; then
-#		rm -f cookie.txt
-#		printf "\""
-#		continue;
-#	fi
-#	# Ensure Token does not contain '
-#	if echo "${TOKEN}" | grep -q "'"; then
-#		rm -f cookie.txt
-#		printf "'"
-#		continue;
-#	fi
-#	# Ensure Token does not contain '@'
-#	if echo "${TOKEN}" | grep -q "@"; then
-#		rm -f cookie.txt
-#		printf "@"
-#		continue;
-#	fi
-#	# Ensure Token does not contain '\'
-#	if echo "${TOKEN}" | grep -q "\\\\"; then
-#		rm -f cookie.txt
-#		printf "\\"
-#		continue;
-#	fi
-#	# Ensure Token does not contain '='
-#	if echo "${TOKEN}" | grep -q "="; then
-#		rm -f cookie.txt
-#		printf "="
-#		continue;
-#	fi
-#	# Ensure Token does not contain '`'
-#	if echo "${TOKEN}" | grep -q "\`"; then
-#		rm -f cookie.txt
-#		printf "\`"
-#		continue;
-#	fi
-#	# Ensure Token does not contain '+'
-#	if echo "${TOKEN}" | grep -q "+"; then
-#		rm -f cookie.txt
-#		printf "+"
-#		continue;
-#	fi
-#	# Ensure Token does not contain ';'
-#	if echo "${TOKEN}" | grep -q ";"; then
-#		rm -f cookie.txt
-#		printf ";"
-#		continue;
-#	fi
-#	# Ensure Token does not contain '%'
-#	if echo "${TOKEN}" | grep -q "%"; then
-#		rm -f cookie.txt
-#		printf "%%"
-#		continue;
-#	fi
-#	# Ensure Token does not contain ']'
-#	if echo "${TOKEN}" | grep -q "\]"; then
-#		rm -f cookie.txt
-#		printf "\]"
-#		continue;
-#	fi
-#	# Ensure Token does not contain '['
-#	if echo "${TOKEN}" | grep -q "\["; then
-#		rm -f cookie.txt
-#		printf "\["
-#		continue;
-#	fi
-#	# Ensure Token does not contain '$'
-#	if echo "${TOKEN}" | grep -q '\$'; then
-#		rm -f cookie.txt
-#		printf '\$'
-#		continue;
-#	fi
-#
-#	# All set
-#	break
-#done
-#printf "\\r[OK]   Retrieve phpMyAdmin login page\r\\n"
-#
-#
-#printf "[TEST] Exract phpMyAdmin login token"
-#if ! TOKEN="$( echo "${CONTENT}" \
-#	| grep -Eo "name=\"token\" value=\".+\"" \
-#	| head -1 \
-#	| grep -Eo "value=\".+\"" \
-#	| sed -e 's/^value="//g' -e 's/"$//g' )"; then
-#	printf "\\r[FAIL] Exract phpMyAdmin login token\\n"
-#	rm -f cookie.txt || true
-#	echo "${CONTENT}"
-#	exit 1
-#fi
-#printf "\\r[OK]   Exract phpMyAdmin login token: \"%s\"\\n" "${TOKEN}"
-#
-#printf "[TEST] Extract phpMyAdmin login session"
-#if ! SESSION="$( echo "${CONTENT}" \
-#	| grep -Eo "name=\"set_session\" value=\"[A-Fa-f0-9]+\"" \
-#	| grep -Eo "value=\"[A-Fa-f0-9]+\"" \
-#	| sed -e 's/^value="//g' -e 's/"$//g' )"; then
-#	printf "\\r[OK]   Extract phpMyAdmin login session (not available)\\n"
-#	SESSION=""
-#else
-#	printf "\\r[OK]   Extract phpMyAdmin login session: \"%s\"\\n" "${SESSION}"
-#fi
-#
-#
-#printf "[TEST] Submit phpMyAdmin POST login"
-## 1st Try
-#if ! curl -sS -c cookie.txt -b cookie.txt -d "pma_username=root&pma_password=&server=1&target=index.php&token=${TOKEN}&set_session=${SESSION}" localhost${URL}; then
-#	# 2nd Try
-#	sleep 1
-#	if ! curl -sS -c cookie.txt -b cookie.txt -d "pma_username=root&pma_password=&server=1&target=index.php&token=${TOKEN}&set_session=${SESSION}" localhost${URL}; then
-#		# 3rd Try
-#		sleep 1
-#		if ! curl -sS -c cookie.txt -b cookie.txt -d "pma_username=root&pma_password=&server=1&target=index.php&token=${TOKEN}&set_session=${SESSION}" localhost${URL}; then
-#			printf "\\r[FAIL] Submit phpMyAdmin POST login\\n"
-#			curl -sS -c cookie.txt -b cookie.txt localhost/${URL} || true
-#			curl -sSI -c cookie.txt -b cookie.txt localhost/${URL} || true
-#			rm -f cookie.txt || true
-#			exit 1
-#		else
-#			printf "\\r[OK]   Submit phpMyAdmin POST login (3 rounds)\\n"
-#		fi
-#	else
-#		printf "\\r[OK]   Submit phpMyAdmin POST login (2 rounds)\\n"
-#	fi
-#else
-#	printf "\\r[OK]   Submit phpMyAdmin POST login (1 round)\\n"
-#fi
+# -------------------------------------------------------------------------------------------------
+# ENTRYPOINT: Configuration file
+# -------------------------------------------------------------------------------------------------
 
-
-###
-### Configuration File
-###
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 DVLBOXPATH="${SCRIPTPATH}/../../"
 CONFIGPATH="${DVLBOXPATH}/.devilbox/www/htdocs${URL%index\.php}config.inc.php"
@@ -386,8 +193,188 @@ else
 fi
 
 
+# -------------------------------------------------------------------------------------------------
+# ENTRYPOINT: Login Check
+# -------------------------------------------------------------------------------------------------
+
 ###
-### Evaluate if we're logged in
+### Autologin disabled
+###
+if [ "${DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN}" != "1" ]; then
+
+	###
+	### Ensure given phpMyAdmin version works
+	###
+	printf "[TEST] Fetch %s" "${URL}"
+	if ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}${URL}' | tac | tac | grep -Ei 'welcome to.+phpMyAdmin' >/dev/null" "${RETRIES}" "" "0"; then
+		printf "\\r[FAIL] Fetch %s\\n" "${URL}"
+		run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}${URL}' || true"
+		run "curl -sSI 'http://localhost:${HOST_PORT_HTTPD}${URL}' || true"
+		exit 1
+	else
+		printf "\\r[OK]   Fetch %s\\n" "${URL}"
+	fi
+
+
+	###
+	### Login
+	###
+	TOKEN=
+	printf "[TEST] Retrieve phpMyAdmin login page"
+	while true; do
+		# Try again until it succeeds
+		if ! CONTENT="$( curl -sS --fail -c cookie.txt "http://localhost:${HOST_PORT_HTTPD}${URL}" )"; then
+			rm -f cookie.txt
+			printf "e"
+			continue;
+		fi
+		# Extract the token
+		if ! TOKEN="$( echo "${CONTENT}" \
+			| grep -Eo "name=\"token\" value=\".+\"" \
+			| head -1 \
+			| grep -Eo "value=\".+\"" \
+			| sed -e 's/^value="//g' -e 's/"$//g' )"; then
+			rm -f cookie.txt
+			printf "w"
+			continue;
+		fi
+		# Ensure Token does not contain '!'
+		if echo "${TOKEN}" | grep -q "!"; then
+			rm -f cookie.txt
+			printf "!"
+			continue;
+		fi
+		# Ensure Token does not contain '&'
+		if echo "${TOKEN}" | grep -q "&"; then
+			rm -f cookie.txt
+			printf "&"
+			continue;
+		fi
+		# Ensure Token does not contain '?'
+		if echo "${TOKEN}" | grep -q "?"; then
+			rm -f cookie.txt
+			printf "?"
+			continue;
+		fi
+		# Ensure Token does not contain '"'
+		if echo "${TOKEN}" | grep -q "\""; then
+			rm -f cookie.txt
+			printf "\""
+			continue;
+		fi
+		# Ensure Token does not contain '
+		if echo "${TOKEN}" | grep -q "'"; then
+			rm -f cookie.txt
+			printf "'"
+			continue;
+		fi
+		# Ensure Token does not contain '@'
+		if echo "${TOKEN}" | grep -q "@"; then
+			rm -f cookie.txt
+			printf "@"
+			continue;
+		fi
+		# Ensure Token does not contain '\'
+		if echo "${TOKEN}" | grep -q "\\\\"; then
+			rm -f cookie.txt
+			printf "\\"
+			continue;
+		fi
+		# Ensure Token does not contain '='
+		if echo "${TOKEN}" | grep -q "="; then
+			rm -f cookie.txt
+			printf "="
+			continue;
+		fi
+		# Ensure Token does not contain '`'
+		if echo "${TOKEN}" | grep -q "\`"; then
+			rm -f cookie.txt
+			printf "\`"
+			continue;
+		fi
+		# Ensure Token does not contain '+'
+		if echo "${TOKEN}" | grep -q "+"; then
+			rm -f cookie.txt
+			printf "+"
+			continue;
+		fi
+		# Ensure Token does not contain ';'
+		if echo "${TOKEN}" | grep -q ";"; then
+			rm -f cookie.txt
+			printf ";"
+			continue;
+		fi
+		# Ensure Token does not contain '%'
+		if echo "${TOKEN}" | grep -q "%"; then
+			rm -f cookie.txt
+			printf "%%"
+			continue;
+		fi
+		# Ensure Token does not contain ']'
+		if echo "${TOKEN}" | grep -q "\\]"; then
+			rm -f cookie.txt
+			printf "\\]"
+			continue;
+		fi
+		# Ensure Token does not contain '['
+		if echo "${TOKEN}" | grep -q "\\["; then
+			rm -f cookie.txt
+			printf "\\["
+			continue;
+		fi
+		# Ensure Token does not contain '$'
+		if echo "${TOKEN}" | grep -q '\$'; then
+			rm -f cookie.txt
+			printf '\$'
+			continue;
+		fi
+
+		# All set
+		break
+	done
+	printf "\\r[OK]   Retrieve phpMyAdmin login page\\r\\n"
+
+
+	printf "[TEST] Exract phpMyAdmin login token"
+	if ! TOKEN="$( echo "${CONTENT}" \
+		| grep -Eo "name=\"token\" value=\".+\"" \
+		| head -1 \
+		| grep -Eo "value=\".+\"" \
+		| sed -e 's/^value="//g' -e 's/"$//g' )"; then
+		printf "\\r[FAIL] Exract phpMyAdmin login token\\n"
+		rm -f cookie.txt || true
+		echo "${CONTENT}"
+		exit 1
+	fi
+	printf "\\r[OK]   Exract phpMyAdmin login token: \"%s\"\\n" "${TOKEN}"
+
+	printf "[TEST] Extract phpMyAdmin login session"
+	if ! SESSION="$( echo "${CONTENT}" \
+		| grep -Eo "name=\"set_session\" value=\"[A-Fa-f0-9]+\"" \
+		| grep -Eo "value=\"[A-Fa-f0-9]+\"" \
+		| sed -e 's/^value="//g' -e 's/"$//g' )"; then
+		printf "\\r[OK]   Extract phpMyAdmin login session (not available)\\n"
+		SESSION=""
+	else
+		printf "\\r[OK]   Extract phpMyAdmin login session: \"%s\"\\n" "${SESSION}"
+	fi
+
+
+	printf "[TEST] Submit phpMyAdmin POST login"
+	if ! run "curl -sS --fail -c cookie.txt -b cookie.txt -d 'pma_username=root&pma_password=${MYSQL_ROOT_PASSWORD}&server=1&target=index.php&token=${TOKEN}&set_session=${SESSION}' 'http://localhost:${HOST_PORT_HTTPD}${URL}'" "${RETRIES}" "" "0"; then
+		printf "\\r[FAIL] Submit phpMyAdmin POST login\\n"
+		run "curl -sS -c cookie.txt -b cookie.txt 'http://localhost:${HOST_PORT_HTTPD}${URL}' || true"
+		run "curl -sSI -c cookie.txt -b cookie.txt 'http://localhost:${HOST_PORT_HTTPD}${URL}' || true"
+		rm -f cookie.txt || true
+		exit 1
+	else
+		printf "\\r[OK]   Submit phpMyAdmin POST login\\n"
+	fi
+fi
+
+
+###
+### Check if login works
 ###
 printf "[TEST] Evaluate successful phpMyAdmin login"
 if [ "$( run "\

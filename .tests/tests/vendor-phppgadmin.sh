@@ -42,12 +42,17 @@ fi
 ### Get required env values
 ###
 HOST_PORT_HTTPD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HOST_PORT_HTTPD" )"
+PGSQL_ROOT_USER="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "PGSQL_ROOT_USER" )"
+PGSQL_ROOT_PASSWORD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "PGSQL_ROOT_PASSWORD" )"
+DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN" )"
 
 
-###
-### Retrieve URL for current PHP version.
-### Older PHP versions are presented a link with a different version due to compatibility.
-###
+# -------------------------------------------------------------------------------------------------
+# ENTRYPOINT: Version
+# -------------------------------------------------------------------------------------------------
+
+# Retrieve URL for current PHP version.
+# Older PHP versions are presented a link with a different version due to compatibility.
 printf "[TEST] Retrieve phpPgAdmin URL"
 if ! URL="$( run "\
 	curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/index.php' \
@@ -90,116 +95,10 @@ else
 fi
 
 
-####
-#### Login (get token URL)
-####
-## 1st Try
-#printf "[TEST] Retrieve phpPgAdmin token page"
-#if ! TOKEN_URL="$( curl -sS -c cookie.txt localhost${URL}servers.php | tac | tac | grep -Eo "\"redirect\.php\?subject=server.+\"" )"; then
-#	# 2nd Try
-#	sleep 1
-#	if ! TOKEN_URL="$( curl -sS -c cookie.txt localhost${URL}servers.php | tac | tac | grep -Eo "\"redirect\.php\?subject=server.+\"" )"; then
-#		# 3rd Try
-#		sleep 1
-#		if ! TOKEN_URL="$( curl -sS -c cookie.txt localhost${URL}servers.php | tac | tac | grep -Eo "\"redirect\.php\?subject=server.+\"" )"; then
-#			printf "\\r[FAIL] Retrieve phpPgAdmin login page\\n"
-#			curl -sS localhost/${URL}servers.php || true
-#			curl -sSI localhost/${URL}servers.php || true
-#			rm -f cookie.txt
-#			exit 1
-#		else
-#			TOKEN_URL="$( echo "${TOKEN_URL}" | sed 's/"//g' )"
-#			TOKEN_URL="$( echo "${TOKEN_URL}" | sed 's/&amp;/\&/g' )"
-#			printf "\\r[OK]   Retrieve phpPgAdmin token page (3 rounds): ${TOKEN_URL}\\n"
-#		fi
-#	else
-#		TOKEN_URL="$( echo "${TOKEN_URL}" | sed 's/"//g' )"
-#		TOKEN_URL="$( echo "${TOKEN_URL}" | sed 's/&amp;/\&/g' )"
-#		printf "\\r[OK]   Retrieve phpPgAdmin login token (2 rounds): ${TOKEN_URL}\\n"
-#	fi
-#else
-#	TOKEN_URL="$( echo "${TOKEN_URL}" | sed 's/"//g' )"
-#	TOKEN_URL="$( echo "${TOKEN_URL}" | sed 's/&amp;/\&/g' )"
-#	printf "\\r[OK]   Retrieve phpPgAdmin token page (1 round): ${TOKEN_URL}\\n"
-#fi
-#
-#
-####
-#### Login (get Login Token)
-####
-#TOKEN=
-#printf "[TEST] Retrieve phpPgAdmin login token"
-## 1st Try
-#if ! TOKEN="$( curl -sS -c cookie.txt -b cookie.txt "localhost${URL}${TOKEN_URL}" | tac | tac | grep -Eo "loginPassword_[a-zA-Z0-9]+" )"; then
-#	# 2nd Try
-#	sleep 1
-#	if ! TOKEN="$( curl -sS -c cookie.txt -b cookie.txt "localhost${URL}${TOKEN_URL}" | tac | tac | grep -Eo "loginPassword_[a-zA-Z0-9]+" )"; then
-#		# 3rd Try
-#		sleep 1
-#		if ! TOKEN="$( curl -sS -c cookie.txt -b cookie.txt "localhost${URL}${TOKEN_URL}" | tac | tac | grep -Eo "loginPassword_[a-zA-Z0-9]+" )"; then
-#			printf "\\r[FAIL] Retrieve phpPgAdmin login token\\n"
-#			curl -sS "${TOKEN_URL_URL}" || true
-#			curl -sSI "${TOKEN_URL_URL}" || true
-#			rm -f cookie.txt
-#			exit 1
-#		else
-#			TOKEN="$( echo "${TOKEN}" | head -1 )"
-#			printf "\\r[OK]   Retrieve phpPgAdmin login token (3 rounds): ${TOKEN}\\n"
-#		fi
-#	else
-#		TOKEN="$( echo "${TOKEN}" | head -1 )"
-#		printf "\\r[OK]   Retrieve phpPgAdmin login token (2 rounds): ${TOKEN}\\n"
-#	fi
-#else
-#	TOKEN="$( echo "${TOKEN}" | head -1 )"
-#	printf "\\r[OK]   Retrieve phpPgAdmin login token (1 round): ${TOKEN}\\n"
-#fi
-#
-#
-####
-#### Login
-####
-#
-#printf "[TEST] Submit phpPgAdmin POST login"
-## 1st Try
-#if ! curl -sS -c cookie.txt -b cookie.txt \
-#	-d "subject=server&server=pgsql%3A5432%3Aallow&loginServer=pgsql%3A5432%3Aallow&loginUsername=postgres&${TOKEN}=&loginSubmit=Login" \
-#	localhost${URL}redirect.php 2>/dev/null | grep -q "Create database"; then
-#	# 2nd Try
-#	sleep 1
-#	if ! curl -sS -c cookie.txt -b cookie.txt \
-#		-d "subject=server&server=pgsql%3A5432%3Aallow&loginServer=pgsql%3A5432%3Aallow&loginUsername=postgres&${TOKEN}=&loginSubmit=Login" \
-#		localhost${URL}redirect.php 2>/dev/null | grep -q "Create database"; then
-#		# 3rd Try
-#		sleep 1
-#		if ! curl -sS -c cookie.txt -b cookie.txt \
-#			-d "subject=server&server=pgsql%3A5432%3Aallow&loginServer=pgsql%3A5432%3Aallow&loginUsername=postgres&${TOKEN}=&loginSubmit=Login" \
-#			localhost${URL}redirect.php 2>/dev/null | grep -q "Create database"; then
-#			printf "\\r[FAIL] Submit phpPgAdmin POST login\\n"
-#			curl -sS -c cookie.txt -b cookie.txt \
-#				-d "subject=server&server=pgsql%3A5432%3Aallow&loginServer=pgsql%3A5432%3Aallow&loginUsername=postgres&${TOKEN}=&loginSubmit=Login" \
-#				localhost${URL}redirect.php || true
-#			curl -sSI -c cookie.txt -b cookie.txt \
-#				-d "subject=server&server=pgsql%3A5432%3Aallow&loginServer=pgsql%3A5432%3Aallow&loginUsername=postgres&${TOKEN}=&loginSubmit=Login" \
-#				localhost${URL}redirect.php || true
-#			rm -f cookie.txt || true
-#			exit 1
-#		else
-#			printf "\\r[OK]   Submit phpPgAdmin POST login (3 rounds)\\n"
-#		fi
-#	else
-#		printf "\\r[OK]   Submit phpPgAdmin POST login (2 rounds)\\n"
-#	fi
-#else
-#	printf "\\r[OK]   Submit phpPgAdmin POST login (1 round)\\n"
-#fi
-#
-#rm -f cookie.txt || true
+# -------------------------------------------------------------------------------------------------
+# ENTRYPOINT: Configuration file
+# -------------------------------------------------------------------------------------------------
 
-
-###
-### Configuration File
-###
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 DVLBOXPATH="${SCRIPTPATH}/../../"
 CONFIGPATH="${DVLBOXPATH}/.devilbox/www/htdocs${URL%index\.php}conf/config.inc.php"
@@ -250,28 +149,103 @@ else
 fi
 
 
+# -------------------------------------------------------------------------------------------------
+# ENTRYPOINT: Login Check
+# -------------------------------------------------------------------------------------------------
+
+###
+### Autologin disabled
+###
+if [ "${DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN}" != "1" ]; then
+
+	###
+	### Login (get token URL)
+	###
+	printf "[TEST] Retrieve phpPgAdmin token page"
+	if ! TOKEN_URL="$( run "curl -sS --fail -c cookie.txt 'http://localhost:${HOST_PORT_HTTPD}${URL}servers.php' | tac | tac | grep -Eo '\"redirect\\.php\\?subject=server.+\"' " "${RETRIES}" "" "0" )"; then
+		printf "\\r[FAIL] Retrieve phpPgAdmin login page\\n"
+		run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}${URL}servers.php' || true"
+		run "curl -sSI 'http://localhost:${HOST_PORT_HTTPD}${URL}servers.php' || true"
+		rm -f cookie.txt
+		exit 1
+	else
+		TOKEN_URL="${TOKEN_URL//\"/}"
+		TOKEN_URL="${TOKEN_URL//&amp;/&}"
+		printf "\\r[OK]   Retrieve phpPgAdmin token page:%s\\n" "${TOKEN_URL}"
+	fi
+
+	###
+	### Login (get Login Token)
+	###
+	printf "[TEST] Retrieve phpPgAdmin login token"
+	# 1st Try
+	if ! TOKEN="$( run "curl -sS --fail -c cookie.txt -b cookie.txt 'http://localhost:${HOST_PORT_HTTPD}${URL}${TOKEN_URL}' | tac | tac | grep -Eo 'loginPassword_[a-zA-Z0-9]+'" "${RETRIES}" "" "0" )"; then
+		printf "\\r[FAIL] Retrieve phpPgAdmin login token\\n"
+		run "curl -sS 'http://localhost:${TOKEN_URL_URL}' || true"
+		run "curl -sSI 'http://localhost:${TOKEN_URL_URL}' || true"
+		rm -f cookie.txt
+		exit 1
+	else
+		TOKEN="$( echo "${TOKEN}" | head -1 )"
+		printf "\\r[OK]   Retrieve phpPgAdmin login token: %s\\n" "${TOKEN}"
+	fi
+
+	###
+	### Login
+	###
+	printf "[TEST] Submit phpPgAdmin POST login"
+	# 1st Try
+	if ! run "curl -sS --fail -c cookie.txt -b cookie.txt \
+			--data 'subject=server' \
+			--data 'server=pgsql%3A5432%3Aallow' \
+			--data 'loginServer=pgsql%3A5432%3Aallow' \
+			--data 'loginUsername=${PGSQL_ROOT_USER}' \
+			--data '${TOKEN}=${PGSQL_ROOT_PASSWORD}' \
+			--data 'loginSubmit=Login' \
+		'http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php' 2>/dev/null \
+		| grep -q 'Create database'" "${RETRIES}" "" "0"; then
+		printf "\\r[FAIL] Submit phpPgAdmin POST login\\n"
+		run "curl -sS -c cookie.txt -b cookie.txt \
+			--data 'subject=server' \
+			--data 'server=pgsql%3A5432%3Aallow' \
+			--data 'loginServer=pgsql%3A5432%3Aallow' \
+			--data 'loginUsername=${PGSQL_ROOT_USER}' \
+			--data '${TOKEN}=${PGSQL_ROOT_PASSWORD}' \
+			--data 'loginSubmit=Login' \
+		'http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php 2>/dev/null'"
+		run "curl -sS -I -c cookie.txt -b cookie.txt \
+			--data 'subject=server' \
+			--data 'server=pgsql%3A5432%3Aallow' \
+			--data 'loginServer=pgsql%3A5432%3Aallow' \
+			--data 'loginUsername=${PGSQL_ROOT_USER}' \
+			--data '${TOKEN}=${PGSQL_ROOT_PASSWORD}' \
+			--data 'loginSubmit=Login' \
+		'http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php 2>/dev/null'"
+		rm -f cookie.txt || true
+		exit 1
+	else
+		printf "\\r[OK]   Submit phpPgAdmin POST login\\n"
+	fi
+fi
+
+
 ###
 ### Evaluate successful phpPgAdmin login
 ###
 printf "[TEST] Evaluate successful phpPgAdmin login"
-# 1st Try
-if [ "$(curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" | tac | tac | grep -Ec 'data">(Database|Owner|Collation|Tablespace)')" != "4" ]; then
-	# 2nd Try
-	sleep 1
-	if [ "$(curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" | tac | tac | grep -Ec 'data">(Database|Owner|Collation|Tablespace)')" != "4" ]; then
-		# 3rd Try
-		sleep 1
-		if [ "$(curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" | tac | tac | grep -Ec 'data">(Database|Owner|Collation|Tablespace)')" != "4" ]; then
-			printf "\\r[FAIL] Evaluate successful phpPgAdmin login\\n"
-			curl -sS "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" || true
-			curl -sS -I "http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&" || true
-			exit 1
-		else
-			printf "\\r[OK]   Evaluate successful phpPgAdmin login (3 rounds)\\n"
-		fi
-	else
-		printf "\\r[OK]   Evaluate successful phpPgAdmin login (2 rounds)\\n"
-	fi
+if [ "$( run "curl -sS --fail \
+	-c cookie.txt \
+	-b cookie.txt \
+	'http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&' \
+	| tac \
+	| tac \
+	| grep -Ec 'data\">(Database|Owner|Collation|Tablespace)'" "${RETRIES}" "" "0" )" != "4" ]; then
+	printf "\\r[FAIL] Evaluate successful phpPgAdmin login\\n"
+	run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&' || true"
+	run "curl -sS -I 'http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&' || true"
+	rm -f cookie.txt || true
+	exit 1
 else
-	printf "\\r[OK]   Evaluate successful phpPgAdmin login (1 round)\\n"
+	printf "\\r[OK]   Evaluate successful phpPgAdmin login\\n"
 fi
+rm -f cookie.txt || true
