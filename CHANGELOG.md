@@ -7,8 +7,21 @@ major versions.
 
 ## Unreleased
 
+
+## Release v1.1.0 (2019-11-2)
+
+#### Fixed
+- [#644](https://github.com/cytopia/devilbox/issues/644) Fix GD jpeg support missing in PHP 7.4
+- [#619](https://github.com/cytopia/devilbox/issues/619) Fix PHP 7.x  WebP support with imagick
+
 #### Added
 - Make Ngrok region configurable via `NGROK_REGION` env variable
+- [#641](https://github.com/cytopia/devilbox/issues/641) Added phpPgAdmin v7 for PHP >=7
+- [#594](https://github.com/cytopia/devilbox/issues/594) Tool: ghostscript
+- Extensive GitHub Action CI checks
+
+#### Changed
+- Updated PHP Docker images (PHP version, modules and tools)
 
 
 ## Bugfix Release v1.0.2 (2019-05-21)
