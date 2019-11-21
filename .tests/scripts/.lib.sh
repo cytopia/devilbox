@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -e
 set -u
 set -o pipefail
@@ -15,6 +17,90 @@ fi
 # -------------------------------------------------------------------------------------------------
 # Functions
 # -------------------------------------------------------------------------------------------------
+
+###
+### Get PHP Version
+###
+get_php_version() {
+	local root_path="${1}"
+
+	local retries=10
+	local host_port_httpd
+	local env_version
+	local cli_version
+	local web_version
+
+	if ! host_port_httpd="$( "${root_path}/.tests/scripts/env-getvar.sh" "HOST_PORT_HTTPD" )"; then
+		>&2 echo "Error, failed to retrieve HOST_PORT_HTTPD port from .env"
+		return 1
+	fi
+
+	# Check .env file
+	>&2 printf "Fetching PHP version from .env:     "
+	if ! env_version="$( "${root_path}/.tests/scripts/env-getvar.sh" "PHP_SERVER" )"; then
+		>&2 printf "FAILED\\n"
+		>&2 echo "Error, failed to retrieve valid PHP version from .env"
+		return 1
+	fi
+	>&2 printf "%s\\n" "${env_version}"
+
+	# Check php -v
+	>&2 printf "Fetching PHP version from php -v:   "
+	if ! cli_version="$( run "docker-compose exec -T php php -v \
+		| head -1 \
+		| grep -Eo 'PHP[[:space:]]+[0-9]+\\.[0-9]+' \
+		| grep -Eo '[0-9]+\\.[0-9]+'" \
+		"${retries}" "${root_path}" "0" )"; then
+		>&2 printf "FAILED\\n"
+		>&2 echo "Error, failed to retrieve valid PHP version from php container"
+		return 1
+	fi
+	>&2 printf "%s\\n" "${cli_version}"
+
+	# Check intranet
+	>&2 printf "Fetching PHP version from intranet: "
+	if ! web_version="$( run "\
+		curl -sS --fail 'http://localhost:${host_port_httpd}/index.php' \
+		| tac \
+		| tac \
+		| grep -Eo 'PHP.*?\\([.0-9]+' \
+		| grep -Eo '\\([.0-9]+' \
+		| grep -Eo '[0-9]+\\.[0-9]+'" \
+		"${retries}" "" "0" )"; then
+		>&2 printf "FAILED\\n"
+		>&2 echo "Error, failed to retrieve valid PHP version from intranet"
+		return 1
+	fi
+	>&2 printf "%s\\n" "${web_version}"
+
+	# Check if versions are non-empty
+	if [ -z "${env_version}" ]; then
+		>&2 echo "Error, no PHP version found in .env"
+		return 1
+	fi
+	if [ -z "${cli_version}" ]; then
+		>&2 echo "Error, no PHP version found via php -v"
+		return 1
+	fi
+	if [ -z "${web_version}" ]; then
+		>&2 echo "Error, no PHP version found from intranet"
+		return 1
+	fi
+
+	# Check if versions match
+	if [ "${env_version}" != "${cli_version}" ]; then
+		>&2 printf "Error, PHP .env version (%s) does not match php -v version (%s)\\n" "${env_version}" "${cli_version}"
+		return 1
+	fi
+	if [ "${env_version}" != "${web_version}" ]; then
+		>&2 printf "Error, PHP .env version (%s) does not match intranet version (%s)\\n" "${env_version}" "${web_version}"
+		return 1
+	fi
+
+	# Return PHP version
+	echo "${env_version}"
+}
+
 
 ###
 ### X-platform In-file replace
@@ -37,8 +123,8 @@ replace() {
 ###
 run() {
 	local cmd="${1}"
-	local workdir=
 	local retries=1
+	local workdir=
 	local verbose=1
 
 	# retry?
@@ -55,27 +141,27 @@ run() {
 		verbose="${4}"
 	fi
 
-	local red="\033[0;31m"
-	local green="\033[0;32m"
-	local yellow="\033[0;33m"
-	local reset="\033[0m"
+	local red="\\033[0;31m"
+	local green="\\033[0;32m"
+	local yellow="\\033[0;33m"
+	local reset="\\033[0m"
 
 	if [ "${verbose}" -eq "1" ]; then
-		>&2 printf "${yellow}%s \$${reset} %s\n" "$(whoami)" "${cmd}"
+		>&2 printf "${yellow}%s \$${reset} %s\\n" "$(whoami)" "${cmd}"
 	fi
 
-	for ((i=0; i<${retries}; i++)); do
+	for ((i=0; i<retries; i++)); do
 		if [ -n "${workdir}" ]; then
 			if bash -c "set -e && set -u && set -o pipefail && cd ${workdir} && ${cmd}"; then
 				if [ "${verbose}" -eq "1" ]; then
-					>&2 printf "${green}[%s: in %s rounds]${reset}\n" "OK" "$((i+1))"
+					>&2 printf "${green}[%s: in %s rounds]${reset}\\n" "OK" "$((i+1))"
 				fi
 				return 0
 			fi
 		else
 			if bash -c "set -e && set -u && set -o pipefail && ${cmd}"; then
 				if [ "${verbose}" -eq "1" ]; then
-					>&2 printf "${green}[%s: in %s rounds]${reset}\n" "OK" "$((i+1))"
+					>&2 printf "${green}[%s: in %s rounds]${reset}\\n" "OK" "$((i+1))"
 				fi
 				return 0
 			fi
@@ -83,7 +169,7 @@ run() {
 		sleep 1
 	done
 	if [ "${verbose}" -eq "1" ]; then
-		>&2 printf "${red}[%s: in %s rounds]${reset}\n" "FAIL" "${retries}"
+		>&2 printf "${red}[%s: in %s rounds]${reset}\\n" "FAIL" "${retries}"
 	fi
 	return 1
 }
@@ -112,27 +198,27 @@ run_fail() {
 		verbose="${4}"
 	fi
 
-	local red="\033[0;31m"
-	local green="\033[0;32m"
-	local yellow="\033[0;33m"
-	local reset="\033[0m"
+	local red="\\033[0;31m"
+	local green="\\033[0;32m"
+	local yellow="\\033[0;33m"
+	local reset="\\033[0m"
 
 	if [ "${verbose}" -eq "1" ]; then
-		>&2 printf "${yellow}%s \$${reset} %s\n" "$(whoami)" "${cmd}"
+		>&2 printf "${yellow}%s \$${reset} %s\\n" "$(whoami)" "${cmd}"
 	fi
 
-	for ((i=0; i<${retries}; i++)); do
+	for ((i=0; i<retries; i++)); do
 		if [ -n "${workdir}" ]; then
 			if ! bash -c "set -e && set -u && set -o pipefail && cd ${workdir} && ${cmd}"; then
 				if [ "${verbose}" -eq "1" ]; then
-					>&2 printf "${green}[%s: in %s rounds]${reset}\n" "OK" "$((i+1))"
+					>&2 printf "${green}[%s: in %s rounds]${reset}\\n" "OK" "$((i+1))"
 				fi
 				return 0
 			fi
 		else
 			if ! bash -c "set -e && set -u && set -o pipefail && ${cmd}"; then
 				if [ "${verbose}" -eq "1" ]; then
-					>&2 printf "${green}[%s: in %s rounds]${reset}\n" "OK" "$((i+1))"
+					>&2 printf "${green}[%s: in %s rounds]${reset}\\n" "OK" "$((i+1))"
 				fi
 				return 0
 			fi
@@ -140,7 +226,7 @@ run_fail() {
 		sleep 1
 	done
 	if [ "${verbose}" -eq "1" ]; then
-		>&2 printf "${red}[%s: in %s rounds]${reset}\n" "FAIL" "${retries}"
+		>&2 printf "${red}[%s: in %s rounds]${reset}\\n" "FAIL" "${retries}"
 	fi
 	return 1
 }

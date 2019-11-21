@@ -27,9 +27,9 @@ echo
 # Pre-check
 # -------------------------------------------------------------------------------------------------
 
-PHP_SERVER="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "PHP_SERVER" )"
-if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_SERVER} ]]; then
-	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_SERVER}"
+PHP_VERSION="$( get_php_version "${DVLBOX_PATH}" )"
+if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_VERSION} ]]; then
+	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_VERSION}"
 	exit 0
 fi
 
@@ -70,6 +70,11 @@ run "docker-compose exec --user devilbox -T php mkdir -p /shared/httpd/${VHOST}/
 run "sleep 4"
 
 
+###
+### Store the error
+###
+ERROR=0
+
 
 ###
 ### index.htm should be served by default
@@ -79,7 +84,7 @@ printf "[TEST] index.htm should be served by default"
 if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep -E '^indexhtm$' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
 	printf "\\r[FAIL] index.htm should be served by default\\n"
     run "docker-compose exec --user devilbox -T php curl -sS 'http://${VHOST}.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}"
-	exit 1
+	ERROR=1
 else
 	printf "\\r[OK]   index.htm should be served by default\\n"
 fi
@@ -93,7 +98,7 @@ printf "[TEST] index.html should be served by default"
 if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep -E '^indexhtml$' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
 	printf "\\r[FAIL] index.html should be served by default\\n"
     run "docker-compose exec --user devilbox -T php curl -sS 'http://${VHOST}.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}"
-	exit 1
+	ERROR=1
 else
 	printf "\\r[OK]   index.html should be served by default\\n"
 fi
@@ -107,7 +112,7 @@ printf "[TEST] index.php should be served by default"
 if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep -E '^indexphp$' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
 	printf "\\r[FAIL] index.php should be served by default\\n"
     run "docker-compose exec --user devilbox -T php curl -sS 'http://${VHOST}.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}"
-	exit 1
+	ERROR=1
 else
 	printf "\\r[OK]   index.php should be served by default\\n"
 fi
@@ -121,7 +126,7 @@ printf "[TEST] index.htm is available via direct path"
 if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}/index.htm' | tac | tac | grep -E '^indexhtm$' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
 	printf "\\r[FAIL] index.htm is available via direct path\\n"
     run "docker-compose exec --user devilbox -T php curl -sS 'http://${VHOST}.${TLD_SUFFIX}/index.htm' || true" "1" "${DVLBOX_PATH}"
-	exit 1
+	ERROR=1
 else
 	printf "\\r[OK]   index.htm is available via direct path\\n"
 fi
@@ -134,7 +139,7 @@ printf "[TEST] index.html is available via direct path"
 if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}/index.html' | tac | tac | grep -E '^indexhtml$' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
 	printf "\\r[FAIL] index.html is available via direct path\\n"
     run "docker-compose exec --user devilbox -T php curl -sS 'http://${VHOST}.${TLD_SUFFIX}/index.html' || true" "1" "${DVLBOX_PATH}"
-	exit 1
+	ERROR=1
 else
 	printf "\\r[OK]   index.html is available via direct path\\n"
 fi
@@ -147,7 +152,13 @@ printf "[TEST] index.php is available via direct path"
 if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}/index.php' | tac | tac | grep -E '^indexphp$' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
 	printf "\\r[FAIL] index.php is available via direct path\\n"
     run "docker-compose exec --user devilbox -T php curl -sS 'http://${VHOST}.${TLD_SUFFIX}/index.php' || true" "1" "${DVLBOX_PATH}"
-	exit 1
+	ERROR=1
 else
 	printf "\\r[OK]   index.php is available via direct path\\n"
 fi
+
+
+###
+### Return error or success
+###
+exit "${ERROR}"

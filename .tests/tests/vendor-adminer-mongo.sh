@@ -13,12 +13,12 @@ DVLBOX_PATH="$( cd "${SCRIPT_PATH}/../.." && pwd -P )"
 . "${SCRIPT_PATH}/../scripts/.lib.sh"
 
 RETRIES=10
-DISABLED_VERSIONS=("5.2" "5.3" "5.4")
+DISABLED_VERSIONS=()
 
 
 echo
 echo "# --------------------------------------------------------------------------------------------------"
-echo "# [Vendor] phpRedmin"
+echo "# [Vendor] Adminer: MongoDB"
 echo "# --------------------------------------------------------------------------------------------------"
 echo
 
@@ -45,19 +45,35 @@ HOST_PORT_HTTPD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HOST_PORT_HTTPD" 
 
 
 ###
-### Ensure PHPRedmin works
+### Retrieve URL for current Adminer version.
 ###
-URL="/vendor/phpredmin/public/index.php"
+printf "[TEST] Retrieve Adminer URL"
+if ! URL="$( run "\
+	curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/index.php' \
+	| tac \
+	| tac \
+	| grep -Eo '/vendor/adminer-[.0-9]+-en\\.php'" \
+	"${RETRIES}" "" "0" )"; then
+	printf "\\r[FAILED] Retrieve Adminer URL\\n"
+	run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/index.php' || true"
+	exit 1
+else
+	printf "\\r[OK]   Retrieve Adminer URL: %s\\n" "${URL}"
+fi
+
+
+###
+### Ensure given Adminer version works
+###
 printf "[TEST] Fetch %s" "${URL}"
-if [ "$( run "\
+if ! run "\
 	curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}${URL}' \
 	| tac \
 	| tac \
-	| grep -Ec 'Strings|Hashes|Lists|Sets|Sorted Sets'" \
-	"${RETRIES}" "" "0" )" != "5" ]; then
-	printf "\\r[FAIL] Fetch %s\\n" "${URL}"
+	| grep -Ei 'Login.+Adminer' >/dev/null" \
+	"${RETRIES}" "" "0"; then
+	printf "\\r[FAILED] Fetch %s\\n" "${URL}"
 	run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}${URL}' || true"
-	run "curl -sS -I 'http://localhost:${HOST_PORT_HTTPD}${URL}' || true"
 	exit 1
 else
 	printf "\\r[OK]   Fetch %s\\n" "${URL}"
@@ -65,20 +81,19 @@ fi
 
 
 ###
-### Ensure PHPRedmin works in subdirectory
+### Test Adminer MongoDB login
 ###
-URL="/vendor/phpredmin/public/index.php/welcome/info/0/0"
-printf "[TEST] Fetch %s" "${URL}"
-if [ "$( run "\
-	curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}${URL}' \
+printf "[TEST] Adminer Mongo login"
+if ! run "\
+	curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}${URL}?mongo=mongo&username=' \
 	| tac \
 	| tac \
-	| grep -Ec '(Version:)|(Mode:)|(Role:)|(OS:)|(Uptime:)'" \
-	"${RETRIES}" "" "0" )" != "5" ]; then
-	printf "\\r[FAIL] Fetch %s\\n" "${URL}"
-	run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}${URL}' || true"
-	run "curl -sS -I 'http://localhost:${HOST_PORT_HTTPD}${URL}' || true"
+	| grep -Ei 'Database.+Collation.+Tables' >/dev/null" \
+	"${RETRIES}" "" "0"; then
+	printf "\\r[FAIL] Adminer Mongo login\\n"
+	run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}${URL}?mongo=mongo&username=' || true"
+	run "curl -sS -I 'http://localhost:${HOST_PORT_HTTPD}${URL}?mongo=mongo&username=' || true"
 	exit 1
 else
-	printf "\\r[OK]   Fetch %s\\n" "${URL}"
+	printf "\\r[OK]   Adminer Mongo login\\n"
 fi

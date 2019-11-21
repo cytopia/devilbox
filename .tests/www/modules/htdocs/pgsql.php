@@ -9,8 +9,8 @@ error_reporting(-1);
 
 
 $MY_HOST = 'pgsql';
-$MY_USER = 'postgres';
-$MY_PASS = '';
+$MY_USER = getenv('PGSQL_ROOT_USER');
+$MY_PASS = getenv('PGSQL_ROOT_PASSWORD');
 
 $link = pg_connect('host='.$MY_HOST.' dbname=postgres user='.$MY_USER.' password='.$MY_PASS);
 

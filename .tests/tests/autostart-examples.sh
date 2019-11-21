@@ -27,9 +27,9 @@ echo
 # Pre-check
 # -------------------------------------------------------------------------------------------------
 
-PHP_SERVER="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "PHP_SERVER" )"
-if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_SERVER} ]]; then
-	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_SERVER}"
+PHP_VERSION="$( get_php_version "${DVLBOX_PATH}" )"
+if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_VERSION} ]]; then
+	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_VERSION}"
 	exit 0
 fi
 
@@ -37,7 +37,6 @@ fi
 # -------------------------------------------------------------------------------------------------
 # ENTRYPOINT
 # -------------------------------------------------------------------------------------------------
-
 
 ###
 ### Get autostart files

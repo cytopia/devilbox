@@ -10,7 +10,7 @@ error_reporting(-1);
 
 $MY_HOST = 'mysql';
 $MY_USER = 'root';
-$MY_PASS = '';
+$MY_PASS = getenv('MYSQL_ROOT_PASSWORD');
 
 $link = mysqli_connect($MY_HOST, $MY_USER, $MY_PASS, 'mysql');
 

@@ -27,9 +27,9 @@ echo
 # Pre-check
 # -------------------------------------------------------------------------------------------------
 
-PHP_SERVER="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "PHP_SERVER" )"
-if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_SERVER} ]]; then
-	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_SERVER}"
+PHP_VERSION="$( get_php_version "${DVLBOX_PATH}" )"
+if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_VERSION} ]]; then
+	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_VERSION}"
 	exit 0
 fi
 
@@ -42,6 +42,7 @@ fi
 ### Get required env values
 ###
 MYSQL_ROOT_PASSWORD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "MYSQL_ROOT_PASSWORD" )"
+TLD_SUFFIX="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "TLD_SUFFIX" )"
 
 
 # Setup CakePHP project
@@ -58,26 +59,26 @@ run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/'database' =>.*/'
 
 # Test CakePHP
 ERROR=0
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail http://cakephp.loc | tac | tac | grep '\"bullet success\"' | grep 'mbstring'" "${RETRIES}" "${DVLBOX_PATH}"; then
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://cakephp.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'mbstring'" "${RETRIES}" "${DVLBOX_PATH}"; then
 	ERROR=1
 fi
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail http://cakephp.loc | tac | tac | grep '\"bullet success\"' | grep 'openssl'" "${RETRIES}" "${DVLBOX_PATH}"; then
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://cakephp.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'openssl'" "${RETRIES}" "${DVLBOX_PATH}"; then
 	ERROR=1
 fi
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail http://cakephp.loc | tac | tac | grep '\"bullet success\"' | grep 'intl'" "${RETRIES}" "${DVLBOX_PATH}"; then
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://cakephp.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'intl'" "${RETRIES}" "${DVLBOX_PATH}"; then
 	ERROR=1
 fi
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail http://cakephp.loc | tac | tac | grep '\"bullet success\"' | grep 'tmp directory'" "${RETRIES}" "${DVLBOX_PATH}"; then
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://cakephp.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'tmp directory'" "${RETRIES}" "${DVLBOX_PATH}"; then
 	ERROR=1
 fi
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail http://cakephp.loc | tac | tac | grep '\"bullet success\"' | grep 'logs directory'" "${RETRIES}" "${DVLBOX_PATH}"; then
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://cakephp.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'logs directory'" "${RETRIES}" "${DVLBOX_PATH}"; then
 	ERROR=1
 fi
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail http://cakephp.loc | tac | tac | grep '\"bullet success\"' | grep 'connect to the database'" "${RETRIES}" "${DVLBOX_PATH}"; then
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://cakephp.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'connect to the database'" "${RETRIES}" "${DVLBOX_PATH}"; then
 	ERROR=1
 fi
 
 if [ "${ERROR}" = "1" ]; then
-	run "docker-compose exec --user devilbox -T php curl http://cakephp.loc || true"
+	run "docker-compose exec --user devilbox -T php curl 'http://cakephp.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}"
 	exit 1
 fi

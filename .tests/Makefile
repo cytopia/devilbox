@@ -16,6 +16,18 @@ update-readme:
 
 
 # -------------------------------------------------------------------------------------------------
+# Linting Targets
+# -------------------------------------------------------------------------------------------------
+
+lint-tests:
+	docker run --rm $(tty -s && echo "-it" || echo) \
+		-v "$(PWD):/mnt" \
+		--entrypoint=sh \
+		koalaman/shellcheck-alpine:stable \
+		-c "find . -name '*.sh' -print0 | xargs -0 -n1 shellcheck --check-sourced --color=auto --shell=bash"
+
+
+# -------------------------------------------------------------------------------------------------
 # Startup Targets
 # -------------------------------------------------------------------------------------------------
 
@@ -25,9 +37,6 @@ update-readme:
 configure: ../.env
 ifeq ($(KEY),)
 	$(error Target requires KEY to be set.)
-endif
-ifeq ($(VAL),)
-	$(error Target requires VAL to be set.)
 endif
 	@$(PWD)/scripts/env-setvar.sh "$(KEY)" "$(VAL)"
 
@@ -90,7 +99,9 @@ test-smoke-intranet:
 ###
 ###
 test-smoke-vendors:
-	$(PWD)/tests/vendor-adminer.sh
+	$(PWD)/tests/vendor-adminer-mysql.sh
+	$(PWD)/tests/vendor-adminer-pgsql.sh
+	$(PWD)/tests/vendor-adminer-mongo.sh
 	$(PWD)/tests/vendor-phpmyadmin.sh
 	$(PWD)/tests/vendor-phppgadmin.sh
 	$(PWD)/tests/vendor-phpredmin.sh

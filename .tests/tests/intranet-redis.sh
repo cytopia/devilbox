@@ -27,9 +27,9 @@ echo
 # Pre-check
 # -------------------------------------------------------------------------------------------------
 
-PHP_SERVER="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "PHP_SERVER" )"
-if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_SERVER} ]]; then
-	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_SERVER}"
+PHP_VERSION="$( get_php_version "${DVLBOX_PATH}" )"
+if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_VERSION} ]]; then
+	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_VERSION}"
 	exit 0
 fi
 
@@ -54,7 +54,7 @@ fi
 HOST_PORT_HTTPD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HOST_PORT_HTTPD" )"
 
 printf "[TEST] devilbox-version key in Redis"
-if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/db_redis.php' | tac | tac | grep -q 'devilbox-version'" "${RETRIES}" "" "0"; then
+if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/db_redis.php' | tac | tac | grep 'devilbox-version' >/dev/null" "${RETRIES}" "" "0"; then
 	printf "\\r[FAIL] devilbox-version key in Redis\\n"
 	run "curl 'http://localhost:${HOST_PORT_HTTPD}/db_redis.php' || true"
 	exit 1

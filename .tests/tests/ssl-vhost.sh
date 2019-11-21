@@ -27,9 +27,9 @@ echo
 # Pre-check
 # -------------------------------------------------------------------------------------------------
 
-PHP_SERVER="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "PHP_SERVER" )"
-if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_SERVER} ]]; then
-	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_SERVER}"
+PHP_VERSION="$( get_php_version "${DVLBOX_PATH}" )"
+if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_VERSION} ]]; then
+	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_VERSION}"
 	exit 0
 fi
 
@@ -63,6 +63,12 @@ VHOST=test-ssl-vhost
 
 
 ###
+### Store the error
+###
+ERROR=0
+
+
+###
 ### Create vhost directory
 ###
 run "docker-compose exec --user devilbox -T php rm -rf /shared/httpd/${VHOST}" "${RETRIES}" "${DVLBOX_PATH}"
@@ -79,7 +85,7 @@ printf "[TEST] https vhost / from host"
 if ! run "curl -sS --fail --resolve ${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD_SSL}:127.0.0.1 --cacert ${DVLBOX_PATH}/ca/devilbox-ca.crt 'https://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD_SSL}' >/dev/null" "${RETRIES}" "" "0"; then
 	printf "\\r[FAIL] https vhost / from host\\n"
 	run "curl -v --resolve ${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD_SSL}:127.0.0.1 --cacert ${DVLBOX_PATH}/ca/devilbox-ca.crt 'https://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD_SSL}' || true" "1"
-	exit 1
+	ERROR=1
 else
 	printf "\\r[OK]   https vhost / from host\\n"
 fi
@@ -92,7 +98,13 @@ printf "[TEST] https vhost / from container"
 if ! run "docker-compose exec -T php curl -sS --fail 'https://${VHOST}.${TLD_SUFFIX}' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
 	printf "\\r[FAIL] https vhost / from container\\n"
 	run "docker-compose exec -T php curl -v 'https://${VHOST}.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}" "0"
-	exit 1
+	ERROR=1
 else
 	printf "\\r[OK]   https vhost / from container\\n"
 fi
+
+
+###
+### Return error or success
+###
+exit "${ERROR}"

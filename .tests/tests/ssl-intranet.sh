@@ -27,9 +27,9 @@ echo
 # Pre-check
 # -------------------------------------------------------------------------------------------------
 
-PHP_SERVER="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "PHP_SERVER" )"
-if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_SERVER} ]]; then
-	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_SERVER}"
+PHP_VERSION="$( get_php_version "${DVLBOX_PATH}" )"
+if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_VERSION} ]]; then
+	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_VERSION}"
 	exit 0
 fi
 
@@ -51,10 +51,13 @@ fi
 ###
 ### Get required env values
 ###
-HOST_PORT_HTTPD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HOST_PORT_HTTPD" )"
 HOST_PORT_HTTPD_SSL="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HOST_PORT_HTTPD_SSL" )"
-TLD_SUFFIX="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "TLD_SUFFIX" )"
-HTTPD_SERVER="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HTTPD_SERVER" )"
+
+
+###
+### Store the error
+###
+ERROR=0
 
 
 ###
@@ -64,7 +67,7 @@ printf "[TEST] https Intranet / from host"
 if ! run "curl -sS --fail --cacert ${DVLBOX_PATH}/ca/devilbox-ca.crt 'https://localhost:${HOST_PORT_HTTPD_SSL}' >/dev/null" "${RETRIES}" "" "0"; then
 	printf "\\r[FAIL] https Intranet / from host\\n"
 	run "curl -v --cacert ${DVLBOX_PATH}/ca/devilbox-ca.crt 'https://localhost:${HOST_PORT_HTTPD_SSL}' || true" "1"
-	exit 1
+	ERROR=1
 else
 	printf "\\r[OK]   https Intranet / from host\\n"
 fi
@@ -77,7 +80,7 @@ printf "[TEST] https Intranet / from container"
 if ! run "docker-compose exec -T php curl -sS --fail 'https://httpd' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
 	printf "\\r[FAIL] https Intranet / from container\\n"
 	run "docker-compose exec -T php curl -v 'https://httpd' || true" "1" "${DVLBOX_PATH}"
-	exit 1
+	ERROR=1
 else
 	printf "\\r[OK]   https Intranet / from container\\n"
 fi
@@ -90,7 +93,7 @@ printf "[TEST] https Intranet /credits.php from host"
 if ! run "curl -sS --fail --cacert ${DVLBOX_PATH}/ca/devilbox-ca.crt 'https://localhost:${HOST_PORT_HTTPD_SSL}/credits.php' | tac | tac | grep -E 'https:\\/\\/github\\.com\\/cytopia' >/dev/null" "${RETRIES}" "" "0"; then
 	printf "\\r[FAIL] https Intranet /credits.php from host\\n"
 	run "curl -v --cacert ${DVLBOX_PATH}/ca/devilbox-ca.crt 'https://localhost:${HOST_PORT_HTTPD_SSL}/credits.php' || true" "1"
-	exit 1
+	ERROR=1
 else
 	printf "\\r[OK]   https Intranet /credits.php from host\\n"
 fi
@@ -103,7 +106,13 @@ printf "[TEST] https Intranet /credits.php from container"
 if ! run "docker-compose exec -T php curl -sS --fail 'https://httpd/credits.php' | tac | tac | grep -E 'https:\\/\\/github\\.com\\/cytopia' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
 	printf "\\r[FAIL] https Intranet /credits.php from container\\n"
 	run "docker-compose exec -T php curl -v 'https://httpd/credits.php' || true" "1" "${DVLBOX_PATH}"
-	exit 1
+	ERROR=1
 else
 	printf "\\r[OK]   https Intranet /credits.php from container\\n"
 fi
+
+
+###
+### Return error or success
+###
+exit "${ERROR}"

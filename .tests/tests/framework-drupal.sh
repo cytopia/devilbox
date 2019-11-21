@@ -27,9 +27,9 @@ echo
 # Pre-check
 # -------------------------------------------------------------------------------------------------
 
-PHP_SERVER="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "PHP_SERVER" )"
-if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_SERVER} ]]; then
-	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_SERVER}"
+PHP_VERSION="$( get_php_version "${DVLBOX_PATH}" )"
+if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_VERSION} ]]; then
+	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_VERSION}"
 	exit 0
 fi
 
@@ -59,6 +59,7 @@ fi
 ### Get required env values
 ###
 MYSQL_ROOT_PASSWORD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "MYSQL_ROOT_PASSWORD" )"
+TLD_SUFFIX="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "TLD_SUFFIX" )"
 
 
 # Setup Drupal project
@@ -71,7 +72,7 @@ run "docker-compose exec --user devilbox -T php mysql -u root -h mysql --passwor
 run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/drupal/htdocs/; ${DRUSH} site-install standard --db-url='mysql://root:${MYSQL_ROOT_PASSWORD}@mysql/my_drupal' --site-name=Example -y'" "${RETRIES}" "${DVLBOX_PATH}"
 
 # Test Drupal
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail http://drupal.loc | tac | tac | grep 'Welcome to Example'" "${RETRIES}" "${DVLBOX_PATH}"; then
-	run "docker-compose exec --user devilbox -T php curl http://drupal.loc || true"
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://drupal.${TLD_SUFFIX}' | tac | tac | grep 'Welcome to Example'" "${RETRIES}" "${DVLBOX_PATH}"; then
+	run "docker-compose exec --user devilbox -T php curl 'http://drupal.${TLD_SUFFIX}' || true"
 	exit 1
 fi
