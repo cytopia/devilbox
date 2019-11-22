@@ -141,17 +141,6 @@ jobs:
           cd .tests/
           # Set the matrix version
           make configure KEY="${VERSION//=*/}" VAL="${VERSION//*=}"
-
-          # Set projects directory
-          make configure KEY=HOST_PATH_HTTPD_DATADIR VAL=.tests/www
-
-          # Set uid/gid
-          make configure KEY=NEW_UID VAL=$(id -u)
-          make configure KEY=NEW_GID VAL=$(id -g)
-
-          # Make it more verbose
-          make configure KEY=DEBUG_COMPOSE_ENTRYPOINT VAL=2
-
           # 3306 is taken, so chose another one
           make configure KEY=HOST_PORT_MYSQL VAL=3307
         env:

@@ -52,6 +52,10 @@ pull: ../.env
 ### Startup Devilbox
 ###
 start: ../.env
+	@$(MAKE) --no-print-directory configure KEY=HOST_PATH_HTTPD_DATADIR VAL=.tests/www
+	@$(MAKE) --no-print-directory configure KEY=DEBUG_COMPOSE_ENTRYPOINT VAL=2
+	@$(MAKE) --no-print-directory configure KEY=NEW_UID VAL=$$(id -u)
+	@$(MAKE) --no-print-directory configure KEY=NEW_GID VAL=$$(id -g)
 	@$(PWD)/scripts/compose-start.sh
 
 
