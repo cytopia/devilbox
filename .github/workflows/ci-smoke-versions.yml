@@ -244,6 +244,13 @@ jobs:
           make test-smoke-framework-drupal
         if: success() || failure()
 
+      - name: "Test Framework: Wordpress"
+        shell: bash
+        run: |
+          cd .tests/
+          make test-smoke-framework-wordpress
+        if: success() || failure()
+
       # ------------------------------------------------------------
       # Finish
       # ------------------------------------------------------------

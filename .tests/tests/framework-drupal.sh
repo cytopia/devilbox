@@ -14,6 +14,7 @@ DVLBOX_PATH="$( cd "${SCRIPT_PATH}/../.." && pwd -P )"
 
 RETRIES=10
 DISABLED_VERSIONS=("5.2" "5.3" "7.4" "8.0")
+DISABLED_MYSQL_VERSIONS=("mysql-8.0" "percona-8.0")
 
 
 echo
@@ -30,6 +31,12 @@ echo
 PHP_VERSION="$( get_php_version "${DVLBOX_PATH}" )"
 if [[ ${DISABLED_VERSIONS[*]} =~ ${PHP_VERSION} ]]; then
 	printf "[SKIP] Skipping all checks for PHP %s\\n" "${PHP_VERSION}"
+	exit 0
+fi
+
+MYSQL_VERSION="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "MYSQL_SERVER" )"
+if [[ ${DISABLED_MYSQL_VERSIONS[*]} =~ ${MYSQL_VERSION} ]]; then
+	printf "[SKIP] Skipping all checks for MySQL %s\\n" "${MYSQL_VERSION}"
 	exit 0
 fi
 

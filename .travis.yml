@@ -321,4 +321,5 @@ script:
         make test-smoke-autostart;
         make test-smoke-framework-cakephp;
         make test-smoke-framework-drupal;
+        make test-smoke-framework-wordpress;
     fi

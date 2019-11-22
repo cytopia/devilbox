@@ -158,6 +158,9 @@ test-smoke-framework-cakephp:
 test-smoke-framework-drupal:
 	$(PWD)/tests/framework-drupal.sh
 
+test-smoke-framework-wordpress:
+	$(PWD)/tests/framework-wordpress.sh
+
 
 # -------------------------------------------------------------------------------------------------
 # Helper Targets
