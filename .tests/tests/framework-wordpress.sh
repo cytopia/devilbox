@@ -55,10 +55,14 @@ PROJECT_NAME="this-is-my-grepable-project-name"
 
 
 # Setup Wordpress project
-run "docker-compose exec --user devilbox -T php bash -c 'rm -rf /shared/httpd/${VHOST}'" "${RETRIES}" "${DVLBOX_PATH}"
-run "docker-compose exec --user devilbox -T php bash -c 'mkdir -p /shared/httpd/${VHOST}'" "${RETRIES}" "${DVLBOX_PATH}"
-run "docker-compose exec --user devilbox -T php bash -c 'git clone https://github.com/WordPress/WordPress /shared/httpd/${VHOST}/wordpress'" "${RETRIES}" "${DVLBOX_PATH}"
-run "docker-compose exec --user devilbox -T php bash -c 'ln -sf wordpress /shared/httpd/${VHOST}/htdocs'" "${RETRIES}" "${DVLBOX_PATH}"
+run "docker-compose exec --user devilbox -T php bash -c ' \
+	rm -rf /shared/httpd/${VHOST} \
+	&& mkdir -p /shared/httpd/${VHOST} \
+	&& git clone https://github.com/WordPress/WordPress /shared/httpd/${VHOST}/wordpress \
+	&& ln -sf wordpress /shared/httpd/${VHOST}/htdocs'" \
+	"${RETRIES}" "${DVLBOX_PATH}"
+
+# Setup Database
 run "docker-compose exec --user devilbox -T php mysql -u root -h mysql --password=\"${MYSQL_ROOT_PASSWORD}\" -e \"DROP DATABASE IF EXISTS ${DB_NAME}; CREATE DATABASE ${DB_NAME};\"" "${RETRIES}" "${DVLBOX_PATH}"
 
 # Configure Wordpress database settings
@@ -105,3 +109,4 @@ fi
 
 # Test Wordpress
 run "docker-compose exec --user devilbox -T php curl -sS --fail -L 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/' | grep '${PROJECT_NAME}' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"
+run " curl -sS --fail -L --header 'host: ${VHOST}.${TLD_SUFFIX}' 'http://localhost:${HOST_PORT_HTTPD}/' | grep '${PROJECT_NAME}' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"

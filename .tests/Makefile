@@ -2,8 +2,6 @@ ifneq (,)
 .error This Makefile requires GNU Make.
 endif
 
-SHELL = /bin/sh
-
 
 # -------------------------------------------------------------------------------------------------
 # Misc Targets
@@ -71,7 +69,7 @@ logs:
 # -------------------------------------------------------------------------------------------------
 
 ###
-###
+### PHP Modules
 ###
 test-smoke-modules:
 	$(PWD)/tests/modules-curl-vhosts.sh "modules"
@@ -82,14 +80,14 @@ test-smoke-modules:
 
 
 ###
-###
+### Configuration
 ###
 test-smoke-config:
 	$(PWD)/tests/config-xdebug.sh
 
 
 ###
-###
+### Intranet
 ###
 test-smoke-intranet:
 	$(PWD)/tests/intranet-homepage.sh
@@ -100,7 +98,7 @@ test-smoke-intranet:
 
 
 ###
-###
+### Intranet Vendors
 ###
 test-smoke-vendors:
 	$(PWD)/tests/vendor-adminer-mysql.sh
@@ -112,7 +110,7 @@ test-smoke-vendors:
 
 
 ###
-###
+### Virtual Host
 ###
 test-smoke-vhosts:
 	$(PWD)/tests/vhost-directory_index.sh
@@ -121,14 +119,14 @@ test-smoke-vhosts:
 
 
 ###
-###
+### Reverse Proxy
 ###
 test-smoke-rproxies:
 	$(PWD)/tests/rproxy-javascript.sh
 
 
 ###
-###
+### SSL
 ###
 test-smoke-ssl:
 	$(PWD)/tests/ssl-intranet.sh
@@ -136,21 +134,21 @@ test-smoke-ssl:
 
 
 ###
-###
+### Bind
 ###
 test-smoke-bind:
 	@echo noop
 
 
 ###
-###
+### Autostart
 ###
 test-smoke-autostart:
 	$(PWD)/tests/autostart-examples.sh
 
 
 ###
-###
+### Frameworks
 ###
 test-smoke-framework-cakephp:
 	$(PWD)/tests/framework-cakephp.sh
