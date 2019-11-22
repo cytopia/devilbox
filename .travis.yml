@@ -295,16 +295,30 @@ script:
         ./update-docker.sh "${V1}";
     elif [ "${S1}" = "DOCKER" ]; then
         cd .tests/;
-        make init;
         make start;
-        make info;
-        make test;
+        make test-smoke-modules;
+        make test-smoke-config;
+        make test-smoke-intranet;
+        make test-smoke-vendors;
+        make test-smoke-vhosts;
+        make test-smoke-rproxies;
+        make test-smoke-ssl;
+        make test-smoke-bind;
+        make test-smoke-autostart;
+        make test-smoke-framework-cakephp;
+        make test-smoke-framework-drupal;
     else
         cd .tests/;
-        make init;
-        make configure SRV="${S1}_SERVER" VER="${V1}";
-        make configure SRV="${S2}_SERVER" VER="${V2}";
         make start;
-        make info;
-        make test;
+        make test-smoke-modules;
+        make test-smoke-config;
+        make test-smoke-intranet;
+        make test-smoke-vendors;
+        make test-smoke-vhosts;
+        make test-smoke-rproxies;
+        make test-smoke-ssl;
+        make test-smoke-bind;
+        make test-smoke-autostart;
+        make test-smoke-framework-cakephp;
+        make test-smoke-framework-drupal;
     fi
