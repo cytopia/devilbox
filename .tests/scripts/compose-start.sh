@@ -47,13 +47,21 @@ run "docker-compose up -d" "1" "${DVLBOX_PATH}"
 ###
 printf "Waiting for HTTP 200 "
 i=0
-until curl -sS -o /dev/null -I -w "%{http_code}" "http://localhost:${HOST_PORT_HTTPD}" 2>/dev/null | grep '200' >/dev/null; do
+until curl -sS -I --fail -o /dev/null -w "%{http_code}" "http://localhost:${HOST_PORT_HTTPD}" 2>/dev/null | grep '200' >/dev/null; do
 	printf "."
 
 	i=$(( i + 1 ))
 	if [ "${i}" -eq "60" ]; then
 		printf "[FAIL]\\n\\n"
-		curl -o /dev/null -I -w "%{http_code}" "http://localhost:${HOST_PORT_HTTPD}"
+		echo "---- curl From host ----"
+		curl -sS -v "http://localhost:${HOST_PORT_HTTPD}" || true
+		curl -sS -I "http://localhost:${HOST_PORT_HTTPD}" || true
+		curl -sS -I -o /dev/null -w "%{http_code}" "http://localhost:${HOST_PORT_HTTPD}" || true
+		echo
+		echo "---- curl From PHP container ----"
+		run "docker-compose exec -T --user devilbox php curl -sS -v 'http://localhost/'" "1" "${DVLBOX_PATH}" || true
+		run "docker-compose exec -T --user devilbox php curl -sS -I 'http://localhost/'" "1" "${DVLBOX_PATH}" || true
+		run "docker-compose exec -T --user devilbox php curl -sS -I -o /dev/null -w '%{http_code}' 'http://localhost/'" "1" "${DVLBOX_PATH}" || true
 		exit 1
 	fi
 
@@ -73,7 +81,8 @@ until curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}" 2>/dev/null | grep '
 	i=$(( i + 1 ))
 	if [ "${i}" -eq "60" ]; then
 		printf "[FAIL]\\n"
-		curl -sS "http://localhost:${HOST_PORT_HTTPD}"
+		curl -sS -v "http://localhost:${HOST_PORT_HTTPD}"
+		curl -sS -I "http://localhost:${HOST_PORT_HTTPD}"
 		exit 1
 	fi
 

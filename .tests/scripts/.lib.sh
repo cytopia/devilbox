@@ -146,25 +146,23 @@ run() {
 	local yellow="\\033[0;33m"
 	local reset="\\033[0m"
 
+	# Set command
+	if [ -n "${workdir}" ]; then
+		cmd="set -e && set -u && set -o pipefail && cd ${workdir} && ${cmd}"
+	else
+		cmd="set -e && set -u && set -o pipefail && ${cmd}"
+	fi
+	# Print command?
 	if [ "${verbose}" -eq "1" ]; then
 		>&2 printf "${yellow}%s \$${reset} %s\\n" "$(whoami)" "${cmd}"
 	fi
 
 	for ((i=0; i<retries; i++)); do
-		if [ -n "${workdir}" ]; then
-			if bash -c "set -e && set -u && set -o pipefail && cd ${workdir} && ${cmd}"; then
-				if [ "${verbose}" -eq "1" ]; then
-					>&2 printf "${green}[%s: in %s rounds]${reset}\\n" "OK" "$((i+1))"
-				fi
-				return 0
+		if eval "${cmd}"; then
+			if [ "${verbose}" -eq "1" ]; then
+				>&2 printf "${green}[%s: in %s rounds]${reset}\\n" "OK" "$((i+1))"
 			fi
-		else
-			if bash -c "set -e && set -u && set -o pipefail && ${cmd}"; then
-				if [ "${verbose}" -eq "1" ]; then
-					>&2 printf "${green}[%s: in %s rounds]${reset}\\n" "OK" "$((i+1))"
-				fi
-				return 0
-			fi
+			return 0
 		fi
 		sleep 1
 	done
@@ -203,25 +201,23 @@ run_fail() {
 	local yellow="\\033[0;33m"
 	local reset="\\033[0m"
 
+	# Set command
+	if [ -n "${workdir}" ]; then
+		cmd="set -e && set -u && set -o pipefail && cd ${workdir} && ${cmd}"
+	else
+		cmd="set -e && set -u && set -o pipefail && ${cmd}"
+	fi
+	# Print command?
 	if [ "${verbose}" -eq "1" ]; then
 		>&2 printf "${yellow}%s \$${reset} %s\\n" "$(whoami)" "${cmd}"
 	fi
 
 	for ((i=0; i<retries; i++)); do
-		if [ -n "${workdir}" ]; then
-			if ! bash -c "set -e && set -u && set -o pipefail && cd ${workdir} && ${cmd}"; then
-				if [ "${verbose}" -eq "1" ]; then
-					>&2 printf "${green}[%s: in %s rounds]${reset}\\n" "OK" "$((i+1))"
-				fi
-				return 0
+		if ! eval "${cmd}"; then
+			if [ "${verbose}" -eq "1" ]; then
+				>&2 printf "${green}[%s: in %s rounds]${reset}\\n" "OK" "$((i+1))"
 			fi
-		else
-			if ! bash -c "set -e && set -u && set -o pipefail && ${cmd}"; then
-				if [ "${verbose}" -eq "1" ]; then
-					>&2 printf "${green}[%s: in %s rounds]${reset}\\n" "OK" "$((i+1))"
-				fi
-				return 0
-			fi
+			return 0
 		fi
 		sleep 1
 	done
