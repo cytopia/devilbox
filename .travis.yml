@@ -1,3 +1,5 @@
+---
+
 ###
 ### Enable Python support
 ###
@@ -283,29 +285,33 @@ before_script:
 ###
 script:
   - if [ "${S1}" = "MODULES" ]; then
-        cd .tests/;
-        make update-readme;
-        git diff --quiet || { echo "Build Changes"; git diff; git status; false; }
+      cd .tests/;
+      make update-readme;
+      git diff --quiet || { echo "Build Changes"; git diff; git status; false; }
     elif [ "${S1}" = "DOCUMENTATION" ]; then
-        cd docs/;
-        make build;
-        make linkcheck;
-        make linkcheck2;
+      cd docs/;
+      make build;
+      make linkcheck;
+      make linkcheck2;
     elif [ "${S1}" = "UPDATE" ]; then
-        ./update-docker.sh "${V1}";
+      ./update-docker.sh "${V1}";
     else
-        cd .tests/;
-        make start;
-        make test-smoke-modules;
-        make test-smoke-config;
-        make test-smoke-intranet;
-        make test-smoke-vendors;
-        make test-smoke-vhosts;
-        make test-smoke-rproxies;
-        make test-smoke-ssl;
-        make test-smoke-bind;
-        make test-smoke-autostart;
-        make test-smoke-framework-cakephp;
-        make test-smoke-framework-drupal;
-        make test-smoke-framework-wordpress;
+      cd .tests/;
+      if [ "${S1}" != "DOCKER" ]; then
+        make configure KEY="${S1}_SERVER" VAL="${V1}";
+        make configure KEY="${S2}_SERVER" VAL="${V2}";
+      fi;
+      make start;
+      make test-smoke-modules;
+      make test-smoke-config;
+      make test-smoke-intranet;
+      make test-smoke-vendors;
+      make test-smoke-vhosts;
+      make test-smoke-rproxies;
+      make test-smoke-ssl;
+      make test-smoke-bind;
+      make test-smoke-autostart;
+      make test-smoke-framework-cakephp;
+      make test-smoke-framework-drupal;
+      make test-smoke-framework-wordpress;
     fi
