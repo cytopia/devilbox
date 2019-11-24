@@ -124,8 +124,8 @@ if ! run "docker-compose exec --user devilbox -T php curl -sS --fail -L -XPOST -
 fi
 
 # Test Wordpress
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail -L 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/' | grep '${PROJECT_NAME}' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
-	run "docker-compose exec --user devilbox -T php curl -sS -L 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/'" "1" "${DVLBOX_PATH}" || true
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail -L 'http://${VHOST}.${TLD_SUFFIX}/' | grep '${PROJECT_NAME}' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
+	run "docker-compose exec --user devilbox -T php curl -sS -L 'http://${VHOST}.${TLD_SUFFIX}/'" "1" "${DVLBOX_PATH}" || true
 	exit 1
 fi
 if ! run "curl -sS --fail -L --header 'host: ${VHOST}.${TLD_SUFFIX}' 'http://localhost:${HOST_PORT_HTTPD}/' | grep '${PROJECT_NAME}' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
@@ -133,7 +133,7 @@ if ! run "curl -sS --fail -L --header 'host: ${VHOST}.${TLD_SUFFIX}' 'http://loc
 	exit 1
 fi
 # Check for Exceptions, Errors or Warnings
-if ! run_fail "docker-compose exec --user devilbox -T php curl -sS --fail -L 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/' | grep -Ei 'fatal|error|warn' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
-	run "docker-compose exec --user devilbox -T php curl -sS -L 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/' | grep -Ei 'fatal|error|warn'" "1" "${DVLBOX_PATH}"
+if ! run_fail "docker-compose exec --user devilbox -T php curl -sS --fail -L 'http://${VHOST}.${TLD_SUFFIX}/' | grep -Ei 'fatal|error|warn' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
+	run "docker-compose exec --user devilbox -T php curl -sS -L 'http://${VHOST}.${TLD_SUFFIX}/' | grep -Ei 'fatal|error|warn'" "1" "${DVLBOX_PATH}"
 	exit 1
 fi
