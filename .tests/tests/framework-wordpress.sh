@@ -91,16 +91,16 @@ run "docker-compose exec --user devilbox -T php php -l /shared/httpd/${VHOST}/wo
 
 # Install Wordpress
 if ! run "docker-compose exec --user devilbox -T php curl -sS --fail -L -XPOST -c cookie.txt -b cookie.txt \
-	'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/wp-admin/install.php?step=1'\
+	'http://${VHOST}.${TLD_SUFFIX}/wp-admin/install.php?step=1'\
 	--data 'language=1' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
 	run "docker-compose exec --user devilbox -T php curl -sS --fail -L -XPOST -c cookie.txt -b cookie.txt \
-			'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/wp-admin/install.php?step=1'\
+			'http://${VHOST}.${TLD_SUFFIX}/wp-admin/install.php?step=1'\
 			--data 'language=1' >/dev/null" "1" "${DVLBOX_PATH}"
 	exit 1
 fi
 
 if ! run "docker-compose exec --user devilbox -T php curl -sS --fail -L -XPOST -c cookie.txt -b cookie.txt \
-	'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/wp-admin/install.php?step=2' \
+	'http://${VHOST}.${TLD_SUFFIX}/wp-admin/install.php?step=2' \
 	--data 'weblog_title=${PROJECT_NAME}' \
 	--data 'user_name=admin' \
 	--data 'admin_password=password' \
@@ -110,7 +110,7 @@ if ! run "docker-compose exec --user devilbox -T php curl -sS --fail -L -XPOST -
 	--data 'blog_public=0' \
 	--data 'Submit=Install+WordPress&language=' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
 	run "docker-compose exec --user devilbox -T php curl -sS --fail -L -XPOST -c cookie.txt -b cookie.txt \
-		'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/wp-admin/install.php?step=2' \
+		'http://${VHOST}.${TLD_SUFFIX}/wp-admin/install.php?step=2' \
 		--data 'weblog_title=${PROJECT_NAME}' \
 		--data 'user_name=admin' \
 		--data 'admin_password=password' \
