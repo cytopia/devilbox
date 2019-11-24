@@ -19,6 +19,8 @@ major versions.
 - [#641](https://github.com/cytopia/devilbox/issues/641) Added phpPgAdmin v7 for PHP >=7
 - [#594](https://github.com/cytopia/devilbox/issues/594) Tool: ghostscript
 - Extensive GitHub Action CI checks
+- Added new PostgreSQL images
+- Added new MongoDB images
 
 #### Changed
 - Updated PHP Docker images (PHP version, modules and tools)
