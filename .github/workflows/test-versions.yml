@@ -120,6 +120,7 @@ jobs:
           - "MONGO_SERVER=3.4"
           - "MONGO_SERVER=3.6"
           - "MONGO_SERVER=4.0"
+          - "MONGO_SERVER=4.2"
           - "MONGO_SERVER=latest"
     name: "[${{ matrix.version }}]"
     steps:
