@@ -1,0 +1,67 @@
+#!/usr/local/bin/php -q
+<?php
+
+	/**
+	 * This script will generate a report on the status of a language
+	 * as compared to the master english translation.
+	 *
+	 * $Id: langcheck,v 1.5 2005/07/19 18:21:58 soranzo Exp $
+	 */
+	error_reporting(E_ALL);
+	// Prevent timeouts (non-safe mode only)
+	if (!ini_get('safe_mode')) set_time_limit(0);
+
+	// Check arguments
+	if (sizeof($_SERVER['argv']) != 2 or (
+	       is_file($_SERVER['argv'][1]) ? (
+	         substr_compare(pathinfo($_SERVER['argv'][1], PATHINFO_EXTENSION), "php", 0, 3, FALSE) == 0 ? TRUE : FALSE) : FALSE )) {
+		echo "Usage: langcheck <language>\n\n";
+		echo "   <language> is the filename without the .php extension\n";
+		exit;
+	}
+	elseif (!file_exists("{$_SERVER['argv'][1]}.php")) {
+		echo "Error: File not found.\n";
+		exit;
+	}
+
+	// Include english source file
+	include('./english.php');
+
+	$master = $lang;
+	$master_keys = array_keys($lang);
+	unset($lang);
+
+	// Include target language file
+	include("./{$_SERVER['argv'][1]}.php");
+	$slave = $lang;
+	$slave_keys = array_keys($lang);
+
+	echo "Source file: english.php\n";
+	echo "Target file: {$_SERVER['argv'][1]}.php\n\n";
+
+	// Find missing values
+	$diff = array_diff($master_keys, $slave_keys);
+	echo "Missing Strings\n";
+	echo "---------------\n\n";
+	if (sizeof($diff) > 0) {
+		foreach ($diff as $v) {
+			echo "\$lang['{$v}'] = '", str_replace("'", "\\'", $master[$v]), "';\n";
+		}
+		echo "\n";
+		echo "Translations: ", sizeof($master_keys) - sizeof($diff), "/", sizeof($master_keys), "\n\n";
+
+	}
+	else echo "None\n\n";
+
+	// Find extra values (to be deleted)
+	$diff = array_diff($slave_keys, $master_keys);
+	echo "Deleted Strings\n";
+	echo "---------------\n\n";
+	if (sizeof($diff) > 0) {
+		foreach ($diff as $v) {
+			echo "\$lang['{$v}'] = '", str_replace("'", "\\'", $slave[$v]), "';\n";
+		}
+	}
+	else echo "None\n";
+
+?>

@@ -25,6 +25,11 @@
 [![type](https://img.shields.io/badge/type-Docker-blue.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-MIT-%233DA639.svg)](https://opensource.org/licenses/MIT)
 
+[![Build Status](https://github.com/cytopia/devilbox/workflows/Lint/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Lint)
+[![Build Status](https://github.com/cytopia/devilbox/workflows/Linux/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Linux)
+[![Build Status](https://github.com/cytopia/devilbox/workflows/Config/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Config)
+[![Build Status](https://github.com/cytopia/devilbox/workflows/Versions/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Versions)
+
 <img width="200" style="width:200px;" src="docs/_includes/figures/https/https-ssl-address-bar.png" /><br/>
 <small><sub>Support for <a href="https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html">valid https</a> out of the box.</sub></small>
 
@@ -302,7 +307,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="PgSQL 9.6"        href="https://github.com/docker-library/postgres">9.6</a></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="MongoDB latest"   href="https://github.com/docker-library/mongo">latest</a></td>
+      <td><a target="_blank" title="MongoDB 4.2"      href="https://github.com/docker-library/mongo">4.2</a></td>
     </tr>
     <tr>
       <td></td>
@@ -314,7 +319,7 @@ Every single attachable container comes with many different versions. In order t
       <td>...</td>
       <td></td>
       <td></td>
-      <td></td>
+      <td><a target="_blank" title="MongoDB latest"   href="https://github.com/docker-library/mongo">latest</a></td>
     </tr>
     <tr>
       <td></td>
@@ -323,7 +328,7 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PgSQL 11.1"       href="https://github.com/docker-library/postgres">11.1</a></td>
+      <td><a target="_blank" title="PgSQL 12.0"       href="https://github.com/docker-library/postgres">12.0</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -335,7 +340,7 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PgSQL latest"     href="https://github.com/docker-library/postgres">latest</a></td>
+      <td><a target="_blank" title="PgSQL 12.1"       href="https://github.com/docker-library/postgres">12.1</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -347,7 +352,7 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
+      <td><a target="_blank" title="PgSQL latest"     href="https://github.com/docker-library/postgres">latest</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -700,7 +705,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 <!-- modules -->
 | Modules        | PHP 5.2 | PHP 5.3 | PHP 5.4 | PHP 5.5 | PHP 5.6 | PHP 7.0 | PHP 7.1 | PHP 7.2 | PHP 7.3 | PHP 7.4 | PHP 8.0 |
 |----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-| amqp           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |         |
+| amqp           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
 | apc            |         |    🗸    |    🗸    |    🗸    |    🗸    |         |         |         |         |         |         |
 | apcu           |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
 | bcmath         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
@@ -713,7 +718,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | date           |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | dba            |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | dom            |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
-| enchant        |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
+| enchant        |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | ereg           |         |    ✔    |    ✔    |    ✔    |    ✔    |         |         |         |         |         |         |
 | exif           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | FFI            |         |         |         |         |         |         |         |         |         |    🗸    |    ✔    |
@@ -726,22 +731,22 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | hash           |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | iconv          |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | igbinary       |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
-| imagick        |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
+| imagick        |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
 | imap           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
 | interbase      |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
 | intl           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
-| ioncube        |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |         |         |         |
+| ioncube        |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |         |         |
 | json           |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | ldap           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | libxml         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | mbstring       |    ✔    |    🗸    |    🗸    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
-| mcrypt         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
+| mcrypt         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
 | memcache       |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |         |
 | memcached      |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | mhash          |         |         |         |         |    ✔    |         |         |         |         |         |         |
 | mongo          |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |         |         |         |         |
 | mongodb        |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
-| msgpack        |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
+| msgpack        |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
 | mysql          |    ✔    |    ✔    |    🗸    |    🗸    |    🗸    |         |         |         |         |         |         |
 | mysqli         |    ✔    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | mysqlnd        |         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
@@ -759,13 +764,13 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | pdo_sqlite     |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | pdo_sqlsrv     |         |         |         |         |         |    d    |    d    |    d    |    d    |         |         |
 | pgsql          |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
-| phalcon        |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |         |
+| phalcon        |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
 | Phar           |    🗸    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | posix          |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | pspell         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | rdkafka        |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |         |
 | readline       |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
-| recode         |    🗸    |    ✔    |    ✔    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
+| recode         |    🗸    |    ✔    |    ✔    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
 | redis          |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | Reflection     |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | session        |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
@@ -788,7 +793,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | tokenizer      |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | uploadprogress |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | wddx           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
-| xdebug         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
+| xdebug         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
 | xml            |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | xmlreader      |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | xmlrpc         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
