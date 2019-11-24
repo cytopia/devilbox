@@ -30,7 +30,6 @@
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Config/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Config)
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Versions/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Versions)
 
-
 <img width="200" style="width:200px;" src="docs/_includes/figures/https/https-ssl-address-bar.png" /><br/>
 <small><sub>Support for <a href="https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html">valid https</a> out of the box.</sub></small>
 
