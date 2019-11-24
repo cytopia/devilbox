@@ -54,13 +54,28 @@ DB_NAME="my_wp"
 PROJECT_NAME="this-is-my-grepable-project-name"
 
 
-# Setup Wordpress project
+# Download Wordpress
 run "docker-compose exec --user devilbox -T php bash -c ' \
 	rm -rf /shared/httpd/${VHOST} \
 	&& mkdir -p /shared/httpd/${VHOST} \
 	&& git clone https://github.com/WordPress/WordPress /shared/httpd/${VHOST}/wordpress \
 	&& ln -sf wordpress /shared/httpd/${VHOST}/htdocs'" \
 	"${RETRIES}" "${DVLBOX_PATH}"
+
+# Switch to an earlier Wordpress version for older PHP versions
+if [ "${PHP_VERSION}" = "5.3" ] || [ "${PHP_VERSION}" = "5.4" ] || [ "${PHP_VERSION}" = "5.5" ]; then
+	run "docker-compose exec --user devilbox -T php bash -c ' \
+		cd /shared/httpd/${VHOST}/wordpress \
+		&& git checkout 5.1.3'" \
+	"${RETRIES}" "${DVLBOX_PATH}"
+# Checkout latest git tag
+else
+	run "docker-compose exec --user devilbox -T php bash -c ' \
+		cd /shared/httpd/${VHOST}/wordpress \
+		&& git checkout \"\$(git tag | sort -V | tail -1)\"'" \
+	"${RETRIES}" "${DVLBOX_PATH}"
+
+fi
 
 # Setup Database
 run "docker-compose exec --user devilbox -T php mysql -u root -h mysql --password=\"${MYSQL_ROOT_PASSWORD}\" -e \"DROP DATABASE IF EXISTS ${DB_NAME}; CREATE DATABASE ${DB_NAME};\"" "${RETRIES}" "${DVLBOX_PATH}"
@@ -103,10 +118,22 @@ if ! run "docker-compose exec --user devilbox -T php curl -sS --fail -L -XPOST -
 		--data 'pw_weak=on' \
 		--data 'admin_email=test%40test.com' \
 		--data 'blog_public=0' \
-		--data 'Submit=Install+WordPress&language='" "1" "${DVLBOX_PATH}"
+		--data 'Submit=Install+WordPress' \
+		--data 'language='" "1" "${DVLBOX_PATH}"
 	exit 1
 fi
 
 # Test Wordpress
-run "docker-compose exec --user devilbox -T php curl -sS --fail -L 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/' | grep '${PROJECT_NAME}' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"
-run " curl -sS --fail -L --header 'host: ${VHOST}.${TLD_SUFFIX}' 'http://localhost:${HOST_PORT_HTTPD}/' | grep '${PROJECT_NAME}' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail -L 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/' | grep '${PROJECT_NAME}' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
+	run "docker-compose exec --user devilbox -T php curl -sS -L 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/'" "1" "${DVLBOX_PATH}" || true
+	exit 1
+fi
+if ! run "curl -sS --fail -L --header 'host: ${VHOST}.${TLD_SUFFIX}' 'http://localhost:${HOST_PORT_HTTPD}/' | grep '${PROJECT_NAME}' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
+	run "curl -sS -L --header 'host: ${VHOST}.${TLD_SUFFIX}' 'http://localhost:${HOST_PORT_HTTPD}/'" "1" "${DVLBOX_PATH}" || true
+	exit 1
+fi
+# Check for Exceptions, Errors or Warnings
+if ! run_fail "docker-compose exec --user devilbox -T php curl -sS --fail -L 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/' | grep -Ei 'fatal|error|warn' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
+	run "docker-compose exec --user devilbox -T php curl -sS -L 'http://${VHOST}.${TLD_SUFFIX}:${HOST_PORT_HTTPD}/' | grep -Ei 'fatal|error|warn'" "1" "${DVLBOX_PATH}"
+	exit 1
+fi

@@ -13,7 +13,7 @@ DVLBOX_PATH="$( cd "${SCRIPT_PATH}/../.." && pwd -P )"
 . "${SCRIPT_PATH}/../scripts/.lib.sh"
 
 RETRIES=10
-DISABLED_VERSIONS=("5.2" "5.3" "7.4" "8.0")
+DISABLED_VERSIONS=("5.3" "7.4" "8.0")
 DISABLED_MYSQL_VERSIONS=("mysql-8.0" "percona-8.0")
 
 
