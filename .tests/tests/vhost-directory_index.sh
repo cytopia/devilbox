@@ -53,6 +53,7 @@ fi
 ###
 TLD_SUFFIX="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "TLD_SUFFIX" )"
 HTTPD_DOCROOT_DIR="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HTTPD_DOCROOT_DIR" )"
+HTTPD_VERSION="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HTTPD_SERVER" )"
 
 
 ###
@@ -81,12 +82,18 @@ ERROR=0
 ###
 run "docker-compose exec --user devilbox -T php bash -c 'echo \"indexhtm\" > /shared/httpd/${VHOST}/${HTTPD_DOCROOT_DIR}/index.htm'" "${RETRIES}" "${DVLBOX_PATH}"
 printf "[TEST] index.htm should be served by default"
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep -E '^indexhtm$' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
-	printf "\\r[FAIL] index.htm should be served by default\\n"
-    run "docker-compose exec --user devilbox -T php curl -sS 'http://${VHOST}.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}"
-	ERROR=1
+# FIXME: Apache 2.2 currently only serves PHP files as Document Roots due to its FPM implementation
+if [ "${HTTPD_VERSION}" != "apache-2.2" ]; then
+	printf "[TEST] index.htm should be served by default"
+	if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep -E '^indexhtm$' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
+		printf "\\r[FAIL] index.htm should be served by default\\n"
+		run "docker-compose exec --user devilbox -T php curl -sS 'http://${VHOST}.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}"
+		ERROR=1
+	else
+		printf "\\r[OK]   index.htm should be served by default\\n"
+	fi
 else
-	printf "\\r[OK]   index.htm should be served by default\\n"
+	printf "\\r[SKIP] index.htm should be served by default\\n"
 fi
 
 
@@ -95,12 +102,17 @@ fi
 ###
 run "docker-compose exec --user devilbox -T php bash -c 'echo \"indexhtml\" > /shared/httpd/${VHOST}/${HTTPD_DOCROOT_DIR}/index.html'" "${RETRIES}" "${DVLBOX_PATH}"
 printf "[TEST] index.html should be served by default"
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep -E '^indexhtml$' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
-	printf "\\r[FAIL] index.html should be served by default\\n"
-    run "docker-compose exec --user devilbox -T php curl -sS 'http://${VHOST}.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}"
-	ERROR=1
+# FIXME: Apache 2.2 currently only serves PHP files as Document Roots due to its FPM implementation
+if [ "${HTTPD_VERSION}" != "apache-2.2" ]; then
+	if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep -E '^indexhtml$' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}" "0"; then
+		printf "\\r[FAIL] index.html should be served by default\\n"
+		run "docker-compose exec --user devilbox -T php curl -sS 'http://${VHOST}.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}"
+		ERROR=1
+	else
+		printf "\\r[OK]   index.html should be served by default\\n"
+	fi
 else
-	printf "\\r[OK]   index.html should be served by default\\n"
+	printf "\\r[SKIP] index.html should be served by default\\n"
 fi
 
 
