@@ -8,7 +8,7 @@ major versions.
 ## Unreleased
 
 
-## Release v1.1.0 (2019-11-2)
+## Release v1.1.0 (2019-11-24)
 
 #### Fixed
 - [#644](https://github.com/cytopia/devilbox/issues/644) Fix GD jpeg support missing in PHP 7.4
