@@ -535,6 +535,20 @@ volumes:
   devilbox-pgsql-11.0-alpine:
   devilbox-pgsql-11.1:
   devilbox-pgsql-11.1-alpine:
+  devilbox-pgsql-11.2:
+  devilbox-pgsql-11.2-alpine:
+  devilbox-pgsql-11.3:
+  devilbox-pgsql-11.3-alpine:
+  devilbox-pgsql-11.4:
+  devilbox-pgsql-11.4-alpine:
+  devilbox-pgsql-11.5:
+  devilbox-pgsql-11.5-alpine:
+  devilbox-pgsql-11.6:
+  devilbox-pgsql-11.6-alpine:
+  devilbox-pgsql-12.0:
+  devilbox-pgsql-12.0-alpine:
+  devilbox-pgsql-12.1:
+  devilbox-pgsql-12.1-alpine:
   devilbox-pgsql-latest:
   devilbox-pgsql-alpine:
 

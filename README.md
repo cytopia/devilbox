@@ -329,7 +329,7 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PgSQL 11.1"       href="https://github.com/docker-library/postgres">11.1</a></td>
+      <td><a target="_blank" title="PgSQL 12.0"       href="https://github.com/docker-library/postgres">12.0</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -341,7 +341,7 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PgSQL latest"     href="https://github.com/docker-library/postgres">latest</a></td>
+      <td><a target="_blank" title="PgSQL 12.1"       href="https://github.com/docker-library/postgres">12.1</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -353,7 +353,7 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
+      <td><a target="_blank" title="PgSQL latest"     href="https://github.com/docker-library/postgres">latest</a></td>
       <td></td>
       <td></td>
       <td></td>
