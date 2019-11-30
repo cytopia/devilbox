@@ -210,7 +210,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER}:0.30
+    image: devilbox/${HTTPD_SERVER}:0.31
     hostname: httpd
 
     environment:
