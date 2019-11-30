@@ -11,6 +11,7 @@ major versions.
 
 #### Fixed
 - [#622](https://github.com/cytopia/devilbox/issues/622) Certificate Generation Settings
+- [#640](https://github.com/cytopia/devilbox/issues/640) Mac OS Catalina invalidates virtual host certificates
 
 #### Added
 - Added latest PHP-FPM images
