@@ -12,6 +12,7 @@ major versions.
 #### Fixed
 - [#622](https://github.com/cytopia/devilbox/issues/622) Certificate Generation Settings
 - [#640](https://github.com/cytopia/devilbox/issues/640) Mac OS Catalina invalidates virtual host certificates
+- [#592](https://github.com/cytopia/devilbox/issues/592) sqlsrv connection problem
 
 #### Added
 - Added latest PHP-FPM images
