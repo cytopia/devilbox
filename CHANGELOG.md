@@ -4,8 +4,23 @@ Make sure to have a look at [UPDATING](https://github.com/cytopia/devilbox/blob/
 major versions.
 
 
-
 ## Unreleased
+
+
+## Release v1.2.0 (2019-12-01)
+
+#### Fixed
+- [#622](https://github.com/cytopia/devilbox/issues/622) Certificate Generation Settings
+- [#640](https://github.com/cytopia/devilbox/issues/640) Mac OS Catalina invalidates virtual host certificates
+- [#592](https://github.com/cytopia/devilbox/issues/592) sqlsrv connection problem
+
+#### Added
+- Added latest PHP-FPM images
+- Added latest MySQL images
+- Added latest Apache/Nginx images
+
+#### Changed
+- Made PHP 7.3 the default version
 
 
 ## Release v1.1.0 (2019-11-24)

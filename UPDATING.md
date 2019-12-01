@@ -3,6 +3,18 @@
 This document will hold all information on how to update between major versions.
 
 
+## Update from `v1.1.0` to `v1.2.0`
+
+**PR:** https://github.com/cytopia/devilbox/pull/647
+
+This release changes the way the SSL CA and certificates are generated.
+Background here: https://support.apple.com/en-us/HT210176
+
+In order to use the new CA, you will need to delete your current CA in `ca/devilbox-ca.*`.
+A new one will be automatically generated if none is present. Additionally you will have to
+import the CA again in your browser(s).
+
+
 ## Update from `v0.x.y` to `v1.x.y`
 
 #### Docker Volumes
