@@ -19,10 +19,15 @@ You can also build the documentation locally before pushing to ensure everything
 
 #### Requirements
 
+* Docker
+
+#### How to check for broken links
 ```
-sudo pip install sphinx sphinx-autobuild recommonmark
-sudo pip install sphinx_rtd_theme
+cd docs/
+make linkcheck
+make linkcheck2
 ```
+
 #### How to build and error-check
 ```
 cd docs/
@@ -37,4 +42,4 @@ make autobuild
 
 #### How to view
 
-When using `make autobuild` your documentation is served at: http://127.0.0.1:8000
+When using `make autobuild` your documentation is served at: http://0.0.0.0:8000
