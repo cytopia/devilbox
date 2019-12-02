@@ -1,52 +1,27 @@
-# Minimal makefile for Sphinx documentation
-#
+ifneq (,)
+.error This Makefile requires GNU Make.
+endif
 
-# You can set these variables from the command line.
-SPHINXOPTS    =
-SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = devilbox
-SOURCEDIR     = .
-BUILDDIR      = _build
+# -------------------------------------------------------------------------------------------------
+# Default configuration
+# -------------------------------------------------------------------------------------------------
+.PHONY: help build autobuild linkcheck linkcheck2
 
-# Put it first so that "make" without argument is like "make help".
+
+# -------------------------------------------------------------------------------------------------
+# Default Target
+# -------------------------------------------------------------------------------------------------
+
 help:
-	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-	@echo
-	@echo "Devilbox additional commands:"
-	@echo "  build       Build and test documentation"
-	@echo "  autobuild   Continuously run and build (http://127.0.0.1:8000)"
-
-.PHONY: help Makefile test build autobuild
-
-# Catch-all target: route all unknown targets to Sphinx using the new
-# "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-%: Makefile
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@echo "build            Build and test documentation"
+	@echo "autobuild        Continuously run and build (http://0.0.0.0:8000)"
+	@echo "linkcheck        Sphinx linkcheck"
+	@echo "linkcheck2       Custom linkcheck"
 
 
-#
-# Devilbox additions
-#
-#
-# Used Sphinx options:
-# --------------------
-#
-# -a: Always write all output files. The default is to only write output files
-#     for new and changed source files.
-#
-# -E: Don’t use a saved environment (the structure caching all cross-references),
-#     but rebuild it completely.
-#
-# -n: Run in nit-picky mode. Currently, this generates warnings for all
-#     missing references. See the config value nitpick_ignore for a way to
-#     exclude some references as “known missing”.
-#
-# -q: Do not output anything on standard output, only write warnings and errors
-#     to standard error.
-#
-# -W: Turn warnings into errors. This means that the build stops at the first
-#     warning and sphinx-build exits with exit status 1.
-
+# -------------------------------------------------------------------------------------------------
+#  Target
+# -------------------------------------------------------------------------------------------------
 
 linkcheck2:
 ifeq ($(wildcard file1),)
@@ -57,8 +32,39 @@ endif
 	chmod +x linkcheck
 	./linkcheck -l -k -r 60 -t 30 -e rst _includes/
 
+linkcheck:
+	docker run \
+		--rm \
+		$$(tty -s && echo "-it" || echo) \
+		-e SPHINX_PROJECT="docs" \
+		-e SPHINX_PORT=8000 \
+		-e NEW_UID="$$(id -u)" \
+		-e NEW_GID="$$(id -g)" \
+		-v $(PWD)/..:/shared/httpd \
+		devilbox/python-sphinx:3.8-dev \
+		sphinx-build -M linkcheck . _build
+
 build:
-	sphinx-build -a -E -n -j auto -q -W . _build/html
+	docker run \
+		--rm \
+		$$(tty -s && echo "-it" || echo) \
+		-e SPHINX_PROJECT="docs" \
+		-e SPHINX_PORT=8000 \
+		-e NEW_UID="$$(id -u)" \
+		-e NEW_GID="$$(id -g)" \
+		-v $(PWD)/..:/shared/httpd \
+		devilbox/python-sphinx:3.8-dev \
+		sphinx-build -a -E -n -j auto -W . _build/html
 
 autobuild:
-	sphinx-autobuild . _build/html
+	docker run \
+		--rm \
+		$$(tty -s && echo "-it" || echo) \
+		-e SPHINX_PROJECT="docs" \
+		-e SPHINX_PORT=8000 \
+		-e NEW_UID="$$(id -u)" \
+		-e NEW_GID="$$(id -g)" \
+		-p "8000:8000" \
+		-v $(PWD)/..:/shared/httpd \
+		devilbox/python-sphinx:3.8-dev \
+		sphinx-autobuild -a -E -n -j auto -W -H 0.0.0.0 -p 8000 . _build/html

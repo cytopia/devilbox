@@ -78,6 +78,8 @@ language = None
 exclude_patterns = [
     u'_build/*',
     u'_includes/**',
+    u'venv/**',
+    u'requirements.txt',
     u'Thumbs.db',
     u'.DS_Store'
 ]

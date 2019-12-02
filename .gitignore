@@ -121,6 +121,7 @@
 /docs/_build/
 /docs/make.bat
 /docs/linkcheck
+/docs/venv
 *.rst.todo
 
 # Ignore vhost-gen files in test dir (copied on the fly)

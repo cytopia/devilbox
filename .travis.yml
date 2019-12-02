@@ -30,7 +30,9 @@ env:
   ###
   ### Check Documentation
   ###
-  - S1=DOCUMENTATION
+  - S1=DOCUMENTATION V1=Build
+  - S1=DOCUMENTATION V1=linkcheck
+  - S1=DOCUMENTATION V1=linkcheck2
 
   ###
   ### Check Update script
@@ -222,6 +224,11 @@ env:
   - S1=PHP V1=7.2 S2=MONGO V2=4.2
 
 
+jobs:
+  allow_failures:
+    - env: S1=DOCUMENTATION V1=linkcheck2
+
+
 ###
 ### Installation
 ###
@@ -229,14 +236,6 @@ install:
   # Update Debian/Ubuntu package index
   - if [ "${S1}" != "MODULES" ] && [ "${S1}" != "DOCUMENTATION" ] && [ "${S1}" != "UPDATE" ]; then
       until sudo apt-get update -qq; do sleep 5; done
-    fi
-
-  # Install dependencies for documentation
-  - if [ "${S1}" = "DOCUMENTATION" ]; then
-      until pip install sphinx; do sleep 5; done;
-      until pip install sphinx-autobuild; do sleep 5; done;
-      until pip install recommonmark; do sleep 5; done;
-      until pip install sphinx_rtd_theme; do sleep 5; done;
     fi
 
   # Determine latest Docker version in apt
@@ -265,6 +264,18 @@ install:
       sudo mv -f docker-compose /usr/local/bin;
     fi
 
+  # Provide retry function
+  - retry() {
+      for ((n=0; n<60; n++)); do
+        echo "[${n}] ${*}";
+        if eval "${*}"; then
+          return 0;
+        fi;
+        sleep 1;
+      done;
+      return 1;
+    }
+
 
 ###
 ### Before Script
@@ -283,13 +294,6 @@ before_script:
   - sudo service docker stop  || true
   - sudo service docker start || true
 
-  # Show Python/pip
-  - if [ "${S1}" = "DOCUMENTATION" ]; then
-      pip freeze;
-      pip --version;
-      python --version;
-    fi
-
   # Show Docker/Docker Compose
   - if [ "${S1}" != "DOCUMENTATION" ]; then
       docker --version;
@@ -301,34 +305,65 @@ before_script:
 ### Test
 ###
 script:
+
+  ###
+  ### Test Modules
+  ###
   - if [ "${S1}" = "MODULES" ]; then
       cd .tests/;
-      make update-readme;
-      git diff --quiet || { echo "Build Changes"; git diff; git status; false; }
-    elif [ "${S1}" = "DOCUMENTATION" ]; then
+      retry make update-readme;
+    fi
+  - if [ "${S1}" = "MODULES" ]; then
+      git diff --quiet || { echo "Build Changes"; git diff; git status; false; };
+    fi
+
+  ###
+  ### Test Documentation
+  ###
+  - if [ "${S1}" = "DOCUMENTATION" ] && [ "${V1}" = "Build" ]; then
       cd docs/;
-      make build;
-      make linkcheck;
-      make linkcheck2;
-    elif [ "${S1}" = "UPDATE" ]; then
+      retry make build;
+    fi
+  - if [ "${S1}" = "DOCUMENTATION" ] && [ "${V1}" = "linkcheck" ]; then
+      cd docs/;
+      retry make linkcheck;
+    fi
+  - if [ "${S1}" = "DOCUMENTATION" ] && [ "${V1}" = "linkcheck2" ]; then
+      cd docs/;
+      retry make linkcheck2;
+    fi
+
+  ###
+  ### Test Update script
+  ###
+  - if [ "${S1}" = "UPDATE" ]; then
       ./update-docker.sh "${V1}";
-    else
+    fi
+
+  ###
+  ### Test Devilbox
+  ###
+  - if [ "${S1}" != "MODULES" ] && [ "${S1}" != "DOCUMENTATION" ] && [ "${S1}" != "UPDATE" ]; then
       cd .tests/;
+    fi
+  - if [ "${S1}" != "MODULES" ] && [ "${S1}" != "DOCUMENTATION" ] && [ "${S1}" != "UPDATE" ]; then
       if [ "${S1}" != "DOCKER" ]; then
-        make configure KEY="${S1}_SERVER" VAL="${V1}";
-        make configure KEY="${S2}_SERVER" VAL="${V2}";
-      fi;
-      make start;
-      make test-smoke-modules;
-      make test-smoke-config;
-      make test-smoke-intranet;
-      make test-smoke-vendors;
-      make test-smoke-vhosts;
-      make test-smoke-rproxies;
-      make test-smoke-ssl;
-      make test-smoke-bind;
-      make test-smoke-autostart;
-      make test-smoke-framework-cakephp;
-      make test-smoke-framework-drupal;
-      make test-smoke-framework-wordpress;
+        retry make configure KEY="${S1}_SERVER" VAL="${V1}";
+        retry make configure KEY="${S2}_SERVER" VAL="${V2}";
+      fi
+    fi
+  - if [ "${S1}" != "MODULES" ] && [ "${S1}" != "DOCUMENTATION" ] && [ "${S1}" != "UPDATE" ]; then
+      retry make start;
+      retry make test-smoke-modules;
+      retry make test-smoke-config;
+      retry make test-smoke-intranet;
+      retry make test-smoke-vendors;
+      retry make test-smoke-vhosts;
+      retry make test-smoke-rproxies;
+      retry make test-smoke-ssl;
+      retry make test-smoke-bind;
+      retry make test-smoke-autostart;
+      retry make test-smoke-framework-cakephp;
+      retry make test-smoke-framework-drupal;
+      retry make test-smoke-framework-wordpress;
     fi
