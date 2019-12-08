@@ -81,19 +81,42 @@ fi
 
 
 ###
-### Test Adminer MongoDB login
+### Test Adminer Mongo login
 ###
 printf "[TEST] Adminer Mongo login"
 if ! run "\
-	curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}${URL}?mongo=mongo&username=' \
+	curl -sS --fail -c cookie.txt -b cookie.txt \
+		-L \
+		--data 'auth[driver]=mongo' \
+		--data 'auth[server]=mongo' \
+		--data 'auth[username]=' \
+		--data 'auth[password]=' \
+		--data 'auth[db]=' \
+		'http://localhost:${HOST_PORT_HTTPD}${URL}?mongo=mongo&username=' \
 	| tac \
 	| tac \
 	| grep -Ei 'Database.+Collation.+Tables' >/dev/null" \
 	"${RETRIES}" "" "0"; then
-	printf "\\r[FAIL] Adminer Mongo login\\n"
-	run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}${URL}?mongo=mongo&username=' || true"
-	run "curl -sS -I 'http://localhost:${HOST_PORT_HTTPD}${URL}?mongo=mongo&username=' || true"
+	printf "\\r[FAIL] Adminer MySQL login\\n"
+	run "curl -sS -c cookie.txt -b cookie.txt \
+		-L \
+		--data 'auth[driver]=mongo' \
+		--data 'auth[server]=mongo' \
+		--data 'auth[username]=' \
+		--data 'auth[password]=' \
+		--data 'auth[db]=' \
+		'http://localhost:${HOST_PORT_HTTPD}${URL}?server=mysql&username=root|| true'" "1"
+	run "curl -sS -I -c cookie.txt -b cookie.txt \
+		-L \
+		--data 'auth[driver]=mongo' \
+		--data 'auth[server]=mongo' \
+		--data 'auth[username]=' \
+		--data 'auth[password]=' \
+		--data 'auth[db]=' \
+		'http://localhost:${HOST_PORT_HTTPD}${URL}?server=mysql&username=root|| true'" "1"
+	rm -f cookie.txt
 	exit 1
 else
-	printf "\\r[OK]   Adminer Mongo login\\n"
+	printf "\\r[OK]   Adminer MySQL login\\n"
 fi
+rm -f cookie.txt
