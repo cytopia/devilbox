@@ -7,6 +7,16 @@ major versions.
 ## Unreleased
 
 
+## Release v1.3.0 (2019-12-08)
+
+#### Fixed
+- [#626](https://github.com/cytopia/devilbox/issues/626) Cannot create MongoDB database with Adminer
+
+#### Changed
+- Updated Adminer to 4.7.5
+- Updated phpMyAdmin to 4.9.2
+
+
 ## Release v1.2.0 (2019-12-01)
 
 #### Fixed
