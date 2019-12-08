@@ -393,7 +393,7 @@ HTML;
 
 					// Replace
 					if ($el['path'] == '__PHPMYADMIN__') {
-						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.5', '<')) ? '/vendor/phpmyadmin-4.0/index.php' : '/vendor/phpmyadmin-4.8.4/index.php';
+						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.5', '<')) ? '/vendor/phpmyadmin-4.0/index.php' : '/vendor/phpmyadmin-4.9.2/index.php';
 					}
 					if ($el['path'] == '__PHPPGADMIN__') {
 						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '7.1', '<')) ? '/vendor/phppgadmin-5.6.0/' : '/vendor/phppgadmin-7.12.0/';
