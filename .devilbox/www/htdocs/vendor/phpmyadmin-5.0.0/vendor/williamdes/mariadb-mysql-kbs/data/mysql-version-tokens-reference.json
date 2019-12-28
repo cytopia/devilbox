@@ -1,0 +1,30 @@
+{
+  "data": [
+    {
+      "cli": "--version-tokens-session=value",
+      "default": "NULL",
+      "dynamic": true,
+      "id": "sysvar_version_tokens_session",
+      "name": "version_tokens_session",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--version-tokens-session-number=#",
+      "default": "0",
+      "dynamic": false,
+      "id": "sysvar_version_tokens_session_number",
+      "name": "version_tokens_session_number",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "version-tokens-reference",
+  "url": "https://dev.mysql.com/doc/refman/8.0/en/version-tokens-reference.html"
+}

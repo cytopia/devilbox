@@ -1,0 +1,89 @@
+{
+    "name": "williamdes/mariadb-mysql-kbs",
+    "description": "An index of the MariaDB and MySQL Knowledge bases",
+    "homepage": "https://github.com/williamdes/mariadb-mysql-kbs",
+    "type": "library",
+    "readme": "https://github.com/williamdes/mariadb-mysql-kbs/blob/master/README.md",
+    "license": "MPL-2.0",
+    "version": "1.2.8",
+    "keywords": [
+        "mariadb",
+        "mysql",
+        "dataset",
+        "kb",
+        "knowledge-base",
+        "json",
+        "library",
+        "mysql-knowledge-bases",
+        "mariadb-knowledge-bases",
+        "composer-package",
+        "npm-package"
+    ],
+    "support": {
+        "email": "williamdes@wdes.fr",
+        "issues": "https://github.com/williamdes/mariadb-mysql-kbs/issues",
+        "source": "https://github.com/williamdes/mariadb-mysql-kbs"
+    },
+    "authors": [
+        {
+            "name": "William Desportes",
+            "email": "williamdes@wdes.fr"
+        }
+    ],
+    "scripts": {
+        "build": "php src/merge.php",
+        "test": "phpunit --testdox --configuration ./test/phpunit.xml",
+        "phpstan": "phpstan analyse src test --configuration=phpstan.neon --level=max --memory-limit=100M",
+        "phpcs": "phpcs --standard=phpcs.xml --no-cache --colors -p -n",
+        "phpcbf": "phpcbf --standard=phpcs.xml"
+    },
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0 || ^8.0",
+        "phpstan/phpstan": "^0.11.3",
+        "slevomat/coding-standard": "^5.0",
+        "squizlabs/php_codesniffer": "^3.3",
+        "php-school/cli-menu": "^3.0",
+        "swaggest/json-schema": "^0.12.9"
+    },
+    "archive": {
+        "exclude": [
+            "/scripts",
+            "/data",
+            "/dist/merged-raw.json",
+            "/test",
+            "*.js",
+            "/.dependabot",
+            "/.jshintrc",
+            "/.npmignore",
+            "/.editorconfig",
+            "/.gitmodules",
+            "/CODEOWNERS",
+            "/williamdes-mariadb-mysql-kbs-*.tar",
+            "/docs",
+            "/package.json",
+            "/package-lock.json",
+            "/.prettierignore",
+            "/.gitignore",
+            "/phpcs.xml",
+            "/phpstan.neon",
+            "/.travis.yml",
+            "/dist/merged-raw.md",
+            "/.jshintignore",
+            "/.phpunit.result.cache"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Williamdes\\MariaDBMySQLKBS\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Williamdes\\MariaDBMySQLKBS\\Test\\": "test/"
+        }
+    },
+    "non-feature-branches": ["update/*"]
+}

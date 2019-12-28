@@ -1,0 +1,83 @@
+{
+    "name": "mariadb-mysql-kbs",
+    "repository": "williamdes/mariadb-mysql-kbs",
+    "version": "1.2.8",
+    "description": "An index of the MariaDB and MySQL Knowledge bases",
+    "main": "src/index.js",
+    "homepage": "https://github.com/williamdes/mariadb-mysql-kbs#readme",
+    "readme": "https://github.com/williamdes/mariadb-mysql-kbs/blob/master/README.md",
+    "license": "MPL-2.0",
+    "bugs": {
+        "url": "https://github.com/williamdes/mariadb-mysql-kbs/issues",
+        "email": "williamdes@wdes.fr"
+    },
+    "keywords": [
+        "mariadb",
+        "mysql",
+        "dataset",
+        "kb",
+        "knowledge-base",
+        "json",
+        "library",
+        "mysql-knowledge-bases",
+        "mariadb-knowledge-bases",
+        "composer-package",
+        "npm-package"
+    ],
+    "nyc": {
+        "exclude": [
+            "docs",
+            "data",
+            "test",
+            "build",
+            "vendor",
+            "coverage",
+            ".nyc_output",
+            "scripts/vendor"
+        ],
+        "reporter": [
+            "text",
+            "text-summary"
+        ]
+    },
+    "scripts": {
+        "changelog": "changelog-generator-twig --owner williamdes --repo mariadb-mysql-kbs --repoDir ./ --baseCommit 28e9e010dc027dee17a55f5eedad776dcf983e95",
+        "changelog-file": "npm run --silent changelog > CHANGELOG.md",
+        "prettier": "prettier \"*.js\" \"*/**/*.js\" --ignore-path ./.prettierignore --write",
+        "test": "nyc --all mocha --ui tdd",
+        "jshint": "jshint ./",
+        "build": "node ./src/index.js",
+        "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov",
+        "sudo-bot-pr": "sudo-bot --env scripts/sudo-bot/.env --verbose"
+    },
+    "author": {
+        "email": "williamdes@wdes.fr",
+        "name": "William Desportes",
+        "url": "https://william.wdes.fr"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "changelog-generator-twig": "^1.2.0",
+        "codecov": "^3.6.1",
+        "crawler": "^1.2.1",
+        "jshint": "^2.10.3",
+        "mocha": "^6.2.2",
+        "nyc": "^14.1.1",
+        "prettier": "^1.19.1",
+        "sudo-bot": "^1.1.11"
+    },
+    "directories": {
+        "lib": "src",
+        "test": "test"
+    },
+    "prettier": {
+        "singleQuote": true,
+        "proseWrap": "never",
+        "trailingComma": "es5",
+        "printWidth": 120
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

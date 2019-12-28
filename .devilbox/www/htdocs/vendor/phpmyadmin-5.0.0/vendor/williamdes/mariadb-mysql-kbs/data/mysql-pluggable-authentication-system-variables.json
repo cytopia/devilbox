@@ -1,0 +1,342 @@
+{
+  "data": [
+    {
+      "cli": "--authentication-ldap-sasl-auth-method-name=value",
+      "default": "SCRAM-SHA-1",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_auth_method_name",
+      "name": "authentication_ldap_sasl_auth_method_name",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-sasl-bind-base-dn=value",
+      "default": "NULL",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_bind_base_dn",
+      "name": "authentication_ldap_sasl_bind_base_dn",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-sasl-bind-root-dn=value",
+      "default": "NULL",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_bind_root_dn",
+      "name": "authentication_ldap_sasl_bind_root_dn",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-sasl-bind-root-pwd=value",
+      "default": "NULL",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_bind_root_pwd",
+      "name": "authentication_ldap_sasl_bind_root_pwd",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-sasl-ca-path=value",
+      "default": "NULL",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_ca_path",
+      "name": "authentication_ldap_sasl_ca_path",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-sasl-group-search-attr=value",
+      "default": "cn",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_group_search_attr",
+      "name": "authentication_ldap_sasl_group_search_attr",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-sasl-group-search-filter=value",
+      "default": "(|(&(objectClass=posixGroup)(memberUid=%s))(&(objectClass=group)(member=%s)))",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_group_search_filter",
+      "name": "authentication_ldap_sasl_group_search_filter",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-sasl-init-pool-size=#",
+      "default": "10",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_init_pool_size",
+      "name": "authentication_ldap_sasl_init_pool_size",
+      "range": {
+        "from": 0,
+        "to": 32767
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--authentication-ldap-sasl-log-status=#",
+      "default": "1",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_log_status",
+      "name": "authentication_ldap_sasl_log_status",
+      "range": {
+        "from": 1
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--authentication-ldap-sasl-max-pool-size=#",
+      "default": "1000",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_max_pool_size",
+      "name": "authentication_ldap_sasl_max_pool_size",
+      "range": {
+        "from": 0,
+        "to": 32767
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--authentication-ldap-sasl-server-host=host_name",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_server_host",
+      "name": "authentication_ldap_sasl_server_host",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-sasl-server-port=port_num",
+      "default": "389",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_server_port",
+      "name": "authentication_ldap_sasl_server_port",
+      "range": {
+        "from": 1,
+        "to": 32376
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--authentication-ldap-sasl-tls[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_tls",
+      "name": "authentication_ldap_sasl_tls",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--authentication-ldap-sasl-user-search-attr=value",
+      "default": "uid",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_sasl_user_search_attr",
+      "name": "authentication_ldap_sasl_user_search_attr",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-simple-auth-method-name=value",
+      "default": "SIMPLE",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_auth_method_name",
+      "name": "authentication_ldap_simple_auth_method_name",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-simple-bind-base-dn=value",
+      "default": "NULL",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_bind_base_dn",
+      "name": "authentication_ldap_simple_bind_base_dn",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-simple-bind-root-dn=value",
+      "default": "NULL",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_bind_root_dn",
+      "name": "authentication_ldap_simple_bind_root_dn",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-simple-bind-root-pwd=value",
+      "default": "NULL",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_bind_root_pwd",
+      "name": "authentication_ldap_simple_bind_root_pwd",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-simple-ca-path=value",
+      "default": "NULL",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_ca_path",
+      "name": "authentication_ldap_simple_ca_path",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-simple-group-search-attr=value",
+      "default": "cn",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_group_search_attr",
+      "name": "authentication_ldap_simple_group_search_attr",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-simple-group-search-filter=value",
+      "default": "(|(&(objectClass=posixGroup)(memberUid=%s))(&(objectClass=group)(member=%s)))",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_group_search_filter",
+      "name": "authentication_ldap_simple_group_search_filter",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-simple-init-pool-size=#",
+      "default": "10",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_init_pool_size",
+      "name": "authentication_ldap_simple_init_pool_size",
+      "range": {
+        "from": 0,
+        "to": 32767
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--authentication-ldap-simple-log-status=#",
+      "default": "1",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_log_status",
+      "name": "authentication_ldap_simple_log_status",
+      "range": {
+        "from": 1
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--authentication-ldap-simple-max-pool-size=#",
+      "default": "1000",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_max_pool_size",
+      "name": "authentication_ldap_simple_max_pool_size",
+      "range": {
+        "from": 0,
+        "to": 32767
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--authentication-ldap-simple-server-host=host_name",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_server_host",
+      "name": "authentication_ldap_simple_server_host",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--authentication-ldap-simple-server-port=port_num",
+      "default": "389",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_server_port",
+      "name": "authentication_ldap_simple_server_port",
+      "range": {
+        "from": 1,
+        "to": 32376
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--authentication-ldap-simple-tls[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_tls",
+      "name": "authentication_ldap_simple_tls",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--authentication-ldap-simple-user-search-attr=value",
+      "default": "uid",
+      "dynamic": true,
+      "id": "sysvar_authentication_ldap_simple_user_search_attr",
+      "name": "authentication_ldap_simple_user_search_attr",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    }
+  ],
+  "name": "pluggable-authentication-system-variables",
+  "url": "https://dev.mysql.com/doc/refman/8.0/en/pluggable-authentication-system-variables.html"
+}

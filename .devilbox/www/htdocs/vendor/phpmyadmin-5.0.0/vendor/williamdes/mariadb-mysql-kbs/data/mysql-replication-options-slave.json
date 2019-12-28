@@ -1,0 +1,676 @@
+{
+  "data": [
+    {
+      "cli": "--master-info-file=file_name",
+      "default": "master.info",
+      "id": "option_mysqld_master-info-file",
+      "name": "master_info_file",
+      "type": "file name"
+    },
+    {
+      "cli": "--master-retry-count=#",
+      "default": "86400",
+      "id": "option_mysqld_master-retry-count",
+      "name": "master_retry_count",
+      "range": {
+        "from": 0
+      },
+      "type": "integer"
+    },
+    {
+      "cli": "--max-relay-log-size=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "option_mysqld_max-relay-log-size",
+      "name": "max_relay_log_size",
+      "range": {
+        "from": 0,
+        "to": 1073741824
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--relay-log-purge[={OFF|ON}]",
+      "default": "ON",
+      "dynamic": true,
+      "id": "option_mysqld_relay-log-purge",
+      "name": "relay_log_purge",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--relay-log-space-limit=#",
+      "default": "0",
+      "dynamic": false,
+      "id": "option_mysqld_relay-log-space-limit",
+      "name": "relay_log_space_limit",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--replicate-do-db=name",
+      "id": "option_mysqld_replicate-do-db",
+      "name": "replicate_do_db",
+      "type": "string"
+    },
+    {
+      "cli": "--replicate-ignore-db=name",
+      "id": "option_mysqld_replicate-ignore-db",
+      "name": "replicate_ignore_db",
+      "type": "string"
+    },
+    {
+      "cli": "--replicate-do-table=name",
+      "id": "option_mysqld_replicate-do-table",
+      "name": "replicate_do_table",
+      "type": "string"
+    },
+    {
+      "cli": "--replicate-ignore-table=name",
+      "id": "option_mysqld_replicate-ignore-table",
+      "name": "replicate_ignore_table",
+      "type": "string"
+    },
+    {
+      "cli": "--replicate-rewrite-db=old_name->new_name",
+      "id": "option_mysqld_replicate-rewrite-db",
+      "name": "replicate_rewrite_db",
+      "type": "string"
+    },
+    {
+      "cli": "--replicate-same-server-id[={OFF|ON}]",
+      "default": "OFF",
+      "id": "option_mysqld_replicate-same-server-id",
+      "name": "replicate_same_server_id",
+      "type": "boolean"
+    },
+    {
+      "cli": "--replicate-wild-do-table=name",
+      "id": "option_mysqld_replicate-wild-do-table",
+      "name": "replicate_wild_do_table",
+      "type": "string"
+    },
+    {
+      "cli": "--replicate-wild-ignore-table=name",
+      "id": "option_mysqld_replicate-wild-ignore-table",
+      "name": "replicate_wild_ignore_table",
+      "type": "string"
+    },
+    {
+      "cli": "--skip-slave-start[={OFF|ON}]",
+      "default": "OFF",
+      "id": "option_mysqld_skip-slave-start",
+      "name": "skip_slave_start",
+      "type": "boolean"
+    },
+    {
+      "cli": "--slave-skip-errors=name",
+      "default": "OFF",
+      "dynamic": false,
+      "id": "option_mysqld_slave-skip-errors",
+      "name": "slave_skip_errors",
+      "scope": [
+        "global"
+      ],
+      "type": "string",
+      "validValues": [
+        "OFF",
+        "[list of error codes]",
+        "all",
+        "ddl_exist_errors"
+      ]
+    },
+    {
+      "cli": "--slave-sql-verify-checksum[={OFF|ON}]",
+      "default": "ON",
+      "id": "option_mysqld_slave-sql-verify-checksum",
+      "name": "slave_sql_verify_checksum",
+      "type": "boolean"
+    },
+    {
+      "cli": "--abort-slave-event-count=#",
+      "default": "0",
+      "id": "option_mysqld_abort-slave-event-count",
+      "name": "abort_slave_event_count",
+      "range": {
+        "from": 0
+      },
+      "type": "integer"
+    },
+    {
+      "cli": "--disconnect-slave-event-count=#",
+      "default": "0",
+      "id": "option_mysqld_disconnect-slave-event-count",
+      "name": "disconnect_slave_event_count",
+      "type": "integer"
+    },
+    {
+      "cli": "--init-slave=name",
+      "dynamic": true,
+      "id": "sysvar_init_slave",
+      "name": "init_slave",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--log-slow-slave-statements[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_log_slow_slave_statements",
+      "name": "log_slow_slave_statements",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--master-info-repository={FILE|TABLE}",
+      "dynamic": true,
+      "id": "sysvar_master_info_repository",
+      "name": "master_info_repository",
+      "scope": [
+        "global"
+      ],
+      "type": "string",
+      "validValues": [
+        "FILE",
+        "TABLE"
+      ]
+    },
+    {
+      "cli": "--max-relay-log-size=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "sysvar_max_relay_log_size",
+      "name": "max_relay_log_size",
+      "range": {
+        "from": 0,
+        "to": 1073741824
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--relay-log=file_name",
+      "dynamic": false,
+      "id": "sysvar_relay_log",
+      "name": "relay_log",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "default": "datadir + '/' + hostname + '-relay-bin'",
+      "dynamic": false,
+      "id": "sysvar_relay_log_basename",
+      "name": "relay_log_basename",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--relay-log-index=file_name",
+      "default": "*host_name*-relay-bin.index",
+      "dynamic": false,
+      "id": "sysvar_relay_log_index",
+      "name": "relay_log_index",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--relay-log-info-file=file_name",
+      "default": "relay-log.info",
+      "dynamic": false,
+      "id": "sysvar_relay_log_info_file",
+      "name": "relay_log_info_file",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--relay-log-info-repository=value",
+      "dynamic": true,
+      "id": "sysvar_relay_log_info_repository",
+      "name": "relay_log_info_repository",
+      "scope": [
+        "global"
+      ],
+      "type": "string",
+      "validValues": [
+        "FILE",
+        "TABLE"
+      ]
+    },
+    {
+      "cli": "--relay-log-purge[={OFF|ON}]",
+      "default": "ON",
+      "dynamic": true,
+      "id": "sysvar_relay_log_purge",
+      "name": "relay_log_purge",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--relay-log-recovery[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": false,
+      "id": "sysvar_relay_log_recovery",
+      "name": "relay_log_recovery",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--relay-log-space-limit=#",
+      "default": "0",
+      "dynamic": false,
+      "id": "sysvar_relay_log_space_limit",
+      "name": "relay_log_space_limit",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--report-host=host_name",
+      "dynamic": false,
+      "id": "sysvar_report_host",
+      "name": "report_host",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--report-password=name",
+      "dynamic": false,
+      "id": "sysvar_report_password",
+      "name": "report_password",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--report-port=port_num",
+      "default": "[slave_port]",
+      "dynamic": false,
+      "id": "sysvar_report_port",
+      "name": "report_port",
+      "range": {
+        "from": 0,
+        "to": 65535
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--report-user=name",
+      "dynamic": false,
+      "id": "sysvar_report_user",
+      "name": "report_user",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--rpl-read-size=#",
+      "default": "8192",
+      "dynamic": true,
+      "id": "sysvar_rpl_read_size",
+      "name": "rpl_read_size",
+      "range": {
+        "from": 8192,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--rpl-semi-sync-slave-enabled[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_rpl_semi_sync_slave_enabled",
+      "name": "rpl_semi_sync_slave_enabled",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--rpl-semi-sync-slave-trace-level=#",
+      "default": "32",
+      "dynamic": true,
+      "id": "sysvar_rpl_semi_sync_slave_trace_level",
+      "name": "rpl_semi_sync_slave_trace_level",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--rpl-stop-slave-timeout=seconds",
+      "default": "31536000",
+      "dynamic": true,
+      "id": "sysvar_rpl_stop_slave_timeout",
+      "name": "rpl_stop_slave_timeout",
+      "range": {
+        "from": 2,
+        "to": 31536000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--slave-checkpoint-group=#",
+      "default": "512",
+      "dynamic": true,
+      "id": "sysvar_slave_checkpoint_group",
+      "name": "slave_checkpoint_group",
+      "range": {
+        "from": 32,
+        "to": 524280
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--slave-checkpoint-period=#",
+      "default": "300",
+      "dynamic": true,
+      "id": "sysvar_slave_checkpoint_period",
+      "name": "slave_checkpoint_period",
+      "range": {
+        "from": 1,
+        "to": 4
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--slave-compressed-protocol[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_slave_compressed_protocol",
+      "name": "slave_compressed_protocol",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--slave-exec-mode=mode",
+      "default": "IDEMPOTENT (NDB)STRICT (Other)",
+      "dynamic": true,
+      "id": "sysvar_slave_exec_mode",
+      "name": "slave_exec_mode",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "IDEMPOTENT",
+        "STRICT"
+      ]
+    },
+    {
+      "cli": "--slave-load-tmpdir=dir_name",
+      "default": "Value of --tmpdir",
+      "dynamic": false,
+      "id": "sysvar_slave_load_tmpdir",
+      "name": "slave_load_tmpdir",
+      "scope": [
+        "global"
+      ],
+      "type": "directory name"
+    },
+    {
+      "cli": "--slave-max-allowed-packet=#",
+      "default": "1073741824",
+      "dynamic": true,
+      "id": "sysvar_slave_max_allowed_packet",
+      "name": "slave_max_allowed_packet",
+      "range": {
+        "from": 1024,
+        "to": 1073741824
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--slave-net-timeout=#",
+      "default": "60",
+      "dynamic": true,
+      "id": "sysvar_slave_net_timeout",
+      "name": "slave_net_timeout",
+      "range": {
+        "from": 1
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--slave-parallel-type=value",
+      "default": "DATABASE",
+      "dynamic": true,
+      "id": "sysvar_slave_parallel_type",
+      "name": "slave_parallel_type",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "DATABASE",
+        "LOGICAL_CLOCK"
+      ]
+    },
+    {
+      "cli": "--slave-parallel-workers=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "sysvar_slave_parallel_workers",
+      "name": "slave_parallel_workers",
+      "range": {
+        "from": 0,
+        "to": 1024
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--slave-pending-jobs-size-max=#",
+      "dynamic": true,
+      "id": "sysvar_slave_pending_jobs_size_max",
+      "name": "slave_pending_jobs_size_max",
+      "range": {
+        "from": 1024,
+        "to": 16
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--slave-preserve-commit-order[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_slave_preserve_commit_order",
+      "name": "slave_preserve_commit_order",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--slave-rows-search-algorithms=value",
+      "dynamic": true,
+      "id": "sysvar_slave_rows_search_algorithms",
+      "name": "slave_rows_search_algorithms",
+      "scope": [
+        "global"
+      ],
+      "type": "set",
+      "validValues": [
+        "TABLE_SCAN,INDEX_SCAN",
+        "INDEX_SCAN,HASH_SCAN",
+        "TABLE_SCAN,HASH_SCAN",
+        "TABLE_SCAN,INDEX_SCAN,HASH_SCAN"
+      ]
+    },
+    {
+      "cli": "--slave-skip-errors=name",
+      "default": "OFF",
+      "dynamic": false,
+      "id": "sysvar_slave_skip_errors",
+      "name": "slave_skip_errors",
+      "scope": [
+        "global"
+      ],
+      "type": "string",
+      "validValues": [
+        "OFF",
+        "[list of error codes]",
+        "all",
+        "ddl_exist_errors"
+      ]
+    },
+    {
+      "cli": "--slave-sql-verify-checksum[={OFF|ON}]",
+      "default": "ON",
+      "dynamic": true,
+      "id": "sysvar_slave_sql_verify_checksum",
+      "name": "slave_sql_verify_checksum",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--slave-transaction-retries=#",
+      "default": "10",
+      "dynamic": true,
+      "id": "sysvar_slave_transaction_retries",
+      "name": "slave_transaction_retries",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--slave-type-conversions=set",
+      "default": "",
+      "dynamic": false,
+      "id": "sysvar_slave_type_conversions",
+      "name": "slave_type_conversions",
+      "scope": [
+        "global"
+      ],
+      "type": "set",
+      "validValues": [
+        "ALL_LOSSY",
+        "ALL_NON_LOSSY",
+        "ALL_SIGNED",
+        "ALL_UNSIGNED"
+      ]
+    },
+    {
+      "dynamic": true,
+      "id": "sysvar_sql_slave_skip_counter",
+      "name": "sql_slave_skip_counter",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--sync-master-info=#",
+      "default": "10000",
+      "dynamic": true,
+      "id": "sysvar_sync_master_info",
+      "name": "sync_master_info",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--sync-relay-log=#",
+      "default": "10000",
+      "dynamic": true,
+      "id": "sysvar_sync_relay_log",
+      "name": "sync_relay_log",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--sync-relay-log-info=#",
+      "default": "10000",
+      "dynamic": true,
+      "id": "sysvar_sync_relay_log_info",
+      "name": "sync_relay_log_info",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "replication-options-slave",
+  "url": "https://dev.mysql.com/doc/refman/8.0/en/replication-options-slave.html"
+}

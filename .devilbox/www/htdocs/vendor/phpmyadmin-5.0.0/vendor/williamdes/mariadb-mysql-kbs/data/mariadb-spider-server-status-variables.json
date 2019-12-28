@@ -1,0 +1,42 @@
+{
+  "data": [
+    {
+      "id": "spider_direct_aggregate",
+      "name": "Spider_direct_aggregate",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "spider_direct_order_limit",
+      "name": "Spider_direct_order_limit",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "spider_mon_table_cache_version",
+      "name": "Spider_mon_table_cache_version",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "spider_mon_table_cache_version_req",
+      "name": "Spider_mon_table_cache_version_req",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "spider-server-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/spider-server-status-variables/"
+}

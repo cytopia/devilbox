@@ -1,0 +1,1211 @@
+<html>
+<div class="itemizedlist">
+    <ul class="itemizedlist" style="list-style-type: disc; ">
+        <li class="listitem">
+            <p><a name="sysvar_binlog_gtid_simple_recovery"></a>
+                <a class="indexterm" name="idm140532554077552"></a>
+
+                <a class="indexterm" name="idm140532554076512"></a>
+
+                <a class="link" href="replication-options-gtids.html#sysvar_binlog_gtid_simple_recovery"><code
+                        class="literal">binlog_gtid_simple_recovery</code></a>
+            </p>
+            <div class="informaltable">
+                <table frame="box" rules="all" summary="Properties for binlog_gtid_simple_recovery">
+                    <colgroup>
+                        <col width="30%">
+                        <col width="70%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Command-Line Format</strong></span></td>
+                            <td><code class="literal">--binlog-gtid-simple-recovery[={OFF|ON}]</code></td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>System Variable</strong></span></td>
+                            <td><code
+                                    class="literal"><a class="link" href="replication-options-gtids.html#sysvar_binlog_gtid_simple_recovery">binlog_gtid_simple_recovery</a></code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Scope</strong></span></td>
+                            <td>Global</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Dynamic</strong></span></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong><a class="link"
+                                            href="optimizer-hints.html#optimizer-hints-set-var"
+                                            title="Variable-Setting Hint Syntax"><code
+                                                class="literal">SET_VAR</code></a> Hint Applies</strong></span></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Type</strong></span></td>
+                            <td>Boolean</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Default Value</strong></span></td>
+                            <td><code class="literal">ON</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                This variable controls how binary log files are iterated
+                during the search for GTIDs when MySQL starts or restarts.
+            </p>
+            <p>
+                When
+                <a class="link" href="replication-options-gtids.html#sysvar_binlog_gtid_simple_recovery"><code
+                        class="literal">binlog_gtid_simple_recovery=TRUE</code></a>,
+                which is the default in MySQL 8.0, the values of
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                        class="literal">gtid_executed</code></a> and
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a> are computed at
+                startup based on the values of
+                <code class="literal">Previous_gtids_log_event</code> in the most recent
+                and oldest binary log files. For a description of the
+                computation, see
+                <a class="xref" href="replication-gtids-lifecycle.html#replication-gtids-gtid-purged"
+                    title="The gtid_purged System Variable">The <code class="literal">gtid_purged</code> System
+                    Variable</a>. This setting
+                accesses only two binary log files during server restart. If
+                all binary logs on the server were generated using MySQL 5.7.8
+                or later,
+                <a class="link" href="replication-options-gtids.html#sysvar_binlog_gtid_simple_recovery"><code
+                        class="literal">binlog_gtid_simple_recovery=TRUE</code></a>
+                can always safely be used.
+
+
+            </p>
+            <p>
+                If any binary logs from MySQL 5.7.7 or older are present on
+                the server (for example, following an upgrade of an older
+                server to MySQL 8.0), with
+                <a class="link" href="replication-options-gtids.html#sysvar_binlog_gtid_simple_recovery"><code
+                        class="literal">binlog_gtid_simple_recovery=TRUE</code></a>,
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                        class="literal">gtid_executed</code></a> and
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a> might be
+                initialized incorrectly in the following two situations:
+            </p>
+            <div class="itemizedlist">
+                <ul class="itemizedlist" style="list-style-type: circle; ">
+                    <li class="listitem">
+                        <p>
+                            The newest binary log was generated by MySQL 5.7.5 or
+                            earlier, and <a class="link" href="replication-options-gtids.html#sysvar_gtid_mode"><code
+                                    class="literal">gtid_mode</code></a>
+                            was <code class="literal">ON</code> for some binary logs but
+                            <code class="literal">OFF</code> for the newest binary log.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            A <code class="literal">SET @@GLOBAL.gtid_purged</code> statement
+                            was issued on MySQL 5.7.7 or earlier, and the binary log
+                            that was active at the time of the <code class="literal">SET
+                      @@GLOBAL.gtid_purged</code> statement has not yet been
+                            purged.
+
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <p>
+                If an incorrect GTID set is computed in either situation, it
+                will remain incorrect even if the server is later restarted
+                with
+                <a class="link" href="replication-options-gtids.html#sysvar_binlog_gtid_simple_recovery"><code
+                        class="literal">binlog_gtid_simple_recovery=FALSE</code></a>.
+                If either of these situations apply or might apply on the
+                server, set
+                <a class="link" href="replication-options-gtids.html#sysvar_binlog_gtid_simple_recovery"><code
+                        class="literal">binlog_gtid_simple_recovery=FALSE</code></a>
+                before starting or restarting the server.
+            </p>
+            <p>
+                When
+                <a class="link" href="replication-options-gtids.html#sysvar_binlog_gtid_simple_recovery"><code
+                        class="literal">binlog_gtid_simple_recovery=FALSE</code></a>
+                is set, the method of computing
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                        class="literal">gtid_executed</code></a> and
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a> as described in
+                <a class="xref" href="replication-gtids-lifecycle.html#replication-gtids-gtid-purged"
+                    title="The gtid_purged System Variable">The <code class="literal">gtid_purged</code> System
+                    Variable</a> is changed to
+                iterate the binary log files as follows:
+            </p>
+            <div class="itemizedlist">
+                <ul class="itemizedlist" style="list-style-type: circle; ">
+                    <li class="listitem">
+                        <p>
+                            Instead of using the value of
+                            <code class="literal">Previous_gtids_log_event</code> and GTID log
+                            events from the newest binary log file, the computation
+                            for <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                                    class="literal">gtid_executed</code></a>
+                            iterates from the newest binary log file, and uses the
+                            value of <code class="literal">Previous_gtids_log_event</code> and
+                            any GTID log events from the first binary log file where
+                            it finds a <code class="literal">Previous_gtids_log_event</code>
+                            value. If the server's most recent binary log files do not
+                            have GTID log events, for example if
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_mode"><code
+                                    class="literal">gtid_mode=ON</code></a> was used but
+                            the server was later changed to
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_mode"><code
+                                    class="literal">gtid_mode=OFF</code></a>, this
+                            process can take a long time.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            Instead of using the value of
+                            <code class="literal">Previous_gtids_log_event</code> from the
+                            oldest binary log file, the computation for
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                                    class="literal">gtid_purged</code></a> iterates from
+                            the oldest binary log file, and uses the value of
+                            <code class="literal">Previous_gtids_log_event</code> from the first
+                            binary log file where it finds either a nonempty
+                            <code class="literal">Previous_gtids_log_event</code> value, or at
+                            least one GTID log event (indicating that the use of GTIDs
+                            starts at that point). If the server's older binary log
+                            files do not have GTID log events, for example if
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_mode"><code
+                                    class="literal">gtid_mode=ON</code></a> was only set
+                            recently on the server, this process can take a long time.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="listitem">
+            <p><a name="sysvar_enforce_gtid_consistency"></a>
+                <a class="link" href="replication-options-gtids.html#sysvar_enforce_gtid_consistency"><code
+                        class="literal">enforce_gtid_consistency</code></a>
+            </p><a class="indexterm" name="idm140532554003024"></a><a class="indexterm" name="idm140532554001920"></a>
+            <div class="informaltable">
+                <table frame="box" rules="all" summary="Properties for enforce_gtid_consistency">
+                    <colgroup>
+                        <col width="30%">
+                        <col width="70%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Command-Line Format</strong></span></td>
+                            <td><code class="literal">--enforce-gtid-consistency[=value]</code></td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>System Variable</strong></span></td>
+                            <td><code
+                                    class="literal"><a class="link" href="replication-options-gtids.html#sysvar_enforce_gtid_consistency">enforce_gtid_consistency</a></code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Scope</strong></span></td>
+                            <td>Global</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Dynamic</strong></span></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong><a class="link"
+                                            href="optimizer-hints.html#optimizer-hints-set-var"
+                                            title="Variable-Setting Hint Syntax"><code
+                                                class="literal">SET_VAR</code></a> Hint Applies</strong></span></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Type</strong></span></td>
+                            <td>Enumeration</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Default Value</strong></span></td>
+                            <td><code class="literal">OFF</code></td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Valid Values</strong></span></td>
+                            <td>
+                                <p class="valid-value"><code class="literal">OFF</code></p>
+                                <p class="valid-value"><code class="literal">ON</code></p>
+                                <p class="valid-value"><code class="literal">WARN</code></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                Depending on the value of this variable, the server enforces
+                GTID consistency by allowing execution of only statements that
+                can be safely logged using a GTID. You
+                <span class="emphasis"><em>must</em></span> set this variable to
+                <code class="literal">ON</code> before enabling GTID based replication.
+            </p>
+            <p>
+                The values that
+                <a class="link" href="replication-options-gtids.html#sysvar_enforce_gtid_consistency"><code
+                        class="literal">enforce_gtid_consistency</code></a> can
+                be configured to are:
+            </p>
+            <div class="itemizedlist">
+                <ul class="itemizedlist" style="list-style-type: circle; ">
+                    <li class="listitem">
+                        <p>
+                            <code class="literal">OFF</code>: all transactions are allowed to
+                            violate GTID consistency.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            <code class="literal">ON</code>: no transaction is allowed to
+                            violate GTID consistency.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            <code class="literal">WARN</code>: all transactions are allowed to
+                            violate GTID consistency, but a warning is generated in
+                            this case.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <p>
+                Only statements that can be logged using GTID safe statements
+                can be logged when
+                <a class="link" href="replication-options-gtids.html#sysvar_enforce_gtid_consistency"><code
+                        class="literal">enforce_gtid_consistency</code></a> is
+                set to <code class="literal">ON</code>, so the operations listed here
+                cannot be used with this option:
+            </p>
+            <div class="itemizedlist">
+                <ul class="itemizedlist" style="list-style-type: circle; ">
+                    <li class="listitem">
+                        <p>
+                            <a class="link" href="create-table-select.html"
+                                title="13.1.20.5&nbsp;CREATE TABLE ... SELECT Syntax"><code class="literal">CREATE
+                      TABLE ... SELECT</code></a> statements
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            <a class="link" href="create-table.html" title="13.1.20&nbsp;CREATE TABLE Syntax"><code
+                                    class="literal">CREATE
+                      TEMPORARY TABLE</code></a> or
+                            <a class="link" href="drop-table.html" title="13.1.32&nbsp;DROP TABLE Syntax"><code
+                                    class="literal">DROP TEMPORARY
+                      TABLE</code></a> statements inside transactions
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            Transactions or statements that update both transactional
+                            and nontransactional tables. There is an exception that
+                            nontransactional DML is allowed in the same transaction or
+                            in the same statement as transactional DML, if all
+                            <span class="emphasis"><em>nontransactional</em></span> tables are
+                            temporary.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <p>
+                <a class="link" href="replication-options-gtids.html#sysvar_enforce_gtid_consistency"><code
+                        class="option">--enforce-gtid-consistency</code></a> only
+                takes effect if binary logging takes place for a statement. If
+                binary logging is disabled on the server, or if statements are
+                not written to the binary log because they are removed by a
+                filter, GTID consistency is not checked or enforced for the
+                statements that are not logged.
+            </p>
+            <p>
+                For more information, see
+                <a class="xref" href="replication-gtids-restrictions.html"
+                    title="17.1.3.6&nbsp;Restrictions on Replication with GTIDs">Section&nbsp;17.1.3.6, “Restrictions on
+                    Replication with GTIDs”</a>.
+            </p>
+            <p>
+                Prior to MySQL 5.7 and in early releases in that release
+                series, the boolean
+                <a class="link" href="replication-options-gtids.html#sysvar_enforce_gtid_consistency"><code
+                        class="literal">enforce_gtid_consistency</code></a>
+                defaulted to <code class="literal">OFF</code>. To maintain compatibility
+                with these earlier releases, the enumeration defaults to
+                <code class="literal">OFF</code>, and setting
+                <a class="link" href="replication-options-gtids.html#sysvar_enforce_gtid_consistency"><code
+                        class="option">--enforce-gtid-consistency</code></a>
+                without a value is interpreted as setting the value to
+                <code class="literal">ON</code>. The variable also has multiple textual
+                aliases for the values: <code class="literal">0=OFF=FALSE</code>,
+                <code class="literal">1=ON=TRUE</code>,<code class="literal">2=WARN</code>. This
+                differs from other enumeration types but maintains
+                compatibility with the boolean type used in previous releases.
+                These changes impact on what is returned by the variable.
+                Using <code class="literal">SELECT @@ENFORCE_GTID_CONSISTENCY</code>,
+                <code class="literal">SHOW VARIABLES LIKE
+                  'ENFORCE_GTID_CONSISTENCY'</code>, and <code class="literal">SELECT *
+                  FROM INFORMATION_SCHEMA.VARIABLES WHERE 'VARIABLE_NAME' =
+                  'ENFORCE_GTID_CONSISTENCY'</code>, all return the textual
+                form, not the numeric form. This is an incompatible change,
+                since <code class="literal">@@ENFORCE_GTID_CONSISTENCY</code> returns
+                the numeric form for booleans but returns the textual form for
+                <code class="literal">SHOW</code> and the Information Schema.
+            </p>
+        </li>
+        <li class="listitem">
+            <p><a name="sysvar_gtid_executed"></a>
+                <a class="indexterm" name="idm140532553933872"></a>
+
+                <a class="indexterm" name="idm140532553932816"></a>
+
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                        class="literal">gtid_executed</code></a>
+            </p>
+            <div class="informaltable">
+                <table frame="box" rules="all" summary="Properties for gtid_executed">
+                    <colgroup>
+                        <col width="30%">
+                        <col width="70%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>System Variable</strong></span></td>
+                            <td><code
+                                    class="literal"><a class="link" href="replication-options-gtids.html#sysvar_gtid_executed">gtid_executed</a></code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>System Variable</strong></span></td>
+                            <td><code
+                                    class="literal"><a class="link" href="replication-options-gtids.html#sysvar_gtid_executed">gtid_executed</a></code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Scope</strong></span></td>
+                            <td>Global</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Scope</strong></span></td>
+                            <td>Global, Session</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Dynamic</strong></span></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Dynamic</strong></span></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong><a class="link"
+                                            href="optimizer-hints.html#optimizer-hints-set-var"
+                                            title="Variable-Setting Hint Syntax"><code
+                                                class="literal">SET_VAR</code></a> Hint Applies</strong></span></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong><a class="link"
+                                            href="optimizer-hints.html#optimizer-hints-set-var"
+                                            title="Variable-Setting Hint Syntax"><code
+                                                class="literal">SET_VAR</code></a> Hint Applies</strong></span></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Type</strong></span></td>
+                            <td>String</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                When used with global scope, this variable contains a
+                representation of the set of all transactions executed on the
+                server and GTIDs that have been set by a
+                <a class="link" href="set-variable.html" title="13.7.6.1&nbsp;SET Syntax for Variable Assignment"><code
+                        class="literal">SET</code></a>
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a> statement. This
+                is the same as the value of the
+                <code class="literal">Executed_Gtid_Set</code> column in the output of
+                <a class="link" href="show-master-status.html" title="13.7.7.23&nbsp;SHOW MASTER STATUS Syntax"><code
+                        class="literal">SHOW MASTER STATUS</code></a> and
+                <a class="link" href="show-slave-status.html" title="13.7.7.34&nbsp;SHOW SLAVE STATUS Syntax"><code
+                        class="literal">SHOW SLAVE STATUS</code></a>. The value of
+                this variable is a GTID set, see
+                <a class="xref" href="replication-gtids-concepts.html#replication-gtids-concepts-gtid-sets"
+                    title="GTID Sets">GTID Sets</a> for
+                more information.
+            </p>
+            <p>
+                When the server starts,
+                <code class="literal">@@GLOBAL.gtid_executed</code> is initialized. See
+                <a class="link" href="replication-options-gtids.html#sysvar_binlog_gtid_simple_recovery"><code
+                        class="literal">binlog_gtid_simple_recovery</code></a>
+                for more information on how binary logs are iterated to
+                populate <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                        class="literal">gtid_executed</code></a>. GTIDs
+                are then added to the set as transactions are executed, or if
+                any
+                <a class="link" href="set-variable.html" title="13.7.6.1&nbsp;SET Syntax for Variable Assignment"><code
+                        class="literal">SET</code></a>
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a> statement is
+                executed.
+            </p>
+            <p>
+                The set of transactions that can be found in the binary logs
+                at any given time is equal to
+                <a class="link" href="gtid-functions.html#function_gtid-subtract"><code class="literal">GTID_SUBTRACT(@@GLOBAL.gtid_executed,
+                  @@GLOBAL.gtid_purged)</code></a>; that is, to all transactions
+                in the binary log that have not yet been purged.
+            </p>
+            <p>
+                Issuing <a class="link" href="reset-master.html" title="13.4.1.2&nbsp;RESET MASTER Syntax"><code
+                        class="literal">RESET MASTER</code></a> causes the
+                global value (but not the session value) of this variable to
+                be reset to an empty string. GTIDs are not otherwise removed
+                from this set other than when the set is cleared due to
+                <code class="literal">RESET MASTER</code>.
+            </p>
+            <p>
+                In some older releases, this variable could also be used with
+                session scope, where it contained a representation of the set
+                of transactions that are written to the cache in the current
+                session. The session scope is now deprecated.
+            </p>
+        </li>
+        <li class="listitem">
+            <p><a name="sysvar_gtid_executed_compression_period"></a>
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed_compression_period"><code
+                        class="literal">gtid_executed_compression_period</code></a>
+            </p><a class="indexterm" name="idm140532553874368"></a><a class="indexterm" name="idm140532553873280"></a>
+            <div class="informaltable">
+                <table frame="box" rules="all" summary="Properties for gtid_executed_compression_period">
+                    <colgroup>
+                        <col width="30%">
+                        <col width="70%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Command-Line Format</strong></span></td>
+                            <td><code class="literal">--gtid-executed-compression-period=#</code></td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>System Variable</strong></span></td>
+                            <td><code
+                                    class="literal"><a class="link" href="replication-options-gtids.html#sysvar_gtid_executed_compression_period">gtid_executed_compression_period</a></code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Scope</strong></span></td>
+                            <td>Global</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Dynamic</strong></span></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong><a class="link"
+                                            href="optimizer-hints.html#optimizer-hints-set-var"
+                                            title="Variable-Setting Hint Syntax"><code
+                                                class="literal">SET_VAR</code></a> Hint Applies</strong></span></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Type</strong></span></td>
+                            <td>Integer</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Default Value</strong></span></td>
+                            <td><code class="literal">1000</code></td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Minimum Value</strong></span></td>
+                            <td><code class="literal">0</code></td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Maximum Value</strong></span></td>
+                            <td><code class="literal">4294967295</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                Compress the <code class="literal">mysql.gtid_executed</code> table each
+                time this many transactions have been processed. A setting of
+                0 means that this table is not compressed. Since no
+                compression of the table occurs when using the binary log,
+                setting the value of the variable has no effect unless binary
+                logging is disabled.
+            </p>
+            <p>
+                See
+                <a class="xref" href="replication-gtids-concepts.html#replication-gtids-gtid-executed-table-compression"
+                    title="mysql.gtid_executed Table Compression">mysql.gtid_executed Table Compression</a>,
+                for more information.
+            </p>
+        </li>
+        <li class="listitem">
+            <p><a name="sysvar_gtid_mode"></a>
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_mode"><code
+                        class="literal">gtid_mode</code></a>
+            </p><a class="indexterm" name="idm140532553833104"></a><a class="indexterm" name="idm140532553832016"></a>
+            <div class="informaltable">
+                <table frame="box" rules="all" summary="Properties for gtid_mode">
+                    <colgroup>
+                        <col width="30%">
+                        <col width="70%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Command-Line Format</strong></span></td>
+                            <td><code class="literal">--gtid-mode=MODE</code></td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>System Variable</strong></span></td>
+                            <td><code
+                                    class="literal"><a class="link" href="replication-options-gtids.html#sysvar_gtid_mode">gtid_mode</a></code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Scope</strong></span></td>
+                            <td>Global</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Dynamic</strong></span></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong><a class="link"
+                                            href="optimizer-hints.html#optimizer-hints-set-var"
+                                            title="Variable-Setting Hint Syntax"><code
+                                                class="literal">SET_VAR</code></a> Hint Applies</strong></span></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Type</strong></span></td>
+                            <td>Enumeration</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Default Value</strong></span></td>
+                            <td><code class="literal">OFF</code></td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Valid Values</strong></span></td>
+                            <td>
+                                <p class="valid-value"><code class="literal">OFF</code></p>
+                                <p class="valid-value"><code class="literal">OFF_PERMISSIVE</code></p>
+                                <p class="valid-value"><code class="literal">ON_PERMISSIVE</code></p>
+                                <p class="valid-value"><code class="literal">ON</code></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                Controls whether GTID based logging is enabled and what type
+                of transactions the logs can contain. You must have privileges
+                sufficient to set global system variables. See
+                <a class="xref" href="system-variable-privileges.html"
+                    title="5.1.9.1&nbsp;System Variable Privileges">Section&nbsp;5.1.9.1, “System Variable
+                    Privileges”</a>.
+                <a class="link" href="replication-options-gtids.html#sysvar_enforce_gtid_consistency"><code
+                        class="literal">enforce_gtid_consistency</code></a> must
+                be true before you can set
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_mode"><code
+                        class="literal">gtid_mode=ON</code></a>. Before
+                modifying this variable, see
+                <a class="xref" href="replication-mode-change-online.html"
+                    title="17.1.5&nbsp;Changing Replication Modes on Online Servers">Section&nbsp;17.1.5, “Changing
+                    Replication Modes on Online Servers”</a>.
+            </p>
+            <p>
+                Logged transactions can be either anonymous or use GTIDs.
+                Anonymous transactions rely on binary log file and position to
+                identify specific transactions. GTID transactions have a
+                unique identifier that is used to refer to transactions. The
+                different modes are:
+            </p>
+            <div class="itemizedlist">
+                <ul class="itemizedlist" style="list-style-type: circle; ">
+                    <li class="listitem">
+                        <p>
+                            <code class="literal">OFF</code>: Both new and replicated
+                            transactions must be anonymous.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            <code class="literal">OFF_PERMISSIVE</code>: New transactions are
+                            anonymous. Replicated transactions can be either anonymous
+                            or GTID transactions.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            <code class="literal">ON_PERMISSIVE</code>: New transactions are
+                            GTID transactions. Replicated transactions can be either
+                            anonymous or GTID transactions.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            <code class="literal">ON</code>: Both new and replicated
+                            transactions must be GTID transactions.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <p>
+                Changes from one value to another can only be one step at a
+                time. For example, if
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_mode"><code
+                        class="literal">gtid_mode</code></a> is currently set to
+                <code class="literal">OFF_PERMISSIVE</code>, it is possible to change to
+                <code class="literal">OFF</code> or <code class="literal">ON_PERMISSIVE</code> but
+                not to <code class="literal">ON</code>.
+            </p>
+            <p>
+                The values of <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a> and
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                        class="literal">gtid_executed</code></a> are persistent
+                regardless of the value of
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_mode"><code
+                        class="literal">gtid_mode</code></a>. Therefore even
+                after changing the value of
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_mode"><code
+                        class="literal">gtid_mode</code></a>, these variables
+                contain the correct values.
+            </p>
+        </li>
+        <li class="listitem">
+            <p><a name="sysvar_gtid_next"></a>
+                <a class="indexterm" name="idm140532553773568"></a>
+
+                <a class="indexterm" name="idm140532553772512"></a>
+
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_next"><code
+                        class="literal">gtid_next</code></a>
+            </p>
+            <div class="informaltable">
+                <table frame="box" rules="all" summary="Properties for gtid_next">
+                    <colgroup>
+                        <col width="30%">
+                        <col width="70%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>System Variable</strong></span></td>
+                            <td><code
+                                    class="literal"><a class="link" href="replication-options-gtids.html#sysvar_gtid_next">gtid_next</a></code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Scope</strong></span></td>
+                            <td>Session</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Dynamic</strong></span></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong><a class="link"
+                                            href="optimizer-hints.html#optimizer-hints-set-var"
+                                            title="Variable-Setting Hint Syntax"><code
+                                                class="literal">SET_VAR</code></a> Hint Applies</strong></span></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Type</strong></span></td>
+                            <td>Enumeration</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Default Value</strong></span></td>
+                            <td><code class="literal">AUTOMATIC</code></td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Valid Values</strong></span></td>
+                            <td>
+                                <p class="valid-value"><code class="literal">AUTOMATIC</code></p>
+                                <p class="valid-value"><code class="literal">ANONYMOUS</code></p>
+                                <p class="valid-value"><code class="literal">UUID:NUMBER</code></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                This variable is used to specify whether and how the next GTID
+                is obtained.
+            </p>
+            <p>
+                Setting the session value of this system variable is a
+                restricted operation. The session user must have either the
+                <a class="link" href="privileges-provided.html#priv_replication-applier"><code
+                        class="literal">REPLICATION_APPLIER</code></a> privilege
+                (see <a class="xref" href="replication-privilege-checks.html"
+                    title="17.3.3&nbsp;Replication Privilege Checks">Section&nbsp;17.3.3, “Replication Privilege
+                    Checks”</a>), or
+                privileges sufficient to set restricted session variables (see
+                <a class="xref" href="system-variable-privileges.html"
+                    title="5.1.9.1&nbsp;System Variable Privileges">Section&nbsp;5.1.9.1, “System Variable
+                    Privileges”</a>).
+            </p>
+            <p>
+                <code class="literal">gtid_next</code> can take any of the following
+                values:
+            </p>
+            <div class="itemizedlist">
+                <ul class="itemizedlist" style="list-style-type: circle; ">
+                    <li class="listitem">
+                        <p>
+                            <code class="literal">AUTOMATIC</code>: Use the next
+                            automatically-generated global transaction ID.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            <code class="literal">ANONYMOUS</code>: Transactions do not have
+                            global identifiers, and are identified by file and
+                            position only.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            A global transaction ID in
+                            <em class="replaceable"><code>UUID</code></em>:<em
+                                class="replaceable"><code>NUMBER</code></em>
+                            format.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <p>
+                Exactly which of the above options are valid depends on the
+                setting of <a class="link" href="replication-options-gtids.html#sysvar_gtid_mode"><code
+                        class="literal">gtid_mode</code></a>, see
+                <a class="xref" href="replication-mode-change-online-concepts.html"
+                    title="17.1.5.1&nbsp;Replication Mode Concepts">Section&nbsp;17.1.5.1, “Replication Mode
+                    Concepts”</a> for
+                more information. Setting this variable has no effect if
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_mode"><code
+                        class="literal">gtid_mode</code></a> is
+                <code class="literal">OFF</code>.
+            </p>
+            <p>
+                After this variable has been set to
+                <em class="replaceable"><code>UUID</code></em>:<em class="replaceable"><code>NUMBER</code></em>,
+                and a transaction has been committed or rolled back, an
+                explicit <code class="literal">SET GTID_NEXT</code> statement must again
+                be issued before any other statement.
+            </p>
+            <p>
+                <a class="link" href="drop-table.html" title="13.1.32&nbsp;DROP TABLE Syntax"><code
+                        class="literal">DROP TABLE</code></a> or
+                <a class="link" href="drop-table.html" title="13.1.32&nbsp;DROP TABLE Syntax"><code class="literal">DROP TEMPORARY
+                  TABLE</code></a> fails with an explicit error when used on a
+                combination of nontemporary tables with temporary tables, or
+                of temporary tables using transactional storage engines with
+                temporary tables using nontransactional storage engines.
+            </p>
+        </li>
+        <li class="listitem">
+            <p><a name="sysvar_gtid_owned"></a>
+                <a class="indexterm" name="idm140532553718736"></a>
+
+                <a class="indexterm" name="idm140532553717680"></a>
+
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_owned"><code
+                        class="literal">gtid_owned</code></a>
+            </p>
+            <div class="informaltable">
+                <table frame="box" rules="all" summary="Properties for gtid_owned">
+                    <colgroup>
+                        <col width="30%">
+                        <col width="70%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>System Variable</strong></span></td>
+                            <td><code
+                                    class="literal"><a class="link" href="replication-options-gtids.html#sysvar_gtid_owned">gtid_owned</a></code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Scope</strong></span></td>
+                            <td>Global, Session</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Dynamic</strong></span></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong><a class="link"
+                                            href="optimizer-hints.html#optimizer-hints-set-var"
+                                            title="Variable-Setting Hint Syntax"><code
+                                                class="literal">SET_VAR</code></a> Hint Applies</strong></span></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Type</strong></span></td>
+                            <td>String</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                This read-only variable is primarily for internal use. Its
+                contents depend on its scope.
+            </p>
+            <div class="itemizedlist">
+                <ul class="itemizedlist" style="list-style-type: circle; ">
+                    <li class="listitem">
+                        <p>
+                            When used with global scope,
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_owned"><code
+                                    class="literal">gtid_owned</code></a> holds a list
+                            of all the GTIDs that are currently in use on the server,
+                            with the IDs of the threads that own them. This variable
+                            is mainly useful for a multi-threaded replication slave to
+                            check whether a transaction is already being applied on
+                            another thread. An applier thread takes ownership of a
+                            transaction's GTID all the time it is processing the
+                            transaction, so <code class="literal">@@global.gtid_owned</code>
+                            shows the GTID and owner for the duration of processing.
+                            When a transaction has been committed (or rolled back),
+                            the applier thread releases ownership of the GTID.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            When used with session scope,
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_owned"><code
+                                    class="literal">gtid_owned</code></a> holds a single
+                            GTID that is currently in use by and owned by this
+                            session. This variable is mainly useful for testing and
+                            debugging the use of GTIDs when the client has explicitly
+                            assigned a GTID for the transaction by setting
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_next"><code
+                                    class="literal">gtid_next</code></a>. In this case,
+                            <code class="literal">@@session.gtid_owned</code> displays the GTID
+                            all the time the client is processing the transaction,
+                            until the transaction has been committed (or rolled back).
+                            When the client has finished processing the transaction,
+                            the variable is cleared. If
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_next"><code
+                                    class="literal">gtid_next=AUTOMATIC</code></a> is
+                            used for the session,
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_owned"><code
+                                    class="literal">gtid_owned</code></a> is only
+                            populated briefly during the execution of the commit
+                            statement for the transaction, so it cannot be observed
+                            from the session concerned, although it will be listed if
+                            <code class="literal">@@global.gtid_owned</code> is read at the
+                            right point. If you have a requirement to track the GTIDs
+                            that are handled by a client in a session, you can enable
+                            the session state tracker controlled by the
+                            <a class="link" href="server-system-variables.html#sysvar_session_track_gtids"><code
+                                    class="literal">session_track_gtids</code></a>
+                            system variable.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="listitem">
+            <p><a name="sysvar_gtid_purged"></a>
+                <a class="indexterm" name="idm140532553678512"></a>
+
+                <a class="indexterm" name="idm140532553677504"></a>
+
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a>
+            </p>
+            <div class="informaltable">
+                <table frame="box" rules="all" summary="Properties for gtid_purged">
+                    <colgroup>
+                        <col width="30%">
+                        <col width="70%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>System Variable</strong></span></td>
+                            <td><code
+                                    class="literal"><a class="link" href="replication-options-gtids.html#sysvar_gtid_purged">gtid_purged</a></code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Scope</strong></span></td>
+                            <td>Global</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Dynamic</strong></span></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong><a class="link"
+                                            href="optimizer-hints.html#optimizer-hints-set-var"
+                                            title="Variable-Setting Hint Syntax"><code
+                                                class="literal">SET_VAR</code></a> Hint Applies</strong></span></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><span class="bold"><strong>Type</strong></span></td>
+                            <td>String</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                The global value of the
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a> system variable
+                (<code class="literal">@@GLOBAL.gtid_purged</code>) is a GTID set
+                consisting of the GTIDs of all the transactions that have been
+                committed on the server, but do not exist in any binary log
+                file on the server.
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a> is a subset of
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                        class="literal">gtid_executed</code></a>. The following
+                categories of GTIDs are in
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a>:
+            </p>
+            <div class="itemizedlist">
+                <ul class="itemizedlist" style="list-style-type: circle; ">
+                    <li class="listitem">
+                        <p>
+                            GTIDs of replicated transactions that were committed with
+                            binary logging disabled on the slave.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            GTIDs of transactions that were written to a binary log
+                            file that has now been purged.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            GTIDs that were added explicitly to the set by the
+                            statement <code class="literal">SET @@GLOBAL.gtid_purged</code>.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <p>
+                When the server starts, the global value of
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a> is initialized to
+                a set of GTIDs. For information on how this GTID set is
+                computed, see <a class="xref" href="replication-gtids-lifecycle.html#replication-gtids-gtid-purged"
+                    title="The gtid_purged System Variable">The <code class="literal">gtid_purged</code> System
+                    Variable</a>.
+                If binary logs from MySQL 5.7.7 or older are present on the
+                server, you might need to set
+                <a class="link" href="replication-options-gtids.html#sysvar_binlog_gtid_simple_recovery"><code
+                        class="literal">binlog_gtid_simple_recovery=FALSE</code></a>
+                in the server's configuration file to produce the correct
+                computation. See the description for
+                <a class="link" href="replication-options-gtids.html#sysvar_binlog_gtid_simple_recovery"><code
+                        class="literal">binlog_gtid_simple_recovery</code></a>
+                for details of the situations in which this setting is needed.
+            </p>
+            <p>
+                Issuing <a class="link" href="reset-master.html" title="13.4.1.2&nbsp;RESET MASTER Syntax"><code
+                        class="literal">RESET MASTER</code></a> causes the
+                value of <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a> to be
+                reset to an empty string.
+            </p>
+            <p>
+                You can set the value of
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a> in order to
+                record on the server that the transactions in a certain GTID
+                set have been applied, although they do not exist in any
+                binary log on the server. An example use case for this action
+                is when you are restoring a backup of one or more databases on
+                a server, but you do not have the relevant binary logs
+                containing the transactions on the server.
+            </p>
+            <p>
+                From MySQL 8.0, there are two ways to set the value of
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a>. You can either
+                replace the value of
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a> with your
+                specified GTID set, or you can append your specified GTID set
+                to the GTID set that is already held by
+                <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a>. If the server
+                has no existing GTIDs, for example an empty server that you
+                are provisioning with a backup of an existing database, both
+                methods have the same result. If you are restoring a backup
+                that overlaps the transactions that are already on the server,
+                for example replacing a corrupted table with a partial dump
+                from the master made using <a class="link" href="mysqldump.html"
+                    title="4.5.4&nbsp;mysqldump — A Database Backup Program"><span
+                        class="command"><strong>mysqldump</strong></span></a> (which
+                includes the GTIDs of all the transactions on the server, even
+                though the dump is partial), use the first method of replacing
+                the value of <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a>. If
+                you are restoring a backup that is disjoint from the
+                transactions that are already on the server, for example
+                provisioning a multi-source replication slave using dumps from
+                two different servers, use the second method of adding to the
+                value of <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                        class="literal">gtid_purged</code></a>.
+            </p>
+            <div class="itemizedlist">
+                <ul class="itemizedlist" style="list-style-type: circle; ">
+                    <li class="listitem">
+                        <p>
+                            To replace the value of
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                                    class="literal">gtid_purged</code></a> with your
+                            specified GTID set, use the following statement:
+                        </p>
+                        <div class="copytoclipboard-wrapper" style="position: relative;">
+                            <pre
+                                class="programlisting line-numbers one-line language-sql"><div class="docs-select-all right" id="sa5949024"><div class="copy-help left">Press CTRL+C to copy</div> <div class="right"><button class="clipboard-btn" title="Copy to Clipboard"><span class="icon-clipboard"></span></button></div></div><code class=" language-sql"><span class="token keyword">SET</span> <span class="token variable">@@GLOBAL.gtid_purged</span> <span class="token operator">=</span> <span class="token string">'gtid_set'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                        </div>
+                        <p>
+                            <code class="literal">gtid_set</code> must be a superset of the
+                            current value of
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                                    class="literal">gtid_purged</code></a>, and must not
+                            intersect with
+                            <code class="literal">gtid_subtract(gtid_executed,gtid_purged)</code>.
+                            In other words, the new GTID set
+                            <span class="bold"><strong>must</strong></span> include any GTIDs
+                            that were already in
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                                    class="literal">gtid_purged</code></a>, and
+                            <span class="bold"><strong>must not</strong></span> include any
+                            GTIDs in <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                                    class="literal">gtid_executed</code></a>
+                            that have not yet been purged. <code class="literal">gtid_set</code>
+                            also cannot include any GTIDs that are in
+                            <code class="literal">@@global.gtid_owned</code>, that is, the GTIDs
+                            for transactions that are currently being processed on the
+                            server.
+                        </p>
+                        <p>
+                            The result is that the global value of
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                                    class="literal">gtid_purged</code></a> is set equal
+                            to <code class="literal">gtid_set</code>, and the value of
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                                    class="literal">gtid_executed</code></a> becomes the
+                            union of <code class="literal">gtid_set</code> and the previous
+                            value of <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                                    class="literal">gtid_executed</code></a>.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            To append your specified GTID set to
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                                    class="literal">gtid_purged</code></a>, use the
+                            following statement with a plus sign (+) before the GTID
+                            set:
+                        </p>
+                        <div class="copytoclipboard-wrapper" style="position: relative;">
+                            <pre
+                                class="programlisting line-numbers one-line language-sql"><div class="docs-select-all right" id="sa42319597"><div class="copy-help left">Press CTRL+C to copy</div> <div class="right"><button class="clipboard-btn" title="Copy to Clipboard"><span class="icon-clipboard"></span></button></div></div><code class=" language-sql"><span class="token keyword">SET</span> <span class="token variable">@@GLOBAL.gtid_purged</span> <span class="token operator">=</span> <span class="token string">'+gtid_set'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                        </div>
+                        <p>
+                            <code class="literal">gtid_set</code> <span class="bold"><strong>must
+                                    not</strong></span> intersect with the current value of
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                                    class="literal">gtid_executed</code></a>. In other
+                            words, the new GTID set must not include any GTIDs in
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                                    class="literal">gtid_executed</code></a>, including
+                            transactions that are already also in
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                                    class="literal">gtid_purged</code></a>.
+                            <code class="literal">gtid_set</code> also cannot include any GTIDs
+                            that are in <code class="literal">@@global.gtid_owned</code>, that
+                            is, the GTIDs for transactions that are currently being
+                            processed on the server.
+                        </p>
+                        <p>
+                            The result is that <code class="literal">gtid_set</code> is added to
+                            both <a class="link" href="replication-options-gtids.html#sysvar_gtid_executed"><code
+                                    class="literal">gtid_executed</code></a> and
+                            <a class="link" href="replication-options-gtids.html#sysvar_gtid_purged"><code
+                                    class="literal">gtid_purged</code></a>.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</html>

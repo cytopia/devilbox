@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "id": "mroonga_count_skip",
+      "name": "Mroonga_count_skip",
+      "type": "integer"
+    },
+    {
+      "id": "mroonga_fast_order_limit",
+      "name": "Mroonga_fast_order_limit",
+      "type": "integer"
+    }
+  ],
+  "name": "mroonga-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/mroonga-status-variables/"
+}

@@ -1,0 +1,362 @@
+{
+  "data": [
+    {
+      "cli": "--aria-block-size=#",
+      "default": "8192",
+      "dynamic": false,
+      "id": "aria_block_size",
+      "name": "aria_block_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--aria-checkpoint-interval=#",
+      "default": "30",
+      "dynamic": true,
+      "id": "aria_checkpoint_interval",
+      "name": "aria_checkpoint_interval",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "aria-checkpoint-log-activity=#",
+      "default": "1048576",
+      "dynamic": true,
+      "id": "aria_checkpoint_log_activity",
+      "name": "aria_checkpoint_log_activity",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "aria-encrypt-tables={0|1}",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "aria_encrypt_tables",
+      "name": "aria_encrypt_tables",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--aria-force-start-after-recovery-failures=#",
+      "default": "0",
+      "dynamic": false,
+      "id": "aria_force_start_after_recovery_failures",
+      "name": "aria_force_start_after_recovery_failures",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--aria_group_commit=\"value\"",
+      "default": "none",
+      "dynamic": false,
+      "id": "aria_group_commit",
+      "name": "aria_group_commit",
+      "scope": [
+        "global"
+      ],
+      "type": "string",
+      "validValues": [
+        "none",
+        "hard",
+        "soft"
+      ]
+    },
+    {
+      "cli": "--aria_group_commit_interval=#",
+      "default": "0 (no waiting)",
+      "dynamic": false,
+      "id": "aria_group_commit_interval",
+      "name": "aria_group_commit_interval",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--aria-log-file-size=#",
+      "default": "1073741824",
+      "dynamic": true,
+      "id": "aria_log_file_size",
+      "name": "aria_log_file_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--aria-log-purge-type=name",
+      "default": "immediate",
+      "dynamic": true,
+      "id": "aria_log_purge_type",
+      "name": "aria_log_purge_type",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "immediate",
+        "external",
+        "at_flush"
+      ]
+    },
+    {
+      "cli": "--aria-max-sort-file-size=#",
+      "default": "9223372036853727232",
+      "dynamic": true,
+      "id": "aria_max_sort_file_size",
+      "name": "aria_max_sort_file_size",
+      "range": {
+        "from": 0,
+        "to": 9223372036854776000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--aria-page-checksum=#",
+      "default": "ON",
+      "dynamic": true,
+      "id": "aria_page_checksum",
+      "name": "aria_page_checksum",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--aria-pagecache-age-threshold=#",
+      "default": "300",
+      "dynamic": true,
+      "id": "aria_pagecache_age_threshold",
+      "name": "aria_pagecache_age_threshold",
+      "range": {
+        "from": 100,
+        "to": 9999900
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--aria-pagecache-buffer-size=#",
+      "default": "134217720 (128MB)",
+      "dynamic": false,
+      "id": "aria_pagecache_buffer_size",
+      "name": "aria_pagecache_buffer_size",
+      "range": {
+        "from": 131072,
+        "to": "upwards"
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--aria-pagecache-division-limit=#",
+      "default": "100",
+      "dynamic": true,
+      "id": "aria_pagecache_division_limit",
+      "name": "aria_pagecache_division_limit",
+      "range": {
+        "from": 1,
+        "to": 100
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--aria-pagecache-file-hash-size=#",
+      "default": "512",
+      "dynamic": false,
+      "id": "aria_pagecache_file_hash_size",
+      "name": "aria_pagecache_file_hash_size",
+      "range": {
+        "from": 128,
+        "to": 16384
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "aria_recover",
+      "name": "aria_recover"
+    },
+    {
+      "cli": "--aria-recover-options[=#]",
+      "default": "BACKUP,QUICK (>= MariaDB 10.2.4), NORMAL (<= MariaDB 10.2.3)",
+      "dynamic": true,
+      "id": "aria_recover_options",
+      "name": "aria_recover_options",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "NORMAL",
+        "BACKUP",
+        "FORCE",
+        "QUICK",
+        "OFF"
+      ]
+    },
+    {
+      "cli": "--aria-repair-threads=#",
+      "default": "1",
+      "dynamic": true,
+      "id": "aria_repair_threads",
+      "name": "aria_repair_threads",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--aria-sort-buffer-size=#",
+      "default": "268434432 (from MariaDB 10.0.3), 134217728 (before MariaDB 10.0.3)",
+      "dynamic": true,
+      "id": "aria_sort_buffer_size",
+      "name": "aria_sort_buffer_size",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--aria-stats-method=#",
+      "default": "nulls_unequal",
+      "dynamic": true,
+      "id": "aria_stats_method",
+      "name": "aria_stats_method",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer",
+      "validValues": [
+        "nulls_equal",
+        "nulls_unequal",
+        "nulls_ignored"
+      ]
+    },
+    {
+      "cli": "--aria-sync-log-dir=#",
+      "default": "NEWFILE",
+      "dynamic": true,
+      "id": "aria_sync_log_dir",
+      "name": "aria_sync_log_dir",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "NEWFILE",
+        "NEVER",
+        "ALWAYS"
+      ]
+    },
+    {
+      "default": "ON",
+      "dynamic": false,
+      "id": "aria_used_for_temp_tables",
+      "name": "aria_used_for_temp_tables",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--deadlock-search-depth-long=#",
+      "default": "15",
+      "dynamic": true,
+      "id": "deadlock_search_depth_long",
+      "name": "deadlock_search_depth_long",
+      "range": {
+        "from": 0,
+        "to": 33
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--deadlock-search-depth-short=#",
+      "default": "4",
+      "dynamic": true,
+      "id": "deadlock_search_depth_short",
+      "name": "deadlock_search_depth_short",
+      "range": {
+        "from": 0,
+        "to": 32
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--deadlock-timeout-long=#",
+      "default": "50000000",
+      "dynamic": true,
+      "id": "deadlock_timeout_long",
+      "name": "deadlock_timeout_long",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--deadlock-timeout-short=#",
+      "default": "10000",
+      "dynamic": true,
+      "id": "deadlock_timeout_short",
+      "name": "deadlock_timeout_short",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "aria-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/columns-storage-engines-and-plugins/storage-engines/aria/aria-system-variables/"
+}

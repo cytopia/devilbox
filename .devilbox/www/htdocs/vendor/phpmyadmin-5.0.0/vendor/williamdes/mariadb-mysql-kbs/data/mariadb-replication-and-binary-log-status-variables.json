@@ -1,0 +1,328 @@
+{
+  "data": [
+    {
+      "id": "binlog_bytes_written",
+      "name": "Binlog_bytes_written",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "binlog_cache_disk_use",
+      "name": "Binlog_cache_disk_use",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "binlog_cache_use",
+      "name": "Binlog_cache_use",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "binlog_commits",
+      "name": "Binlog_commits",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "binlog_group_commit_trigger_count",
+      "name": "Binlog_group_commit_trigger_count",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "binlog_group_commit_trigger_lock_wait",
+      "name": "Binlog_group_commit_trigger_lock_wait",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "binlog_group_commit_trigger_timeout",
+      "name": "Binlog_group_commit_trigger_timeout",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "binlog_group_commits",
+      "name": "Binlog_group_commits",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "binlog_snapshot_file",
+      "name": "Binlog_snapshot_file",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "id": "binlog_snapshot_position",
+      "name": "Binlog_snapshot_position",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "binlog_stmt_cache_disk_use",
+      "name": "Binlog_stmt_cache_disk_use",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "binlog_stmt_cache_use",
+      "name": "Binlog_stmt_cache_use",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_change_master",
+      "name": "Com_change_master",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_master_status",
+      "name": "Com_show_master_status",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_new_master",
+      "name": "Com_show_new_master",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_slave_hosts",
+      "name": "Com_show_slave_hosts",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_slave_status",
+      "name": "Com_show_slave_status",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_slave_start",
+      "name": "Com_slave_start",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_slave_stop",
+      "name": "Com_slave_stop",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_start_all_slaves",
+      "name": "Com_start_all_slaves",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_start_slave",
+      "name": "Com_start_slave",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_stop_all_slaves",
+      "name": "Com_stop_all_slaves",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_stop_slave",
+      "name": "Com_stop_slave",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "master_gtid_wait_count",
+      "name": "Master_gtid_wait_count",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "master_gtid_wait_time",
+      "name": "Master_gtid_wait_time",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "master_gtid_wait_timeouts",
+      "name": "Master_gtid_wait_timeouts",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "rpl_status",
+      "name": "Rpl_status"
+    },
+    {
+      "id": "rpl_transactions_multi_engine",
+      "name": "Rpl_transactions_multi_engine",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "slave_connections",
+      "name": "Slave_connections",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "slave_heartbeat_period",
+      "name": "Slave_heartbeat_period",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "slave_open_temp_tables",
+      "name": "Slave_open_temp_tables",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "slave_received_heartbeats",
+      "name": "Slave_received_heartbeats",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "slave_retried_transactions",
+      "name": "Slave_retried_transactions",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "slave_running",
+      "name": "Slave_running",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "slave_skipped_errors",
+      "name": "Slave_skipped_errors",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "slaves_connected",
+      "name": "Slaves_connected",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "slaves_running",
+      "name": "Slaves_running",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "transactions_gtid_foreign_engine",
+      "name": "Transactions_gtid_foreign_engine",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "transactions_multi_engine",
+      "name": "Transactions_multi_engine",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "replication-and-binary-log-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/replication-and-binary-log-status-variables/"
+}

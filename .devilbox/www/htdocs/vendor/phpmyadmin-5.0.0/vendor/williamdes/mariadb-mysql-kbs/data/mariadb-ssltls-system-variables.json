@@ -1,0 +1,123 @@
+{
+  "data": [
+    {
+      "dynamic": false,
+      "id": "have_openssl",
+      "name": "have_openssl",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "dynamic": false,
+      "id": "have_ssl",
+      "name": "have_ssl",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ssl-ca=file_name",
+      "dynamic": false,
+      "id": "ssl_ca",
+      "name": "ssl_ca",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--ssl-capath=directory_name",
+      "dynamic": false,
+      "id": "ssl_capath",
+      "name": "ssl_capath",
+      "scope": [
+        "global"
+      ],
+      "type": "directory name"
+    },
+    {
+      "cli": "--ssl-cert=name",
+      "default": "None",
+      "dynamic": false,
+      "id": "ssl_cert",
+      "name": "ssl_cert",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--ssl-cipher=name",
+      "default": "None",
+      "dynamic": false,
+      "id": "ssl_cipher",
+      "name": "ssl_cipher",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--ssl-crl=name",
+      "default": "None",
+      "dynamic": false,
+      "id": "ssl_crl",
+      "name": "ssl_crl",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--ssl-crlpath=name",
+      "default": "None",
+      "dynamic": false,
+      "id": "ssl_crlpath",
+      "name": "ssl_crlpath",
+      "scope": [
+        "global"
+      ],
+      "type": "directory name"
+    },
+    {
+      "cli": "--ssl-key=name",
+      "default": "None",
+      "dynamic": false,
+      "id": "ssl_key",
+      "name": "ssl_key",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--tls-version=name",
+      "default": "TLSv1.1,TLSv1.2,TLSv1.3",
+      "dynamic": false,
+      "id": "tls_version",
+      "name": "tls_version",
+      "scope": [
+        "global"
+      ],
+      "validValues": [
+        "TLSv1.0",
+        "TLSv1.1",
+        "TLSv1.2",
+        "TLSv1.3"
+      ]
+    },
+    {
+      "default": "None",
+      "dynamic": false,
+      "id": "version_ssl_library",
+      "name": "version_ssl_library",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    }
+  ],
+  "name": "ssltls-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/ssltls-system-variables/"
+}

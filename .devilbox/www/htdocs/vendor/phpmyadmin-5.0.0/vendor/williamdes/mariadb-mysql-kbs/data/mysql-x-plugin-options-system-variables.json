@@ -1,0 +1,302 @@
+{
+  "data": [
+    {
+      "cli": "--mysqlx[=value]",
+      "default": "ON",
+      "id": "option_mysqld_mysqlx",
+      "name": "mysqlx",
+      "type": "enumeration",
+      "validValues": [
+        "ON",
+        "OFF",
+        "FORCE",
+        "FORCE_PLUS_PERMANENT"
+      ]
+    },
+    {
+      "cli": "--mysqlx-bind-address=addr",
+      "default": "*",
+      "dynamic": false,
+      "id": "sysvar_mysqlx_bind_address",
+      "name": "mysqlx_bind_address",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--mysqlx-connect-timeout=#",
+      "default": "30",
+      "dynamic": true,
+      "id": "sysvar_mysqlx_connect_timeout",
+      "name": "mysqlx_connect_timeout",
+      "range": {
+        "from": 1,
+        "to": 1000000000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mysqlx-document-id-unique-prefix=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "sysvar_mysqlx_document_id_unique_prefix",
+      "name": "mysqlx_document_id_unique_prefix",
+      "range": {
+        "from": 0,
+        "to": 65535
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mysqlx-enable-hello-notice[={OFF|ON}]",
+      "default": "ON",
+      "dynamic": true,
+      "id": "sysvar_mysqlx_enable_hello_notice",
+      "name": "mysqlx_enable_hello_notice",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--mysqlx-idle-worker-thread-timeout=#",
+      "default": "60",
+      "dynamic": true,
+      "id": "sysvar_mysqlx_idle_worker_thread_timeout",
+      "name": "mysqlx_idle_worker_thread_timeout",
+      "range": {
+        "from": 0,
+        "to": 3600
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mysqlx-interactive-timeout=#",
+      "default": "28800",
+      "dynamic": true,
+      "id": "sysvar_mysqlx_interactive_timeout",
+      "name": "mysqlx_interactive_timeout",
+      "range": {
+        "from": 1,
+        "to": 2147483
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mysqlx-max-allowed-packet=#",
+      "default": "67108864",
+      "dynamic": true,
+      "id": "sysvar_mysqlx_max_allowed_packet",
+      "name": "mysqlx_max_allowed_packet",
+      "range": {
+        "from": 512,
+        "to": 1073741824
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mysqlx-max-connections=#",
+      "default": "100",
+      "dynamic": true,
+      "id": "sysvar_mysqlx_max_connections",
+      "name": "mysqlx_max_connections",
+      "range": {
+        "from": 1,
+        "to": 65535
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mysqlx-min-worker-threads=#",
+      "default": "2",
+      "dynamic": true,
+      "id": "sysvar_mysqlx_min_worker_threads",
+      "name": "mysqlx_min_worker_threads",
+      "range": {
+        "from": 1,
+        "to": 100
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mysqlx-port=port_num",
+      "default": "33060",
+      "dynamic": false,
+      "id": "sysvar_mysqlx_port",
+      "name": "mysqlx_port",
+      "range": {
+        "from": 1,
+        "to": 65535
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mysqlx-port-open-timeout=#",
+      "default": "0",
+      "dynamic": false,
+      "id": "sysvar_mysqlx_port_open_timeout",
+      "name": "mysqlx_port_open_timeout",
+      "range": {
+        "from": 0,
+        "to": 120
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mysqlx-read-timeout=#",
+      "default": "28800",
+      "dynamic": true,
+      "id": "sysvar_mysqlx_read_timeout",
+      "name": "mysqlx_read_timeout",
+      "range": {
+        "from": 30,
+        "to": 2147483
+      },
+      "scope": [
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mysqlx-socket=file_name",
+      "default": "/tmp/mysqlx.sock",
+      "dynamic": false,
+      "id": "sysvar_mysqlx_socket",
+      "name": "mysqlx_socket",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--mysqlx-ssl-ca=file_name",
+      "dynamic": false,
+      "id": "sysvar_mysqlx_ssl_ca",
+      "name": "mysqlx_ssl_ca",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--mysqlx-ssl-capath=dir_name",
+      "dynamic": false,
+      "id": "sysvar_mysqlx_ssl_capath",
+      "name": "mysqlx_ssl_capath",
+      "scope": [
+        "global"
+      ],
+      "type": "directory name"
+    },
+    {
+      "cli": "--mysqlx-ssl-cert=name",
+      "dynamic": false,
+      "id": "sysvar_mysqlx_ssl_cert",
+      "name": "mysqlx_ssl_cert",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--mysqlx-ssl-cipher=name",
+      "dynamic": false,
+      "id": "sysvar_mysqlx_ssl_cipher",
+      "name": "mysqlx_ssl_cipher",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--mysqlx-ssl-crl=file_name",
+      "dynamic": false,
+      "id": "sysvar_mysqlx_ssl_crl",
+      "name": "mysqlx_ssl_crl",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--mysqlx-ssl-crlpath=dir_name",
+      "dynamic": false,
+      "id": "sysvar_mysqlx_ssl_crlpath",
+      "name": "mysqlx_ssl_crlpath",
+      "scope": [
+        "global"
+      ],
+      "type": "directory name"
+    },
+    {
+      "cli": "--mysqlx-ssl-key=file_name",
+      "dynamic": false,
+      "id": "sysvar_mysqlx_ssl_key",
+      "name": "mysqlx_ssl_key",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--mysqlx-wait-timeout=#",
+      "default": "28800",
+      "dynamic": true,
+      "id": "sysvar_mysqlx_wait_timeout",
+      "name": "mysqlx_wait_timeout",
+      "range": {
+        "from": 1,
+        "to": 2147483
+      },
+      "scope": [
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mysqlx-write-timeout=#",
+      "default": "60",
+      "dynamic": true,
+      "id": "sysvar_mysqlx_write_timeout",
+      "name": "mysqlx_write_timeout",
+      "range": {
+        "from": 1,
+        "to": 2147483
+      },
+      "scope": [
+        "session"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "x-plugin-options-system-variables",
+  "url": "https://dev.mysql.com/doc/refman/8.0/en/x-plugin-options-system-variables.html"
+}

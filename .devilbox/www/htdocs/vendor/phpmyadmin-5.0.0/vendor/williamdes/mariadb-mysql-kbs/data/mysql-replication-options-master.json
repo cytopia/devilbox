@@ -1,0 +1,137 @@
+{
+  "data": [
+    {
+      "cli": "--show-slave-auth-info[={OFF|ON}]",
+      "default": "OFF",
+      "id": "option_mysqld_show-slave-auth-info",
+      "name": "show_slave_auth_info",
+      "type": "boolean"
+    },
+    {
+      "cli": "--auto-increment-increment=#",
+      "default": "1",
+      "dynamic": true,
+      "id": "sysvar_auto_increment_increment",
+      "name": "auto_increment_increment",
+      "range": {
+        "from": 1,
+        "to": 65535
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--auto-increment-offset=#",
+      "default": "1",
+      "dynamic": true,
+      "id": "sysvar_auto_increment_offset",
+      "name": "auto_increment_offset",
+      "range": {
+        "from": 1,
+        "to": 65535
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "sysvar_immediate_server_version",
+      "name": "immediate_server_version",
+      "scope": [
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "sysvar_original_server_version",
+      "name": "original_server_version",
+      "scope": [
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--rpl-semi-sync-master-enabled[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_rpl_semi_sync_master_enabled",
+      "name": "rpl_semi_sync_master_enabled",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--rpl-semi-sync-master-timeout=#",
+      "default": "10000",
+      "dynamic": true,
+      "id": "sysvar_rpl_semi_sync_master_timeout",
+      "name": "rpl_semi_sync_master_timeout",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--rpl-semi-sync-master-trace-level=#",
+      "default": "32",
+      "dynamic": true,
+      "id": "sysvar_rpl_semi_sync_master_trace_level",
+      "name": "rpl_semi_sync_master_trace_level",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--rpl-semi-sync-master-wait-for-slave-count=#",
+      "default": "1",
+      "dynamic": true,
+      "id": "sysvar_rpl_semi_sync_master_wait_for_slave_count",
+      "name": "rpl_semi_sync_master_wait_for_slave_count",
+      "range": {
+        "from": 1,
+        "to": 65535
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--rpl-semi-sync-master-wait-no-slave[={OFF|ON}]",
+      "default": "ON",
+      "dynamic": true,
+      "id": "sysvar_rpl_semi_sync_master_wait_no_slave",
+      "name": "rpl_semi_sync_master_wait_no_slave",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--rpl-semi-sync-master-wait-point=value",
+      "default": "AFTER_SYNC",
+      "dynamic": true,
+      "id": "sysvar_rpl_semi_sync_master_wait_point",
+      "name": "rpl_semi_sync_master_wait_point",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "AFTER_SYNC",
+        "AFTER_COMMIT"
+      ]
+    }
+  ],
+  "name": "replication-options-master",
+  "url": "https://dev.mysql.com/doc/refman/8.0/en/replication-options-master.html"
+}

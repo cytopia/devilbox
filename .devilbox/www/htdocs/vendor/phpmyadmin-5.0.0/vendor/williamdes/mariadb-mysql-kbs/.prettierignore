@@ -1,0 +1,8 @@
+/tmp
+/build
+/docs
+vendor
+node_modules
+dist
+data
+/.nyc_output

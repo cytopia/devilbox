@@ -1,0 +1,626 @@
+{
+  "data": [
+    {
+      "cli": "--wsrep-auto-increment-control[={0|1}]",
+      "default": "ON",
+      "dynamic": true,
+      "id": "wsrep_auto_increment_control",
+      "name": "wsrep_auto_increment_control",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-causal-reads[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "wsrep_causal_reads",
+      "name": "wsrep_causal_reads",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-certifcation-rules",
+      "default": "strict",
+      "dynamic": true,
+      "id": "wsrep_certification_rules",
+      "name": "wsrep_certification_rules",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "strict",
+        "optimized"
+      ]
+    },
+    {
+      "cli": "--wsrep-certify-nonPK[={0|1}]",
+      "default": "ON",
+      "dynamic": true,
+      "id": "wsrep_certify_nonpk",
+      "name": "wsrep_certify_nonPK",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-cluster-address=value",
+      "dynamic": false,
+      "id": "wsrep_cluster_address",
+      "name": "wsrep_cluster_address",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-cluster-name=value",
+      "default": "my_wsrep_cluster",
+      "dynamic": true,
+      "id": "wsrep_cluster_name",
+      "name": "wsrep_cluster_name",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-convert-LOCK-to-trx[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "wsrep_convert_lock_to_trx",
+      "name": "wsrep_convert_LOCK_to_trx",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-data-home-dir=value",
+      "default": "The datadir variable value.",
+      "dynamic": false,
+      "id": "wsrep_data_home_dir",
+      "name": "wsrep_data_home_dir",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-dbug-option=value",
+      "dynamic": true,
+      "id": "wsrep_dbug_option",
+      "name": "wsrep_dbug_option",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-debug[={0|1}]",
+      "default": "NONE (>= MariaDB 10.4.3),  OFF (<= MariaDB 10.4.2)",
+      "dynamic": true,
+      "id": "wsrep_debug",
+      "name": "wsrep_debug",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--wsrep-desync[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "wsrep_desync",
+      "name": "wsrep_desync",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-dirty-reads[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "wsrep_dirty_reads",
+      "name": "wsrep_dirty_reads",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean",
+      "validValues": [
+        "ON",
+        "OFF"
+      ]
+    },
+    {
+      "cli": "--wsrep-drupal-282555-workaround[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "wsrep_drupal_282555_workaround",
+      "name": "wsrep_drupal_282555_workaround",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-forced-binlog-format=value",
+      "default": "NONE",
+      "dynamic": true,
+      "id": "wsrep_forced_binlog_format",
+      "name": "wsrep_forced_binlog_format",
+      "scope": [
+        "global"
+      ],
+      "validValues": [
+        "STATEMENT",
+        "ROW",
+        "MIXED",
+        "NONE"
+      ]
+    },
+    {
+      "cli": "--wsrep-gtid-domain-id=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "wsrep_gtid_domain_id",
+      "name": "wsrep_gtid_domain_id",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--wsrep-gtid-mode[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "wsrep_gtid_mode",
+      "name": "wsrep_gtid_mode",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-ignore-apply-errors",
+      "default": "0",
+      "dynamic": true,
+      "id": "wsrep_ignore_apply_errors",
+      "name": "wsrep_ignore_apply_errors",
+      "range": {
+        "from": 0,
+        "to": 7
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--wsrep-load-data-splitting[={0|1}]",
+      "default": "OFF (>= MariaDB 10.4.3), ON (<= MariaDB 10.4.2)",
+      "dynamic": true,
+      "id": "wsrep_load_data_splitting",
+      "name": "wsrep_load_data_splitting",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-log-conflicts[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "wsrep_log_conflicts",
+      "name": "wsrep_log_conflicts",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-max-ws-rows=#",
+      "default": "0 (>= MariaDB Galera 10.0.27, MariaDB 10.1.17), 131072 (<= MariaDB Galera 10.0.26, MariaDB 10.1.16)",
+      "dynamic": true,
+      "id": "wsrep_max_ws_rows",
+      "name": "wsrep_max_ws_rows",
+      "range": {
+        "from": 0,
+        "to": 1048576
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--wsrep-max-ws-size=#",
+      "default": "2147483647 (2GB, >= MariaDB Galera 10.0.27, MariaDB 10.1.17), 1073741824 (1GB, <= MariaDB Galera 10.0.26, MariaDB 10.1.16)",
+      "dynamic": true,
+      "id": "wsrep_max_ws_size",
+      "name": "wsrep_max_ws_size",
+      "range": {
+        "from": 1024,
+        "to": 2147483647
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--wsrep-mysql-replication-bundle=#",
+      "default": "0",
+      "dynamic": false,
+      "id": "wsrep_mysql_replication_bundle",
+      "name": "wsrep_mysql_replication_bundle",
+      "range": {
+        "from": 0,
+        "to": 1000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--wsrep-node-address=value",
+      "default": "Primary network address, usually eth0 with a default port of 4567, or 0.0.0.0 if no IP address.",
+      "dynamic": false,
+      "id": "wsrep_node_address",
+      "name": "wsrep_node_address",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-node-incoming-address=value",
+      "default": "AUTO",
+      "dynamic": false,
+      "id": "wsrep_node_incoming_address",
+      "name": "wsrep_node_incoming_address",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-node-name=value",
+      "default": "The server's hostname.",
+      "dynamic": true,
+      "id": "wsrep_node_name",
+      "name": "wsrep_node_name",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-notify-command=value",
+      "default": "Empty",
+      "dynamic": true,
+      "id": "wsrep_notify_cmd",
+      "name": "wsrep_notify_cmd",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-on[={0|1}]",
+      "default": "OFF (>= MariaDB 10.1), ON (<= MariaDB Galera Cluster 10.0),",
+      "dynamic": true,
+      "id": "wsrep_on",
+      "name": "wsrep_on",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean",
+      "validValues": [
+        "ON",
+        "OFF"
+      ]
+    },
+    {
+      "cli": "--wsrep-OSU-method[=value]",
+      "default": "TOI",
+      "dynamic": true,
+      "id": "wsrep_osu_method",
+      "name": "wsrep_OSU_method",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "validValues": [
+        "TOI",
+        "RSU"
+      ]
+    },
+    {
+      "default": "None",
+      "dynamic": false,
+      "id": "wsrep_patch_version",
+      "name": "wsrep_patch_version",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-provider=value",
+      "default": "None",
+      "dynamic": true,
+      "id": "wsrep_provider",
+      "name": "wsrep_provider",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-provider-options=value",
+      "default": "Empty",
+      "dynamic": false,
+      "id": "wsrep_provider_options",
+      "name": "wsrep_provider_options",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-recover[={0|1}]",
+      "default": "OFF",
+      "dynamic": false,
+      "id": "wsrep_recover",
+      "name": "wsrep_recover",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-reject-queries[=value]",
+      "default": "NONE",
+      "dynamic": true,
+      "id": "wsrep_reject_queries",
+      "name": "wsrep_reject_queries",
+      "scope": [
+        "global"
+      ],
+      "validValues": [
+        "NONE",
+        "ALL",
+        "ALL_KILL"
+      ]
+    },
+    {
+      "cli": "--wsrep-replicate-myisam[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "wsrep_replicate_myisam",
+      "name": "wsrep_replicate_myisam",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean",
+      "validValues": [
+        "ON",
+        "OFF"
+      ]
+    },
+    {
+      "cli": "--wsrep-restart-slave[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "wsrep_restart_slave",
+      "name": "wsrep_restart_slave",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-retry-autocommit=value",
+      "default": "1",
+      "dynamic": false,
+      "id": "wsrep_retry_autocommit",
+      "name": "wsrep_retry_autocommit",
+      "range": {
+        "from": 0,
+        "to": 10000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--wsrep-slave-FK-checks[={0|1}]",
+      "default": "ON",
+      "dynamic": true,
+      "id": "wsrep_slave_fk_checks",
+      "name": "wsrep_slave_FK_checks",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-slave-threads=#",
+      "default": "1",
+      "dynamic": true,
+      "id": "wsrep_slave_threads",
+      "name": "wsrep_slave_threads",
+      "range": {
+        "from": 1,
+        "to": 512
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--wsrep-slave-UK-checks[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "wsrep_slave_uk_checks",
+      "name": "wsrep_slave_UK_checks",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-sr-store=val",
+      "default": "table",
+      "dynamic": false,
+      "id": "wsrep_sr_store",
+      "name": "wsrep_sr_store",
+      "scope": [
+        "global"
+      ],
+      "validValues": [
+        "table",
+        "none"
+      ]
+    },
+    {
+      "cli": "--wsrep-sst-auth=value",
+      "default": "(Empty)",
+      "dynamic": true,
+      "id": "wsrep_sst_auth",
+      "name": "wsrep_sst_auth",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-sst-donor=value",
+      "default": "",
+      "dynamic": true,
+      "id": "wsrep_sst_donor",
+      "name": "wsrep_sst_donor",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-sst-donor-rejects-queries[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "wsrep_sst_donor_rejects_queries",
+      "name": "wsrep_sst_donor_rejects_queries",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--wsrep-sst-method=value",
+      "default": "rsync",
+      "dynamic": true,
+      "id": "wsrep_sst_method",
+      "name": "wsrep_sst_method",
+      "scope": [
+        "global"
+      ],
+      "type": "string",
+      "validValues": [
+        "rsync",
+        "mysqldump",
+        "xtrabackup",
+        "xtrabackup-v2",
+        "mariabackup"
+      ]
+    },
+    {
+      "cli": "--wsrep-sst-receive-address=value",
+      "default": "AUTO",
+      "dynamic": true,
+      "id": "wsrep_sst_receive_address",
+      "name": "wsrep_sst_receive_address",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-start-position=value",
+      "default": "00000000-0000-0000-0000-000000000000:-1",
+      "dynamic": true,
+      "id": "wsrep_start_position",
+      "name": "wsrep_start_position",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--wsrep-sync-wait=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "wsrep_sync_wait",
+      "name": "wsrep_sync_wait",
+      "range": {
+        "from": 0,
+        "to": 15
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--wsrep-trx-fragment-size=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "wsrep_trx_fragment_size",
+      "name": "wsrep_trx_fragment_size",
+      "range": {
+        "from": 0,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--wsrep-trx-fragment-unit=value",
+      "default": "bytes",
+      "dynamic": true,
+      "id": "wsrep_trx_fragment_unit",
+      "name": "wsrep_trx_fragment_unit",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "validValues": [
+        "bytes",
+        "rows",
+        "statements"
+      ]
+    }
+  ],
+  "name": "galera-cluster-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/columns-storage-engines-and-plugins/storage-engines/galera-cluster/galera-cluster-system-variables/"
+}

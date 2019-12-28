@@ -1,0 +1,188 @@
+{
+  "data": [
+    {
+      "cli": "--connect-class-path=value",
+      "default": "",
+      "dynamic": false,
+      "id": "connect_class_path",
+      "name": "connect_class_path",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--connect-cond-push={0|1}",
+      "default": "ON",
+      "dynamic": true,
+      "id": "connect_cond_push",
+      "name": "connect_cond_push",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--connect-conv-size=#",
+      "default": ">= MariaDB 10.4.8, MariaDB 10.3.18, MariaDB 10.2.27: 1024, <= MariaDB 10.4.7, MariaDB 10.3.17, MariaDB 10.2.26: 8192",
+      "dynamic": true,
+      "id": "connect_conv_size",
+      "name": "connect_conv_size",
+      "range": {
+        "from": 0,
+        "to": 65500
+      },
+      "scope": [
+        "session",
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--connect-enable-mongo={0|1}",
+      "default": "OFF",
+      "dynamic": false,
+      "id": "connect_enable_mongo",
+      "name": "connect_enable_mongo",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--connect-exact-info=#",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "connect_exact_info",
+      "name": "connect_exact_info",
+      "scope": [
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--connect-indx-map=#",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "connect_indx_map",
+      "name": "connect_indx_map",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--connect-java-wrapper=val",
+      "default": "wrappers/JdbcInterface",
+      "dynamic": true,
+      "id": "connect_java_wrapper",
+      "name": "connect_java_wrapper",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--connect-json-grp-size=#",
+      "default": "10",
+      "dynamic": true,
+      "id": "connect_json_grp_size",
+      "name": "connect_json_grp_size",
+      "range": {
+        "from": 1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--connect-json-null=value",
+      "default": "<null>",
+      "dynamic": true,
+      "id": "connect_json_null",
+      "name": "connect_json_null",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--connect-jvm_path=value",
+      "default": "",
+      "dynamic": false,
+      "id": "connect_jvm_path",
+      "name": "connect_jvm_path",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--connect-type-conv=#",
+      "default": "YES (>= Connect 1.06.006), NO (<= Connect 1.06.005)",
+      "dynamic": true,
+      "id": "connect_type_conv",
+      "name": "connect_type_conv",
+      "scope": [
+        "session",
+        "global"
+      ],
+      "validValues": [
+        "NO",
+        "YES",
+        "SKIP"
+      ]
+    },
+    {
+      "cli": "--connect-use-tempfile=#",
+      "default": "AUTO",
+      "dynamic": true,
+      "id": "connect_use_tempfile",
+      "name": "connect_use_tempfile",
+      "scope": [
+        "session"
+      ]
+    },
+    {
+      "cli": "--connect-work-size=#",
+      "default": "67108864",
+      "dynamic": true,
+      "id": "connect_work_size",
+      "name": "connect_work_size",
+      "range": {
+        "from": 4194304,
+        "to": "upwards"
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--connect-xtrace=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "connect_xtrace",
+      "name": "connect_xtrace",
+      "range": {
+        "from": 0,
+        "to": 2147483647
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "set",
+      "validValues": []
+    }
+  ],
+  "name": "connect-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/columns-storage-engines-and-plugins/storage-engines/connect/connect-system-variables/"
+}

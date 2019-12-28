@@ -1,0 +1,60 @@
+{
+  "data": [
+    {
+      "id": "sphinx_error",
+      "name": "Sphinx_error",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "sphinx_time",
+      "name": "Sphinx_time",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "sphinx_total",
+      "name": "Sphinx_total",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "sphinx_total_found",
+      "name": "Sphinx_total_found",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "sphinx_word_count",
+      "name": "Sphinx_word_count",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "sphinx_words",
+      "name": "Sphinx_words",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "sphinx-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/sphinx-status-variables/"
+}

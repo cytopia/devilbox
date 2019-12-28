@@ -1,0 +1,81 @@
+{
+  "data": [
+    {
+      "id": "rpl_semi_sync_master_clients",
+      "name": "Rpl_semi_sync_master_clients",
+      "type": "integer"
+    },
+    {
+      "id": "rpl_semi_sync_master_net_avg_wait_time",
+      "name": "Rpl_semi_sync_master_net_avg_wait_time",
+      "type": "integer"
+    },
+    {
+      "id": "rpl_semi_sync_master_net_wait_time",
+      "name": "Rpl_semi_sync_master_net_wait_time",
+      "type": "integer"
+    },
+    {
+      "id": "rpl_semi_sync_master_net_waits",
+      "name": "Rpl_semi_sync_master_net_waits",
+      "type": "integer"
+    },
+    {
+      "id": "rpl_semi_sync_master_no_times",
+      "name": "Rpl_semi_sync_master_no_times",
+      "type": "integer"
+    },
+    {
+      "id": "rpl_semi_sync_master_no_tx",
+      "name": "Rpl_semi_sync_master_no_tx",
+      "type": "integer"
+    },
+    {
+      "id": "rpl_semi_sync_master_status",
+      "name": "Rpl_semi_sync_master_status",
+      "type": "boolean"
+    },
+    {
+      "id": "rpl_semi_sync_master_timefunc_failures",
+      "name": "Rpl_semi_sync_master_timefunc_failures",
+      "type": "integer"
+    },
+    {
+      "id": "rpl_semi_sync_master_tx_avg_wait_time",
+      "name": "Rpl_semi_sync_master_tx_avg_wait_time",
+      "type": "integer"
+    },
+    {
+      "id": "rpl_semi_sync_master_tx_wait_time",
+      "name": "Rpl_semi_sync_master_tx_wait_time",
+      "type": "integer"
+    },
+    {
+      "id": "rpl_semi_sync_master_tx_waits",
+      "name": "Rpl_semi_sync_master_tx_waits",
+      "type": "integer"
+    },
+    {
+      "id": "rpl_semi_sync_master_wait_pos_backtraverse",
+      "name": "Rpl_semi_sync_master_wait_pos_backtraverse",
+      "type": "integer"
+    },
+    {
+      "id": "rpl_semi_sync_master_wait_sessions",
+      "name": "Rpl_semi_sync_master_wait_sessions",
+      "type": "integer"
+    },
+    {
+      "id": "rpl_semi_sync_master_yes_tx",
+      "name": "Rpl_semi_sync_master_yes_tx",
+      "type": "integer"
+    },
+    {
+      "id": "rpl_semi_sync_slave_status",
+      "name": "Rpl_semi_sync_slave_status",
+      "type": "boolean"
+    }
+  ],
+  "name": "semisynchronous-replication-plugin-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/semisynchronous-replication-plugin-status-variables/"
+}

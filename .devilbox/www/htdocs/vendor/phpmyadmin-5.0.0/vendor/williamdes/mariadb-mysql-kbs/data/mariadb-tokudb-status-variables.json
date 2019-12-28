@@ -1,0 +1,856 @@
+{
+  "data": [
+    {
+      "id": "tokudb_basement_deserialization_fixed_key",
+      "name": "Tokudb_basement_deserialization_fixed_key",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_basement_deserialization_variable_key",
+      "name": "Tokudb_basement_deserialization_variable_key",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_basements_decompressed_for_write",
+      "name": "Tokudb_basements_decompressed_for_write",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_basements_decompressed_prefetch",
+      "name": "Tokudb_basements_decompressed_prefetch",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_basements_decompressed_prelocked_range",
+      "name": "Tokudb_basements_decompressed_prelocked_range",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_basements_decompressed_target_query",
+      "name": "Tokudb_basements_decompressed_target_query",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_basements_fetched_for_write",
+      "name": "Tokudb_basements_fetched_for_write",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_basements_fetched_for_write_bytes",
+      "name": "Tokudb_basements_fetched_for_write_bytes"
+    },
+    {
+      "id": "tokudb_basements_fetched_for_write_seconds",
+      "name": "Tokudb_basements_fetched_for_write_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_basements_fetched_prefetch",
+      "name": "Tokudb_basements_fetched_prefetch",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_basements_fetched_prefetch_bytes",
+      "name": "Tokudb_basements_fetched_prefetch_bytes"
+    },
+    {
+      "id": "tokudb_basements_fetched_prefetch_seconds",
+      "name": "Tokudb_basements_fetched_prefetch_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_basements_fetched_prelocked_range",
+      "name": "Tokudb_basements_fetched_prelocked_range",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_basements_fetched_prelocked_range_bytes",
+      "name": "Tokudb_basements_fetched_prelocked_range_bytes"
+    },
+    {
+      "id": "tokudb_basements_fetched_prelocked_range_seconds",
+      "name": "Tokudb_basements_fetched_prelocked_range_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_basements_fetched_target_query",
+      "name": "Tokudb_basements_fetched_target_query",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_basements_fetched_target_query_bytes",
+      "name": "Tokudb_basements_fetched_target_query_bytes"
+    },
+    {
+      "id": "tokudb_basements_fetched_target_query_seconds",
+      "name": "Tokudb_basements_fetched_target_query_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_broadcase_messages_injected_at_root",
+      "name": "Tokudb_broadcase_messages_injected_at_root",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_buffers_decompressed_for_write",
+      "name": "Tokudb_buffers_decompressed_for_write",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_buffers_decompressed_prefetch",
+      "name": "Tokudb_buffers_decompressed_prefetch",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_buffers_decompressed_prelocked_range",
+      "name": "Tokudb_buffers_decompressed_prelocked_range",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_buffers_decompressed_target_query",
+      "name": "Tokudb_buffers_decompressed_target_query",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_buffers_fetched_for_write",
+      "name": "Tokudb_buffers_fetched_for_write",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_buffers_fetched_for_write_bytes",
+      "name": "Tokudb_buffers_fetched_for_write_bytes"
+    },
+    {
+      "id": "tokudb_buffers_fetched_for_write_seconds",
+      "name": "Tokudb_buffers_fetched_for_write_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_buffers_fetched_prefetch",
+      "name": "Tokudb_buffers_fetched_prefetch",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_buffers_fetched_prefetch_bytes",
+      "name": "Tokudb_buffers_fetched_prefetch_bytes"
+    },
+    {
+      "id": "tokudb_buffers_fetched_prefetch_seconds",
+      "name": "Tokudb_buffers_fetched_prefetch_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_buffers_fetched_prelocked_range",
+      "name": "Tokudb_buffers_fetched_prelocked_range",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_buffers_fetched_prelocked_range_bytes",
+      "name": "Tokudb_buffers_fetched_prelocked_range_bytes"
+    },
+    {
+      "id": "tokudb_buffers_fetched_prelocked_range_seconds",
+      "name": "Tokudb_buffers_fetched_prelocked_range_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_buffers_fetched_target_query",
+      "name": "Tokudb_buffers_fetched_target_query",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_buffers_fetched_target_query_bytes",
+      "name": "Tokudb_buffers_fetched_target_query_bytes"
+    },
+    {
+      "id": "tokudb_buffers_fetched_target_query_seconds",
+      "name": "Tokudb_buffers_fetched_target_query_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_cachetable_cleaner_executions",
+      "name": "Tokudb_cachetable_cleaner_executions",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_cachetable_cleaner_iterations",
+      "name": "Tokudb_cachetable_cleaner_iterations",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_cachetable_cleaner_period",
+      "name": "Tokudb_cachetable_cleaner_period",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_cachetable_evictions",
+      "name": "Tokudb_cachetable_evictions",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_cachetable_long_wait_pressure_count",
+      "name": "Tokudb_cachetable_long_wait_pressure_count",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_cachetable_long_wait_pressure_time",
+      "name": "Tokudb_cachetable_long_wait_pressure_time",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_cachetable_miss",
+      "name": "Tokudb_cachetable_miss",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_cachetable_miss_time",
+      "name": "Tokudb_cachetable_miss_time",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_cachetable_prefetches",
+      "name": "Tokudb_cachetable_prefetches",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_cachetable_size_cachepressure",
+      "name": "Tokudb_cachetable_size_cachepressure",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_cachetable_size_cloned",
+      "name": "Tokudb_cachetable_size_cloned",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_cachetable_size_current",
+      "name": "Tokudb_cachetable_size_current",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_cachetable_size_leaf",
+      "name": "Tokudb_cachetable_size_leaf",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_cachetable_size_limit",
+      "name": "Tokudb_cachetable_size_limit",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_cachetable_size_nonleaf",
+      "name": "Tokudb_cachetable_size_nonleaf",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_cachetable_size_rollback",
+      "name": "Tokudb_cachetable_size_rollback",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_cachetable_size_writing",
+      "name": "Tokudb_cachetable_size_writing",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_cachetable_wait_pressure_count",
+      "name": "Tokudb_cachetable_wait_pressure_count",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_cachetable_wait_pressure_time",
+      "name": "Tokudb_cachetable_wait_pressure_time",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_checkpoint_begin_time",
+      "name": "Tokudb_checkpoint_begin_time",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_checkpoint_duration",
+      "name": "Tokudb_checkpoint_duration",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_checkpoint_duration_last",
+      "name": "Tokudb_checkpoint_duration_last",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_checkpoint_failed",
+      "name": "Tokudb_checkpoint_failed",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_checkpoint_last_began",
+      "name": "Tokudb_checkpoint_last_began"
+    },
+    {
+      "id": "tokudb_checkpoint_last_complete_began",
+      "name": "Tokudb_checkpoint_last_complete_began"
+    },
+    {
+      "id": "tokudb_checkpoint_last_complete_ended",
+      "name": "Tokudb_checkpoint_last_complete_ended"
+    },
+    {
+      "id": "tokudb_checkpoint_long_begin_count",
+      "name": "Tokudb_checkpoint_long_begin_count",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_checkpoint_long_begin_time",
+      "name": "Tokudb_checkpoint_long_begin_time",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_checkpoint_period",
+      "name": "Tokudb_checkpoint_period",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_checkpoint_taken",
+      "name": "Tokudb_checkpoint_taken",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_cursor_skip_deleted_leaf_entry",
+      "name": "Tokudb_cursor_skip_deleted_leaf_entry"
+    },
+    {
+      "id": "tokudb_db_closes",
+      "name": "Tokudb_db_closes",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_db_open_current",
+      "name": "Tokudb_db_open_current",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_db_open_max",
+      "name": "Tokudb_db_open_max",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_db_opens",
+      "name": "Tokudb_db_opens",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_descriptor_set",
+      "name": "Tokudb_descriptor_set",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_dictionary_broadcast_updates",
+      "name": "Tokudb_dictionary_broadcast_updates",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_dictionary_updates",
+      "name": "Tokudb_dictionary_updates",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_filesystem_fsync_num",
+      "name": "Tokudb_filesystem_fsync_num",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_filesystem_fsync_time",
+      "name": "Tokudb_filesystem_fsync_time",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_filesystem_long_fsync_num",
+      "name": "Tokudb_filesystem_long_fsync_num",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_filesystem_long_fsync_time",
+      "name": "Tokudb_filesystem_long_fsync_time",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_filesystem_threads_blocked_by_full_disk",
+      "name": "Tokudb_filesystem_threads_blocked_by_full_disk",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_leaf_compression_to_memory_seconds",
+      "name": "Tokudb_leaf_compression_to_memory_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_leaf_decompression_to_memory_seconds",
+      "name": "Tokudb_leaf_decompression_to_memory_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_leaf_deserialization_to_memory_seconds",
+      "name": "Tokudb_leaf_deserialization_to_memory_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_leaf_node_compression_ratio",
+      "name": "Tokudb_leaf_node_compression_ratio"
+    },
+    {
+      "id": "tokudb_leaf_node_full_evictions",
+      "name": "Tokudb_leaf_node_full_evictions",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_leaf_node_full_evictions_bytes",
+      "name": "Tokudb_leaf_node_full_evictions_bytes"
+    },
+    {
+      "id": "tokudb_leaf_node_partial_evictions",
+      "name": "Tokudb_leaf_node_partial_evictions",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_leaf_node_partial_evictions_bytes",
+      "name": "Tokudb_leaf_node_partial_evictions_bytes"
+    },
+    {
+      "id": "tokudb_leaf_nodes_created",
+      "name": "Tokudb_leaf_nodes_created",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_leaf_nodes_destroyed",
+      "name": "Tokudb_leaf_nodes_destroyed",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_leaf_nodes_flushed_checkpoint",
+      "name": "Tokudb_leaf_nodes_flushed_checkpoint",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_leaf_nodes_flushed_checkpoint_bytes",
+      "name": "Tokudb_leaf_nodes_flushed_checkpoint_bytes",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_leaf_nodes_flushed_checkpoint_seconds",
+      "name": "Tokudb_leaf_nodes_flushed_checkpoint_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_leaf_nodes_flushed_checkpoint_uncompressed_bytes",
+      "name": "Tokudb_leaf_nodes_flushed_checkpoint_uncompressed_bytes"
+    },
+    {
+      "id": "tokudb_leaf_nodes_flushed_not_checkpoint",
+      "name": "Tokudb_leaf_nodes_flushed_not_checkpoint",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_leaf_nodes_flushed_not_checkpoint_bytes",
+      "name": "Tokudb_leaf_nodes_flushed_not_checkpoint_bytes",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_leaf_nodes_flushed_not_checkpoint_seconds",
+      "name": "Tokudb_leaf_nodes_flushed_not_checkpoint_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_leaf_nodes_flushed_not_checkpoint_uncompressed_bytes",
+      "name": "Tokudb_leaf_nodes_flushed_not_checkpoint_uncompressed_bytes"
+    },
+    {
+      "id": "tokudb_leaf_serialization_to_memory_seconds",
+      "name": "Tokudb_leaf_serialization_to_memory_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_loader_num_created",
+      "name": "Tokudb_loader_num_created",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_loader_num_current",
+      "name": "Tokudb_loader_num_current",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_loader_num_max",
+      "name": "Tokudb_loader_num_max",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_escalation_num",
+      "name": "Tokudb_locktree_escalation_num",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_escalation_seconds",
+      "name": "Tokudb_locktree_escalation_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_latest_post_escalation_memory_size",
+      "name": "Tokudb_locktree_latest_post_escalation_memory_size",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_locktree_long_wait_count",
+      "name": "Tokudb_locktree_long_wait_count",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_long_wait_escalation_count",
+      "name": "Tokudb_locktree_long_wait_escalation_count",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_long_wait_escalation_time",
+      "name": "Tokudb_locktree_long_wait_escalation_time",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_long_wait_time",
+      "name": "Tokudb_locktree_long_wait_time",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_memory_size",
+      "name": "Tokudb_locktree_memory_size",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_locktree_memory_size_limit",
+      "name": "Tokudb_locktree_memory_size_limit",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_locktree_open_current",
+      "name": "Tokudb_locktree_open_current",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_pending_lock_requests",
+      "name": "Tokudb_locktree_pending_lock_requests",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_sto_eligible_num",
+      "name": "Tokudb_locktree_sto_eligible_num",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_sto_ended_num",
+      "name": "Tokudb_locktree_sto_ended_num",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_sto_ended_seconds",
+      "name": "Tokudb_locktree_sto_ended_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_timeout_count",
+      "name": "Tokudb_locktree_timeout_count",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_wait_count",
+      "name": "Tokudb_locktree_wait_count",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_wait_escalation_count",
+      "name": "Tokudb_locktree_wait_escalation_count",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_wait_escalation_time",
+      "name": "Tokudb_locktree_wait_escalation_time",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_locktree_wait_time",
+      "name": "Tokudb_locktree_wait_time",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_logger_wait_long",
+      "name": "Tokudb_logger_wait_long"
+    },
+    {
+      "id": "tokudb_logger_writes",
+      "name": "Tokudb_logger_writes",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_logger_writes_bytes",
+      "name": "Tokudb_logger_writes_bytes"
+    },
+    {
+      "id": "tokudb_logger_writes_seconds",
+      "name": "Tokudb_logger_writes_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_logger_writes_uncompressed_bytes",
+      "name": "Tokudb_logger_writes_uncompressed_bytes"
+    },
+    {
+      "id": "tokudb_mem_estimated_maximum_memory_footprint",
+      "name": "Tokudb_mem_estimated_maximum_memory_footprint"
+    },
+    {
+      "id": "tokudb_messages_flushed_from_h1_to_leaves_bytes",
+      "name": "Tokudb_messages_flushed_from_h1_to_leaves_bytes"
+    },
+    {
+      "id": "tokudb_messages_ignored_by_leaf_due_to_msn",
+      "name": "Tokudb_messages_ignored_by_leaf_due_to_msn",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_messages_in_trees_estimate_bytes",
+      "name": "Tokudb_messages_in_trees_estimate_bytes"
+    },
+    {
+      "id": "tokudb_messages_injected_at_root",
+      "name": "Tokudb_messages_injected_at_root",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_messages_injected_at_root_bytes",
+      "name": "Tokudb_messages_injected_at_root_bytes"
+    },
+    {
+      "id": "tokudb_nonleaf_compression_to_memory_seconds",
+      "name": "Tokudb_nonleaf_compression_to_memory_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_nonleaf_decompression_to_memory_seconds",
+      "name": "Tokudb_nonleaf_decompression_to_memory_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_nonleaf_deserialization_to_memory_seconds",
+      "name": "Tokudb_nonleaf_deserialization_to_memory_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_nonleaf_node_compression_ratio",
+      "name": "Tokudb_nonleaf_node_compression_ratio"
+    },
+    {
+      "id": "tokudb_nonleaf_node_full_evictions",
+      "name": "Tokudb_nonleaf_node_full_evictions",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_nonleaf_node_full_evictions_bytes",
+      "name": "Tokudb_nonleaf_node_full_evictions_bytes"
+    },
+    {
+      "id": "tokudb_nonleaf_node_partial_evictions",
+      "name": "Tokudb_nonleaf_node_partial_evictions",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_nonleaf_node_partial_evictions_bytes",
+      "name": "Tokudb_nonleaf_node_partial_evictions_bytes"
+    },
+    {
+      "id": "tokudb_nonleaf_nodes_created",
+      "name": "Tokudb_nonleaf_nodes_created",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_nonleaf_nodes_destroyed",
+      "name": "Tokudb_nonleaf_nodes_destroyed",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_nonleaf_nodes_flushed_to_disk_checkpoint",
+      "name": "Tokudb_nonleaf_nodes_flushed_to_disk_checkpoint",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_nonleaf_nodes_flushed_to_disk_checkpoint_bytes",
+      "name": "Tokudb_nonleaf_nodes_flushed_to_disk_checkpoint_bytes",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_nonleaf_nodes_flushed_to_disk_checkpoint_seconds",
+      "name": "Tokudb_nonleaf_nodes_flushed_to_disk_checkpoint_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_nonleaf_nodes_flushed_to_disk_checkpoint_uncompressed_bytes",
+      "name": "Tokudb_nonleaf_nodes_flushed_to_disk_checkpoint_uncompressed_bytes"
+    },
+    {
+      "id": "tokudb_nonleaf_nodes_flushed_to_disk_not_checkpoint",
+      "name": "Tokudb_nonleaf_nodes_flushed_to_disk_not_checkpoint",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_nonleaf_nodes_flushed_to_disk_not_checkpoint_bytes",
+      "name": "Tokudb_nonleaf_nodes_flushed_to_disk_not_checkpoint_bytes",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_nonleaf_nodes_flushed_to_disk_not_checkpoint_seconds",
+      "name": "Tokudb_nonleaf_nodes_flushed_to_disk_not_checkpoint_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_nonleaf_nodes_flushed_to_disk_not_checkpoint_uncompressed_bytes",
+      "name": "Tokudb_nonleaf_nodes_flushed_to_disk_not_checkpoint_uncompressed_bytes"
+    },
+    {
+      "id": "tokudb_nonleaf_serialization_to_memory_seconds",
+      "name": "Tokudb_nonleaf_serialization_to_memory_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_overall_node_compression_ratio",
+      "name": "Tokudb_overall_node_compression_ratio"
+    },
+    {
+      "id": "tokudb_pivots_fetched_for_query",
+      "name": "Tokudb_pivots_fetched_for_query",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_pivots_fetched_for_query_bytes",
+      "name": "Tokudb_pivots_fetched_for_query_bytes",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_pivots_fetched_for_query_seconds",
+      "name": "Tokudb_pivots_fetched_for_query_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_pivots_fetched_for_prefetch",
+      "name": "Tokudb_pivots_fetched_for_prefetch",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_pivots_fetched_for_prefetch_bytes",
+      "name": "Tokudb_pivots_fetched_for_prefetch_bytes",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_pivots_fetched_for_prefetch_seconds",
+      "name": "Tokudb_pivots_fetched_for_prefetch_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_pivots_fetched_for_write",
+      "name": "Tokudb_pivots_fetched_for_write",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_pivots_fetched_for_write_bytes",
+      "name": "Tokudb_pivots_fetched_for_write_bytes",
+      "type": "byte"
+    },
+    {
+      "id": "tokudb_pivots_fetched_for_write_seconds",
+      "name": "Tokudb_pivots_fetched_for_write_seconds",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_promotion_h1_roots_injected_into",
+      "name": "Tokudb_promotion_h1_roots_injected_into",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_promotion_injections_at_depth_0",
+      "name": "Tokudb_promotion_injections_at_depth_0",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_promotion_injections_at_depth_1",
+      "name": "Tokudb_promotion_injections_at_depth_1",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_promotion_injections_at_depth_2",
+      "name": "Tokudb_promotion_injections_at_depth_2",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_promotion_injections_at_depth_3",
+      "name": "Tokudb_promotion_injections_at_depth_3",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_promotion_injections_lower_than_depth_3",
+      "name": "Tokudb_promotion_injections_lower_than_depth_3",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_promotion_leaf_roots_injected_into",
+      "name": "Tokudb_promotion_leaf_roots_injected_into",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_promotion_roots_split",
+      "name": "Tokudb_promotion_roots_split",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_promotion_stopped_after_locking_child",
+      "name": "Tokudb_promotion_stopped_after_locking_child",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_promotion_stopped_at_height_1",
+      "name": "Tokudb_promotion_stopped_at_height_1",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_promotion_stopped_child_locked_or_not_in_memory",
+      "name": "Tokudb_promotion_stopped_child_locked_or_not_in_memory",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_promotion_stopped_child_not_fully_in_memory",
+      "name": "Tokudb_promotion_stopped_child_not_fully_in_memory",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_promotion_stopped_nonempty_buffer",
+      "name": "Tokudb_promotion_stopped_nonempty_buffer",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_txn_aborts",
+      "name": "Tokudb_txn_aborts",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_txn_begin",
+      "name": "Tokudb_txn_begin",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_txn_begin_read_only",
+      "name": "Tokudb_txn_begin_read_only",
+      "type": "integer"
+    },
+    {
+      "id": "tokudb_txn_commits",
+      "name": "Tokudb_txn_commits",
+      "type": "integer"
+    }
+  ],
+  "name": "tokudb-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/tokudb-status-variables/"
+}

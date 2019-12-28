@@ -1,0 +1,3001 @@
+{
+  "data": [
+    {
+      "id": "aborted_clients",
+      "name": "Aborted_clients",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "aborted_connects",
+      "name": "Aborted_connects",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "aborted_connects_preauth",
+      "name": "Aborted_connects_preauth",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "access_denied_errors",
+      "name": "Access_denied_errors",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "acl_column_grants",
+      "name": "Acl_column_grants",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "acl_database_grants",
+      "name": "Acl_database_grants",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "acl_function_grants",
+      "name": "Acl_function_grants",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "acl_package_body_grants",
+      "name": "Acl_package_body_grants",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "acl_package_spec_grants",
+      "name": "Acl_package_spec_grants",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "acl_procedure_grants",
+      "name": "Acl_procedure_grants",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "acl_proxy_users",
+      "name": "Acl_proxy_users",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "acl_role_grants",
+      "name": "Acl_role_grants",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "acl_roles",
+      "name": "Acl_roles",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "acl_table_grants",
+      "name": "Acl_table_grants",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "acl_users",
+      "name": "Acl_users",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "busy_time",
+      "name": "Busy_time",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "bytes_received",
+      "name": "Bytes_received",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "bytes_sent",
+      "name": "Bytes_sent",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_admin_commands",
+      "name": "Com_admin_commands",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_alter_db",
+      "name": "Com_alter_db",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_alter_db_upgrade",
+      "name": "Com_alter_db_upgrade",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_alter_event",
+      "name": "Com_alter_event",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_alter_function",
+      "name": "Com_alter_function",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_alter_procedure",
+      "name": "Com_alter_procedure",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_alter_sequence",
+      "name": "Com_alter_sequence",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_alter_server",
+      "name": "Com_alter_server",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_alter_table",
+      "name": "Com_alter_table",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_alter_tablespace",
+      "name": "Com_alter_tablespace",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_alter_user",
+      "name": "Com_alter_user",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_analyze",
+      "name": "Com_analyze",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_assign_to_keycache",
+      "name": "Com_assign_to_keycache",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_backup",
+      "name": "Com_backup",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_backup_lock",
+      "name": "Com_backup_lock",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_backup_table",
+      "name": "Com_backup_table",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_begin",
+      "name": "Com_begin",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_binlog",
+      "name": "Com_binlog",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_call_procedure",
+      "name": "Com_call_procedure",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_change_db",
+      "name": "Com_change_db",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_check",
+      "name": "Com_check",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_checksum",
+      "name": "Com_checksum",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_commit",
+      "name": "Com_commit",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_compound_sql",
+      "name": "Com_compound_sql",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_db",
+      "name": "Com_create_db",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_event",
+      "name": "Com_create_event",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_function",
+      "name": "Com_create_function",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_index",
+      "name": "Com_create_index",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_package",
+      "name": "Com_create_package",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_package_body",
+      "name": "Com_create_package_body",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_procedure",
+      "name": "Com_create_procedure",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_role",
+      "name": "Com_create_role",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_sequence",
+      "name": "Com_create_sequence",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_server",
+      "name": "Com_create_server",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_table",
+      "name": "Com_create_table",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_temporary_table",
+      "name": "Com_create_temporary_table",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_trigger",
+      "name": "Com_create_trigger",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_udf",
+      "name": "Com_create_udf",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_user",
+      "name": "Com_create_user",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_create_view",
+      "name": "Com_create_view",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_dealloc_sql",
+      "name": "Com_dealloc_sql",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_delete",
+      "name": "Com_delete",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_delete_multi",
+      "name": "Com_delete_multi",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_do",
+      "name": "Com_do",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_db",
+      "name": "Com_drop_db",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_event",
+      "name": "Com_drop_event",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_function",
+      "name": "Com_drop_function",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_index",
+      "name": "Com_drop_index",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_package",
+      "name": "Com_drop_package",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_package_body",
+      "name": "Com_drop_package_body",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_procedure",
+      "name": "Com_drop_procedure",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_role",
+      "name": "Com_drop_role",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_sequence",
+      "name": "Com_drop_sequence",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_server",
+      "name": "Com_drop_server",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_table",
+      "name": "Com_drop_table",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_temporary_table",
+      "name": "Com_drop_temporary_table",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_trigger",
+      "name": "Com_drop_trigger",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_user",
+      "name": "Com_drop_user",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_drop_view",
+      "name": "Com_drop_view",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_empty_query",
+      "name": "Com_empty_query",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_execute_immediate",
+      "name": "Com_execute_immediate",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_execute_sql",
+      "name": "Com_execute_sql",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_flush",
+      "name": "Com_flush",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_get_diagnostics",
+      "name": "Com_get_diagnostics",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_grant",
+      "name": "Com_grant",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_grant_role",
+      "name": "Com_grant_role",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_ha_close",
+      "name": "Com_ha_close",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_ha_open",
+      "name": "Com_ha_open",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_ha_read",
+      "name": "Com_ha_read",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_help",
+      "name": "Com_help",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_insert",
+      "name": "Com_insert",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_insert_select",
+      "name": "Com_insert_select",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_install_plugin",
+      "name": "Com_install_plugin",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_kill",
+      "name": "Com_kill",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_load",
+      "name": "Com_load",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_load_master_data",
+      "name": "Com_load_master_data",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_load_master_table",
+      "name": "Com_load_master_table",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_multi",
+      "name": "Com_multi",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_lock_tables",
+      "name": "Com_lock_tables",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_optimize",
+      "name": "Com_optimize",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_preload_keys",
+      "name": "Com_preload_keys",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_prepare_sql",
+      "name": "Com_prepare_sql",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_purge",
+      "name": "Com_purge",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_purge_before_date",
+      "name": "Com_purge_before_date",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_release_savepoint",
+      "name": "Com_release_savepoint",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_rename_table",
+      "name": "Com_rename_table",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_rename_user",
+      "name": "Com_rename_user",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_repair",
+      "name": "Com_repair",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_replace",
+      "name": "Com_replace",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_replace_select",
+      "name": "Com_replace_select",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_reset",
+      "name": "Com_reset",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_resignal",
+      "name": "Com_resignal",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_restore_table",
+      "name": "Com_restore_table",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_revoke",
+      "name": "Com_revoke",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_revoke_all",
+      "name": "Com_revoke_all",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_revoke_grant",
+      "name": "Com_revoke_grant",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_rollback",
+      "name": "Com_rollback",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_rollback_to_savepoint",
+      "name": "Com_rollback_to_savepoint",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_savepoint",
+      "name": "Com_savepoint",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_select",
+      "name": "Com_select",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_set_option",
+      "name": "Com_set_option",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_signal",
+      "name": "Com_signal",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_authors",
+      "name": "Com_show_authors",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_binlog_events",
+      "name": "Com_show_binlog_events",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_binlogs",
+      "name": "Com_show_binlogs",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_charsets",
+      "name": "Com_show_charsets",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_client_statistics",
+      "name": "Com_show_client_statistics",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_collations",
+      "name": "Com_show_collations",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_column_types",
+      "name": "Com_show_column_types",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_contributors",
+      "name": "Com_show_contributors",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_create_db",
+      "name": "Com_show_create_db",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_create_event",
+      "name": "Com_show_create_event",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_create_func",
+      "name": "Com_show_create_func",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_create_package",
+      "name": "Com_show_create_package",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_create_package_body",
+      "name": "Com_show_create_package_body",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_create_proc",
+      "name": "Com_show_create_proc",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_create_table",
+      "name": "Com_show_create_table",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_create_trigger",
+      "name": "Com_show_create_trigger",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_create_user",
+      "name": "Com_show_create_user",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_databases",
+      "name": "Com_show_databases",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_engine_logs",
+      "name": "Com_show_engine_logs",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_engine_mutex",
+      "name": "Com_show_engine_mutex",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_engine_status",
+      "name": "Com_show_engine_status",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_events",
+      "name": "Com_show_events",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_errors",
+      "name": "Com_show_errors",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_explain",
+      "name": "Com_show_explain",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_fields",
+      "name": "Com_show_fields",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_function_status",
+      "name": "Com_show_function_status",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_generic",
+      "name": "Com_show_generic",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_grants",
+      "name": "Com_show_grants",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_keys",
+      "name": "Com_show_keys",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_index_statistics",
+      "name": "Com_show_index_statistics",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_open_tables",
+      "name": "Com_show_open_tables",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_package_status",
+      "name": "Com_show_package_status",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_package_body_status",
+      "name": "Com_show_package_body_status",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_plugins",
+      "name": "Com_show_plugins",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_privileges",
+      "name": "Com_show_privileges",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_procedure_status",
+      "name": "Com_show_procedure_status",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_processlist",
+      "name": "Com_show_processlist",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_profile",
+      "name": "Com_show_profile",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_profiles",
+      "name": "Com_show_profiles",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_relaylog_events",
+      "name": "Com_show_relaylog_events",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_status",
+      "name": "Com_show_status",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_storage_engines",
+      "name": "Com_show_storage_engines",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_table_statistics",
+      "name": "Com_show_table_statistics",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_table_status",
+      "name": "Com_show_table_status",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_tables",
+      "name": "Com_show_tables",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_triggers",
+      "name": "Com_show_triggers",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_user_statistics",
+      "name": "Com_show_user_statistics",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_variable",
+      "name": "Com_show_variable",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_show_warnings",
+      "name": "Com_show_warnings",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_shutdown",
+      "name": "Com_shutdown",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_stmt_close",
+      "name": "Com_stmt_close",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_stmt_execute",
+      "name": "Com_stmt_execute",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_stmt_fetch",
+      "name": "Com_stmt_fetch",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_stmt_prepare",
+      "name": "Com_stmt_prepare",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_stmt_reprepare",
+      "name": "Com_stmt_reprepare",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_stmt_reset",
+      "name": "Com_stmt_reset",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_stmt_send_long_data",
+      "name": "Com_stmt_send_long_data",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_truncate",
+      "name": "Com_truncate",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_uninstall_plugin",
+      "name": "Com_uninstall_plugin",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_unlock_tables",
+      "name": "Com_unlock_tables",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_update",
+      "name": "Com_update",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_update_multi",
+      "name": "Com_update_multi",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_xa_commit",
+      "name": "Com_xa_commit",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_xa_end",
+      "name": "Com_xa_end",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_xa_prepare",
+      "name": "Com_xa_prepare",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_xa_recover",
+      "name": "Com_xa_recover",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_xa_rollback",
+      "name": "Com_xa_rollback",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "com_xa_start",
+      "name": "Com_xa_start",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "compression",
+      "name": "Compression",
+      "scope": [
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "id": "connection_errors_accept",
+      "name": "Connection_errors_accept",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "connection_errors_internal",
+      "name": "Connection_errors_internal",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "connection_errors_max_connections",
+      "name": "Connection_errors_max_connections",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "connection_errors_peer_address",
+      "name": "Connection_errors_peer_address",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "connection_errors_select",
+      "name": "Connection_errors_select",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "connection_errors_tcpwrap",
+      "name": "Connection_errors_tcpwrap",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "connections",
+      "name": "Connections",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "cpu_time",
+      "name": "Cpu_time",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "created_tmp_disk_tables",
+      "name": "Created_tmp_disk_tables",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "created_tmp_files",
+      "name": "Created_tmp_files",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "created_tmp_tables",
+      "name": "Created_tmp_tables",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "delayed_errors",
+      "name": "Delayed_errors",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "delayed_insert_threads",
+      "name": "Delayed_insert_threads",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "delayed_writes",
+      "name": "Delayed_writes",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "delete_scan",
+      "name": "Delete_scan",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "empty_queries",
+      "name": "Empty_queries",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "executed_events",
+      "name": "Executed_events",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "executed_triggers",
+      "name": "Executed_triggers",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_application_time_periods",
+      "name": "Feature_application_time_periods",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_check_constraint",
+      "name": "Feature_check_constraint",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_custom_aggregate_functions",
+      "name": "Feature_custom_aggregate_functions",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_delay_key_write",
+      "name": "Feature_delay_key_write",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_dynamic_columns",
+      "name": "Feature_dynamic_columns",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_fulltext",
+      "name": "Feature_fulltext",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_gis",
+      "name": "Feature_gis",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_invisible_columns",
+      "name": "Feature_invisible_columns",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_json",
+      "name": "Feature_json",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_locale",
+      "name": "Feature_locale",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_subquery",
+      "name": "Feature_subquery",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_system_versioning",
+      "name": "Feature_system_versioning",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_timezone",
+      "name": "Feature_timezone",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_trigger",
+      "name": "Feature_trigger",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_window_functions",
+      "name": "Feature_window_functions",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "feature_xml",
+      "name": "Feature_xml",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "flush_commands",
+      "name": "Flush_commands",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_commit",
+      "name": "Handler_commit",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_delete",
+      "name": "Handler_delete",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_discover",
+      "name": "Handler_discover",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_external_lock",
+      "name": "Handler_external_lock",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_icp_attempts",
+      "name": "Handler_icp_attempts",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_icp_match",
+      "name": "Handler_icp_match",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_mrr_init",
+      "name": "Handler_mrr_init",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_mrr_key_refills",
+      "name": "Handler_mrr_key_refills",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_mrr_rowid_refills",
+      "name": "Handler_mrr_rowid_refills",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_prepare",
+      "name": "Handler_prepare",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_read_first",
+      "name": "Handler_read_first",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_read_key",
+      "name": "Handler_read_key",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_read_last",
+      "name": "Handler_read_last",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_read_next",
+      "name": "Handler_read_next",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_read_prev",
+      "name": "Handler_read_prev",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_read_retry",
+      "name": "Handler_read_retry",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_read_rnd",
+      "name": "Handler_read_rnd",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_read_rnd_deleted",
+      "name": "Handler_read_rnd_deleted",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_read_rnd_next",
+      "name": "Handler_read_rnd_next",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_rollback",
+      "name": "Handler_rollback",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_savepoint",
+      "name": "Handler_savepoint",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_savepoint_rollback",
+      "name": "Handler_savepoint_rollback",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_tmp_delete",
+      "name": "Handler_tmp_delete",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_tmp_update",
+      "name": "Handler_tmp_update",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_tmp_write",
+      "name": "Handler_tmp_write",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_update",
+      "name": "Handler_update",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "handler_write",
+      "name": "Handler_write",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "key_blocks_not_flushed",
+      "name": "Key_blocks_not_flushed",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "key_blocks_unused",
+      "name": "Key_blocks_unused",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "key_blocks_used",
+      "name": "Key_blocks_used",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "key_blocks_warm",
+      "name": "Key_blocks_warm",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "key_read_requests",
+      "name": "Key_read_requests",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "key_reads",
+      "name": "Key_reads",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "key_write_requests",
+      "name": "Key_write_requests",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "key_writes",
+      "name": "Key_writes",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "last_query_cost",
+      "name": "Last_query_cost",
+      "scope": [
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "maria_",
+      "name": "Maria_*"
+    },
+    {
+      "id": "max_statement_time_exceeded",
+      "name": "Max_statement_time_exceeded",
+      "type": "integer"
+    },
+    {
+      "id": "max_used_connections",
+      "name": "Max_used_connections",
+      "scope": [
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "memory_used",
+      "name": "Memory_used",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "memory_used_initial",
+      "name": "Memory_used_initial",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "not_flushed_delayed_rows",
+      "name": "Not_flushed_delayed_rows",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "open_files",
+      "name": "Open_files",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "open_streams",
+      "name": "Open_streams",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "open_table_definitions",
+      "name": "Open_table_definitions",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "open_tables",
+      "name": "Open_tables",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "opened_files",
+      "name": "Opened_files",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "opened_plugin_libraries",
+      "name": "Opened_plugin_libraries",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "opened_table_definitions",
+      "name": "Opened_table_definitions",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "opened_tables",
+      "name": "Opened_tables",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "opened_views",
+      "name": "Opened_views",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_accounts_lost",
+      "name": "Performance_schema_accounts_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_cond_classes_lost",
+      "name": "Performance_schema_cond_classes_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_cond_instances_lost",
+      "name": "Performance_schema_cond_instances_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_digest_lost",
+      "name": "Performance_schema_digest_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_file_classes_lost",
+      "name": "Performance_schema_file_classes_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_file_handles_lost",
+      "name": "Performance_schema_file_handles_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_file_instances_lost",
+      "name": "Performance_schema_file_instances_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_hosts_lost",
+      "name": "Performance_schema_hosts_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_locker_lost",
+      "name": "Performance_schema_locker_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_mutex_classes_lost",
+      "name": "Performance_schema_mutex_classes_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_mutex_instances_lost",
+      "name": "Performance_schema_mutex_instances_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_rwlock_classes_lost",
+      "name": "Performance_schema_rwlock_classes_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_rwlock_instances_lost",
+      "name": "Performance_schema_rwlock_instances_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_session_connect_attrs_lost",
+      "name": "Performance_schema_session_connect_attrs_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_socket_classes_lost",
+      "name": "Performance_schema_socket_classes_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_socket_instances_lost",
+      "name": "Performance_schema_socket_instances_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_stage_classes_lost",
+      "name": "Performance_schema_stage_classes_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_statement_classes_lost",
+      "name": "Performance_schema_statement_classes_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_table_handles_lost",
+      "name": "Performance_schema_table_handles_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_table_instances_lost",
+      "name": "Performance_schema_table_instances_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_thread_classes_lost",
+      "name": "Performance_schema_thread_classes_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_thread_instances_lost",
+      "name": "Performance_schema_thread_instances_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "performance_schema_users_lost",
+      "name": "Performance_schema_users_lost",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "prepared_stmt_count",
+      "name": "Prepared_stmt_count",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "qcache_free_blocks",
+      "name": "Qcache_free_blocks",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "qcache_free_memory",
+      "name": "Qcache_free_memory",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "qcache_hits",
+      "name": "Qcache_hits",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "qcache_inserts",
+      "name": "Qcache_inserts",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "qcache_lowmem_prunes",
+      "name": "Qcache_lowmem_prunes",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "qcache_not_cached",
+      "name": "Qcache_not_cached",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "qcache_queries_in_cache",
+      "name": "Qcache_queries_in_cache",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "qcache_total_blocks",
+      "name": "Qcache_total_blocks",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "queries",
+      "name": "Queries",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "questions",
+      "name": "Questions",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "rows_read",
+      "name": "Rows_read",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "rows_sent",
+      "name": "Rows_sent",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "rows_tmp_read",
+      "name": "Rows_tmp_read",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "select_full_join",
+      "name": "Select_full_join",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "select_full_range_join",
+      "name": "Select_full_range_join",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "select_range",
+      "name": "Select_range",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "select_range_check",
+      "name": "Select_range_check",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "select_scan",
+      "name": "Select_scan",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "slow_launch_threads",
+      "name": "Slow_launch_threads",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "slow_queries",
+      "name": "Slow_queries",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "sort_merge_passes",
+      "name": "Sort_merge_passes",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "sort_priority_queue_sorts",
+      "name": "Sort_priority_queue_sorts",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "sort_range",
+      "name": "Sort_range",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "sort_rows",
+      "name": "Sort_rows",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "sort_scan",
+      "name": "Sort_scan",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "subquery_cache_hit",
+      "name": "Subquery_cache_hit",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "subquery_cache_miss",
+      "name": "Subquery_cache_miss",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "syncs",
+      "name": "Syncs",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "table_locks_immediate",
+      "name": "Table_locks_immediate",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "table_locks_waited",
+      "name": "Table_locks_waited",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "table_open_cache_active_instances",
+      "name": "Table_open_cache_active_instances",
+      "scope": [],
+      "type": "integer"
+    },
+    {
+      "id": "table_open_cache_hits",
+      "name": "Table_open_cache_hits",
+      "scope": [],
+      "type": "integer"
+    },
+    {
+      "id": "table_open_cache_misses",
+      "name": "Table_open_cache_misses",
+      "scope": [],
+      "type": "integer"
+    },
+    {
+      "id": "table_open_cache_overflows",
+      "name": "Table_open_cache_overflows",
+      "scope": [],
+      "type": "integer"
+    },
+    {
+      "id": "tc_log_max_pages_used",
+      "name": "Tc_log_max_pages_used",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "tc_log_page_size",
+      "name": "Tc_log_page_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "tc_log_page_waits",
+      "name": "Tc_log_page_waits",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "threads_cached",
+      "name": "Threads_cached",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "threads_connected",
+      "name": "Threads_connected",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "threads_created",
+      "name": "Threads_created",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "threads_running",
+      "name": "Threads_running",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "update_scan",
+      "name": "Update_scan",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "uptime",
+      "name": "Uptime",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "uptime_since_flush_status",
+      "name": "Uptime_since_flush_status",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "server-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/server-status-variables/"
+}

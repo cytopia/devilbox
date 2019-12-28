@@ -1,0 +1,51 @@
+{
+    "vars": {
+        "Test_var": {
+            "d": true,
+            "t": 2
+        },
+        "another-variable": {
+            "d": false,
+            "t": 1
+        },
+        "doc-variable_ok": {
+            "d": true,
+            "t": 3,
+            "a": [
+                {
+                    "t": 1,
+                    "u": 0
+                },
+                {
+                    "t": 2,
+                    "u": 1
+                },
+                {
+                    "a": "anchorname",
+                    "t": 2,
+                    "u": 1
+                }
+            ]
+        }
+    },
+    "version": 1,
+    "types": {
+        "1": "MYSQL",
+        "2": "MARIADB"
+    },
+    "varTypes": {
+        "1": "string",
+        "2": "boolean",
+        "3": "integer",
+        "4": "numeric",
+        "5": "enumeration",
+        "6": "set",
+        "7": "directory name",
+        "8": "file name",
+        "9": "byte"
+    },
+    "urls": [
+        "https://dev.mysql.com/",
+        "https://mariadb.com/"
+    ]
+}

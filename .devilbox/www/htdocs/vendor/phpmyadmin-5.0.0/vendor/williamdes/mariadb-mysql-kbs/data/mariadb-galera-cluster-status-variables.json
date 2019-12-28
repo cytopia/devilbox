@@ -1,0 +1,276 @@
+{
+  "data": [
+    {
+      "id": "wsrep_apply_oooe",
+      "name": "wsrep_apply_oooe"
+    },
+    {
+      "id": "wsrep_apply_oool",
+      "name": "wsrep_apply_oool"
+    },
+    {
+      "id": "wsrep_apply_window",
+      "name": "wsrep_apply_window"
+    },
+    {
+      "id": "wsrep_cert_deps_distance",
+      "name": "wsrep_cert_deps_distance"
+    },
+    {
+      "id": "wsrep_cert_index_size",
+      "name": "wsrep_cert_index_size",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_cert_interval",
+      "name": "wsrep_cert_interval",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_cluster_capabilities",
+      "name": "wsrep_cluster_capabilities"
+    },
+    {
+      "id": "wsrep_cluster_conf_id",
+      "name": "wsrep_cluster_conf_id",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_cluster_size",
+      "name": "wsrep_cluster_size",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_cluster_state_uuid",
+      "name": "wsrep_cluster_state_uuid"
+    },
+    {
+      "id": "wsrep_cluster_status",
+      "name": "wsrep_cluster_status"
+    },
+    {
+      "id": "wsrep_cluster_weight",
+      "name": "wsrep_cluster_weight"
+    },
+    {
+      "id": "wsrep_commit_oooe",
+      "name": "wsrep_commit_oooe"
+    },
+    {
+      "id": "wsrep_commit_oool",
+      "name": "wsrep_commit_oool"
+    },
+    {
+      "id": "wsrep_commit_window",
+      "name": "wsrep_commit_window"
+    },
+    {
+      "id": "wsrep_connected",
+      "name": "wsrep_connected"
+    },
+    {
+      "id": "wsrep_desync_count",
+      "name": "wsrep_desync_count",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_evs_delayed",
+      "name": "wsrep_evs_delayed"
+    },
+    {
+      "id": "wsrep_evs_evict_list",
+      "name": "wsrep_evs_evict_list"
+    },
+    {
+      "id": "wsrep_evs_repl_latency",
+      "name": "wsrep_evs_repl_latency"
+    },
+    {
+      "id": "wsrep_evs_state",
+      "name": "wsrep_evs_state"
+    },
+    {
+      "id": "wsrep_flow_control_paused",
+      "name": "wsrep_flow_control_paused"
+    },
+    {
+      "id": "wsrep_flow_control_paused_ns",
+      "name": "wsrep_flow_control_paused_ns"
+    },
+    {
+      "id": "wsrep_flow_control_recv",
+      "name": "wsrep_flow_control_recv",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_flow_control_sent",
+      "name": "wsrep_flow_control_sent",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_gcomm_uuid",
+      "name": "wsrep_gcomm_uuid"
+    },
+    {
+      "id": "wsrep_incoming_addresses",
+      "name": "wsrep_incoming_addresses"
+    },
+    {
+      "id": "wsrep_last_committed",
+      "name": "wsrep_last_committed",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_local_bf_aborts",
+      "name": "wsrep_local_bf_aborts",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_local_cached_downto",
+      "name": "wsrep_local_cached_downto"
+    },
+    {
+      "id": "wsrep_local_cert_failures",
+      "name": "wsrep_local_cert_failures",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_local_commits",
+      "name": "wsrep_local_commits",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_local_index",
+      "name": "wsrep_local_index"
+    },
+    {
+      "id": "wsrep_local_recv_queue",
+      "name": "wsrep_local_recv_queue",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_local_recv_queue_avg",
+      "name": "wsrep_local_recv_queue_avg"
+    },
+    {
+      "id": "wsrep_local_recv_queue_max",
+      "name": "wsrep_local_recv_queue_max"
+    },
+    {
+      "id": "wsrep_local_recv_queue_min",
+      "name": "wsrep_local_recv_queue_min"
+    },
+    {
+      "id": "wsrep_local_replays",
+      "name": "wsrep_local_replays",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_local_send_queue",
+      "name": "wsrep_local_send_queue",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_local_send_queue_avg",
+      "name": "wsrep_local_send_queue_avg"
+    },
+    {
+      "id": "wsrep_local_send_queue_max",
+      "name": "wsrep_local_send_queue_max"
+    },
+    {
+      "id": "wsrep_local_send_queue_min",
+      "name": "wsrep_local_send_queue_min"
+    },
+    {
+      "id": "wsrep_local_state",
+      "name": "wsrep_local_state"
+    },
+    {
+      "id": "wsrep_local_state_comment",
+      "name": "wsrep_local_state_comment"
+    },
+    {
+      "id": "wsrep_local_state_uuid",
+      "name": "wsrep_local_state_uuid"
+    },
+    {
+      "id": "wsrep_open_connections",
+      "name": "wsrep_open_connections",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_open_transactions",
+      "name": "wsrep_open_transactions",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_protocol_version",
+      "name": "wsrep_protocol_version"
+    },
+    {
+      "id": "wsrep_provider_name",
+      "name": "wsrep_provider_name"
+    },
+    {
+      "id": "wsrep_provider_vendor",
+      "name": "wsrep_provider_vendor"
+    },
+    {
+      "id": "wsrep_provider_version",
+      "name": "wsrep_provider_version",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_ready",
+      "name": "wsrep_ready"
+    },
+    {
+      "id": "wsrep_received",
+      "name": "wsrep_received",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_received_bytes",
+      "name": "wsrep_received_bytes",
+      "type": "byte"
+    },
+    {
+      "id": "wsrep_repl_data_bytes",
+      "name": "wsrep_repl_data_bytes",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_repl_keys",
+      "name": "wsrep_repl_keys",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_repl_keys_bytes",
+      "name": "wsrep_repl_keys_bytes",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_repl_other_bytes",
+      "name": "wsrep_repl_other_bytes",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_replicated",
+      "name": "wsrep_replicated",
+      "type": "integer"
+    },
+    {
+      "id": "wsrep_replicated_bytes",
+      "name": "wsrep_replicated_bytes",
+      "type": "byte"
+    },
+    {
+      "id": "wsrep_thread_count",
+      "name": "wsrep_thread_count",
+      "type": "integer"
+    }
+  ],
+  "name": "galera-cluster-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/galera-cluster-status-variables/"
+}

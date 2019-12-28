@@ -1,0 +1,235 @@
+<html>
+
+<div class="itemizedlist">
+    <ul class="itemizedlist" style="list-style-type: disc; ">
+        <li class="listitem">
+            <p><a name="option_mysqld_ndbcluster"></a>
+                <a class="indexterm" name="idm139716308207376"></a>
+
+                <a class="indexterm" name="idm139716308205888"></a>
+
+                <a class="link" href="mysql-cluster-options-variables.html#option_mysqld_ndbcluster"><code
+                        class="option">--ndbcluster</code></a>
+            </p>
+            <div class="table">
+                <a name="ndbcluster-detailtable"></a>
+                <p class="title"><b>Table&nbsp;21.207
+                        Type and value information for ndbcluster</b></p>
+                <div class="table-contents">
+                    <table>
+                        <colgroup>
+                            <col width="35%">
+                            <col width="65%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">Property</th>
+                                <th scope="col">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row">Name</td>
+                                <td><code
+                                        class="literal"><a class="link" href="mysql-cluster-options-variables.html#option_mysqld_ndbcluster">ndbcluster</a></code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Command Line</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">System Variable</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Status Variable</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Option File</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Scope</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Dynamic</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Type</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Default, Range</td>
+                                <td>FALSE (Version: NDB 7.5-7.6)</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Notes</td>
+                                <td>
+                                    <p>
+                                        DESCRIPTION: Enable NDB Cluster (if this version
+                                        of MySQL supports it)
+                                    </p>
+                                    <p>
+                                        Disabled by
+                                        <a class="link"
+                                            href="mysql-cluster-options-variables.html#option_mysqld_skip-ndbcluster"><code
+                                                class="option">--skip-ndbcluster</code></a>.
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-contents">
+                    <table cellpadding="0" cellspacing="0"
+                        style="position: fixed; top: 0px; display: none; left: 431px; width: 705px;">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 247px;">Property</th>
+                                <th scope="col" style="width: 457px;">Value</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </div>
+            <br class="table-break">
+            <p>
+                The <a class="link" href="mysql-cluster.html"
+                    title="Chapter&nbsp;21&nbsp;MySQL NDB Cluster 7.5 and NDB Cluster 7.6"><code
+                        class="literal">NDBCLUSTER</code></a> storage engine
+                is necessary for using NDB Cluster. If a
+                <a class="link" href="mysqld.html" title="4.3.1&nbsp;mysqld — The MySQL Server"><span
+                        class="command"><strong>mysqld</strong></span></a> binary includes support for the
+                <a class="link" href="mysql-cluster.html"
+                    title="Chapter&nbsp;21&nbsp;MySQL NDB Cluster 7.5 and NDB Cluster 7.6"><code
+                        class="literal">NDBCLUSTER</code></a> storage engine,
+                the engine is disabled by default. Use the
+                <a class="link" href="mysql-cluster-options-variables.html#option_mysqld_ndbcluster"><code
+                        class="option">--ndbcluster</code></a> option to
+                enable it. Use <code class="option">--skip-ndbcluster</code> to
+                explicitly disable the engine.
+            </p>
+            <p>
+                It is not necessary or desirable to use this option
+                together with <a class="link" href="server-options.html#option_mysqld_initialize"><code
+                        class="option">--initialize</code></a>.
+                Beginning with NDB 7.5.4, <code class="option">--ndbcluster</code> is
+                ignored (and the <code class="literal">NDB</code> storage engine is
+                <span class="emphasis"><em>not</em></span> enabled) if
+                <code class="option">--initialize</code> is also used. (Bug #81689,
+                Bug #23518923)
+            </p>
+        </li>
+        <li class="listitem">
+            <p><a name="option_mysqld_ndb-allow-copying-alter-table"></a>
+                <a class="indexterm" name="idm139716308160304"></a>
+
+                <a class="indexterm" name="idm139716308158800"></a>
+
+                <code class="option">--ndb-allow-copying-alter-table=[ON|OFF]</code>
+            </p>
+            <div class="table">
+                <a name="ndb-allow-copying-alter-table-detailtable"></a>
+                <p class="title"><b>Table&nbsp;21.208
+                        Type and value information for ndb-allow-copying-alter-table</b></p>
+                <div class="table-contents">
+                    <table>
+                        <colgroup>
+                            <col width="35%">
+                            <col width="65%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">Property</th>
+                                <th scope="col">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row">Name</td>
+                                <td><code
+                                        class="literal"><a class="link" href="mysql-cluster-options-variables.html#option_mysqld_ndb-allow-copying-alter-table">ndb-allow-copying-alter-table</a></code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Command Line</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">System Variable</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Status Variable</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Option File</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Scope</td>
+                                <td>Both</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Dynamic</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Type</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Default, Range</td>
+                                <td>ON (Version: NDB 7.5-7.6)</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Notes</td>
+                                <td>
+                                    <p>
+                                        DESCRIPTION: Set to OFF to keep ALTER TABLE from
+                                        using copying operations on NDB tables
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-contents">
+                    <table cellpadding="0" cellspacing="0"
+                        style="position: fixed; top: 0px; display: none; left: 431px; width: 911px;">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 319px;">Property</th>
+                                <th scope="col" style="width: 591px;">Value</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </div>
+            <br class="table-break">
+            <p>
+                Let <a class="link" href="alter-table.html" title="13.1.8&nbsp;ALTER TABLE Syntax"><code
+                        class="literal">ALTER TABLE</code></a> and other
+                DDL statements use copying operations on
+                <code class="literal">NDB</code> tables. Set to
+                <code class="literal">OFF</code> to keep this from happening; doing
+                so may improve performance of critical applications.
+            </p>
+        </li>
+        <li class="listitem">
+            <p><a name="option_mysqld_ndb-batch-size"></a>
+                <a class="indexterm" name="idm139716308121008"></a>
+
+                <a class="indexterm" name="idm139716308119520"></a>
+
+                <code class="option">--ndb-batch-size=<em class="replaceable"><code>#</code></em></code>
+            </p>
+
+</html>

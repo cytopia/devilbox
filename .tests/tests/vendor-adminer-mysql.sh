@@ -107,7 +107,7 @@ if ! run "\
 		--data 'auth[username]=root' \
 		--data 'auth[password]=${MYSQL_ROOT_PASSWORD}' \
 		--data 'auth[db]=' \
-		'http://localhost:${HOST_PORT_HTTPD}${URL}?server=mysql&username=root|| true'" "1"
+		'http://localhost:${HOST_PORT_HTTPD}${URL}?server=mysql&username=root || true'" "1"
 	run "curl -sS -I -c cookie.txt -b cookie.txt \
 		-L \
 		--data 'auth[driver]=server' \
@@ -115,7 +115,7 @@ if ! run "\
 		--data 'auth[username]=root' \
 		--data 'auth[password]=${MYSQL_ROOT_PASSWORD}' \
 		--data 'auth[db]=' \
-		'http://localhost:${HOST_PORT_HTTPD}${URL}?server=mysql&username=root|| true'" "1"
+		'http://localhost:${HOST_PORT_HTTPD}${URL}?server=mysql&username=root || true'" "1"
 	rm -f cookie.txt
 	exit 1
 else

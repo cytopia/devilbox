@@ -1,0 +1,594 @@
+{
+  "data": [
+    {
+      "default": "OFF",
+      "dynamic": true,
+      "id": "tokudb_alter_print_error",
+      "name": "tokudb_alter_print_error",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "5",
+      "dynamic": true,
+      "id": "tokudb_analyze_time",
+      "name": "tokudb_analyze_time",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "4194304 (4MB)",
+      "dynamic": true,
+      "id": "tokudb_block_size",
+      "name": "tokudb_block_size",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "ON",
+      "dynamic": true,
+      "id": "tokudb_bulk_fetch",
+      "name": "tokudb_bulk_fetch",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "Half of the total system memory",
+      "dynamic": false,
+      "id": "tokudb_cache_size",
+      "name": "tokudb_cache_size",
+      "type": "integer"
+    },
+    {
+      "default": "1",
+      "dynamic": true,
+      "id": "tokudb_check_jemalloc",
+      "name": "tokudb_check_jemalloc",
+      "scope": [
+        "global"
+      ],
+      "type": "integer",
+      "validValues": [
+        "0",
+        "1"
+      ]
+    },
+    {
+      "default": "OFF",
+      "dynamic": true,
+      "id": "tokudb_checkpoint_lock",
+      "name": "tokudb_checkpoint_lock",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "OFF",
+      "dynamic": true,
+      "id": "tokudb_checkpoint_on_flush_logs",
+      "name": "tokudb_checkpoint_on_flush_logs",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "60",
+      "dynamic": true,
+      "id": "tokudb_checkpointing_period",
+      "name": "tokudb_checkpointing_period",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "5",
+      "dynamic": true,
+      "id": "tokudb_cleaner_iterations",
+      "name": "tokudb_cleaner_iterations",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "1",
+      "dynamic": true,
+      "id": "tokudb_cleaner_period",
+      "name": "tokudb_cleaner_period",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "ON",
+      "dynamic": true,
+      "id": "tokudb_commit_sync",
+      "name": "tokudb_commit_sync",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "ON",
+      "dynamic": true,
+      "id": "tokudb_create_index_online",
+      "name": "tokudb_create_index_online",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "Empty (the MariaDB datadir is used)",
+      "dynamic": false,
+      "id": "tokudb_data_dir",
+      "name": "tokudb_data_dir",
+      "type": "string"
+    },
+    {
+      "default": "0",
+      "dynamic": true,
+      "id": "tokudb_debug",
+      "name": "tokudb_debug",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "OFF",
+      "dynamic": false,
+      "id": "tokudb_directio",
+      "name": "tokudb_directio",
+      "type": "boolean"
+    },
+    {
+      "default": "OFF",
+      "dynamic": true,
+      "id": "tokudb_disable_hot_alter",
+      "name": "tokudb_disable_hot_alter",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "OFF",
+      "dynamic": true,
+      "id": "tokudb_disable_prefetching",
+      "name": "tokudb_disable_prefetching",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "OFF",
+      "dynamic": true,
+      "id": "tokudb_disable_slow_alter",
+      "name": "tokudb_disable_slow_alter",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "rl",
+      "dynamic": true,
+      "id": "tokudb_empty_scan",
+      "name": "tokudb_empty_scan",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "validValues": [
+        "lr",
+        "rl",
+        "disabled"
+      ]
+    },
+    {
+      "default": "5",
+      "dynamic": false,
+      "id": "tokudb_fs_reserve_percent",
+      "name": "tokudb_fs_reserve_percent",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "0",
+      "dynamic": true,
+      "id": "tokudb_fsync_log_period",
+      "name": "tokudb_fsync_log_period",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "ON",
+      "dynamic": true,
+      "id": "tokudb_hide_default_row_format",
+      "name": "tokudb_hide_default_row_format",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "4000",
+      "dynamic": true,
+      "id": "tokudb_killed_time",
+      "name": "tokudb_killed_time",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "Empty",
+      "dynamic": true,
+      "id": "tokudb_last_lock_timeout",
+      "name": "tokudb_last_lock_timeout",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "ON",
+      "dynamic": true,
+      "id": "tokudb_load_save_space",
+      "name": "tokudb_load_save_space",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "100000000 (100M)",
+      "dynamic": true,
+      "id": "tokudb_loader_memory_size",
+      "name": "tokudb_loader_memory_size",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "4000 (4 seconds)",
+      "dynamic": true,
+      "id": "tokudb_lock_timeout",
+      "name": "tokudb_lock_timeout",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "1",
+      "dynamic": true,
+      "id": "tokudb_lock_timeout_debug",
+      "name": "tokudb_lock_timeout_debug",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "Empty (the MariaDB datadir is used)",
+      "dynamic": false,
+      "id": "tokudb_log_dir",
+      "name": "tokudb_log_dir",
+      "type": "string"
+    },
+    {
+      "default": "130653952",
+      "dynamic": false,
+      "id": "tokudb_max_lock_memory",
+      "name": "tokudb_max_lock_memory",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "1.000000",
+      "dynamic": true,
+      "id": "tokudb_optimize_index_fraction",
+      "name": "tokudb_optimize_index_fraction",
+      "range": {
+        "from": 0,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "None",
+      "dynamic": true,
+      "id": "tokudb_optimize_index_name",
+      "name": "tokudb_optimize_index_name",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "default": "0",
+      "dynamic": true,
+      "id": "tokudb_optimize_throttle",
+      "name": "tokudb_optimize_throttle",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "1",
+      "dynamic": true,
+      "id": "tokudb_pk_insert_mode",
+      "name": "tokudb_pk_insert_mode",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "validValues": [
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    {
+      "default": "ON",
+      "dynamic": true,
+      "id": "tokudb_prelock_empty",
+      "name": "tokudb_prelock_empty",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "65536 (64KB)",
+      "dynamic": true,
+      "id": "tokudb_read_block_size",
+      "name": "tokudb_read_block_size",
+      "range": {
+        "from": 4096,
+        "to": 4294967295
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "131072 (128KB)",
+      "dynamic": true,
+      "id": "tokudb_read_buf_size",
+      "name": "tokudb_read_buf_size",
+      "range": {
+        "from": 0,
+        "to": 1048576
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "10000",
+      "dynamic": true,
+      "id": "tokudb_read_status_frequency",
+      "name": "tokudb_read_status_frequency",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "tokudb_zlib",
+      "dynamic": true,
+      "id": "tokudb_row_format",
+      "name": "tokudb_row_format",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "validValues": [
+        "tokudb_default",
+        "tokudb_fast",
+        "tokudb_small",
+        "tokudb_zlib",
+        "tokudb_quicklz",
+        "tokudb_lzma",
+        "tokudb_uncompressed"
+      ]
+    },
+    {
+      "default": "ON",
+      "dynamic": true,
+      "id": "tokudb_rpl_check_readonly",
+      "name": "tokudb_rpl_check_readonly",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "ON",
+      "dynamic": true,
+      "id": "tokudb_rpl_lookup_rows",
+      "name": "tokudb_rpl_lookup_rows",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "0",
+      "dynamic": true,
+      "id": "tokudb_rpl_lookup_rows_delay",
+      "name": "tokudb_rpl_lookup_rows_delay",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "ON",
+      "dynamic": true,
+      "id": "tokudb_rpl_unique_checks",
+      "name": "tokudb_rpl_unique_checks",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "0",
+      "dynamic": true,
+      "id": "tokudb_rpl_unique_checks_delay",
+      "name": "tokudb_rpl_unique_checks_delay",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "ON",
+      "dynamic": true,
+      "id": "tokudb_support_xa",
+      "name": "tokudb_support_xa",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "Empty (the MariaDB datadir is used)",
+      "dynamic": false,
+      "id": "tokudb_tmp_dir",
+      "name": "tokudb_tmp_dir",
+      "type": "directory name"
+    },
+    {
+      "dynamic": false,
+      "id": "tokudb_version",
+      "name": "tokudb_version",
+      "type": "string"
+    },
+    {
+      "default": "1000",
+      "dynamic": true,
+      "id": "tokudb_write_status_frequency",
+      "name": "tokudb_write_status_frequency",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "tokudb-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/columns-storage-engines-and-plugins/storage-engines/tokudb/tokudb-system-variables/"
+}

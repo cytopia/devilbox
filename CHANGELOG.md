@@ -7,6 +7,28 @@ major versions.
 ## Unreleased
 
 
+## Release v1.3.0 (2019-12-29)
+
+#### Fixed
+- [#626](https://github.com/cytopia/devilbox/issues/626) Cannot create MongoDB database with Adminer
+
+#### Added
+- latest PHP-FPM images
+- PHP module: solr
+- PHP module: ssh2
+- phpMyAdmin to 5.0.0
+
+#### Changed
+- Use official PHP 7.4 Docker image as base
+- Updated Adminer to 4.7.5
+```
+sed -i'' 's/^<?php$/<?php if(!function_exists("get_magic_quotes_runtime")){function get_magic_quotes_runtime(){return false;}}if(!function_exists("get_magic_quotes_gpc")){function get_magic_quotes_gpc(){return false;}}/g' adminer-4.7.5-en.php
+sed -i'' 's/while(list(\$y,\$X)=each(\$qg))/foreach ($qg as $y => $x)/g' adminer-4.7.5-en.php
+sed -i'' 's/error_reporting(6135)/error_reporting(0)/g' adminer-4.7.5-en.php
+```
+- Updated phpMyAdmin to 4.9.3
+
+
 ## Release v1.2.0 (2019-12-01)
 
 #### Fixed

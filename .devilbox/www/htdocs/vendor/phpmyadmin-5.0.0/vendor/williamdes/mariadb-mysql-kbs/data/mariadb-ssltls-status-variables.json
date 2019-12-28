@@ -1,0 +1,215 @@
+{
+  "data": [
+    {
+      "id": "ssl_accept_renegotiates",
+      "name": "Ssl_accept_renegotiates",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_accepts",
+      "name": "Ssl_accepts",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_callback_cache_hits",
+      "name": "Ssl_callback_cache_hits",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_cipher",
+      "name": "Ssl_cipher",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "id": "ssl_cipher_list",
+      "name": "Ssl_cipher_list",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "id": "ssl_client_connects",
+      "name": "Ssl_client_connects",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_connect_renegotiates",
+      "name": "Ssl_connect_renegotiates",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_ctx_verify_depth",
+      "name": "Ssl_ctx_verify_depth",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_ctx_verify_mode",
+      "name": "Ssl_ctx_verify_mode",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_default_timeout",
+      "name": "Ssl_default_timeout",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_finished_accepts",
+      "name": "Ssl_finished_accepts",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_finished_connects",
+      "name": "Ssl_finished_connects",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_server_not_after",
+      "name": "Ssl_server_not_after",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_server_not_before",
+      "name": "Ssl_server_not_before",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_session_cache_hits",
+      "name": "Ssl_session_cache_hits",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_session_cache_misses",
+      "name": "Ssl_session_cache_misses",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_session_cache_mode",
+      "name": "Ssl_session_cache_mode",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "id": "ssl_session_cache_overflows",
+      "name": "Ssl_session_cache_overflows",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_session_cache_size",
+      "name": "Ssl_session_cache_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_session_cache_timeouts",
+      "name": "Ssl_session_cache_timeouts",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_sessions_reused",
+      "name": "Ssl_sessions_reused",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_used_session_cache_entries",
+      "name": "Ssl_used_session_cache_entries",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_verify_depth",
+      "name": "Ssl_verify_depth",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_verify_mode",
+      "name": "Ssl_verify_mode",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "ssl_version",
+      "name": "Ssl_version",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    }
+  ],
+  "name": "ssltls-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/ssltls-status-variables/"
+}
