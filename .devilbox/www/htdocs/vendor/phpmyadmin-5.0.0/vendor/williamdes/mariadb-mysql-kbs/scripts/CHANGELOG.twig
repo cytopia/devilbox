@@ -1,0 +1,72 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+{% for version in versions %}
+## {% spaceless %}
+    [{{version.name}}]
+    {% if version.tag is defined %}
+        (https://github.com/{{ owner }}/{{ repo }}/releases/tag/{{ version.tag }})
+    {% endif %}
+{% endspaceless %}{% if version.date is defined %}- {{version.date}}{% endif %}
+
+
+{% for change in version.changesAdded %}
+{% if loop.first %}### Added{{ '\n'|raw }}{% endif %}
+{# #}{# #}- [{{change.hash}}](https://github.com/{{ owner }}/{{ repo }}/commit/{{change.longHash}}) {{ change.msg }}{% if not loop.last %}{{ '\n'|raw }}{% else %}{{ '\n'|raw }}{% endif %}
+{# #}{% endfor %}{% if version.changesChanged.length > 0 %}{{ '\n'|raw }}{% endif %}
+{% for change in version.changesChanged %}
+{% if loop.first %}### Changed{{ '\n'|raw }}{% endif %}
+{# #}{# #}- [{{change.hash}}](https://github.com/{{ owner }}/{{ repo }}/commit/{{change.longHash}}) {{ change.msg }}{% if not loop.last %}{{ '\n'|raw }}{% else %}{{ '\n'|raw }}{% endif %}
+{# #}{% endfor %}{% if version.changesDeprecated.length > 0 %}{{ '\n'|raw }}{% endif %}
+{% for change in version.changesDeprecated %}
+{% if loop.first %}### Deprecated{{ '\n'|raw }}{% endif %}
+{# #}{# #}- [{{change.hash}}](https://github.com/{{ owner }}/{{ repo }}/commit/{{change.longHash}}) {{ change.msg }}{% if not loop.last %}{{ '\n'|raw }}{% else %}{{ '\n'|raw }}{% endif %}
+{# #}{% endfor %}{% if version.changesRemoved.length > 0 %}{{ '\n'|raw }}{% endif %}
+{% for change in version.changesRemoved %}
+{% if loop.first %}### Removed{{ '\n'|raw }}{% endif %}
+{# #}{# #}- [{{change.hash}}](https://github.com/{{ owner }}/{{ repo }}/commit/{{change.longHash}}) {{ change.msg }}{% if not loop.last %}{{ '\n'|raw }}{% else %}{{ '\n'|raw }}{% endif %}
+{# #}{% endfor %}{% if version.changesFixed.length > 0 %}{{ '\n'|raw }}{% endif %}
+{% for change in version.changesFixed %}
+{% if loop.first %}### Fixed{{ '\n'|raw }}{% endif %}
+{# #}{# #}- [{{change.hash}}](https://github.com/{{ owner }}/{{ repo }}/commit/{{change.longHash}}) {{ change.msg }}{% if not loop.last %}{{ '\n'|raw }}{% else %}{{ '\n'|raw }}{% endif %}
+{# #}{% endfor %}{% if version.changesImprove.length > 0 %}{{ '\n'|raw }}{% endif %}
+{% for change in version.changesImprove %}
+{% if loop.first %}### Improvements{{ '\n'|raw }}{% endif %}
+{# #}{# #}- [{{change.hash}}](https://github.com/{{ owner }}/{{ repo }}/commit/{{change.longHash}}) {{ change.msg }}{% if not loop.last %}{{ '\n'|raw }}{% else %}{{ '\n'|raw }}{% endif %}
+{# #}{% endfor %}{% if version.changesSecurity.length > 0 %}{{ '\n'|raw }}{% endif %}
+{% for change in version.changesSecurity %}
+{% if loop.first %}### Security{{ '\n'|raw }}{% endif %}
+{# #}{# #}- [{{change.hash}}](https://github.com/{{ owner }}/{{ repo }}/commit/{{change.longHash}}) {{ change.msg }}{% if not loop.last %}{{ '\n'|raw }}{% else %}{{ '\n'|raw }}{% endif %}
+{# #}{% endfor %}{{ '\n'|raw }}
+{% endfor %}
+{{ '\n'|raw }}
+{#
+## [Unreleased]
+
+## [0.0.4] - 2014-08-09
+### Added
+
+### Changed
+
+### Removed
+
+
+`Added` for new features.
+`Changed` for changes in existing functionality.
+`Deprecated` for soon-to-be removed features.
+`Removed` for now removed features.
+`Fixed` for any bug fixes.
+`Security` in case of vulnerabilities.
+#}
+
+{% for link in links %}
+[{{link.name}}]: https://github.com/{{ owner }}/{{ repo }}/compare/{{link.start}}...{{link.end}}
+{% endfor %}
+
+{#
+[Unreleased]: https://github.com/{{ owner }}/{{ repo }}/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/{{ owner }}/{{ repo }}/compare/v0.3.0...v1.0.0
+#}

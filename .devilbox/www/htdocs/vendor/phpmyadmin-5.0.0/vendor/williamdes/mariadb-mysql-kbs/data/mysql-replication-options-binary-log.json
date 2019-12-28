@@ -1,0 +1,551 @@
+{
+  "data": [
+    {
+      "cli": "--binlog-row-event-max-size=#",
+      "default": "8192",
+      "id": "option_mysqld_binlog-row-event-max-size",
+      "name": "binlog_row_event_max_size",
+      "range": {
+        "from": 256
+      },
+      "type": "integer"
+    },
+    {
+      "cli": "--log-bin=file_name",
+      "id": "option_mysqld_log-bin",
+      "name": "log_bin",
+      "type": "file name"
+    },
+    {
+      "cli": "--log-bin-index=file_name",
+      "dynamic": false,
+      "id": "option_mysqld_log-bin-index",
+      "name": "log_bin_index",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--binlog-do-db=name",
+      "id": "option_mysqld_binlog-do-db",
+      "name": "binlog_do_db",
+      "type": "string"
+    },
+    {
+      "cli": "--binlog-ignore-db=name",
+      "id": "option_mysqld_binlog-ignore-db",
+      "name": "binlog_ignore_db",
+      "type": "string"
+    },
+    {
+      "cli": "--binlog-checksum=type",
+      "default": "CRC32",
+      "id": "option_mysqld_binlog-checksum",
+      "name": "binlog_checksum",
+      "type": "string",
+      "validValues": [
+        "NONE",
+        "CRC32"
+      ]
+    },
+    {
+      "cli": "--max-binlog-dump-events=#",
+      "default": "0",
+      "id": "option_mysqld_max-binlog-dump-events",
+      "name": "max_binlog_dump_events",
+      "type": "integer"
+    },
+    {
+      "cli": "--sporadic-binlog-dump-fail[={OFF|ON}]",
+      "default": "OFF",
+      "id": "option_mysqld_sporadic-binlog-dump-fail",
+      "name": "sporadic_binlog_dump_fail",
+      "type": "boolean"
+    },
+    {
+      "cli": "--binlog-cache-size=#",
+      "default": "32768",
+      "dynamic": true,
+      "id": "sysvar_binlog_cache_size",
+      "name": "binlog_cache_size",
+      "range": {
+        "from": 4096
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--binlog-checksum=name",
+      "default": "CRC32",
+      "dynamic": true,
+      "id": "sysvar_binlog_checksum",
+      "name": "binlog_checksum",
+      "scope": [
+        "global"
+      ],
+      "type": "string",
+      "validValues": [
+        "NONE",
+        "CRC32"
+      ]
+    },
+    {
+      "cli": "--binlog-direct-non-transactional-updates[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_binlog_direct_non_transactional_updates",
+      "name": "binlog_direct_non_transactional_updates",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--binlog-encryption[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_binlog_encryption",
+      "name": "binlog_encryption",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--binlog-error-action[=value]",
+      "default": "ABORT_SERVER",
+      "dynamic": true,
+      "id": "sysvar_binlog_error_action",
+      "name": "binlog_error_action",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "IGNORE_ERROR",
+        "ABORT_SERVER"
+      ]
+    },
+    {
+      "cli": "--binlog-expire-logs-seconds=#",
+      "dynamic": true,
+      "id": "sysvar_binlog_expire_logs_seconds",
+      "name": "binlog_expire_logs_seconds",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--binlog-format=format",
+      "default": "ROW",
+      "dynamic": true,
+      "id": "sysvar_binlog_format",
+      "name": "binlog_format",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "ROW",
+        "STATEMENT",
+        "MIXED"
+      ]
+    },
+    {
+      "cli": "--binlog-group-commit-sync-delay=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "sysvar_binlog_group_commit_sync_delay",
+      "name": "binlog_group_commit_sync_delay",
+      "range": {
+        "from": 0,
+        "to": 1000000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--binlog-group-commit-sync-no-delay-count=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "sysvar_binlog_group_commit_sync_no_delay_count",
+      "name": "binlog_group_commit_sync_no_delay_count",
+      "range": {
+        "from": 0,
+        "to": 1000000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--binlog-max-flush-queue-time=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "sysvar_binlog_max_flush_queue_time",
+      "name": "binlog_max_flush_queue_time",
+      "range": {
+        "from": 0,
+        "to": 100000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--binlog-order-commits[={OFF|ON}]",
+      "default": "ON",
+      "dynamic": true,
+      "id": "sysvar_binlog_order_commits",
+      "name": "binlog_order_commits",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--binlog-rotate-encryption-master-key-at-startup[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": false,
+      "id": "sysvar_binlog_rotate_encryption_master_key_at_startup",
+      "name": "binlog_rotate_encryption_master_key_at_startup",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--binlog-row-event-max-size=#",
+      "default": "8192",
+      "id": "sysvar_binlog_row_event_max_size",
+      "name": "binlog_row_event_max_size",
+      "range": {
+        "from": 256
+      },
+      "type": "integer"
+    },
+    {
+      "cli": "--binlog-row-image=image_type",
+      "default": "full",
+      "dynamic": true,
+      "id": "sysvar_binlog_row_image",
+      "name": "binlog_row_image",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "full",
+        "minimal",
+        "noblob"
+      ]
+    },
+    {
+      "cli": "--binlog-row-metadata=metadata_type",
+      "default": "MINIMAL",
+      "dynamic": true,
+      "id": "sysvar_binlog_row_metadata",
+      "name": "binlog_row_metadata",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "FULL",
+        "MINIMAL"
+      ]
+    },
+    {
+      "cli": "--binlog-row-value-options=#",
+      "default": "''",
+      "dynamic": true,
+      "id": "sysvar_binlog_row_value_options",
+      "name": "binlog_row_value_options",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "set",
+      "validValues": [
+        "PARTIAL_JSON"
+      ]
+    },
+    {
+      "cli": "--binlog-rows-query-log-events[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_binlog_rows_query_log_events",
+      "name": "binlog_rows_query_log_events",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--binlog-stmt-cache-size=#",
+      "default": "32768",
+      "dynamic": true,
+      "id": "sysvar_binlog_stmt_cache_size",
+      "name": "binlog_stmt_cache_size",
+      "range": {
+        "from": 4096
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--binlog-transaction-dependency-tracking=value",
+      "default": "COMMIT_ORDER",
+      "dynamic": true,
+      "id": "sysvar_binlog_transaction_dependency_tracking",
+      "name": "binlog_transaction_dependency_tracking",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "COMMIT_ORDER",
+        "WRITESET",
+        "WRITESET_SESSION"
+      ]
+    },
+    {
+      "cli": "--binlog-transaction-dependency-history-size=#",
+      "default": "25000",
+      "dynamic": true,
+      "id": "sysvar_binlog_transaction_dependency_history_size",
+      "name": "binlog_transaction_dependency_history_size",
+      "range": {
+        "from": 1,
+        "to": 1000000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--expire-logs-days=#",
+      "dynamic": true,
+      "id": "sysvar_expire_logs_days",
+      "name": "expire_logs_days",
+      "range": {
+        "from": 0,
+        "to": 99
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": false,
+      "id": "sysvar_log_bin",
+      "name": "log_bin",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": false,
+      "id": "sysvar_log_bin_basename",
+      "name": "log_bin_basename",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--log-bin-index=file_name",
+      "dynamic": false,
+      "id": "sysvar_log_bin_index",
+      "name": "log_bin_index",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--log-bin-trust-function-creators[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_log_bin_trust_function_creators",
+      "name": "log_bin_trust_function_creators",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--log-bin-use-v1-row-events[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": false,
+      "id": "sysvar_log_bin_use_v1_row_events",
+      "name": "log_bin_use_v1_row_events",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--log-builtin-as-identified-by-password[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_log_builtin_as_identified_by_password",
+      "name": "log_builtin_as_identified_by_password",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--log-slave-updates[={OFF|ON}]",
+      "dynamic": false,
+      "id": "sysvar_log_slave_updates",
+      "name": "log_slave_updates",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--log-statements-unsafe-for-binlog[={OFF|ON}]",
+      "default": "ON",
+      "dynamic": true,
+      "id": "sysvar_log_statements_unsafe_for_binlog",
+      "name": "log_statements_unsafe_for_binlog",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--master-verify-checksum[={OFF|ON}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_master_verify_checksum",
+      "name": "master_verify_checksum",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--max-binlog-cache-size=#",
+      "default": "18446744073709551615",
+      "dynamic": true,
+      "id": "sysvar_max_binlog_cache_size",
+      "name": "max_binlog_cache_size",
+      "range": {
+        "from": 4096,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--max-binlog-size=#",
+      "default": "1073741824",
+      "dynamic": true,
+      "id": "sysvar_max_binlog_size",
+      "name": "max_binlog_size",
+      "range": {
+        "from": 4096,
+        "to": 1073741824
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--max-binlog-stmt-cache-size=#",
+      "default": "18446744073709547520",
+      "dynamic": true,
+      "id": "sysvar_max_binlog_stmt_cache_size",
+      "name": "max_binlog_stmt_cache_size",
+      "range": {
+        "from": 4096,
+        "to": 18446744073709548000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "sysvar_original_commit_timestamp",
+      "name": "original_commit_timestamp",
+      "scope": [
+        "session"
+      ],
+      "type": "numeric"
+    },
+    {
+      "default": "ON",
+      "dynamic": true,
+      "id": "sysvar_sql_log_bin",
+      "name": "sql_log_bin",
+      "scope": [
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--sync-binlog=#",
+      "default": "1",
+      "dynamic": true,
+      "id": "sysvar_sync_binlog",
+      "name": "sync_binlog",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--transaction-write-set-extraction[=value]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_transaction_write_set_extraction",
+      "name": "transaction_write_set_extraction",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "OFF",
+        "MURMUR32",
+        "XXHASH64"
+      ]
+    }
+  ],
+  "name": "replication-options-binary-log",
+  "url": "https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html"
+}

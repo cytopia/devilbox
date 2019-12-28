@@ -1,0 +1,14 @@
+version: 1
+update_configs:
+    - package_manager: 'javascript'
+      directory: '/'
+      update_schedule: 'monthly'
+      default_reviewers:
+          - 'williamdes'
+
+    - package_manager: 'php:composer'
+      directory: '/'
+      update_schedule: 'monthly'
+      default_reviewers:
+          - 'williamdes'
+

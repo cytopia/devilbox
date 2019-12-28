@@ -1,0 +1,244 @@
+{
+  "data": [
+    {
+      "cli": "--server-audit-events=value",
+      "default": "Empty string",
+      "dynamic": true,
+      "id": "server_audit_events",
+      "name": "server_audit_events",
+      "scope": [
+        "global"
+      ],
+      "type": "string",
+      "validValues": [
+        "CONNECT",
+        "QUERY",
+        "TABLE",
+        "CONNECT",
+        "QUERY",
+        "TABLE",
+        "QUERY_DDL",
+        "QUERY_DML",
+        "CONNECT",
+        "QUERY",
+        "TABLE",
+        "QUERY_DDL",
+        "QUERY_DML",
+        "QUERY_DCL",
+        "CONNECT",
+        "QUERY",
+        "TABLE",
+        "QUERY_DDL",
+        "QUERY_DML",
+        "QUERY_DCL",
+        "QUERY_DML_NO_SELECT"
+      ]
+    },
+    {
+      "cli": "--server-audit-excl-users=value",
+      "default": "Empty string",
+      "dynamic": true,
+      "id": "server_audit_excl_users",
+      "name": "server_audit_excl_users",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--server-audit-file-path=value",
+      "default": "server_audit.log",
+      "dynamic": true,
+      "id": "server_audit_file_path",
+      "name": "server_audit_file_path",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--server-audit-rotate-now[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "server_audit_file_rotate_now",
+      "name": "server_audit_file_rotate_now",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--server-audit-rotate-size=#",
+      "default": "1000000",
+      "dynamic": true,
+      "id": "server_audit_file_rotate_size",
+      "name": "server_audit_file_rotate_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--server-audit-rotations=#",
+      "default": "9",
+      "dynamic": true,
+      "id": "server_audit_file_rotations",
+      "name": "server_audit_file_rotations",
+      "range": {
+        "from": 0,
+        "to": 999
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--server-audit-incl-users=value",
+      "default": "Empty string",
+      "dynamic": true,
+      "id": "server_audit_incl_users",
+      "name": "server_audit_incl_users",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "default": "Empty string",
+      "dynamic": false,
+      "id": "server_audit_loc_info",
+      "name": "server_audit_loc_info",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--server-audit-logging[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "server_audit_logging",
+      "name": "server_audit_logging",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--server-audit-mode[=#]",
+      "id": "server_audit_mode",
+      "name": "server_audit_mode"
+    },
+    {
+      "cli": "--server-audit-output-type=value",
+      "default": "file",
+      "dynamic": true,
+      "id": "server_audit_output_type",
+      "name": "server_audit_output_type",
+      "scope": [
+        "global"
+      ],
+      "validValues": [
+        "SYSLOG",
+        "FILE"
+      ]
+    },
+    {
+      "cli": "--server-audit-query-log-limit=#",
+      "default": "1024",
+      "dynamic": true,
+      "id": "server_audit_query_log_limit",
+      "name": "server_audit_query_log_limit",
+      "range": {
+        "from": 0,
+        "to": 2147483647
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--server-audit-syslog-facility=value",
+      "default": "LOG_USER",
+      "dynamic": true,
+      "id": "server_audit_syslog_facility",
+      "name": "server_audit_syslog_facility",
+      "scope": [
+        "global"
+      ],
+      "validValues": [
+        "LOG_USER",
+        "LOG_MAIL",
+        "LOG_DAEMON",
+        "LOG_AUTH",
+        "LOG_SYSLOG",
+        "LOG_LPR",
+        "LOG_NEWS",
+        "LOG_UUCP",
+        "LOG_CRON",
+        "LOG_AUTHPRIV",
+        "LOG_FTP",
+        "LOG_LOCAL0",
+        "LOG_LOCAL7"
+      ]
+    },
+    {
+      "cli": "--server-audit-syslog-ident=value",
+      "default": "mysql-server_auditing",
+      "dynamic": true,
+      "id": "server_audit_syslog_ident",
+      "name": "server_audit_syslog_ident",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--server-audit-syslog-info=value",
+      "default": "Empty string",
+      "dynamic": true,
+      "id": "server_audit_syslog_info",
+      "name": "server_audit_syslog_info",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--server-audit-syslog-priority=value",
+      "default": "LOG_INFO",
+      "dynamic": true,
+      "id": "server_audit_syslog_priority",
+      "name": "server_audit_syslog_priority",
+      "scope": [
+        "global"
+      ],
+      "validValues": [
+        "LOG_EMERG",
+        "LOG_ALERT",
+        "LOG_CRIT",
+        "LOG_ERR",
+        "LOG_WARNING",
+        "LOG_NOTICE",
+        "LOG_INFO",
+        "LOG_DEBUG"
+      ]
+    },
+    {
+      "cli": "--server-audit=val",
+      "default": "ON",
+      "id": "server_audit",
+      "name": "server_audit",
+      "validValues": [
+        "OFF",
+        "ON",
+        "FORCE",
+        "FORCE_PLUS_PERMANENT"
+      ]
+    }
+  ],
+  "name": "mariadb-audit-plugin-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/mariadb-audit-plugin-system-variables/"
+}

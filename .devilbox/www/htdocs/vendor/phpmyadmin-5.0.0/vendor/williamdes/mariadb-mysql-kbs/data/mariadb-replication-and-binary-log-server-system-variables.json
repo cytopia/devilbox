@@ -1,0 +1,988 @@
+{
+  "data": [
+    {
+      "cli": "--auto-increment-increment[=#]",
+      "default": "1",
+      "dynamic": true,
+      "id": "auto_increment_increment",
+      "name": "auto_increment_increment",
+      "range": {
+        "from": 1,
+        "to": 65535
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--auto-increment-offset[=#]",
+      "default": "1",
+      "dynamic": true,
+      "id": "auto_increment_offset",
+      "name": "auto_increment_offset",
+      "range": {
+        "from": 1,
+        "to": 65535
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--binlog-annotate-row-events[={0|1}]",
+      "default": "ON (>= MariaDB 10.2.4), OFF (<= MariaDB 10.2.3)",
+      "dynamic": true,
+      "id": "binlog_annotate_row_events",
+      "name": "binlog_annotate_row_events",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--binlog-cache-size=#",
+      "default": "32768",
+      "dynamic": true,
+      "id": "binlog_cache_size",
+      "name": "binlog_cache_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--binlog-checksum=name\n--binlog-checksum=[0|1]",
+      "default": "CRC32 (>= MariaDB 10.2.1), NONE (<= MariaDB 10.2.0)",
+      "dynamic": true,
+      "id": "binlog_checksum",
+      "name": "binlog_checksum",
+      "scope": [
+        "global"
+      ],
+      "type": "string",
+      "validValues": [
+        "NONE",
+        "0",
+        "CRC32",
+        "1"
+      ]
+    },
+    {
+      "cli": "--binlog-commit-wait-count=#]",
+      "default": "0",
+      "dynamic": true,
+      "id": "binlog_commit_wait_count",
+      "name": "binlog_commit_wait_count",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--binlog-commit-wait-usec#",
+      "default": "100000",
+      "dynamic": true,
+      "id": "binlog_commit_wait_usec",
+      "name": "binlog_commit_wait_usec",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--binlog-direct-non-transactional-updates[=value]",
+      "default": "OFF (0)",
+      "dynamic": true,
+      "id": "binlog_direct_non_transactional_updates",
+      "name": "binlog_direct_non_transactional_updates",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--binlog-file-cache-size=#",
+      "default": "16384",
+      "dynamic": true,
+      "id": "binlog_file_cache_size",
+      "name": "binlog_file_cache_size",
+      "range": {
+        "from": 8192,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--binlog-format=format",
+      "default": "MIXED (>= MariaDB 10.2.4), STATEMENT (<= MariaDB 10.2.3)",
+      "dynamic": true,
+      "id": "binlog_format",
+      "name": "binlog_format",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "ROW",
+        "STATEMENT",
+        "MIXED"
+      ]
+    },
+    {
+      "cli": "--binlog-optimize-thread-scheduling or --skip-binlog-optimize-thread-scheduling",
+      "default": "ON",
+      "dynamic": false,
+      "id": "binlog_optimize_thread_scheduling",
+      "name": "binlog_optimize_thread_scheduling",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--binlog-row-image=value",
+      "default": "FULL",
+      "dynamic": true,
+      "id": "binlog_row_image",
+      "name": "binlog_row_image",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "validValues": [
+        "FULL",
+        "NOBLOB",
+        "MINIMAL"
+      ]
+    },
+    {
+      "cli": "--binlog-row-metadata=value",
+      "default": "NO_LOG",
+      "dynamic": true,
+      "id": "binlog_row_metadata",
+      "name": "binlog_row_metadata",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "validValues": [
+        "NO_LOG",
+        "MINIMAL",
+        "FULL"
+      ]
+    },
+    {
+      "cli": "--binlog-stmt-cache-size=#",
+      "default": "32768",
+      "dynamic": true,
+      "id": "binlog_stmt_cache_size",
+      "name": "binlog_stmt_cache_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "'' (empty string)",
+      "dynamic": true,
+      "id": "default_master_connection",
+      "name": "default_master_connection",
+      "scope": [
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--encrypt-binlog[={0|1}]",
+      "default": "OFF",
+      "dynamic": false,
+      "id": "encrypt_binlog",
+      "name": "encrypt_binlog",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--expire-logs-days=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "expire_logs_days",
+      "name": "expire_logs_days",
+      "range": {
+        "from": 0,
+        "to": 99
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--init-slave=name",
+      "dynamic": true,
+      "id": "init_slave",
+      "name": "init_slave",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--log-bin[=name]",
+      "default": "OFF",
+      "dynamic": false,
+      "id": "log_bin",
+      "name": "log_bin",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": false,
+      "id": "log_bin_basename",
+      "name": "log_bin_basename",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--log-bin-compress",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "log_bin_compress",
+      "name": "log_bin_compress",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--log-bin-compress-min-len",
+      "default": "256",
+      "dynamic": true,
+      "id": "log_bin_compress_min_len",
+      "name": "log_bin_compress_min_len",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--log-bin-index=name",
+      "dynamic": false,
+      "id": "log_bin_index",
+      "name": "log_bin_index",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--log-bin-trust-function-creators[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "log_bin_trust_function_creators",
+      "name": "log_bin_trust_function_creators",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--log-slow-slave-statements",
+      "default": "ON  (>= MariaDB 10.2.4), OFF (<= MariaDB 10.2.3)",
+      "dynamic": true,
+      "id": "log_slow_slave_statements",
+      "name": "log_slow_slave_statements",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--log-slave-updates",
+      "default": "OFF",
+      "dynamic": false,
+      "id": "log_slave_updates",
+      "name": "log_slave_updates",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--master-verify-checksum=[0|1]",
+      "default": "OFF (0)",
+      "id": "master_verify_checksum",
+      "name": "master_verify_checksum",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--max-binlog-cache-size=#",
+      "default": "18446744073709547520",
+      "dynamic": true,
+      "id": "max_binlog_cache_size",
+      "name": "max_binlog_cache_size",
+      "range": {
+        "from": 4096,
+        "to": 18446744073709548000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--max-binlog-size=#",
+      "default": "1073741824 (1GB)",
+      "dynamic": true,
+      "id": "max_binlog_size",
+      "name": "max_binlog_size",
+      "range": {
+        "from": 4096,
+        "to": 1073741824
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--max-binlog-stmt-cache-size=#",
+      "default": "18446744073709547520 (64 bit), 4294963200 (32 bit)",
+      "dynamic": true,
+      "id": "max_binlog_stmt_cache_size",
+      "name": "max_binlog_stmt_cache_size",
+      "range": {
+        "from": 4096,
+        "to": 18446744073709548000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--max-relay-log-size=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "max_relay_log_size",
+      "name": "max_relay_log_size",
+      "range": {
+        "from": 0,
+        "to": 4096
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--read-binlog-speed-limit=#",
+      "default": "0 (no limit)",
+      "dynamic": true,
+      "id": "read_binlog_speed_limit",
+      "name": "read_binlog_speed_limit",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--relay-log=file_name",
+      "default": "'' (none)",
+      "dynamic": false,
+      "id": "relay_log",
+      "name": "relay_log",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "dynamic": false,
+      "id": "relay_log_basename",
+      "name": "relay_log_basename",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--relay-log-index=name",
+      "dynamic": false,
+      "id": "relay_log_index",
+      "name": "relay_log_index",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--relay-log-info-file=file_name",
+      "default": "relay-log.info",
+      "dynamic": false,
+      "id": "relay_log_info_file",
+      "name": "relay_log_info_file",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--relay-log-purge={0|1}",
+      "default": "ON",
+      "dynamic": true,
+      "id": "relay_log_purge",
+      "name": "relay_log_purge",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--relay-log-recovery",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "relay_log_recovery",
+      "name": "relay_log_recovery",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--relay-log-space-limit=#",
+      "default": "0",
+      "dynamic": false,
+      "id": "relay_log_space_limit",
+      "name": "relay_log_space_limit",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--replicate-annotate-row-events",
+      "default": "ON (>= MariaDB 10.2.4), OFF (<= MariaDB 10.2.3)",
+      "dynamic": false,
+      "id": "replicate_annotate_row_events",
+      "name": "replicate_annotate_row_events",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--replicate-do-db=name",
+      "default": "'' (empty)",
+      "dynamic": true,
+      "id": "replicate_do_db",
+      "name": "replicate_do_db",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--replicate-do-table=name",
+      "default": "'' (empty)",
+      "dynamic": true,
+      "id": "replicate_do_table",
+      "name": "replicate_do_table",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--replicate-events-marked-for-skip",
+      "default": "replicate",
+      "dynamic": true,
+      "id": "replicate_events_marked_for_skip",
+      "name": "replicate_events_marked_for_skip",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "REPLICATE",
+        "FILTER_ON_SLAVE",
+        "FILTER_ON_MASTER"
+      ]
+    },
+    {
+      "cli": "--replicate-ignore-db=name",
+      "default": "'' (empty)",
+      "dynamic": true,
+      "id": "replicate_ignore_db",
+      "name": "replicate_ignore_db",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--replicate-ignore-table=name",
+      "default": "'' (empty)",
+      "dynamic": true,
+      "id": "replicate_ignore_table",
+      "name": "replicate_ignore_table",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "id": "replicate_rewrite_db",
+      "name": "replicate_rewrite_db"
+    },
+    {
+      "cli": "--replicate-wild-do-table=name",
+      "default": "'' (empty)",
+      "dynamic": true,
+      "id": "replicate_wild_do_table",
+      "name": "replicate_wild_do_table",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--replicate-wild-ignore-table=name",
+      "default": "'' (empty)",
+      "dynamic": true,
+      "id": "replicate_wild_ignore_table",
+      "name": "replicate_wild_ignore_table",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--report-host=host_name",
+      "dynamic": false,
+      "id": "report_host",
+      "name": "report_host",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--report-password=password",
+      "dynamic": false,
+      "id": "report_password",
+      "name": "report_password",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--report-port=#",
+      "default": "0",
+      "dynamic": false,
+      "id": "report_port",
+      "name": "report_port",
+      "range": {
+        "from": 0,
+        "to": 65535
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--report-user=name",
+      "dynamic": false,
+      "id": "report_user",
+      "name": "report_user",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--server-id =#",
+      "default": "1 (>= MariaDB 10.2.2), 0 (<= MariaDB 10.2.1)",
+      "dynamic": true,
+      "id": "server_id",
+      "name": "server_id",
+      "range": {
+        "from": 1,
+        "to": 4294967295
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "OFF",
+      "dynamic": true,
+      "id": "skip_parallel_replication",
+      "name": "skip_parallel_replication",
+      "scope": [
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "OFF",
+      "dynamic": true,
+      "id": "skip_replication",
+      "name": "skip_replication",
+      "scope": [
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--slave-compressed-protocol",
+      "default": "0",
+      "dynamic": true,
+      "id": "slave_compressed_protocol",
+      "name": "slave_compressed_protocol",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--slave-ddl-exec-mode=name",
+      "default": "IDEMPOTENT",
+      "dynamic": true,
+      "id": "slave_ddl_exec_mode",
+      "name": "slave_ddl_exec_mode",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "IDEMPOTENT",
+        "STRICT"
+      ]
+    },
+    {
+      "cli": "--slave-domain-parallel-threads=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "slave_domain_parallel_threads",
+      "name": "slave_domain_parallel_threads",
+      "scope": [
+        "global"
+      ],
+      "type": "integer",
+      "validValues": [
+        "0",
+        "16383"
+      ]
+    },
+    {
+      "default": "IDEMPOTENT (NDB), STRICT (All)",
+      "dynamic": true,
+      "id": "slave_exec_mode",
+      "name": "slave_exec_mode",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "IDEMPOTENT",
+        "STRICT"
+      ]
+    },
+    {
+      "cli": "--slave-load-tmpdir=path",
+      "default": "/tmp",
+      "dynamic": false,
+      "id": "slave_load_tmpdir",
+      "name": "slave_load_tmpdir",
+      "scope": [
+        "global"
+      ],
+      "type": "file name"
+    },
+    {
+      "cli": "--slave-max-allowed-packet=#",
+      "default": "1073741824",
+      "dynamic": true,
+      "id": "slave_max_allowed_packet",
+      "name": "slave_max_allowed_packet",
+      "range": {
+        "from": 1024,
+        "to": 1073741824
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--slave-net-timeout=#",
+      "default": "60 (1 minute) (>= MariaDB 10.2.4), 3600 (1 hour) (<= MariaDB 10.2.3)",
+      "dynamic": true,
+      "id": "slave_net_timeout",
+      "name": "slave_net_timeout",
+      "range": {
+        "from": 1,
+        "to": "upwards"
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--slave-parallel-max-queued=#",
+      "default": "131072",
+      "dynamic": true,
+      "id": "slave_parallel_max_queued",
+      "name": "slave_parallel_max_queued",
+      "range": {
+        "from": 0,
+        "to": 2147483647
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "conservative",
+      "dynamic": false,
+      "id": "slave_parallel_mode",
+      "name": "slave_parallel_mode",
+      "scope": [
+        "global"
+      ],
+      "validValues": [
+        "conservative",
+        "optimistic",
+        "none",
+        "aggressive",
+        "minimal"
+      ]
+    },
+    {
+      "cli": "--slave-parallel-threads=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "slave_parallel_threads",
+      "name": "slave_parallel_threads",
+      "range": {
+        "from": 0,
+        "to": 16383
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--slave-parallel-workers=#",
+      "id": "slave_parallel_workers",
+      "name": "slave_parallel_workers"
+    },
+    {
+      "cli": "--slave-run-triggers-for-rbr=value",
+      "default": "NO",
+      "id": "slave_run_triggers_for_rbr",
+      "name": "slave_run_triggers_for_rbr",
+      "scope": [
+        "global"
+      ],
+      "validValues": [
+        "NO",
+        "YES",
+        "LOGGING"
+      ]
+    },
+    {
+      "cli": "--slave-skip-errors=[error_code1,error_code2,...|all|ddl_exist_errors]",
+      "default": "OFF",
+      "dynamic": false,
+      "id": "slave_skip_errors",
+      "name": "slave_skip_errors",
+      "scope": [
+        "global"
+      ],
+      "type": "string",
+      "validValues": [
+        "[list of error codes]",
+        "ALL",
+        "OFF"
+      ]
+    },
+    {
+      "cli": "--slave-sql-verify-checksum=[0|1]",
+      "default": "ON (1)",
+      "id": "slave_sql_verify_checksum",
+      "name": "slave_sql_verify_checksum",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--slave-transaction-retries=#",
+      "default": "10",
+      "dynamic": true,
+      "id": "slave_transaction_retries",
+      "name": "slave_transaction_retries",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--slave-transaction_retry-errors=[error_code1,error_code2,...]",
+      "default": "1158,1159,1160,1161,1205,1213,1429,2013,12701 (>= MariaDB 10.4.5), 1213,1205 (>= MariaDB 10.3.3)",
+      "dynamic": false,
+      "id": "slave_transaction_retry_errors",
+      "name": "slave_transaction_retry_errors",
+      "scope": [
+        "global"
+      ],
+      "type": "string",
+      "validValues": [
+        "comma-separated list of error codes"
+      ]
+    },
+    {
+      "cli": "--slave-transaction-retry-interval=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "slave_transaction_retry_interval",
+      "name": "slave_transaction_retry_interval",
+      "range": {
+        "from": 0,
+        "to": 3600
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--slave-type-conversions=set",
+      "default": "Empty variable",
+      "dynamic": true,
+      "id": "slave_type_conversions",
+      "name": "slave_type_conversions",
+      "scope": [
+        "global"
+      ],
+      "type": "set",
+      "validValues": [
+        "ALL_LOSSY",
+        "ALL_NON_LOSSY"
+      ]
+    },
+    {
+      "default": "1",
+      "dynamic": true,
+      "id": "sql_log_bin",
+      "name": "sql_log_bin",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "0",
+      "dynamic": true,
+      "id": "sql_slave_skip_counter",
+      "name": "sql_slave_skip_counter",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--sync-binlog=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "sync_binlog",
+      "name": "sync_binlog",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--sync-master-info=#",
+      "default": "10000 (>= MariaDB 10.1.7), 0 (<= MariaDB 10.1.6)",
+      "dynamic": true,
+      "id": "sync_master_info",
+      "name": "sync_master_info",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--sync-relay-log=#",
+      "default": "10000 (>= MariaDB 10.1.7), 0 (<= MariaDB 10.1.6)",
+      "dynamic": true,
+      "id": "sync_relay_log",
+      "name": "sync_relay_log",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--sync-relay-log-info=#",
+      "default": "10000 (>= MariaDB 10.1.7), 0 (<= MariaDB 10.1.6)",
+      "dynamic": true,
+      "id": "sync_relay_log_info",
+      "name": "sync_relay_log_info",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "replication-and-binary-log-server-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/replication-and-binary-log-server-system-variables/"
+}

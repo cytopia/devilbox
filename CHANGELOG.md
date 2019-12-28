@@ -13,9 +13,10 @@ major versions.
 - [#626](https://github.com/cytopia/devilbox/issues/626) Cannot create MongoDB database with Adminer
 
 #### Added
-- Added latest PHP-FPM images
+- latest PHP-FPM images
 - PHP module: solr
 - PHP module: ssh2
+- phpMyAdmin to 5.0.0
 
 #### Changed
 - Use official PHP 7.4 Docker image as base

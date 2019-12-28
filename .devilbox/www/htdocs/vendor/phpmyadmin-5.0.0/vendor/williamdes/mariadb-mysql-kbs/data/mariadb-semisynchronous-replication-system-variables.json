@@ -1,0 +1,148 @@
+{
+  "data": [
+    {
+      "cli": "--rpl-semi-sync-master-enabled[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "rpl_semi_sync_master_enabled",
+      "name": "rpl_semi_sync_master_enabled",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--rpl-semi-sync-master-timeout[=#]",
+      "default": "10000 (10 seconds)",
+      "dynamic": true,
+      "id": "rpl_semi_sync_master_timeout",
+      "name": "rpl_semi_sync_master_timeout",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--rpl-semi-sync-master-trace-level[=#]",
+      "default": "32",
+      "dynamic": true,
+      "id": "rpl_semi_sync_master_trace_level",
+      "name": "rpl_semi_sync_master_trace_level",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--rpl-semi-sync-master-wait-no-slave[={0|1}]",
+      "default": "ON",
+      "dynamic": true,
+      "id": "rpl_semi_sync_master_wait_no_slave",
+      "name": "rpl_semi_sync_master_wait_no_slave",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--rpl-semi-sync-master-wait-point=value",
+      "default": "AFTER_COMMIT",
+      "dynamic": true,
+      "id": "rpl_semi_sync_master_wait_point",
+      "name": "rpl_semi_sync_master_wait_point",
+      "scope": [
+        "global"
+      ],
+      "validValues": [
+        "AFTER_SYNC",
+        "AFTER_COMMIT"
+      ]
+    },
+    {
+      "cli": "--rpl-semi-sync-slave-delay-master[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "rpl_semi_sync_slave_delay_master",
+      "name": "rpl_semi_sync_slave_delay_master",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--rpl-semi-sync-slave-enabled[={0|1}]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "rpl_semi_sync_slave_enabled",
+      "name": "rpl_semi_sync_slave_enabled",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--rpl-semi-sync-slave-kill-conn-timeout[={0|1}]",
+      "default": "5",
+      "dynamic": true,
+      "id": "rpl_semi_sync_slave_kill_conn_timeout",
+      "name": "rpl_semi_sync_slave_kill_conn_timeout",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--rpl-semi-sync-slave-trace_level[=#]",
+      "default": "32",
+      "dynamic": true,
+      "id": "rpl_semi_sync_slave_trace_level",
+      "name": "rpl_semi_sync_slave_trace_level",
+      "range": {
+        "from": 0,
+        "to": 18446744073709552000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--rpl-semi-sync-master=value",
+      "default": "ON",
+      "id": "rpl_semi_sync_master",
+      "name": "rpl_semi_sync_master",
+      "validValues": [
+        "OFF",
+        "ON",
+        "FORCE",
+        "FORCE_PLUS_PERMANENT"
+      ]
+    },
+    {
+      "cli": "--rpl-semi-sync-slave=value",
+      "default": "ON",
+      "id": "rpl_semi_sync_slave",
+      "name": "rpl_semi_sync_slave",
+      "validValues": [
+        "OFF",
+        "ON",
+        "FORCE",
+        "FORCE_PLUS_PERMANENT"
+      ]
+    }
+  ],
+  "name": "semisynchronous-replication-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/semisynchronous-replication/"
+}

@@ -1,0 +1,714 @@
+{
+  "data": [
+    {
+      "cli": "--ndbcluster",
+      "default": "FALSE (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "option_mysqld_ndbcluster",
+      "name": "ndbcluster"
+    },
+    {
+      "cli": "--ndb-allow-copying-alter-table=[ON|OFF]",
+      "default": "ON (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "option_mysqld_ndb-allow-copying-alter-table",
+      "name": "ndb-allow-copying-alter-table",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "cli": "--ndb-batch-size=#",
+      "default": "32768 / 0 - 31536000 (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-batch-size",
+      "name": "ndb-batch-size",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-cluster-connection-pool=#",
+      "default": "1 / 1 - 63 (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-cluster-connection-pool",
+      "name": "ndb-cluster-connection-pool",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-cluster-connection-pool-nodeids=list",
+      "default": "/ (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-cluster-connection-pool-nodeids",
+      "name": "ndb-cluster-connection-pool-nodeids",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-blob-read-batch-bytes=bytes",
+      "default": "65536 / 0 - 4294967295 (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "option_mysqld_ndb-blob-read-batch-bytes",
+      "name": "ndb-blob-read-batch-bytes",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "cli": "--ndb-blob-write-batch-bytes=bytes",
+      "default": "65536 / 0 - 4294967295 (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "option_mysqld_ndb-blob-write-batch-bytes",
+      "name": "ndb-blob-write-batch-bytes",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "cli": "--ndb-connectstring=connection_string",
+      "default": "(Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-connectstring",
+      "name": "ndb-connectstring"
+    },
+    {
+      "cli": "--ndb-default-column-format=[FIXED|DYNAMIC]",
+      "default": "FIXED / FIXED, DYNAMIC (Version: 5.7.16-ndb-7.5.4)",
+      "dynamic": true,
+      "id": "option_mysqld_ndb-default-column-format",
+      "name": "ndb-default-column-format",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-deferred-constraints=[0|1]",
+      "default": "0 / 0 - 1 (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "option_mysqld_ndb-deferred-constraints",
+      "name": "ndb-deferred-constraints",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "cli": "--ndb-distribution=[KEYHASH|LINHASH]",
+      "default": "KEYHASH / LINHASH, KEYHASH (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "option_mysqld_ndb-distribution",
+      "name": "ndb-distribution",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-log-apply-status",
+      "default": "OFF (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-log-apply-status",
+      "name": "ndb-log-apply-status",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-log-empty-epochs=[ON|OFF]",
+      "default": "OFF (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "option_mysqld_ndb-log-empty-epochs",
+      "name": "ndb-log-empty-epochs",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-log-empty-update=[ON|OFF]",
+      "default": "OFF (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "option_mysqld_ndb-log-empty-update",
+      "name": "ndb-log-empty-update",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-log-exclusive-reads=[0|1]",
+      "default": "0 (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "option_mysqld_ndb-log-exclusive-reads",
+      "name": "ndb-log-exclusive-reads",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "cli": "--ndb-log-orig",
+      "default": "OFF (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-log-orig",
+      "name": "ndb-log-orig",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-log-transaction-id",
+      "default": "OFF (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-log-transaction-id",
+      "name": "ndb-log-transaction-id",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-log-update-minimal",
+      "default": "OFF (Version: 5.7.18-ndb-7.6.3)",
+      "dynamic": true,
+      "id": "option_mysqld_ndb-log-update-minimal",
+      "name": "ndb-log-update-minimal",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-mgmd-host=host[:port]",
+      "default": "localhost:1186 (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-mgmd-host",
+      "name": "ndb-mgmd-host"
+    },
+    {
+      "cli": "--ndb-nodeid=#",
+      "default": "/ 1 - 255 (Version: 5.1.5)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-nodeid",
+      "name": "ndb-nodeid",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-optimization-delay=milliseconds",
+      "default": "10 / 0 - 100000 (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "option_mysqld_ndb-optimization-delay",
+      "name": "ndb-optimization-delay",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-recv-thread-activation-threshold=threshold",
+      "default": "8 / 0 (MIN_ACTIVATION_THRESHOLD) - 16 (MAX_ACTIVATION_THRESHOLD), (Version: 5.6.10-ndb-7.3.1)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-recv-thread-activation-threshold",
+      "name": "ndb-recv-thread-activation-threshold"
+    },
+    {
+      "cli": "--ndb-recv-thread-cpu-mask=bitmask",
+      "default": "[empty] (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-recv-thread-cpu-mask",
+      "name": "ndb-recv-thread-cpu-mask"
+    },
+    {
+      "cli": "ndb-transid-mysql-connection-map=state",
+      "default": "ON / ON, OFF, FORCE (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-transid-mysql-connection-map",
+      "name": "ndb-transid-mysql-connection-map"
+    },
+    {
+      "cli": "--ndb-wait-connected=seconds",
+      "default": "30 / 0 - 31536000 (Version: 5.1.56-ndb-7.1.16)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-wait-connected",
+      "name": "ndb-wait-connected",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--ndb-wait-setup=seconds",
+      "default": "30 / 0 - 31536000 (Version: 5.1.56-ndb-7.1.16)",
+      "dynamic": false,
+      "id": "option_mysqld_ndb-wait-setup",
+      "name": "ndb-wait-setup",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--skip-ndbcluster",
+      "dynamic": false,
+      "id": "option_mysqld_skip-ndbcluster",
+      "name": "skip-ndbcluster"
+    },
+    {
+      "default": "1 / 1 - 256 (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_autoincrement_prefetch_sz",
+      "name": "ndb_autoincrement_prefetch_sz",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "0 / - (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_cache_check_time",
+      "name": "ndb_cache_check_time",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "ON (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_clear_apply_status",
+      "name": "ndb_clear_apply_status",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "0 / 0 - 255 (Version: 5.7.12-ndb-7.5.2)",
+      "dynamic": true,
+      "id": "sysvar_ndb_data_node_neighbour",
+      "name": "ndb_data_node_neighbour",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "FIXED / FIXED, DYNAMIC (Version: 5.7.16-ndb-7.5.4)",
+      "dynamic": true,
+      "id": "sysvar_ndb_default_column_format",
+      "name": "ndb_default_column_format",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "0 / 0 - 1 (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_deferred_constraints",
+      "name": "ndb_deferred_constraints",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "KEYHASH / LINHASH, KEYHASH (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_distribution",
+      "name": "ndb_distribution",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "20 / 1 - 99 (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_eventbuffer_free_percent",
+      "name": "ndb_eventbuffer_free_percent",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "0 / 0 - 4294967295 (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_eventbuffer_max_alloc",
+      "name": "ndb_eventbuffer_max_alloc",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "1 / - (Version: 5.1.19-ndb-6.3.0)",
+      "dynamic": true,
+      "id": "sysvar_ndb_extra_logging",
+      "name": "ndb_extra_logging",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "TRUE (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_force_send",
+      "name": "ndb_force_send",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "OFF (Version: 5.7.12-ndb-7-5-2)",
+      "dynamic": true,
+      "id": "sysvar_ndb_fully_replicated",
+      "name": "ndb_fully_replicated",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "ON (Version: 5.5.15-ndb-7.2.1)",
+      "dynamic": true,
+      "id": "sysvar_ndb_index_stat_enable",
+      "name": "ndb_index_stat_enable",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "loop_checkon=1000ms,loop_idle=1000ms,loop_busy=100ms,, update_batch=1,read_batch=4,idle_batch=32,check_batch=32,, check_delay=1m,delete_batch=8,clean_delay=0,error_batch=4,, error_delay=1m,evict_batch=8,evict_delay=1m,cache_limit=32M,, cache_lowpct=90 (Version: 5.1.56-ndb-7.1.17)",
+      "dynamic": true,
+      "id": "sysvar_ndb_index_stat_option",
+      "name": "ndb_index_stat_option",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "TRUE (Version: 5.1.51-ndb-7.2.0)",
+      "dynamic": true,
+      "id": "sysvar_ndb_join_pushdown",
+      "name": "ndb_join_pushdown",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "OFF (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "sysvar_ndb_log_apply_status",
+      "name": "ndb_log_apply_status",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "ON (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_log_bin",
+      "name": "ndb_log_bin",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "ON (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_log_binlog_index",
+      "name": "ndb_log_binlog_index",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "OFF (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_log_empty_epochs",
+      "name": "ndb_log_empty_epochs",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "OFF (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_log_empty_update",
+      "name": "ndb_log_empty_update",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "0 (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_log_exclusive_reads",
+      "name": "ndb_log_exclusive_reads",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "OFF (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "sysvar_ndb_log_orig",
+      "name": "ndb_log_orig",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "OFF (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "sysvar_ndb_log_transaction_id",
+      "name": "ndb_log_transaction_id",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "3 / 0 - 3 (Version: 5.1.22-ndb-6.3.4)",
+      "dynamic": false,
+      "id": "sysvar_ndb_optimized_node_selection",
+      "name": "ndb_optimized_node_selection",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "OFF (Version: 5.7.12-ndb-7.5.2)",
+      "dynamic": true,
+      "id": "sysvar_ndb_read_backup",
+      "name": "ndb_read_backup",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "8 / 0 (MIN_ACTIVATION_THRESHOLD) - 16 (MAX_ACTIVATION_THRESHOLD), (Version: 5.6.10-ndb-7.3.1)",
+      "dynamic": false,
+      "id": "sysvar_ndb_recv_thread_activation_threshold",
+      "name": "ndb_recv_thread_activation_threshold"
+    },
+    {
+      "default": "[empty] (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_recv_thread_cpu_mask",
+      "name": "ndb_recv_thread_cpu_mask",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "10 / 0 - 256 (Version: 5.7.16-ndb-7.5.4)",
+      "dynamic": true,
+      "id": "sysvar_ndb_report_thresh_binlog_epoch_slip",
+      "name": "ndb_report_thresh_binlog_epoch_slip",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "1 / 0 - 1 (Version: NDB 7.6.8)",
+      "dynamic": true,
+      "id": "sysvar_ndb_report_thresh_binlog_mem_usage",
+      "name": "ndb_report_thresh_binlog_mem_usage",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "1 / 0 - 1 (Version: NDB 7.6.8)",
+      "dynamic": true,
+      "id": "sysvar_ndb_row_checksum",
+      "name": "ndb_row_checksum",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "OFF (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_show_foreign_key_mock_tables",
+      "name": "ndb_show_foreign_key_mock_tables",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "NONE / NONE, PRIMARY, SECONDARY, PASS (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_slave_conflict_role",
+      "name": "ndb_slave_conflict_role",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "FALSE (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_table_no_logging",
+      "name": "ndb_table_no_logging",
+      "scope": [
+        "session"
+      ]
+    },
+    {
+      "default": "FALSE (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_table_temporary",
+      "name": "ndb_table_temporary",
+      "scope": [
+        "session"
+      ]
+    },
+    {
+      "dynamic": false,
+      "id": "sysvar_ndb_use_copying_alter_table",
+      "name": "ndb_use_copying_alter_table",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "OFF (Version: 5.1.47-ndb-7.1.8)",
+      "dynamic": true,
+      "id": "sysvar_ndb_use_exact_count",
+      "name": "ndb_use_exact_count",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "ON (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndb_use_transactions",
+      "name": "ndb_use_transactions",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "(Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "sysvar_ndb_version",
+      "name": "ndb_version",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "(Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "sysvar_ndb_version_string",
+      "name": "ndb_version_string",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "32 / 7 - 32 (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "sysvar_server_id_bits",
+      "name": "server_id_bits",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "off (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_slave_allow_batching",
+      "name": "slave_allow_batching",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "FALSE (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_transaction_allow_batching",
+      "name": "transaction_allow_batching",
+      "scope": [
+        "session"
+      ]
+    },
+    {
+      "default": "ndbinfo (Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "sysvar_ndbinfo_database",
+      "name": "ndbinfo_database",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "0 / - (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndbinfo_max_bytes",
+      "name": "ndbinfo_max_bytes",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "10 / - (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndbinfo_max_rows",
+      "name": "ndbinfo_max_rows",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "OFF (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndbinfo_offline",
+      "name": "ndbinfo_offline",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "default": "OFF (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndbinfo_show_hidden",
+      "name": "ndbinfo_show_hidden",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "ndb$ (Version: NDB 7.5-7.6)",
+      "dynamic": true,
+      "id": "sysvar_ndbinfo_table_prefix",
+      "name": "ndbinfo_table_prefix",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "(Version: NDB 7.5-7.6)",
+      "dynamic": false,
+      "id": "sysvar_ndbinfo_version",
+      "name": "ndbinfo_version",
+      "scope": [
+        "global"
+      ]
+    }
+  ],
+  "name": "mysql-cluster-options-variables",
+  "url": "https://dev.mysql.com/doc/refman/5.7/en/mysql-cluster-options-variables.html"
+}

@@ -1,0 +1,191 @@
+{
+  "data": [
+    {
+      "cli": "--extra-max-connections=#",
+      "default": "1",
+      "dynamic": true,
+      "id": "extra_max_connections",
+      "name": "extra_max_connections",
+      "range": {
+        "from": 1,
+        "to": 100000
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--extra-port=#",
+      "default": "0",
+      "dynamic": false,
+      "id": "extra_port",
+      "name": "extra_port",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--thread-handling=name",
+      "default": "one-thread-per-connection",
+      "dynamic": false,
+      "id": "thread_handling",
+      "name": "thread_handling",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "no-threads",
+        "one-thread-per-connection",
+        "pool-of-threads"
+      ]
+    },
+    {
+      "cli": "thread-pool-dedicated-listener={0|1}",
+      "default": "0",
+      "dynamic": false,
+      "id": "thread_pool_dedicated_listener",
+      "name": "thread_pool_dedicated_listener",
+      "scope": [],
+      "type": "boolean"
+    },
+    {
+      "cli": "thread-pool-exact-stats={0|1}",
+      "default": "0",
+      "dynamic": false,
+      "id": "thread_pool_exact_stats",
+      "name": "thread_pool_exact_stats",
+      "scope": [],
+      "type": "boolean"
+    },
+    {
+      "cli": "thread-pool-idle-timeout=#",
+      "default": "60",
+      "dynamic": true,
+      "id": "thread_pool_idle_timeout",
+      "name": "thread_pool_idle_timeout",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "thread-pool-max-threads=#",
+      "default": "65536 (>= MariaDB 10.2.4), 1000 (<= MariaDB 10.2.3, >= MariaDB 10.1), 500 (<= MariaDB 10.0)",
+      "dynamic": true,
+      "id": "thread_pool_max_threads",
+      "name": "thread_pool_max_threads",
+      "range": {
+        "from": 1,
+        "to": 65536
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "thread-pool-min-threads=#",
+      "default": "1",
+      "id": "thread_pool_min_threads",
+      "name": "thread_pool_min_threads",
+      "type": "integer"
+    },
+    {
+      "default": "3",
+      "dynamic": true,
+      "id": "thread_pool_oversubscribe",
+      "name": "thread_pool_oversubscribe",
+      "range": {
+        "from": 1,
+        "to": 65536
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "thread-pool-kickup-timer=#",
+      "default": "1000",
+      "dynamic": true,
+      "id": "thread_pool_prio_kickup_timer",
+      "name": "thread_pool_prio_kickup_timer",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--thread-pool-priority=#",
+      "default": "auto",
+      "id": "thread_pool_priority",
+      "name": "thread_pool_priority",
+      "scope": [
+        "global",
+        "connection"
+      ],
+      "validValues": [
+        "high",
+        "low",
+        "auto"
+      ]
+    },
+    {
+      "cli": "--thread-pool-size=#",
+      "default": "(based on the number of processors)",
+      "dynamic": true,
+      "id": "thread_pool_size",
+      "name": "thread_pool_size",
+      "range": {
+        "from": 1,
+        "to": 128
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--thread-pool-stall-limit=#",
+      "default": "500",
+      "dynamic": true,
+      "id": "thread_pool_stall_limit",
+      "name": "thread_pool_stall_limit",
+      "range": {
+        "from": 10,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "threadpool_idle_threads",
+      "name": "Threadpool_idle_threads",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "threadpool_threads",
+      "name": "Threadpool_threads",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "thread-pool-system-and-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/thread-pool-system-and-status-variables/"
+}

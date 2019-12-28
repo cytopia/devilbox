@@ -1,0 +1,1419 @@
+{
+  "data": [
+    {
+      "dynamic": true,
+      "id": "spider_auto_increment_mode",
+      "name": "spider_auto_increment_mode",
+      "range": {
+        "from": -1,
+        "to": 3
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_bgs_first_read",
+      "name": "spider_bgs_first_read",
+      "range": {
+        "from": -1,
+        "to": 9223372036854776000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_bgs_mode",
+      "name": "spider_bgs_mode",
+      "range": {
+        "from": -1,
+        "to": 3
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_bgs_second_read",
+      "name": "spider_bgs_second_read",
+      "range": {
+        "from": -1,
+        "to": 9223372036854776000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_bka_engine",
+      "name": "spider_bka_engine",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_bka_mode",
+      "name": "spider_bka_mode",
+      "range": {
+        "from": -1,
+        "to": 2
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_bka_table_name_type",
+      "name": "spider_bka_table_name_type",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_block_size",
+      "name": "spider_block_size",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_bulk_size",
+      "name": "spider_bulk_size",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_bulk_update_mode",
+      "name": "spider_bulk_update_mode",
+      "range": {
+        "from": -1,
+        "to": 2
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_bulk_update_size",
+      "name": "spider_bulk_update_size",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_casual_read",
+      "name": "spider_casual_read",
+      "range": {
+        "from": -1,
+        "to": 63
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_conn_recycle_mode",
+      "name": "spider_conn_recycle_mode",
+      "range": {
+        "from": 0,
+        "to": 2
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_conn_recycle_strict",
+      "name": "spider_conn_recycle_strict",
+      "range": {
+        "from": 0,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_conn_wait_timeout",
+      "name": "spider_conn_wait_timeout",
+      "range": {
+        "from": 0,
+        "to": 1000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "1",
+      "dynamic": true,
+      "id": "spider_connect_error_interval",
+      "name": "spider_connect_error_interval",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_connect_mutex",
+      "name": "spider_connect_mutex",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_connect_retry_count",
+      "name": "spider_connect_retry_count",
+      "range": {
+        "from": 0,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_connect_retry_interval",
+      "name": "spider_connect_retry_interval",
+      "range": {
+        "from": -1,
+        "to": 9223372036854776000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_connect_timeout",
+      "name": "spider_connect_timeout",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_crd_bg_mode",
+      "name": "spider_crd_bg_mode",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_crd_interval",
+      "name": "spider_crd_interval",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_crd_mode",
+      "name": "spider_crd_mode",
+      "range": {
+        "from": -1,
+        "to": 3
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_crd_sync",
+      "name": "spider_crd_sync",
+      "range": {
+        "from": -1,
+        "to": 2
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_crd_type",
+      "name": "spider_crd_type",
+      "range": {
+        "from": -1,
+        "to": 2
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_crd_weight",
+      "name": "spider_crd_weight",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_delete_all_rows_type",
+      "name": "spider_delete_all_rows_type",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_direct_dup_insert",
+      "name": "spider_direct_dup_insert",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_direct_order_limit",
+      "name": "spider_direct_order_limit",
+      "range": {
+        "from": -1,
+        "to": 9223372036854776000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "OFF",
+      "dynamic": false,
+      "id": "spider_dry_access",
+      "name": "spider_dry_access",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_error_read_mode",
+      "name": "spider_error_read_mode",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_error_write_mode",
+      "name": "spider_error_write_mode",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_first_read",
+      "name": "spider_first_read",
+      "range": {
+        "from": -1,
+        "to": 9223372036854776000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_force_commit",
+      "name": "spider_force_commit",
+      "range": {
+        "from": 0,
+        "to": 2
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_general_log",
+      "name": "spider_general_log",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_index_hint_pushdown",
+      "name": "spider_index_hint_pushdown",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_init_sql_alloc_size",
+      "name": "spider_init_sql_alloc_size",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_internal_limit",
+      "name": "spider_internal_limit",
+      "range": {
+        "from": -1,
+        "to": 9223372036854776000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_internal_offset",
+      "name": "spider_internal_offset",
+      "range": {
+        "from": -1,
+        "to": 9223372036854776000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_internal_optimize",
+      "name": "spider_internal_optimize",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "spider_internal_optimize_local",
+      "name": "spider_internal_optimize_local",
+      "range": {
+        "from": -1,
+        "to": 1
+      }
+    },
+    {
+      "dynamic": true,
+      "id": "spider_internal_sql_log_off",
+      "name": "spider_internal_sql_log_off",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "id": "spider_internal_unlock",
+      "name": "spider_internal_unlock",
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_internal_xa",
+      "name": "spider_internal_xa",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_internal_xa_id_type",
+      "name": "spider_internal_xa_id_type",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_internal_xa_snapshot",
+      "name": "spider_internal_xa_snapshot",
+      "range": {
+        "from": 0,
+        "to": 3
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_load_crd_at_startup",
+      "name": "spider_load_crd_at_startup",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_load_sts_at_startup",
+      "name": "spider_load_sts_at_startup",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_local_lock_table",
+      "name": "spider_local_lock_table",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_lock_exchange",
+      "name": "spider_lock_exchange",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_log_result_error_with_sql",
+      "name": "spider_log_result_error_with_sql",
+      "range": {
+        "from": 0,
+        "to": 3
+      },
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_log_result_errors",
+      "name": "spider_log_result_errors",
+      "range": {
+        "from": 0,
+        "to": 4
+      },
+      "type": "integer"
+    },
+    {
+      "default": "-1",
+      "id": "spider_low_mem_read",
+      "name": "spider_low_mem_read",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_max_connections",
+      "name": "spider_max_connections",
+      "range": {
+        "from": 0,
+        "to": 99999
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_max_order",
+      "name": "spider_max_order",
+      "range": {
+        "from": -1,
+        "to": 32767
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_multi_split_read",
+      "name": "spider_multi_split_read",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_net_read_timeout",
+      "name": "spider_net_read_timeout",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_net_write_timeout",
+      "name": "spider_net_write_timeout",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_ping_interval_at_trx_start",
+      "name": "spider_ping_interval_at_trx_start",
+      "range": {
+        "from": 0,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_quick_mode",
+      "name": "spider_quick_mode",
+      "range": {
+        "from": -1,
+        "to": 3
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_quick_page_size",
+      "name": "spider_quick_page_size",
+      "range": {
+        "from": -1,
+        "to": 9223372036854776000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_read_only_mode",
+      "name": "spider_read_only_mode",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_remote_access_charset",
+      "name": "spider_remote_access_charset",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_remote_autocommit",
+      "name": "spider_remote_autocommit",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_remote_default_database",
+      "name": "spider_remote_default_database",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_remote_sql_log_off",
+      "name": "spider_remote_sql_log_off",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_remote_time_zone",
+      "name": "spider_remote_time_zone",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_remote_trx_isolation",
+      "name": "spider_remote_trx_isolation",
+      "range": {
+        "from": -1,
+        "to": 3
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_reset_sql_alloc",
+      "name": "spider_reset_sql_alloc",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_same_server_link",
+      "name": "spider_same_server_link",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_second_read",
+      "name": "spider_second_read",
+      "range": {
+        "from": -1,
+        "to": 9223372036854776000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_select_column_mode",
+      "name": "spider_select_column_mode",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_selupd_lock_mode",
+      "name": "spider_selupd_lock_mode",
+      "range": {
+        "from": -1,
+        "to": 2
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_semi_split_read",
+      "name": "spider_semi_split_read",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_semi_split_read_limit",
+      "name": "spider_semi_split_read_limit",
+      "range": {
+        "from": -1,
+        "to": 9223372036854776000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_semi_table_lock",
+      "name": "spider_semi_table_lock",
+      "range": {
+        "from": 0,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_semi_table_lock_connection",
+      "name": "spider_semi_table_lock_connection",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_semi_trx",
+      "name": "spider_semi_trx",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_semi_trx_isolation",
+      "name": "spider_semi_trx_isolation",
+      "range": {
+        "from": -1,
+        "to": 3
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_skip_default_condition",
+      "name": "spider_skip_default_condition",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--spider-skip-parallel-search=#",
+      "dynamic": true,
+      "id": "spider_skip_parallel_search",
+      "name": "spider_skip_parallel_search",
+      "range": {
+        "from": -1,
+        "to": 3
+      },
+      "scope": [
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_split_read",
+      "name": "spider_split_read",
+      "range": {
+        "from": -1,
+        "to": 9223372036854776000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--spider-store-last-crd=#",
+      "dynamic": true,
+      "id": "spider_store_last_crd",
+      "name": "spider_store_last_crd",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--spider-store-last-sts=#",
+      "dynamic": true,
+      "id": "spider_store_last_sts",
+      "name": "spider_store_last_sts",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_sts_bg_mode",
+      "name": "spider_sts_bg_mode",
+      "range": {
+        "from": -1,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_sts_interval",
+      "name": "spider_sts_interval",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_sts_mode",
+      "name": "spider_sts_mode",
+      "range": {
+        "from": -1,
+        "to": 2
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_sts_sync",
+      "name": "spider_sts_sync",
+      "range": {
+        "from": -1,
+        "to": 2
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": false,
+      "id": "spider_support_xa",
+      "name": "spider_support_xa",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_sync_autocommit",
+      "name": "spider_sync_autocommit",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_sync_time_zone",
+      "name": "spider_sync_time_zone",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_sync_trx_isolation",
+      "name": "spider_sync_trx_isolation",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--spider-table-crd-thread-count=#",
+      "default": "10",
+      "dynamic": false,
+      "id": "spider_table_crd_thread_count",
+      "name": "spider_table_crd_thread_count",
+      "range": {
+        "from": 1,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "1",
+      "dynamic": true,
+      "id": "spider_table_init_error_interval",
+      "name": "spider_table_init_error_interval",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--spider-table-sts-thread-count=#",
+      "default": "10",
+      "dynamic": false,
+      "id": "spider_table_sts_thread_count",
+      "name": "spider_table_sts_thread_count",
+      "range": {
+        "from": 1,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_udf_ct_bulk_insert_interval",
+      "name": "spider_udf_ct_bulk_insert_interval",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_udf_ct_bulk_insert_rows",
+      "name": "spider_udf_ct_bulk_insert_rows",
+      "range": {
+        "from": -1
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_udf_ds_bulk_insert_rows",
+      "name": "spider_udf_ds_bulk_insert_rows",
+      "range": {
+        "from": -1
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_udf_ds_table_loop_mode",
+      "name": "spider_udf_ds_table_loop_mode",
+      "range": {
+        "from": -1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_udf_ds_use_real_table",
+      "name": "spider_udf_ds_use_real_table",
+      "range": {
+        "from": -1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "20",
+      "dynamic": false,
+      "id": "spider_udf_table_lock_mutex_count",
+      "name": "spider_udf_table_lock_mutex_count",
+      "range": {
+        "from": 1
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "default": "20",
+      "dynamic": false,
+      "id": "spider_udf_table_mon_mutex_count",
+      "name": "spider_udf_table_mon_mutex_count",
+      "range": {
+        "from": 1
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_use_all_conns_snapshot",
+      "name": "spider_use_all_conns_snapshot",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_use_consistent_snapshot",
+      "name": "spider_use_consistent_snapshot",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_use_default_database",
+      "name": "spider_use_default_database",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_use_flash_logs",
+      "name": "spider_use_flash_logs",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "id": "spider_use_handler",
+      "name": "spider_use_handler"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_use_pushdown_udf",
+      "name": "spider_use_pushdown_udf",
+      "range": {
+        "from": -1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_use_snapshot_with_flush_tables",
+      "name": "spider_use_snapshot_with_flush_tables",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": true,
+      "id": "spider_use_table_charset",
+      "name": "spider_use_table_charset",
+      "range": {
+        "from": -1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": false,
+      "id": "spider_version",
+      "name": "spider_version",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "default": "1",
+      "dynamic": true,
+      "id": "spider_xa_register_mode",
+      "name": "spider_xa_register_mode",
+      "range": {
+        "from": 0,
+        "to": 1
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "spider-server-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/columns-storage-engines-and-plugins/storage-engines/spider/spider-server-system-variables/"
+}

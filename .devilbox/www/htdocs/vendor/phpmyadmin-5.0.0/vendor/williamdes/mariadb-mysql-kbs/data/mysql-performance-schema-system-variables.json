@@ -1,0 +1,544 @@
+{
+  "data": [
+    {
+      "cli": "--performance-schema[={OFF|ON}]",
+      "default": "ON",
+      "dynamic": false,
+      "id": "sysvar_performance_schema",
+      "name": "performance_schema",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--performance-schema-accounts-size=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_accounts_size",
+      "name": "performance_schema_accounts_size",
+      "range": {
+        "from": -1,
+        "to": 1048576
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-digests-size=#",
+      "default": "(-1 signifies autosizing; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_digests_size",
+      "name": "performance_schema_digests_size",
+      "range": {
+        "from": -1,
+        "to": 1048576
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-error-size=#",
+      "default": "number of server error codes",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_error_size",
+      "name": "performance_schema_error_size",
+      "range": {
+        "from": 0,
+        "to": 1048576
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-events-stages-history-long-size=#",
+      "default": "(-1 signifies autosizing; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_events_stages_history_long_size",
+      "name": "performance_schema_events_stages_history_long_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-events-stages-history-size=#",
+      "default": "(-1 signifies autosizing; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_events_stages_history_size",
+      "name": "performance_schema_events_stages_history_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-events-statements-history-long-size=#",
+      "default": "(-1 signifies autosizing; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_events_statements_history_long_size",
+      "name": "performance_schema_events_statements_history_long_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-events-statements-history-size=#",
+      "default": "(-1 signifies autosizing; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_events_statements_history_size",
+      "name": "performance_schema_events_statements_history_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-events-transactions-history-long-size=#",
+      "default": "(-1 signifies autosizing; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_events_transactions_history_long_size",
+      "name": "performance_schema_events_transactions_history_long_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-events-transactions-history-size=#",
+      "default": "(-1 signifies autosizing; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_events_transactions_history_size",
+      "name": "performance_schema_events_transactions_history_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-events-waits-history-long-size=#",
+      "default": "(-1 signifies autosizing; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_events_waits_history_long_size",
+      "name": "performance_schema_events_waits_history_long_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-events-waits-history-size=#",
+      "default": "(-1 signifies autosizing; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_events_waits_history_size",
+      "name": "performance_schema_events_waits_history_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-hosts-size=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_hosts_size",
+      "name": "performance_schema_hosts_size",
+      "range": {
+        "from": -1,
+        "to": 1048576
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-cond-classes=#",
+      "default": "80",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_cond_classes",
+      "name": "performance_schema_max_cond_classes",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-cond-instances=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_cond_instances",
+      "name": "performance_schema_max_cond_instances",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-digest-length=#",
+      "default": "1024",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_digest_length",
+      "name": "performance_schema_max_digest_length",
+      "range": {
+        "from": 0,
+        "to": 1048576
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-digest-sample-age=#",
+      "default": "60",
+      "dynamic": true,
+      "id": "sysvar_performance_schema_max_digest_sample_age",
+      "name": "performance_schema_max_digest_sample_age",
+      "range": {
+        "from": 0,
+        "to": 1048576
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-file-classes=#",
+      "default": "80",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_file_classes",
+      "name": "performance_schema_max_file_classes",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-file-handles=#",
+      "default": "32768",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_file_handles",
+      "name": "performance_schema_max_file_handles",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-file-instances=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_file_instances",
+      "name": "performance_schema_max_file_instances",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-index-stat=#",
+      "default": "(-1 signifies autosizing; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_index_stat",
+      "name": "performance_schema_max_index_stat",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-memory-classes=#",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_memory_classes",
+      "name": "performance_schema_max_memory_classes",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-metadata-locks=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_metadata_locks",
+      "name": "performance_schema_max_metadata_locks",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-mutex-classes=#",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_mutex_classes",
+      "name": "performance_schema_max_mutex_classes",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-mutex-instances=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_mutex_instances",
+      "name": "performance_schema_max_mutex_instances",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-prepared-statements-instances=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_prepared_statements_instances",
+      "name": "performance_schema_max_prepared_statements_instances",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-rwlock-classes=#",
+      "default": "40",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_rwlock_classes",
+      "name": "performance_schema_max_rwlock_classes",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-program-instances=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_program_instances",
+      "name": "performance_schema_max_program_instances",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-rwlock-instances=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_rwlock_instances",
+      "name": "performance_schema_max_rwlock_instances",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-socket-classes=#",
+      "default": "10",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_socket_classes",
+      "name": "performance_schema_max_socket_classes",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-socket-instances=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_socket_instances",
+      "name": "performance_schema_max_socket_instances",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-sql-text-length=#",
+      "default": "1024",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_sql_text_length",
+      "name": "performance_schema_max_sql_text_length",
+      "range": {
+        "from": 0,
+        "to": 1048576
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-stage-classes=#",
+      "default": "150",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_stage_classes",
+      "name": "performance_schema_max_stage_classes",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-statement-classes=#",
+      "default": "(-1 signifies autosizing; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_statement_classes",
+      "name": "performance_schema_max_statement_classes",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-statement-stack=#",
+      "default": "10",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_statement_stack",
+      "name": "performance_schema_max_statement_stack",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-table-handles=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_table_handles",
+      "name": "performance_schema_max_table_handles",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-table-instances=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_table_instances",
+      "name": "performance_schema_max_table_instances",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-table-lock-stat=#",
+      "default": "(-1 signifies autosizing; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_table_lock_stat",
+      "name": "performance_schema_max_table_lock_stat",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-thread-classes=#",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_thread_classes",
+      "name": "performance_schema_max_thread_classes",
+      "range": {
+        "from": 0
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-max-thread-instances=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_max_thread_instances",
+      "name": "performance_schema_max_thread_instances",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-session-connect-attrs-size=#",
+      "default": "(-1 signifies autosizing; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_session_connect_attrs_size",
+      "name": "performance_schema_session_connect_attrs_size",
+      "range": {
+        "from": -1,
+        "to": 1048576
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-setup-actors-size=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_setup_actors_size",
+      "name": "performance_schema_setup_actors_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-setup-objects-size=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_setup_objects_size",
+      "name": "performance_schema_setup_objects_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--performance-schema-users-size=#",
+      "default": "(-1 signifies autoscaling; do not use -1)",
+      "dynamic": false,
+      "id": "sysvar_performance_schema_users_size",
+      "name": "performance_schema_users_size",
+      "range": {
+        "from": -1,
+        "to": 1048576
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "performance-schema-system-variables",
+  "url": "https://dev.mysql.com/doc/refman/8.0/en/performance-schema-system-variables.html"
+}

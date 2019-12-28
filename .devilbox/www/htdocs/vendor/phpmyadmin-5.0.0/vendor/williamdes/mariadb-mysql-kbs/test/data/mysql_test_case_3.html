@@ -1,0 +1,339 @@
+<html>
+<div class="itemizedlist">
+    <ul class="itemizedlist" style="list-style-type: disc; ">
+        <li class="listitem"><a name="sysvar_ndb_join_pushdown"></a><a class="indexterm"
+                name="idm139716306421824"></a><a class="indexterm" name="idm139716306420752"></a><a class="indexterm"
+                name="idm139716306419680"></a>
+            <p>
+                <a class="link" href="mysql-cluster-options-variables.html#sysvar_ndb_join_pushdown"><code
+                        class="literal">ndb_join_pushdown</code></a>
+            </p>
+            <div class="table">
+                <a name="ndb_join_pushdown-detailtable"></a>
+                <p class="title"><b>Table&nbsp;21.249
+                        Type and value information for ndb_join_pushdown</b></p>
+                <div class="table-contents">
+                    <table>
+                        <colgroup>
+                            <col width="35%">
+                            <col width="65%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">Property</th>
+                                <th scope="col">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row">Name</td>
+                                <td><code
+                                        class="literal"><a class="link" href="mysql-cluster-options-variables.html#sysvar_ndb_join_pushdown">ndb_join_pushdown</a></code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Command Line</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">System Variable</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Status Variable</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Option File</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Scope</td>
+                                <td>Both</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Dynamic</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Type</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Default, Range</td>
+                                <td>TRUE (Version: 5.1.51-ndb-7.2.0)</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Notes</td>
+                                <td>
+                                    <p>
+                                        DESCRIPTION: Enables pushing down of joins to data
+                                        nodes
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-contents">
+                    <table cellpadding="0" cellspacing="0"
+                        style="position: fixed; top: 0px; display: none; left: 431px; width: 594px;">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 208px;">Property</th>
+                                <th scope="col" style="width: 385px;">Value</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </div>
+            <br class="table-break">
+            <p>
+                This variable controls whether joins on
+                <a class="link" href="mysql-cluster.html"
+                    title="Chapter&nbsp;21&nbsp;MySQL NDB Cluster 7.5 and NDB Cluster 7.6"><code
+                        class="literal">NDB</code></a> tables are pushed down to
+                the NDB kernel (data nodes). Previously, a join was
+                handled using multiple accesses of
+                <a class="link" href="mysql-cluster.html"
+                    title="Chapter&nbsp;21&nbsp;MySQL NDB Cluster 7.5 and NDB Cluster 7.6"><code
+                        class="literal">NDB</code></a> by the SQL node; however,
+                when <a class="link" href="mysql-cluster-options-variables.html#sysvar_ndb_join_pushdown"><code
+                        class="literal">ndb_join_pushdown</code></a> is
+                enabled, a pushable join is sent in its entirety to the
+                data nodes, where it can be distributed among the data
+                nodes and executed in parallel on multiple copies of the
+                data, with a single, merged result being returned to
+                <a class="link" href="mysqld.html" title="4.3.1&nbsp;mysqld — The MySQL Server"><span
+                        class="command"><strong>mysqld</strong></span></a>. This can reduce greatly the
+                number of round trips between an SQL node and the data
+                nodes required to handle such a join.
+            </p>
+            <p>
+                By default,
+                <a class="link" href="mysql-cluster-options-variables.html#sysvar_ndb_join_pushdown"><code
+                        class="literal">ndb_join_pushdown</code></a> is
+                enabled.
+            </p>
+            <p><a name="ndb_join_pushdown-conditions"></a><b>Conditions for NDB pushdown joins.&nbsp;</b>
+                In order for a join to be pushable, it must meet the
+                following conditions:
+            </p>
+            <div class="orderedlist">
+                <ol class="orderedlist" type="1">
+                    <li class="listitem">
+                        <p>
+                            Only columns can be compared, and all columns to be
+                            joined must use <span class="emphasis"><em>exactly</em></span> the same
+                            data type.
+                        </p>
+                        <p>
+                            This means that expressions such as <code class="literal">t1.a =
+                        t2.a + <em class="replaceable"><code>constant</code></em></code>
+                            cannot be pushed down, and that (for example) a join
+                            on an <a class="link" href="integer-types.html"
+                                title="11.2.1&nbsp;Integer Types (Exact Value) - INTEGER, INT, SMALLINT, TINYINT, MEDIUMINT, BIGINT"><code
+                                    class="literal">INT</code></a> column and a
+                            <a class="link" href="integer-types.html"
+                                title="11.2.1&nbsp;Integer Types (Exact Value) - INTEGER, INT, SMALLINT, TINYINT, MEDIUMINT, BIGINT"><code
+                                    class="literal">BIGINT</code></a> column also
+                            cannot be pushed down.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            Queries referencing
+                            <a class="link" href="blob.html" title="11.4.3&nbsp;The BLOB and TEXT Types"><code
+                                    class="literal">BLOB</code></a> or
+                            <a class="link" href="blob.html" title="11.4.3&nbsp;The BLOB and TEXT Types"><code
+                                    class="literal">TEXT</code></a> columns are not
+                            supported.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            Explicit locking is not supported; however, the
+                            <a class="link" href="mysql-cluster.html"
+                                title="Chapter&nbsp;21&nbsp;MySQL NDB Cluster 7.5 and NDB Cluster 7.6"><code
+                                    class="literal">NDB</code></a> storage engine's
+                            characteristic implicit row-based locking is enforced.
+                        </p>
+                        <p>
+                            This means that a join using <code class="literal">FOR
+                        UPDATE</code> cannot be pushed down.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            In order for a join to be pushed down, child tables in
+                            the join must be accessed using one of the
+                            <a class="link" href="explain-output.html#jointype_ref"><code
+                                    class="literal">ref</code></a>,
+                            <a class="link" href="explain-output.html#jointype_eq_ref"><code
+                                    class="literal">eq_ref</code></a>,&nbsp;or&nbsp;
+                            <a class="link" href="explain-output.html#jointype_const"><code
+                                    class="literal">const</code></a>&nbsp;access&nbsp;methods,
+                            or some combination of these methods.
+                        </p>
+                        <p>
+                            Outer joined child tables can only be pushed using
+                            <a class="link" href="explain-output.html#jointype_eq_ref"><code
+                                    class="literal">eq_ref</code></a>.
+                        </p>
+                        <p>
+                            If the root of the pushed join is an
+                            <a class="link" href="explain-output.html#jointype_eq_ref"><code
+                                    class="literal">eq_ref</code></a> or
+                            <a class="link" href="explain-output.html#jointype_const"><code
+                                    class="literal">const</code></a>, only child
+                            tables joined by
+                            <a class="link" href="explain-output.html#jointype_eq_ref"><code
+                                    class="literal">eq_ref</code></a> can be
+                            appended. (A table joined by
+                            <a class="link" href="explain-output.html#jointype_ref"><code class="literal">ref</code></a>
+                            is likely to
+                            become the root of another pushed join.)
+                        </p>
+                        <p>
+                            If the query optimizer decides on <code class="literal">Using join
+                        cache</code> for a candidate child table, that
+                            table cannot be pushed as a child. However, it may be
+                            the root of another set of pushed tables.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            Joins referencing tables explicitly partitioned by
+                            <code class="literal">[LINEAR] HASH</code>,
+                            <code class="literal">LIST</code>, or <code class="literal">RANGE</code>
+                            currently cannot be pushed down.
+                        </p>
+                    </li>
+                </ol>
+            </div>
+            <p>
+                You can see whether a given join can be pushed down by
+                checking it with <a class="link" href="explain.html" title="13.8.2&nbsp;EXPLAIN Syntax"><code
+                        class="literal">EXPLAIN</code></a>;
+                when the join can be pushed down, you can see references
+                to the <code class="literal">pushed join</code> in the
+                <code class="literal">Extra</code> column of the output, as shown in
+                this example:
+            </p>
+            <div class="copytoclipboard-wrapper" style="position: relative;">
+                <pre
+                    class="programlisting line-numbers  language-sql"><div class="docs-select-all right" id="sa30355511"><div class="copy-help left">Press CTRL+C to copy</div> <div class="right"><button class="clipboard-btn" title="Copy to Clipboard"><span class="icon-clipboard"></span></button></div></div><code class=" language-sql"><span class="token prompt">mysql&gt;</span> <span class="token keyword">EXPLAIN</span>
+      <span class="token prompt">    -&gt;</span>     <span class="token keyword">SELECT</span> e<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> e<span class="token punctuation">.</span>last_name<span class="token punctuation">,</span> t<span class="token punctuation">.</span>title<span class="token punctuation">,</span> d<span class="token punctuation">.</span>dept_name
+      <span class="token prompt">    -&gt;</span>         <span class="token keyword">FROM</span> employees e
+      <span class="token prompt">    -&gt;</span>         <span class="token keyword">JOIN</span> dept_emp de <span class="token keyword">ON</span> e<span class="token punctuation">.</span>emp_no<span class="token operator">=</span>de<span class="token punctuation">.</span>emp_no
+      <span class="token prompt">    -&gt;</span>         <span class="token keyword">JOIN</span> departments d <span class="token keyword">ON</span> d<span class="token punctuation">.</span>dept_no<span class="token operator">=</span>de<span class="token punctuation">.</span>dept_no
+      <span class="token prompt">    -&gt;</span>         <span class="token keyword">JOIN</span> titles t <span class="token keyword">ON</span> e<span class="token punctuation">.</span>emp_no<span class="token operator">=</span>t<span class="token punctuation">.</span>emp_no\G
+      <span class="token output"><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span> 1. row <span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span>
+                 id<span class="token punctuation">:</span> 1
+        select_type<span class="token punctuation">:</span> SIMPLE
+              table<span class="token punctuation">:</span> d
+               type<span class="token punctuation">:</span> ALL
+      possible_keys<span class="token punctuation">:</span> PRIMARY
+                key<span class="token punctuation">:</span> NULL
+            key_len<span class="token punctuation">:</span> NULL
+                ref<span class="token punctuation">:</span> NULL
+               rows<span class="token punctuation">:</span> 9
+              Extra<span class="token punctuation">:</span> Parent of 4 pushed join@1
+      <span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span> 2. row <span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span>
+                 id<span class="token punctuation">:</span> 1
+        select_type<span class="token punctuation">:</span> SIMPLE
+              table<span class="token punctuation">:</span> de
+               type<span class="token punctuation">:</span> ref
+      possible_keys<span class="token punctuation">:</span> PRIMARY,emp_no,dept_no
+                key<span class="token punctuation">:</span> dept_no
+            key_len<span class="token punctuation">:</span> 4
+                ref<span class="token punctuation">:</span> employees.d.dept_no
+               rows<span class="token punctuation">:</span> 5305
+              Extra<span class="token punctuation">:</span> Child of 'd' in pushed join@1
+      <span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span> 3. row <span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span>
+                 id<span class="token punctuation">:</span> 1
+        select_type<span class="token punctuation">:</span> SIMPLE
+              table<span class="token punctuation">:</span> e
+               type<span class="token punctuation">:</span> eq_ref
+      possible_keys<span class="token punctuation">:</span> PRIMARY
+                key<span class="token punctuation">:</span> PRIMARY
+            key_len<span class="token punctuation">:</span> 4
+                ref<span class="token punctuation">:</span> employees.de.emp_no
+               rows<span class="token punctuation">:</span> 1
+              Extra<span class="token punctuation">:</span> Child of 'de' in pushed join@1
+      <span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span> 4. row <span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span><span class="token punctuation">*</span>
+                 id<span class="token punctuation">:</span> 1
+        select_type<span class="token punctuation">:</span> SIMPLE
+              table<span class="token punctuation">:</span> t
+               type<span class="token punctuation">:</span> ref
+      possible_keys<span class="token punctuation">:</span> PRIMARY,emp_no
+                key<span class="token punctuation">:</span> emp_no
+            key_len<span class="token punctuation">:</span> 4
+                ref<span class="token punctuation">:</span> employees.de.emp_no
+               rows<span class="token punctuation">:</span> 19
+              Extra<span class="token punctuation">:</span> Child of 'e' in pushed join@1
+      </span><span class="token output">4 rows in set (0.00 sec)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            </div>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+                <div class="admon-title">
+                    Note
+                </div>
+                <p>
+                    If inner joined child tables are joined by
+                    <a class="link" href="explain-output.html#jointype_ref"><code class="literal">ref</code></a>,
+                    <span class="emphasis"><em>and</em></span> the result is ordered or
+                    grouped by a sorted index, this index cannot provide
+                    sorted rows, which forces writing to a sorted tempfile.
+                </p>
+            </div>
+            <p>
+                Two additional sources of information about pushed join
+                performance are available:
+            </p>
+            <div class="orderedlist">
+                <ol class="orderedlist" type="1">
+                    <li class="listitem">
+                        <p>
+                            The status variables
+                            <a class="link"
+                                href="mysql-cluster-options-variables.html#statvar_Ndb_pushed_queries_defined"><code
+                                    class="literal">Ndb_pushed_queries_defined</code></a>,
+                            <a class="link"
+                                href="mysql-cluster-options-variables.html#statvar_Ndb_pushed_queries_dropped"><code
+                                    class="literal">Ndb_pushed_queries_dropped</code></a>,
+                            <a class="link"
+                                href="mysql-cluster-options-variables.html#statvar_Ndb_pushed_queries_executed"><code
+                                    class="literal">Ndb_pushed_queries_executed</code></a>,
+                            and
+                            <a class="link" href="mysql-cluster-options-variables.html#statvar_Ndb_pushed_reads"><code
+                                    class="literal">Ndb_pushed_reads</code></a>.
+                        </p>
+                    </li>
+                    <li class="listitem">
+                        <p>
+                            The counters in the
+                            <a class="link" href="mysql-cluster-ndbinfo-counters.html"
+                                title="21.5.10.10&nbsp;The ndbinfo counters Table"><code
+                                    class="literal">ndbinfo.counters</code></a>
+                            table that belong to the <code class="literal">DBSPJ</code>
+                            kernel block. See
+                            <a class="xref" href="mysql-cluster-ndbinfo-counters.html"
+                                title="21.5.10.10&nbsp;The ndbinfo counters Table">Section&nbsp;21.5.10.10, “The ndbinfo
+                                counters Table”</a>, for
+                            information about these counters. See also
+                            <a class="ulink"
+                                href="https://dev.mysql.com/doc/ndb-internals/en/ndb-internals-kernel-blocks-dbspj.html"
+                                target="_top">The DBSPJ Block</a>,
+                            in the <em class="citetitle">NDB Cluster API Developer
+                                Guide</em>.
+                        </p>
+                    </li>
+                </ol>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</html>

@@ -1,0 +1,256 @@
+{
+  "data": [
+    {
+      "cli": "--mroonga-action-on-fulltext-query-error=value",
+      "default": "ERROR_AND_LOG",
+      "dynamic": true,
+      "id": "mroonga_action_on_fulltext_query_error",
+      "name": "mroonga_action_on_fulltext_query_error",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "cli": "--mroonga-boolean-mode-syntax-flags=value",
+      "default": "DEFAULT",
+      "dynamic": true,
+      "id": "mroonga_boolean_mode_syntax_flags",
+      "name": "mroonga_boolean_mode_syntax_flags",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "cli": "--mroonga-database-path-prefix=value",
+      "default": "(Empty)",
+      "dynamic": true,
+      "id": "mroonga_database_path_prefix",
+      "name": "mroonga_database_path_prefix",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--mroonga-default-parser=value",
+      "default": "TokenBigram",
+      "dynamic": true,
+      "id": "mroonga_default_parser",
+      "name": "mroonga_default_parser",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--mroonga-default-tokenizer=value",
+      "default": "TokenBigram",
+      "dynamic": true,
+      "id": "mroonga_default_tokenizer",
+      "name": "mroonga_default_tokenizer",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--mroonga-default-wrapper-engine=value",
+      "default": "(Empty)",
+      "dynamic": false,
+      "id": "mroonga_default_wrapper_engine",
+      "name": "mroonga_default_wrapper_engine",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--mroonga-dry-write[={0|1}]",
+      "default": "off",
+      "dynamic": true,
+      "id": "mroonga_dry_write",
+      "name": "mroonga_dry_write",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--mroonga-enable-operations-recording={0|1}",
+      "default": "ON",
+      "dynamic": true,
+      "id": "mroonga_enable_operations_recording",
+      "name": "mroonga_enable_operations_recording",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--mroonga-enable-optimization={0|1}",
+      "default": "on",
+      "dynamic": true,
+      "id": "mroonga_enable_optimization",
+      "name": "mroonga_enable_optimization",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "ON",
+      "dynamic": false,
+      "id": "mroonga_libgroonga_embedded",
+      "name": "mroonga_libgroonga_embedded",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "OFF",
+      "dynamic": false,
+      "id": "mroonga_libgroonga_support_lz4",
+      "name": "mroonga_libgroonga_support_lz4",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "ON",
+      "dynamic": false,
+      "id": "mroonga_libgroonga_support_zlib",
+      "name": "mroonga_libgroonga_support_zlib",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "default": "OFF",
+      "dynamic": false,
+      "id": "mroonga_libgroonga_support_zstd",
+      "name": "mroonga_libgroonga_support_zstd",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "dynamic": false,
+      "id": "mroonga_libgroonga_version",
+      "name": "mroonga_libgroonga_version",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--mroonga-lock-timeout=#",
+      "default": "900000",
+      "dynamic": true,
+      "id": "mroonga_lock_timeout",
+      "name": "mroonga_lock_timeout",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mroonga-log-file=value",
+      "default": "groonga.log",
+      "dynamic": true,
+      "id": "mroonga_log_file",
+      "name": "mroonga_log_file",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--mroonga-log-level=value",
+      "default": "NOTICE",
+      "dynamic": true,
+      "id": "mroonga_log_level",
+      "name": "mroonga_log_level",
+      "scope": [
+        "global"
+      ]
+    },
+    {
+      "cli": "--mroonga-match-escalation-threshold=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "mroonga_match_escalation_threshold",
+      "name": "mroonga_match_escalation_threshold",
+      "range": {
+        "from": -1,
+        "to": 9223372036854776000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mroonga-max-n-records-for-estimate=#",
+      "default": "1000",
+      "dynamic": true,
+      "id": "mroonga_max_n_records_for_estimate",
+      "name": "mroonga_max_n_records_for_estimate",
+      "range": {
+        "from": -1,
+        "to": 2147483647
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--mroonga-query-log-file=filename",
+      "default": "(Empty string)",
+      "dynamic": true,
+      "id": "mroonga_query_log_file",
+      "name": "mroonga_query_log_file",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--mroonga-vector-column-delimiter=value",
+      "default": "(white space)",
+      "dynamic": true,
+      "id": "mroonga_vector_column_delimiter",
+      "name": "mroonga_vector_column_delimiter",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "dynamic": false,
+      "id": "mroonga_version",
+      "name": "mroonga_version",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    }
+  ],
+  "name": "mroonga-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/columns-storage-engines-and-plugins/storage-engines/mroonga/mroonga-system-variables/"
+}

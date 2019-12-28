@@ -1,0 +1,113 @@
+{
+  "data": [
+    {
+      "dynamic": true,
+      "id": "cassandra_default_thrift_host",
+      "name": "cassandra_default_thrift_host",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "default": "3",
+      "dynamic": true,
+      "id": "cassandra_failure_retries",
+      "name": "cassandra_failure_retries",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer",
+      "validValues": [
+        "1",
+        "1073741824"
+      ]
+    },
+    {
+      "default": "100",
+      "dynamic": true,
+      "id": "cassandra_insert_batch_size",
+      "name": "cassandra_insert_batch_size",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer",
+      "validValues": [
+        "1",
+        "1073741824"
+      ]
+    },
+    {
+      "default": "100",
+      "dynamic": true,
+      "id": "cassandra_multiget_batch_size",
+      "name": "cassandra_multiget_batch_size",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer",
+      "validValues": [
+        "1",
+        "1073741824"
+      ]
+    },
+    {
+      "default": "ONE",
+      "id": "cassandra_read_consistency",
+      "name": "cassandra_read_consistency",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "validValues": [
+        "ONE",
+        "TWO",
+        "THREE",
+        "ANY",
+        "ALL",
+        "QUORUM",
+        "EACH_QUORUM",
+        "LOCAL_QUORUM",
+        "\n"
+      ]
+    },
+    {
+      "default": "10000",
+      "id": "cassandra_rnd_batch_size",
+      "name": "cassandra_rnd_batch_size",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "validValues": [
+        "1",
+        "1073741824"
+      ]
+    },
+    {
+      "default": "ONE",
+      "id": "cassandra_write_consistency",
+      "name": "cassandra_write_consistency",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "validValues": [
+        "ONE",
+        "TWO",
+        "THREE",
+        "ANY",
+        "ALL",
+        "QUORUM",
+        "EACH_QUORUM",
+        "LOCAL_QUORUM",
+        "\n"
+      ]
+    }
+  ],
+  "name": "cassandra-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/columns-storage-engines-and-plugins/storage-engines/cassandra/cassandra-system-variables/"
+}

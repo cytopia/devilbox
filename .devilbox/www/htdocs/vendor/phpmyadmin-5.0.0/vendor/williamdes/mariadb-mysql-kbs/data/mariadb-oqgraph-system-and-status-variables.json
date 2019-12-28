@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "default": "0",
+      "dynamic": true,
+      "id": "oqgraph_allow_create_integer_latch",
+      "name": "oqgraph_allow_create_integer_latch",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "id": "oqgraph_boost_version",
+      "name": "Oqgraph_boost_version",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "id": "oqgraph_compat_mode",
+      "name": "Oqgraph_compat_mode",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "id": "oqgraph_verbose_debug",
+      "name": "Oqgraph_verbose_debug",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    }
+  ],
+  "name": "oqgraph-system-and-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/oqgraph-system-and-status-variables/"
+}

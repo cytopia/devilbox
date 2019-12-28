@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "cli": "--system-versioning-alter-history=value",
+      "default": "ERROR",
+      "dynamic": true,
+      "id": "system_versioning_alter_history",
+      "name": "system_versioning_alter_history",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "validValues": [
+        "ERROR",
+        "KEEP"
+      ]
+    },
+    {
+      "default": "DEFAULT",
+      "dynamic": true,
+      "id": "system_versioning_asof",
+      "name": "system_versioning_asof",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "cli": "--system-versioning-innodb-algorithm-simple[={0|1}]",
+      "default": "ON",
+      "dynamic": true,
+      "id": "system_versioning_innodb_algorithm_simple",
+      "name": "system_versioning_innodb_algorithm_simple",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "boolean"
+    }
+  ],
+  "name": "versioned-tables-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/system-versioned-tables/"
+}

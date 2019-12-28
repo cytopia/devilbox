@@ -1,0 +1,115 @@
+{
+  "data": [
+    {
+      "default": "Null",
+      "dynamic": false,
+      "id": "gtid_binlog_pos",
+      "name": "gtid_binlog_pos",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "default": "Null",
+      "dynamic": true,
+      "id": "gtid_binlog_state",
+      "name": "gtid_binlog_state",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "default": "Null",
+      "dynamic": false,
+      "id": "gtid_current_pos",
+      "name": "gtid_current_pos",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--gtid-domain-id=#",
+      "default": "0",
+      "dynamic": true,
+      "id": "gtid_domain_id",
+      "name": "gtid_domain_id",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "dynamic": false,
+      "id": "last_gtid",
+      "name": "last_gtid",
+      "scope": [
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "dynamic": true,
+      "id": "server_id",
+      "name": "server_id",
+      "scope": [
+        "global",
+        "session"
+      ]
+    },
+    {
+      "default": "Null",
+      "dynamic": true,
+      "id": "gtid_seq_no",
+      "name": "gtid_seq_no",
+      "scope": [
+        "session"
+      ]
+    },
+    {
+      "cli": "--gtid-ignore-duplicates=#",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "gtid_ignore_duplicates",
+      "name": "gtid_ignore_duplicates",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--gtid-pos-auto-engines=value",
+      "default": "empty",
+      "dynamic": true,
+      "id": "gtid_pos_auto_engines",
+      "name": "gtid_pos_auto_engines",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--gtid-cleanup-batch-size=#",
+      "default": "64",
+      "dynamic": true,
+      "id": "gtid_cleanup_batch_size",
+      "name": "gtid_cleanup_batch_size",
+      "range": {
+        "from": 0,
+        "to": 2147483647
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "gtid-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/gtid/"
+}

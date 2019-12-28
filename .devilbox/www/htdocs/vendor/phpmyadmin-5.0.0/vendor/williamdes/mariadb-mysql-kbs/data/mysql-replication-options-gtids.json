@@ -1,0 +1,109 @@
+{
+  "data": [
+    {
+      "cli": "--binlog-gtid-simple-recovery[={OFF|ON}]",
+      "default": "ON",
+      "dynamic": false,
+      "id": "sysvar_binlog_gtid_simple_recovery",
+      "name": "binlog_gtid_simple_recovery",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    },
+    {
+      "cli": "--enforce-gtid-consistency[=value]",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_enforce_gtid_consistency",
+      "name": "enforce_gtid_consistency",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "OFF",
+        "ON",
+        "WARN"
+      ]
+    },
+    {
+      "dynamic": false,
+      "id": "sysvar_gtid_executed",
+      "name": "gtid_executed",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "cli": "--gtid-executed-compression-period=#",
+      "default": "1000",
+      "dynamic": true,
+      "id": "sysvar_gtid_executed_compression_period",
+      "name": "gtid_executed_compression_period",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--gtid-mode=MODE",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "sysvar_gtid_mode",
+      "name": "gtid_mode",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "OFF",
+        "OFF_PERMISSIVE",
+        "ON_PERMISSIVE",
+        "ON"
+      ]
+    },
+    {
+      "default": "AUTOMATIC",
+      "dynamic": true,
+      "id": "sysvar_gtid_next",
+      "name": "gtid_next",
+      "scope": [
+        "session"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "AUTOMATIC",
+        "ANONYMOUS",
+        "UUID:NUMBER"
+      ]
+    },
+    {
+      "dynamic": false,
+      "id": "sysvar_gtid_owned",
+      "name": "gtid_owned",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "string"
+    },
+    {
+      "dynamic": true,
+      "id": "sysvar_gtid_purged",
+      "name": "gtid_purged",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    }
+  ],
+  "name": "replication-options-gtids",
+  "url": "https://dev.mysql.com/doc/refman/8.0/en/replication-options-gtids.html"
+}

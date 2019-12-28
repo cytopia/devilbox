@@ -1,0 +1,222 @@
+{
+  "data": [
+    {
+      "cli": "--key-buffer-size=#",
+      "default": "134217728",
+      "dynamic": true,
+      "id": "key_buffer_size",
+      "name": "key_buffer_size",
+      "range": {
+        "from": 8,
+        "to": "upwards"
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--key-cache-age-threshold=#",
+      "default": "300",
+      "dynamic": true,
+      "id": "key_cache_age_threshold",
+      "name": "key_cache_age_threshold",
+      "range": {
+        "from": 100,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--key-cache-block-size=#",
+      "default": "1024",
+      "dynamic": true,
+      "id": "key_cache_block_size",
+      "name": "key_cache_block_size",
+      "range": {
+        "from": 512,
+        "to": 16384
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--key-cache-division-limit=#",
+      "default": "100",
+      "dynamic": true,
+      "id": "key_cache_division_limit",
+      "name": "key_cache_division_limit",
+      "range": {
+        "from": 1,
+        "to": 100
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--key-cache-file-hash-size=#",
+      "default": "512",
+      "dynamic": true,
+      "id": "key_cache_file_hash_size",
+      "name": "key_cache_file_hash_size",
+      "range": {
+        "from": 128,
+        "to": 16384
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--key-cache-segments=#",
+      "default": "0 (non-segmented)",
+      "dynamic": true,
+      "id": "key_cache_segments",
+      "name": "key_cache_segments",
+      "range": {
+        "from": 0,
+        "to": 64
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--myisam-block-size=#",
+      "default": "1024",
+      "dynamic": false,
+      "id": "myisam_block_size",
+      "name": "myisam_block_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--myisam-data-pointer-size=#",
+      "default": "6",
+      "dynamic": true,
+      "id": "myisam_data_pointer_size",
+      "name": "myisam_data_pointer_size",
+      "range": {
+        "from": 2,
+        "to": 7
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "myisam_max_extra_sort_file_size",
+      "name": "myisam_max_extra_sort_file_size"
+    },
+    {
+      "cli": "--myisam-max-sort-file-size=#",
+      "dynamic": true,
+      "id": "myisam_max_sort_file_size",
+      "name": "myisam_max_sort_file_size",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--myisam-mmap-size=#",
+      "dynamic": true,
+      "id": "myisam_mmap_size",
+      "name": "myisam_mmap_size",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--myisam-recover-options[=name]",
+      "default": "BACKUP,QUICK (>= MariaDB 10.2.4), DEFAULT (<= MariaDB 10.2.3, >= MariaDB 5.1.44), OFF (<= MariaDB 5.1.42)",
+      "dynamic": false,
+      "id": "myisam_recover_options",
+      "name": "myisam_recover_options",
+      "scope": [
+        "global"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "OFF",
+        "DEFAULT",
+        "BACKUP",
+        "BACKUP_ALL",
+        "FORCE",
+        "QUICK"
+      ]
+    },
+    {
+      "cli": "--myisam-repair-threads=#",
+      "default": "1",
+      "dynamic": true,
+      "id": "myisam_repair_threads",
+      "name": "myisam_repair_threads",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--myisam-sort-buffer-size=#",
+      "default": "134217720 (128MB), 8388608 (8MB - before MariaDB 10.0.3)",
+      "dynamic": true,
+      "id": "myisam_sort_buffer_size",
+      "name": "myisam_sort_buffer_size",
+      "range": {
+        "from": 4096,
+        "to": 18446744073709548000
+      },
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "cli": "--myisam-stats-method=name",
+      "default": "nulls_equal",
+      "dynamic": true,
+      "id": "myisam_stats_method",
+      "name": "myisam_stats_method",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "enumeration",
+      "validValues": [
+        "nulls_equal",
+        "nulls_unequal",
+        "nulls_ignored"
+      ]
+    },
+    {
+      "cli": "--myisam-use-mmap",
+      "default": "OFF",
+      "dynamic": true,
+      "id": "myisam_use_mmap",
+      "name": "myisam_use_mmap",
+      "scope": [
+        "global"
+      ],
+      "type": "boolean"
+    }
+  ],
+  "name": "myisam-system-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/columns-storage-engines-and-plugins/storage-engines/myisam/myisam-system-variables/"
+}

@@ -1,0 +1,78 @@
+{
+  "data": [
+    {
+      "id": "cassandra_multiget_keys_scanned",
+      "name": "Cassandra_multiget_keys_scanned",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "cassandra_multiget_reads",
+      "name": "Cassandra_multiget_reads",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "cassandra_multiget_rows_read",
+      "name": "Cassandra_multiget_rows_read",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "cassandra_network_exceptions",
+      "name": "Cassandra_network_exceptions",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "cassandra_row_insert_batches",
+      "name": "Cassandra_row_insert_batches",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "cassandra_row_inserts",
+      "name": "Cassandra_row_inserts",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "cassandra_timeout_exceptions",
+      "name": "Cassandra_timeout_exceptions",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "cassandra_unavailable_exceptions",
+      "name": "Cassandra_unavailable_exceptions",
+      "scope": [
+        "global",
+        "session"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "cassandra-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/cassandra-status-variables/"
+}

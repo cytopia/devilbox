@@ -1,0 +1,70 @@
+{
+  "data": [
+    {
+      "id": "aria_pagecache_blocks_not_flushed",
+      "name": "Aria_pagecache_blocks_not_flushed",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "aria_pagecache_blocks_unused",
+      "name": "Aria_pagecache_blocks_unused",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "aria_pagecache_blocks_used",
+      "name": "Aria_pagecache_blocks_used",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "aria_pagecache_read_requests",
+      "name": "Aria_pagecache_read_requests",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "aria_pagecache_reads",
+      "name": "Aria_pagecache_reads",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "aria_pagecache_write_requests",
+      "name": "Aria_pagecache_write_requests",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "aria_pagecache_writes",
+      "name": "Aria_pagecache_writes",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "id": "aria_transaction_log_syncs",
+      "name": "Aria_transaction_log_syncs",
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    }
+  ],
+  "name": "aria-server-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/aria-server-status-variables/"
+}

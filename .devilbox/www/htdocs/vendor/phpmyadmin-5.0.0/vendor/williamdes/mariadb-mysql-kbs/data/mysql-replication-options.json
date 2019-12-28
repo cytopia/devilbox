@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "cli": "--server-id=#",
+      "dynamic": true,
+      "id": "sysvar_server_id",
+      "name": "server_id",
+      "range": {
+        "from": 0,
+        "to": 4294967295
+      },
+      "scope": [
+        "global"
+      ],
+      "type": "integer"
+    },
+    {
+      "dynamic": false,
+      "id": "sysvar_server_uuid",
+      "name": "server_uuid",
+      "scope": [
+        "global"
+      ],
+      "type": "string"
+    }
+  ],
+  "name": "replication-options",
+  "url": "https://dev.mysql.com/doc/refman/8.0/en/replication-options.html"
+}

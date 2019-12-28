@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "id": "server_audit_active",
+      "name": "Server_audit_active",
+      "type": "boolean"
+    },
+    {
+      "id": "server_audit_current_log",
+      "name": "Server_audit_current_log",
+      "type": "string"
+    },
+    {
+      "id": "server_audit_last_error",
+      "name": "Server_audit_last_error",
+      "type": "string"
+    },
+    {
+      "default": "0",
+      "id": "server_audit_writes_failed",
+      "name": "Server_audit_writes_failed",
+      "type": "integer"
+    }
+  ],
+  "name": "mariadb-audit-plugin-status-variables",
+  "url": "https://mariadb.com/kb/en/library/documentation/mariadb-audit-plugin-status-variables/"
+}
