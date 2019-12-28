@@ -84,16 +84,16 @@ else
 fi
 
 
-# error_reporting(-1);
-printf "[TEST] config.inc.php check: error_reporting(-1);"
-if ! grep -E "^error_reporting\\(-1\\);" "${CONFIGPATH}" >/dev/null; then
-	printf "\\r[FAIL] config.inc.php check: error_reporting(-1);\\n"
+# error_reporting(0);
+printf "[TEST] config.inc.php check: error_reporting(0);"
+if ! grep -E "^error_reporting\\(0\\);" "${CONFIGPATH}" >/dev/null; then
+	printf "\\r[FAIL] config.inc.php check: error_reporting(0);\\n"
 	if ! grep 'error_reporting' "${CONFIGPATH}"; then
 		cat "${CONFIGPATH}"
 	fi
 	exit 1
 else
-	printf "\\r[OK]   config.inc.php check: error_reporting(-1);\\n"
+	printf "\\r[OK]   config.inc.php check: error_reporting(0);\\n"
 fi
 
 # $cfg['TempDir'] = '/tmp';

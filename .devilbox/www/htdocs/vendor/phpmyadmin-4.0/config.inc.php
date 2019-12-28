@@ -10,7 +10,7 @@
  * @package PhpMyAdmin
  */
 
-error_reporting(-1);
+error_reporting(0);
 $cfg['TempDir'] = '/tmp';
 $cfg['CheckConfigurationPermissions'] = false;
 $cfg['blowfish_secret'] = 'GObO60^(04#^5637%fdUGo(*6$%6#dy4';
