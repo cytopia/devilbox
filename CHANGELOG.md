@@ -17,6 +17,7 @@ major versions.
 - PHP module: solr
 - PHP module: ssh2
 - phpMyAdmin to 5.0.0
+- Redis 6.0 image
 
 #### Changed
 - Use official PHP 7.4 Docker image as base
