@@ -7,12 +7,18 @@ major versions.
 ## Unreleased
 
 
-## Release v1.3.0 (2019-12-08)
+## Release v1.3.0 (2019-12-29)
 
 #### Fixed
 - [#626](https://github.com/cytopia/devilbox/issues/626) Cannot create MongoDB database with Adminer
 
+#### Added
+- Added latest PHP-FPM images
+- PHP module: solr
+- PHP module: ssh2
+
 #### Changed
+- Use official PHP 7.4 Docker image as base
 - Updated Adminer to 4.7.5
 - Updated phpMyAdmin to 4.9.2
 

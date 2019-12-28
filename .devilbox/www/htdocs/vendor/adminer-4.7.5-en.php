@@ -1,4 +1,4 @@
-<?php
+<?php if(!function_exists("get_magic_quotes_runtime")){function get_magic_quotes_runtime(){return false;}}if(!function_exists("get_magic_quotes_gpc")){function get_magic_quotes_gpc(){return false;}}
 /** Adminer - Compact database management
 * @link https://www.adminer.org/
 * @author Jakub Vrana, https://www.vrana.cz/
@@ -6,7 +6,7 @@
 * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
 * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2 (one or other)
 * @version 4.7.5
-*/error_reporting(6135);$Vc=!preg_match('~^(unsafe_raw)?$~',ini_get("filter.default"));if($Vc||ini_get("filter.default_flags")){foreach(array('_GET','_POST','_COOKIE','_SERVER')as$X){$Gi=filter_input_array(constant("INPUT$X"),FILTER_UNSAFE_RAW);if($Gi)$$X=$Gi;}}if(function_exists("mb_internal_encoding"))mb_internal_encoding("8bit");function
+*/error_reporting(0);$Vc=!preg_match('~^(unsafe_raw)?$~',ini_get("filter.default"));if($Vc||ini_get("filter.default_flags")){foreach(array('_GET','_POST','_COOKIE','_SERVER')as$X){$Gi=filter_input_array(constant("INPUT$X"),FILTER_UNSAFE_RAW);if($Gi)$$X=$Gi;}}if(function_exists("mb_internal_encoding"))mb_internal_encoding("8bit");function
 connection(){global$g;return$g;}function
 adminer(){global$b;return$b;}function
 version(){global$ia;return$ia;}function
@@ -17,7 +17,7 @@ substr(q($X),1,-1);}function
 number($X){return
 preg_replace('~[^0-9]+~','',$X);}function
 number_type(){return'((?<!o)int(?!er)|numeric|real|float|double|decimal|money)';}function
-remove_slashes($qg,$Vc=false){if(get_magic_quotes_gpc()){while(list($y,$X)=each($qg)){foreach($X
+remove_slashes($qg,$Vc=false){if(get_magic_quotes_gpc()){foreach ($qg as $y => $x){foreach($X
 as$de=>$W){unset($qg[$y][$de]);if(is_array($W)){$qg[$y][stripslashes($de)]=$W;$qg[]=&$qg[$y][stripslashes($de)];}else$qg[$y][stripslashes($de)]=($Vc?$W:stripslashes($W));}}}}function
 bracket_escape($u,$Oa=false){static$si=array(':'=>':1',']'=>':2','['=>':3','"'=>':4');return
 strtr($u,($Oa?array_flip($si):$si));}function
@@ -103,7 +103,7 @@ format_number($X){return
 strtr(number_format($X,0,".",','),preg_split('~~u','0123456789',-1,PREG_SPLIT_NO_EMPTY));}function
 friendly_url($X){return
 preg_replace('~[^a-z0-9_]~i','-',$X);}function
-hidden_fields($qg,$Fd=array()){$H=false;while(list($y,$X)=each($qg)){if(!in_array($y,$Fd)){if(is_array($X)){foreach($X
+hidden_fields($qg,$Fd=array()){$H=false;foreach ($qg as $y => $x){if(!in_array($y,$Fd)){if(is_array($X)){foreach($X
 as$de=>$W)$qg[$y."[$de]"]=$W;}else{$H=true;echo'<input type="hidden" name="'.h($y).'" value="'.h($X).'">';}}}return$H;}function
 hidden_fields_get(){echo(sid()?'<input type="hidden" name="'.session_name().'" value="'.h(session_id()).'">':''),(SERVER!==null?'<input type="hidden" name="'.DRIVER.'" value="'.h(SERVER).'">':""),'<input type="hidden" name="username" value="'.h($_GET["username"]).'">';}function
 table_status1($Q,$Oc=false){$H=table_status($Q,$Oc);return($H?$H:array("Name"=>$Q));}function
