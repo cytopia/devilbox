@@ -224,9 +224,9 @@ env:
   - S1=PHP V1=7.2 S2=MONGO V2=4.2
 
 
-jobs:
-  allow_failures:
-    - env: S1=DOCUMENTATION V1=linkcheck2
+#jobs:
+#  allow_failures:
+#    - env: S1=DOCUMENTATION V1=linkcheck2
 
 
 ###
@@ -348,22 +348,22 @@ script:
     fi
   - if [ "${S1}" != "MODULES" ] && [ "${S1}" != "DOCUMENTATION" ] && [ "${S1}" != "UPDATE" ]; then
       if [ "${S1}" != "DOCKER" ]; then
-        retry make configure KEY="${S1}_SERVER" VAL="${V1}";
+        retry make configure KEY="${S1}_SERVER" VAL="${V1}" &&
         retry make configure KEY="${S2}_SERVER" VAL="${V2}";
       fi
     fi
   - if [ "${S1}" != "MODULES" ] && [ "${S1}" != "DOCUMENTATION" ] && [ "${S1}" != "UPDATE" ]; then
-      retry make start;
-      retry make test-smoke-modules;
-      retry make test-smoke-config;
-      retry make test-smoke-intranet;
-      retry make test-smoke-vendors;
-      retry make test-smoke-vhosts;
-      retry make test-smoke-rproxies;
-      retry make test-smoke-ssl;
-      retry make test-smoke-bind;
-      retry make test-smoke-autostart;
-      retry make test-smoke-framework-cakephp;
-      retry make test-smoke-framework-drupal;
+      retry make start &&
+      retry make test-smoke-modules &&
+      retry make test-smoke-config &&
+      retry make test-smoke-intranet &&
+      retry make test-smoke-vendors &&
+      retry make test-smoke-vhosts &&
+      retry make test-smoke-rproxies &&
+      retry make test-smoke-ssl &&
+      retry make test-smoke-bind &&
+      retry make test-smoke-autostart &&
+      retry make test-smoke-framework-cakephp &&
+      retry make test-smoke-framework-drupal &&
       retry make test-smoke-framework-wordpress;
     fi
