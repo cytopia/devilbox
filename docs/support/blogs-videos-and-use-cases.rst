@@ -44,8 +44,6 @@ The following shows a list of blogs that give a nice and objective introduction 
 +=================================+==========+
 | |ext_lnk_blog_deliciousbrains|  | English  |
 +---------------------------------+----------+
-| |ext_lnk_blog_moritzkanzler|    | German   |
-+---------------------------------+----------+
 | |ext_lnk_blog_openstream|       | English  |
 +---------------------------------+----------+
 
