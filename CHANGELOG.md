@@ -20,7 +20,7 @@ major versions.
 #### Changed
 - Use official PHP 7.4 Docker image as base
 - Updated Adminer to 4.7.5
-- Updated phpMyAdmin to 4.9.2
+- Updated phpMyAdmin to 4.9.3
 
 
 ## Release v1.2.0 (2019-12-01)
