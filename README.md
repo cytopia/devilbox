@@ -51,8 +51,8 @@ Furthermore, the Devilbox provides an **identical** and **reproducible developme
 ![Plus](https://raw.githubusercontent.com/cytopia/icons/master/64x64/plus.png)
 ![Docker](https://raw.githubusercontent.com/cytopia/icons/master/64x64/docker.png)
 
-* [Docker Engine 1.12.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
-* [Docker Compose 1.9.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-21)
+* [Docker Engine 17.06.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-23)
+* [Docker Compose 1.16.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-23)
 
 ## Architecture
 
