@@ -7,7 +7,7 @@ major versions.
 ## Unreleased
 
 
-## Release v1.4.0 (2020-01-01)
+## Release v1.4.0 (2020-01-02)
 
 #### Fixed
 - [#618](https://github.com/cytopia/devilbox/issues/618) Update Compose version to 2.3
