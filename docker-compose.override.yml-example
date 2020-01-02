@@ -1,5 +1,6 @@
 # IMPORTANT: The version must match the version of docker-compose.yml
-version: '2.1'
+---
+version: '2.3'
 
 # The following override shows an example for the cockroachdb
 services:

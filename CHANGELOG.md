@@ -7,6 +7,17 @@ major versions.
 ## Unreleased
 
 
+## Release v1.4.0 (2020-01-02)
+
+#### Fixed
+- [#618](https://github.com/cytopia/devilbox/issues/618) Update Compose version to 2.3
+- [#614](https://github.com/cytopia/devilbox/issues/614) Update to latest mhsendmail binary with `-o` flag
+- [#265](https://github.com/cytopia/devilbox/issues/265) Fix http to https redirect for projects
+
+#### Changed
+- [#642](https://github.com/cytopia/devilbox/issues/642) Be able to disable email catch-all and still run postfix
+
+
 ## Release v1.3.0 (2019-12-29)
 
 #### Fixed

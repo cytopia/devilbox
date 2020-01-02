@@ -53,8 +53,8 @@ The only requirements for the Devilbox is to have ``Docker`` and ``Docker Compos
 everything else is bundled and provided withing the Docker container.
 The minimum required versions are listed below:
 
-* ``Docker``: 1.12.0+
-* ``Docker Compose``: 1.9.0+
+* ``Docker``: 17.06.0+
+* ``Docker Compose``: 1.16.0+
 
 
 Additionally you will require ``git`` in order to clone the devilbox project.

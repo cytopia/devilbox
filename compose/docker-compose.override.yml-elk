@@ -1,7 +1,7 @@
 # vim: set ft=yaml:
 # https://www.docker.elastic.co
-
-version: '2.1'
+---
+version: '2.3'
 
 services:
 

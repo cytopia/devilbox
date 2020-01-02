@@ -22,7 +22,7 @@
 ##   $ cp env-example .env
 ##
 
-version: '2.1'
+version: '2.3'
 
 
 ################################################################################
@@ -95,7 +95,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.97
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.98
     hostname: php
 
     ##
@@ -135,7 +135,7 @@ services:
       ##
       ## Mail-catching
       ##
-      - ENABLE_MAIL=1
+      - ENABLE_MAIL=2
 
       ##
       ## Enable 127.0.0.1 Port-forwarding
@@ -210,7 +210,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER}:0.31
+    image: devilbox/${HTTPD_SERVER}:0.32
     hostname: httpd
 
     environment:
