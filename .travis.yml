@@ -365,5 +365,6 @@ script:
       retry make test-smoke-autostart &&
       retry make test-smoke-framework-cakephp &&
       retry make test-smoke-framework-drupal &&
-      retry make test-smoke-framework-wordpress;
+      retry make test-smoke-framework-wordpress &&
+      retry make test-smoke-container;
     fi

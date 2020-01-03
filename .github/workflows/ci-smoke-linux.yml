@@ -195,6 +195,13 @@ jobs:
           make test-smoke-framework-wordpress
         if: success() || failure()
 
+      - name: "Test Container"
+        shell: bash
+        run: |
+          cd .tests/
+          make test-smoke-container
+        if: success() || failure()
+
       # ------------------------------------------------------------
       # Finish
       # ------------------------------------------------------------

@@ -161,6 +161,13 @@ test-smoke-framework-wordpress:
 	$(PWD)/tests/framework-wordpress.sh
 
 
+###
+### Container
+###
+test-smoke-container:
+	$(PWD)/tests/container-mysql.sh
+
+
 # -------------------------------------------------------------------------------------------------
 # Helper Targets
 # -------------------------------------------------------------------------------------------------
