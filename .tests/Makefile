@@ -107,6 +107,7 @@ test-smoke-vendors:
 	$(PWD)/tests/vendor-phpmyadmin.sh
 	$(PWD)/tests/vendor-phppgadmin.sh
 	$(PWD)/tests/vendor-phpredmin.sh
+	$(PWD)/tests/vendor-ocp.sh
 
 
 ###

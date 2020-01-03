@@ -112,6 +112,10 @@ class Html
 				array(
 					'name' => 'Opcache GUI',
 					'path' => '/opcache.php'
+				),
+				array(
+					'name' => 'Opcache Control Panel',
+					'path' => '/vendor/ocp.php'
 				)
 			)
 		)
