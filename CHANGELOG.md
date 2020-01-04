@@ -7,6 +7,13 @@ major versions.
 ## Unreleased
 
 
+## Release v1.6.0 (2020-01-04)
+
+#### Changed
+- [#642](https://github.com/cytopia/devilbox/issues/642) Make email catch-all configurable
+- [#265](https://github.com/cytopia/devilbox/issues/265) Make SSL vhost settings configurable
+
+
 ## Release v1.5.0 (2020-01-03)
 
 #### Added
