@@ -511,6 +511,23 @@ HOST_PORT_HTTPD_SSL=443
 
 
 ###
+### SSL (HTTP/HTTPS) settings for automated vhost generation
+###
+### By default each project will have two vhosts (one for HTTP and one for HTTPS).
+### You can control the SSL settings for your projects via the below stated values.
+###
+### This is internally achieved via the '-m' argument of https://github.com/devilbox/vhost-gen
+###
+### Values:
+###   * both:  Serve HTTP and HTTPS for all projects
+###   * redir: HTTP always redirects to HTTPS
+###   * ssl:   Only serve HTTPS
+###   * plain: Only serve HTTP
+###
+HTTPD_VHOST_SSL_TYPE=both
+
+
+###
 ### Document Root Subdirectory
 ###
 ### In your project directory, which subfolder should

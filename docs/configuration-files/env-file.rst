@@ -1235,6 +1235,27 @@ This will then output ``development``.
 Web server
 ----------
 
+HTTPD_SSL_TYPE
+^^^^^^^^^^^^^^
+
+SSL (HTTP/HTTPS) settings for automated vhost generation.
+
+By default each project will have two vhosts (one for HTTP and one for HTTPS).
+You can control the SSL settings for your projects via the below stated values.
+
+This is internally achieved via the ``-m`` argument of |ext_lnk_project_vhost_gen|
+
+* ``both`` will serve HTTP and HTTPS for all projects
+* ``redir`` will always redirect HTTP to HTTPS
+* ``ssl`` will only serve HTTPS
+* ``plain`` will only serve HTTP
+
++-----------------------+-----------------------------------------+------------------+
+| Name                  | Allowed values                          | Default value    |
++=======================+=========================================+==================+
+| ``HTTPD_SSL_TYPE``    | ``both``, ``redir``, ``ssl``, ``plain`` | ``both``         |
++-----------------------+-----------------------------------------+------------------+
+
 .. _env_httpd_docroot_dir:
 
 HTTPD_DOCROOT_DIR
