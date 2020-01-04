@@ -7,6 +7,13 @@ major versions.
 ## Unreleased
 
 
+## Release v1.5.0 (2020-01-03)
+
+#### Added
+- [#654](https://github.com/cytopia/devilbox/issues/654) Added Opcache Control Panel
+- Integration tests for MySQL Docker image
+
+
 ## Release v1.4.0 (2020-01-02)
 
 #### Fixed

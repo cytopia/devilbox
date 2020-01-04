@@ -107,6 +107,7 @@ test-smoke-vendors:
 	$(PWD)/tests/vendor-phpmyadmin.sh
 	$(PWD)/tests/vendor-phppgadmin.sh
 	$(PWD)/tests/vendor-phpredmin.sh
+	$(PWD)/tests/vendor-ocp.sh
 
 
 ###
@@ -158,6 +159,13 @@ test-smoke-framework-drupal:
 
 test-smoke-framework-wordpress:
 	$(PWD)/tests/framework-wordpress.sh
+
+
+###
+### Container
+###
+test-smoke-container:
+	$(PWD)/tests/container-mysql.sh
 
 
 # -------------------------------------------------------------------------------------------------
