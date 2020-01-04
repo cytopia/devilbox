@@ -472,6 +472,25 @@ PHP_MODULES_DISABLE=oci8,PDO_OCI,pdo_sqlsrv,sqlsrv,rdkafka,swoole
 
 
 ###
+### Postfix settings for email catch-all
+###
+### When set to '1' postfix is normally started and made available. However you still need
+### to configure it to your needs yourself. For that you can use the autostart scripts
+### and define a couple of 'postconf -e name=value' commands.
+###
+### When set to '2' (email catch-all), no mail will leave the Devilbox. It is automatically
+### internally routed the the devilbox mail account and you can see each sent mail
+### in the bundled intranet: https://localhost/mail.php
+###
+### Values:
+### 0: Disable postfix (do not start it)
+### 1: Enable/Start postfix
+### 2: Enable/Start postfix and enable email catch-all
+###
+PHP_MAIL_CATCH_ALL=2
+
+
+###
 ### Configure everything else about PHP in
 ### * cfg/php-ini-X.X/*.ini
 ### * cfg/php-fpm-X.X/*.conf

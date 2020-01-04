@@ -135,7 +135,7 @@ services:
       ##
       ## Mail-catching
       ##
-      - ENABLE_MAIL=2
+      - ENABLE_MAIL=${PHP_MAIL_CATCH_ALL:-2}
 
       ##
       ## Enable 127.0.0.1 Port-forwarding

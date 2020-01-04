@@ -1164,6 +1164,36 @@ Example:
    # Disable Xdebug, Imagick and Swoole
    PHP_MODULES_DISABLE=xdebug,imagick,swoole
 
+PHP_MAIL_CATCH_ALL
+^^^^^^^^^^^^^^^^^^
+
+Postfix settings for email catch-all.
+
+When set to ``0`` postfix will be disabled and not started.
+
+When set to ``1`` postfix is normally started and made available. However you still need
+to configure it to your needs yourself. For that you can use the autostart scripts
+and define a couple of ``postconf -e name=value`` commands.
+
+When set to ``2`` (email catch-all) postfix is started, but no mail will leave the Devilbox. It is automatically
+internally routed the the devilbox mail account and you can see each sent mail
+in the bundled intranet: https://localhost/mail.php
+
++-------------------------+--------------------------------------+---------------------------------------------------+
+| Name                    | Allowed values                       | Default value                                     |
++=========================+======================================+===================================================+
+| ``PHP_MAIL_CATCH_ALL``  | ``0``, ``1``, ``2``                  | ``2``                                             |
++-------------------------+--------------------------------------+---------------------------------------------------+
+
+Example:
+
+.. code-block:: bash
+   :caption: .env
+   :emphasize-lines: 2
+
+   # Enable Postfix without email catch-all
+   PHP_MAIL_CATCH_ALL=1
+
 Custom variables
 ^^^^^^^^^^^^^^^^
 
