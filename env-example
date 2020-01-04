@@ -28,9 +28,10 @@
 ### Show all executed commands in each
 ### docker image during docker-compose up?
 ###
-### 1: Yes
-### 0: No
-DEBUG_COMPOSE_ENTRYPOINT=1
+### 0: Quiet
+### 1: Verbose
+### 2: More verbose
+DEBUG_COMPOSE_ENTRYPOINT=2
 
 
 ###
@@ -659,11 +660,13 @@ HOST_PORT_MONGO=27017
 ###
 HOST_PORT_BIND=1053
 
+
 ###
 ### Add comma separated DNS server from which you want to receive DNS
 ### You can also add DNS servers from your LAN (if any are available)
 ###
 BIND_DNS_RESOLVER=8.8.8.8,8.8.4.4
+
 
 ###
 ### Validate DNSSEC
