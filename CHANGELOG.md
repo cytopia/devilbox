@@ -15,6 +15,7 @@ major versions.
 
 #### Added
 - [#615](https://github.com/cytopia/devilbox/issues/615) Add phpmd
+- [#378](https://github.com/cytopia/devilbox/issues/378) Allow to mount local `.ssh/` directory into PHP container (read-only)
 
 
 ## Release v1.5.0 (2020-01-03)

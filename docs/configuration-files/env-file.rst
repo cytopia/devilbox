@@ -923,6 +923,23 @@ always be ``/shared/httpd/``.
      ``docker-compose rm``.
 
 
+HOST_PATH_SSH_DIR
+-----------------
+
+The path on your host OS of the ssh directory to be mounted into the
+PHP container into ``/home/devilbox/.ssh``.
+
+.. note::
+   The path is mounted read-only to ensure you cannot accidentally
+   delete any ssh keys from inside the php container.
+
++------------------------------+----------------+----------------+
+| Name                         | Allowed values | Default value  |
++==============================+================+================+
+| ``HOST_PATH_SSH_DIR``        | valid path     | ``~/.ssh``     |
++------------------------------+----------------+----------------+
+
+
 Docker host ports
 =================
 

@@ -442,6 +442,16 @@ MOUNT_OPTIONS=
 HOST_PATH_HTTPD_DATADIR=./data/www
 
 
+###
+### The path on your host OS of the ssh directory to be mounted into the
+### PHP container into /home/devilbox/.ssh.
+###
+### IMPORTANT: The path is mounted read-only to ensure you cannot accidentally
+##             delete anything inside the php container.
+###
+HOST_PATH_SSH_DIR=~/.ssh
+
+
 
 ################################################################################
 ###

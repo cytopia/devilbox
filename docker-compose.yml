@@ -202,6 +202,9 @@ services:
       # Certificate Authority public key
       - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
 
+      # Users SSH directory (read-only)
+      - ${HOST_PATH_SSH_DIR}:/home/devilbox/.ssh:ro${MOUNT_OPTIONS}
+
     depends_on:
       - bind
 
