@@ -13,6 +13,9 @@ major versions.
 - [#642](https://github.com/cytopia/devilbox/issues/642) Make email catch-all configurable
 - [#265](https://github.com/cytopia/devilbox/issues/265) Make SSL vhost settings configurable
 
+#### Added
+- [#615](https://github.com/cytopia/devilbox/issues/615) Add phpmd
+
 
 ## Release v1.5.0 (2020-01-03)
 
