@@ -7,6 +7,12 @@ major versions.
 ## Unreleased
 
 
+## Bugfix Release v1.6.1 (2019-01-05)
+
+#### Fixed
+- [#662](https://github.com/cytopia/devilbox/issues/662) Update to latest Symfony CLI
+
+
 ## Release v1.6.0 (2020-01-04)
 
 #### Changed
