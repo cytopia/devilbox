@@ -28,9 +28,10 @@
 ### Show all executed commands in each
 ### docker image during docker-compose up?
 ###
-### 1: Yes
-### 0: No
-DEBUG_COMPOSE_ENTRYPOINT=1
+### 0: Quiet
+### 1: Verbose
+### 2: More verbose
+DEBUG_COMPOSE_ENTRYPOINT=2
 
 
 ###
@@ -441,6 +442,16 @@ MOUNT_OPTIONS=
 HOST_PATH_HTTPD_DATADIR=./data/www
 
 
+###
+### The path on your host OS of the ssh directory to be mounted into the
+### PHP container into /home/devilbox/.ssh.
+###
+### IMPORTANT: The path is mounted read-only to ensure you cannot accidentally
+##             delete anything inside the php container.
+###
+HOST_PATH_SSH_DIR=~/.ssh
+
+
 
 ################################################################################
 ###
@@ -471,6 +482,25 @@ PHP_MODULES_DISABLE=oci8,PDO_OCI,pdo_sqlsrv,sqlsrv,rdkafka,swoole
 
 
 ###
+### Postfix settings for email catch-all
+###
+### When set to '1' postfix is normally started and made available. However you still need
+### to configure it to your needs yourself. For that you can use the autostart scripts
+### and define a couple of 'postconf -e name=value' commands.
+###
+### When set to '2' (email catch-all), no mail will leave the Devilbox. It is automatically
+### internally routed the the devilbox mail account and you can see each sent mail
+### in the bundled intranet: https://localhost/mail.php
+###
+### Values:
+### 0: Disable postfix (do not start it)
+### 1: Enable/Start postfix
+### 2: Enable/Start postfix and enable email catch-all
+###
+PHP_MAIL_CATCH_ALL=2
+
+
+###
 ### Configure everything else about PHP in
 ### * cfg/php-ini-X.X/*.ini
 ### * cfg/php-fpm-X.X/*.conf
@@ -488,6 +518,23 @@ PHP_MODULES_DISABLE=oci8,PDO_OCI,pdo_sqlsrv,sqlsrv,rdkafka,swoole
 ###
 HOST_PORT_HTTPD=80
 HOST_PORT_HTTPD_SSL=443
+
+
+###
+### SSL (HTTP/HTTPS) settings for automated vhost generation
+###
+### By default each project will have two vhosts (one for HTTP and one for HTTPS).
+### You can control the SSL settings for your projects via the below stated values.
+###
+### This is internally achieved via the '-m' argument of https://github.com/devilbox/vhost-gen
+###
+### Values:
+###   * both:  Serve HTTP and HTTPS for all projects
+###   * redir: HTTP always redirects to HTTPS
+###   * ssl:   Only serve HTTPS
+###   * plain: Only serve HTTP
+###
+HTTPD_VHOST_SSL_TYPE=both
 
 
 ###
@@ -659,11 +706,13 @@ HOST_PORT_MONGO=27017
 ###
 HOST_PORT_BIND=1053
 
+
 ###
 ### Add comma separated DNS server from which you want to receive DNS
 ### You can also add DNS servers from your LAN (if any are available)
 ###
 BIND_DNS_RESOLVER=8.8.8.8,8.8.4.4
+
 
 ###
 ### Validate DNSSEC

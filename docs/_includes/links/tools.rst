@@ -183,6 +183,12 @@
      PHP Code Beautifier and Fixer <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_tool_phpmd| raw:: html
+
+   <a target="_blank" href="https://phpmd.org/">
+     PHP Mess Detector <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_tool_phpunit| raw:: html
 
    <a target="_blank" href="https://phpunit.de/">

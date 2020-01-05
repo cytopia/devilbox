@@ -923,6 +923,23 @@ always be ``/shared/httpd/``.
      ``docker-compose rm``.
 
 
+HOST_PATH_SSH_DIR
+-----------------
+
+The path on your host OS of the ssh directory to be mounted into the
+PHP container into ``/home/devilbox/.ssh``.
+
+.. note::
+   The path is mounted read-only to ensure you cannot accidentally
+   delete any ssh keys from inside the php container.
+
++------------------------------+----------------+----------------+
+| Name                         | Allowed values | Default value  |
++==============================+================+================+
+| ``HOST_PATH_SSH_DIR``        | valid path     | ``~/.ssh``     |
++------------------------------+----------------+----------------+
+
+
 Docker host ports
 =================
 
@@ -1164,6 +1181,36 @@ Example:
    # Disable Xdebug, Imagick and Swoole
    PHP_MODULES_DISABLE=xdebug,imagick,swoole
 
+PHP_MAIL_CATCH_ALL
+^^^^^^^^^^^^^^^^^^
+
+Postfix settings for email catch-all.
+
+When set to ``0`` postfix will be disabled and not started.
+
+When set to ``1`` postfix is normally started and made available. However you still need
+to configure it to your needs yourself. For that you can use the autostart scripts
+and define a couple of ``postconf -e name=value`` commands.
+
+When set to ``2`` (email catch-all) postfix is started, but no mail will leave the Devilbox. It is automatically
+internally routed the the devilbox mail account and you can see each sent mail
+in the bundled intranet: https://localhost/mail.php
+
++-------------------------+--------------------------------------+---------------------------------------------------+
+| Name                    | Allowed values                       | Default value                                     |
++=========================+======================================+===================================================+
+| ``PHP_MAIL_CATCH_ALL``  | ``0``, ``1``, ``2``                  | ``2``                                             |
++-------------------------+--------------------------------------+---------------------------------------------------+
+
+Example:
+
+.. code-block:: bash
+   :caption: .env
+   :emphasize-lines: 2
+
+   # Enable Postfix without email catch-all
+   PHP_MAIL_CATCH_ALL=1
+
 Custom variables
 ^^^^^^^^^^^^^^^^
 
@@ -1204,6 +1251,27 @@ This will then output ``development``.
 
 Web server
 ----------
+
+HTTPD_SSL_TYPE
+^^^^^^^^^^^^^^
+
+SSL (HTTP/HTTPS) settings for automated vhost generation.
+
+By default each project will have two vhosts (one for HTTP and one for HTTPS).
+You can control the SSL settings for your projects via the below stated values.
+
+This is internally achieved via the ``-m`` argument of |ext_lnk_project_vhost_gen|
+
+* ``both`` will serve HTTP and HTTPS for all projects
+* ``redir`` will always redirect HTTP to HTTPS
+* ``ssl`` will only serve HTTPS
+* ``plain`` will only serve HTTP
+
++-----------------------+-----------------------------------------+------------------+
+| Name                  | Allowed values                          | Default value    |
++=======================+=========================================+==================+
+| ``HTTPD_SSL_TYPE``    | ``both``, ``redir``, ``ssl``, ``plain`` | ``both``         |
++-----------------------+-----------------------------------------+------------------+
 
 .. _env_httpd_docroot_dir:
 
