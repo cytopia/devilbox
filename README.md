@@ -16,15 +16,14 @@
 
 ![Devilbox](docs/_includes/figures/devilbox/devilbox-intranet-dash-all.png)
 
-[![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox)
-[![Documentation Status](https://readthedocs.org/projects/devilbox/badge/?version=latest)](https://devilbox.readthedocs.io)
 [![Release](https://img.shields.io/github/release/cytopia/devilbox.svg?colorB=orange)](https://github.com/cytopia/devilbox/releases)
-[![PreRelease](https://img.shields.io/github/release/cytopia/devilbox.svg?colorB=red&label=prelease&style=flat)](https://github.com/cytopia/devilbox/releases)
 [![Gitter](https://badges.gitter.im/devilbox/Lobby.svg)](https://gitter.im/devilbox/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Discourse](https://img.shields.io/discourse/https/devilbox.discourse.group/status.svg?colorB=%234CB697)](https://devilbox.discourse.group)
 [![type](https://img.shields.io/badge/type-Docker-blue.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-MIT-%233DA639.svg)](https://opensource.org/licenses/MIT)
 
+[![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox)
+[![Documentation Status](https://readthedocs.org/projects/devilbox/badge/?version=latest)](https://devilbox.readthedocs.io)
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Lint/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Lint)
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Docs/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Docs)
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Linux/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Linux)
