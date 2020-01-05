@@ -82,7 +82,7 @@ class Php extends BaseClass implements BaseInterface
 	}
 	public function getSymfonyVersion()
 	{
-		$output = loadClass('Helper')->exec('symfony --version 2>/dev/null', $output);
+		$output = loadClass('Helper')->exec('symfony -V 2>/dev/null | tr -d "[:cntrl:]" | sed "s/\[[0-9]*m//g"', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
 	public function getWpcliVersion()
