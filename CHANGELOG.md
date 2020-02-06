@@ -7,6 +7,13 @@ major versions.
 ## Unreleased
 
 
+## Bugfix Release v1.6.2 (2019-02-06)
+
+#### Added
+- [#670](https://github.com/cytopia/devilbox/issues/670) Add `phalcon` binary to PHP 7.3 and 7.4
+- [#664](https://github.com/cytopia/devilbox/issues/664) Add PHP `yaml` extension
+
+
 ## Bugfix Release v1.6.1 (2019-01-05)
 
 #### Fixed
