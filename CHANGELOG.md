@@ -7,14 +7,14 @@ major versions.
 ## Unreleased
 
 
-## Bugfix Release v1.6.2 (2019-02-06)
+## Bugfix Release v1.6.2 (2020-02-06)
 
 #### Added
 - [#670](https://github.com/cytopia/devilbox/issues/670) Add `phalcon` binary to PHP 7.3 and 7.4
 - [#664](https://github.com/cytopia/devilbox/issues/664) Add PHP `yaml` extension
 
 
-## Bugfix Release v1.6.1 (2019-01-05)
+## Bugfix Release v1.6.1 (2020-01-05)
 
 #### Fixed
 - [#662](https://github.com/cytopia/devilbox/issues/662) Update to latest Symfony CLI
