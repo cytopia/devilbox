@@ -38,7 +38,7 @@ Let's imagine you have added a custom Python Docker image to the Devilbox which 
 application listening on port ``3000``.
 
 * :ref:`env_TLD_SUFFIX`: ``loc``
-* Desired DNS name: ``my-pthon.loc``
+* Desired DNS name: ``my-python.loc``
 * :ref:`env_httpd_datadir` on the host: ``./data/www``
 * :ref:`env_httpd_template_dir`: ``.devilbox``
 * Listening port: ``3000``
