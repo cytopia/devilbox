@@ -409,7 +409,7 @@ HTML;
 						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '7.1', '<')) ? '/vendor/phppgadmin-5.6.0/' : '/vendor/phppgadmin-7.12.0/';
 					}
 					if ($el['path'] == '__ADMINER__') {
-						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) ? '/vendor/adminer-4.6.3-en.php' : '/vendor/adminer/index.php';
+						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) ? '/vendor/adminer-4.6.3-en.php' : '/vendor/adminer-4.7.6-en.php';
 					}
 
 					$target = isset($el['target']) ? 'target="'.$el['target'].'"' : '';
