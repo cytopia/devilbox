@@ -402,14 +402,14 @@ HTML;
 						} elseif (version_compare(loadClass('Php')->getVersion(), '7.1', '<')) {
 							$el['path'] = '/vendor/phpmyadmin-4.9.3/index.php';
 						} else {
-							$el['path'] = '/vendor/phpmyadmin-5.0.0/index.php';
+							$el['path'] = '/vendor/phpmyadmin-5.0.1/index.php';
 						}
 					}
 					if ($el['path'] == '__PHPPGADMIN__') {
 						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '7.1', '<')) ? '/vendor/phppgadmin-5.6.0/' : '/vendor/phppgadmin-7.12.0/';
 					}
 					if ($el['path'] == '__ADMINER__') {
-						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) ? '/vendor/adminer-4.6.3-en.php' : '/vendor/adminer-4.7.5-en.php';
+						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) ? '/vendor/adminer-4.6.3-en.php' : '/vendor/adminer/index.php';
 					}
 
 					$target = isset($el['target']) ? 'target="'.$el['target'].'"' : '';
