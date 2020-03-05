@@ -4,7 +4,7 @@
 **Abstract**
 
 The Devilbox is currently being developed in my spare time and mostly reflects the features that I
-am using for all the web projcets I have to handle. In order to better present it to the majority
+am using for all the web projects I have to handle. In order to better present it to the majority
 of other software developers I do require support to cope with all the feature requests.
 
 
