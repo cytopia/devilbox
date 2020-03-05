@@ -419,7 +419,7 @@ MONGO_SERVER=4.2
 ###       existing mount options.
 ###
 ### Note: If no mount options are specified, leave this variable empty
-###       and do not add a leading ',' (comman).
+###       and do not add a leading ',' (comma).
 ###
 ### MOUNT_OPTIONS=,cached
 ### MOUNT_OPTIONS=
