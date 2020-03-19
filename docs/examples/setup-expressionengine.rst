@@ -90,18 +90,18 @@ Navigate into your newly created vhost directory and install ExpressionEngine.
 .. code-block:: bash
 
    devilbox@php-7.0.20 in /shared/httpd $ cd my-ee
-   devilbox@php-7.0.20 in /shared/httpd/my-ee $ curl 'https://expressionengine.com/?ACT=243' -H 'Connection: keep-alive' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' -H 'Upgrade-Insecure-Requests: 1' -H 'DNT: 1' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36' -H 'Sec-Fetch-Dest: document' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' -H 'Sec-Fetch-Site: same-origin' -H 'Sec-Fetch-Mode: navigate' -H 'Sec-Fetch-User: ?1' -H 'Referer: https://expressionengine.com/' -H 'Accept-Language: en-US,en;q=0.9' --compressed -o ee.zip
+   devilbox@php-7.0.20 in /shared/httpd/my-ee $ curl 'https://expressionengine.com/?ACT=243' -H 'Referer: https://expressionengine.com/' --compressed -o ee.zip
    devilbox@php-7.0.20 in /shared/httpd/my-ee $ mkdir ee
    devilbox@php-7.0.20 in /shared/httpd/my-ee $ unzip ee.zip -d ee
 
 How does the directory structure look after installation:
-
+mkdir
 .. code-block:: bash
 
    devilbox@php-7.0.20 in /shared/httpd/my-ee $ tree -L 1
    .
-   ├── ee.zip
-   └── ee
+   ├── ee
+   └── ee.zip
 
    1 directory, 1 file
 
@@ -128,8 +128,8 @@ How does the directory structure look after symlinking it:
 
    devilbox@php-7.0.20 in /shared/httpd/my-ee $ tree -L 1
    .
-   ├── ee.zip
    ├── ee
+   ├── ee.zip
    └── htdocs -> ee
 
    2 directories, 1 file
@@ -144,7 +144,17 @@ path and points to the frameworks entrypoint.
    * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
 
 
-5. DNS record
+5. Add MySQL Database
+---------------------
+
+.. code-block:: bash
+
+   devilbox@php-7.0.20 in /shared/httpd/my-ee $ mysql -u root -h 127.0.0.1 -p -e 'CREATE DATABASE my_ee CHARACTER SET utf8 COLLATE utf8_unicode_ci;'
+
+.. note::
+   * Remember the database name you create here. It will be needed again during the installation process.
+
+6. DNS record
 -------------
 If you **have** Auto DNS configured already, you can skip this section, because DNS entries will
 be available automatically by the bundled DNS server.
@@ -164,10 +174,27 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
    * :ref:`setup_auto_dns`
 
 
-6. Open your browser
---------------------
+7. Install ExpressionEngine
+---------------------------
 
-All set now, you can visit http://my-ee.loc or https://my-ee.loc in your browser.
+Point your browser to http://my-ee.loc/admin.php or https://my-ee.loc/admin.php and follow the on-screen instructions to install ExpressionEngine.
+
+.. important::
+   Once the Installation Wizard is finished, you should rename or remove the system/ee/installer/ directory from your install directory if it was not done by the install wizard.
+
+.. seealso:: |ext_lnk_example_expressionengine_instal_documentation|
+
+
+8. View Your Site
+-----------------
+
+All set now, you can visit your site's homepage by opening http://my-ee.loc or https://my-ee.loc in your browser.
+
+Your control panel will also be available by opening http://my-ee.loc/admin.php or https://my-ee.loc/admin.php in your browser.
+
+.. note::
+   * If you chose not to install the default theme, your site’s homepage will appear blank because no templates or content has been created yet.
+   * If you’re new to ExpressionEngine, get started with the |ext_lnk_example_expressionengine_primer|
 
 
 Next steps
