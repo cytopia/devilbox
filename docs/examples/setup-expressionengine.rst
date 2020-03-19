@@ -83,7 +83,7 @@ The vhost directory defines the name under which your project will be available.
 
 
 3. Download and extract ExpressionEngine
-------------------------------
+----------------------------------------
 
 Navigate into your newly created vhost directory and install ExpressionEngine.
 
