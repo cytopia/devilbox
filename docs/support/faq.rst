@@ -181,7 +181,7 @@ Yes, see :ref:`example_setup_drupal`
 
 
 Does it work with ExpressionEngine?
--------------------------
+-----------------------------------
 
 Yes, see :ref:`example_setup_expressionengine`
 

@@ -28,7 +28,7 @@ The following configuration will be used:
 +--------------+--------------------------+-------------+------------+-------------------------------------------------+
 | Project name | VirtualHost directory    | Database    | TLD_SUFFIX | Project URL                                     |
 +==============+==========================+=============+============+=================================================+
-| my-ee        | /shared/httpd/my-ee      | n.a.        | loc        | http://my-ee.loc |br| https://my-ee.loc         |
+| my-ee        | /shared/httpd/my-ee      | my_ee       | loc        | http://my-ee.loc |br| https://my-ee.loc         |
 +--------------+--------------------------+-------------+------------+-------------------------------------------------+
 
 .. note::
@@ -40,14 +40,16 @@ The following configuration will be used:
 Walk through
 ============
 
-It will be ready in six simple steps:
+It will be ready in eight simple steps:
 
 1. Enter the PHP container
 2. Create a new VirtualHost directory
 3. Download and extract ExpressionEngine
 4. Symlink webroot directory
-5. Setup DNS record
-6. Visit http://my-ee.loc in your browser
+5. Add MySQL Database
+6. Setup DNS record
+7. Install ExpressionEngine
+8. View your site
 
 
 1. Enter the PHP container
@@ -95,7 +97,7 @@ Navigate into your newly created vhost directory and install ExpressionEngine.
    devilbox@php-7.0.20 in /shared/httpd/my-ee $ unzip ee.zip -d ee
 
 How does the directory structure look after installation:
-mkdir
+
 .. code-block:: bash
 
    devilbox@php-7.0.20 in /shared/httpd/my-ee $ tree -L 1
