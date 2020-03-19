@@ -185,7 +185,8 @@ Does it work with ExpressionEngine?
 
 Yes, see :ref:`example_setup_expressionengine`
 
-Does it work with ExpressionEngine?
+
+Does it work with Joomla?
 -------------------------
 
 Yes, see :ref:`example_setup_joomla`
