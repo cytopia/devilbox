@@ -28,6 +28,12 @@
      Official Drupal Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_example_expressionengine_documentation| raw:html   
+
+     <a target="_blank" href="https://docs.expressionengine.com/latest/index.html">
+     Official ExpressionEngine Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_example_joomla_documentation| raw:: html
 
    <a target="_blank" href="https://docs.joomla.org/J3.x:Installing_Joomla">

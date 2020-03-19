@@ -180,7 +180,12 @@ Does it work with Drupal?
 Yes, see :ref:`example_setup_drupal`
 
 
-Does it work with Joomla?
+Does it work with ExpressionEngine?
+-------------------------
+
+Yes, see :ref:`example_setup_expressionengine`
+
+Does it work with ExpressionEngine?
 -------------------------
 
 Yes, see :ref:`example_setup_joomla`
