@@ -299,7 +299,7 @@ MYSQL_SERVER=mariadb-10.3
 ###
 ### 1.4 Choose PostgreSQL Server Image
 ###
-### IMPORTANT: Apline based images might cause issues on Docker Toolbox or OSX
+### IMPORTANT: Alpine based images might cause issues on Docker Toolbox or OSX
 ###            https://github.com/docker/toolbox/issues/510
 ###
 #PGSQL_SERVER=9.0
@@ -361,7 +361,7 @@ PGSQL_SERVER=12.1
 ###
 ### 1.5 Choose Redis Server Image
 ###
-### IMPORTANT: Apline based images might cause issues on Docker Toolbox or OSX
+### IMPORTANT: Alpine based images might cause issues on Docker Toolbox or OSX
 ###            https://github.com/docker/toolbox/issues/510
 ###
 #REDIS_SERVER=2.8
@@ -380,7 +380,7 @@ REDIS_SERVER=5.0
 ###
 ### 1.6 Choose Memcached Server Image
 ###
-### IMPORTANT: Apline based images might cause issues on Docker Toolbox or OSX
+### IMPORTANT: Alpine based images might cause issues on Docker Toolbox or OSX
 ###            https://github.com/docker/toolbox/issues/510
 ###
 #MEMCD_SERVER=1.4
@@ -419,7 +419,7 @@ MONGO_SERVER=4.2
 ###       existing mount options.
 ###
 ### Note: If no mount options are specified, leave this variable empty
-###       and do not add a leading ',' (comman).
+###       and do not add a leading ',' (comma).
 ###
 ### MOUNT_OPTIONS=,cached
 ### MOUNT_OPTIONS=

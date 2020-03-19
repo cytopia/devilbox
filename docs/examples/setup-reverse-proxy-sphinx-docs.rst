@@ -390,7 +390,7 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
 .. code-block:: bash
    :caption: /etc/hosts
 
-   127.0.0.1 my-node.loc
+   127.0.0.1 my-sphinx.loc
 
 .. seealso::
 
