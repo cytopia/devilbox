@@ -178,6 +178,7 @@ host is ready to be served with your custom domain.
    examples/setup-contao
    examples/setup-craftcms
    examples/setup-drupal
+   examples/setup-expressionengine
    examples/setup-joomla
    examples/setup-laravel
    examples/setup-magento2

@@ -28,6 +28,24 @@
      Official Drupal Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_example_expressionengine_documentation| raw:: html  
+
+   <a target="_blank" href="https://docs.expressionengine.com/latest/index.html">
+     Official ExpressionEngine Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_example_expressionengine_primer| raw:: html  
+
+   <a target="_blank" href="https://docs.expressionengine.com/latest/getting-started/ten-minute-primer.html">
+     10 Minute Primer <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_example_expressionengine_instal_documentation| raw:: html
+
+   <a target="_blank" href="https://docs.expressionengine.com/latest/installation/installation.html">
+     Official ExpressionEngine Installation Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_example_joomla_documentation| raw:: html
 
    <a target="_blank" href="https://docs.joomla.org/J3.x:Installing_Joomla">

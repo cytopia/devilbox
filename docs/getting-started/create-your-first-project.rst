@@ -200,6 +200,7 @@ their articles:
    * :ref:`example_setup_codeigniter`
    * :ref:`example_setup_craftcms`
    * :ref:`example_setup_drupal`
+   * :ref:`example_setup_expressionengine`
    * :ref:`example_setup_joomla`
    * :ref:`example_setup_laravel`
    * :ref:`example_setup_magento`
