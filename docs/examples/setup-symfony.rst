@@ -46,9 +46,8 @@ It will be ready in seven simple steps:
 2. Create a new VirtualHost directory
 3. Install Symfony
 4. Symlink webroot directory
-5. Enable Symfony prod (``app.php``)
-6. Setup DNS record
-7. Visit http://my-symfony.loc in your browser
+5. Setup DNS record
+6. Visit http://my-symfony.loc in your browser
 
 
 1. Enter the PHP container
@@ -118,7 +117,7 @@ to its expected path.
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd/my-symfony $ ln -s symfony/web/ htdocs
+   devilbox@php-7.0.20 in /shared/httpd/my-symfony $ ln -s symfony/public/ htdocs
 
 How does the directory structure look after symlinking:
 
@@ -127,7 +126,7 @@ How does the directory structure look after symlinking:
    devilbox@php-7.0.20 in /shared/httpd/my-sw $ tree -L 1
    .
    ├── symfony
-   └── htdocs -> symfony/web
+   └── htdocs -> symfony/public
 
    2 directories, 0 files
 
@@ -141,16 +140,7 @@ path and points to the frameworks entrypoint.
    * Docker Toolbox and :ref:`howto_docker_toolbox_and_the_devilbox_windows_symlinks`
 
 
-5. Enable Symfony prod (``app.php``)
-------------------------------------
-
-.. code-block:: bash
-
-   devilbox@php-7.0.20 in /shared/httpd/my-symfony $ cd symfony/web
-   devilbox@php-7.0.20 in /shared/httpd/my-symfony/symfony/web $ ln -s app.php index.php
-
-
-6. DNS record
+5. DNS record
 -------------
 
 If you **have** Auto DNS configured already, you can skip this section, because DNS entries will
@@ -171,7 +161,7 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
    * :ref:`setup_auto_dns`
 
 
-7. Open your browser
+6. Open your browser
 --------------------
 
 Open your browser at http://my-symfony.loc or https://my-symfony.loc
