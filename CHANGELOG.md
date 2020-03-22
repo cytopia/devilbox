@@ -7,6 +7,16 @@ major versions.
 ## Unreleased
 
 
+## Bugfix Release v1.6.3 (2020-03-22)
+
+#### Fixed
+- Fixed PHP FPM images
+- Fixed cert-gen for HAProxy
+- Various spelling errors in documentation
+#### Added
+- [#686](https://github.com/cytopia/devilbox/pull/686) Added documentation for ExpressEngine
+
+
 ## Bugfix Release v1.6.2 (2020-02-06)
 
 #### Added
