@@ -132,7 +132,7 @@ services:
       - httpd
 
   haproxy:
-    image: devilbox/haproxy:0.2
+    image: devilbox/haproxy:0.3
     hostname: haproxy
     ports:
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_HAPROXY:-8080}:80"
