@@ -40,7 +40,7 @@ The following configuration will be used:
 Walk through
 ============
 
-It will be ready in seven simple steps:
+It will be ready in six simple steps:
 
 1. Enter the PHP container
 2. Create a new VirtualHost directory
@@ -77,7 +77,7 @@ The vhost directory defines the name under which your project will be available.
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd $ mkdir my-symfony
+   devilbox@php-7.2.29 in /shared/httpd $ mkdir my-symfony
 
 .. seealso:: :ref:`env_tld_suffix`
 
@@ -89,14 +89,14 @@ Navigate into your newly created vhost directory and install Symfony with ``symf
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd $ cd my-symfony
-   devilbox@php-7.0.20 in /shared/httpd/my-symfony $ symfony new symfony
+   devilbox@php-7.2.29 in /shared/httpd $ cd my-symfony
+   devilbox@php-7.2.29 in /shared/httpd/my-symfony $ symfony new symfony
 
 How does the directory structure look after installation:
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd/my-symfony $ tree -L 1
+   devilbox@php-7.2.29 in /shared/httpd/my-symfony $ tree -L 1
    .
    └── symfony
 
@@ -117,13 +117,13 @@ to its expected path.
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd/my-symfony $ ln -s symfony/public/ htdocs
+   devilbox@php-7.2.29 in /shared/httpd/my-symfony $ ln -s symfony/public/ htdocs
 
 How does the directory structure look after symlinking:
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd/my-sw $ tree -L 1
+   devilbox@php-7.2.29 in /shared/httpd/my-sw $ tree -L 1
    .
    ├── symfony
    └── htdocs -> symfony/public
