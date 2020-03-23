@@ -95,7 +95,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.105
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.106
     hostname: php
 
     ##
@@ -355,6 +355,7 @@ services:
 
       - POSTGRES_USER=${PGSQL_ROOT_USER}
       - POSTGRES_PASSWORD=${PGSQL_ROOT_PASSWORD}
+      - POSTGRES_HOST_AUTH_METHOD=${PGSQL_HOST_AUTH_METHOD:-trust}
       - PGDATA=/var/lib/postgresql/data/pgdata
 
     ports:

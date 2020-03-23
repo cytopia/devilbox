@@ -626,7 +626,16 @@ PGSQL_ROOT_USER=postgres
 ###
 ### PostgreSQL 'root' user password
 ###
+### If you want to set a password, ensure to remove 'trust' from
+### PGSQL_HOST_AUTH_METHOD below
+###
 PGSQL_ROOT_PASSWORD=
+
+
+###
+### In order to not use a password for PostgreSQL, keep this value at 'trust'
+###
+PGSQL_HOST_AUTH_METHOD=trust
 
 
 ###

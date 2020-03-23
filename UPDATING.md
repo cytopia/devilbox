@@ -3,6 +3,16 @@
 This document will hold all information on how to update between major versions.
 
 
+## Update from `v1.6.2` to `v1.6.3`
+
+**PR:** https://github.com/cytopia/devilbox/pull/689
+
+The following affects you if you have a PostgreSQL root password set:
+
+Ensure to diff `env-example` against `.env` as a new environment variable (`PGSQL_HOST_AUTH_METHOD`)
+has been introduced. A default value has been set in `docker-compose.yml` to make migration seamless.
+
+
 ## Update from `v1.1.0` to `v1.2.0`
 
 **PR:** https://github.com/cytopia/devilbox/pull/647
