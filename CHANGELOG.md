@@ -7,7 +7,7 @@ major versions.
 ## Unreleased
 
 
-## Bugfix Release v1.6.3 (2020-03-22)
+## Bugfix Release v1.6.3 (2020-03-23)
 
 #### Fixed
 - Fixed PHP FPM images
