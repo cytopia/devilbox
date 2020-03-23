@@ -3,7 +3,7 @@
 This document will hold all information on how to update between major versions.
 
 
-## Update from `v1.6.2` to `v1.6.4`
+## Update from `v1.6.2` to `v1.6.3`
 
 **PR:** https://github.com/cytopia/devilbox/pull/689
 
