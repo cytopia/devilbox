@@ -355,6 +355,7 @@ services:
 
       - POSTGRES_USER=${PGSQL_ROOT_USER}
       - POSTGRES_PASSWORD=${PGSQL_ROOT_PASSWORD}
+      - POSTGRES_HOST_AUTH_METHOD=${PGSQL_HOST_AUTH_METHOD}
       - PGDATA=/var/lib/postgresql/data/pgdata
 
     ports:

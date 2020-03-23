@@ -58,6 +58,13 @@ start: ../.env
 
 
 ###
+### Stop Devilbox
+###
+stop:
+	@$(PWD)/scripts/compose-stop.sh
+
+
+###
 ### Show Docker logs
 ###
 logs:
