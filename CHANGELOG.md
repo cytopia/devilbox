@@ -13,6 +13,7 @@ major versions.
 - Fixed PHP FPM images
 - Fixed cert-gen for HAProxy
 - Various spelling errors in documentation
+- PostgreSQL startup without a password
 #### Added
 - [#686](https://github.com/cytopia/devilbox/pull/686) Added documentation for ExpressEngine
 
