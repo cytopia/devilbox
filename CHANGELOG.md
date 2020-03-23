@@ -16,6 +16,7 @@ major versions.
 - PostgreSQL startup without a password
 #### Added
 - [#686](https://github.com/cytopia/devilbox/pull/686) Added documentation for ExpressEngine
+- New .env var: `PGSQL_HOST_AUTH_METHOD`
 
 
 ## Bugfix Release v1.6.2 (2020-02-06)

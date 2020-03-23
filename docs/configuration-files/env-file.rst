@@ -1582,6 +1582,19 @@ connect to PostgreSQL and will not be able to display information inside the bun
    Keep this variable in sync with the actual PostgreSQL password.
 
 
+PGSQL_HOST_AUTH_METHOD
+^^^^^^^^^^^^^^^^^^^^^^
+
+This variable has been set to ``trust`` by default to allow empty PostgreSQL root user passwords.
+If you want to set a password for the root user, ensure this variable is empty.
+
++----------------------------+---------------------+---------------------+
+| Name                       | Allowed values      | Default value       |
++============================+=====================+=====================+
+| ``PGSQL_HOST_AUTH_METHOD`` | ``trust`` or empty  | ``trust``           |
++----------------------------+---------------------+---------------------+
+
+
 .. _env_redis:
 
 Redis
