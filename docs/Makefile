@@ -24,13 +24,11 @@ help:
 # -------------------------------------------------------------------------------------------------
 
 linkcheck2:
-ifeq ($(wildcard file1),)
-	bash -c 'curl -Ss -o linkcheck https://raw.githubusercontent.com/cytopia/linkcheck/master/linkcheck 2>/dev/null'
-else
-	bash -c 'curl -Ss -o linkcheck -z linkcheck https://raw.githubusercontent.com/cytopia/linkcheck/master/linkcheck 2>/dev/null'
-endif
-	chmod +x linkcheck
-	./linkcheck -l -k -r 60 -t 30 -e rst -c '200,204' _includes/
+	docker run \
+		--rm \
+		$$(tty -s && echo "-it" || echo) \
+		-v $(PWD):/data \
+		cytopia/linkcheck -l -k -r 60 -t 30 -e rst -c '200,204' _includes/
 
 linkcheck:
 	docker run \
