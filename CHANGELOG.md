@@ -7,6 +7,12 @@ major versions.
 ## Unreleased
 
 
+## Release v1.7.0 (2020-03-24)
+
+#### Added
+- Python Flask
+
+
 ## Bugfix Release v1.6.3 (2020-03-23)
 
 #### Fixed

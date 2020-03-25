@@ -1,0 +1,33 @@
+# vim: set ft=yaml:
+---
+version: '2.3'
+
+services:
+
+  # -----------------------------------------------------------------------------------------------
+  # Python Flask
+  # -----------------------------------------------------------------------------------------------
+
+  # You can add more than one service here if you have multiple flask projects.
+  # Just duplicate the block and adjust service name, hostname and ip address.
+  flask1:
+    image: devilbox/python-flask:${PYTHON_VERSION:-3.8}-dev
+    hostname: flask1
+    ports:
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_FLASK:-3000}:${FLASK_PORT:-3000}"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.250
+    volumes:
+      # Mount custom mass virtual hosting
+      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:rw${MOUNT_OPTIONS}
+    environment:
+      - FLASK_PROJECT=${FLASK_PROJECT}
+      - FLASK_PORT=${FLASK_PORT:-3000}
+      - FLASK_APP_DIR=${FLASK_APP_DIR:-htdocs}
+      - FLASK_APP_FILE=${FLASK_APP_FILE:-main.py}
+      - NEW_UID
+      - NEW_GID
+    depends_on:
+      - bind
+      - httpd

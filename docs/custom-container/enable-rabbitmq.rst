@@ -127,7 +127,7 @@ Add the following variables to ``.env`` and adjust them to your needs:
 .. seealso:: :ref:`env_file`
 
 
-4. Start the Devilbox
+3. Start the Devilbox
 ---------------------
 
 The final step is to start the Devilbox with RabbitMQ.

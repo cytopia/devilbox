@@ -91,12 +91,12 @@ Only the webserver and PHP container are mandatory, all others are optional and 
 
 Each of them is also available in multiple different versions in order to reflect your exact desired environment.
 
-| Accel   | Frontend   | SQL        | NoSQL     | Queue    | Search | ELK           | Utils     |
-|---------|------------|------------|-----------|----------|--------|---------------|-----------|
-| HAProxy | Apache     | MariaDB    | Memcached | RabbitMQ | Solr   | ElasticSearch | Bind      |
-| Varnish | Nginx      | MySQL      | MongoDB   |          |        | Logstash      | Blackfire |
-|         | PHP        | PerconaDB  | Redis     |          |        | Kibana        | MailHog   |
-|         |            | PostgreSQL |           |          |        |               | Ngrok     |
+| Accel   | Web        | App            | SQL        | NoSQL     | Queue / Search | ELK           | Utils     |
+|---------|------------|----------------|------------|-----------|----------------|---------------|-----------|
+| HAProxy | Apache     | PHP            | MariaDB    | Memcached | RabbitMQ       | ElasticSearch | Bind      |
+| Varnish | Nginx      | Python (Flask) | MySQL      | MongoDB   | Solr           | Logstash      | Blackfire |
+|         |            |                | PerconaDB  | Redis     |                | Kibana        | MailHog   |
+|         |            |                | PostgreSQL |           |                |               | Ngrok     |
 
 > **Documentation:**
 > [Available Container](https://devilbox.readthedocs.io/en/latest/readings/available-container.html)
@@ -374,6 +374,7 @@ Additionally to the default stack, there are a variety of other services that ca
 <table>
  <thead>
   <tr>
+   <th>Python (Flask)</th>
    <th>Blackfire</th>
    <th>ELK</th>
    <th>MailHog</th>
@@ -386,6 +387,7 @@ Additionally to the default stack, there are a variety of other services that ca
  </thead>
  <tbody>
   <tr>
+   <td><a target="_blank" title="Python 2.7   "    href="https://github.com/devilbox/docker-python-flask">2.7</a></td>
    <td><a target="_blank" title="Blackfire 1.8"    href="https://github.com/blackfireio/docker">1.8</a></td>
    <td><a target="_blank" title="ELK stack"        href="https://www.docker.elastic.co">5.x.y</a></td>
    <td><a target="_blank" title="MailHog v1.0.0"   href="https://github.com/mailhog/MailHog">v1.0.0</a></td>
@@ -397,6 +399,7 @@ Additionally to the default stack, there are a variety of other services that ca
   </tr>
   <tr>
    <td>...</td>
+   <td>...</td>
    <td><a target="_blank" title="ELK stack"        href="https://www.docker.elastic.co">6.x.y</a></td>
    <td><a target="_blank" title="MailHog latest"   href="https://github.com/mailhog/MailHog">latest</a></td>
    <td></td>
@@ -406,6 +409,7 @@ Additionally to the default stack, there are a variety of other services that ca
    <td><a target="_blank" title="Varnish 5"        href="https://github.com/devilbox/docker-varnish">5</a></td>
   </tr>
   <tr>
+   <td><a target="_blank" title="Python 3.7   "    href="https://github.com/devilbox/docker-python-flask">3.7</a></td>
    <td><a target="_blank" title="Blackfire 1.18.0" href="https://github.com/blackfireio/docker">1.18.0</a></td>
    <td><a target="_blank" title="ELK stack"        href="https://www.docker.elastic.co">7.x.y</a></td>
    <td></td>
@@ -416,6 +420,7 @@ Additionally to the default stack, there are a variety of other services that ca
    <td><a target="_blank" title="Varnish 6"        href="https://github.com/devilbox/docker-varnish">6</a></td>
   </tr>
   <tr>
+   <td><a target="_blank" title="Python 3.8   "    href="https://github.com/devilbox/docker-python-flask">3.8</a></td>
    <td><a target="_blank" title="Blackfire latest" href="https://github.com/blackfireio/docker">latest</a></td>
    <td></td>
    <td></td>
@@ -650,8 +655,8 @@ The following tools will assist you on creating new projects easily as well as h
     <td><code>pm2</code> is Node.js Production Process Manager with a built-in Load Balancer.</td>
   </tr>
   <tr>
-    <td>:wrench: <a href="https://github.com/brigade/scss-lint/">scss-lint</a></td>
-    <td><code>scss-lint</code> is a css/scss linter.</td>
+    <td>:wrench: <a href="https://github.com/stylelint/stylelint">stylelint</a></td>
+    <td><code>stylelint</code> is a css/scss linter.</td>
   </tr>
   <tr>
     <td>:wrench: <a href="https://github.com/symfony/symfony-installer">symfony installer</a></td>
@@ -821,7 +826,7 @@ PHP modules can be enabled or disabled on demand to reflect the state of your ta
 
 You can also copy any custom modules into `mod/(php-fpm)-<VERSION>` and add a custom `*.ini` file to load them.
 
-#### Supported Frameworks
+#### Supported PHP Frameworks
 
 As far as tested there are no limitations and you can use any Framework or CMS just as you would on your live environment. Below are a few examples of extensively tested Frameworks and CMS:
 
@@ -867,12 +872,13 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 #### Supported reverse proxied applications
 
 As far as tested there are no limitations and you can use any application that creates an open port.
-These ports will be reverse proxied by the web server and even allow you to use valid HTTPS for them.
-By the built-in autostart feature of the Devilbox you can ensure that your application automatically
+These ports will be reverse proxied by the web server and even allow you to use **valid HTTPS** for them.
+By the built-in **autostart feature** of the Devilbox you can ensure that your application automatically
 starts up as soon as you run `docker-compose up`.
 
-<a target="_blank" title="NodeJS" href="https://nodejs.org"><img width="64" style="width:64px;" src="docs/img/logo_tools/nodejs.png" alt="Devilbox"/></a>
-<a target="_blank" title="Sphinx" href="https://www.sphinx-doc.org/en/stable/"><img width="64" style="width:64px;" src="docs/img/logo_tools/sphinx.png" alt="Devilbox"/></a>
+<a target="_blank" title="NodeJS" href="https://nodejs.org"><img width="64" style="width:64px;" src="docs/img/logo_tools/nodejs.png" alt="NodeJS"/></a>
+<a target="_blank" title="Python Flask" href="https://github.com/pallets/flask"><img width="64" style="width:64px;" src="docs/img/logo_tools/flask.png" alt="Python Flask"/></a>
+<a target="_blank" title="Sphinx" href="https://www.sphinx-doc.org/en/stable/"><img width="64" style="width:64px;" src="docs/img/logo_tools/sphinx.png" alt="Sphinx"/></a>
 
 > **Documentation:**<br/>
 > [Setup reverse proxy NodeJs](https://devilbox.readthedocs.io/en/latest/examples/setup-reverse-proxy-nodejs.html) |
