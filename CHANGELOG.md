@@ -7,6 +7,13 @@ major versions.
 ## Unreleased
 
 
+## Release v1.7.1 (2020-06-29)
+
+#### Added
+- [#700](https://github.com/cytopia/devilbox/issues/700) Re-added imap for PHP 7.4
+- [#611](https://github.com/cytopia/devilbox/issues/611) Adding `certbot` binary to PHP
+
+
 ## Release v1.7.0 (2020-03-24)
 
 #### Added
