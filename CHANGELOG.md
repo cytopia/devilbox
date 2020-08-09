@@ -7,6 +7,20 @@ major versions.
 ## Unreleased
 
 
+## Release v1.7.1 (2020-08-09)
+
+#### Added
+- [#700](https://github.com/cytopia/devilbox/issues/700) Re-added imap for PHP 7.4
+- [#611](https://github.com/cytopia/devilbox/issues/611) Adding `certbot` binary to PHP
+- [#713](https://github.com/cytopia/devilbox/issues/713) Added `gsfonts`
+- [#713](https://github.com/cytopia/devilbox/issues/713) Added `mupdf` and `mupdf-tools`
+- [#714](https://github.com/cytopia/devilbox/issues/714) Added PDF support for imagick
+
+#### Changed
+- Updated Nginx (stable and mainline)
+- Updated MySQL/MariaDB/PerconaDB images
+
+
 ## Release v1.7.0 (2020-03-24)
 
 #### Added
