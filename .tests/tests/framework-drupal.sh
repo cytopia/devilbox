@@ -71,7 +71,7 @@ TLD_SUFFIX="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "TLD_SUFFIX" )"
 
 # Setup Drupal project
 run "docker-compose exec --user devilbox -T php bash -c 'mkdir -p /shared/httpd/drupal'" "${RETRIES}" "${DVLBOX_PATH}"
-run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/drupal; sudo rm -rf drupal; php -d memory_limit=-1 /usr/local/bin/composer create-project --no-interaction --prefer-dist drupal-composer/drupal-project drupal 8.x-dev'" "${RETRIES}" "${DVLBOX_PATH}"
+run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/drupal; sudo rm -rf drupal; composer create-project --no-interaction --prefer-dist drupal-composer/drupal-project drupal 8.x-dev'" "${RETRIES}" "${DVLBOX_PATH}"
 run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/drupal; ln -sf drupal/web htdocs'" "${RETRIES}" "${DVLBOX_PATH}"
 run "docker-compose exec --user devilbox -T php mysql -u root -h mysql --password=\"${MYSQL_ROOT_PASSWORD}\" -e \"DROP DATABASE IF EXISTS my_drupal; CREATE DATABASE my_drupal;\"" "${RETRIES}" "${DVLBOX_PATH}"
 

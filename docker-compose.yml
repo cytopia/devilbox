@@ -116,6 +116,11 @@ services:
       - DOCKER_LOGS
 
       ##
+      ## Tools
+      ##
+      - COMPOSER_MEMORY_LIMIT=-1
+
+      ##
       ## UserID and GroupID
       ##
       - NEW_UID
