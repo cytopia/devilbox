@@ -82,7 +82,7 @@ For consecutive startups you can send them into background (``-d``):
    host> docker-compose up -d
 
 * If you want to gracefully stop all container, enter ``docker-compose stop``
-* If you want to kill all container, enter ``docker-compose kil``
+* If you want to kill all container, enter ``docker-compose kill``
 * Ensure to run ``docker-compose rm -f`` afterwards
 
 
