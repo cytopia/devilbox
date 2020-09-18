@@ -7,6 +7,16 @@ major versions.
 ## Unreleased
 
 
+## Release v1.7.2 (2020-09-17)
+
+#### Added
+- [#166](https://github.com/devilbox/docker-php-fpm/issues/166) Added `locale-gen` binary
+- [#716](https://github.com/cytopia/devilbox/issues/716) Adding `vips` PHP module
+- [#721](https://github.com/cytopia/devilbox/issues/721) Adding `xlswriter` PHP module
+- [#724](https://github.com/cytopia/devilbox/issues/724) Adding `xdebug` PHP module for PHP 8.0
+- Added `COMPOSER_MEMORY_LIMIT=-1` env variable to PHP
+
+
 ## Release v1.7.1 (2020-08-09)
 
 #### Added

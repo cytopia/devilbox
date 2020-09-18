@@ -95,7 +95,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.109
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.112
     hostname: php
 
     ##
@@ -114,6 +114,11 @@ services:
       - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
       - DEBUG_COMPOSE_ENTRYPOINT
       - DOCKER_LOGS
+
+      ##
+      ## Tools
+      ##
+      - COMPOSER_MEMORY_LIMIT=-1
 
       ##
       ## UserID and GroupID
