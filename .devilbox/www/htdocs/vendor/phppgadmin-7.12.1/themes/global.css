@@ -1,0 +1,111 @@
+/**
+ * This is the mandatory CSS file to include on top of every CSS theme file 
+ **/
+
+img { border: none; }
+p.message {color: blue}
+p.comment {font-style: italic}
+.left{text-align: left}
+.pre {white-space: pre}
+
+.arg_icon {
+	padding-right:5pt;
+	padding-left:5pt;
+}
+
+/** Browser Tree using XLoadTree 2 **/
+body.browser {
+	height:	100%;
+	margin:	0px;
+	padding: 0px;
+	text-align: left;
+}
+.refreshTree {
+	float:right;
+	text-align:right;
+	padding: 0 3px;
+}
+.webfx-tree-row {white-space: nowrap}
+.webfx-tree-children {
+	background-repeat: repeat-y;
+	background-position-y: 1px !important;	/* IE only */
+}
+.webfx-tree-row img {vertical-align: middle}
+.webfx-tree-item-label {margin-left: 0.5ex}
+.webfx-tree-icon {margin-left: 1px}
+.webfx-tree-hide-root {display: none}
+
+/** auto-complete on insert **/
+#fkbg {
+	display:none;
+	position:fixed;
+	top:0;left:0;
+	width:100%;
+	height:100%;
+	z-index:10;
+}
+#fklist {
+	display:none;
+	position:absolute;
+	background:#fff;
+	border:1px solid #000;
+	overflow:auto;
+	z-index:15;
+}
+#fklist table {
+	border-collapse:collapse;
+	border: 1px solid #aaa;
+}
+#fklist th {border: 1px solid #aaa}
+#fklist td,
+#fklist th {
+	padding: 3px 10px;
+	border-right: 1px solid #aaa;
+	font-size: 12px;
+}
+#fklist td a {
+	display:block;
+	color:#000;
+}
+#fklist td a.fkval, p.errmsg {
+	color:red;
+}
+.ac_values {width:100%}
+
+/** bottom link back to top **/
+.bottom_link {
+	position: fixed; 
+	bottom: 0;
+	right: 0;
+	margin: 0;
+	padding: 4px;
+	background: #eee;
+	border-top: 1px dotted #999;
+	border-left: 1px dotted #999;
+	font-size: smaller;
+}
+
+/** FK browsing **/
+div#root {
+	position: absolute;
+}
+div.fk {
+    margin-left: 20px;
+}
+div#fkcontainer {
+    margin: 0;
+    position: relative;
+    width: 100%; 
+    background: none;
+    border:0px;
+}
+div.fk_value {
+	display:inline-block;
+}
+.highlight {
+	background-color: #FFFF00;
+}
+/** Syntax highlighting **/
+.comment {color: #008080}
+.keyword {color: #FF8000}
+.literal {color: #808080}

@@ -1,0 +1,13 @@
+phpPgAdmin Report Plugin Installation Guide
+-------------------------------------------
+1. Report Plugin activation
+
+   Open conf/config.inc.php and add the 'Report' value in the $conf['plugins'] array:
+
+   $conf['plugins'] = array('Report');
+
+2. Set up the reports database.
+
+   If you want to enable reports (which are a useful feature) then go to
+   the 'sql' subdirectory and view the SQL script for your database.  It
+   will contain instructions on how to set up the reports database.
