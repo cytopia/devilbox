@@ -20,6 +20,19 @@
 	// Database port on server (5432 is the PostgreSQL default)
 	$conf['servers'][0]['port'] = 5432;
 
+	// ---- Auto-login
+	if (getenv('DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN') == 1) {
+		$_REQUEST['server']= 'pgsql:5432:allow';
+		if(session_id() == ''){
+			//session has not started
+			session_name('PPA_ID');
+			session_start();
+		}
+		$_SESSION['sharedUsername'] = getenv('PGSQL_ROOT_USER');
+		$_SESSION['sharedPassword'] = getenv('PGSQL_ROOT_PASSWORD');
+	}
+	// ---- end of Auto-login
+
 	// Database SSL mode
 	// Possible options: disable, allow, prefer, require
 	// To require SSL on older servers use option: legacy
