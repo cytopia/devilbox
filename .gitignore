@@ -14,7 +14,7 @@
 ######################################
 
 # Ignore variable data
-/.env
+#/.env
 /backups/*
 /log/[a-z0-9-]*
 
@@ -25,7 +25,7 @@
 /ca/*
 
 # Ignore compose override file
-/docker-compose.override.yml
+#/docker-compose.override.yml
 
 # Ignore custom global vhost gen templates
 /cfg/vhost-gen/apache22.conf

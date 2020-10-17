@@ -1,0 +1,13 @@
+# IMPORTANT: The version must match the version of docker-compose.yml
+---
+version: '2.3'
+
+services:
+  mongo:
+    entrypoint: ["echo", "Service disabled"]
+    restart: "no"
+
+  pgsql:
+    entrypoint: ["echo", "Service disabled"]
+    restart: "no"
+  
