@@ -1,0 +1,5 @@
+[mysqld]
+;This is set to 8M on production but importing the database fails even with 20M
+max_allowed_packet=64M
+
+innodb_log_file_size=256M

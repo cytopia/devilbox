@@ -19,7 +19,9 @@
 /log/[a-z0-9-]*
 
 # Ignore Data dirs
-/data/www/*
+/data/www/*/*
+!/data/www/uconnectlabs/.devilbox
+!/data/www/uconnectlabs/wp-config-env-dev-sample.php
 
 # Ignore Certificate Authority
 /ca/*
@@ -53,6 +55,7 @@
 /cfg/percona-5.6/*.cnf
 /cfg/percona-5.7/*.cnf
 /cfg/percona-8.0/*.cnf
+!/cfg/*/uconnectlabs.cnf
 
 # Ignore custom PHP.ini configs
 /cfg/php-ini-5.2/*.ini
@@ -66,6 +69,7 @@
 /cfg/php-ini-7.3/*.ini
 /cfg/php-ini-7.4/*.ini
 /cfg/php-ini-8.0/*.ini
+!/cfg/*/uconnectlabs.ini
 
 # Ignore custom PHP-FPM configs
 /cfg/php-fpm-5.2/php-fpm.xml
