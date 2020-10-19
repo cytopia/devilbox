@@ -86,6 +86,8 @@
 
 # Ignore custom PHP-FPM startup scripts
 /autostart/*.sh
+!/autostart/uconnectlabs.sh
+
 /cfg/php-startup-5.2/*.sh
 /cfg/php-startup-5.3/*.sh
 /cfg/php-startup-5.4/*.sh
