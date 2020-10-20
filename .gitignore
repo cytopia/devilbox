@@ -22,6 +22,8 @@
 /data/www/*/*
 !/data/www/uconnectlabs/.devilbox
 !/data/www/uconnectlabs/wp-config-env-dev-sample.php
+!/data/www/uconnectlabs/package.json
+!/data/www/uconnectlabs/gulpfile.js
 
 # Ignore Certificate Authority
 /ca/*
