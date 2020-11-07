@@ -169,14 +169,17 @@ phpPgAdmin requires some adjustments to work with the Devilbox intranet. See bel
 ```
 `libraries/lib.inc.php`
 ```diff
--  if (!ini_get('session.auto_start')) {
--    session_name('PPA_ID');
--    session_start();
--  }
-+  if (!strlen(session_id()) > 0) {
-+    session_name('PPA_ID');
-+    session_start();
-+  }
+- error_reporting(E_ALL);
++ error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
+- if (!ini_get('session.auto_start')) {
+-   session_name('PPA_ID');
+-   session_start();
+- }
++ if (!strlen(session_id()) > 0) {
++   session_name('PPA_ID');
++   session_start();
++ }
 ```
 
 ### Tests

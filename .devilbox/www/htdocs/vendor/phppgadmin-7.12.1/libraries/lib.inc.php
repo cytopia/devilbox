@@ -10,7 +10,7 @@
 	include_once('./lang/translations.php');
 
 	// Set error reporting level to max
-	error_reporting(E_ALL);
+	error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 	// Application name
 	$appName = 'phpPgAdmin';
