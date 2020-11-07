@@ -406,7 +406,13 @@ HTML;
 						}
 					}
 					if ($el['path'] == '__PHPPGADMIN__') {
-						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '7.1', '<')) ? '/vendor/phppgadmin-5.6.0/' : '/vendor/phppgadmin-7.13.0/';
+						if (version_compare(loadClass('Php')->getVersion(), '7.1', '<')) {
+							$el['path'] = '/vendor/phppgadmin-5.6.0/';
+						} elseif (version_compare(loadClass('Php')->getVersion(), '7.2', '<')) {
+							$el['path'] = '/vendor/phppgadmin-7.12.1/';
+						} else {
+							$el['path'] = '/vendor/phppgadmin-7.13.0/';
+						}
 					}
 					if ($el['path'] == '__ADMINER__') {
 						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) ? '/vendor/adminer-4.6.3-en.php' : '/vendor/adminer-4.7.5-en.php';

@@ -1,0 +1,24 @@
+About the phpPgAdmin Report Plugin
+----------------------------------
+
+The Report plugin is the old report feature of phpPgAdmins removed in 
+version 5.1 and refactored as a plugin.
+
+It enables you to create and save ad-hoc SQL queries as reports which
+can be easily be executed from within phpPgAdmin.
+
+To save reports, this plugin requires the creation of a dedicated
+database containing a single table; see the INSTALL file and the
+sql/reports.sql file for details.
+
+Following installation, an icon for the Report plugin will appear 
+on the main overview page for each connected server. This provides
+an overview of all reports saved for the entire server, and enables
+executionm, editing and deletion of reports, as well as creation of 
+new reports from scratch.
+
+New reports can also be created while browsing table and view data,
+a "create report" link is provided at the bottom of each data page
+which pre-populates the report with the SQL used to generate the 
+data. 
+

@@ -27,7 +27,7 @@ major versions.
 - Composer is available as v1 and v2 (`/usr/local/bin/composer-1` and `/usr/local/bin/composer-2`)
 - New default PHP version: 7.4
 - New default MySQL version: MariaDB 10.4
-- New default Postgres version: 13.0
+- New default Postgres version: 12.4
 - New default Redis version: 6.0
 - New default Memcached version 1.6
 - New default MongoDB version: 4.4
