@@ -12,6 +12,7 @@ major versions.
 #### Fixed
 - [#739](https://github.com/cytopia/devilbox/issues/739) Disabled gd-jis: https://bugs.php.net/bug.php?id=73582
 - [#740](https://github.com/cytopia/devilbox/issues/740) Use latest PHP 8.0 image
+- [#728](https://github.com/cytopia/devilbox/issues/728) Updated phpPgAdmin from 7.12 to 7.13
 
 #### Added
 - [#715](https://github.com/cytopia/devilbox/issues/715) PHP module mongodb is re-added to PHP 8.0
@@ -152,7 +153,6 @@ sed -i'' 's/error_reporting(6135)/error_reporting(0)/g' adminer-4.7.5-en.php
 
 #### Changed
 - Made PHP 7.3 the default version
-- [#728](https://github.com/cytopia/devilbox/issues/728) Updated phpPgAdmin from 7.12 to 7.13
 
 
 ## Release v1.1.0 (2019-11-24)
