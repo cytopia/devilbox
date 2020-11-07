@@ -554,10 +554,24 @@ volumes:
   devilbox-pgsql-11.5-alpine:
   devilbox-pgsql-11.6:
   devilbox-pgsql-11.6-alpine:
+  devilbox-pgsql-11.7:
+  devilbox-pgsql-11.7-alpine:
+  devilbox-pgsql-11.8:
+  devilbox-pgsql-11.8-alpine:
+  devilbox-pgsql-11.9:
+  devilbox-pgsql-11.9-alpine:
   devilbox-pgsql-12.0:
   devilbox-pgsql-12.0-alpine:
   devilbox-pgsql-12.1:
   devilbox-pgsql-12.1-alpine:
+  devilbox-pgsql-12.2:
+  devilbox-pgsql-12.2-alpine:
+  devilbox-pgsql-12.3:
+  devilbox-pgsql-12.3-alpine:
+  devilbox-pgsql-12.4:
+  devilbox-pgsql-12.4-alpine:
+  devilbox-pgsql-13.0:
+  devilbox-pgsql-13.0-alpine:
   devilbox-pgsql-latest:
   devilbox-pgsql-alpine:
 
@@ -571,4 +585,5 @@ volumes:
   devilbox-mongo-3.6:
   devilbox-mongo-4.0:
   devilbox-mongo-4.2:
+  devilbox-mongo-4.4:
   devilbox-mongo-latest:
