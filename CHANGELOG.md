@@ -152,6 +152,7 @@ sed -i'' 's/error_reporting(6135)/error_reporting(0)/g' adminer-4.7.5-en.php
 
 #### Changed
 - Made PHP 7.3 the default version
+- [#728](https://github.com/cytopia/devilbox/issues/728) Updated phpPgAdmin from 7.12 to 7.13
 
 
 ## Release v1.1.0 (2019-11-24)

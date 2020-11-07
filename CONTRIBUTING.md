@@ -17,7 +17,8 @@ So first of all, If the Devilbox makes your life easier, **star it on GitHub**!
     2. [Docker Container](#docker-container)
     3. [New Features](#new-features)
     4. [Intranet](#intranet)
-    5. [Tests](#tests)
+    5. [Vendors](#vendors)
+    6. [Tests](#tests)
 2. [Joining the Devilbox GitHub Organization](#joining-the-devilbox-github-organization)
 3. [Important](#important)
 
@@ -60,6 +61,46 @@ Have a look at the GitHub issues and see if you can implement any features reque
 * [ ] Fix email view: https://github.com/cytopia/devilbox/issues/337
 * [ ] Better and more modern layout
 * [ ] Try to remove as much vendor dependencies as possible
+
+
+### Vendors
+
+#### Upgrade phpPgAdmin
+
+phpPgAdmin requires some adjustments to work with the Devilbox intranet. See below for files to adjust:
+
+`conf/config.inc.php`
+```diff
+- $conf['servers'][0]['host'] = '';
++ $conf['servers'][0]['host'] = 'pgsql';
+
+- $conf['extra_login_security'] = true;
++ $conf['extra_login_security'] = false;
+
++ // ---- Auto-login
++ if (getenv('DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN') == 1) {
++   $_REQUEST['server']= 'pgsql:5432:allow';
++   if(session_id() == ''){
++     //session has not started
++     session_name('PPA_ID');
++     session_start();
++   }
++   $_SESSION['sharedUsername'] = getenv('PGSQL_ROOT_USER');
++   $_SESSION['sharedPassword'] = getenv('PGSQL_ROOT_PASSWORD');
++ }
++ // ---- end of Auto-login
+```
+`libraries/lib.inc.php`
+```diff
+-  if (!ini_get('session.auto_start')) {
+-    session_name('PPA_ID');
+-    session_start();
+-  }
++  if (!strlen(session_id()) > 0) {
++    session_name('PPA_ID');
++    session_start();
++  }
+```
 
 ### Tests
 
