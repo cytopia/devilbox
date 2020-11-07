@@ -98,6 +98,7 @@ env:
   - S1=PHP V1=7.3 S2=HTTPD V2=apache-2.2
   - S1=PHP V1=7.4 S2=HTTPD V2=apache-2.2
   - S1=PHP V1=8.0 S2=HTTPD V2=apache-2.2
+  - S1=PHP V1=8.1 S2=HTTPD V2=apache-2.2
   # PHP vs Apache 2.4
   - S1=PHP V1=5.3 S2=HTTPD V2=apache-2.4
   - S1=PHP V1=5.4 S2=HTTPD V2=apache-2.4
@@ -109,6 +110,7 @@ env:
   - S1=PHP V1=7.3 S2=HTTPD V2=apache-2.4
   - S1=PHP V1=7.4 S2=HTTPD V2=apache-2.4
   - S1=PHP V1=8.0 S2=HTTPD V2=apache-2.4
+  - S1=PHP V1=8.1 S2=HTTPD V2=apache-2.4
   # PHP vs Nginx stable
   - S1=PHP V1=5.3 S2=HTTPD V2=nginx-stable
   - S1=PHP V1=5.4 S2=HTTPD V2=nginx-stable
@@ -120,6 +122,7 @@ env:
   - S1=PHP V1=7.3 S2=HTTPD V2=nginx-stable
   - S1=PHP V1=7.4 S2=HTTPD V2=nginx-stable
   - S1=PHP V1=8.0 S2=HTTPD V2=nginx-stable
+  - S1=PHP V1=8.1 S2=HTTPD V2=nginx-stable
   # PHP vs Nginx mainline
   - S1=PHP V1=5.3 S2=HTTPD V2=nginx-mainline
   - S1=PHP V1=5.4 S2=HTTPD V2=nginx-mainline
@@ -131,97 +134,122 @@ env:
   - S1=PHP V1=7.3 S2=HTTPD V2=nginx-mainline
   - S1=PHP V1=7.4 S2=HTTPD V2=nginx-mainline
   - S1=PHP V1=8.0 S2=HTTPD V2=nginx-mainline
+  - S1=PHP V1=8.1 S2=HTTPD V2=nginx-mainline
 
   ###
   ### Test all other bundled services
   ###
-  ### PHP 7.3 vs XYZ
+  ### PHP 7.4 vs XYZ
   ###
-  # PHP 7.3 vs MySQL
-  - S1=PHP V1=7.3 S2=MYSQL V2=mysql-5.5
-  - S1=PHP V1=7.3 S2=MYSQL V2=mysql-5.6
-  - S1=PHP V1=7.3 S2=MYSQL V2=mysql-5.7
-  - S1=PHP V1=7.3 S2=MYSQL V2=mysql-8.0
-  - S1=PHP V1=7.3 S2=MYSQL V2=mariadb-5.5
-  - S1=PHP V1=7.3 S2=MYSQL V2=mariadb-10.0
-  - S1=PHP V1=7.3 S2=MYSQL V2=mariadb-10.1
-  - S1=PHP V1=7.3 S2=MYSQL V2=mariadb-10.2
-  - S1=PHP V1=7.3 S2=MYSQL V2=mariadb-10.3
-  - S1=PHP V1=7.3 S2=MYSQL V2=mariadb-10.4
-  - S1=PHP V1=7.3 S2=MYSQL V2=percona-5.5
-  - S1=PHP V1=7.3 S2=MYSQL V2=percona-5.6
-  - S1=PHP V1=7.3 S2=MYSQL V2=percona-5.7
-  - S1=PHP V1=7.3 S2=MYSQL V2=percona-8.0
-  # PHP 7.3 vs PgSQL
-  - S1=PHP V1=7.3 S2=PGSQL V2=9.0
-  - S1=PHP V1=7.3 S2=PGSQL V2=9.1
-  - S1=PHP V1=7.3 S2=PGSQL V2=9.2
-  - S1=PHP V1=7.3 S2=PGSQL V2=9.2-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=9.3
-  - S1=PHP V1=7.3 S2=PGSQL V2=9.3-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=9.4
-  - S1=PHP V1=7.3 S2=PGSQL V2=9.4-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=9.5
-  - S1=PHP V1=7.3 S2=PGSQL V2=9.5-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=9.6
-  - S1=PHP V1=7.3 S2=PGSQL V2=9.6-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.0
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.0-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.1
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.1-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.2
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.2-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.3
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.3-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.4
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.4-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.5
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.5-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.6
-  - S1=PHP V1=7.3 S2=PGSQL V2=10.6-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.0
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.0-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.1
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.1-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.2
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.2-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.3
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.3-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.4
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.4-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.5
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.5-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.6
-  - S1=PHP V1=7.3 S2=PGSQL V2=11.6-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=12.0
-  - S1=PHP V1=7.3 S2=PGSQL V2=12.0-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=12.1
-  - S1=PHP V1=7.3 S2=PGSQL V2=12.1-alpine
-  - S1=PHP V1=7.3 S2=PGSQL V2=latest
-  - S1=PHP V1=7.3 S2=PGSQL V2=alpine
-  # PHP 7.3 vs Redis
-  - S1=PHP V1=7.3 S2=REDIS V2=2.8
-  - S1=PHP V1=7.3 S2=REDIS V2=3.0
-  - S1=PHP V1=7.3 S2=REDIS V2=3.0-alpine
-  - S1=PHP V1=7.3 S2=REDIS V2=3.2
-  - S1=PHP V1=7.3 S2=REDIS V2=3.2-alpine
-  - S1=PHP V1=7.3 S2=REDIS V2=4.0
-  - S1=PHP V1=7.3 S2=REDIS V2=4.0-alpine
-  - S1=PHP V1=7.3 S2=REDIS V2=5.0
-  - S1=PHP V1=7.3 S2=REDIS V2=5.0-alpine
-  # PHP 7.3 vs Memcached
-  - S1=PHP V1=7.3 S2=MEMCD V2=1.4
-  - S1=PHP V1=7.3 S2=MEMCD V2=1.4-alpine
-  - S1=PHP V1=7.3 S2=MEMCD V2=1.5
-  - S1=PHP V1=7.3 S2=MEMCD V2=1.5-alpine
-  # PHP 7.3 vs MongoDB
-  - S1=PHP V1=7.3 S2=MONGO V2=2.8
-  - S1=PHP V1=7.3 S2=MONGO V2=3.0
-  - S1=PHP V1=7.3 S2=MONGO V2=3.2
-  - S1=PHP V1=7.3 S2=MONGO V2=3.4
-  - S1=PHP V1=7.3 S2=MONGO V2=3.6
-  - S1=PHP V1=7.3 S2=MONGO V2=4.0
-  - S1=PHP V1=7.3 S2=MONGO V2=4.2
+  # PHP 7.4 vs MySQL
+  - S1=PHP V1=7.4 S2=MYSQL V2=mysql-5.5
+  - S1=PHP V1=7.4 S2=MYSQL V2=mysql-5.6
+  - S1=PHP V1=7.4 S2=MYSQL V2=mysql-5.7
+  - S1=PHP V1=7.4 S2=MYSQL V2=mysql-8.0
+  - S1=PHP V1=7.4 S2=MYSQL V2=mariadb-5.5
+  - S1=PHP V1=7.4 S2=MYSQL V2=mariadb-10.0
+  - S1=PHP V1=7.4 S2=MYSQL V2=mariadb-10.1
+  - S1=PHP V1=7.4 S2=MYSQL V2=mariadb-10.2
+  - S1=PHP V1=7.4 S2=MYSQL V2=mariadb-10.3
+  - S1=PHP V1=7.4 S2=MYSQL V2=mariadb-10.4
+  - S1=PHP V1=7.4 S2=MYSQL V2=percona-5.5
+  - S1=PHP V1=7.4 S2=MYSQL V2=percona-5.6
+  - S1=PHP V1=7.4 S2=MYSQL V2=percona-5.7
+  - S1=PHP V1=7.4 S2=MYSQL V2=percona-8.0
+  # PHP 7.4 vs PgSQL
+  - S1=PHP V1=7.4 S2=PGSQL V2=9.0
+  - S1=PHP V1=7.4 S2=PGSQL V2=9.1
+  - S1=PHP V1=7.4 S2=PGSQL V2=9.2
+  - S1=PHP V1=7.4 S2=PGSQL V2=9.2-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=9.3
+  - S1=PHP V1=7.4 S2=PGSQL V2=9.3-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=9.4
+  - S1=PHP V1=7.4 S2=PGSQL V2=9.4-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=9.5
+  - S1=PHP V1=7.4 S2=PGSQL V2=9.5-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=9.6
+  - S1=PHP V1=7.4 S2=PGSQL V2=9.6-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.0
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.0-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.1
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.1-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.2
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.2-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.3
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.3-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.4
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.4-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.5
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.5-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.6
+  - S1=PHP V1=7.4 S2=PGSQL V2=10.6-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.0
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.0-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.1
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.1-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.2
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.2-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.3
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.3-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.4
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.4-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.5
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.5-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.6
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.6-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.7
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.7-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.8
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.8-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.9
+  - S1=PHP V1=7.4 S2=PGSQL V2=11.9-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=12.0
+  - S1=PHP V1=7.4 S2=PGSQL V2=12.0-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=12.1
+  - S1=PHP V1=7.4 S2=PGSQL V2=12.1-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=12.2
+  - S1=PHP V1=7.4 S2=PGSQL V2=12.2-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=12.3
+  - S1=PHP V1=7.4 S2=PGSQL V2=12.3-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=12.4
+  - S1=PHP V1=7.4 S2=PGSQL V2=12.4-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=13.0
+  - S1=PHP V1=7.4 S2=PGSQL V2=13.0-alpine
+  - S1=PHP V1=7.4 S2=PGSQL V2=latest
+  - S1=PHP V1=7.4 S2=PGSQL V2=alpine
+  # PHP 7.4 vs Redis
+  - S1=PHP V1=7.4 S2=REDIS V2=2.8
+  - S1=PHP V1=7.4 S2=REDIS V2=3.0
+  - S1=PHP V1=7.4 S2=REDIS V2=3.0-alpine
+  - S1=PHP V1=7.4 S2=REDIS V2=3.2
+  - S1=PHP V1=7.4 S2=REDIS V2=3.2-alpine
+  - S1=PHP V1=7.4 S2=REDIS V2=4.0
+  - S1=PHP V1=7.4 S2=REDIS V2=4.0-alpine
+  - S1=PHP V1=7.4 S2=REDIS V2=5.0
+  - S1=PHP V1=7.4 S2=REDIS V2=5.0-alpine
+  - S1=PHP V1=7.4 S2=REDIS V2=6.0
+  - S1=PHP V1=7.4 S2=REDIS V2=6.0-alpine
+  - S1=PHP V1=7.4 S2=REDIS V2=latest
+  - S1=PHP V1=7.4 S2=REDIS V2=alpine
+  # PHP 7.4 vs Memcached
+  - S1=PHP V1=7.4 S2=MEMCD V2=1.4
+  - S1=PHP V1=7.4 S2=MEMCD V2=1.4-alpine
+  - S1=PHP V1=7.4 S2=MEMCD V2=1.5
+  - S1=PHP V1=7.4 S2=MEMCD V2=1.5-alpine
+  - S1=PHP V1=7.4 S2=MEMCD V2=1.6
+  - S1=PHP V1=7.4 S2=MEMCD V2=1.6-alpine
+  - S1=PHP V1=7.4 S2=MEMCD V2=latest
+  - S1=PHP V1=7.4 S2=MEMCD V2=alpine
+  # PHP 7.4 vs MongoDB
+  - S1=PHP V1=7.4 S2=MONGO V2=2.8
+  - S1=PHP V1=7.4 S2=MONGO V2=3.0
+  - S1=PHP V1=7.4 S2=MONGO V2=3.2
+  - S1=PHP V1=7.4 S2=MONGO V2=3.4
+  - S1=PHP V1=7.4 S2=MONGO V2=3.6
+  - S1=PHP V1=7.4 S2=MONGO V2=4.0
+  - S1=PHP V1=7.4 S2=MONGO V2=4.2
+  - S1=PHP V1=7.4 S2=MONGO V2=4.4
+  - S1=PHP V1=7.4 S2=MONGO V2=latest
 
 
 #jobs:
