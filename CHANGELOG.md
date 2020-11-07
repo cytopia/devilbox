@@ -7,6 +7,21 @@ major versions.
 ## Unreleased
 
 
+## Release v1.7.2 (2020-11-07)
+
+#### Fixed
+- [#739](https://github.com/cytopia/devilbox/issues/739) Disabled gd-jis: https://bugs.php.net/bug.php?id=73582
+- [#740](https://github.com/cytopia/devilbox/issues/740) Use latest PHP 8.0 image
+
+#### Added
+- [#715](https://github.com/cytopia/devilbox/issues/715) PHP module mongodb is added to PHP 8.0
+- Added PHP 8.1: https://github.com/devilbox/docker-php-fpm-8.1
+
+#### Changed
+- [#736](https://github.com/cytopia/devilbox/issues/736) Composer is updated to v2 (/usr/local/bin/composer) 
+- Composer is available as v1 and v2 (/usr/local/bin/composer-[12])
+
+
 ## Release v1.7.2 (2020-09-17)
 
 #### Added
