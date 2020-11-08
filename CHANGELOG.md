@@ -7,12 +7,11 @@ major versions.
 ## Unreleased
 
 
-## Release v1.7.3 (2020-11-07)
+## Release v1.7.3 (2020-11-08)
 
 #### Fixed
 - [#739](https://github.com/cytopia/devilbox/issues/739) Disabled gd-jis: https://bugs.php.net/bug.php?id=73582
 - [#740](https://github.com/cytopia/devilbox/issues/740) Use latest PHP 8.0 image
-- [#728](https://github.com/cytopia/devilbox/issues/728) Updated phpPgAdmin from 7.12 to 7.13
 
 #### Added
 - [#715](https://github.com/cytopia/devilbox/issues/715) PHP module mongodb is re-added to PHP 8.0
@@ -24,6 +23,8 @@ major versions.
 
 #### Changed
 - [#736](https://github.com/cytopia/devilbox/issues/736) Composer is updated to v2 (`/usr/local/bin/composer`)
+- [#728](https://github.com/cytopia/devilbox/issues/728) Updated phpPgAdmin from 7.12 to 7.13
+- Updated Adminer from 4.7.5 to 4.7.7
 - Composer is available as v1 and v2 (`/usr/local/bin/composer-1` and `/usr/local/bin/composer-2`)
 - New default PHP version: 7.4
 - New default MySQL version: MariaDB 10.4

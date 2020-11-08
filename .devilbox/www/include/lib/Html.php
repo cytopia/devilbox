@@ -415,7 +415,11 @@ HTML;
 						}
 					}
 					if ($el['path'] == '__ADMINER__') {
-						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) ? '/vendor/adminer-4.6.3-en.php' : '/vendor/adminer-4.7.5-en.php';
+						if (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) {
+							$el['path'] = '/vendor/adminer-4.6.3-en.php';
+						} else {
+							$el['path'] = '/vendor/adminer-4.7.7-en.php';
+						}
 					}
 
 					$target = isset($el['target']) ? 'target="'.$el['target'].'"' : '';
