@@ -230,6 +230,20 @@ phpPgAdmin requires some adjustments to work with the Devilbox intranet. See bel
 +   session_start();
 + }
 ```
+`libraries/adodb/drivers/adodb-postgres64.inc.php`
+```diff
+- function ADODB_postgres64()
++ function __construct()
+```
+
+`libraries/adodb/drivers/adodb-postgres7.inc.php`
+```diff
+- function ADODB_postgres7()
++ public function __construct()
+     {
+-        $this->ADODB_postgres64();
++        parent::__construct();
+```
 
 ### Tests
 
