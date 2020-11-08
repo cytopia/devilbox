@@ -13,7 +13,7 @@ DVLBOX_PATH="$( cd "${SCRIPT_PATH}/../.." && pwd -P )"
 . "${SCRIPT_PATH}/../scripts/.lib.sh"
 
 RETRIES=10
-DISABLED_VERSIONS=("8.0" "8.1")
+DISABLED_VERSIONS=()
 
 
 echo
@@ -52,7 +52,7 @@ if ! URL="$( run "\
 	curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/index.php' \
 	| tac \
 	| tac \
-	| grep -Eo '/vendor/adminer-[.0-9]+-en\\.php'" \
+	| grep -Eo '/vendor/adminer-[.0-9]+-en(-php8)?\\.php'" \
 	"${RETRIES}" "" "0" )"; then
 	printf "\\r[FAILED] Retrieve Adminer URL\\n"
 	run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/index.php' || true"
