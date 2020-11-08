@@ -1,0 +1,63 @@
+{
+    "$id": "merged-ultraslim.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "definitions": {},
+    "properties": {
+        "vars": {
+            "$id": "/properties/vars",
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_]+)": {
+                    "type": "object",
+                    "properties": {
+                        "t": {
+                            "type": "integer"
+                        },
+                        "d": {
+                            "type": "boolean"
+                        },
+                        "a": {
+                            "type": "array",
+                            "additionalItems": false,
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "a": {
+                                        "type": "string"
+                                    },
+                                    "u": {
+                                        "type": "integer"
+                                    },
+                                    "t": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        },
+        "version": {
+            "$ref": "doc-version.json"
+        },
+        "urls": {
+            "type": "array",
+            "additionalItems": false,
+            "items": {
+                "$ref": "doc-url.json"
+            }
+        },
+        "types": {
+            "$ref": "linked-key-var.json"
+        },
+        "varTypes": {
+            "$ref": "linked-key-var.json"
+        }
+    },
+    "additionalProperties": false
+}

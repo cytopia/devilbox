@@ -65,6 +65,45 @@ Have a look at the GitHub issues and see if you can implement any features reque
 
 ### Vendors
 
+#### Upgrade phpMyAdmin
+
+phpMyAdmin requires some adjustments to work with the Devilbox intranet. See below for files to adjust:
+
+`config.inc.php`
+```diff
++ error_reporting(0);
+
+- $cfg['blowfish_secret'] = ''; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
++ $cfg['TempDir'] = '/tmp';
++ $cfg['CheckConfigurationPermissions'] = false;
++ $cfg['blowfish_secret'] = 'a;guurOrep[[hoge7p[jgde7reouHoy5590hjgffuJ676FGd434&%*09UJHogfT%$#F64';
+
+
+
+- /* Authentication type */
+- $cfg['Servers'][$i]['auth_type'] = 'cookie';
+- /* Server parameters */
+- $cfg['Servers'][$i]['host'] = 'localhost';
+- $cfg['Servers'][$i]['compress'] = false;
+- $cfg['Servers'][$i]['AllowNoPassword'] = false;
++ /* Authentication type */
++ if (getenv('DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN') == 1) {
++     $cfg['Servers'][$i]['auth_type'] = 'config';
++     $cfg['Servers'][$i]['user'] = 'root';
++     $cfg['Servers'][$i]['password'] = getenv('MYSQL_ROOT_PASSWORD');
++ } else {
++ $cfg['Servers'][$i]['auth_type'] = 'cookie';
++ }
++ /* Server parameters */
++ $cfg['Servers'][$i]['host'] = 'mysql';
++ $cfg['Servers'][$i]['connect_type'] = 'tcp';
++ $cfg['Servers'][$i]['compress'] = false;
++ $cfg['Servers'][$i]['AllowNoPassword'] = true;
+
+- //$cfg['SendErrorReports'] = 'always';
++ $cfg['SendErrorReports'] = 'never';
+```
+
 #### Upgrade phpRedmin
 
 phpRedmin requires some adjustments to work with the Devilbox intranet. See below for files to adjust:

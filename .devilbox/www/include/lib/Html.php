@@ -400,9 +400,9 @@ HTML;
 						if (version_compare(loadClass('Php')->getVersion(), '5.5', '<')) {
 							$el['path'] = '/vendor/phpmyadmin-4.0/index.php';
 						} elseif (version_compare(loadClass('Php')->getVersion(), '7.1', '<')) {
-							$el['path'] = '/vendor/phpmyadmin-4.9.3/index.php';
+							$el['path'] = '/vendor/phpmyadmin-4.9.7/index.php';
 						} else {
-							$el['path'] = '/vendor/phpmyadmin-5.0.0/index.php';
+							$el['path'] = '/vendor/phpmyadmin-5.0.4/index.php';
 						}
 					}
 					if ($el['path'] == '__PHPPGADMIN__') {

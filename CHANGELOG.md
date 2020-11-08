@@ -24,6 +24,8 @@ major versions.
 #### Changed
 - [#736](https://github.com/cytopia/devilbox/issues/736) Composer is updated to v2 (`/usr/local/bin/composer`)
 - [#728](https://github.com/cytopia/devilbox/issues/728) Updated phpPgAdmin from 7.12 to 7.13
+- Updated phpMyAdmin from 5.0.0 to 5.0.4
+- Updated phpMyAdmin from 4.9.3 to 4.9.7
 - Updated Adminer from 4.7.5 to 4.7.7
 - Composer is available as v1 and v2 (`/usr/local/bin/composer-1` and `/usr/local/bin/composer-2`)
 - New default PHP version: 7.4
