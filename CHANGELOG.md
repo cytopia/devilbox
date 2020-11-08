@@ -7,7 +7,7 @@ major versions.
 ## Unreleased
 
 
-## Release v1.7.3 (2020-11-08)
+## Release v1.8.0 (2020-11-08)
 
 #### Fixed
 - [#739](https://github.com/cytopia/devilbox/issues/739) Disabled gd-jis: https://bugs.php.net/bug.php?id=73582
