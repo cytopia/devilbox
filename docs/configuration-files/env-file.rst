@@ -629,7 +629,7 @@ This variable choses your desired MySQL server version to be started.
 +-------------------------+------------------------------------------------------------------------------------------------+------------------+
 | Name                    | Allowed values                                                                                 | Default value    |
 +=========================+================================================================================================+==================+
-| ``MYSQL_SERVER``        | ``mysql-5.5`` |br| ``mysql-5.6`` |br| ``mariadb-10.2`` |br| ``percona-5.7`` |br| and many more | ``mariadb-10.4`` |
+| ``MYSQL_SERVER``        | ``mysql-5.5`` |br| ``mysql-5.6`` |br| ``mariadb-10.2`` |br| ``percona-5.7`` |br| and many more | ``mariadb-10.5`` |
 +-------------------------+------------------------------------------------------------------------------------------------+------------------+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
@@ -649,7 +649,8 @@ All values are already available in the ``.env`` file and just need to be commen
    #MYSQL_SERVER=mariadb-10.1
    #MYSQL_SERVER=mariadb-10.2
    #MYSQL_SERVER=mariadb-10.3
-   MYSQL_SERVER=mariadb-10.4
+   #MYSQL_SERVER=mariadb-10.4
+   MYSQL_SERVER=mariadb-10.5
    #MYSQL_SERVER=percona-5.5
    #MYSQL_SERVER=percona-5.6
    #MYSQL_SERVER=percona-5.7

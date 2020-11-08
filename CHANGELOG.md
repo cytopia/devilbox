@@ -20,6 +20,7 @@ major versions.
 - Added Redis images: 6.0
 - Added Memcache images: 1.6
 - Added MongoDB images: 4.4
+- Added MySQL images: MariaDB 10.5
 
 #### Changed
 - [#736](https://github.com/cytopia/devilbox/issues/736) Composer is updated to v2 (`/usr/local/bin/composer`)
@@ -29,7 +30,7 @@ major versions.
 - Updated Adminer from 4.7.5 to 4.7.7
 - Composer is available as v1 and v2 (`/usr/local/bin/composer-1` and `/usr/local/bin/composer-2`)
 - New default PHP version: 7.4
-- New default MySQL version: MariaDB 10.4
+- New default MySQL version: MariaDB 10.5
 - New default Postgres version: 12.4
 - New default Redis version: 6.0
 - New default Memcached version 1.6
