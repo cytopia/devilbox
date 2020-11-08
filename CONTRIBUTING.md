@@ -65,6 +65,16 @@ Have a look at the GitHub issues and see if you can implement any features reque
 
 ### Vendors
 
+#### Upgrade Adminer
+
+Adminer requires some adjustments to work with the Devilbox intranet. See below for files to adjust:
+
+`adminer-x.y.z-en.php`
+```diff
+- login($_e,$E){if($E=="")return
++ login($_e,$E){return true;if($E=="")return
+```
+
 #### Upgrade phpMyAdmin
 
 phpMyAdmin requires some adjustments to work with the Devilbox intranet. See below for files to adjust:
