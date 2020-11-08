@@ -43,6 +43,7 @@ jobs:
           - "MYSQL_SERVER=mariadb-10.2"
           - "MYSQL_SERVER=mariadb-10.3"
           - "MYSQL_SERVER=mariadb-10.4"
+          - "MYSQL_SERVER=mariadb-10.5"
           - "MYSQL_SERVER=percona-5.5"
           - "MYSQL_SERVER=percona-5.6"
           - "MYSQL_SERVER=percona-5.7"
