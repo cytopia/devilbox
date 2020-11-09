@@ -1,0 +1,102 @@
+CREDITS
+-------
+
+Project Administration & Major Projects
+
+- Robert Treat (xzilla) 
+
+Translators
+
+- Kuo Chaoyi (Chinese Utf8) 
+- Angelo Rigo (Brazilan Portuguese)
+- Chan Min Wai (Chinese)
+- He Wei Ping (Chinese)
+- Chih-Hsin Lee (Trad. Chinese)
+- Hugo Jonker (Dutch)
+- Pascal Peyre (French)
+- Guillaume Lelarge (French)
+- ioguix (French)
+- H. Etzel, Markus Bertheau (German)
+- Kalef (Italian)
+- Tadashi Jokagi (Japanese)
+- Rafal Slubowski (Polish)
+- Alexander Khodorisky (Russian)
+- Martin Marqués (Spanish)
+- Andrej Misovic (Slovak)
+- Devrim Gunduz (Turkish)
+- Libor Vanek (Czech)
+- Marek Cernocký (Czech)
+- Stefan Malmqvist (Swedish)
+- Nicola Soranzo (Italian)
+- Petri Jooste (Afrikaans)
+- Sulyok Péter (Hungarian)
+- Zaki Almuallim (Arabic)
+- Erdenemandal Bat-Erdene (Mongolian)
+- Alex Rootoff (Ukrainian)
+- Jonatan (Hebrew)
+- Alin Vaida (Romanian)
+- Arne Eckmann (Danish)
+- Francisco Cabrita (Portuguese)
+- Bernat Pegueroles (Catalan)
+- Fernando Wendt (Brazilan Portuguese)
+- Adamantios Diamantidis (Greek)
+- Marek ¿ernocký (Czech)
+- Alexey Baturin (Russian UTF8)
+- Adrián Chaves Fernández (Galician)
+
+Look & Feel
+
+- Davey (CSS)
+- ioguix (Cappuccino theme)
+- Tomasz Pala (Gotar theme)
+- Felipe Figueroa (Bootstrap theme)
+
+Contributors
+
+- Dan Wilson
+- Christopher Kings-Lynne
+- Jehan-Guillaume (ioguix) De Rorthais
+- Felix Meinhold
+- Jean-Michel Poure
+- Rafal Slubowski
+- Brett Toolin
+- Mark Gibson (Pop-up SQL window)
+- Nicola Soranzo
+- Oliver Meyer & Sven Kiera (Table icons link to browse table)
+- Bryan Encina (SQL window improvements, bug fixes, admin)
+- Dan Boren (Object comments)
+- Adrian Nida (Fix time outs)
+- Russell Smith
+- Guillaume Lelarge
+- Ian Barwick
+- Javier Carlos 
+- Eric Kinolik
+- John Jawed
+- Karl O. Pinc  
+- Tomasz Pala
+- Ivan Zolotukhin 
+- Kristoffer `spq` Janke
+- Leonardo Augusto Sapiras (Improve phpPgAdmin ergonomy during the GSoC 2010, with ioguix as mentor)
+- Julien Rouhaud, aka. rjuju (nested groups)
+- Felipe Figueroa aka. amenadiel
+- Jean-Michel Vourgère (nirgal)
+
+Third Party Libraries
+
+- Highlight.php (Jacob D. Cohen of rafb.net)
+- XLoadTree2 (Erik Arvidsson & Emil A Eklund of webfx.eae.net)
+- jQuery (http://jquery.com/)
+
+Corporate Sponsors
+
+Project resources:
+- Github => Official project home  
+
+Past Feature Sponsors:
+- SpikeSource (www.spikesource.com) - Slony support
+- Google Summer of Code (http://code.google.com/soc/2006/pgsql/appinfo.html?csaid=DB096D908B948D89) - phpPgAdmin Improvements
+- Google Summer of Code (http://code.google.com/soc/2007/postgres/appinfo.html?csaid=E89B3D5E2DC4170A) - Full Text Search in PostgreSQL GUI Tools
+- Google Summer of Code (http://code.google.com/p/google-summer-of-code-2010-postgres/downloads/detail?name=Leonardo_Augusto_Sapiras.tar.gz) - Improve phpPgAdmin ergonomy
+- Dalibo (http://dalibo.com) - sponsored development as Jehan-Guillaume (ioguix) de Rorthais employer
+- OmniTI (https://omniti.com) - sponsored development as Robert Treat employer 
+- credativ (https://credativ.com) - sponsored php development / review
