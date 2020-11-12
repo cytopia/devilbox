@@ -60,6 +60,14 @@ Before going into the issues below, always do the following
       host> docker-compose up php httpd bind
 
 
+**4. Run config checker**
+
+   .. code-block:: bash
+
+      # Run the bash script in the Devilbox git directory
+      host> ./check-config.sh
+
+
 General
 =======
 

@@ -48,3 +48,9 @@ jobs:
         run: |
           cd .tests/
           make lint-tests
+
+      - name: Check configuration
+        shell: bash
+        run: |
+          cp env-example .env
+          ./check-config.sh
