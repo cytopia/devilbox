@@ -3,7 +3,7 @@
 # to re-index the git index (if there are already
 # commited files)
 #
-# $ git rm -r --cached .
+# $ git rm -r -f --cached .
 # $ git add .
 # $ git commit -m ".gitignore index rebuild"
 #
@@ -16,7 +16,6 @@
 # Ignore variable data
 /.env
 /backups/*
-/log/[a-z0-9-]*
 
 # Ignore Data dirs
 /data/www/*
@@ -26,6 +25,28 @@
 
 # Ignore compose override file
 /docker-compose.override.yml
+
+# Ignore logs
+/log/apache-2.2/*
+/log/apache-2.4/*
+/log/mariadb-10.3/*
+/log/nginx-mainline/*
+/log/nginx-stable/*
+/log/php-fpm-5.2/*
+/log/php-fpm-5.3/*
+/log/php-fpm-5.4/*
+/log/php-fpm-5.5/*
+/log/php-fpm-5.6/*
+/log/php-fpm-7.0/*
+/log/php-fpm-7.1/*
+/log/php-fpm-7.2/*
+/log/php-fpm-7.3/*
+/log/php-fpm-7.4/*
+/log/php-fpm-8.0/*
+/log/php-fpm-8.1/*
+!/log/.keepme
+!/log/*/.keepme
+
 
 # Ignore custom global vhost gen templates
 /cfg/vhost-gen/apache22.conf
@@ -132,7 +153,7 @@
 /.tests/tmp/*
 /.tests/www/*
 !/.tests/www/modules
-!/.tests/www/rproxy/js
+!/.tests/www/rproxy/js/index.js
 
 # Keep folders
 !.keepme
@@ -144,7 +165,6 @@
 
 ###### std ######
 .lock
-*.log
 
 ###### patches/diffs ######
 *.patch
