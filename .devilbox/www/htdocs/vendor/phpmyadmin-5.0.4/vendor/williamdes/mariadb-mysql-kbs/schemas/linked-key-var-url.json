@@ -1,0 +1,8 @@
+{
+    "definitions": {},
+    "$id": "linked-key-var-url.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "additionalProperties": false,
+    "pattern": "^[0-9]+#[A-Za-z0-9]+"
+}

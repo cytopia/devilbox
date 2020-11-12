@@ -7,6 +7,36 @@ major versions.
 ## Unreleased
 
 
+## Release v1.8.0 (2020-11-08)
+
+#### Fixed
+- [#739](https://github.com/cytopia/devilbox/issues/739) Disabled gd-jis: https://bugs.php.net/bug.php?id=73582
+- [#740](https://github.com/cytopia/devilbox/issues/740) Use latest PHP 8.0 image
+
+#### Added
+- [#715](https://github.com/cytopia/devilbox/issues/715) PHP module mongodb is re-added to PHP 8.0
+- Added **PHP 8.1**: https://github.com/devilbox/docker-php-fpm-8.1
+- Added Postgres images: 11.7, 11.8, 11.9, 12.2, 12.3, 12.4, 13.0
+- Added Redis images: 6.0
+- Added Memcache images: 1.6
+- Added MongoDB images: 4.4
+- Added MySQL images: MariaDB 10.5
+
+#### Changed
+- [#736](https://github.com/cytopia/devilbox/issues/736) Composer is updated to v2 (`/usr/local/bin/composer`)
+- [#728](https://github.com/cytopia/devilbox/issues/728) Updated phpPgAdmin from 7.12 to 7.13
+- Updated phpMyAdmin from 5.0.0 to 5.0.4
+- Updated phpMyAdmin from 4.9.3 to 4.9.7
+- Updated Adminer from 4.7.5 to 4.7.7
+- Composer is available as v1 and v2 (`/usr/local/bin/composer-1` and `/usr/local/bin/composer-2`)
+- New default PHP version: 7.4
+- New default MySQL version: MariaDB 10.5
+- New default Postgres version: 12.4
+- New default Redis version: 6.0
+- New default Memcached version 1.6
+- New default MongoDB version: 4.4
+
+
 ## Release v1.7.2 (2020-09-17)
 
 #### Added

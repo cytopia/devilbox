@@ -1,0 +1,186 @@
+DEVELOPER INFO
+--------------
+
+phpPgAdmin is Free/Open Source software and contributions are welcome from
+everyone. 
+
+SOURCE REPOSITORY
+-----------------
+
+phpPgAdmin uses git for source control management. The phpPgAdmin git repository 
+is hosted at github:
+
+  https://github.com/phppgadmin/phppgadmin
+
+Our development process is based around Pull Requests. The best way to 
+contribute is with the following guidelines: 
+
+= Setup = 
+
+1. Make your own fork of the phppgadmin repository.
+
+2. Add the source repository as a remote called "upstream":
+        git remote add upstream git@github.com:phppgadmin/phppgadmin.git
+    or
+        git remote add upstream https://github.com/devopsdays/devopsdays-web.git
+
+    You only need to create your fork once, as long as you don't delete it. 
+
+= Patches = 
+
+1. Before starting any new change, it is essential that you rebase your local 
+   repository from the upstream. You may think that working from your fork is 
+   enough, but sometimes upstream changes will affect your work in ways you 
+   may not anticipate, so you'll want to stay current. Issue these commands:
+
+    : git checkout master
+    : git pull upstream master --rebase
+
+   This confirms you are on the master branch locally, and then applies the 
+   changes from the upstream to your copy.
+
+2. Create a new local branch for your changes. This helps to keep things tidy!
+    : git checkout -b describe_my_fix 
+
+3. Make your changes, test them locally (use the Selenium tests), then push 
+   that branch up to origin on your fork.
+
+    : git push origin describe_my_fix 
+
+4. Submit a Pull Request for the branch you just pushed. As a bonus, if you 
+   can add either [BUG] or [FEATURE] to the the title according to the purpose
+   that will help with patch review. Additionally, please mention the versions
+   of PHP and PostgreSQL that you have tested against. 
+
+5. While we would like to enhance our automated testing, until that happens, 
+   we at least suggest reviewing the Pull Request on the website and verifying
+   that your changes will merge cleanly. If not, please address any conflicts.
+
+6. As a reminder, smaller patches are easier to digest and consume. If you mix
+   multiple fixes or features into your Pull Requests, it is likely that your 
+   submission will not be merged.  
+
+7. Please note that submitting code is considered a transfer of copyright to the 
+   phpPgAdmin project. phpPgAdmin is made available under the GPL v2 license.
+
+Push access to the main phpPgAdmin git repository can be granted to developers
+with a track record of useful contributions to phpPgAdmin at the discretion
+of the phpPgAdmin development team. 
+                            
+TIPS FOR DEVELOPERS
+-------------------
+
+When you submit code to phpPgAdmin, we do expect it to adhere to the existing
+coding standards in the source.  So, instead of using your personal favourite
+code layout style, please format it to look like surrounding code.
+In general, we want the code to be portable, standard compliant (e.g. to W3C 
+(X)HTML and CSS) and independent of specific configurations of PHP, the web 
+server, PostgreSQL or the user browser. We also try to support as many versions
+as possible of these applications.
+
+Test your code properly! For example, if you are developing a feature to create
+domains, try naming your domain all of the following:
+
+	* "
+	* '
+	* \
+	* words with spaces
+	* <br><br><br>
+
+Don't forget to make sure your changes still pass the existing Selenium test 
+suite. Additionally, you should add or update the test suite as needed to 
+cover your new features. 
+
+If you are adding a new class function, be sure to use the "clean",
+"fieldClean", "arrayClean" and "fieldArrayClean" functions to properly escape
+odd characters in user input.  Examine existing functions that do similar
+things to yours to get yours right.
+
+When writing data to the display, you should always urlencode() variables in
+HREFs and htmlspecialchars() variables in forms.  Rather than use action=""
+attributes in HTML form elements use action="thisformname.php".  This
+ensures that browsers remove query strings when expanding the given
+relative URL into a full URL.
+
+When working on database classes, always schema qualify your SQL where it is
+possible with the current schema ($data->_schema) for pg73+ classes. Then don't
+forget to write your method for older classes which don't support schemas.
+
+When working with git, always make sure to do a 'git pull' both before you 
+start; so you have the latest code to work with; and also again before you 
+create your patch; to minimize the chance of having conflicts. If you plan to 
+submit your code via github pull requests, we strongly recommend doing your 
+work in a feature specific branch. If you want to submit multiple patches, 
+they should all live in their own branch. Remember, smaller changes are easier 
+to review, approve, and merge. 
+
+
+COMMON VARIABLES
+----------------
+
+$data - A data connection to the current or default database.
+$misc - Contains miscellaneous functions.  eg. printing headers & footers, etc.
+$lang - Global array containing translated strings.  The strings in this array 
+        have already been converted to HTML, so you should not 
+        htmlspecialchars() them.
+$conf - Global array of configuration options.
+
+WORKING WITH RECORDSETS
+-----------------------
+
+phpPgAdmin uses the ADODB database library for all its database access.  We have
+also written our own wrapper around the ADODB library to make it more object
+oriented (ADODB_base.pclass).
+
+This is the general form for looping over a recordset:
+
+$rs = $class->getResults();
+if (is_object($rs) && $rs->recordCount() > 0) {
+	while (!$rs->EOF) {
+		echo $rs->fields['field'];
+		$rs->moveNext();
+	}
+}
+else echo "No results.";
+
+UPDATING LANGUAGE FILES FOR THE MONO-LINGUAL
+--------------------------------------------
+
+If you need to add or modify language strings for a new feature, the preferred
+method is:
+
+* cd into lang/ subdirectory
+* modify english.php file only! 
+
+If you've done it correctly, when you create your patch, it should only have 
+diffs of the lang/english.php file. For more information on how the language 
+system works, please see the TRANSLATORS file.
+
+
+UNDERSTANDING THE WORK/BRANCH/TAG/RELEASE PROCESS
+------------------------------------------------- 
+
+All new work for phpPgAdmin is done against the git master branch. When we feel
+we are ready to do a new release, we create a branch (ex. REL_4-1).  This 
+becomes the stable branch for all future 4.1.x releases, and any bugfixes needed
+for 4.1 would go in that branch. 
+
+When we release a new revision, we tag that at release time (REL_4-1-1), so a 
+checkout of any tag should give you the same files that downloading the release
+would have given you. As a general rule, we do not introduce new features into 
+existing stable branches, only bugfixes and language updates. This means if you 
+want to work on new features, you should be working against the git master. 
+Eventually we will call for another release, and that will be branched (REL_4-2)
+and the cycle will start over. 
+
+On occasion we have created out-of-band branches, typically labeled as DEV_foo.
+These were used for temporary, concurrent development of large features, and 
+should not be used by other developers. When development of those features is 
+completed, the branches get merged in as appropriate, so no further development 
+should occur on those branches. 
+
+GETTING HELP
+------------
+
+We prefer communication to happen via Github and Pull Requests. Beyond that, 
+some contributors have been known to hang out on the Postgres Slack Team. 

@@ -95,7 +95,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.112
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.114
     hostname: php
 
     ##
@@ -317,7 +317,7 @@ services:
   # MySQL Database
   # ------------------------------------------------------------
   mysql:
-    image: devilbox/mysql:${MYSQL_SERVER}-0.5
+    image: devilbox/mysql:${MYSQL_SERVER}-0.6
     hostname: mysql
 
     environment:
@@ -506,6 +506,7 @@ volumes:
   devilbox-mariadb-10.2:
   devilbox-mariadb-10.3:
   devilbox-mariadb-10.4:
+  devilbox-mariadb-10.5:
   devilbox-percona-5.5:
   devilbox-percona-5.6:
   devilbox-percona-5.7:
@@ -554,10 +555,24 @@ volumes:
   devilbox-pgsql-11.5-alpine:
   devilbox-pgsql-11.6:
   devilbox-pgsql-11.6-alpine:
+  devilbox-pgsql-11.7:
+  devilbox-pgsql-11.7-alpine:
+  devilbox-pgsql-11.8:
+  devilbox-pgsql-11.8-alpine:
+  devilbox-pgsql-11.9:
+  devilbox-pgsql-11.9-alpine:
   devilbox-pgsql-12.0:
   devilbox-pgsql-12.0-alpine:
   devilbox-pgsql-12.1:
   devilbox-pgsql-12.1-alpine:
+  devilbox-pgsql-12.2:
+  devilbox-pgsql-12.2-alpine:
+  devilbox-pgsql-12.3:
+  devilbox-pgsql-12.3-alpine:
+  devilbox-pgsql-12.4:
+  devilbox-pgsql-12.4-alpine:
+  devilbox-pgsql-13.0:
+  devilbox-pgsql-13.0-alpine:
   devilbox-pgsql-latest:
   devilbox-pgsql-alpine:
 
@@ -571,4 +586,5 @@ volumes:
   devilbox-mongo-3.6:
   devilbox-mongo-4.0:
   devilbox-mongo-4.2:
+  devilbox-mongo-4.4:
   devilbox-mongo-latest:
