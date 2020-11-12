@@ -53,4 +53,6 @@ jobs:
         shell: bash
         run: |
           cp env-example .env
+          sed -i'' "s/^NEW_UID=.*/NEW_UID=$(id -u)/g" .env
+          sed -i'' "s/^NEW_GID=.*/NEW_GID=$(id -g)/g" .env
           ./check-config.sh
