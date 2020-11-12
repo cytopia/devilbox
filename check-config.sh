@@ -259,6 +259,18 @@ if ! grep -E "^#?MONGO_SERVER=${MONGO_SERVER}\$" env-example >/dev/null; then
 	WRONG_ENV_FILES_VALUES=1
 fi
 
+NEW_UID="$( grep -E '^NEW_UID=' .env | awk -F'=' '{print $2}' )"
+if [ "${NEW_UID}" != "${MY_UID}" ]; then
+	log_err "Variable 'NEW_UID' has wrong value: '${NEW_UID}'. Should have: ${MY_UID}"
+	RET_CODE=$(( RET_CODE + 1))
+fi
+NEW_GID="$( grep -E '^NEW_GID=' .env | awk -F'=' '{print $2}' )"
+if [ "${NEW_GID}" != "${MY_GID}" ]; then
+	log_err "Variable 'NEW_GID' has wrong value: '${NEW_GID}'. Should have: ${MY_GID}"
+	RET_CODE=$(( RET_CODE + 1))
+fi
+
+
 if [ "${WRONG_ENV_FILES_VALUES}" = "0" ]; then
 	log_ok "All .env file variables have correct values"
 fi
