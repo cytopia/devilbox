@@ -25,7 +25,7 @@ log_err() {
 }
 
 log_info() {
-	printf "[INFO] %s\\n" "${1}"
+	printf "\\e[;34m[INFO] %s\\e[0m\\n" "${1}"
 }
 
 log_ok() {
@@ -493,9 +493,11 @@ print_head_1 "SUMMARY"
 if [ "${RET_CODE}" -gt "0" ]; then
 	log_err "Found ${RET_CODE} error(s)"
 	log_err "Devilbox might not work properly"
-	log_err "Fix the errors before submitting a bug report"
+	log_err "Fix the issues before submitting a bug report"
+	log_info "Ensure to run 'docker-compose stop; docker-compose rm -f' on changes in .env"
 	exit 1
 else
 	log_ok "Found no errors"
+	log_info "Ensure to run 'docker-compose stop; docker-compose rm -f' when .env was changed"
 	exit 0
 fi
