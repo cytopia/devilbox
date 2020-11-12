@@ -11,6 +11,7 @@ major versions.
 
 #### Fixed
 - Silence PHP warnings in phpmemcached and opcache GUIs
+- [#746](https://github.com/cytopia/devilbox/issues/746) Fix xdebug config for PHP 8.0 and 8.1
 
 #### Added
 - Added `check-config.sh` script to check against correct Devilbox configuration
