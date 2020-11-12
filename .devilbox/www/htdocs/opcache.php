@@ -13,6 +13,7 @@
  * @license MIT, http://acollington.mit-license.org/
  */
 
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
 
 /*
  * User configuration

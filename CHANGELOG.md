@@ -9,8 +9,10 @@ major versions.
 
 ## Release v1.8.1 (2020-11-12)
 
-#### Added
+#### Fixed
+- Silence PHP warnings in phpmemcached and opcache GUIs
 
+#### Added
 - Added `check-config.sh` script to check against correct Devilbox configuration
 
 
