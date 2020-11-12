@@ -7,6 +7,16 @@ major versions.
 ## Unreleased
 
 
+## Release v1.8.1 (2020-11-12)
+
+#### Fixed
+- Silence PHP warnings in phpmemcached and opcache GUIs
+- [#746](https://github.com/cytopia/devilbox/issues/746) Fix xdebug config for PHP 8.0 and 8.1
+
+#### Added
+- Added `check-config.sh` script to check against correct Devilbox configuration
+
+
 ## Release v1.8.0 (2020-11-08)
 
 #### Fixed

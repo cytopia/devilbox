@@ -25,9 +25,10 @@ assignees: ''
 ### Checklist
 <!-- ENSURE YOU HAVE DONE THE FOLLOWING -->
 * [ ] `.env` file is attached
-* [ ] `docker-compose.override.yml` is attached (if it exists)
-* [ ] Custom configs from `cfg/` dir are attached (if customized)
-* [ ] `docker-compose logs` and `log/` output is added
+* [ ] `./check-config.sh` output is added below
+* [ ] `docker-compose logs` output is added below
+* [ ] `docker-compose.override.yml` is attached (if exists)
+* [ ] Custom configs from `cfg/` dir are attached (if exist)
 * [ ] I've looked through the docs: https://devilbox.readthedocs.io/en/latest/
 * [ ] I've looked through existing issues: https://github.com/cytopia/devilbox/issues
 * [ ] I've read troubleshooting: https://devilbox.readthedocs.io/en/latest/support/troubleshooting.html
@@ -35,10 +36,10 @@ assignees: ''
 
 ### OS / ENVIRONMENT
 <!-- COMPLETE ALL 6 BULLET POINTS BELOW: -->
-1. Host operating system and version: 
-2. (Windows) Native Docker or Docker Toolbox: 
-3. Docker version: 
-4. Docker Compose version: 
+1. Host operating system and version:
+2. (Windows only) Native Docker or Docker Toolbox:
+3. Docker version:
+4. Docker Compose version:
 5. (Linux) Is SELinux enabled?:
 6. What git commit hash are you on?:
 
@@ -68,18 +69,17 @@ assignees: ''
 $ docker-compose up...
 ```
 
-#### File and user permissions (Linux & MacOS)
-<!-- User and group information -->
-```
-$ id
+#### Outputs
+<!-- 1/2 Add the output from ./check-config.sh -->
+```bash
+$ ./check-config.sh
+
+<<< REPLACE THIS LINE WITH OUTPUT FROM ABOVE COMMAND >>>
 ```
 
-<!-- File permissions of the Devilbox directory -->
-```
-$ ls -la
-```
+<!-- 2/2 Add the output from docker-compose logs -->
+```bash
+$ docker-compose logs
 
-<!-- File permissions of your projects -->
-```
-$ ls -la data/www
+<<< REPLACE THIS LINE WITH OUTPUT FROM ABOVE COMMAND >>>
 ```
