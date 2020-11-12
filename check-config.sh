@@ -216,6 +216,49 @@ if [ "${HOST_PATH_HTTPD_DATADIR_PERM}" != "${MY_GID}" ]; then
 	WRONG_ENV_FILES_VALUES=1
 fi
 
+PHP_SERVER="$( grep -E '^PHP_SERVER=' .env | awk -F'=' '{print $2}' )"
+if ! grep -E "^#?PHP_SERVER=${PHP_SERVER}\$" env-example >/dev/null; then
+	log_err "Variable 'PHP_SERVER' has wrong value: ${PHP_SERVER}"
+	RET_CODE=$(( RET_CODE + 1))
+	WRONG_ENV_FILES_VALUES=1
+fi
+HTTPD_SERVER="$( grep -E '^HTTPD_SERVER=' .env | awk -F'=' '{print $2}' )"
+if ! grep -E "^#?HTTPD_SERVER=${HTTPD_SERVER}\$" env-example >/dev/null; then
+	log_err "Variable 'HTTPD_SERVER' has wrong value: ${HTTPD_SERVER}"
+	RET_CODE=$(( RET_CODE + 1))
+	WRONG_ENV_FILES_VALUES=1
+fi
+MYSQL_SERVER="$( grep -E '^MYSQL_SERVER=' .env | awk -F'=' '{print $2}' )"
+if ! grep -E "^#?MYSQL_SERVER=${MYSQL_SERVER}\$" env-example >/dev/null; then
+	log_err "Variable 'MYSQL_SERVER' has wrong value: ${MYSQL_SERVER}"
+	RET_CODE=$(( RET_CODE + 1))
+	WRONG_ENV_FILES_VALUES=1
+fi
+PGSQL_SERVER="$( grep -E '^PGSQL_SERVER=' .env | awk -F'=' '{print $2}' )"
+if ! grep -E "^#?PGSQL_SERVER=${PGSQL_SERVER}\$" env-example >/dev/null; then
+	log_err "Variable 'PGSQL_SERVER' has wrong value: ${PGSQL_SERVER}"
+	RET_CODE=$(( RET_CODE + 1))
+	WRONG_ENV_FILES_VALUES=1
+fi
+REDIS_SERVER="$( grep -E '^REDIS_SERVER=' .env | awk -F'=' '{print $2}' )"
+if ! grep -E "^#?REDIS_SERVER=${REDIS_SERVER}\$" env-example >/dev/null; then
+	log_err "Variable 'REDIS_SERVER' has wrong value: ${REDIS_SERVER}"
+	RET_CODE=$(( RET_CODE + 1))
+	WRONG_ENV_FILES_VALUES=1
+fi
+MEMCD_SERVER="$( grep -E '^MEMCD_SERVER=' .env | awk -F'=' '{print $2}' )"
+if ! grep -E "^#?MEMCD_SERVER=${MEMCD_SERVER}\$" env-example >/dev/null; then
+	log_err "Variable 'MEMCD_SERVER' has wrong value: ${MEMCD_SERVER}"
+	RET_CODE=$(( RET_CODE + 1))
+	WRONG_ENV_FILES_VALUES=1
+fi
+MONGO_SERVER="$( grep -E '^MONGO_SERVER=' .env | awk -F'=' '{print $2}' )"
+if ! grep -E "^#?MONGO_SERVER=${MONGO_SERVER}\$" env-example >/dev/null; then
+	log_err "Variable 'MONGO_SERVER' has wrong value: ${MONGO_SERVER}"
+	RET_CODE=$(( RET_CODE + 1))
+	WRONG_ENV_FILES_VALUES=1
+fi
+
 if [ "${WRONG_ENV_FILES_VALUES}" = "0" ]; then
 	log_ok "All .env file variables have correct values"
 fi
