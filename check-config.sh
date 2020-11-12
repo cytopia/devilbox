@@ -496,7 +496,7 @@ while read -r project; do
 		RET_CODE=$(( RET_CODE + 1))
 		DATA_DIR_PERM_WRONG=1
 	fi
-done < <(tree "${HOST_PATH_HTTPD_DATADIR}" -L 1 -d -f -i -n --noreport)
+done < <(find "${HOST_PATH_HTTPD_DATADIR}" -type d | grep -Ev "${HOST_PATH_HTTPD_DATADIR}/.+/.+")
 if [ "${DATA_DIR_PERM_WRONG}" = "0" ]; then
 	log_ok "All project dirs have correct permissions"
 fi
@@ -509,7 +509,7 @@ while read -r project; do
 		RET_CODE=$(( RET_CODE + 1))
 		DATA_DIR_PERM_WRONG=1
 	fi
-done < <(tree "${HOST_PATH_HTTPD_DATADIR}" -L 1 -d -f -i -n --noreport)
+done < <(find "${HOST_PATH_HTTPD_DATADIR}" -type d | grep -Ev "${HOST_PATH_HTTPD_DATADIR}/.+/.+")
 if [ "${DATA_DIR_PERM_WRONG}" = "0" ]; then
 	log_ok "All project dirs have correct uid"
 fi
@@ -522,7 +522,7 @@ while read -r project; do
 		RET_CODE=$(( RET_CODE + 1))
 		DATA_DIR_PERM_WRONG=1
 	fi
-done < <(tree "${HOST_PATH_HTTPD_DATADIR}" -L 1 -d -f -i -n --noreport)
+done < <(find "${HOST_PATH_HTTPD_DATADIR}" -type d | grep -Ev "${HOST_PATH_HTTPD_DATADIR}/.+/.+")
 if [ "${DATA_DIR_PERM_WRONG}" = "0" ]; then
 	log_ok "All project dirs have correct gid"
 fi
