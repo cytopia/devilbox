@@ -13,7 +13,7 @@ DVLBOX_PATH="$( cd "${SCRIPT_PATH}/../.." && pwd -P )"
 . "${SCRIPT_PATH}/../scripts/.lib.sh"
 
 RETRIES=10
-DISABLED_VERSIONS=("8.0" "8.1")
+DISABLED_VERSIONS=("")
 
 
 echo
@@ -60,23 +60,42 @@ fi
 ### Xdebug default disabled
 ###
 printf "[TEST] Xdebug default disabled"
-if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.remote_enable' | grep -E 'Off.+Off' >/dev/null" "${RETRIES}" "" "0"; then
-	printf "\\r[FAIL] Xdebug default disabled\\n"
-	run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.remote_enable' || true"
-	exit 1
+if [ "${PHP_VERSION}" = "8.0" ] || [ "${PHP_VERSION}" = "8.1" ]; then
+	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.mode' | grep -E 'develop.+develop' >/dev/null" "${RETRIES}" "" "0"; then
+		printf "\\r[FAIL] Xdebug default disabled\\n"
+		run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.mode' || true"
+		exit 1
+	else
+		printf "\\r[OK]   Xdebug default disabled\\n"
+	fi
 else
-	printf "\\r[OK]   Xdebug default disabled\\n"
+	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.remote_enable' | grep -E 'Off.+Off' >/dev/null" "${RETRIES}" "" "0"; then
+		printf "\\r[FAIL] Xdebug default disabled\\n"
+		run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.remote_enable' || true"
+		exit 1
+	else
+		printf "\\r[OK]   Xdebug default disabled\\n"
+	fi
 fi
-
 
 ###
 ### Xdebug autostart disabled
 ###
 printf "[TEST] Xdebug autostart disabled"
-if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.remote_autostart' | grep -E 'Off.+Off' >/dev/null" "${RETRIES}" "" "0"; then
-	printf "\\r[FAIL] Xdebug autostart disabled\\n"
-	run "curl 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.remote_autostart' || true"
-	exit 1
+if [ "${PHP_VERSION}" = "8.0" ] || [ "${PHP_VERSION}" = "8.1" ]; then
+	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.start_with_request' | grep -E 'default.+default' >/dev/null" "${RETRIES}" "" "0"; then
+		printf "\\r[FAIL] Xdebug autostart disabled\\n"
+		run "curl 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.start_with_request' || true"
+		exit 1
+	else
+		printf "\\r[OK]   Xdebug autostart disabled\\n"
+	fi
 else
-	printf "\\r[OK]   Xdebug autostart disabled\\n"
+	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.remote_autostart' | grep -E 'Off.+Off' >/dev/null" "${RETRIES}" "" "0"; then
+		printf "\\r[FAIL] Xdebug autostart disabled\\n"
+		run "curl 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.remote_autostart' || true"
+		exit 1
+	else
+		printf "\\r[OK]   Xdebug autostart disabled\\n"
+	fi
 fi
