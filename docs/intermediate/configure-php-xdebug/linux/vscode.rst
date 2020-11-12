@@ -139,7 +139,7 @@ Copy/paste all of the following lines into the above created ``xdebug.ini`` file
       xdebug.idekey=VSCODE
 
       ; Optional: Set to true to always auto-start xdebug
-      xdebug.remote_autostart=false
+      xdebug.remote_autostart=true
 
 .. note:: Host os and editor specific settings are highlighted in yellow and are worth googling to get a better understanding of the tools you use and to be more efficient at troubleshooting.
 
