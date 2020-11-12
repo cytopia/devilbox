@@ -106,12 +106,14 @@ if [ -f .env ]; then
 else
 	log_err ".env file does not exist"
 	RET_CODE=$(( RET_CODE + 1))
+	exit 1
 fi
 if [ -r .env ]; then
 	log_ok ".env file is readable"
 else
 	log_err ".env file is not readable"
 	RET_CODE=$(( RET_CODE + 1))
+	exit 1
 fi
 
 # Ensure all variables exist in .env file
