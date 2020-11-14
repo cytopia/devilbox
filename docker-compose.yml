@@ -183,7 +183,7 @@ services:
       - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
 
       # Mount DB Backup directory
-      - ${DEVILBOX_PATH}/backups:/shared/backups:rw${MOUNT_OPTIONS}
+      - ${HOST_PATH_BACKUPDIR:-./backups}:/shared/backups:rw${MOUNT_OPTIONS}
 
       # Mount devilbox user-defined *.ini files in order
       # to overwrite the default PHP.ini configuration

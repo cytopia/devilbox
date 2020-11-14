@@ -15,6 +15,10 @@ major versions.
 - [#749](https://github.com/cytopia/devilbox/issues/749) Fix to disable PHP modules without `*.so` ext
 - Fixed `check-config.sh` to properly expand `~` character in path
 
+#### Added
+- [#707](https://github.com/cytopia/devilbox/issues/707) New `.env` variable: `HOST_PATH_BACKUPDIR`
+
+
 
 ## Release v1.8.1 (2020-11-12)
 

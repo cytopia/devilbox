@@ -361,7 +361,6 @@ print_head_1 "Checking directory permissions"
 
 DEVILBOX_DIRS=(
 	"autostart"
-	"backups"
 	"bash"
 	"ca"
 	"cfg"
@@ -426,7 +425,6 @@ print_head_1 "Checking file permissions"
 
 DEVILBOX_DIRS=(
 	"autostart"
-	"backups"
 	"ca"
 	"cfg"
 	"compose"

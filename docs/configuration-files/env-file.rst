@@ -959,6 +959,22 @@ always be ``/shared/httpd/``.
      ``docker-compose rm``.
 
 
+.. _env_host_path_backupdir:
+
+HOST_PATH_BACKUPDIR
+-------------------
+
+The path on your host OS of the database backup directory to be mounted into the
+PHP container into ``/shared/backups``.
+
+
++------------------------------+----------------+----------------+
+| Name                         | Allowed values | Default value  |
++==============================+================+================+
+| ``HOST_PATH_BACKUPDIR``      | valid path     | ``./backups``  |
++------------------------------+----------------+----------------+
+
+
 HOST_PATH_SSH_DIR
 -----------------
 
