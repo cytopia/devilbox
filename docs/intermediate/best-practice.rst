@@ -26,13 +26,25 @@ having to worry about loosing any project data. There could also be the case tha
 dedicated hard-disk to store your projects or you have your own idea about a directory structure
 where you want to store your projects.
 
+Affected env variables to consider changing:
+
+* :ref:`env_httpd_datadir`
+* :ref:`env_host_path_backupdir`
+
 
 Projects
 --------
 
 .. seealso::
-   :ref:`howto_move_projects_to_a_different_directory`
+   * :ref:`howto_move_projects_to_a_different_directory`
      Follow this guide to keep your projects separated from the Devilbox git directory.
+
+Backups
+-------
+
+.. seealso::
+   * :ref:`howto_move_backups_to_a_different_directory`
+     Follow this guide to keep your backups separated from the Devilbox git directory.
 
 
 Version control ``.env`` file

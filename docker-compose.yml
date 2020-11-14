@@ -95,7 +95,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.114
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.116
     hostname: php
 
     ##
@@ -183,7 +183,7 @@ services:
       - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
 
       # Mount DB Backup directory
-      - ${DEVILBOX_PATH}/backups:/shared/backups:rw${MOUNT_OPTIONS}
+      - ${HOST_PATH_BACKUPDIR:-./backups}:/shared/backups:rw${MOUNT_OPTIONS}
 
       # Mount devilbox user-defined *.ini files in order
       # to overwrite the default PHP.ini configuration
@@ -317,7 +317,7 @@ services:
   # MySQL Database
   # ------------------------------------------------------------
   mysql:
-    image: devilbox/mysql:${MYSQL_SERVER}-0.6
+    image: devilbox/mysql:${MYSQL_SERVER}-0.7
     hostname: mysql
 
     environment:

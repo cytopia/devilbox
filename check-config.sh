@@ -80,6 +80,10 @@ file_get_perm() {
 	echo "${perm}"
 }
 
+get_path() {
+	echo "${1/#\~/${HOME}}"
+}
+
 
 #--------------------------------------------------------------------------------------------------
 # Check git
@@ -164,7 +168,7 @@ if [ "${DOCKER_LOGS}" != "0" ] && [ "${DOCKER_LOGS}" != "1" ]; then
 	WRONG_ENV_FILES_VALUES=1
 fi
 
-DEVILBOX_PATH="$( grep -E '^DEVILBOX_PATH=' .env | awk -F'=' '{print $2}' )"
+DEVILBOX_PATH="$( get_path "$( grep -E '^DEVILBOX_PATH=' .env | awk -F'=' '{print $2}' )" )"
 if [ ! -d "${DEVILBOX_PATH}" ]; then
 	log_err "Variable 'DEVILBOX_PATH' directory does not exist: ${DEVILBOX_PATH}"
 	RET_CODE=$(( RET_CODE + 1))
@@ -193,7 +197,7 @@ if [ "${WRONG_ENV_FILES_VALUES}" = "0" ]; then
 	log_ok "All .env file variables have correct values"
 fi
 
-HOST_PATH_HTTPD_DATADIR="$( grep -E '^HOST_PATH_HTTPD_DATADIR=' .env | awk -F'=' '{print $2}' )"
+HOST_PATH_HTTPD_DATADIR="$( get_path "$( grep -E '^HOST_PATH_HTTPD_DATADIR=' .env | awk -F'=' '{print $2}' )" )"
 if [ ! -d "${HOST_PATH_HTTPD_DATADIR}" ]; then
 	log_err "Variable 'HOST_PATH_HTTPD_DATADIR' directory does not exist: ${HOST_PATH_HTTPD_DATADIR}"
 	RET_CODE=$(( RET_CODE + 1))
@@ -357,7 +361,6 @@ print_head_1 "Checking directory permissions"
 
 DEVILBOX_DIRS=(
 	"autostart"
-	"backups"
 	"bash"
 	"ca"
 	"cfg"
@@ -422,7 +425,6 @@ print_head_1 "Checking file permissions"
 
 DEVILBOX_DIRS=(
 	"autostart"
-	"backups"
 	"ca"
 	"cfg"
 	"compose"
@@ -500,7 +502,7 @@ fi
 #--------------------------------------------------------------------------------------------------
 print_head_1 "Checking projects"
 
-HOST_PATH_HTTPD_DATADIR="$( grep -E '^HOST_PATH_HTTPD_DATADIR=' .env | awk -F'=' '{print $2}' )"
+HOST_PATH_HTTPD_DATADIR="$( get_path "$( grep -E '^HOST_PATH_HTTPD_DATADIR=' .env | awk -F'=' '{print $2}' )" )"
 
 DATA_DIR_PERM_WRONG=0
 while read -r project; do

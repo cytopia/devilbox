@@ -466,6 +466,17 @@ HOST_PATH_HTTPD_DATADIR=./data/www
 
 
 ###
+### Local filesystem path to where your backups are stored
+###
+### Note: When changing this variable you must re-create the container.
+###       Simply remove it, it will be auto-created during the next start:
+###
+### $ docker-compose rm -f
+###
+HOST_PATH_BACKUPDIR=./backups
+
+
+###
 ### The path on your host OS of the ssh directory to be mounted into the
 ### PHP container into /home/devilbox/.ssh.
 ###
