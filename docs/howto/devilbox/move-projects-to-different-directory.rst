@@ -22,7 +22,7 @@ So let’s assume all of your projects are already in place under ``/home/user/w
 Now you decide to use the Devilbox, but still want to keep your projects where they are at the
 moment.
 
-All you have to to is to adjust the path of :ref:`env_httpd_datadir` in the ``.env`` file.
+All you have to do is to adjust the path of :ref:`env_httpd_datadir` in the ``.env`` file.
 
 .. code-block:: bash
 

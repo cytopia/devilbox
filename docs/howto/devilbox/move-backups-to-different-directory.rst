@@ -18,7 +18,7 @@ the Devilbox git directory now, you can do that in a few simple steps.
 Move backups out of the Devilbox git directory
 ==============================================
 
-All you have to to is to adjust the path of :ref:`env_host_path_backupdir` in the ``.env`` file.
+All you have to do is to adjust the path of :ref:`env_host_path_backupdir` in the ``.env`` file.
 
 .. code-block:: bash
 
