@@ -18,6 +18,8 @@ major versions.
 #### Added
 - [#707](https://github.com/cytopia/devilbox/issues/707) New `.env` variable: `HOST_PATH_BACKUPDIR`
 
+#### Changed
+- [#547](https://github.com/cytopia/devilbox/issues/547) Added link to official Contao Devilbox Documentation
 
 
 ## Release v1.8.1 (2020-11-12)

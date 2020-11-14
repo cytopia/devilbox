@@ -16,6 +16,12 @@
      Official Contao Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_example_contao_devilbox_documentation| raw:: html
+
+   <a target="_blank" href="https://docs.contao.org/manual/en/guides/local-installation/devilbox/">
+     Official Contao Devilbox Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_example_craftcms_documentation| raw:: html
 
    <a target="_blank" href="https://docs.craftcms.com/v3/installation.html#step-1-download-craft">
@@ -28,13 +34,13 @@
      Official Drupal Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
-.. |ext_lnk_example_expressionengine_documentation| raw:: html  
+.. |ext_lnk_example_expressionengine_documentation| raw:: html
 
    <a target="_blank" href="https://docs.expressionengine.com/latest/index.html">
      Official ExpressionEngine Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
-.. |ext_lnk_example_expressionengine_primer| raw:: html  
+.. |ext_lnk_example_expressionengine_primer| raw:: html
 
    <a target="_blank" href="https://docs.expressionengine.com/latest/getting-started/ten-minute-primer.html">
      10 Minute Primer <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
