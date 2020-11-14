@@ -5,7 +5,7 @@ This document will hold all information on how to update between major versions.
 
 ## Update from `v1.8.1` to `v1.8.2`
 
-**PR:** TBD
+**PR:** https://github.com/cytopia/devilbox/pull/750
 
 This PR adds many new images, ensure to remove your current old state before running them:
 ```bash

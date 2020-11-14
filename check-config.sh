@@ -504,8 +504,7 @@ fi
 #--------------------------------------------------------------------------------------------------
 print_head_1 "Checking projects"
 
-HOST_PATH_HTTPD_DATADIR="$( grep -E '^HOST_PATH_HTTPD_DATADIR=' .env | awk -F'=' '{print $2}' )"
-HOST_PATH_HTTPD_DATADIR="${HOST_PATH_HTTPD_DATADIR/#\~/${HOME}}"
+HOST_PATH_HTTPD_DATADIR="$( get_path "$( grep -E '^HOST_PATH_HTTPD_DATADIR=' .env | awk -F'=' '{print $2}' )" )"
 
 DATA_DIR_PERM_WRONG=0
 while read -r project; do

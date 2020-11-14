@@ -7,6 +7,15 @@ major versions.
 ## Unreleased
 
 
+## Release v1.8.2 (2020-11-14)
+
+#### Fixed
+- [#643](https://github.com/cytopia/devilbox/issues/643) Wrong entrypoint in mysql images
+- [#703](https://github.com/cytopia/devilbox/issues/703) Don't fail on uid/gid change
+- [#749](https://github.com/cytopia/devilbox/issues/749) Fix to disable PHP modules without `*.so` ext
+- Fixed `check-config.sh` to properly expand `~` character in path
+
+
 ## Release v1.8.1 (2020-11-12)
 
 #### Fixed
