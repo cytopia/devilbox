@@ -193,10 +193,6 @@ if [ "${DEVILBOX_PATH_PERM}" != "${MY_GID}" ]; then
 	WRONG_ENV_FILES_VALUES=1
 fi
 
-if [ "${WRONG_ENV_FILES_VALUES}" = "0" ]; then
-	log_ok "All .env file variables have correct values"
-fi
-
 HOST_PATH_HTTPD_DATADIR="$( get_path "$( grep -E '^HOST_PATH_HTTPD_DATADIR=' .env | awk -F'=' '{print $2}' )" )"
 if [ ! -d "${HOST_PATH_HTTPD_DATADIR}" ]; then
 	log_err "Variable 'HOST_PATH_HTTPD_DATADIR' directory does not exist: ${HOST_PATH_HTTPD_DATADIR}"
