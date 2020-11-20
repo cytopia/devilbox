@@ -817,6 +817,12 @@ if find "autostart" | grep -E '\.sh$' >/dev/null; then
 	CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
 fi
 
+# bash/
+if find "bash" | grep -E '\.sh$' >/dev/null; then
+	log_note "[bash]      Custom script present in bash/"
+	CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+fi
+
 # Total?
 if [ "${CUSTOMIZATIONS}" = "0" ]; then
 	log_info "No custom configurations applied"
