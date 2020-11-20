@@ -25,6 +25,10 @@ log_err() {
 	>&2 printf "\\e[1;31m[ERR]   %s\\e[0m\\n" "${1}"
 }
 
+log_note() {
+	>&2 printf "\\e[1;33m[NOTE]  %s\\e[0m\\n" "${1}"
+}
+
 log_info() {
 	printf "\\e[;34m[INFO]  %s\\e[0m\\n" "${1}"
 }
@@ -148,7 +152,7 @@ print_head_1 "Checking git"
 
 GIT_STATUS="$( git status -s )"
 if [ -z "${GIT_STATUS}" ]; then
-	log_info "git is clean"
+	log_ok "git is clean"
 else
 	log_err "git is unclean"
 	echo "${GIT_STATUS}"
@@ -720,6 +724,88 @@ if [ "${DOCROOT_WRONG}" = "0" ]; then
 	log_ok "All projects have valid HTTPD_DOCROOT_DIR"
 fi
 
+
+#--------------------------------------------------------------------------------------------------
+# Check Customizations
+#--------------------------------------------------------------------------------------------------
+print_head_1 "Checking customizations"
+
+CUSTOMIZATIONS=0
+
+# vhost-gen
+HOST_PATH_HTTPD_DATADIR="$( get_path "$( get_env_value "HOST_PATH_HTTPD_DATADIR" )" )"
+HTTPD_TEMPLATE_DIR="$( get_env_value "HTTPD_TEMPLATE_DIR" )"
+while read -r project; do
+	if [ -f "${project}/${HTTPD_TEMPLATE_DIR}/apache22.yml" ]; then
+		log_note "[vhost-gen] Custom Apache 2.2 vhost-gen config present in: ${project}/"
+		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	elif [ -f "${project}/${HTTPD_TEMPLATE_DIR}/apache24.yml" ]; then
+		log_note "[vhost-gen] Custom Apache 2.4 vhost-gen config present in: ${project}/"
+		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	elif [ -f "${project}/${HTTPD_TEMPLATE_DIR}/nginx.yml" ]; then
+		log_note "[vhost-gen] Custom Nginx vhost-gen config present in: ${project}/"
+		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	fi
+done < <(get_sub_dirs_level_1 "${HOST_PATH_HTTPD_DATADIR}")
+
+# docker-compose.override.yml
+if [ -f "docker-compose.override.yml" ]; then
+	log_note "[docker]    Custom docker-compose.override.yml present"
+	CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+fi
+
+# cfg/HTTPD/
+while read -r httpd; do
+	if find "cfg/${httpd}" | grep -E '\.conf$' >/dev/null; then
+		log_note "[httpd]     Custom config present in cfg/${httpd}/"
+		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	fi
+done < <(grep -E '^#?HTTPD_SERVER=' env-example  | awk -F'=' '{print $2}')
+
+# cfg/php-ini-${version}/
+while read -r php_version; do
+	if find "cfg/php-ini-${php_version}" | grep -E '\.ini$' >/dev/null; then
+		log_note "[php.ini]   Custom config present in cfg/php-ini-${php_version}/"
+		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	fi
+done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
+
+# cfg/php-fpm-${version}/
+while read -r php_version; do
+	if find "cfg/php-fpm-${php_version}" | grep -E '\.conf$' >/dev/null; then
+		log_note "[php-fpm]   Custom config present in cfg/php-fpm-${php_version}/"
+		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	fi
+done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
+
+# cfg/MYSQL/
+while read -r mysql; do
+	if find "cfg/${mysql}" | grep -E '\.cnf$' >/dev/null; then
+		log_note "[mysql]     Custom config present in cfg/${mysql}/"
+		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	fi
+done < <(grep -E '^#?MYSQL_SERVER=' env-example  | awk -F'=' '{print $2}')
+
+# cfg/php-startup-${version}/
+while read -r php_version; do
+	if find "cfg/php-startup-${php_version}" | grep -E '\.sh$' >/dev/null; then
+		log_note "[startup]   Custom script present in cfg/php-startup-${php_version}/"
+		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	fi
+done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
+
+# autostart/
+if find "autostart" | grep -E '\.sh$' >/dev/null; then
+	log_note "[startup]   Custom script present in autostart/"
+	CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+fi
+
+# Total?
+if [ "${CUSTOMIZATIONS}" = "0" ]; then
+	log_info "No custom configurations applied"
+fi
+
+
 #--------------------------------------------------------------------------------------------------
 # Summary
 #--------------------------------------------------------------------------------------------------
@@ -729,10 +815,20 @@ if [ "${RET_CODE}" -gt "0" ]; then
 	log_err "Found ${RET_CODE} error(s)"
 	log_err "Devilbox might not work properly"
 	log_err "Fix the issues before submitting a bug report"
-	log_info "Ensure to run 'docker-compose stop; docker-compose rm -f' on changes in .env"
+	if [ "${CUSTOMIZATIONS}" -gt "0" ]; then
+		log_note "${CUSTOMIZATIONS} custom configurations applied. If you encounter issues, reset them first."
+	else
+		log_info "No custom configurations applied"
+	fi
+	log_info "Ensure to run 'docker-compose stop; docker-compose rm -f' on .env changes or custom configs"
 	exit 1
 else
 	log_ok "Found no errors"
-	log_info "Ensure to run 'docker-compose stop; docker-compose rm -f' when .env was changed"
+	if [ "${CUSTOMIZATIONS}" -gt "0" ]; then
+		log_note "${CUSTOMIZATIONS} custom configurations applied. If you encounter issues, reset them first."
+	else
+		log_info "No custom configurations applied"
+	fi
+	log_info "Ensure to run 'docker-compose stop; docker-compose rm -f' on .env changes or custom configs"
 	exit 0
 fi
