@@ -94,6 +94,7 @@ file_get_perm() {
 	echo "${perm}"
 }
 
+# Get path with '~' replace with correct home path
 get_path() {
 	echo "${1/#\~/${HOME}}"
 }
@@ -104,6 +105,7 @@ get_sub_dirs_level_1() {
 	local dir="${1}"
 	dir="${dir#./}"   # Remove leading './' if it exists
 	dir="${dir%/}"    # Remove trailing '/' if it exists
+	# shellcheck disable=SC2016
 	find "${dir}" \
 		| grep -Ev "^${dir}\$" \
 		| grep -Ev "^${dir}/.+/" \
@@ -117,6 +119,7 @@ get_sub_dirs_level_2() {
 	local dir="${1}"
 	dir="${dir#./}"   # Remove leading './' if it exists
 	dir="${dir%/}"    # Remove trailing '/' if it exists
+	# shellcheck disable=SC2016
 	find "${dir}" \
 		| grep -Ev "^${dir}\$" \
 		| grep -Ev "^${dir}/.+/.+/" \
