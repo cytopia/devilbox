@@ -272,6 +272,23 @@ else
 	log_debug "Variable 'DEVILBOX_PATH' diretory has correct gid: ${DEVILBOX_PATH_PERM}"
 fi
 
+LOCAL_LISTEN_ADDR="$( get_env_value "LOCAL_LISTEN_ADDR" )"
+if [ -n "${LOCAL_LISTEN_ADDR}" ]; then
+	if ! echo "${LOCAL_LISTEN_ADDR}" | grep -E ':$' >/dev/null; then
+		log_err "Variable 'LOCAL_LISTEN_ADDR' is not empty and missing trailing ':'"
+		RET_CODE=$(( RET_CODE + 1))
+		WRONG_ENV_FILES_VALUES=1
+	elif ! echo "${LOCAL_LISTEN_ADDR}" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:$' >/dev/null; then
+		log_err "Variable 'LOCAL_LISTEN_ADDR' has wrong value: '${LOCAL_LISTEN_ADDR}'"
+		RET_CODE=$(( RET_CODE + 1))
+		WRONG_ENV_FILES_VALUES=1
+	else
+		log_debug "Variable 'LOCAL_LISTEN_ADDR' has correct value: ${LOCAL_LISTEN_ADDR}"
+	fi
+else
+	log_debug "Variable 'LOCAL_LISTEN_ADDR' has correct value: ${LOCAL_LISTEN_ADDR}"
+fi
+
 HOST_PATH_HTTPD_DATADIR="$( get_path "$( get_env_value "HOST_PATH_HTTPD_DATADIR" )" )"
 if [ ! -d "${HOST_PATH_HTTPD_DATADIR}" ]; then
 	log_err "Variable 'HOST_PATH_HTTPD_DATADIR' directory does not exist: ${HOST_PATH_HTTPD_DATADIR}"
