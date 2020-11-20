@@ -11,6 +11,7 @@ set -o pipefail
 RET_CODE=0
 MY_UID="$( id -u )"
 MY_GID="$( id -g )"
+DEBUG=0
 
 
 #--------------------------------------------------------------------------------------------------
@@ -21,15 +22,20 @@ MY_GID="$( id -g )"
 ### Logger functions
 ###
 log_err() {
-	>&2 printf "\\e[1;31m[ERR]  %s\\e[0m\\n" "${1}"
+	>&2 printf "\\e[1;31m[ERR]   %s\\e[0m\\n" "${1}"
 }
 
 log_info() {
-	printf "\\e[;34m[INFO] %s\\e[0m\\n" "${1}"
+	printf "\\e[;34m[INFO]  %s\\e[0m\\n" "${1}"
 }
 
 log_ok() {
-	printf "\\e[;32m[SUCC] %s\\e[0m\\n" "${1}"
+	printf "\\e[;32m[SUCC]  %s\\e[0m\\n" "${1}"
+}
+log_debug() {
+	if [ "${DEBUG}" -eq "1" ]; then
+		printf "[DEBUG] %s\\n" "${1}"
+	fi
 }
 
 ###
@@ -51,11 +57,19 @@ print_head_1() {
 ### File functions
 ###
 file_get_uid() {
-	stat -c '%u' "${1}"
+	if [ "$(uname)" = "Linux" ]; then
+		stat --format '%u' "${1}"
+	else
+		stat -f '%u' "${1}"
+	fi
 }
 
 file_get_gid() {
-	stat -c '%g' "${1}"
+	if [ "$(uname)" = "Linux" ]; then
+		stat --format '%g' "${1}"
+	else
+		stat -f '%g' "${1}"
+	fi
 }
 
 # Returns 4-digit format
@@ -82,6 +96,39 @@ file_get_perm() {
 
 get_path() {
 	echo "${1/#\~/${HOME}}"
+}
+
+# Returns sub directories by one level
+# Also returns symlinks if they point to a directory
+get_sub_dirs_level_1() {
+	local dir="${1}"
+	dir="${dir#./}"   # Remove leading './' if it exists
+	dir="${dir%/}"    # Remove trailing '/' if it exists
+	find "${dir}" \
+		| grep -Ev "^${dir}\$" \
+		| grep -Ev "^${dir}/.+/" \
+		| xargs -n1 sh -c 'if [ -d "${1}" ]; then echo "${1}"; fi'  -- \
+		| sort
+}
+
+# Returns sub directories by two level
+# Also returns symlinks if they point to a directory
+get_sub_dirs_level_2() {
+	local dir="${1}"
+	dir="${dir#./}"   # Remove leading './' if it exists
+	dir="${dir%/}"    # Remove trailing '/' if it exists
+	find "${dir}" \
+		| grep -Ev "^${dir}\$" \
+		| grep -Ev "^${dir}/.+/.+/" \
+		| xargs -n1 sh -c 'if [ -d "${1}" ]; then echo "${1}"; fi'  -- \
+		| sort
+}
+
+# Returns the value of .env var
+get_env_value() {
+	local val
+	val="$( grep -E "^${1}=" .env )"
+	echo "${val#*=}"
 }
 
 
@@ -127,6 +174,8 @@ while read -r env_var; do
 		log_err "Variable '${env_var}' missing in .env file"
 		RET_CODE=$(( RET_CODE + 1))
 		ENV_VAR_MISSING=1
+	else
+		log_debug "Variable '${env_var}' is present in '.env file"
 	fi
 done < <(grep -E '^[A-Z].+=' env-example  | awk -F'=' '{print $1}')
 if [ "${ENV_VAR_MISSING}" = "0" ]; then
@@ -141,6 +190,8 @@ while read -r env_var; do
 		log_err "Variable '${env_var}' should only be defined once. Occurances: ${OCCURANCES}"
 		RET_CODE=$(( RET_CODE + 1))
 		ENV_VAR_DUPLICATED=1
+	else
+		log_debug "Variable '${env_var}' is defined exactly once."
 	fi
 done < <(grep -E '^[A-Z].+=' env-example  | awk -F'=' '{print $1}')
 if [ "${ENV_VAR_DUPLICATED}" = "0" ]; then
@@ -154,122 +205,173 @@ fi
 print_head_1 "Checking .env file values"
 
 WRONG_ENV_FILES_VALUES=0
-DEBUG_COMPOSE_ENTRYPOINT="$( grep -E '^DEBUG_COMPOSE_ENTRYPOINT=' .env | awk -F'=' '{print $2}' )"
+DEBUG_COMPOSE_ENTRYPOINT="$( get_env_value "DEBUG_COMPOSE_ENTRYPOINT" )"
 if [ "${DEBUG_COMPOSE_ENTRYPOINT}" != "0" ] && [ "${DEBUG_COMPOSE_ENTRYPOINT}" != "1" ] && [ "${DEBUG_COMPOSE_ENTRYPOINT}" != "2" ]; then
 	log_err "Variable 'DEBUG_COMPOSE_ENTRYPOINT' should be 0, 1 or 2. Has: ${DEBUG_COMPOSE_ENTRYPOINT}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'DEBUG_COMPOSE_ENTRYPOINT' has correct value: ${DEBUG_COMPOSE_ENTRYPOINT}"
 fi
 
-DOCKER_LOGS="$( grep -E '^DOCKER_LOGS=' .env | awk -F'=' '{print $2}' )"
+DOCKER_LOGS="$( get_env_value "DOCKER_LOGS" )"
 if [ "${DOCKER_LOGS}" != "0" ] && [ "${DOCKER_LOGS}" != "1" ]; then
 	log_err "Variable 'DOCKER_LOGS' should be 0 or 1. Has: ${DOCKER_LOGS}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'DOCKER_LOGS' has correct value: ${DOCKER_LOGS}"
 fi
 
-DEVILBOX_PATH="$( get_path "$( grep -E '^DEVILBOX_PATH=' .env | awk -F'=' '{print $2}' )" )"
+DEVILBOX_PATH="$( get_env_value "DEVILBOX_PATH" )"
 if [ ! -d "${DEVILBOX_PATH}" ]; then
 	log_err "Variable 'DEVILBOX_PATH' directory does not exist: ${DEVILBOX_PATH}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'DEVILBOX_PATH' directory exists: ${DEVILBOX_PATH}"
 fi
+
 DEVILBOX_PATH_PERM="$( file_get_perm "${DEVILBOX_PATH}" )"
 if [ "${DEVILBOX_PATH_PERM}" != "0755" ] && [ "${DEVILBOX_PATH_PERM}" != "0775" ] && [ "${DEVILBOX_PATH_PERM}" != "0777" ]; then
 	log_err "Variable 'DEVILBOX_PATH' directory must be 0755, 0775 or 0777. Has: ${DEVILBOX_PATH_PERM}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'DEVILBOX_PATH' directory has correct permissions: ${DEVILBOX_PATH_PERM}"
 fi
+
 DEVILBOX_PATH_PERM="$( file_get_uid "${DEVILBOX_PATH}" )"
 if [ "${DEVILBOX_PATH_PERM}" != "${MY_UID}" ]; then
 	log_err "Variable 'DEVILBOX_PATH' directory uid must be ${MY_UID}. Has: ${DEVILBOX_PATH_PERM}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'DEVILBOX_PATH' diretory has correct uid: ${DEVILBOX_PATH_PERM}"
 fi
+
 DEVILBOX_PATH_PERM="$( file_get_gid "${DEVILBOX_PATH}" )"
 if [ "${DEVILBOX_PATH_PERM}" != "${MY_GID}" ]; then
 	log_err "Variable 'DEVILBOX_PATH' directory gid must be ${MY_GID}. Has: ${DEVILBOX_PATH_PERM}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'DEVILBOX_PATH' diretory has correct gid: ${DEVILBOX_PATH_PERM}"
 fi
 
-HOST_PATH_HTTPD_DATADIR="$( get_path "$( grep -E '^HOST_PATH_HTTPD_DATADIR=' .env | awk -F'=' '{print $2}' )" )"
+HOST_PATH_HTTPD_DATADIR="$( get_path "$( get_env_value "HOST_PATH_HTTPD_DATADIR" )" )"
 if [ ! -d "${HOST_PATH_HTTPD_DATADIR}" ]; then
 	log_err "Variable 'HOST_PATH_HTTPD_DATADIR' directory does not exist: ${HOST_PATH_HTTPD_DATADIR}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'HOST_PATH_HTTPD_DATADIR' directory exists: ${HOST_PATH_HTTPD_DATADIR}"
 fi
+
 HOST_PATH_HTTPD_DATADIR_PERM="$( file_get_perm "${HOST_PATH_HTTPD_DATADIR}" )"
 if [ "${HOST_PATH_HTTPD_DATADIR_PERM}" != "0755" ] && [ "${HOST_PATH_HTTPD_DATADIR_PERM}" != "0775" ] && [ "${HOST_PATH_HTTPD_DATADIR_PERM}" != "0777" ]; then
 	log_err "Variable 'HOST_PATH_HTTPD_DATADIR' directory must be 0755, 0775 or 0777. Has: ${HOST_PATH_HTTPD_DATADIR_PERM}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'HOST_PATH_HTTPD_DATADIR' directory has correct permissions: ${HOST_PATH_HTTPD_DATADIR_PERM}"
 fi
+
 HOST_PATH_HTTPD_DATADIR_PERM="$( file_get_uid "${HOST_PATH_HTTPD_DATADIR}" )"
 if [ "${HOST_PATH_HTTPD_DATADIR_PERM}" != "${MY_UID}" ]; then
 	log_err "Variable 'HOST_PATH_HTTPD_DATADIR' directory uid must be ${MY_UID}. Has: ${HOST_PATH_HTTPD_DATADIR_PERM}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'HOST_PATH_HTTPD_DATADIR' directory has correct uid: ${HOST_PATH_HTTPD_DATADIR_PERM}"
 fi
+
 HOST_PATH_HTTPD_DATADIR_PERM="$( file_get_gid "${HOST_PATH_HTTPD_DATADIR}" )"
 if [ "${HOST_PATH_HTTPD_DATADIR_PERM}" != "${MY_GID}" ]; then
 	log_err "Variable 'HOST_PATH_HTTPD_DATADIR' directory gid must be ${MY_GID}. Has: ${HOST_PATH_HTTPD_DATADIR_PERM}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'HOST_PATH_HTTPD_DATADIR' directory has correct gid: ${HOST_PATH_HTTPD_DATADIR_PERM}"
 fi
 
-PHP_SERVER="$( grep -E '^PHP_SERVER=' .env | awk -F'=' '{print $2}' )"
+PHP_SERVER="$( get_env_value "PHP_SERVER" )"
 if ! grep -E "^#?PHP_SERVER=${PHP_SERVER}\$" env-example >/dev/null; then
 	log_err "Variable 'PHP_SERVER' has wrong value: ${PHP_SERVER}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'PHP_SERVER' has correct value: ${PHP_SERVER}"
 fi
-HTTPD_SERVER="$( grep -E '^HTTPD_SERVER=' .env | awk -F'=' '{print $2}' )"
+
+HTTPD_SERVER="$( get_env_value "HTTPD_SERVER" )"
 if ! grep -E "^#?HTTPD_SERVER=${HTTPD_SERVER}\$" env-example >/dev/null; then
 	log_err "Variable 'HTTPD_SERVER' has wrong value: ${HTTPD_SERVER}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'HTTPD_SERVER' has correct value: ${HTTPD_SERVER}"
 fi
-MYSQL_SERVER="$( grep -E '^MYSQL_SERVER=' .env | awk -F'=' '{print $2}' )"
+
+MYSQL_SERVER="$( get_env_value "MYSQL_SERVER" )"
 if ! grep -E "^#?MYSQL_SERVER=${MYSQL_SERVER}\$" env-example >/dev/null; then
 	log_err "Variable 'MYSQL_SERVER' has wrong value: ${MYSQL_SERVER}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'MYSQL_SERVER' has correct value: ${MYSQL_SERVER}"
 fi
-PGSQL_SERVER="$( grep -E '^PGSQL_SERVER=' .env | awk -F'=' '{print $2}' )"
+
+PGSQL_SERVER="$( get_env_value "PGSQL_SERVER" )"
 if ! grep -E "^#?PGSQL_SERVER=${PGSQL_SERVER}\$" env-example >/dev/null; then
 	log_err "Variable 'PGSQL_SERVER' has wrong value: ${PGSQL_SERVER}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'PGSQL_SERVER' has correct value: ${PGSQL_SERVER}"
 fi
-REDIS_SERVER="$( grep -E '^REDIS_SERVER=' .env | awk -F'=' '{print $2}' )"
+
+REDIS_SERVER="$( get_env_value "REDIS_SERVER" )"
 if ! grep -E "^#?REDIS_SERVER=${REDIS_SERVER}\$" env-example >/dev/null; then
 	log_err "Variable 'REDIS_SERVER' has wrong value: ${REDIS_SERVER}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'REDIS_SERVER' has correct value: ${REDIS_SERVER}"
 fi
-MEMCD_SERVER="$( grep -E '^MEMCD_SERVER=' .env | awk -F'=' '{print $2}' )"
+
+MEMCD_SERVER="$( get_env_value "MEMCD_SERVER" )"
 if ! grep -E "^#?MEMCD_SERVER=${MEMCD_SERVER}\$" env-example >/dev/null; then
 	log_err "Variable 'MEMCD_SERVER' has wrong value: ${MEMCD_SERVER}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'MEMCD_SERVER' has correct value: ${MEMCD_SERVER}"
 fi
-MONGO_SERVER="$( grep -E '^MONGO_SERVER=' .env | awk -F'=' '{print $2}' )"
+
+MONGO_SERVER="$( get_env_value "MONGO_SERVER" )"
 if ! grep -E "^#?MONGO_SERVER=${MONGO_SERVER}\$" env-example >/dev/null; then
 	log_err "Variable 'MONGO_SERVER' has wrong value: ${MONGO_SERVER}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'MONGO_SERVER' has correct value: ${MONGO_SERVER}"
 fi
 
-NEW_UID="$( grep -E '^NEW_UID=' .env | awk -F'=' '{print $2}' )"
+NEW_UID="$( get_env_value "NEW_UID" )"
 if [ "${NEW_UID}" != "${MY_UID}" ]; then
 	log_err "Variable 'NEW_UID' has wrong value: '${NEW_UID}'. Should have: ${MY_UID}"
 	RET_CODE=$(( RET_CODE + 1))
+else
+	log_debug "Variable 'NEW_UID' has correct value: '${NEW_UID}'"
 fi
-NEW_GID="$( grep -E '^NEW_GID=' .env | awk -F'=' '{print $2}' )"
+
+NEW_GID="$( get_env_value "NEW_GID" )"
 if [ "${NEW_GID}" != "${MY_GID}" ]; then
 	log_err "Variable 'NEW_GID' has wrong value: '${NEW_GID}'. Should have: ${MY_GID}"
 	RET_CODE=$(( RET_CODE + 1))
+else
+	log_debug "Variable 'NEW_GID' has correct value: '${NEW_GID}'"
 fi
 
 
@@ -278,11 +380,10 @@ if [ "${WRONG_ENV_FILES_VALUES}" = "0" ]; then
 fi
 
 
-
 #--------------------------------------------------------------------------------------------------
 # Ensure cfg/, mod/ and log/ directories exist
 #--------------------------------------------------------------------------------------------------
-print_head_1 "Checking required directories"
+print_head_1 "Checking required Devilbox core directories exist"
 
 # /cfg/php-fpm-VERSION
 DIR_MISSING=0
@@ -291,6 +392,8 @@ while read -r php_version; do
 		log_err "Directory 'cfg/php-fpm-${php_version}' is missing"
 		RET_CODE=$(( RET_CODE + 1))
 		DIR_MISSING=1
+	else
+		log_debug "Directory 'cfg/php-fpm-${php_version}' is present"
 	fi
 done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
 if [ "${DIR_MISSING}" = "0" ]; then
@@ -304,6 +407,8 @@ while read -r php_version; do
 		log_err "Directory 'log/php-fpm-${php_version}' is missing"
 		RET_CODE=$(( RET_CODE + 1))
 		DIR_MISSING=1
+	else
+		log_debug "Directory 'log/php-fpm-${php_version}' is present"
 	fi
 done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
 if [ "${DIR_MISSING}" = "0" ]; then
@@ -317,6 +422,8 @@ while read -r php_version; do
 		log_err "Directory 'mod/php-fpm-${php_version}' is missing"
 		RET_CODE=$(( RET_CODE + 1))
 		DIR_MISSING=1
+	else
+		log_debug "Directory 'mod/php-fpm-${php_version}' is present"
 	fi
 done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
 if [ "${DIR_MISSING}" = "0" ]; then
@@ -330,6 +437,8 @@ while read -r httpd_version; do
 		log_err "Directory 'cfg/${httpd_version}' is missing"
 		RET_CODE=$(( RET_CODE + 1))
 		DIR_MISSING=1
+	else
+		log_debug "Directory 'cfg/${httpd_version}' is present"
 	fi
 done < <(grep -E '^#?HTTPD_SERVER=' env-example  | awk -F'=' '{print $2}')
 if [ "${DIR_MISSING}" = "0" ]; then
@@ -343,6 +452,8 @@ while read -r httpd_version; do
 		log_err "Directory 'log/${httpd_version}' is missing"
 		RET_CODE=$(( RET_CODE + 1))
 		DIR_MISSING=1
+	else
+		log_debug "Directory 'log/${httpd_version}' is present"
 	fi
 done < <(grep -E '^#?HTTPD_SERVER=' env-example  | awk -F'=' '{print $2}')
 if [ "${DIR_MISSING}" = "0" ]; then
@@ -351,9 +462,9 @@ fi
 
 
 #--------------------------------------------------------------------------------------------------
-# Directory permissions
+# Devilbox Directory permissions
 #--------------------------------------------------------------------------------------------------
-print_head_1 "Checking directory permissions"
+print_head_1 "Checking devilbox core directory permissions"
 
 DEVILBOX_DIRS=(
 	"autostart"
@@ -374,6 +485,8 @@ for search_dir in "${DEVILBOX_DIRS[@]}"; do
 			log_err "Directory '${my_dir}' should have 0755, 0775 or 0777 permissions. Has: ${PERM} permissions"
 			RET_CODE=$(( RET_CODE + 1))
 			DEVILBOX_DIR_PERM_WRONG=1
+		else
+			log_debug "Directory '${my_dir}' has correct permissions: ${PERM}"
 		fi
 	done < <(find "${search_dir}" -type d)
 done
@@ -390,6 +503,8 @@ for search_dir in "${DEVILBOX_DIRS[@]}"; do
 			log_err "Directory '${my_dir}' should have uid '${MY_UID}' Has: '${PERM}'"
 			RET_CODE=$(( RET_CODE + 1))
 			DEVILBOX_DIR_PERM_WRONG=1
+		else
+			log_debug "Directory '${my_dir}' has correct uid: ${PERM}"
 		fi
 	done < <(find "${search_dir}" -type d)
 done
@@ -406,6 +521,8 @@ for search_dir in "${DEVILBOX_DIRS[@]}"; do
 			log_err "Directory '${my_dir}' should have gid '${MY_GID}' Has: '${PERM}'"
 			RET_CODE=$(( RET_CODE + 1))
 			DEVILBOX_DIR_PERM_WRONG=1
+		else
+			log_debug "Directory '${my_dir}' has correct gid: ${PERM}"
 		fi
 	done < <(find "${search_dir}" -type d)
 done
@@ -415,9 +532,9 @@ fi
 
 
 #--------------------------------------------------------------------------------------------------
-# File permissions
+# Devilbox File permissions
 #--------------------------------------------------------------------------------------------------
-print_head_1 "Checking file permissions"
+print_head_1 "Checking devilbox core file permissions"
 
 DEVILBOX_DIRS=(
 	"autostart"
@@ -438,6 +555,8 @@ for search_file in "${DEVILBOX_DIRS[@]}"; do
 				log_err "File '${my_file}' should have 0600 permissions. Has: ${PERM} permissions"
 				RET_CODE=$(( RET_CODE + 1))
 				DEVILBOX_DIR_PERM_WRONG=1
+			else
+				log_debug "File '${my_file}' has correct permissions: ${PERM}"
 			fi
 		# Executable files
 		elif echo "${my_file}" | grep -E '.+\.sh(-example)?$' >/dev/null; then
@@ -445,6 +564,8 @@ for search_file in "${DEVILBOX_DIRS[@]}"; do
 				log_err "File '${my_file}' should have 0755, 0775 or 0777 permissions. Has: ${PERM} permissions"
 				RET_CODE=$(( RET_CODE + 1))
 				DEVILBOX_DIR_PERM_WRONG=1
+			else
+				log_debug "File '${my_file}' has correct permissions: ${PERM}"
 			fi
 		# All other files
 		else
@@ -452,6 +573,8 @@ for search_file in "${DEVILBOX_DIRS[@]}"; do
 				log_err "File '${my_file}' should have 0644, 0664 or 0666 permissions. Has: ${PERM} permissions"
 				RET_CODE=$(( RET_CODE + 1))
 				DEVILBOX_DIR_PERM_WRONG=1
+			else
+				log_debug "File '${my_file}' has correct permissions: ${PERM}"
 			fi
 		fi
 	done < <(find "${search_file}" -type f)
@@ -469,6 +592,8 @@ for search_file in "${DEVILBOX_DIRS[@]}"; do
 			log_err "File '${my_file}' should have uid '${MY_UID}' Has: '${PERM}'"
 			RET_CODE=$(( RET_CODE + 1))
 			DEVILBOX_DIR_PERM_WRONG=1
+		else
+			log_debug "File '${my_file}' has correct uid: ${PERM}"
 		fi
 	done < <(find "${search_file}" -type f)
 done
@@ -485,6 +610,8 @@ for search_file in "${DEVILBOX_DIRS[@]}"; do
 			log_err "File '${my_file}' should have gid '${MY_GID}' Has: '${PERM}'"
 			RET_CODE=$(( RET_CODE + 1))
 			DEVILBOX_DIR_PERM_WRONG=1
+		else
+			log_debug "File '${my_file}' has correct gid: ${PERM}"
 		fi
 	done < <(find "${search_file}" -type f)
 done
@@ -494,11 +621,11 @@ fi
 
 
 #--------------------------------------------------------------------------------------------------
-# Check projects
+# Check projects permissions
 #--------------------------------------------------------------------------------------------------
-print_head_1 "Checking projects"
+print_head_1 "Checking projects permissions"
 
-HOST_PATH_HTTPD_DATADIR="$( get_path "$( grep -E '^HOST_PATH_HTTPD_DATADIR=' .env | awk -F'=' '{print $2}' )" )"
+HOST_PATH_HTTPD_DATADIR="$( get_path "$( get_env_value "HOST_PATH_HTTPD_DATADIR" )" )"
 
 DATA_DIR_PERM_WRONG=0
 while read -r project; do
@@ -507,8 +634,10 @@ while read -r project; do
 		log_err "Directory '${project}' should have 0755, 0775 or 0777 permissions. Has: ${PERM} permissions"
 		RET_CODE=$(( RET_CODE + 1))
 		DATA_DIR_PERM_WRONG=1
+	else
+		log_debug "Directory '${project}' has correct permissions: ${PERM}"
 	fi
-done < <(find "${HOST_PATH_HTTPD_DATADIR}" -type d | grep -Ev "${HOST_PATH_HTTPD_DATADIR}/.+/.+")
+done < <(get_sub_dirs_level_1 "${HOST_PATH_HTTPD_DATADIR}")
 if [ "${DATA_DIR_PERM_WRONG}" = "0" ]; then
 	log_ok "All project dirs have correct permissions"
 fi
@@ -520,8 +649,10 @@ while read -r project; do
 		log_err "Directory '${project}' should have uid '${MY_UID}' Has: '${PERM}'"
 		RET_CODE=$(( RET_CODE + 1))
 		DATA_DIR_PERM_WRONG=1
+	else
+		log_debug "Directory '${project}' has correct uid: ${PERM}"
 	fi
-done < <(find "${HOST_PATH_HTTPD_DATADIR}" -type d | grep -Ev "${HOST_PATH_HTTPD_DATADIR}/.+/.+")
+done < <(get_sub_dirs_level_1 "${HOST_PATH_HTTPD_DATADIR}")
 if [ "${DATA_DIR_PERM_WRONG}" = "0" ]; then
 	log_ok "All project dirs have correct uid"
 fi
@@ -533,10 +664,36 @@ while read -r project; do
 		log_err "Directory '${project}' should have gid '${MY_GID}' Has: '${PERM}'"
 		RET_CODE=$(( RET_CODE + 1))
 		DATA_DIR_PERM_WRONG=1
+	else
+		log_debug "Directory '${project}' has correct gid: ${PERM}"
 	fi
-done < <(find "${HOST_PATH_HTTPD_DATADIR}" -type d | grep -Ev "${HOST_PATH_HTTPD_DATADIR}/.+/.+")
+done < <(get_sub_dirs_level_1 "${HOST_PATH_HTTPD_DATADIR}")
 if [ "${DATA_DIR_PERM_WRONG}" = "0" ]; then
 	log_ok "All project dirs have correct gid"
+fi
+
+
+#--------------------------------------------------------------------------------------------------
+# Check projects settings
+#--------------------------------------------------------------------------------------------------
+print_head_1 "Checking projects settings"
+
+HOST_PATH_HTTPD_DATADIR="$( get_path "$( get_env_value "HOST_PATH_HTTPD_DATADIR" )" )"
+TLD_SUFFIX="$( get_env_value "TLD_SUFFIX" )"
+
+DNS_RECORD_WRONG=0
+while read -r project; do
+	VHOST="$( basename "${project}" ).${TLD_SUFFIX}"
+	if ! ping -c1 "${VHOST}" >/dev/null 2>&1; then
+		log_err "Project '${VHOST}' has no valid DNS record"
+		RET_CODE=$(( RET_CODE + 1))
+		DNS_RECORD_WRONG=1
+	else
+		log_debug "Project '${VHOST}' has valid DNS record"
+	fi
+done < <(get_sub_dirs_level_1 "${HOST_PATH_HTTPD_DATADIR}")
+if [ "${DNS_RECORD_WRONG}" = "0" ]; then
+	log_ok "All projects have valid DNS records"
 fi
 
 
