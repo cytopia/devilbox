@@ -762,6 +762,8 @@ while read -r project; do
 	elif [ -f "${project}/${HTTPD_TEMPLATE_DIR}/nginx.yml" ]; then
 		log_note "[vhost-gen] Custom Nginx vhost-gen config present in: ${project}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	else
+		log_debug "[vhost-gen] No custom configuration for: ${project}/"
 	fi
 done < <(get_sub_dirs_level_1 "${HOST_PATH_HTTPD_DATADIR}")
 
@@ -769,6 +771,8 @@ done < <(get_sub_dirs_level_1 "${HOST_PATH_HTTPD_DATADIR}")
 if [ -f "docker-compose.override.yml" ]; then
 	log_note "[docker]    Custom docker-compose.override.yml present"
 	CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+else
+	log_debug "[docker]    No custom docker-compose.override.yml present"
 fi
 
 # cfg/HTTPD/
@@ -776,6 +780,8 @@ while read -r httpd; do
 	if find "cfg/${httpd}" | grep -E '\.conf$' >/dev/null; then
 		log_note "[httpd]     Custom config present in cfg/${httpd}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	else
+		log_debug "[httpd]     No custom config present in cfg/${httpd}/"
 	fi
 done < <(grep -E '^#?HTTPD_SERVER=' env-example  | awk -F'=' '{print $2}')
 
@@ -784,6 +790,8 @@ while read -r php_version; do
 	if find "cfg/php-ini-${php_version}" | grep -E '\.ini$' >/dev/null; then
 		log_note "[php.ini]   Custom config present in cfg/php-ini-${php_version}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	else
+		log_debug "[php.ini]   No custom config present in cfg/php-ini-${php_version}/"
 	fi
 done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
 
@@ -792,6 +800,8 @@ while read -r php_version; do
 	if find "cfg/php-fpm-${php_version}" | grep -E '\.conf$' >/dev/null; then
 		log_note "[php-fpm]   Custom config present in cfg/php-fpm-${php_version}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	else
+		log_debug "[php-fpm]   No custom config present in cfg/php-fpm-${php_version}/"
 	fi
 done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
 
@@ -800,6 +810,8 @@ while read -r mysql; do
 	if find "cfg/${mysql}" | grep -E '\.cnf$' >/dev/null; then
 		log_note "[mysql]     Custom config present in cfg/${mysql}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	else
+		log_debug "[mysql]     No custom config present in cfg/${mysql}/"
 	fi
 done < <(grep -E '^#?MYSQL_SERVER=' env-example  | awk -F'=' '{print $2}')
 
@@ -808,6 +820,8 @@ while read -r php_version; do
 	if find "cfg/php-startup-${php_version}" | grep -E '\.sh$' >/dev/null; then
 		log_note "[startup]   Custom script present in cfg/php-startup-${php_version}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+	else
+		log_debug "[startup]   No custom script present in cfg/php-startup-${php_version}/"
 	fi
 done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
 
@@ -815,12 +829,16 @@ done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
 if find "autostart" | grep -E '\.sh$' >/dev/null; then
 	log_note "[startup]   Custom script present in autostart/"
 	CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+else
+	log_debug "[startup]   No custom script present in autostart/"
 fi
 
 # bash/
 if find "bash" | grep -E '\.sh$' >/dev/null; then
 	log_note "[bash]      Custom script present in bash/"
 	CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+else
+	log_debug "[bash]      No custom script present in bash/"
 fi
 
 # Total?
