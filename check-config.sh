@@ -131,6 +131,12 @@ get_env_value() {
 	echo "${val#*=}"
 }
 
+# Validate a DNS record
+validate_dns() {
+	ping -c1 "${1}" >/dev/null 2>&1
+}
+
+
 
 #--------------------------------------------------------------------------------------------------
 # Check git
@@ -679,12 +685,12 @@ fi
 print_head_1 "Checking projects settings"
 
 HOST_PATH_HTTPD_DATADIR="$( get_path "$( get_env_value "HOST_PATH_HTTPD_DATADIR" )" )"
-TLD_SUFFIX="$( get_env_value "TLD_SUFFIX" )"
 
+TLD_SUFFIX="$( get_env_value "TLD_SUFFIX" )"
 DNS_RECORD_WRONG=0
 while read -r project; do
 	VHOST="$( basename "${project}" ).${TLD_SUFFIX}"
-	if ! ping -c1 "${VHOST}" >/dev/null 2>&1; then
+	if ! validate_dns "${VHOST}"; then
 		log_err "Project '${VHOST}' has no valid DNS record"
 		RET_CODE=$(( RET_CODE + 1))
 		DNS_RECORD_WRONG=1
@@ -696,6 +702,20 @@ if [ "${DNS_RECORD_WRONG}" = "0" ]; then
 	log_ok "All projects have valid DNS records"
 fi
 
+HTTPD_DOCROOT_DIR="$( get_env_value "HTTPD_DOCROOT_DIR" )"
+DOCROOT_WRONG=0
+while read -r project; do
+	if [ ! -d "${project}/${HTTPD_DOCROOT_DIR}" ]; then
+		log_err "Missing HTTPD_DOCROOT_DIR '${HTTPD_DOCROOT_DIR}' in: ${project}"
+		RET_CODE=$(( RET_CODE + 1))
+		DOCROOT_WRONG=1
+	else
+		log_debug "HTTPD_DOCROOT_DIR '${HTTPD_DOCROOT_DIR}' present in: ${project}"
+	fi
+done < <(get_sub_dirs_level_1 "${HOST_PATH_HTTPD_DATADIR}")
+if [ "${DOCROOT_WRONG}" = "0" ]; then
+	log_ok "All projects have valid HTTPD_DOCROOT_DIR"
+fi
 
 #--------------------------------------------------------------------------------------------------
 # Summary
