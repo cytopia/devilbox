@@ -95,7 +95,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.116
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.117
     hostname: php
 
     ##
@@ -203,6 +203,9 @@ services:
 
       # Mount devilbox user-defined bash config
       - ${DEVILBOX_PATH}/bash:/etc/bashrc-devilbox.d:rw${MOUNT_OPTIONS}
+
+      # Mount devilbox user-defined supervisord config
+      - ${DEVILBOX_PATH}/supervisor:/etc/supervisor/custom.d:rw${MOUNT_OPTIONS}
 
       # Certificate Authority public key
       - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}

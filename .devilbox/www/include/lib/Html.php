@@ -24,6 +24,15 @@ class Html
 			)
 		),
 		array(
+			'name' => 'Configs',
+			'menu' => array(
+				array(
+					'name' => 'PHP',
+					'path' => '/config_php.php'
+				),
+			),
+		),
+		array(
 			'name' => 'Databases',
 			'menu' => array(
 				array(
