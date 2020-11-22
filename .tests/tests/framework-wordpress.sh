@@ -49,19 +49,17 @@ TLD_SUFFIX="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "TLD_SUFFIX" )"
 ###
 ### Custom variables
 ###
-VHOST="my-wordpress"
 DB_NAME="my_wp"
 PROJECT_NAME="this-is-my-grepable-project-name"
+VHOST="my-wordpress"
+
+# Create vhost dir
+create_vhost_dir "${VHOST}"
 
 
 # Download Wordpress
 run "docker-compose exec --user devilbox -T php bash -c ' \
-	rm -rf /shared/httpd/${VHOST}' || true" "1" "${DVLBOX_PATH}"
-
-run "sleep 5"
-run "docker-compose exec --user devilbox -T php bash -c ' \
-	mkdir -p /shared/httpd/${VHOST} \
-	&& git clone https://github.com/WordPress/WordPress /shared/httpd/${VHOST}/wordpress \
+	git clone https://github.com/WordPress/WordPress /shared/httpd/${VHOST}/wordpress \
 	&& ln -sf wordpress /shared/httpd/${VHOST}/htdocs'" \
 	"${RETRIES}" "${DVLBOX_PATH}"
 
@@ -91,9 +89,6 @@ run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/define(\\s*'DB_PA
 run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/define(\\s*'DB_HOST.*/define('DB_HOST', 'mysql');/g\" /shared/httpd/${VHOST}/wordpress/wp-config.php" "${RETRIES}" "${DVLBOX_PATH}"
 run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/define(\\s*'WP_DEBUG.*/define('WP_DEBUG', true);/g\" /shared/httpd/${VHOST}/wordpress/wp-config.php" "${RETRIES}" "${DVLBOX_PATH}"
 run "docker-compose exec --user devilbox -T php php -l /shared/httpd/${VHOST}/wordpress/wp-config.php" "${RETRIES}" "${DVLBOX_PATH}"
-
-# Debug configuration
-run "./check-config.sh" "1" "${DVLBOX_PATH}" || true
 
 # Install Wordpress
 if ! run "docker-compose exec --user devilbox -T php curl -sS --fail -L -XPOST -c cookie.txt -b cookie.txt \
