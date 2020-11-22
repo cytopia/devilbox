@@ -504,6 +504,7 @@ DEVILBOX_DIRS=(
 	"compose"
 	"log"
 	"mod"
+	"supervisor"
 )
 
 # Check allowed directory permissions: 0755 0775 0777
@@ -572,6 +573,7 @@ DEVILBOX_DIRS=(
 	"cfg"
 	"compose"
 	"mod"
+	"supervisor"
 )
 
 # Check allowed directory permissions: 0644 0664 0666
@@ -754,83 +756,91 @@ HOST_PATH_HTTPD_DATADIR="$( get_path "$( get_env_value "HOST_PATH_HTTPD_DATADIR"
 HTTPD_TEMPLATE_DIR="$( get_env_value "HTTPD_TEMPLATE_DIR" )"
 while read -r project; do
 	if [ -f "${project}/${HTTPD_TEMPLATE_DIR}/apache22.yml" ]; then
-		log_note "[vhost-gen] Custom Apache 2.2 vhost-gen config present in: ${project}/"
+		log_note "[vhost-gen]  Custom Apache 2.2 vhost-gen config present in: ${project}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
 	elif [ -f "${project}/${HTTPD_TEMPLATE_DIR}/apache24.yml" ]; then
-		log_note "[vhost-gen] Custom Apache 2.4 vhost-gen config present in: ${project}/"
+		log_note "[vhost-gen]  Custom Apache 2.4 vhost-gen config present in: ${project}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
 	elif [ -f "${project}/${HTTPD_TEMPLATE_DIR}/nginx.yml" ]; then
-		log_note "[vhost-gen] Custom Nginx vhost-gen config present in: ${project}/"
+		log_note "[vhost-gen]  Custom Nginx vhost-gen config present in: ${project}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
 	else
-		log_debug "[vhost-gen] No custom configuration for: ${project}/"
+		log_debug "[vhost-gen]  No custom configuration for: ${project}/"
 	fi
 done < <(get_sub_dirs_level_1 "${HOST_PATH_HTTPD_DATADIR}")
 
 # docker-compose.override.yml
 if [ -f "docker-compose.override.yml" ]; then
-	log_note "[docker]    Custom docker-compose.override.yml present"
+	log_note "[docker]     Custom docker-compose.override.yml present"
 	CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
 else
-	log_debug "[docker]    No custom docker-compose.override.yml present"
+	log_debug "[docker]     No custom docker-compose.override.yml present"
 fi
 
 # cfg/HTTPD/
 while read -r httpd; do
 	if find "cfg/${httpd}" | grep -E '\.conf$' >/dev/null; then
-		log_note "[httpd]     Custom config present in cfg/${httpd}/"
+		log_note "[httpd]      Custom config present in cfg/${httpd}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
 	else
-		log_debug "[httpd]     No custom config present in cfg/${httpd}/"
+		log_debug "[httpd]      No custom config present in cfg/${httpd}/"
 	fi
 done < <(grep -E '^#?HTTPD_SERVER=' env-example  | awk -F'=' '{print $2}')
 
 # cfg/php-ini-${version}/
 while read -r php_version; do
 	if find "cfg/php-ini-${php_version}" | grep -E '\.ini$' >/dev/null; then
-		log_note "[php.ini]   Custom config present in cfg/php-ini-${php_version}/"
+		log_note "[php.ini]    Custom config present in cfg/php-ini-${php_version}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
 	else
-		log_debug "[php.ini]   No custom config present in cfg/php-ini-${php_version}/"
+		log_debug "[php.ini]    No custom config present in cfg/php-ini-${php_version}/"
 	fi
 done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
 
 # cfg/php-fpm-${version}/
 while read -r php_version; do
 	if find "cfg/php-fpm-${php_version}" | grep -E '\.conf$' >/dev/null; then
-		log_note "[php-fpm]   Custom config present in cfg/php-fpm-${php_version}/"
+		log_note "[php-fpm]    Custom config present in cfg/php-fpm-${php_version}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
 	else
-		log_debug "[php-fpm]   No custom config present in cfg/php-fpm-${php_version}/"
+		log_debug "[php-fpm]    No custom config present in cfg/php-fpm-${php_version}/"
 	fi
 done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
 
 # cfg/MYSQL/
 while read -r mysql; do
 	if find "cfg/${mysql}" | grep -E '\.cnf$' >/dev/null; then
-		log_note "[mysql]     Custom config present in cfg/${mysql}/"
+		log_note "[mysql]      Custom config present in cfg/${mysql}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
 	else
-		log_debug "[mysql]     No custom config present in cfg/${mysql}/"
+		log_debug "[mysql]      No custom config present in cfg/${mysql}/"
 	fi
 done < <(grep -E '^#?MYSQL_SERVER=' env-example  | awk -F'=' '{print $2}')
 
 # cfg/php-startup-${version}/
 while read -r php_version; do
 	if find "cfg/php-startup-${php_version}" | grep -E '\.sh$' >/dev/null; then
-		log_note "[startup]   Custom script present in cfg/php-startup-${php_version}/"
+		log_note "[startup]    Custom script present in cfg/php-startup-${php_version}/"
 		CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
 	else
-		log_debug "[startup]   No custom script present in cfg/php-startup-${php_version}/"
+		log_debug "[startup]    No custom script present in cfg/php-startup-${php_version}/"
 	fi
 done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
 
 # autostart/
 if find "autostart" | grep -E '\.sh$' >/dev/null; then
-	log_note "[startup]   Custom script present in autostart/"
+	log_note "[startup]    Custom script present in autostart/"
 	CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
 else
-	log_debug "[startup]   No custom script present in autostart/"
+	log_debug "[startup]    No custom script present in autostart/"
+fi
+
+# supervisor/
+if find "supervisor" | grep -E '\.conf$' >/dev/null; then
+	log_note "[supervisor] Custom config present in supervisor/"
+	CUSTOMIZATIONS=$(( CUSTOMIZATIONS + 1 ))
+else
+	log_debug "[supervisor] No custom config present in supervisor/"
 fi
 
 # bash/
