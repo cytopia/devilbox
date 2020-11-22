@@ -20,6 +20,7 @@ major versions.
 - [#692](https://github.com/cytopia/devilbox/issues/692) Added custom supervisor configs
 - Added project and customization checks in check-config.sh
 - Intranet: show custom PHP configuration files
+- Intranet: show custom Httpd configuration files
 
 
 ## Release v1.8.2 (2020-11-14)

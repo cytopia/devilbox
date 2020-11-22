@@ -30,6 +30,10 @@ class Html
 					'name' => 'PHP',
 					'path' => '/config_php.php'
 				),
+				array(
+					'name' => 'Httpd',
+					'path' => '/config_httpd.php'
+				),
 			),
 		),
 		array(
