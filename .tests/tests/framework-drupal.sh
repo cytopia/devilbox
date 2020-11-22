@@ -67,19 +67,22 @@ fi
 ###
 MYSQL_ROOT_PASSWORD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "MYSQL_ROOT_PASSWORD" )"
 TLD_SUFFIX="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "TLD_SUFFIX" )"
+VHOST="my-drupal"
+
+# Create vhost dir
+create_vhost_dir "${VHOST}"
 
 
 # Setup Drupal project
-run "docker-compose exec --user devilbox -T php bash -c 'mkdir -p /shared/httpd/drupal'" "${RETRIES}" "${DVLBOX_PATH}"
-run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/drupal; sudo rm -rf drupal; composer-1 create-project --no-interaction --prefer-dist drupal-composer/drupal-project drupal 8.x-dev'" "${RETRIES}" "${DVLBOX_PATH}"
-run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/drupal; ln -sf drupal/web htdocs'" "${RETRIES}" "${DVLBOX_PATH}"
+run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/${VHOST}; composer-1 create-project --no-interaction --prefer-dist drupal-composer/drupal-project drupal 8.x-dev'" "${RETRIES}" "${DVLBOX_PATH}"
+run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/${VHOST}; ln -sf drupal/web htdocs'" "${RETRIES}" "${DVLBOX_PATH}"
 run "docker-compose exec --user devilbox -T php mysql -u root -h mysql --password=\"${MYSQL_ROOT_PASSWORD}\" -e \"DROP DATABASE IF EXISTS my_drupal; CREATE DATABASE my_drupal;\"" "${RETRIES}" "${DVLBOX_PATH}"
 
 # Configure Drupal
-run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/drupal/htdocs/; ${DRUSH} site-install standard --db-url='mysql://root:${MYSQL_ROOT_PASSWORD}@mysql/my_drupal' --site-name=Example -y'" "${RETRIES}" "${DVLBOX_PATH}"
+run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/${VHOST}/htdocs/; ${DRUSH} site-install standard --db-url='mysql://root:${MYSQL_ROOT_PASSWORD}@mysql/my_drupal' --site-name=Example -y'" "${RETRIES}" "${DVLBOX_PATH}"
 
 # Test Drupal
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://drupal.${TLD_SUFFIX}' | tac | tac | grep 'Welcome to Example'" "${RETRIES}" "${DVLBOX_PATH}"; then
-	run "docker-compose exec --user devilbox -T php curl 'http://drupal.${TLD_SUFFIX}' || true"
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep 'Welcome to Example'" "${RETRIES}" "${DVLBOX_PATH}"; then
+	run "docker-compose exec --user devilbox -T php curl 'http://${VHOST}.${TLD_SUFFIX}' || true"
 	exit 1
 fi

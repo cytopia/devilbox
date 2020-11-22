@@ -137,6 +137,9 @@
 /mod/php-fpm-8.0/*.so
 /mod/php-fpm-8.1/*.so
 
+# Ignore supervisord configs
+/supervisor/*.conf
+
 # Ignore custom bash and other confi files
 /bash/*
 !/bash/bashrc.sh-example
