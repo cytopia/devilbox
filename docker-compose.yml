@@ -221,7 +221,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER}:0.33
+    image: devilbox/${HTTPD_SERVER}:0.34
     hostname: httpd
 
     environment:
