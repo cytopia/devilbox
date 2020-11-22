@@ -12,7 +12,7 @@ DVLBOX_PATH="$( cd "${SCRIPT_PATH}/../.." && pwd -P )"
 # shellcheck disable=SC1090
 . "${SCRIPT_PATH}/../scripts/.lib.sh"
 
-RETRIES=10
+RETRIES=20
 DISABLED_VERSIONS=("8.0" "8.1")
 
 
@@ -56,8 +56,11 @@ PROJECT_NAME="this-is-my-grepable-project-name"
 
 # Download Wordpress
 run "docker-compose exec --user devilbox -T php bash -c ' \
-	rm -rf /shared/httpd/${VHOST} \
-	&& mkdir -p /shared/httpd/${VHOST} \
+	rm -rf /shared/httpd/${VHOST}' || true" "1" "${DVLBOX_PATH}"
+
+run "sleep 5"
+run "docker-compose exec --user devilbox -T php bash -c ' \
+	mkdir -p /shared/httpd/${VHOST} \
 	&& git clone https://github.com/WordPress/WordPress /shared/httpd/${VHOST}/wordpress \
 	&& ln -sf wordpress /shared/httpd/${VHOST}/htdocs'" \
 	"${RETRIES}" "${DVLBOX_PATH}"
@@ -89,13 +92,22 @@ run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/define(\\s*'DB_HO
 run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/define(\\s*'WP_DEBUG.*/define('WP_DEBUG', true);/g\" /shared/httpd/${VHOST}/wordpress/wp-config.php" "${RETRIES}" "${DVLBOX_PATH}"
 run "docker-compose exec --user devilbox -T php php -l /shared/httpd/${VHOST}/wordpress/wp-config.php" "${RETRIES}" "${DVLBOX_PATH}"
 
+# Debug configuration
+run "./check-config.sh" "1" "${DVLBOX_PATH}" || true
+
 # Install Wordpress
 if ! run "docker-compose exec --user devilbox -T php curl -sS --fail -L -XPOST -c cookie.txt -b cookie.txt \
 	'http://${VHOST}.${TLD_SUFFIX}/wp-admin/install.php?step=1'\
 	--data 'language=1' >/dev/null" "${RETRIES}" "${DVLBOX_PATH}"; then
 	run "docker-compose exec --user devilbox -T php curl -sS --fail -L -XPOST -c cookie.txt -b cookie.txt \
 			'http://${VHOST}.${TLD_SUFFIX}/wp-admin/install.php?step=1'\
-			--data 'language=1' >/dev/null" "1" "${DVLBOX_PATH}"
+			--data 'language=1' >/dev/null" "1" "${DVLBOX_PATH}" || true
+	run "docker-compose exec --user devilbox -T php curl -sS --fail -L -I \
+			'http://${VHOST}.${TLD_SUFFIX}/wp-admin/install.php?step=1'" "1" "${DVLBOX_PATH}" || true
+	run "docker-compose exec --user devilbox -T php curl -sS --fail -L \
+			'http://${VHOST}.${TLD_SUFFIX}/'" "1" "${DVLBOX_PATH}" || true
+	run "docker-compose logs php" || true
+	run "docker-compose logs httpd" || true
 	exit 1
 fi
 
@@ -119,7 +131,9 @@ if ! run "docker-compose exec --user devilbox -T php curl -sS --fail -L -XPOST -
 		--data 'admin_email=test%40test.com' \
 		--data 'blog_public=0' \
 		--data 'Submit=Install+WordPress' \
-		--data 'language='" "1" "${DVLBOX_PATH}"
+		--data 'language='" "1" "${DVLBOX_PATH}" || true
+	run "docker-compose logs php" || true
+	run "docker-compose logs httpd" || true
 	exit 1
 fi
 
