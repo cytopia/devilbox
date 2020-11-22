@@ -7,6 +7,21 @@ major versions.
 ## Unreleased
 
 
+## Release v1.8.3 (2020-11-22)
+
+#### Fixed
+
+- [#753](https://github.com/cytopia/devilbox/issues/753) Fixed symlink handling in watcherd
+- [#751](https://github.com/cytopia/devilbox/issues/751) Fixed duplicate output in check-config.sh
+
+#### Added
+
+- [#755](https://github.com/cytopia/devilbox/issues/755) Added ~/.composer/vendor/bin to $PATH
+- [#692](https://github.com/cytopia/devilbox/issues/692) Added custom supervisor configs
+- Added project and customization checks in check-config.sh
+- Intranet: show custom PHP configuration files
+
+
 ## Release v1.8.2 (2020-11-14)
 
 #### Fixed
