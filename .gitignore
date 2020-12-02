@@ -24,6 +24,8 @@
 !/data/www/uconnectlabs/wp-config-env-dev-sample.php
 !/data/www/uconnectlabs/package.json
 !/data/www/uconnectlabs/gulpfile.js
+!/data/www/uconnectlabs/ruleset.xml
+!/data/www/uconnectlabs/bin
 
 # Ignore Certificate Authority
 /ca/*

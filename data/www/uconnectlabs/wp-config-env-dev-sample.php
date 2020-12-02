@@ -34,12 +34,15 @@ define( 'WP_CRON_LOCK_TIMEOUT', 60 );
 
 define( 'UC_RECAPTCHA_VERIFY_HOST', false );
 
+
+define( 'ENABLE_TRACING_CODE', true );
+define( 'DEV_LOCAL_SERVER_USER', 'your_name' );
+define( 'HIDE_PHP_ERRORS', true );
+define( 'VERBOSE_PHP_ERRORS', true );
+
 // Define some variables that are used when developing - DEV_LOCAL_SERVER_DOMAIN should
 // be pointed to the office IP address, with ports 80 and 443 pointing to a dev laptop.
-define( 'DEV_LOCAL_SERVER_USER', 'parham' );
 define( 'DEV_LOCAL_SERVER_DOMAIN', DEV_LOCAL_SERVER_USER . '.dev.loc.uconnectlabs.com' );
-
-//define( 'ENABLE_TRACING_CODE', true);
 
 //define( 'UC_OBJECT_CACHE', 'redis' );
 
