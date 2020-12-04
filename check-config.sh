@@ -218,6 +218,7 @@ fi
 print_head_1 "Checking .env file values"
 
 WRONG_ENV_FILES_VALUES=0
+
 DEBUG_COMPOSE_ENTRYPOINT="$( get_env_value "DEBUG_COMPOSE_ENTRYPOINT" )"
 if [ "${DEBUG_COMPOSE_ENTRYPOINT}" != "0" ] && [ "${DEBUG_COMPOSE_ENTRYPOINT}" != "1" ] && [ "${DEBUG_COMPOSE_ENTRYPOINT}" != "2" ]; then
 	log_err "Variable 'DEBUG_COMPOSE_ENTRYPOINT' should be 0, 1 or 2. Has: ${DEBUG_COMPOSE_ENTRYPOINT}"
@@ -392,6 +393,7 @@ NEW_UID="$( get_env_value "NEW_UID" )"
 if [ "${NEW_UID}" != "${MY_UID}" ]; then
 	log_err "Variable 'NEW_UID' has wrong value: '${NEW_UID}'. Should have: ${MY_UID}"
 	RET_CODE=$(( RET_CODE + 1))
+	WRONG_ENV_FILES_VALUES=1
 else
 	log_debug "Variable 'NEW_UID' has correct value: '${NEW_UID}'"
 fi
@@ -400,10 +402,27 @@ NEW_GID="$( get_env_value "NEW_GID" )"
 if [ "${NEW_GID}" != "${MY_GID}" ]; then
 	log_err "Variable 'NEW_GID' has wrong value: '${NEW_GID}'. Should have: ${MY_GID}"
 	RET_CODE=$(( RET_CODE + 1))
+	WRONG_ENV_FILES_VALUES=1
 else
 	log_debug "Variable 'NEW_GID' has correct value: '${NEW_GID}'"
 fi
 
+TLD_SUFFIX="$( get_env_value "TLD_SUFFIX" )"
+TLD_SUFFIX_BLACKLIST="dev|com|org|net|int|edu|de"
+if echo "${TLD_SUFFIX}" | grep -E "^(${TLD_SUFFIX_BLACKLIST})\$" >/dev/null; then
+	log_err "Variable 'TLD_SUFFX' should not be set to '${TLD_SUFFIX}'. It is a real tld domain."
+	log_err "All DNS requests will be intercepted to this tld domain and re-routed to the HTTP container."
+	log_info "Consider using a subdomain value of e.g.: 'mydev.${TLD_SUFFIX}' instead."
+	RET_CODE=$(( RET_CODE + 1))
+	WRONG_ENV_FILES_VALUES=1
+elif [ "${TLD_SUFFIX}" = "localhost" ]; then
+	log_err "Variable 'TLD_SUFFX' should not be set to '${TLD_SUFFIX}'. It is a loopback address."
+	log_info "See: https://tools.ietf.org/html/draft-west-let-localhost-be-localhost-06"
+	RET_CODE=$(( RET_CODE + 1))
+	WRONG_ENV_FILES_VALUES=1
+else
+	log_debug "Variable 'TLD_SUFFIX' has correct value: '${TLD_SUFFIX}'"
+fi
 
 if [ "${WRONG_ENV_FILES_VALUES}" = "0" ]; then
 	log_ok "All .env file variables have correct values"
