@@ -1,10 +1,55 @@
 # Changelog
 
-Make sure to have a look at [UPDATING](https://github.com/cytopia/devilbox/blob/master/UPDATING.md) to see any required steps for updating
-major versions.
+Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/blob/master/UPDATING.md) to see any required steps for updating major or minor versions.
 
 
 ## Unreleased
+
+
+## Release v1.9.0 (2020-12-12)
+
+#### Fixed
+
+- [#761](https://github.com/cytopia/devilbox/issues/761) Fixed missing Varnish config env var
+- [#10](https://github.com/devilbox/watcherd/issues/10) watcherd performance issues
+- Fixed `mdl` rubygen for PHP images
+- Fixed `drupal` (Drupal Console Launcher) for PHP images
+
+#### Added
+
+- Added `ioncube` extension to PHP 7.4
+- Added `sqlsrv` extension to PHP 7.4
+- Added `apcu` extension to PHP 8.0
+- Added `blackfire` extension to PHP 8.0
+- Added `igbinary` extension to PHP 8.0
+- Added `imap` extension to PHP 8.0
+- Added `mcrypt` extension to PHP 8.0
+- Added `memcache` extension to PHP 8.0
+- Added `msgpack` extension to PHP 8.0
+- Added `oauth` extension to PHP 8.0
+- Added `psr` extension to PHP 8.0
+- Added `solr` extension to PHP 8.0
+- Added `xlswriter` extension to PHP 8.0
+- Added `yaml` extension to PHP 8.0
+- Added `apcu` extension to PHP 8.1
+- Added `igbinary` extension to PHP 8.1
+- Added `imap` extension to PHP 8.1
+- Added `mcrypt` extension to PHP 8.1
+- Added `memcache` extension to PHP 8.1
+- Added `msgpack` extension to PHP 8.1
+- Added `oauth` extension to PHP 8.1
+- Added `psr` extension to PHP 8.1
+- Added `solr` extension to PHP 8.1
+- Added `xlswriter` extension to PHP 8.1
+- Added `yaml` extension to PHP 8.1
+- Added checks for TLD_SUFFIX in check-config.sh
+
+#### Changed
+
+- [#763](https://github.com/cytopia/devilbox/issues/764) `redis` extension compiles with `msgpack` and `igbinary` as available serializers
+- Updated xdebug to latest version
+- Updated `watcherd` to latest version
+- Updated `vhost-gen` to latest version
 
 
 ## Release v1.8.3 (2020-11-22)

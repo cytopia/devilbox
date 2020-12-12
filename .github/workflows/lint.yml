@@ -49,6 +49,13 @@ jobs:
           cd .tests/
           make lint-tests
 
+      - name: Update Readme
+        shell: bash
+        run: |
+          cd .tests/
+          make make update-readme
+          git diff --quiet || { echo "Build Changes"; git diff; git status; false; };
+
       - name: Check configuration
         shell: bash
         run: |
