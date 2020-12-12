@@ -53,7 +53,7 @@ jobs:
         shell: bash
         run: |
           cd .tests/
-          make make update-readme
+          make update-readme
           git diff --quiet || { echo "Build Changes"; git diff; git status; false; };
 
       - name: Check configuration
