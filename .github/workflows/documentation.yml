@@ -48,7 +48,22 @@ jobs:
       - name: Check documentation
         shell: bash
         run: |
+          retry() {
+            for n in $(seq ${RETRIES}); do
+              echo "[${n}/${RETRIES}] ${*}";
+              if eval "${*}"; then
+                echo "[SUCC] ${n}/${RETRIES}";
+                return 0;
+              fi;
+              sleep ${PAUSE};
+              echo "[FAIL] ${n}/${RETRIES}";
+            done;
+            return 1;
+          }
+
           cd docs
-          make ${TARGET}
+          retry make ${TARGET}
         env:
           TARGET: ${{ matrix.target }}
+          RETRIES: 20
+          PAUSE: 10

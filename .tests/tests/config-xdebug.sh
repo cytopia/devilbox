@@ -60,18 +60,18 @@ fi
 ### Xdebug default disabled
 ###
 printf "[TEST] Xdebug default disabled"
-if [ "${PHP_VERSION}" = "8.0" ] || [ "${PHP_VERSION}" = "8.1" ]; then
-	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.mode' | grep -E 'develop.+develop' >/dev/null" "${RETRIES}" "" "0"; then
+if [ "${PHP_VERSION}" = "5.2" ] || [ "${PHP_VERSION}" = "5.3" ] || [ "${PHP_VERSION}" = "5.4" ] || [ "${PHP_VERSION}" = "5.5" ] || [ "${PHP_VERSION}" = "5.6" ] || [ "${PHP_VERSION}" = "7.0" ] || [ "${PHP_VERSION}" = "7.1" ]; then
+	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.remote_enable' | grep -E 'Off.+Off' >/dev/null" "${RETRIES}" "" "0"; then
 		printf "\\r[FAIL] Xdebug default disabled\\n"
-		run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.mode' || true"
+		run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.remote_enable' || true"
 		exit 1
 	else
 		printf "\\r[OK]   Xdebug default disabled\\n"
 	fi
 else
-	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.remote_enable' | grep -E 'Off.+Off' >/dev/null" "${RETRIES}" "" "0"; then
+	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.mode' | grep -E 'develop.+develop' >/dev/null" "${RETRIES}" "" "0"; then
 		printf "\\r[FAIL] Xdebug default disabled\\n"
-		run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.remote_enable' || true"
+		run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.mode' || true"
 		exit 1
 	else
 		printf "\\r[OK]   Xdebug default disabled\\n"
@@ -82,18 +82,18 @@ fi
 ### Xdebug autostart disabled
 ###
 printf "[TEST] Xdebug autostart disabled"
-if [ "${PHP_VERSION}" = "8.0" ] || [ "${PHP_VERSION}" = "8.1" ]; then
-	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.start_with_request' | grep -E 'default.+default' >/dev/null" "${RETRIES}" "" "0"; then
+if [ "${PHP_VERSION}" = "5.2" ] || [ "${PHP_VERSION}" = "5.3" ] || [ "${PHP_VERSION}" = "5.4" ] || [ "${PHP_VERSION}" = "5.5" ] || [ "${PHP_VERSION}" = "5.6" ] || [ "${PHP_VERSION}" = "7.0" ] || [ "${PHP_VERSION}" = "7.1" ]; then
+	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.remote_autostart' | grep -E 'Off.+Off' >/dev/null" "${RETRIES}" "" "0"; then
 		printf "\\r[FAIL] Xdebug autostart disabled\\n"
-		run "curl 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.start_with_request' || true"
+		run "curl 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.remote_autostart' || true"
 		exit 1
 	else
 		printf "\\r[OK]   Xdebug autostart disabled\\n"
 	fi
 else
-	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.remote_autostart' | grep -E 'Off.+Off' >/dev/null" "${RETRIES}" "" "0"; then
+	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.start_with_request' | grep -E 'default.+default' >/dev/null" "${RETRIES}" "" "0"; then
 		printf "\\r[FAIL] Xdebug autostart disabled\\n"
-		run "curl 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.remote_autostart' || true"
+		run "curl 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.start_with_request' || true"
 		exit 1
 	else
 		printf "\\r[OK]   Xdebug autostart disabled\\n"
