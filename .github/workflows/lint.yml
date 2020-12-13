@@ -25,16 +25,8 @@ on:
 # -------------------------------------------------------------------------------------------------
 jobs:
   lint:
-
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        jobs:
-          - tests
-
-    name: "[Lint ${{ matrix.jobs }}]"
+    name: "[Lint]"
     steps:
 
       # ------------------------------------------------------------
@@ -46,13 +38,68 @@ jobs:
       - name: Lint
         shell: bash
         run: |
+          retry() {
+            for n in $(seq ${RETRIES}); do
+              echo "[${n}/${RETRIES}] ${*}";
+              if eval "${*}"; then
+                echo "[SUCC] ${n}/${RETRIES}";
+                return 0;
+              fi;
+              sleep ${PAUSE};
+              echo "[FAIL] ${n}/${RETRIES}";
+            done;
+            return 1;
+          }
+
           cd .tests/
-          make lint-tests
+          retry make lint-tests
+        env:
+          RETRIES: 20
+          PAUSE: 10
+
+      - name: Update Readme
+        shell: bash
+        run: |
+          retry() {
+            for n in $(seq ${RETRIES}); do
+              echo "[${n}/${RETRIES}] ${*}";
+              if eval "${*}"; then
+                echo "[SUCC] ${n}/${RETRIES}";
+                return 0;
+              fi;
+              sleep ${PAUSE};
+              echo "[FAIL] ${n}/${RETRIES}";
+            done;
+            return 1;
+          }
+
+          cd .tests/
+          retry make update-readme
+          git diff --quiet || { echo "Build Changes"; git diff; git status; false; };
+        env:
+          RETRIES: 20
+          PAUSE: 10
 
       - name: Check configuration
         shell: bash
         run: |
+          retry() {
+            for n in $(seq ${RETRIES}); do
+              echo "[${n}/${RETRIES}] ${*}";
+              if eval "${*}"; then
+                echo "[SUCC] ${n}/${RETRIES}";
+                return 0;
+              fi;
+              sleep ${PAUSE};
+              echo "[FAIL] ${n}/${RETRIES}";
+            done;
+            return 1;
+          }
+
           cp env-example .env
           sed -i'' "s/^NEW_UID=.*/NEW_UID=$(id -u)/g" .env
           sed -i'' "s/^NEW_GID=.*/NEW_GID=$(id -g)/g" .env
-          ./check-config.sh
+          retry ./check-config.sh
+        env:
+          RETRIES: 20
+          PAUSE: 10
