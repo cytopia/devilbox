@@ -91,6 +91,10 @@ class Html
 				array(
 					'name' => 'Memcached Info',
 					'path' => '/info_memcd.php'
+				),
+				array(
+					'name' => 'XDebug Control Panel',
+					'path' => '/xdebug.php'
 				)
 			)
 		),
@@ -129,10 +133,6 @@ class Html
 				array(
 					'name' => 'Opcache Control Panel',
 					'path' => '/vendor/ocp.php'
-				),
-				array(
-					'name' => 'XDebug Control Panel',
-					'path' => '/vendor/xdebug.php'
 				)
 			)
 		)
