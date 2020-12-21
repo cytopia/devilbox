@@ -16,7 +16,13 @@
 					<style>
 						body {width: 100% !important;}
 					</style>
-					<?php xdebug_info(); ?>
+					<?php if (($version = phpversion('xdebug')) === false): ?>
+						<p><code>xdebug</code> module is not enabled.</p>
+					<?php elseif (!function_exists('xdebug_info')): ?>
+						<p>Xdebug info only available with <code>xdebug 3.x.x</code> or greater. Your version is <code>xdebug <?php echo $version;?></code></p>
+					<?php else:?>
+						<?php xdebug_info(); ?>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div><!-- /.container -->
