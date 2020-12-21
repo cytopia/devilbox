@@ -91,6 +91,10 @@ class Html
 				array(
 					'name' => 'Memcached Info',
 					'path' => '/info_memcd.php'
+				),
+				array(
+					'name' => 'XDebug Control Panel',
+					'path' => '/xdebug.php'
 				)
 			)
 		),
