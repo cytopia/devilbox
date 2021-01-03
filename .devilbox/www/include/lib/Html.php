@@ -73,6 +73,10 @@ class Html
 					'path' => '/info_php.php'
 				),
 				array(
+					'name' => 'PHP Xdebug Info',
+					'path' => '/info_xdebug.php'
+				),
+				array(
 					'name' => 'MySQL Info',
 					'path' => '/info_mysql.php'
 				),
@@ -92,10 +96,6 @@ class Html
 					'name' => 'Memcached Info',
 					'path' => '/info_memcd.php'
 				),
-				array(
-					'name' => 'XDebug Control Panel',
-					'path' => '/xdebug.php'
-				)
 			)
 		),
 		array(

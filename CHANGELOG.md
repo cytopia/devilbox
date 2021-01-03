@@ -8,6 +8,10 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 
 ## Release v1.9.1 (2021-01-03)
 
+#### Added
+
+- Added PHP Xdebug info page for intranet
+
 #### Changed
 
 - [#769](https://github.com/cytopia/devilbox/issues/769) Adjusted Xdebug 3.0 defaults
