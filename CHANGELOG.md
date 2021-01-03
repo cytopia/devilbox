@@ -6,6 +6,15 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v1.9.1 (2021-01-03)
+
+#### Changed
+
+- [#769](https://github.com/cytopia/devilbox/issues/769) Adjusted Xdebug 3.0 defaults
+
+
+#### Fixed
+
 ## Release v1.9.0 (2020-12-12)
 
 #### Fixed
