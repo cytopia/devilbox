@@ -26,7 +26,7 @@
 !/data/www/uconnectlabs/gulpfile.js
 !/data/www/uconnectlabs/ruleset.xml
 !/data/www/uconnectlabs/bin
-
+!/data/www/uconnectlabs/build-tool
 # Ignore Certificate Authority
 /ca/*
 

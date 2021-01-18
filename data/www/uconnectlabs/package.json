@@ -2,12 +2,53 @@
   "name": "uconnect",
   "version": "1.0.0",
   "description": "uConnect Application",
+  "author": "Farsad Ghaffarian",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "NODE_ENV=development gulp --require @babel/register --gulpfile build-tool",
+    "build": "NODE_ENV=production gulp build --require @babel/register --gulpfile build-tool"
   },
-  "author": "Parham Ghaffarian <parham@gouconnect.com>",
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/preset-stage-0": "^7.8.3",
+    "@babel/register": "^7.12.10",
+    "@wordpress/babel-preset-default": "^4.20.0",
+    "babel-loader": "^8.2.2",
+    "browser-sync": "^2.26.13",
+    "glob": "^7.1.6",
     "gulp": "^4.0.2",
-    "gulp-less": "^4.0.1"
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-cached": "^1.1.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-debug": "^4.0.0",
+    "gulp-dependents": "^1.2.5",
+    "gulp-if": "^3.0.0",
+    "gulp-ignore": "^3.0.0",
+    "gulp-less": "^4.0.1",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "less": "3.13.1",
+    "lib-sass-data-uri": "^0.0.4",
+    "md5-jkmyers": "^0.0.1",
+    "node-sass": "^5.0.0",
+    "sass": "^1.30.0",
+    "through2": "^4.0.2",
+    "vinyl-named": "^1.1.0",
+    "vinyl-named-with-path": "^1.0.0",
+    "webpack": "^5.11.0",
+    "webpack-stream": "^6.1.1"
+  },
+  "dependencies": {},
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }
