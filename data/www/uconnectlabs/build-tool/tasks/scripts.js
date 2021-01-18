@@ -8,6 +8,8 @@ import named from 'vinyl-named-with-path'
 import webpack from 'webpack-stream'
 import plumber from 'gulp-plumber'
 import notify from 'gulp-notify'
+import debug from 'gulp-debug'
+
 import log from './log'
 import {paths, basePath} from '../paths'
 import {webpackConfig} from '../webpack.config'
@@ -18,9 +20,9 @@ export function themesScripts() {
         allowEmpty: true
     })
         // prevent caching to force all the files compile for production.
-        .pipe(gulpif(process.env.NODE_ENV === 'development', cached('themes_sass')))
+        .pipe(gulpif(process.env.NODE_ENV === 'development', cached('themes_script')))
         // Do not break tasks and gulp in case of error. Just show a notification.
-        .pipe(plumber({errorHandler: notify.onError("Error in js build.")}))
+        .pipe(gulpif(process.env.NODE_ENV === 'development', plumber({errorHandler: notify.onError("Error in js build.")})))
         // find all the files dependent to the current processing file and add them to the pipeline.
         .pipe(dependents())
         // exclude dependencies and only keep files should be compiled
