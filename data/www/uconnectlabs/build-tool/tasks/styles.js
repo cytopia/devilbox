@@ -75,13 +75,16 @@ export function deprecatedStyles(file, dest) {
         console.log('converting less: ', file)
         return gulp.src(file, {base: "./"})
             .pipe(less())
+            // write generate .css to destination
             .pipe(gulp.dest(dest));
     } else {
         return gulp.src(paths.deprecated.styles.src, {base: "./"})
             .pipe(less())
             // add browser specific prefixes to css (e.g. -moz, -webkit)
             .pipe(autoprefixer())
-            .pipe(gulp.dest(paths.deprecated.styles.dest))
+            // write generate .css to destination
+            // TODO: enable it when less compiler in the docker removed
+            // .pipe(gulp.dest(paths.deprecated.styles.dest))
             // write version of file into /themes/plugins_css_versions.php (versions are md5 of file contents)
             .pipe(gulpif(process.env.NODE_ENV === 'production', log('deprecated_css_versions')));
     }
