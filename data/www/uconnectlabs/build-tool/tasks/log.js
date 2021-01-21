@@ -1,6 +1,7 @@
 import fs from 'fs'
 import through2 from 'through2'
 import md5 from 'md5-jkmyers'
+import sortPaths from 'sort-paths'
 import {basePath} from "../paths";
 
 export default function log(name) {
@@ -11,7 +12,7 @@ export default function log(name) {
         return callback();
     }, function (cb) {
         let phpString = `<?php \n $${name}=[`
-        phpString += files.filter(file => !file.path.endsWith('.map')).map(file => {
+        phpString += sortPaths(files.filter(file => !file.path.endsWith('.map')),  item=>item.path, '/').map(file => {
             const regex = /\/wp-content\/(.*)/gm;
             return `'${regex.exec(file.path)[1]}' => '${file.contents !== '' ? md5(file.contents.toString('utf8')) : 'empty'}'`
         }).join(',\n')
