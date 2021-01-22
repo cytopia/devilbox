@@ -3,6 +3,31 @@
 This document will hold all information on how to update between major versions.
 
 
+## Update from `v1.8.1` to `v1.8.2`
+
+**PR:** https://github.com/cytopia/devilbox/pull/750
+
+This PR adds many new images, ensure to remove your current old state before running them:
+```bash
+docker-compose stop
+docker-compose rm -f
+```
+
+
+## Update from `v1.8.0` to `v1.8.1`
+
+**PR:** https://github.com/cytopia/devilbox/pull/747
+
+This PR ensures to have all directories in log/ mod/ cfg/ added by default. Prior this, some
+of those directories might have been created by Docker (running as root) and they have the wrong
+permissions (root instead of local user).
+To mitigate this, you need to adjust directory permissions prior pulling this tag.
+
+```bash
+sudo chown -R <user>:<group> .
+```
+
+
 ## Update from `v1.6.2` to `v1.6.3`
 
 **PR:** https://github.com/cytopia/devilbox/pull/689

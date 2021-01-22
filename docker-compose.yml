@@ -95,7 +95,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.112
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.122
     hostname: php
 
     ##
@@ -183,7 +183,7 @@ services:
       - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
 
       # Mount DB Backup directory
-      - ${DEVILBOX_PATH}/backups:/shared/backups:rw${MOUNT_OPTIONS}
+      - ${HOST_PATH_BACKUPDIR:-./backups}:/shared/backups:rw${MOUNT_OPTIONS}
 
       # Mount devilbox user-defined *.ini files in order
       # to overwrite the default PHP.ini configuration
@@ -204,6 +204,9 @@ services:
       # Mount devilbox user-defined bash config
       - ${DEVILBOX_PATH}/bash:/etc/bashrc-devilbox.d:rw${MOUNT_OPTIONS}
 
+      # Mount devilbox user-defined supervisord config
+      - ${DEVILBOX_PATH}/supervisor:/etc/supervisor/custom.d:rw${MOUNT_OPTIONS}
+
       # Certificate Authority public key
       - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
 
@@ -218,7 +221,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER}:0.33
+    image: devilbox/${HTTPD_SERVER}:0.36
     hostname: httpd
 
     environment:
@@ -317,7 +320,7 @@ services:
   # MySQL Database
   # ------------------------------------------------------------
   mysql:
-    image: devilbox/mysql:${MYSQL_SERVER}-0.5
+    image: devilbox/mysql:${MYSQL_SERVER}-0.7
     hostname: mysql
 
     environment:
@@ -375,9 +378,6 @@ services:
       # ---- Format: ----
       # HOST-DIRECTORY : DOCKER-DIRECTORY
 
-      # Mount logs
-      - ${DEVILBOX_PATH}/log/pgsql-${PGSQL_SERVER}:/var/log/postgresql:rw${MOUNT_OPTIONS}
-
       # Mount PostgreSQL Data directory
       - devilbox-pgsql-${PGSQL_SERVER}:/var/lib/postgresql/data/pgdata:rw${MOUNT_OPTIONS}
 
@@ -427,13 +427,6 @@ services:
     networks:
       app_net:
         ipv4_address: 172.16.238.15
-
-    volumes:
-      # ---- Format: ----
-      # HOST-DIRECTORY : DOCKER-DIRECTORY
-
-      # Mount logs
-      - ${DEVILBOX_PATH}/log/memcd-${MEMCD_SERVER}:/var/log/memcd:rw${MOUNT_OPTIONS}
 
     depends_on:
       - bind
@@ -506,6 +499,7 @@ volumes:
   devilbox-mariadb-10.2:
   devilbox-mariadb-10.3:
   devilbox-mariadb-10.4:
+  devilbox-mariadb-10.5:
   devilbox-percona-5.5:
   devilbox-percona-5.6:
   devilbox-percona-5.7:
@@ -554,10 +548,24 @@ volumes:
   devilbox-pgsql-11.5-alpine:
   devilbox-pgsql-11.6:
   devilbox-pgsql-11.6-alpine:
+  devilbox-pgsql-11.7:
+  devilbox-pgsql-11.7-alpine:
+  devilbox-pgsql-11.8:
+  devilbox-pgsql-11.8-alpine:
+  devilbox-pgsql-11.9:
+  devilbox-pgsql-11.9-alpine:
   devilbox-pgsql-12.0:
   devilbox-pgsql-12.0-alpine:
   devilbox-pgsql-12.1:
   devilbox-pgsql-12.1-alpine:
+  devilbox-pgsql-12.2:
+  devilbox-pgsql-12.2-alpine:
+  devilbox-pgsql-12.3:
+  devilbox-pgsql-12.3-alpine:
+  devilbox-pgsql-12.4:
+  devilbox-pgsql-12.4-alpine:
+  devilbox-pgsql-13.0:
+  devilbox-pgsql-13.0-alpine:
   devilbox-pgsql-latest:
   devilbox-pgsql-alpine:
 
@@ -571,4 +579,5 @@ volumes:
   devilbox-mongo-3.6:
   devilbox-mongo-4.0:
   devilbox-mongo-4.2:
+  devilbox-mongo-4.4:
   devilbox-mongo-latest:

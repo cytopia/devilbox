@@ -7,6 +7,10 @@
 Setup Contao
 ************
 
+.. important::
+   **You can find a more up-to-date version in the official Contao Documentation:**
+   |ext_lnk_example_contao_devilbox_documentation|
+
 This example will use ``composer`` to install Contao CMS from within the Devilbox PHP container.
 
 .. important::
@@ -19,7 +23,9 @@ This example will use ``composer`` to install Contao CMS from within the Devilbo
 After completing the below listed steps, you will have a working Contao CMS setup ready to be
 served via http and https.
 
-.. seealso:: |ext_lnk_example_contao_documentation|
+.. seealso::
+   * |ext_lnk_example_contao_documentation|
+   * |ext_lnk_example_contao_devilbox_documentation|
 
 
 **Table of Contents**

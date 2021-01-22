@@ -226,3 +226,29 @@ run_fail() {
 	fi
 	return 1
 }
+
+
+###
+### Create and validate vhost directory
+###
+create_vhost_dir() {
+	local vhost="${1}"
+
+	echo "Ensure vhost '${vhost}' is created"
+
+	# Clean vhost dir
+	cd "${DVLBOX_PATH}"
+	while docker-compose exec --user devilbox -T php curl -sS --fail "http://php/vhosts.php" | grep ">${vhost}<" >/dev/null; do
+		echo "Deleting vhost: ${vhost}"
+		run "docker-compose exec --user devilbox -T php bash -c 'rm -rf /shared/httpd/${vhost} && sleep 5;'" "1" "${DVLBOX_PATH}"
+	done
+
+	# Create vhost dir
+	cd "${DVLBOX_PATH}"
+	while ! docker-compose exec --user devilbox -T php curl -sS --fail "http://php/vhosts.php" | grep ">${vhost}<" >/dev/null; do
+		echo "Recreating vhost: ${vhost}"
+		run "docker-compose exec --user devilbox -T php bash -c 'rm -rf   /shared/httpd/${vhost} && sleep 5;'" "1" "${DVLBOX_PATH}"
+		run "docker-compose exec --user devilbox -T php bash -c 'mkdir -p /shared/httpd/${vhost} && sleep 5;'" "1" "${DVLBOX_PATH}"
+	done
+	echo "Vhost is present: ${vhost}"
+}

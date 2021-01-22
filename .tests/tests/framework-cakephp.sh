@@ -13,7 +13,7 @@ DVLBOX_PATH="$( cd "${SCRIPT_PATH}/../.." && pwd -P )"
 . "${SCRIPT_PATH}/../scripts/.lib.sh"
 
 RETRIES=10
-DISABLED_VERSIONS=("5.2" "5.3" "5.4" "5.5" "8.0")
+DISABLED_VERSIONS=("5.2" "5.3" "5.4" "5.5" "8.0" "8.1")
 
 
 echo
@@ -43,42 +43,45 @@ fi
 ###
 MYSQL_ROOT_PASSWORD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "MYSQL_ROOT_PASSWORD" )"
 TLD_SUFFIX="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "TLD_SUFFIX" )"
+VHOST="my-cakephp"
+
+# Create vhost dir
+create_vhost_dir "${VHOST}"
 
 
 # Setup CakePHP project
-run "docker-compose exec --user devilbox -T php bash -c 'mkdir -p /shared/httpd/cakephp'" "${RETRIES}" "${DVLBOX_PATH}"
-run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/cakephp; rm -rf cakephp; composer create-project --no-interaction --prefer-dist cakephp/app cakephp 3.8'" "${RETRIES}" "${DVLBOX_PATH}"
-run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/cakephp; ln -sf cakephp/webroot htdocs'" "${RETRIES}" "${DVLBOX_PATH}"
+run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/${VHOST}; composer create-project --no-interaction --prefer-dist cakephp/app cakephp 3.8'" "${RETRIES}" "${DVLBOX_PATH}"
+run "docker-compose exec --user devilbox -T php bash -c 'cd /shared/httpd/${VHOST}; ln -sf cakephp/webroot htdocs'" "${RETRIES}" "${DVLBOX_PATH}"
 run "docker-compose exec --user devilbox -T php mysql -u root -h mysql --password=\"${MYSQL_ROOT_PASSWORD}\" -e \"DROP DATABASE IF EXISTS my_cake; CREATE DATABASE my_cake;\"" "${RETRIES}" "${DVLBOX_PATH}"
 
 # Configure CakePHP database settings
-run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/'host' =>.*/'host' => 'mysql',/g\" /shared/httpd/cakephp/cakephp/config/app.php" "${RETRIES}" "${DVLBOX_PATH}"
-run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/'username' =>.*/'username' => 'root',/g\" /shared/httpd/cakephp/cakephp/config/app.php" "${RETRIES}" "${DVLBOX_PATH}"
-run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/'password' =>.*/'password' => '${MYSQL_ROOT_PASSWORD}',/g\" /shared/httpd/cakephp/cakephp/config/app.php" "${RETRIES}" "${DVLBOX_PATH}"
-run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/'database' =>.*/'database' => 'my_cake',/g\" /shared/httpd/cakephp/cakephp/config/app.php" "${RETRIES}" "${DVLBOX_PATH}"
+run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/'host' =>.*/'host' => 'mysql',/g\" /shared/httpd/${VHOST}/cakephp/config/app.php" "${RETRIES}" "${DVLBOX_PATH}"
+run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/'username' =>.*/'username' => 'root',/g\" /shared/httpd/${VHOST}/cakephp/config/app.php" "${RETRIES}" "${DVLBOX_PATH}"
+run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/'password' =>.*/'password' => '${MYSQL_ROOT_PASSWORD}',/g\" /shared/httpd/${VHOST}/cakephp/config/app.php" "${RETRIES}" "${DVLBOX_PATH}"
+run "docker-compose exec --user devilbox -T php sed -i\"\" \"s/'database' =>.*/'database' => 'my_cake',/g\" /shared/httpd/${VHOST}/cakephp/config/app.php" "${RETRIES}" "${DVLBOX_PATH}"
 
 # Test CakePHP
 ERROR=0
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://cakephp.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'mbstring'" "${RETRIES}" "${DVLBOX_PATH}"; then
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'mbstring'" "${RETRIES}" "${DVLBOX_PATH}"; then
 	ERROR=1
 fi
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://cakephp.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'openssl'" "${RETRIES}" "${DVLBOX_PATH}"; then
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'openssl'" "${RETRIES}" "${DVLBOX_PATH}"; then
 	ERROR=1
 fi
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://cakephp.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'intl'" "${RETRIES}" "${DVLBOX_PATH}"; then
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'intl'" "${RETRIES}" "${DVLBOX_PATH}"; then
 	ERROR=1
 fi
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://cakephp.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'tmp directory'" "${RETRIES}" "${DVLBOX_PATH}"; then
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'tmp directory'" "${RETRIES}" "${DVLBOX_PATH}"; then
 	ERROR=1
 fi
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://cakephp.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'logs directory'" "${RETRIES}" "${DVLBOX_PATH}"; then
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'logs directory'" "${RETRIES}" "${DVLBOX_PATH}"; then
 	ERROR=1
 fi
-if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://cakephp.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'connect to the database'" "${RETRIES}" "${DVLBOX_PATH}"; then
+if ! run "docker-compose exec --user devilbox -T php curl -sS --fail 'http://${VHOST}.${TLD_SUFFIX}' | tac | tac | grep '\"bullet success\"' | grep 'connect to the database'" "${RETRIES}" "${DVLBOX_PATH}"; then
 	ERROR=1
 fi
 
 if [ "${ERROR}" = "1" ]; then
-	run "docker-compose exec --user devilbox -T php curl 'http://cakephp.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}"
+	run "docker-compose exec --user devilbox -T php curl 'http://${VHOST}.${TLD_SUFFIX}' || true" "1" "${DVLBOX_PATH}"
 	exit 1
 fi

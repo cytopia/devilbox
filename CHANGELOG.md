@@ -1,10 +1,126 @@
 # Changelog
 
-Make sure to have a look at [UPDATING](https://github.com/cytopia/devilbox/blob/master/UPDATING.md) to see any required steps for updating
-major versions.
+Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/blob/master/UPDATING.md) to see any required steps for updating major or minor versions.
 
 
 ## Unreleased
+
+
+## Release v1.9.0 (2020-12-12)
+
+#### Fixed
+
+- [#761](https://github.com/cytopia/devilbox/issues/761) Fixed missing Varnish config env var
+- [#10](https://github.com/devilbox/watcherd/issues/10) watcherd performance issues
+- Fixed `mdl` rubygen for PHP images
+- Fixed `drupal` (Drupal Console Launcher) for PHP images
+
+#### Added
+
+- Added `ioncube` extension to PHP 7.4
+- Added `sqlsrv` extension to PHP 7.4
+- Added `apcu` extension to PHP 8.0
+- Added `blackfire` extension to PHP 8.0
+- Added `igbinary` extension to PHP 8.0
+- Added `imap` extension to PHP 8.0
+- Added `mcrypt` extension to PHP 8.0
+- Added `memcache` extension to PHP 8.0
+- Added `msgpack` extension to PHP 8.0
+- Added `oauth` extension to PHP 8.0
+- Added `psr` extension to PHP 8.0
+- Added `solr` extension to PHP 8.0
+- Added `xlswriter` extension to PHP 8.0
+- Added `yaml` extension to PHP 8.0
+- Added `apcu` extension to PHP 8.1
+- Added `igbinary` extension to PHP 8.1
+- Added `imap` extension to PHP 8.1
+- Added `mcrypt` extension to PHP 8.1
+- Added `memcache` extension to PHP 8.1
+- Added `msgpack` extension to PHP 8.1
+- Added `oauth` extension to PHP 8.1
+- Added `psr` extension to PHP 8.1
+- Added `solr` extension to PHP 8.1
+- Added `xlswriter` extension to PHP 8.1
+- Added `yaml` extension to PHP 8.1
+- Added checks for TLD_SUFFIX in check-config.sh
+
+#### Changed
+
+- [#763](https://github.com/cytopia/devilbox/issues/764) `redis` extension compiles with `msgpack` and `igbinary` as available serializers
+- Updated xdebug to latest version
+- Updated `watcherd` to latest version
+- Updated `vhost-gen` to latest version
+
+
+## Release v1.8.3 (2020-11-22)
+
+#### Fixed
+
+- [#753](https://github.com/cytopia/devilbox/issues/753) Fixed symlink handling in watcherd
+- [#751](https://github.com/cytopia/devilbox/issues/751) Fixed duplicate output in check-config.sh
+
+#### Added
+
+- [#755](https://github.com/cytopia/devilbox/issues/755) Added ~/.composer/vendor/bin to $PATH
+- [#692](https://github.com/cytopia/devilbox/issues/692) Added custom supervisor configs
+- Added project and customization checks in check-config.sh
+- Intranet: show custom PHP configuration files
+- Intranet: show custom Httpd configuration files
+
+
+## Release v1.8.2 (2020-11-14)
+
+#### Fixed
+- [#643](https://github.com/cytopia/devilbox/issues/643) Wrong entrypoint in mysql images
+- [#703](https://github.com/cytopia/devilbox/issues/703) Don't fail on uid/gid change
+- [#749](https://github.com/cytopia/devilbox/issues/749) Fix to disable PHP modules without `*.so` ext
+- Fixed `check-config.sh` to properly expand `~` character in path
+
+#### Added
+- [#707](https://github.com/cytopia/devilbox/issues/707) New `.env` variable: `HOST_PATH_BACKUPDIR`
+
+#### Changed
+- [#547](https://github.com/cytopia/devilbox/issues/547) Added link to official Contao Devilbox Documentation
+
+
+## Release v1.8.1 (2020-11-12)
+
+#### Fixed
+- Silence PHP warnings in phpmemcached and opcache GUIs
+- [#746](https://github.com/cytopia/devilbox/issues/746) Fix xdebug config for PHP 8.0 and 8.1
+
+#### Added
+- Added `check-config.sh` script to check against correct Devilbox configuration
+
+
+## Release v1.8.0 (2020-11-08)
+
+#### Fixed
+- [#739](https://github.com/cytopia/devilbox/issues/739) Disabled gd-jis: https://bugs.php.net/bug.php?id=73582
+- [#740](https://github.com/cytopia/devilbox/issues/740) Use latest PHP 8.0 image
+
+#### Added
+- [#715](https://github.com/cytopia/devilbox/issues/715) PHP module mongodb is re-added to PHP 8.0
+- Added **PHP 8.1**: https://github.com/devilbox/docker-php-fpm-8.1
+- Added Postgres images: 11.7, 11.8, 11.9, 12.2, 12.3, 12.4, 13.0
+- Added Redis images: 6.0
+- Added Memcache images: 1.6
+- Added MongoDB images: 4.4
+- Added MySQL images: MariaDB 10.5
+
+#### Changed
+- [#736](https://github.com/cytopia/devilbox/issues/736) Composer is updated to v2 (`/usr/local/bin/composer`)
+- [#728](https://github.com/cytopia/devilbox/issues/728) Updated phpPgAdmin from 7.12 to 7.13
+- Updated phpMyAdmin from 5.0.0 to 5.0.4
+- Updated phpMyAdmin from 4.9.3 to 4.9.7
+- Updated Adminer from 4.7.5 to 4.7.7
+- Composer is available as v1 and v2 (`/usr/local/bin/composer-1` and `/usr/local/bin/composer-2`)
+- New default PHP version: 7.4
+- New default MySQL version: MariaDB 10.5
+- New default Postgres version: 12.4
+- New default Redis version: 6.0
+- New default Memcached version 1.6
+- New default MongoDB version: 4.4
 
 
 ## Release v1.7.2 (2020-09-17)

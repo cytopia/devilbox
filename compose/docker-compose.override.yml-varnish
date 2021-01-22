@@ -16,7 +16,7 @@ services:
       app_net:
         ipv4_address: 172.16.238.230
     environment:
-      - VARNISH_CONFIG=/etc/varnish/default.vcl
+      - VARNISH_CONFIG=${VARNISH_CONFIG:-/etc/varnish/default.vcl}
       - CACHE_SIZE=${VARNISH_CACHE_SIZE:-128m}
       - VARNISHD_PARAMS=${VARNISH_PARAMS:--p default_ttl=3600 -p default_grace=3600}
       - BACKEND_HOST=httpd

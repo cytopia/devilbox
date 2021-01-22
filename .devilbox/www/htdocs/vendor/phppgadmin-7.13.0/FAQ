@@ -1,0 +1,217 @@
+phpPgAdmin Frequently Asked Questions
+-------------------------------------
+
+Installation errors
+-------------------
+
+Q: I've installed phpPgAdmin but when I try to use it I get an error message
+   telling me that I have not compiled proper database support into my
+   PHP installation. 
+
+A: This means that you have not properly compiled Postgres support into
+   your PHP. The correct configure flag to use is '--with-pgsql'.  Read the
+   PHP manual and website for more help with this.
+
+   Postgres support can be also compiled into PHP as a dynamic extension, 
+   so if you have precompiled version (Linux RPM, or Windows binary), there 
+   are still chances, that only thing you should do is to enable loading it
+   automagically.
+
+   It can be done by editing your php.ini file (under Windows, usually in 
+   C:\WINDOWS or C:\WINNT, under Linux /etc/php.ini) and uncommenting this 
+   line:
+
+        ;extension=php_pgsql.dll	;under Windows
+	;extension=pgsql.so		;under Linux
+
+   so it would look like that:
+   	
+        extension=php_pgsql.dll		;under Windows
+	extension=pgsql.so		;under Linux
+
+   In Linux distributions based on Red Hat or Fedora, PHP extensions are
+   automatically configured in /etc/php.d/pgsql.ini, simply install the
+   php-pgsql package.
+
+   See http://www.php.net/manual/en/pgsql.setup.php for more information 
+   on setting up Postgres support in PHP.
+
+Q: I get a warning like this when using phpPgAdmin on Windows: 
+
+    "Warning: session_start() [function.session-start]:
+     open(/tmp\sess_5a401ef1e67fb7a176a95236116fe348, O_RDWR) failed"
+
+A: You need to edit your PHP.INI file (usually in c:\windows) and change this
+   line:
+
+    session.save_path = "/tmp"
+
+   to:
+   
+    session.save_path = "c:\windows\temp"
+
+   And make sure that the folder c:\windows\temp actually exists.
+
+
+Login errors
+------------
+
+Q: I always get "Login failed" even though I'm _sure_ I'm using the right
+   username and password.
+
+A: There are a number of reasons why you might not be able to connect, typically
+   having nothing to do with phpPgAdmin itself. First check the Postgres log
+   on your server, it should contain a FATAL error message detailing the exact
+   reason why the login is failing. You will probably need to either adjust the
+   username or password, add LOGIN permissions to the role, or adjust your
+   pg_hba.conf file in your Postgres data dir; so follow the directions laid 
+   out in the FATAL message. 
+
+   If you do not have any FATAL error messages, and you have verified that you
+   are looking at the properly configured logfile, then this means you are not
+   connecting to your database. If you are connecting via TCP/IP sockets (for
+   example if you have installed phpPgAdmin on a different computer than your
+   database) make sure that Postgres is accepting connection over TCP/IP. On
+   older versions of Postgres, you need to change this line in your
+   postgresql.conf file:
+
+       #tcpip_socket = false
+
+   to:
+
+       tcpip_socket = true
+
+   on newer versions of Postgres, this setting has been replaced by the
+   listen_addresses setting, so you will need to change that setting instead
+   (likely changing it to "*"). Be sure to restart Postgres after changing
+   either of these settings!
+
+   If that still doesn't get you connected, then there is likely something
+   interfering between PHP and Postgres. Check to make sure that you don't have
+   a firewall preventing connectivity, or that you don't have some other
+   security setup (ie. SELinux policy) that prevents PHP from connecting. 
+
+Q: For some users I get a "Login disallowed for security" message.
+
+A: Logins via phpPgAdmin with no password or certain usernames (pgsql,
+   postgres, root, administrator) are denied by default. Before changing this
+   behaviour (setting $conf['extra_login_security'] to false in the
+   config.inc.php file) please read the Postgres documentation about client
+   authentication and understand how to change Postgres's pg_hba.conf to
+   enable passworded local connections.
+
+Q: I can use any password to log in!
+
+A: Postgres, by default, runs in trust mode.  That means that it doesn't
+   ask for passwords for local connections.  We highly recommend that you
+   edit your pg_hba.conf file, and change the login type to 'md5'.  Note
+   that if you change the 'local' login type to 'md5', then you might need
+   to enter a password to start Postgres.  Get around this by using a
+   .pgpass file - explained in the Postgres documentation.
+
+
+Other errors
+------------
+
+Q: When I enter non-ASCII data into the database via a form, it's inserted
+   as hexadecimal or &#1234; format!
+
+A: You have not created your database in the correct encoding.  This problem
+   will occur when you try to enter an umlaut into an SQL_ASCII database, or
+   SJIS Japanese into an EUC-JP database, etc.
+
+Q: When I drop and re-create a table with the same name, it fails.
+
+A: You need to drop the sequence attached to the SERIAL column of the table
+   as well.  Postgres 7.3 and above do this automatically.  If you have
+   upgraded to Postgres 7.3 from an earlier version, you need to run the
+   contrib/adddepend script to record all dependencies.
+
+Q: When browsing a table, the 'edit' and 'delete' links do not appear.
+
+A: In order, phpPgAdmin will prefer the following as unique row identifiers:
+
+	1. Primary keys
+	2. Unique keys (cannot be parital or expressional indexes)
+	3. OID column (will require a sequential scan to update, unless you 
+	   index the OID column)
+
+   Furthermore, any NULL values in the unique index will mean that that row
+   will be uneditable.  Also, since OIDs can become duplicated in a table,
+   phpPgAdmin will alter the row, and then check to ensure that exactly one
+   row has been modified - otherwise rollback will occur.
+
+
+Questions on dumps
+------------------
+
+Q: What happened to the database dump feature?
+
+A: You need to configure phpPgAdmin (in the config.inc.php file) to point
+   to the location of the pg_dump and pg_dumpall utilities on your web server.
+   Once you have done that, the database export feature will appear.
+
+Q: I would like to use the pg_dump integration for database and table
+   dumps on Windows. How do I get pg_dump.exe on Windows?
+
+A: To get the pg_dump utilities on Windows, you need to install Postgres 8.0
+   or higher (we recommend the latest release) for Windows, available for 
+   download from the 
+   <a href="http://www.postgresql.org/download/windows">Postgres web site</a>. 
+   Once you have installed that, set the pg_dump and pg_dumpall locations
+   in the config.inc.php file to
+   'C:\\Program Files\\Postgres\\8.0\\bin\\pg_dump.exe' and
+   'C:\\Program Files\\Postgres\\8.0\\bin\\pg_dumpall.exe', or wherever you
+   installed them.
+
+Q: Why can't I reload the SQL script I dumped in the SQL window?
+
+A: The following limitations currently exist in SQL script execution:
+
+	* Only uploaded SQL scripts can contain COPY commands and for
+	  this to work, you must have PHP 4.2 or higher.
+
+	* 'psql' commands such as '\connect' will not work at all.
+
+	* Multiline SQL statements will not work, eg:
+
+		CREATE TABLE example (
+			a INTEGER
+		);
+
+	* You cannot change the current database or current user during
+	  the execution of the script.
+
+   We do intend to work on some of these limitations in the future, but
+   some of them are Postgres restrictions and we recommend using the
+   'psql' utility to restore your full SQL dumps.
+
+
+Other questions
+---------------
+
+Q: When inserting a row, what does the 'Value' or 'Expression' box mean?
+
+A: Choosing 'Expression' means that you can use functions, operators, other 
+   field names, etc. in your value - you need to properly quote any literal 
+   values yourself.  'Value' on the other hand, means that no matter what you
+   enter as the value, it will be inserted as-is into the database.
+
+Q: Why is there never any information on the 'Info' page of a table?
+
+A: The Info page will show you what other tables have foreign keys to the
+   current table and some data from the Postgres statistics collector.
+   In older versions of Postgres, the stats collector is not enabled by default.
+   To enable it, look in your postgresql.conf file for the stats_* options.
+   Just make them all 'true' and restart Postgres.
+
+Q: Why can't I download data from queries executed in the SQL window?
+
+A: You need to check the 'Paginate results' option to allow downloads.
+
+Q: I would like to help out with the development of phpPgAdmin. How should I
+   proceed?
+   
+A: We really would like your help! Please read the DEVELOPERS and TRANSLATORS
+   files.
+

@@ -4,12 +4,12 @@
 .. _example_setup_wordpress:
 
 ***************
-Setup Wordpress
+Setup WordPress
 ***************
 
-This example will use ``git`` to install Wordpress from within the Devilbox PHP container.
+This example will use ``git`` to install WordPress from within the Devilbox PHP container.
 
-After completing the below listed steps, you will have a working Wordpress setup ready to be
+After completing the below listed steps, you will have a working WordPress setup ready to be
 served via http and https.
 
 .. seealso:: |ext_lnk_example_wordpress_documentation|
@@ -44,7 +44,7 @@ It will be ready in seven simple steps:
 
 1. Enter the PHP container
 2. Create a new VirtualHost directory
-3. Download Wordpress via ``git``
+3. Download WordPress via ``git``
 4. Symlink webroot directory
 5. Add MySQL database
 6. Setup DNS record
@@ -83,10 +83,10 @@ The vhost directory defines the name under which your project will be available.
 .. seealso:: :ref:`env_tld_suffix`
 
 
-3. Download Wordpress via ``git``
+3. Download WordPress via ``git``
 ---------------------------------
 
-Navigate into your newly created vhost directory and install Wordpress with ``git``.
+Navigate into your newly created vhost directory and install WordPress with ``git``.
 
 .. code-block:: bash
 
@@ -175,7 +175,7 @@ host operating systems ``/etc/hosts`` file (or ``C:\Windows\System32\drivers\etc
 
 Open your browser at http://my-wp.loc or https://my-wp.loc and follow the installation steps.
 
-**(1/7) Choose your desired Wordpress language**
+**(1/7) Choose your desired WordPress language**
 
 .. include:: /_includes/figures/examples/wordpress/01-choose-language.rst
 
@@ -193,7 +193,7 @@ Open your browser at http://my-wp.loc or https://my-wp.loc and follow the instal
 
 .. include:: /_includes/figures/examples/wordpress/04-finished-database.rst
 
-**(5/7) Start Wordpress installation**
+**(5/7) Start WordPress installation**
 
 .. include:: /_includes/figures/examples/wordpress/05-installation.rst
 

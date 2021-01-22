@@ -24,6 +24,19 @@ class Html
 			)
 		),
 		array(
+			'name' => 'Configs',
+			'menu' => array(
+				array(
+					'name' => 'PHP',
+					'path' => '/config_php.php'
+				),
+				array(
+					'name' => 'Httpd',
+					'path' => '/config_httpd.php'
+				),
+			),
+		),
+		array(
 			'name' => 'Databases',
 			'menu' => array(
 				array(
@@ -78,6 +91,10 @@ class Html
 				array(
 					'name' => 'Memcached Info',
 					'path' => '/info_memcd.php'
+				),
+				array(
+					'name' => 'XDebug Control Panel',
+					'path' => '/xdebug.php'
 				)
 			)
 		),
@@ -400,16 +417,28 @@ HTML;
 						if (version_compare(loadClass('Php')->getVersion(), '5.5', '<')) {
 							$el['path'] = '/vendor/phpmyadmin-4.0/index.php';
 						} elseif (version_compare(loadClass('Php')->getVersion(), '7.1', '<')) {
-							$el['path'] = '/vendor/phpmyadmin-4.9.3/index.php';
+							$el['path'] = '/vendor/phpmyadmin-4.9.7/index.php';
 						} else {
-							$el['path'] = '/vendor/phpmyadmin-5.0.0/index.php';
+							$el['path'] = '/vendor/phpmyadmin-5.0.4/index.php';
 						}
 					}
 					if ($el['path'] == '__PHPPGADMIN__') {
-						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '7.1', '<')) ? '/vendor/phppgadmin-5.6.0/' : '/vendor/phppgadmin-7.12.0/';
+						if (version_compare(loadClass('Php')->getVersion(), '7.1', '<')) {
+							$el['path'] = '/vendor/phppgadmin-5.6.0/';
+						} elseif (version_compare(loadClass('Php')->getVersion(), '7.2', '<')) {
+							$el['path'] = '/vendor/phppgadmin-7.12.1/';
+						} else {
+							$el['path'] = '/vendor/phppgadmin-7.13.0/';
+						}
 					}
 					if ($el['path'] == '__ADMINER__') {
-						$el['path'] = (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) ? '/vendor/adminer-4.6.3-en.php' : '/vendor/adminer-4.7.5-en.php';
+						if (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) {
+							$el['path'] = '/vendor/adminer-4.6.3-en.php';
+						} elseif (version_compare(loadClass('Php')->getVersion(), '8.0', '<')){
+							$el['path'] = '/vendor/adminer-4.7.7-en.php';
+						} else {
+							$el['path'] = '/vendor/adminer-4.7.7-en-php8.php';
+						}
 					}
 
 					$target = isset($el['target']) ? 'target="'.$el['target'].'"' : '';

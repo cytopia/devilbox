@@ -21,13 +21,12 @@
 [PHP]
 
 ; Xdebug
+; https://3.xdebug.org/docs/upgrade_guide
 ; Use these settings to enable Xdebug for PHP
 ; Make sure to read up on Xdebug some settings might significantly slow down requests.
 ; The following is just an example configuration and should be adjusted
-xdebug.default_enable   = On
-xdebug.profiler_enable  = On
-xdebug.remote_enable    = On
-xdebug.remote_autostart = On
+xdebug.mode               = debug
+xdebug.start_with_request = yes
 xdebug.remote_handler   = dbgp
 xdebug.remote_port      = 9000
 xdebug.idekey           = PHPSTORM

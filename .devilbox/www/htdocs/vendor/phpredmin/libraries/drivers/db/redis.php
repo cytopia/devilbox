@@ -5,7 +5,7 @@ class RedisDb extends Redis
     {
         $this->connect($config['host'], $config['port']);
 
-        if (isset($config['password'])) {
+        if (isset($config['password']) && strlen($config['password'])>0) {
             $this->auth($config['password']);
         }
 
