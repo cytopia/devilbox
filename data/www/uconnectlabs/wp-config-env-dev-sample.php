@@ -15,6 +15,8 @@ define( 'DB_HOST', '127.0.0.1' );
 define( 'NOINDEX', true );
 define( 'DONT_VERIFY_SCHOOL_EMAIL', true );
 
+define( 'UC_OBJECT_CACHE', 'redis' );
+
 define( 'WP_CACHE', false );
 
 define( 'UC_GA_PROPERTY_ID', 'UA-19563948-7' );
@@ -45,6 +47,7 @@ define( 'VERBOSE_PHP_ERRORS', true );
 // be pointed to the office IP address, with ports 80 and 443 pointing to a dev laptop.
 define( 'DEV_LOCAL_SERVER_DOMAIN', DEV_LOCAL_SERVER_USER . '.dev.loc.uconnectlabs.com' );
 
-//define( 'UC_OBJECT_CACHE', 'redis' );
+// Prevent the cron from running automated imports.
+define( 'DEV_BRIDGE_ONLY_RUN_MANUAL_IMPORTS', false );
 
 define( 'QM_DISABLE_ERROR_HANDLER', true );
