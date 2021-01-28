@@ -34,12 +34,20 @@ export function themesStyles() {
         // initial Sourcemap to be able to find the source of css easily in the browser developer tool
         .pipe(sourcemaps.init())
         // change data-uri path to absolute (sassDataURI doesn't work with relative path. It use cwd path as base.)
-        .pipe(replace(`data-url('`, function() {
-            const image_path = path.parse(this.file.path)
-            return `data-url('${image_path.dir}/`;
+        .pipe(replace(/data-url\(\s*["|']/gm, function(match, p1, offset, string) {
+            const scss_file_path = path.parse(this.file.path)
+            return `${match}${scss_file_path.dir}/`;
         }))
         // compile scss to css
         .pipe(sass({functions: Object.assign(sassDataURI, {other: function() {}})}))
+        // convert THEME_CDN_URL to CDN url
+        .pipe(replace('THEME_CDN_URL', function(match, p1, offset, string){
+            const regex = /(?:themes\/)(.*)(?:\/css)/s;
+            let themeName = 'uConnect'
+            const m = regex.exec(this.file.path)
+            if (m !== null) themeName = m[1]
+            return `https://cdn.uconnectlabs.${ (process.env.NODE_ENV === 'development' || process.env.NODE_ENV ==='development_build'?'test': 'com')}/wp-content/themes/${themeName}`
+        }))
         // add browser specific prefixes to css (e.g. -moz, -webkit)
         .pipe(autoprefixer())
         // clean comments and minify css
@@ -57,7 +65,7 @@ export function themesStyles() {
 
             if (process.env.NODE_ENV === 'production') path.extname = `.min${path.extname}`
         }))
-        // .pipe(debug({title: 'compiled:'}))
+        .pipe(debug({title: 'compiled:'}))
         // write Sourcemap
         .pipe(sourcemaps.write('.'))
         // write generate .css to destination
