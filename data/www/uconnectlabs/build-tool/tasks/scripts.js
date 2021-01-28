@@ -59,7 +59,7 @@ export function themesScripts() {
 
 
 // This if for old js files in the plugins and theme folder.
-export function deprecatedScripts(file, dest) {
+export function deprecatedScripts() {
         return gulp.src(paths.deprecated.scripts.src, {base: "./"})
             // write version of file into /themes/plugins_scripts_versions.php (versions are md5 of file contents)
             .pipe(gulpif(process.env.NODE_ENV === 'production', log('deprecated_scripts_versions')));

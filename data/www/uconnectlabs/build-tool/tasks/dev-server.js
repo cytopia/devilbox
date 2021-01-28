@@ -24,4 +24,8 @@ export function devServer() {
     })
 
     gulp.watch('./htdocs/wp-content/themes/uConnect*/js/**/*.js*').on('change', (file) => themesScripts().pipe(browserSync.reload()))
+
+    gulp.watch(paths.deprecated.scripts.src).on('change', () => {
+        browserSync.reload()
+    })
 }
