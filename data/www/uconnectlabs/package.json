@@ -5,7 +5,8 @@
   "author": "Farsad Ghaffarian",
   "scripts": {
     "dev": "NODE_ENV=development gulp --require @babel/register --gulpfile build-tool",
-    "build": "NODE_ENV=production gulp build --require @babel/register --gulpfile build-tool"
+    "build": "NODE_ENV=production gulp build --require @babel/register --gulpfile build-tool",
+    "build_dev": "NODE_ENV=development_build gulp build_dev --require @babel/register --gulpfile build-tool"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
