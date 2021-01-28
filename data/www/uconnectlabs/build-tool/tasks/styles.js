@@ -88,5 +88,5 @@ export function deprecatedStyles(file) {
         // write generate .css to destination
         .pipe(gulp.dest(paths.deprecated.styles.dest))
         // write version of file into /themes/plugins_css_versions.php (versions are md5 of file contents)
-        .pipe(log('deprecated_css_versions'));
+        .pipe(gulpif(process.env.NODE_ENV === 'production',log('deprecated_css_versions')));
 }
