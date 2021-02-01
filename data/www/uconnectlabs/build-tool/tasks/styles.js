@@ -49,14 +49,6 @@ export function themesStyles() {
                 }
             })
         }))
-        // convert THEME_CDN_URL to CDN url
-        .pipe(replace('THEME_CDN_URL', function (match, p1, offset, string) {
-            const regex = /(?:themes\/)(.*)(?:\/css)/s;
-            let themeName = 'uConnect'
-            const m = regex.exec(this.file.path)
-            if (m !== null) themeName = m[1]
-            return `https://cdn.uconnectlabs.${(isDev || process.env.NODE_ENV === 'development_build' ? 'test' : 'com')}/wp-content/themes/${themeName}`
-        }))
         .pipe(postcss([
             // add browser specific prefixes to css (e.g. -moz, -webkit)
             isProd ? autoprefixer() : false,
