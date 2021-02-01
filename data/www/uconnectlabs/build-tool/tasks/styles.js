@@ -87,7 +87,7 @@ export function deprecatedStyles(file) {
         .pipe(less())
         .pipe(postcss([
             // add browser specific prefixes to css (e.g. -moz, -webkit)
-            isProd ? autoprefixer() : false,
+            autoprefixer(),
             // convert all px to rem for better accessibility
             // pxtorem({propList: ['*']}),
             // clean comments and minify css
