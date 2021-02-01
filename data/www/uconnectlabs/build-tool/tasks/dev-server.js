@@ -16,11 +16,11 @@ export function devServer() {
     browserSync.init(config)
 
     gulp.watch(`./htdocs/wp-content/themes/uConnect*/css/**/*.scss`).on('change', (file) => {
-        themesStyles().pipe(browserSync.stream({match: '**/*.css'}));
+        return themesStyles().pipe(browserSync.stream({match: '**/*.css'}));
     })
 
     gulp.watch(paths.deprecated.styles.src).on('change', (file) => {
-        deprecatedStyles(file).pipe(browserSync.stream())
+        return deprecatedStyles(file).pipe(browserSync.stream())
     })
 
     gulp.watch('./htdocs/wp-content/themes/uConnect*/js/**/*.js*').on('change', (file) => themesScripts().pipe(browserSync.reload()))
