@@ -16,13 +16,16 @@ export function devServer() {
     browserSync.init(config)
 
     gulp.watch(`./htdocs/wp-content/themes/uConnect*/css/**/*.scss`).on('change', (file) => {
-        themesStyles().pipe(browserSync.stream({match: '**/*.css'}));
+        return themesStyles().pipe(browserSync.stream({match: '**/*.css'}));
     })
 
-    // TODO: enable it when less compiler in the docker removed
-    // gulp.watch(paths.deprecated.styles.src).on('change', (file) => {
-    //     deprecatedStyles(file, paths.deprecated.styles.dest).pipe(browserSync.stream())
-    // })
+    gulp.watch(paths.deprecated.styles.src).on('change', (file) => {
+        return deprecatedStyles(file).pipe(browserSync.stream())
+    })
 
     gulp.watch('./htdocs/wp-content/themes/uConnect*/js/**/*.js*').on('change', (file) => themesScripts().pipe(browserSync.reload()))
+
+    gulp.watch(paths.deprecated.scripts.src).on('change', () => {
+        browserSync.reload()
+    })
 }
