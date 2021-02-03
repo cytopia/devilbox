@@ -18,6 +18,7 @@ import replace from 'gulp-replace'
 import log from './log'
 import path from 'path'
 import {paths, basePath} from '../paths'
+import lec from 'gulp-line-ending-corrector'
 
 export function themesStyles() {
     const isDev = process.env.NODE_ENV === 'development'
@@ -55,6 +56,7 @@ export function themesStyles() {
             // clean comments and minify css
             isProd ? cssnano() : false
         ].filter(Boolean)))
+        .pipe(lec())
         // prepend theme name to the destination path. Also rename style.scss files to the name of their parent folder (module name).
         .pipe(rename(function (path) {
             const pathSplit = path.dirname.split('/')
