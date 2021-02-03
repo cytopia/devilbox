@@ -7,7 +7,6 @@ import gulpIgnore from 'gulp-ignore'
 import gulpif from 'gulp-if'
 import cached from 'gulp-cached'
 import dependents from 'gulp-dependents'
-import sourcemaps from 'gulp-sourcemaps'
 import postcss from 'gulp-postcss'
 import cssnano from 'cssnano'
 import pxtorem from 'postcss-pxtorem'
@@ -19,24 +18,24 @@ import replace from 'gulp-replace'
 import log from './log'
 import path from 'path'
 import {paths, basePath} from '../paths'
+import lec from 'gulp-line-ending-corrector'
 
 export function themesStyles() {
     const isDev = process.env.NODE_ENV === 'development'
     const isProd = process.env.NODE_ENV === 'production'
     return gulp.src(`${basePath}uConnect*/css/**/*.scss`, {
         base: basePath,
-        allowEmpty: true
+        allowEmpty: true,
+        sourcemaps: true
     })
         // prevent caching to force all the files compile for production
         .pipe(gulpif(isDev, cached('themes_sass')))
         // Do not break tasks and gulp in case of error. Just show a notification.
         .pipe(gulpif(isDev, plumber({errorHandler: notify.onError("Error in sass build.")})))
         // find all the files dependent to the current processing file and add them to the pipeline.
-        .pipe(dependents())
+        .pipe(gulpif(isDev, dependents()))
         // exclude dependencies and only keep files should be compiled
         .pipe(gulpIgnore.include(paths.themes.styles.src.map(src => `uConnect*/${src}`)))
-        // initial Sourcemap to be able to find the source of css easily in the browser developer tool
-        .pipe(sourcemaps.init())
         // change data-uri path to absolute (sassDataURI doesn't work with relative path. It use cwd path as base.)
         .pipe(replace(/data-url\(\s*["|']/gm, function (match, p1, offset, string) {
             const scss_file_path = path.parse(this.file.path)
@@ -57,6 +56,7 @@ export function themesStyles() {
             // clean comments and minify css
             isProd ? cssnano() : false
         ].filter(Boolean)))
+        .pipe(lec())
         // prepend theme name to the destination path. Also rename style.scss files to the name of their parent folder (module name).
         .pipe(rename(function (path) {
             const pathSplit = path.dirname.split('/')
@@ -71,10 +71,8 @@ export function themesStyles() {
             if (isProd) path.extname = `.min${path.extname}`
         }))
         .pipe(debug({title: 'compiled:'}))
-        // write Sourcemap
-        .pipe(sourcemaps.write('.'))
         // write generate .css to destination
-        .pipe(gulp.dest(basePath))
+        .pipe(gulp.dest(basePath, {sourcemaps: '.'}))
         // write version of file into /themes/css_versions.php (versions are md5 of file contents)
         .pipe(gulpif(isProd, log('css_versions')));
 }
@@ -87,7 +85,7 @@ export function deprecatedStyles(file) {
         .pipe(less())
         .pipe(postcss([
             // add browser specific prefixes to css (e.g. -moz, -webkit)
-            isProd ? autoprefixer() : false,
+            autoprefixer(),
             // convert all px to rem for better accessibility
             // pxtorem({propList: ['*']}),
             // clean comments and minify css
