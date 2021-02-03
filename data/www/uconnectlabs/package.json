@@ -35,7 +35,6 @@
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.1.0",
-    "gulp-sourcemaps": "^3.0.0",
     "less": "3.13.1",
     "lib-sass-data-uri": "^0.0.4",
     "md5-jkmyers": "^0.0.1",
