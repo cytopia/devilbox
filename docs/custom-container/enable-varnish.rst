@@ -105,7 +105,7 @@ Varnish
 +------------------------------+-----------------------------------------------+--------------------------------------------------------------------+
 | ``VARNISH_CONFIG``           | ``/etc/varnish/default.vcl``                  | Path to Varnish configuration file (custom config can be mounted). |
 +------------------------------+-----------------------------------------------+--------------------------------------------------------------------+
-| ``VARNICS_CACHE_SIZE``       | ``128m``                                      | Varnish Cache size.                                                |
+| ``VARNISH_CACHE_SIZE``       | ``128m``                                      | Varnish Cache size.                                                |
 +------------------------------+-----------------------------------------------+--------------------------------------------------------------------+
 | ``VARNISH_PARAMS``           | ``-p default_ttl=3600 -p default_grace=3600`` | Additional Varnish startup parameter.                              |
 +------------------------------+-----------------------------------------------+--------------------------------------------------------------------+
@@ -158,7 +158,7 @@ Add the following variables to ``.env`` and adjust them to your needs:
 
    # Varnish settings
    VARNISH_CONFIG=/etc/varnish/default.vcl
-   VARNICS_CACHE_SIZE=128m
+   VARNISH_CACHE_SIZE=128m
    VARNISH_PARAMS=-p default_ttl=3600 -p default_grace=3600
    HOST_PORT_VARNISH=6081
 
@@ -245,7 +245,7 @@ directory:
    echo "VARNISH_SERVER=6"                                          >> .env
    echo "# Varnish settings"                                        >> .env
    echo "VARNISH_CONFIG=/etc/varnish/default.vcl"                   >> .env
-   echo "VARNICS_CACHE_SIZE=128m"                                   >> .env
+   echo "VARNISH_CACHE_SIZE=128m"                                   >> .env
    echo "VARNISH_PARAMS=-p default_ttl=3600 -p default_grace=3600"  >> .env
    echo "HOST_PORT_VARNISH=6081"                                    >> .env
    echo "# HAProxy settings"                                        >> .env
