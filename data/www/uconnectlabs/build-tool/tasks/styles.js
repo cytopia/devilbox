@@ -7,10 +7,8 @@ import gulpIgnore from 'gulp-ignore'
 import gulpif from 'gulp-if'
 import cached from 'gulp-cached'
 import dependents from 'gulp-dependents'
-import postcss from 'gulp-postcss'
-import cssnano from 'cssnano'
-import pxtorem from 'postcss-pxtorem'
-import autoprefixer from 'autoprefixer'
+import cleanCSS from 'gulp-clean-css'
+import autoprefixer from 'gulp-autoprefixer'
 import plumber from 'gulp-plumber'
 import notify from 'gulp-notify'
 import sassDataURI from 'lib-sass-data-uri'
@@ -19,6 +17,7 @@ import log from './log'
 import path from 'path'
 import {paths, basePath} from '../paths'
 import lec from 'gulp-line-ending-corrector'
+import px2rem from 'gulp-px2rem'
 
 export function themesStyles() {
     const isDev = process.env.NODE_ENV === 'development'
@@ -48,14 +47,13 @@ export function themesStyles() {
                 }
             })
         }))
-        .pipe(postcss([
-            // add browser specific prefixes to css (e.g. -moz, -webkit)
-            isProd ? autoprefixer() : false,
-            // convert all px to rem for better accessibility
-            // pxtorem({propList: ['*']}),
-            // clean comments and minify css
-            isProd ? cssnano() : false
-        ].filter(Boolean)))
+        // convert all px to rem for better accessibility
+        // .pipe(px2rem({replace:true}))
+        // add browser specific prefixes to css (e.g. -moz, -webkit)
+        .pipe(gulpif(isProd, autoprefixer()))
+        // clean comments and minify css
+        .pipe(gulpif(isProd, cleanCSS({level: 2})))
+        // same \n new line character for all environements
         .pipe(lec())
         // prepend theme name to the destination path. Also rename style.scss files to the name of their parent folder (module name).
         .pipe(rename(function (path) {
@@ -83,14 +81,15 @@ export function deprecatedStyles(file) {
     const isProd = process.env.NODE_ENV === 'production'
     return gulp.src((typeof (file) === 'string') ? file : paths.deprecated.styles.src, {base: "./"})
         .pipe(less())
-        .pipe(postcss([
-            // add browser specific prefixes to css (e.g. -moz, -webkit)
-            autoprefixer(),
-            // convert all px to rem for better accessibility
-            // pxtorem({propList: ['*']}),
-            // clean comments and minify css
-            cssnano()
-        ].filter(Boolean)))
+        // convert all px to rem for better accessibility
+        // .pipe(px2rem({replace:true}))
+        // add browser specific prefixes to css (e.g. -moz, -webkit)
+        .pipe(autoprefixer())
+        // clean comments and minify css
+        .pipe(cleanCSS({level: 2}))
+        // same \n new line character for all environements
+        .pipe(lec())
+        // Debug
         .pipe(debug({title: 'compiled:'}))
         // write generate .css to destination
         .pipe(gulp.dest(paths.deprecated.styles.dest))
