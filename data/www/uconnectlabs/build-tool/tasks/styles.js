@@ -48,7 +48,7 @@ export function themesStyles() {
             })
         }))
         // convert all px to rem for better accessibility
-        .pipe(gulpif(isProd, px2rem({replace:true, minPx : 0})))
+        .pipe(gulpif(isProd, px2rem({replace:true, minPx : 0, propertyBlackList:['background']})))
         // add browser specific prefixes to css (e.g. -moz, -webkit)
         .pipe(gulpif(isProd, autoprefixer()))
         // clean comments and minify css
@@ -82,7 +82,7 @@ export function deprecatedStyles(file) {
     return gulp.src((typeof (file) === 'string') ? file : paths.deprecated.styles.src, {base: "./"})
         .pipe(less())
         // convert all px to rem for better accessibility
-        .pipe(px2rem({replace:true, minPx: 0}))
+        .pipe(px2rem({replace:true, minPx: 0, propertyBlackList:['background']}))
         // add browser specific prefixes to css (e.g. -moz, -webkit)
         .pipe(autoprefixer())
         // clean comments and minify css
