@@ -23,3 +23,7 @@ services:
       - bind
       - php
       - httpd
+  php:
+    ports:
+    ## Expose the Live Trace server port. See bin/trace_servers/live_trace.php
+    - "61211:61211"
