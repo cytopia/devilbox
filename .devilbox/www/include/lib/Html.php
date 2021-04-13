@@ -419,7 +419,6 @@ HTML;
 						} elseif (version_compare(loadClass('Php')->getVersion(), '7.1', '<')) {
 							$el['path'] = '/vendor/phpmyadmin-4.9.7/index.php';
 						} else {
-							// $el['path'] = '/vendor/phpmyadmin-5.0.4/index.php';
 							$el['path'] = '/vendor/phpmyadmin-5.1.0/index.php';
 						}
 					}
@@ -434,11 +433,9 @@ HTML;
 					}
 					if ($el['path'] == '__ADMINER__') {
 						if (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) {
-							$el['path'] = '/vendor/adminer-4.6.3-en.php';
-						} elseif (version_compare(loadClass('Php')->getVersion(), '8.0', '<')){
-							$el['path'] = '/vendor/adminer-4.7.7-en.php';
+							$el['path'] = '/vendor/adminer-4.6.3.php';
 						} else {
-							$el['path'] = '/vendor/adminer-4.7.7-en-php8.php';
+							$el['path'] = '/vendor/adminer-4.8.0.php';
 						}
 					}
 
