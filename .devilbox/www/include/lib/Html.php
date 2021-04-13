@@ -419,7 +419,8 @@ HTML;
 						} elseif (version_compare(loadClass('Php')->getVersion(), '7.1', '<')) {
 							$el['path'] = '/vendor/phpmyadmin-4.9.7/index.php';
 						} else {
-							$el['path'] = '/vendor/phpmyadmin-5.0.4/index.php';
+							// $el['path'] = '/vendor/phpmyadmin-5.0.4/index.php';
+							$el['path'] = '/vendor/phpmyadmin-5.1.0/index.php';
 						}
 					}
 					if ($el['path'] == '__PHPPGADMIN__') {
