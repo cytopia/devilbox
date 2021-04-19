@@ -19,7 +19,7 @@
 				<div class="col-md-12">
 
 					<?php if (!loadClass('Memcd')->isAvailable()): ?>
-						<p>Memcahed container is not running.</p>
+						<p>Memcached container is not running.</p>
 					<?php else: ?>
 						<?php foreach (loadClass('Memcd')->getInfo() as $srv => $data): ?>
 							<h2><?php echo $srv; ?></h2>
