@@ -230,4 +230,14 @@ class Mongo extends BaseClass implements BaseInterface
 		}
 		return $this->_version;
 	}
+
+	public function isAvailable()
+	{
+		if (extension_loaded('mongo') || extension_loaded('mongodb')) {
+			return parent::isAvailable();
+		}
+
+		// when php modules 'mongo' or 'mongodb' not available or just disable by configuration (see .env PHP_MODULES_DISABLE)
+		return false;
+	}
 }
