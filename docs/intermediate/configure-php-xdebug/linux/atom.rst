@@ -119,7 +119,7 @@ Copy/paste all of the following lines into the above created ``xdebug.ini`` file
       xdebug.idekey=xdebug.atom
 
       ; Optional: Set to true to always auto-start xdebug
-      xdebug.remote_autostart=false		$data['breadcrumbs'] = array();
+      xdebug.remote_autostart=false
 
 `Xdebug 3.0 changes <https://xdebug.org/docs/upgrade_guide>`_:
     .. code-block:: ini
