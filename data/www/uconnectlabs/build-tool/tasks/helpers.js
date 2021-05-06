@@ -22,8 +22,7 @@ export function renameHelper(path, type) {
           path.basename = path.basename.replace('index', parent_folder)
       }
   }
-
-  if (process.env.NODE_ENV === 'production') path.extname = `.min${path.extname}`
+  if (process.env.NODE_ENV === 'production' && path.basename.indexOf('.min') === -1) path.extname = `.min${path.extname}`
   path.dirname = `${themeName}/${type==='script' ? paths.themes.scripts.dest : paths.themes.styles.dest}`
 
   return path;
