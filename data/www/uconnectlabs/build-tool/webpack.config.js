@@ -3,7 +3,7 @@ export let webpackConfig = {
     stats: 'none',
     mode: process.env.NODE_ENV,
     output: {
-        filename: `[name]${process.env.NODE_ENV ? '.min' : ''}.js`,
+        filename: `[name]${process.env.NODE_ENV == 'production' ? '.min' : ''}.js`,
     },
     module: {
         rules: [
@@ -28,6 +28,7 @@ export let webpackConfig = {
         '@wordpress/blob': 'wp.blob',
         '@wordpress/block-library': 'wp.blockLibrary',
         '@wordpress/blocks': 'wp.blocks',
+        '@wordpress/block-editor': 'wp.blockEditor',
         '@wordpress/block-serialization-default-parser': 'wp.blockSerializationDefaultParser',
         '@wordpress/components': 'wp.components',
         '@wordpress/compose': 'wp.compose',
