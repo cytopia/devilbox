@@ -18,6 +18,7 @@ import path from 'path'
 import {paths, basePath} from '../paths'
 import lec from 'gulp-line-ending-corrector'
 import px2rem from 'gulp-px2rem'
+import { renameHelper } from './helpers'
 
 export function themesStyles() {
     const isDev = process.env.NODE_ENV === 'development'
@@ -30,8 +31,18 @@ export function themesStyles() {
         // prevent caching to force all the files compile for production
         .pipe(gulpif(isDev, cached('themes_sass')))
         // Do not break tasks and gulp in case of error. Just show a notification.
-        .pipe(gulpif(isDev, plumber({errorHandler: notify.onError("Error in sass build.")})))
-        // find all the files dependent to the current processing file and add them to the pipeline.
+        .pipe(gulpif(isDev, plumber({errorHandler: (error)=>{
+            console.log(error);
+            notify.onError({
+                title:    "Gulp",
+                subtitle: "Failure!",
+                message:  "Error: <%= error.message %>",
+                sound:    "Beep"
+            })(error);
+
+            this.emit('end');
+            }}))
+        )        // find all the files dependent to the current processing file and add them to the pipeline.
         .pipe(gulpif(isDev, dependents()))
         // exclude dependencies and only keep files should be compiled
         .pipe(gulpIgnore.include(paths.themes.styles.src.map(src => `uConnect*/${src}`)))
@@ -57,16 +68,7 @@ export function themesStyles() {
         .pipe(lec())
         // prepend theme name to the destination path. Also rename style.scss files to the name of their parent folder (module name).
         .pipe(rename(function (path) {
-            const pathSplit = path.dirname.split('/')
-            const themeName = pathSplit[0]
-            // Set file name equal to module folder name
-            if (path.dirname.includes('modules')) {
-                path.basename = pathSplit[pathSplit.length - 1]
-            }
-
-            path.dirname = `${themeName}/${paths.themes.styles.dest}`
-
-            if (isProd) path.extname = `.min${path.extname}`
+            path = renameHelper(path, 'style')
         }))
         .pipe(debug({title: 'compiled:'}))
         // write generate .css to destination

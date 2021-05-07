@@ -21,7 +21,7 @@ export function devServer() {
         return deprecatedStyles(file).pipe(browserSync.stream())
     })
 
-    gulp.watch('./htdocs/wp-content/themes/uConnect*/js/**/*.js*', () => themesScripts().pipe(browserSync.reload()))
+    gulp.watch('./htdocs/wp-content/themes/uConnect*/js/**/*.js*', () => themesScripts())
 
     gulp.watch(paths.deprecated.scripts.src).on('change', () => {
         browserSync.reload()

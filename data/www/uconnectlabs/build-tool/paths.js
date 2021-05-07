@@ -12,11 +12,11 @@ export const paths = {
     },
     themes: {
         styles: {
-            src: ['css/styles.scss', 'css/admin-styles.scss', 'css/modules/**/index.scss'],
+            src: ['css/styles.scss', 'css/admin-styles.scss', 'css/modules/**/index.scss', 'css/modules/**/editor.scss'],
             dest: 'dist/css/',
         },
         scripts: {
-            src: ['js/index.js*', 'js/modules/**/index.js*', 'js/**/*-block.js*',],
+            src: ['js/**/index.js*', 'js/**/editor.js*'],
             dest: 'dist/js/',
         }
     }
