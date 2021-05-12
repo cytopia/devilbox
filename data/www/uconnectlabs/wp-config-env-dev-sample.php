@@ -16,6 +16,11 @@ define( 'NOINDEX', true );
 define( 'DONT_VERIFY_SCHOOL_EMAIL', true );
 
 define( 'UC_OBJECT_CACHE', 'redis' );
+define( 'UC_REDIS_CONFIG', [
+	'host'     => 'redis',
+	'port'     => 6379,
+	'password' => 'redispass',
+] );
 
 define( 'WP_CACHE', false );
 
