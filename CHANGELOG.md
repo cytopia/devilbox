@@ -9,27 +9,25 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Release v1.9.1 (2021-01-03)
 
 #### Added
-
 - Added PHP Xdebug info page for intranet
 
 #### Changed
-
 - [#769](https://github.com/cytopia/devilbox/issues/769) Adjusted Xdebug 3.0 defaults
-
+- Update PHP images to 0.124
 
 #### Fixed
+- [#783](https://github.com/cytopia/devilbox/pull/783) Kibana 6.6 and above uses ELASTICSEARCH_HOSTS
+
 
 ## Release v1.9.0 (2020-12-12)
 
 #### Fixed
-
 - [#761](https://github.com/cytopia/devilbox/issues/761) Fixed missing Varnish config env var
 - [#10](https://github.com/devilbox/watcherd/issues/10) watcherd performance issues
 - Fixed `mdl` rubygen for PHP images
 - Fixed `drupal` (Drupal Console Launcher) for PHP images
 
 #### Added
-
 - Added `ioncube` extension to PHP 7.4
 - Added `sqlsrv` extension to PHP 7.4
 - Added `apcu` extension to PHP 8.0
@@ -58,7 +56,6 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 - Added checks for TLD_SUFFIX in check-config.sh
 
 #### Changed
-
 - [#763](https://github.com/cytopia/devilbox/issues/764) `redis` extension compiles with `msgpack` and `igbinary` as available serializers
 - Updated xdebug to latest version
 - Updated `watcherd` to latest version
@@ -68,12 +65,10 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Release v1.8.3 (2020-11-22)
 
 #### Fixed
-
 - [#753](https://github.com/cytopia/devilbox/issues/753) Fixed symlink handling in watcherd
 - [#751](https://github.com/cytopia/devilbox/issues/751) Fixed duplicate output in check-config.sh
 
 #### Added
-
 - [#755](https://github.com/cytopia/devilbox/issues/755) Added ~/.composer/vendor/bin to $PATH
 - [#692](https://github.com/cytopia/devilbox/issues/692) Added custom supervisor configs
 - Added project and customization checks in check-config.sh
