@@ -22,7 +22,7 @@ lint-tests:
 		-v "$(PWD):/mnt" \
 		--entrypoint=sh \
 		koalaman/shellcheck-alpine:stable \
-		-c "find . -name '*.sh' -print0 | xargs -0 -n1 shellcheck --check-sourced --color=auto --shell=bash"
+		-c "find . -name '*.sh' -print0 | xargs -0 -n1 shellcheck --check-sourced --color=auto --exclude=SC1091 --shell=bash"
 
 
 # -------------------------------------------------------------------------------------------------
