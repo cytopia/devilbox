@@ -21,8 +21,6 @@ The PHP container is your workhorse and these are your tools:
 +----------------------+---------------------------------------+
 | various binaries     | |ext_lnk_tool_awesome_ci|             |
 +----------------------+---------------------------------------+
-| ``brew``             | |ext_lnk_tool_linuxbrew|              |
-+----------------------+---------------------------------------+
 | ``codecept``         | |ext_lnk_tool_codecept|               |
 +----------------------+---------------------------------------+
 | ``composer``         | |ext_lnk_tool_composer|               |
