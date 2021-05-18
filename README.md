@@ -22,7 +22,6 @@
 [![type](https://img.shields.io/badge/type-Docker-blue.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-MIT-%233DA639.svg)](https://opensource.org/licenses/MIT)
 
-[![Build Status](https://travis-ci.org/cytopia/devilbox.svg?branch=master)](https://travis-ci.org/cytopia/devilbox)
 [![Documentation Status](https://readthedocs.org/projects/devilbox/badge/?version=latest)](https://devilbox.readthedocs.io)
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Lint/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Lint)
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Docs/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Docs)
@@ -507,7 +506,7 @@ The Devilbox has everything setup for you. The only thing you will have to insta
   </tr>
   <tr>
     <td>:star: Auto virtual hosts</td>
-    <td>New virtual hosts are created automatically and instantly whenever you add a project directory. This is done internally via <a href="https://travis-ci.org/devilbox/vhost-gen">vhost-gen</a> and <a href="https://github.com/devilbox/watcherd">watcherd</a>.</td>
+    <td>New virtual hosts are created automatically and instantly whenever you add a project directory. This is done internally via <a href="https://github.com/devilbox/vhost-gen">vhost-gen</a> and <a href="https://github.com/devilbox/watcherd">watcherd</a>.</td>
   </tr>
   <tr>
     <td>:star: Automated SSL certs</td>
