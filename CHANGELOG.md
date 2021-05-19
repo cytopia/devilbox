@@ -6,7 +6,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
-## Release v1.9.1 (2021-05-17)
+## Release v1.9.1 (2021-05-19)
 
 #### Added
 - Added PHP Xdebug info page for intranet
@@ -17,6 +17,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 
 #### Fixed
 - [#783](https://github.com/cytopia/devilbox/pull/783) Kibana 6.6 and above uses ELASTICSEARCH_HOSTS
+- [#801](https://github.com/cytopia/devilbox/issues/801) Intranet not available when some php modules disabled or not compiled
 
 
 ## Release v1.9.0 (2020-12-12)
