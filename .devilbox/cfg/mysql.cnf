@@ -1,0 +1,4 @@
+[mysqld]
+server_id = 1
+log_bin = "mysql-bin"
+sync_binlog = 0
