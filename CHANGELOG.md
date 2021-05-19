@@ -13,7 +13,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 
 #### Changed
 - [#769](https://github.com/cytopia/devilbox/issues/769) Adjusted Xdebug 3.0 defaults
-- Update PHP images to 0.124
+- Update PHP images to 0.125
 
 #### Fixed
 - [#783](https://github.com/cytopia/devilbox/pull/783) Kibana 6.6 and above uses ELASTICSEARCH_HOSTS
