@@ -69,7 +69,7 @@ if [ "${PHP_VERSION}" = "5.2" ] || [ "${PHP_VERSION}" = "5.3" ] || [ "${PHP_VERS
 		printf "\\r[OK]   Xdebug default disabled\\n"
 	fi
 else
-	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.mode' | grep -E 'develop.+develop' >/dev/null" "${RETRIES}" "" "0"; then
+	if  ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | tac | tac | grep 'xdebug.mode' | grep -E '(develop.+develop)|(no value.+no value)' >/dev/null" "${RETRIES}" "" "0"; then
 		printf "\\r[FAIL] Xdebug default disabled\\n"
 		run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/info_php.php' | grep 'xdebug.mode' || true"
 		exit 1

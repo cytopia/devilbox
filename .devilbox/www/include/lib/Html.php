@@ -73,6 +73,10 @@ class Html
 					'path' => '/info_php.php'
 				),
 				array(
+					'name' => 'PHP Xdebug Info',
+					'path' => '/info_xdebug.php'
+				),
+				array(
 					'name' => 'MySQL Info',
 					'path' => '/info_mysql.php'
 				),
@@ -92,10 +96,6 @@ class Html
 					'name' => 'Memcached Info',
 					'path' => '/info_memcd.php'
 				),
-				array(
-					'name' => 'XDebug Control Panel',
-					'path' => '/xdebug.php'
-				)
 			)
 		),
 		array(
@@ -435,9 +435,9 @@ HTML;
 						if (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) {
 							$el['path'] = '/vendor/adminer-4.6.3-en.php';
 						} elseif (version_compare(loadClass('Php')->getVersion(), '8.0', '<')){
-							$el['path'] = '/vendor/adminer-4.7.7-en.php';
+							$el['path'] = '/vendor/adminer-4.8.1-en.php';
 						} else {
-							$el['path'] = '/vendor/adminer-4.7.7-en-php8.php';
+							$el['path'] = '/vendor/adminer-4.8.1-en.php';
 						}
 					}
 
