@@ -435,9 +435,9 @@ HTML;
 						if (version_compare(loadClass('Php')->getVersion(), '5.4', '<')) {
 							$el['path'] = '/vendor/adminer-4.6.3-en.php';
 						} elseif (version_compare(loadClass('Php')->getVersion(), '8.0', '<')){
-							$el['path'] = '/vendor/adminer-4.7.7-en.php';
+							$el['path'] = '/vendor/adminer-4.8.1-en.php';
 						} else {
-							$el['path'] = '/vendor/adminer-4.7.7-en-php8.php';
+							$el['path'] = '/vendor/adminer-4.8.1-en.php';
 						}
 					}
 

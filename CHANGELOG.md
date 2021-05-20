@@ -15,6 +15,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 - [#769](https://github.com/cytopia/devilbox/issues/769) Adjusted Xdebug 3.0 defaults
 - Update PHP images to 0.125
 - MySQL database use binlog by default
+- Updated Adminer to 4.8.1
 
 #### Fixed
 - [#783](https://github.com/cytopia/devilbox/pull/783) Kibana 6.6 and above uses ELASTICSEARCH_HOSTS
