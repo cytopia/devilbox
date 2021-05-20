@@ -95,7 +95,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.122
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.125
     hostname: php
 
     ##
@@ -341,6 +341,7 @@ services:
 
       # Mount devilbox user-defined cnf files in order
       # to overwrite the MySQL server configuration
+      - ${DEVILBOX_PATH}/.devilbox/cfg/mysql.cnf:/etc/mysql/conf.d/devilbox.cnf:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/cfg/${MYSQL_SERVER}:/etc/mysql/docker-default.d:ro${MOUNT_OPTIONS}
 
       # Mount MySQL Data directory

@@ -326,15 +326,15 @@ MODS="$( echo "${PHP52_MODS}, ${PHP53_MODS}, ${PHP54_MODS}, ${PHP55_MODS}, ${PHP
 ###
 ### Get disabled modules
 ###
-DISABLED=",blackfire,ioncube,$( grep -E '^PHP_MODULES_DISABLE=' "${DVLBOX_PATH}/env-example" | sed 's/.*=//g' ),"
+DISABLED=",blackfire,ioncube,phalcon,psr,$( grep -E '^PHP_MODULES_DISABLE=' "${DVLBOX_PATH}/env-example" | sed 's/.*=//g' ),"
 #echo $DISABLED
 B="✔"  # Enabled base modules (cannot be disabled)
 E="🗸"  # Enabled mods modules (can be disabled)
 D="d"  # Disabled modules (can be enabled)
 U=" "  # Unavailable
 
-echo "| Modules                       | PHP 5.2 | PHP 5.3 | PHP 5.4 | PHP 5.5 | PHP 5.6 | PHP 7.0 | PHP 7.1 | PHP 7.2 | PHP 7.3 | PHP 7.4 | PHP 8.0 | PHP 8.1 |"
-echo "|-------------------------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|"
+echo "| Modules                       | <sup>PHP 5.2</sup> | <sup>PHP 5.3</sup> | <sup>PHP 5.4</sup> | <sup>PHP 5.5</sup> | <sup>PHP 5.6</sup> | <sup>PHP 7.0</sup> | <sup>PHP 7.1</sup> | <sup>PHP 7.2</sup> | <sup>PHP 7.3</sup> | <sup>PHP 7.4</sup> | <sup>PHP 8.0</sup> | <sup>PHP 8.1</sup> |"
+echo "|-------------------------------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|"
 echo "${MODS}" | while read -r line; do
     # Print current module
 	printf "| %-30s%s" "<small>${line}</small>" "|"

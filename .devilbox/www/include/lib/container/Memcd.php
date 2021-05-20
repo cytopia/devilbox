@@ -37,6 +37,11 @@ class Memcd extends BaseClass implements BaseInterface
 	{
 		parent::__construct($hostname, $data);
 
+		// Faster check if memcached is not loaded
+		if (!$this->isAvailable()) {
+			return;
+		}
+
 		if (class_exists('Memcached')) {
 			$memcd = new \Memcached('_devilbox');
 			$list = $memcd->getServerList();
@@ -273,5 +278,15 @@ class Memcd extends BaseClass implements BaseInterface
 			$this->_version = $version;
 		}
 		return $this->_version;
+	}
+
+	public function isAvailable()
+	{
+		if (extension_loaded('memcached')) {
+			return parent::isAvailable();
+		}
+
+		// when php module 'memcached' not available or just disable by configuration (see .env PHP_MODULES_DISABLE)
+		return false;
 	}
 }
