@@ -21,12 +21,6 @@
      awesome-ci <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
-.. |ext_lnk_tool_linuxbrew| raw:: html
-
-   <a target="_blank" href="https://linuxbrew.sh">
-     Linux brew <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
-   </a>
-
 .. |ext_lnk_tool_codecept| raw:: html
 
    <a target="_blank" href="https://codeception.com/">

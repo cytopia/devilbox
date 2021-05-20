@@ -65,4 +65,4 @@ autobuild:
 		-p "8000:8000" \
 		-v $(PWD)/..:/shared/httpd \
 		devilbox/python-sphinx:3.8-dev \
-		sphinx-autobuild -a -E -n -j auto -W -H 0.0.0.0 -p 8000 . _build/html
+		sphinx-autobuild -a -E -n -j auto -W --host 0.0.0.0 --port 8000 . _build/html

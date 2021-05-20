@@ -163,7 +163,7 @@ html_static_path = ['_static']
 
 def setup(app):
     '''Include custom css file'''
-    app.add_stylesheet('css/devilbox.css')
+    app.add_css_file('css/devilbox.css')
 
 
 # If true, “Created using Sphinx” is shown in the HTML footer. Default is True.
