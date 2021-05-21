@@ -159,6 +159,17 @@ $messages = $MyMbox->get($sortOrderArr);
 								<?php
 									$message = htmlentities($data['raw']);
 									$structure = $data['decoded'];
+									$body = null;
+
+									if (isset($structure->body)) {
+										$body = $structure->body;
+									}
+									elseif(isset($structure->parts[1]->body)) {
+										$body = $structure->parts[1]->body;
+									}
+									elseif(isset($structure->parts[0]->body)) {
+										$body = $structure->parts[0]->body;
+									}
 								 ?>
 								<tr id="<?php echo $data['num'];?>" class="subject">
 									<td><?php echo $data['num'];?></td>
@@ -174,16 +185,13 @@ $messages = $MyMbox->get($sortOrderArr);
 								<tr id="mail-<?php echo $data['num'];?>" style="display:none">
 									<td></td>
 									<td colspan="4">
-										<?php if (isset($structure->body)): ?>
-											<?php echo htmlentities($structure->body) ?>
-										<?php elseif(isset($structure->parts[1]->body)): ?>
-											<?php echo htmlentities($structure->parts[1]->body) ?>
-										<?php elseif(isset($structure->parts[0]->body)): ?>
-											<?php echo htmlentities($structure->parts[0]->body) ?>
+										<?php if ($body !== null): ?>
+											<html-email data-content="<?php echo base64_encode($body) ?>">
+											</html-email>
 										<?php else: ?>
-											<?php echo '<div class="alert alert-warning" role="alert">
+											<div class="alert alert-warning" role="alert">
 												No valid body found
-											</div>' ?>
+											</div>
 										<?php endif; ?>
 										<hr>
 										<p><a class="btn btn-primary" data-toggle="collapse" href="#email-<?php echo $data['num'];?>" aria-expanded="false" aria-controls="email-<?php echo $data['num'];?>">Raw source</a></p>
@@ -215,5 +223,6 @@ $messages = $MyMbox->get($sortOrderArr);
 			// Handler for .ready() called.
 		});
 		</script>
+		<script src="/assets/js/html-email.js"></script>
 	</body>
 </html>
