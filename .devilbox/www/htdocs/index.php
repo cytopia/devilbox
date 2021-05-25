@@ -252,7 +252,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 
 				<div class="col-md-4 col-sm-4 col-xs-12 col-margin">
 					<div class="dash-box">
-						<div class="dash-box-head"><i class="fa fa-bug" aria-hidden="true"></i> Health</div>
+						<div class="dash-box-head"><i class="fa fa-bug" aria-hidden="true"></i> Santé</div>
 						<div class="dash-box-body">
 							<div class="meter">
 							  <span style="color:black; width: <?php echo $HEALTH_PERCENT; ?>%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $HEALTH_PERCENT; ?>%</span>
@@ -340,7 +340,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 								<p><small>You can also enter the php container and work from inside. The following is available inside the container:</small></p>
 								<thead class="thead-inverse">
 									<tr>
-										<th colspan="2">Settings</th>
+										<th colspan="2">Paramètres</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -456,7 +456,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 								<tbody>
 									<?php foreach ($connection as $name => $docker): ?>
 										<tr>
-											<th rowspan="<?php echo count($docker);?>" class="align-middle"><?php echo $name; ?> connect</th>
+											<th rowspan="<?php echo count($docker);?>" class="align-middle">Connexion <?php echo $name; ?></th>
 											<?php $i=1; foreach ($docker as $conn): ?>
 
 											<?php if ($conn['succ']): ?>
