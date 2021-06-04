@@ -6,6 +6,14 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v1.9.2 (2021-06-04)
+
+#### Added
+- Added Homebrew for all PHP images
+- Added `pdo_sqlsrv` PHP extension for 7.4 and 8.0
+- Xdebug 3.0 documentation
+
+
 ## Release v1.9.1 (2021-05-19)
 
 #### Added
