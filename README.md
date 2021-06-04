@@ -630,8 +630,8 @@ The following tools will assist you on creating new projects easily as well as h
     <td><code>linkcheck</code> is a command line tool that searches for URLs in files (optionally limited by extension) and validates their HTTP status code.</td>
   </tr>
   <tr>
-    <td>:wrench: <a href="https://linuxbrew.sh/">linuxbrew</a></td>
-    <td><code>brew</code> is a MacOS Homenbrew clone for Linux.</td>
+    <td>:wrench: <a href="https://brew.sh/">homebrew</a></td>
+    <td><code>brew</code> is a MacOS Homenbrew for Linux.</td>
   </tr>
   <tr>
     <td>:wrench: <a href="https://github.com/DavidAnson/markdownlint">markdownlint</a></td>
@@ -778,7 +778,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <small>PDO_OCI</small>        |         |         |         |         |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |
 | <small>pdo_pgsql</small>      |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <small>pdo_sqlite</small>     |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
-| <small>pdo_sqlsrv</small>     |         |         |         |         |         |    d    |    d    |    d    |    d    |         |         |         |
+| <small>pdo_sqlsrv</small>     |         |         |         |         |         |    d    |    d    |    d    |    d    |    d    |    d    |         |
 | <small>pgsql</small>          |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <small>phalcon</small>        |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |         |         |
 | <small>Phar</small>           |    🗸    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
@@ -801,7 +801,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <small>SPL</small>            |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <small>SQLite</small>         |    ✔    |    ✔    |         |         |         |         |         |         |         |         |         |         |
 | <small>sqlite3</small>        |         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
-| <small>sqlsrv</small>         |         |         |         |         |         |    d    |    d    |    d    |    d    |    d    |         |         |
+| <small>sqlsrv</small>         |         |         |         |         |         |    d    |    d    |    d    |    d    |    d    |    d    |         |
 | <small>ssh2</small>           |         |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
 | <small>standard</small>       |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <small>swoole</small>         |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |         |         |
