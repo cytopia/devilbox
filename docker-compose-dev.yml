@@ -1,0 +1,18 @@
+version: '2.1'
+
+services:
+  php:
+    volumes:
+      - devilbox-intranet-sync:/var/www/default:nocopy
+      - devilbox-data-www-sync:/shared/httpd:nocopy
+  httpd:
+    volumes:
+      - devilbox-intranet-sync:/var/www/default:nocopy
+      - devilbox-data-www-sync:/shared/httpd:nocopy
+
+volumes:
+  # docker-sync managed volumes
+  devilbox-intranet-sync:
+    external: true
+  devilbox-data-www-sync:
+    external: true
