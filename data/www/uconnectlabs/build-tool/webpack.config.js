@@ -1,7 +1,7 @@
 export let webpackConfig = {
     watch: false,
     stats: 'none',
-    mode: process.env.NODE_ENV,
+    mode: (process.env.NODE_ENV == 'production'? 'production': 'development'),
     output: {
         filename: `[name]${process.env.NODE_ENV == 'production' ? '.min' : ''}.js`,
     },
@@ -58,6 +58,7 @@ export let webpackConfig = {
         '@wordpress/url': 'wp.url',
         '@wordpress/viewport': 'wp.viewport',
         '@wordpress/wordcount': 'wp.wordcount',
+        '@wordpress/icons': 'wp.icons',
         backbone: 'Backbone',
         jquery: 'jQuery',
         lodash: 'lodash',
