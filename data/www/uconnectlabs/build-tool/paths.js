@@ -12,7 +12,7 @@ export const paths = {
     },
     themes: {
         styles: {
-            src: ['css/styles.scss', 'css/admin-styles.scss', 'css/modules/**/index.scss', 'css/modules/**/editor.scss'],
+            src: ['css/styles.scss', 'css/editor.scss', 'css/admin-styles.scss', 'css/modules/**/index.scss', 'css/modules/**/editor.scss', 'css/**/index.scss'],
             dest: 'dist/css/',
         },
         scripts: {
