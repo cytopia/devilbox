@@ -121,6 +121,23 @@ Copy/paste all of the following lines into the above created ``xdebug.ini`` file
       ; Optional: Set to true to always auto-start xdebug
       xdebug.remote_autostart=false
 
+`Xdebug 3.0 changes <https://xdebug.org/docs/upgrade_guide>`_:
+    .. code-block:: ini
+       :caption: xdebug.ini
+       
+       ; Defaults
+       xdebug.mode=debug
+       xdegub.client_port=9000
+       
+       ; The Linux Way
+       xdebug.discover_client_host=1
+       
+       ; idekey value is specific to Atom
+       xdebug.session=xdebug.atom
+       
+       ; Optional: Set to true to always auto-start xdebug
+       xdebug.start_with_request=Yes
+
 .. note:: Host os and editor specific settings are highlighted in yellow and are worth googling to get a better understanding of the tools you use and to be more efficient at troubleshooting.
 
 

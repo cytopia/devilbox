@@ -95,6 +95,8 @@
 /cfg/php-ini-7.3/*.ini
 /cfg/php-ini-7.4/*.ini
 /cfg/php-ini-8.0/*.ini
+/cfg/php-ini-8.1/*.ini
+
 !/cfg/*/uconnectlabs.ini
 
 # Ignore custom PHP-FPM configs

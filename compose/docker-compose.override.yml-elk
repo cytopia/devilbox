@@ -53,6 +53,7 @@ services:
         ipv4_address: 172.16.238.242
     environment:
       - TZ=${TIMEZONE:-UTC}
+      - ELASTICSEARCH_HOSTS=http://elastic:9200
       - ELASTICSEARCH_URL=http://elastic:9200
     depends_on:
       - elastic
