@@ -38,6 +38,11 @@ class Pgsql extends BaseClass implements BaseInterface
 	{
 		parent::__construct($hostname, $data);
 
+		// Faster check if pgsql is not loaded
+		if (!$this->isAvailable()) {
+			return;
+		}
+
 		$user = $data['user'];
 		$pass = $data['pass'];
 		$db = isset($data['db']) ? $data['db'] : null;
@@ -371,5 +376,15 @@ class Pgsql extends BaseClass implements BaseInterface
 		}
 
 		return $this->_version;
+	}
+
+	public function isAvailable()
+	{
+		if (extension_loaded('pgsql')) {
+			return parent::isAvailable();
+		}
+
+		// when php module 'pgsql' not available or just disable by configuration (see .env PHP_MODULES_DISABLE)
+		return false;
 	}
 }

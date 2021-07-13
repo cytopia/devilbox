@@ -218,4 +218,14 @@ class Redis extends BaseClass implements BaseInterface
 
 		return $this->_version;
 	}
+
+	public function isAvailable()
+	{
+		if (extension_loaded('redis')) {
+			return parent::isAvailable();
+		}
+
+		// when php module 'redis' not available or just disable by configuration (see .env PHP_MODULES_DISABLE)
+		return false;
+	}
 }

@@ -31,6 +31,11 @@ class Mysql extends BaseClass implements BaseInterface
 	{
 		parent::__construct($hostname, $data);
 
+		// Faster check if mysql is not loaded
+		if (!$this->isAvailable()) {
+			return;
+		}
+
 		$user = $data['user'];
 		$pass = $data['pass'];
 
@@ -307,5 +312,15 @@ class Mysql extends BaseClass implements BaseInterface
 		}
 
 		return $this->_version;
+	}
+
+	public function isAvailable()
+	{
+		if (extension_loaded('mysqli')) {
+			return parent::isAvailable();
+		}
+
+		// when php module 'mysqli' not available or just disable by configuration (see .env PHP_MODULES_DISABLE)
+		return false;
 	}
 }
