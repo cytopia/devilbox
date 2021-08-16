@@ -27,3 +27,19 @@ services:
     ports:
     ## Expose the Live Trace server port. See bin/trace_servers/live_trace.php
     - "61211:61211"
+  ngrok:
+    image: devilbox/ngrok:0.3
+    hostname: ngrok
+    environment:
+      - HTTP_TUNNELS=${NGROK_HTTP_TUNNELS:-httpd:httpd:80}
+      - AUTHTOKEN=${NGROK_AUTHTOKEN:-}
+      - REGION=${NGROK_REGION:-us}
+    ports:
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_NGROK:-4040}:4040"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.202
+    depends_on:
+      - bind
+      - php
+      - httpd
