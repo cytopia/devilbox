@@ -78,7 +78,7 @@ You will need to configure the path mapping in ``launch.json`` (VSCode configura
                   "name": "Xdebug for Project mytest",
                   "type": "php",
                   "request": "launch",
-                  "port": 9000,
+                  "port": 9003,
                   "pathMappings": {
                       "/shared/httpd/mytest/htdocs": "${workspaceFolder}/htdocs"
                   }
@@ -88,7 +88,7 @@ You will need to configure the path mapping in ``launch.json`` (VSCode configura
                   "request": "launch",
                   "program": "${file}",
                   "cwd": "${fileDirname}",
-                  "port": 9000
+                  "port": 9003
               }
           ]
       }
@@ -125,18 +125,17 @@ Copy/paste all of the following lines into the above created ``xdebug.ini`` file
 
    .. code-block:: ini
       :caption: xdebug.ini
-      :emphasize-lines: 7,10
+      :emphasize-lines: 3,5
 
-      ; Defaults
-      xdebug.default_enable=1
-      xdebug.remote_enable=1
-      xdebug.remote_port=9000
-
-      ; The Linux way
-      xdebug.remote_connect_back=1
-
-      ; idekey value is specific to Visual Studio Code
-      xdebug.idekey=VSCODE
+      xdebug.mode               = debug
+      xdebug.start_with_request = yes
+      xdebug.client_host        = docker.for.lin.localhost
+      xdebug.client_port        = 9003
+      xdebug.idekey             = VSCODE
+      
+      ; Optional: If you want to have a log written
+      xdebug.log                = /shared/httpd/mytest/htdocs/xdebug.log
+      xdebug.log_level          = 7
 
       ; Optional: Set to true to always auto-start xdebug
       xdebug.remote_autostart=true
