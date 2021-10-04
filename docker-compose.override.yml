@@ -43,3 +43,37 @@ services:
       - bind
       - php
       - httpd
+  # -----------------------------------------------------------------------------------------------
+  # ELK Stack
+  # -----------------------------------------------------------------------------------------------
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELK_SERVER:-6.6.1}
+    hostname: elastic
+    ports:
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_ELK_ELASTIC:-9200}:9200"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.240
+    environment:
+      - TZ=${TIMEZONE:-UTC}
+      - discovery.type=single-node
+    volumes:
+      - devilbox-elastic:/usr/share/elasticsearch/data
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:${ELK_SERVER:-6.6.1}
+    hostname: kibana
+    ports:
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_ELK_KIBANA:-5601}:5601"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.242
+    environment:
+      - TZ=${TIMEZONE:-UTC}
+      - ELASTICSEARCH_HOSTS=http://elastic:9200
+      - ELASTICSEARCH_URL=http://elastic:9200
+    depends_on:
+      - elastic
+
+volumes:
+  devilbox-elastic:
