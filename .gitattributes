@@ -1,0 +1,24 @@
+# Force LF line endings to avoid issues when the repo is checked out on a shared file system like Windows/WSL
+* text eol=lf
+
+#Exclude .devilbox to avoid conflicts with the upstream as some files use CRLF
+.devilbox/** text=auto
+
+# These files are binary and should be left untouched
+# (binary is a macro for -text -diff)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.flv binary
+*.fla binary
+*.swf binary
+*.gz binary
+*.zip binary
+*.7z binary
+*.ttf binary
+*.pyc binary
