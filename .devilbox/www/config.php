@@ -132,10 +132,14 @@ function loadClass($class) {
 				$REDIS_ROOT_PASSWORD = '';
 
 				$_REDIS_ARGS = loadClass('Helper')->getEnv('REDIS_ARGS');
-				$_REDIS_PASS = preg_split("/--requirepass\s+/",  $_REDIS_ARGS);
-				if (is_array($_REDIS_PASS) && count($_REDIS_PASS)) {
+
+				$_REDIS_PASS = [];
+				preg_match_all('/--requirepass\s+([^\s]*)/',  $_REDIS_ARGS, $_REDIS_PASS);
+
+				if (! empty($_REDIS_PASS[1])) {
 					// In case the option is specified multiple times, use the last effective one.
-					$_REDIS_PASS = $_REDIS_PASS[count($_REDIS_PASS)-1];
+					$_REDIS_PASS = end($_REDIS_PASS[1]);
+					
 					if (strlen($_REDIS_PASS) > 0) {
 						$REDIS_ROOT_PASSWORD = $_REDIS_PASS;
 					}
