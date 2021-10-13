@@ -47,7 +47,7 @@ When using Docker for Windows you can use ``127.0.0.1`` for the IP address.
       127.0.0.1  project-1.loc
       127.0.0.1  www.project-1.loc
 
-3. Safe the file and verify the DNS entries with the ``ping`` command
+3. Save the file and verify the DNS entries with the ``ping`` command
 
    .. code-block:: bash
 
