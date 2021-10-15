@@ -127,15 +127,27 @@ function loadClass($class) {
 				break;
 
 			case 'Redis':
-
 				// Check if redis is using a password
 				$REDIS_ROOT_PASSWORD = '';
 
 				$_REDIS_ARGS = loadClass('Helper')->getEnv('REDIS_ARGS');
-				$_REDIS_PASS = preg_split("/--requirepass\s+/",  $_REDIS_ARGS);
-				if (is_array($_REDIS_PASS) && count($_REDIS_PASS)) {
-					// In case the option is specified multiple times, use the last effective one.
-					$_REDIS_PASS = $_REDIS_PASS[count($_REDIS_PASS)-1];
+
+				/*
+				 * This pattern will match optional quoted string, 'my password' or "my password"
+				 * or if there aren't any quotes, it will match up until the next space.
+				 */
+				$_REDIS_PASS = [];
+				preg_match_all('/--requirepass\s+("|\')?(?(1)(.*)|([^\s]*))(?(1)\1|)/', $_REDIS_ARGS, $_REDIS_PASS, PREG_SET_ORDER);
+
+				if (! empty($_REDIS_PASS)) {
+					/*
+					 * In case the option is specified multiple times, use the last effective one.
+					 *
+					 * preg_match_all returns a multi-dimensional array, the first level array is in order of which was matched first,
+					 * and the password string is either matched in group 2 or group 3 which is always the end of the sub-array.
+					 */
+					$_REDIS_PASS = end(end($_REDIS_PASS));
+					
 					if (strlen($_REDIS_PASS) > 0) {
 						$REDIS_ROOT_PASSWORD = $_REDIS_PASS;
 					}
