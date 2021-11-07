@@ -186,8 +186,8 @@ $messages = $MyMbox->get($sortOrderArr);
 									<td></td>
 									<td colspan="4">
 										<?php if ($body !== null): ?>
-											<html-email data-content="<?php echo base64_encode($body) ?>">
-											</html-email>
+											<template id="mail-body-<?=$data['num']?>"><?=$body?></template>
+											<html-email data-template-id="mail-body-<?=$data['num']?>"></html-email>
 										<?php else: ?>
 											<div class="alert alert-warning" role="alert">
 												No valid body found
@@ -213,12 +213,9 @@ $messages = $MyMbox->get($sortOrderArr);
 		<?php echo loadClass('Html')->getFooter(); ?>
 		<script>
 		$(function() {
-			$('.subject').each(function() {
-				$(this).click(function() {
-					var id = ($(this).attr('id'));
-					$('#mail-'+id).toggle();
-
-				})
+			$('.subject').click(function() {
+				var id = ($(this).attr('id'));
+				$('#mail-'+id).toggle();
 			})
 			// Handler for .ready() called.
 		});
