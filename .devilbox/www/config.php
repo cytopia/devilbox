@@ -136,7 +136,7 @@ function loadClass($class) {
 				 * This pattern will match optional quoted string, 'my password' or "my password"
 				 * or if there aren't any quotes, it will match up until the next space.
 				 */
-				$_REDIS_PASS = [];
+				$_REDIS_PASS = array();
 				preg_match_all('/--requirepass\s+("|\')?(?(1)(.*)|([^\s]*))(?(1)\1|)/', $_REDIS_ARGS, $_REDIS_PASS, PREG_SET_ORDER);
 
 				if (! empty($_REDIS_PASS)) {
@@ -147,7 +147,7 @@ function loadClass($class) {
 					 * and the password string is either matched in group 2 or group 3 which is always the end of the sub-array.
 					 */
 					$_REDIS_PASS = end(end($_REDIS_PASS));
-					
+
 					if (strlen($_REDIS_PASS) > 0) {
 						$REDIS_ROOT_PASSWORD = $_REDIS_PASS;
 					}
