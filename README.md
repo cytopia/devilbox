@@ -734,7 +734,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <small>date</small>           |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <small>dba</small>            |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <small>dom</small>            |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
-| <small>enchant</small>        |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
+| <small>enchant</small>        |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |    🗸    |    🗸    |
 | <small>ereg</small>           |         |    ✔    |    ✔    |    ✔    |    ✔    |         |         |         |         |         |         |         |
 | <small>exif</small>           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <small>FFI</small>            |         |         |         |         |         |         |         |         |         |    🗸    |    ✔    |    ✔    |
@@ -756,7 +756,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <small>ldap</small>           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <small>libxml</small>         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <small>mbstring</small>       |    ✔    |    🗸    |    🗸    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
-| <small>mcrypt</small>         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
+| <small>mcrypt</small>         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
 | <small>memcache</small>       |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <small>memcached</small>      |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <small>mhash</small>          |         |         |         |         |    ✔    |         |         |         |         |         |         |         |
@@ -804,7 +804,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <small>sqlsrv</small>         |         |         |         |         |         |    d    |    d    |    d    |    d    |    d    |    d    |         |
 | <small>ssh2</small>           |         |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
 | <small>standard</small>       |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
-| <small>swoole</small>         |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |         |         |
+| <small>swoole</small>         |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |         |
 | <small>sysvmsg</small>        |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <small>sysvsem</small>        |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <small>sysvshm</small>        |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
