@@ -320,7 +320,7 @@ services:
   # MySQL Database
   # ------------------------------------------------------------
   mysql:
-    image: devilbox/mysql:${MYSQL_SERVER}-0.7
+    image: devilbox/mysql:${MYSQL_SERVER}-0.8
     hostname: mysql
 
     environment:
