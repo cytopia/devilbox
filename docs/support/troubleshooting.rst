@@ -135,7 +135,7 @@ have to get support from the docker/for-mac GitHub repository or forum.
 
 .. seealso::
    * https://github.com/cytopia/devilbox/issues/539
-   * https://github.com/docker/for-mac/issues/371#issuecomment-242047368
+   * https://github.com/docker/for-mac/issues/371
    * https://forums.docker.com/t/no-space-left-on-device-error/10894
 
 
