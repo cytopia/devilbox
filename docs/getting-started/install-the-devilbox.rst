@@ -148,7 +148,7 @@ Ensure to read the links below to understand why this problem exists and how the
 The Docker documentation will also give you alternative caching options to consider.
 
 .. seealso::
-   * https://github.com/cytopia/devilbox/issues/105#issuecomment-426229921
+   * https://github.com/cytopia/devilbox/issues/105
    * https://forums.docker.com/t/file-access-in-mounted-volumes-extremely-slow-cpu-bound/8076/281
    * https://docs.docker.com/docker-for-mac/osxfs/
    * :ref:`env_mount_options`

@@ -6,6 +6,16 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v1.9.3 (2022-01-24)
+
+#### Fixed
+- Updated PHP Docker Images: [#221](https://github.com/devilbox/docker-php-fpm/pull/221)
+- Updated PHP Docker Images: [#222](https://github.com/devilbox/docker-php-fpm/pull/222)
+- Update MySQL Docker Images: [#10](https://github.com/devilbox/docker-mysql/pull/10)
+- Fixed documentation build issues
+- Fixed intranet PHP code to work with legacy versions
+
+
 ## Release v1.9.2 (2021-06-04)
 
 #### Added
