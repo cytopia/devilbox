@@ -29,9 +29,13 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 #### Changed
 - Updated `php-cs-fixer` to latest version [#219](https://github.com/devilbox/docker-php-fpm/pull/219)
 - Updated Nginx Stable [#33](https://github.com/devilbox/docker-nginx-stable/pull/33)
+- Updated Nginx Stable [#34](https://github.com/devilbox/docker-nginx-stable/pull/34)
 - Updated Nginx Mainline [#36](https://github.com/devilbox/docker-nginx-mainline/pull/36)
+- Updated Nginx Mainline [#37](https://github.com/devilbox/docker-nginx-mainline/pull/37)
 - Updated Apache 2.2 [#30](https://github.com/devilbox/docker-apache-2.2/pull/30)
+- Updated Apache 2.2 [#31](https://github.com/devilbox/docker-apache-2.2/pull/31)
 - Updated Apache 2.4 [#32](https://github.com/devilbox/docker-apache-2.4/pull/32)
+- Updated Apache 2.4 [#33](https://github.com/devilbox/docker-apache-2.4/pull/33)
 
 
 ## Release v1.9.3 (2022-01-24)
