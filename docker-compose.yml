@@ -501,6 +501,8 @@ volumes:
   devilbox-mariadb-10.3:
   devilbox-mariadb-10.4:
   devilbox-mariadb-10.5:
+  devilbox-mariadb-10.6:
+  devilbox-mariadb-10.7:
   devilbox-percona-5.5:
   devilbox-percona-5.6:
   devilbox-percona-5.7:
