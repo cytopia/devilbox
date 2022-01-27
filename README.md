@@ -313,7 +313,7 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td><a target="_blank" title="PHP 7.2"          href="https://github.com/devilbox/docker-php-fpm">7.2</a></td>
       <td></td>
-      <td></td>
+      <td><a target="_blank" title="MariaDB 10.6"     href="https://github.com/devilbox/docker-mysql">10.6</a></td>
       <td></td>
       <td>...</td>
       <td></td>
@@ -325,7 +325,7 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td><a target="_blank" title="PHP 7.3"          href="https://github.com/devilbox/docker-php-fpm">7.3</a></td>
       <td></td>
-      <td></td>
+      <td><a target="_blank" title="MariaDB 10.7"     href="https://github.com/devilbox/docker-mysql">10.7</a></td>
       <td></td>
       <td><a target="_blank" title="PgSQL 12.3"       href="https://github.com/docker-library/postgres">12.3</a></td>
       <td></td>
