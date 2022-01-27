@@ -10,6 +10,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 
 #### Fixed
 - Fixed mail.php to correctly show UTF chars in Body [#850](https://github.com/cytopia/devilbox/issues/850)
+- Fixed desc in env-example [#807](https://github.com/cytopia/devilbox/issues/807)
 
 #### Added
 - Added binary `sqlite3` to all PHP images [#856](https://github.com/cytopia/devilbox/issues/856)

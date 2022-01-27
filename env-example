@@ -86,7 +86,7 @@ LOCAL_LISTEN_ADDR=
 ### with mass-virtual-hosting.
 ### It is also required for the internal DNS server to be setup.
 ###
-### Note: Only ALPHA ([a-zA-Z]+) characters are supported.
+### Note: In addition to period or dot character ('.'), only ALPHA ([a-zA-Z]+) characters are supported.
 ###
 ### Example:
 ###   TLD_SUFFIX=loc
