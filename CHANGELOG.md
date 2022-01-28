@@ -6,6 +6,38 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v1.10.0 (2022-01-28)
+
+#### Fixed
+- Fixed mail.php to correctly show UTF chars in Body [#850](https://github.com/cytopia/devilbox/issues/850)
+- Fixed desc in env-example [#807](https://github.com/cytopia/devilbox/issues/807)
+
+#### Added
+- Added binary `sqlite3` to all PHP images [#856](https://github.com/cytopia/devilbox/issues/856)
+- Added binary `laravel` to PHP 8.0 and PHP 8.1 [#823](https://github.com/cytopia/devilbox/issues/823)
+- Added AVIF support in GD for PHP 8.1 [#834](https://github.com/cytopia/devilbox/issues/834)
+- Added extension `amqp` to PHP 8.0 and PHP 8.1 [#826](https://github.com/cytopia/devilbox/issues/826)
+- Added extension `uploadprogress` to PHP 8.0 and PHP 8.1 [#158](https://github.com/devilbox/docker-php-fpm/pull/158)
+- Added extension `imagick` to PHP 8.0 and PHP 8.1
+- Added extension `rdkafka` to PHP 8.0 and PHP 8.1
+- Added extension `xlswriter` to PHP 8.1
+- Added extension `pdo_dblib` to PHP 8.1
+- Added extension `uuid` to all PHP versions (except 5.2)
+- Added MySQL image: MariaDB 10.6
+- Added MySQL image: MariaDB 10.7
+
+#### Changed
+- Updated `php-cs-fixer` to latest version [#219](https://github.com/devilbox/docker-php-fpm/pull/219)
+- Updated Nginx Stable [#33](https://github.com/devilbox/docker-nginx-stable/pull/33)
+- Updated Nginx Stable [#34](https://github.com/devilbox/docker-nginx-stable/pull/34)
+- Updated Nginx Mainline [#36](https://github.com/devilbox/docker-nginx-mainline/pull/36)
+- Updated Nginx Mainline [#37](https://github.com/devilbox/docker-nginx-mainline/pull/37)
+- Updated Apache 2.2 [#30](https://github.com/devilbox/docker-apache-2.2/pull/30)
+- Updated Apache 2.2 [#31](https://github.com/devilbox/docker-apache-2.2/pull/31)
+- Updated Apache 2.4 [#32](https://github.com/devilbox/docker-apache-2.4/pull/32)
+- Updated Apache 2.4 [#33](https://github.com/devilbox/docker-apache-2.4/pull/33)
+
+
 ## Release v1.9.3 (2022-01-24)
 
 #### Fixed
