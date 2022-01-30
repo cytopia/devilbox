@@ -128,7 +128,7 @@ Now save the file and you can start the Devilbox again.
    # Navigate to the Devilbox directory
    host> cd path/to/devilbox
 
-   # Stop all container
+   # Start all container
    host> docker-compose up php httpd bind
 
 .. seealso:: :ref:`start_the_devilbox`
@@ -193,7 +193,7 @@ Now save the file and you can start the Devilbox again.
    # Navigate to the Devilbox directory
    host> cd path/to/devilbox
 
-   # Stop all container
+   # Start all container
    host> docker-compose up php httpd bind
 
 .. seealso:: :ref:`start_the_devilbox`

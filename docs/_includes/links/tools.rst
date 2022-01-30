@@ -209,7 +209,7 @@
 
 .. |ext_lnk_tool_photon| raw:: html
 
-   <a target="_blank" href="https://photoncms.com/resources/installing">
+   <a target="_blank" href="https://docs.photoncms.com/">
      Photon CMS cli <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
