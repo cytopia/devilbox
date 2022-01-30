@@ -6,6 +6,22 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v1.10.1 (2022-01-30)
+
+
+#### Fixed
+- Fixed evaluation of `MASS_VHOST_SSL_GEN` env var [#830](https://github.com/cytopia/devilbox/issues/830)
+
+#### Added
+- Added feature to delete emails from within control center [#754](https://github.com/cytopia/devilbox/issues/754)
+
+#### Changed
+- Updated Nginx Stable [#35](https://github.com/devilbox/docker-nginx-stable/pull/35)
+- Updated Nginx Mainline [#37](https://github.com/devilbox/docker-nginx-mainline/pull/38)
+- Updated Apache 2.2 [#32](https://github.com/devilbox/docker-apache-2.2/pull/32)
+- Updated Apache 2.4 [#34](https://github.com/devilbox/docker-apache-2.4/pull/34)
+
+
 ## Release v1.10.0 (2022-01-28)
 
 #### Fixed

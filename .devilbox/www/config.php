@@ -13,8 +13,8 @@ error_reporting(-1);
 putenv('RES_OPTIONS=retrans:1 retry:1 timeout:1 attempts:1');
 
 
-$DEVILBOX_VERSION = 'v1.10.0';
-$DEVILBOX_DATE = '2022-01-28';
+$DEVILBOX_VERSION = 'v1.10.1';
+$DEVILBOX_DATE = '2022-01-30';
 $DEVILBOX_API_PAGE = 'devilbox-api/status.json';
 
 //

@@ -24,6 +24,17 @@ require $VEN_DIR . DIRECTORY_SEPARATOR . 'Mail' . DIRECTORY_SEPARATOR .'mimeDeco
 require $LIB_DIR . DIRECTORY_SEPARATOR . 'Mail.php';
 require $LIB_DIR . DIRECTORY_SEPARATOR . 'Sort.php';
 
+
+if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
+	$message = $_GET['delete'];
+	$MyMbox = new \devilbox\Mail('/var/mail/devilbox');
+	$MyMbox->delete($message);
+	header('Location: /mail.php');
+	exit();
+}
+
+
+
 //
 // Setup Sort/Order
 //
@@ -152,6 +163,7 @@ $messages = $MyMbox->get($sortOrderArr);
 								<th>From <?php echo $orderFrom;?></th>
 								<th>To <?php echo $orderTo;?></th>
 								<th>Subject <?php echo $orderSubj;?></th>
+								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -180,11 +192,12 @@ $messages = $MyMbox->get($sortOrderArr);
 									<td><?php echo htmlentities($structure->headers['from']);?></td>
 									<td><?php echo htmlentities($structure->headers['x-original-to']);?></td>
 									<td><?php echo htmlentities($structure->headers['subject']);?></td>
+									<td><a href="/mail.php?delete=<?php echo $data['num']-1;?>" title="Delete Email"><i class="fa fa-trash"></i></a></td>
 								</tr>
 								<tr></tr>
 								<tr id="mail-<?php echo $data['num'];?>" style="display:none">
 									<td></td>
-									<td colspan="4">
+									<td colspan="5">
 										<?php if ($body !== null): ?>
 											<template id="mail-body-<?=$data['num']?>"><?=$body?></template>
 											<html-email data-template-id="mail-body-<?=$data['num']?>"></html-email>

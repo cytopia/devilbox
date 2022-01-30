@@ -59,6 +59,18 @@ class Mail
 
 
 	/**
+	 * Deletes an emails
+	 *
+	 * Note: messages start with 0.
+	 *
+	 * @param int $message The number of the message to remove, or array of message ids to remove
+	 */
+	public function delete($message) {
+		$this->_Mbox->remove($message);
+	}
+
+
+	/**
 	 * Retrieve emails.
 	 *
 	 * @param  mixed[] $sort array($sort => $order) Array
