@@ -6,8 +6,21 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
-## Release v1.10.1 (2022-01-30)
+## Release v1.10.2 (2022-02-02)
 
+#### Fixed
+- Fixed `nvm` PATH priority [#846](https://github.com/cytopia/devilbox/issues/846)
+
+#### Added
+- Added extension `sqlsrv` to php 8.1
+- Added extension `pdo_sqlsrv` to php 8.1
+
+#### Changed
+- Changed postfix hostname to `localhost` instead of GitHub runners long name
+- Updated PHP-FPM images [#224](https://github.com/devilbox/docker-php-fpm/pull/224)
+
+
+## Release v1.10.1 (2022-01-30)
 
 #### Fixed
 - Fixed evaluation of `MASS_VHOST_SSL_GEN` env var [#830](https://github.com/cytopia/devilbox/issues/830)
