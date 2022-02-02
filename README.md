@@ -778,7 +778,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <small>PDO_OCI</small>        |         |         |         |         |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |
 | <small>pdo_pgsql</small>      |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <small>pdo_sqlite</small>     |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
-| <small>pdo_sqlsrv</small>     |         |         |         |         |         |    d    |    d    |    d    |    d    |    d    |    d    |         |
+| <small>pdo_sqlsrv</small>     |         |         |         |         |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |
 | <small>pgsql</small>          |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <small>phalcon</small>        |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |         |         |
 | <small>Phar</small>           |    🗸    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
@@ -801,7 +801,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <small>SPL</small>            |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <small>SQLite</small>         |    ✔    |    ✔    |         |         |         |         |         |         |         |         |         |         |
 | <small>sqlite3</small>        |         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
-| <small>sqlsrv</small>         |         |         |         |         |         |    d    |    d    |    d    |    d    |    d    |    d    |         |
+| <small>sqlsrv</small>         |         |         |         |         |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |
 | <small>ssh2</small>           |         |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
 | <small>standard</small>       |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <small>swoole</small>         |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |         |
