@@ -72,6 +72,8 @@
 /cfg/mariadb-10.3/*.cnf
 /cfg/mariadb-10.4/*.cnf
 /cfg/mariadb-10.5/*.cnf
+/cfg/mariadb-10.6/*.cnf
+/cfg/mariadb-10.7/*.cnf
 /cfg/percona-5.5/*.cnf
 /cfg/percona-5.6/*.cnf
 /cfg/percona-5.7/*.cnf
