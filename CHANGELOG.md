@@ -6,6 +6,16 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v1.10.3 (2022-02-04)
+
+#### Added
+- Added PHP 8.2
+
+#### Changed
+- Updated PHP-FPM images [#225](https://github.com/devilbox/docker-php-fpm/pull/225)
+- Updated PHP-FPM images [#226](https://github.com/devilbox/docker-php-fpm/pull/226)
+
+
 ## Release v1.10.2 (2022-02-02)
 
 #### Fixed

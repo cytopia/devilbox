@@ -169,6 +169,18 @@ if ! PHP81_BASE="$( run "\
 	exit 1
 fi
 
+if ! PHP82_BASE="$( run "\
+	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
+	| tac \
+	| tac \
+	| grep -E '82-base' \
+	| sed \
+		-e 's/.*\">//g' \
+		-e 's/<.*//g'" "${RETRIES}" )"; then
+	>&2 echo "Failed to retrieve modules for PHP 8.2"
+	exit 1
+fi
+
 ###
 ### Get PHP mods modules (5 rounds)
 ###
@@ -317,10 +329,22 @@ if ! PHP81_MODS="$( run "\
 	exit 1
 fi
 
+if ! PHP82_MODS="$( run "\
+	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
+	| tac \
+	| tac \
+	| grep -E '82-mods' \
+	| sed \
+		-e 's/.*\">//g' \
+		-e 's/<.*//g'" "${RETRIES}" )"; then
+	>&2 echo "Failed to retrieve modules for PHP 8.2"
+	exit 1
+fi
+
 ###
 ### Todo: add ioncube
 ###
-MODS="$( echo "${PHP52_MODS}, ${PHP53_MODS}, ${PHP54_MODS}, ${PHP55_MODS}, ${PHP56_MODS}, ${PHP70_MODS}, ${PHP71_MODS}, ${PHP72_MODS}, ${PHP73_MODS}, ${PHP74_MODS}, ${PHP80_MODS}, ${PHP81_MODS}" | sed 's/,/\n/g' | sed -e 's/^\s*//g' -e 's/\s*$//g' | sort -uf )"
+MODS="$( echo "${PHP52_MODS}, ${PHP53_MODS}, ${PHP54_MODS}, ${PHP55_MODS}, ${PHP56_MODS}, ${PHP70_MODS}, ${PHP71_MODS}, ${PHP72_MODS}, ${PHP73_MODS}, ${PHP74_MODS}, ${PHP80_MODS}, ${PHP81_MODS}, ${PHP82_MODS}" | sed 's/,/\n/g' | sed -e 's/^\s*//g' -e 's/\s*$//g' | sort -uf )"
 
 
 ###
@@ -333,11 +357,11 @@ E="🗸"  # Enabled mods modules (can be disabled)
 D="d"  # Disabled modules (can be enabled)
 U=" "  # Unavailable
 
-echo "| Modules                       | <sup>PHP 5.2</sup> | <sup>PHP 5.3</sup> | <sup>PHP 5.4</sup> | <sup>PHP 5.5</sup> | <sup>PHP 5.6</sup> | <sup>PHP 7.0</sup> | <sup>PHP 7.1</sup> | <sup>PHP 7.2</sup> | <sup>PHP 7.3</sup> | <sup>PHP 7.4</sup> | <sup>PHP 8.0</sup> | <sup>PHP 8.1</sup> |"
-echo "|-------------------------------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|"
+echo "| Modules                       | <sup>PHP 5.2</sup> | <sup>PHP 5.3</sup> | <sup>PHP 5.4</sup> | <sup>PHP 5.5</sup> | <sup>PHP 5.6</sup> | <sup>PHP 7.0</sup> | <sup>PHP 7.1</sup> | <sup>PHP 7.2</sup> | <sup>PHP 7.3</sup> | <sup>PHP 7.4</sup> | <sup>PHP 8.0</sup> | <sup>PHP 8.1</sup> | <sup>PHP 8.2</sup> |"
+echo "|-------------------------------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|"
 echo "${MODS}" | while read -r line; do
     # Print current module
-	printf "| %-30s%s" "<small>${line}</small>" "|"
+	printf "| %-30s%s" "<sup>${line}</sup>" "|"
 
 	# ---------- PHP 5.2 ----------#
 	if echo ",${PHP52_MODS}," | sed 's/,\s/,/g' | grep -Eq ",${line},"; then
@@ -510,6 +534,21 @@ echo "${MODS}" | while read -r line; do
 			printf "    %s    |" "${D}"      # Currently disabled
 		else
 			if echo ",${PHP81_BASE}," | sed 's/,\s/,/g' | grep -Eq ",${line},"; then
+				printf "    %s    |" "${B}"  # Enabled, but cannot be disabled
+			else
+				printf "    %s    |" "${E}"  # Enabled, can be disabled
+			fi
+		fi
+	else
+		printf "    %s    |" "${U}"          # Not available
+	fi
+
+	# ---------- PHP 8.2 ----------#
+	if echo ",${PHP82_MODS}," | sed 's/,\s/,/g' | grep -Eq ",${line},"; then
+		if echo "${DISABLED}" | grep -Eq ",${line},"; then
+			printf "    %s    |" "${D}"      # Currently disabled
+		else
+			if echo ",${PHP82_BASE}," | sed 's/,\s/,/g' | grep -Eq ",${line},"; then
 				printf "    %s    |" "${B}"  # Enabled, but cannot be disabled
 			else
 				printf "    %s    |" "${E}"  # Enabled, can be disabled
