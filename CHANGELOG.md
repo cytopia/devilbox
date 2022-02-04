@@ -6,7 +6,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
-## Release v1.10.3 (2022-02-03)
+## Release v1.10.3 (2022-02-04)
 
 #### Added
 - Added PHP 8.2

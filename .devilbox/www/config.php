@@ -14,7 +14,7 @@ putenv('RES_OPTIONS=retrans:1 retry:1 timeout:1 attempts:1');
 
 
 $DEVILBOX_VERSION = 'v1.10.3';
-$DEVILBOX_DATE = '2022-02-03';
+$DEVILBOX_DATE = '2022-02-04';
 $DEVILBOX_API_PAGE = 'devilbox-api/status.json';
 
 //
