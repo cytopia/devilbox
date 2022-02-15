@@ -12,6 +12,8 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 - Fixed SSL-Cache Mutex on M1 CPU [#862](https://github.com/cytopia/devilbox/issues/862)
 
 #### Changed
+- Changed Intranet mail tester to using POST instead of GET for larger body size
+- Made vhost error message more verbose
 - Updated Nginx Stable [#36](https://github.com/devilbox/docker-nginx-stable/pull/36)
 - Updated Nginx Mainline [#39](https://github.com/devilbox/docker-nginx-mainline/pull/39)
 - Updated Apache 2.2 [#33](https://github.com/devilbox/docker-apache-2.2/pull/33)
