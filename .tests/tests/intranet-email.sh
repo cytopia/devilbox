@@ -66,7 +66,7 @@ MY_MESS="testing-ci-message"
 run "docker-compose exec --user devilbox -T php bash -c '> /var/mail/devilbox'" "${RETRIES}" "${DVLBOX_PATH}"
 
 # Send a new mail
-run "curl -sS --fail -XPOST 'http://localhost:${HOST_PORT_HTTPD}/mail.php?email=${MY_MAIL}&subject=${MY_SUBJ}&message=${MY_MESS}'" "${RETRIES}"
+run "curl -sS --fail -XPOST 'http://localhost:${HOST_PORT_HTTPD}/mail.php' -d 'email=${MY_MAIL}&subject=${MY_SUBJ}&message=${MY_MESS}'" "${RETRIES}"
 
 # Validate
 run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/mail.php' | tac | tac | grep '${MY_MAIL}' >/dev/null" "${RETRIES}"

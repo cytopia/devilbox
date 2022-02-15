@@ -6,6 +6,20 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v1.10.4 (2022-02-15)
+
+#### Fixed
+- Fixed SSL-Cache Mutex on M1 CPU [#862](https://github.com/cytopia/devilbox/issues/862)
+
+#### Changed
+- Changed Intranet mail tester to using POST instead of GET for larger body size
+- Made vhost error message more verbose
+- Updated Nginx Stable [#36](https://github.com/devilbox/docker-nginx-stable/pull/36)
+- Updated Nginx Mainline [#39](https://github.com/devilbox/docker-nginx-mainline/pull/39)
+- Updated Apache 2.2 [#33](https://github.com/devilbox/docker-apache-2.2/pull/33)
+- Updated Apache 2.4 [#35](https://github.com/devilbox/docker-apache-2.4/pull/35)
+
+
 ## Release v1.10.3 (2022-02-04)
 
 #### Added
@@ -40,7 +54,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 
 #### Changed
 - Updated Nginx Stable [#35](https://github.com/devilbox/docker-nginx-stable/pull/35)
-- Updated Nginx Mainline [#37](https://github.com/devilbox/docker-nginx-mainline/pull/38)
+- Updated Nginx Mainline [#38](https://github.com/devilbox/docker-nginx-mainline/pull/38)
 - Updated Apache 2.2 [#32](https://github.com/devilbox/docker-apache-2.2/pull/32)
 - Updated Apache 2.4 [#34](https://github.com/devilbox/docker-apache-2.4/pull/34)
 
