@@ -12,4 +12,4 @@ sudo service cron start
 WPCS_GIT_REPO=https://github.com/WordPress/WordPress-Coding-Standards.git
 WPCS_LOCAL=/shared/httpd/uconnectlabs/tools/wpcs
 git clone -b master "$WPCS_GIT_REPO" "$WPCS_LOCAL" 2> /dev/null || git -C "$WPCS_LOCAL" pull
-sudo phpcs --config-set installed_paths "$WPCS_LOCAL" &
+sudo phpcs --config-set installed_paths "$WPCS_LOCAL,/shared/httpd/uconnectlabs" &

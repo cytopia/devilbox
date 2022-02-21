@@ -42,6 +42,7 @@ define( 'WP_CRON_LOCK_TIMEOUT', 60 );
 
 define( 'UC_RECAPTCHA_VERIFY_HOST', false );
 
+define( 'UC_USER_IMPORT_LIMIT', 20 );
 
 define( 'ENABLE_TRACING_CODE', true );
 define( 'DEV_LOCAL_SERVER_USER', 'your_name' );
