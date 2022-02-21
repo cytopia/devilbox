@@ -44,6 +44,7 @@ jobs:
           - "7.4"
           - "8.0"
           - "8.1"
+          - "8.2"
         httpd:
           - "apache-2.2"
           - "apache-2.4"
@@ -199,8 +200,20 @@ jobs:
       - name: "Test Container"
         shell: bash
         run: |
+          retry() {
+            for n in $(seq 5); do
+              echo "[${n}/5] ${*}";
+              if eval "${*}"; then
+                echo "[SUCC] ${n}/5";
+                return 0;
+              fi;
+              sleep 5;
+              echo "[FAIL] ${n}/5";
+            done;
+            return 1;
+          }
           cd .tests/
-          make test-smoke-container
+          retry make test-smoke-container
         if: success() || failure()
 
       # ------------------------------------------------------------

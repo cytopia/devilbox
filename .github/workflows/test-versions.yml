@@ -44,6 +44,8 @@ jobs:
           - "MYSQL_SERVER=mariadb-10.3"
           - "MYSQL_SERVER=mariadb-10.4"
           - "MYSQL_SERVER=mariadb-10.5"
+          - "MYSQL_SERVER=mariadb-10.6"
+          - "MYSQL_SERVER=mariadb-10.7"
           - "MYSQL_SERVER=percona-5.5"
           - "MYSQL_SERVER=percona-5.6"
           - "MYSQL_SERVER=percona-5.7"
@@ -287,8 +289,20 @@ jobs:
       - name: "Test Container"
         shell: bash
         run: |
+          retry() {
+            for n in $(seq 5); do
+              echo "[${n}/5] ${*}";
+              if eval "${*}"; then
+                echo "[SUCC] ${n}/t";
+                return 0;
+              fi;
+              sleep 5;
+              echo "[FAIL] ${n}/5";
+            done;
+            return 1;
+          }
           cd .tests/
-          make test-smoke-container
+          retry make test-smoke-container
         if: success() || failure()
 
       # ------------------------------------------------------------

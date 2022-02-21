@@ -86,7 +86,7 @@ LOCAL_LISTEN_ADDR=
 ### with mass-virtual-hosting.
 ### It is also required for the internal DNS server to be setup.
 ###
-### Note: Only ALPHA ([a-zA-Z]+) characters are supported.
+### Note: In addition to period or dot character ('.'), only ALPHA ([a-zA-Z]+) characters are supported.
 ###
 ### Example:
 ###   TLD_SUFFIX=loc
@@ -267,6 +267,7 @@ DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN=1
 PHP_SERVER=7.4
 #PHP_SERVER=8.0
 #PHP_SERVER=8.1
+#PHP_SERVER=8.2
 
 
 ###
@@ -292,6 +293,8 @@ HTTPD_SERVER=nginx-stable
 #MYSQL_SERVER=mariadb-10.3
 #MYSQL_SERVER=mariadb-10.4
 MYSQL_SERVER=mariadb-10.5
+#MYSQL_SERVER=mariadb-10.6
+#MYSQL_SERVER=mariadb-10.7
 #MYSQL_SERVER=percona-5.5
 #MYSQL_SERVER=percona-5.6
 #MYSQL_SERVER=percona-5.7

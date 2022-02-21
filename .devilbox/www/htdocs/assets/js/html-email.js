@@ -4,8 +4,9 @@ class HtmlEmail extends HTMLElement {
     this.attachShadow({ mode: 'open' });
 
     let emailContent;
+    const templateId = this.dataset.templateId;
     try {
-      emailContent = window.atob(this.dataset.content);
+      emailContent = document.getElementById(templateId).innerHTML;
     } catch (error) {
       console.log(error);
       return;

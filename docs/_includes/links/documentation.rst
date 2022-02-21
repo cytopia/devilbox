@@ -6,13 +6,13 @@
 
 .. |ext_lnk_doc_bind_ttl| raw:: html
 
-   <a target="_blank" href="http://www.zytrax.com/books/dns/apa/ttl.html">
+   <a target="_blank" href="https://bind9.readthedocs.io/en/latest/reference.html?highlight=ttl#the-ttl-directive">
      BIND TTL <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
 .. |ext_lnk_doc_bind_soa| raw:: html
 
-   <a target="_blank" href="http://www.zytrax.com/books/dns/ch8/soa.html">
+   <a target="_blank" href="https://bind9.readthedocs.io/en/latest/introduction.html?highlight=soa#secondary-servers">
      BIND SOA <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 

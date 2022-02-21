@@ -53,7 +53,7 @@ Then you need to ensure that :ref:`env_host_port_bind` is set to ``53``.
    host> vi .env
    HOST_PORT_BIND=53
 
-Before starting up the Devilbox, ensure that port ``53`` is not already used on ``127.0.0.1``.
+Before starting up the Devilbox, ensure that port ``53`` is not already used.
 
 .. code-block:: bash
    :emphasize-lines: 2

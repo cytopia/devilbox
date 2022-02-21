@@ -28,7 +28,7 @@ linkcheck2:
 		--rm \
 		$$(tty -s && echo "-it" || echo) \
 		-v $(PWD):/data \
-		cytopia/linkcheck -l -k -r 60 -t 30 -e rst -c '200,204' _includes/
+		cytopia/linkcheck -l -k -r 60 -t 30 -e rst -c '200,204,403' _includes/
 
 linkcheck:
 	docker run \
