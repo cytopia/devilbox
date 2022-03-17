@@ -6,6 +6,13 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v1.10.5 (2022-03-16)
+
+#### Changed
+- Updated Bind [#36](https://github.com/cytopia/docker-bind/pull/36)
+- Updated MySQL
+
+
 ## Release v1.10.4 (2022-02-15)
 
 #### Fixed

@@ -34,7 +34,7 @@ services:
   # Bind (DNS Server)
   # ------------------------------------------------------------
   bind:
-    image: cytopia/bind:0.15
+    image: cytopia/bind:0.27
     hostname: bind
     restart: always
     ports:
@@ -51,8 +51,7 @@ services:
       ##
       ## Bind wildcard/host settings
       ##
-      - WILDCARD_DNS=${TLD_SUFFIX:-loc}=127.0.0.1
-      - EXTRA_HOSTS=${EXTRA_HOSTS}
+      - DNS_A=*.${TLD_SUFFIX:-loc}=127.0.0.1,${EXTRA_HOSTS:-}
 
       ##
       ## Forwarding
@@ -320,7 +319,7 @@ services:
   # MySQL Database
   # ------------------------------------------------------------
   mysql:
-    image: devilbox/mysql:${MYSQL_SERVER}-0.8
+    image: devilbox/mysql:${MYSQL_SERVER}-0.15
     hostname: mysql
 
     environment:
@@ -503,6 +502,7 @@ volumes:
   devilbox-mariadb-10.5:
   devilbox-mariadb-10.6:
   devilbox-mariadb-10.7:
+  devilbox-mariadb-10.8:
   devilbox-percona-5.5:
   devilbox-percona-5.6:
   devilbox-percona-5.7:
