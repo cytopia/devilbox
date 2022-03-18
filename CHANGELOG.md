@@ -10,6 +10,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 
 #### Fixed
 - Fixed pidof issue on QUEMU by replacing it with pgrep #854
+- Fixed array definition for PHP < 5.4
 
 #### Added
 - Allow to globally enable/disable HTTP/2 [#844](https://github.com/cytopia/devilbox/issues/844)
