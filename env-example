@@ -559,6 +559,18 @@ HOST_PORT_HTTPD_SSL=443
 
 
 ###
+### Globally enable/disable HTTP/2 support
+###
+### This cannot be done on a per vhost level and must be enabled/disabled globally.
+###
+### Values:
+###  * 0: HTTP/2 is disabled
+###  * 1: HTTP/2 is enabled
+###
+HTTPD_HTTP2_ENABLE=1
+
+
+###
 ### SSL (HTTP/HTTPS) settings for automated vhost generation
 ###
 ### By default each project will have two vhosts (one for HTTP and one for HTTPS).
