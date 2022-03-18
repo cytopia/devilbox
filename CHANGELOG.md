@@ -6,7 +6,29 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v1.11.0 (2022-03-18)
+
+#### Fixed
+- Fixed pidof issue on QUEMU by replacing it with pgrep #854
+
+#### Added
+- Allow to globally enable/disable HTTP/2 [#844](https://github.com/cytopia/devilbox/issues/844)
+- Added New `.env` variable: `HTTPD_HTTP2_ENABLE`
+
+#### Changed
+- Make MariaDB 10.6 the default
+- Make PHP 8.1 the default
+- Updated Apache 2.2
+- Updated Apache 2.4
+- Updated Nginx stable
+- Updated Nginx mainline
+- Updated PHP-FPM images [#230](https://github.com/devilbox/docker-php-fpm/pull/230)
+
+
 ## Release v1.10.5 (2022-03-16)
+
+#### Added
+- Added MariaDB 10.8
 
 #### Changed
 - Updated Bind [#36](https://github.com/cytopia/docker-bind/pull/36)
