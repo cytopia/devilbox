@@ -34,7 +34,7 @@ services:
   # Bind (DNS Server)
   # ------------------------------------------------------------
   bind:
-    image: cytopia/bind:0.27
+    image: cytopia/bind:0.28
     hostname: bind
     restart: always
     ports:
@@ -94,7 +94,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.134
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.136
     hostname: php
 
     ##
@@ -220,7 +220,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER}:0.40
+    image: devilbox/${HTTPD_SERVER}:0.43
     hostname: httpd
 
     environment:
@@ -248,6 +248,11 @@ services:
       ##
       - WORKER_PROCESSES=${HTTPD_NGINX_WORKER_PROCESSES:-auto}
       - WORKER_CONNECTIONS=${HTTPD_NGINX_WORKER_CONNECTIONS:-1024}
+
+      ##
+      ## Globally enable/disable HTTP/2
+      ##
+      - HTTP2_ENABLE=${HTTPD_HTTP2_ENABLE:-1}
 
       ##
       ## Disable default vhost?

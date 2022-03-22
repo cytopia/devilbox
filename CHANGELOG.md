@@ -6,7 +6,34 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v1.11.0 (2022-03-22)
+
+#### Fixed
+- Fixed pidof issue on QUEMU by replacing it with pgrep #854
+- Fixed array definition for PHP < 5.4
+- Fixed bind caching issue  [#37](https://github.com/cytopia/docker-bind/pull/37)
+- Fixed Adminer 4.8.1 CSS issues [#867](https://github.com/cytopia/devilbox/issues/867)
+
+#### Added
+- Allow to globally enable/disable HTTP/2 [#844](https://github.com/cytopia/devilbox/issues/844)
+- Added New `.env` variable: `HTTPD_HTTP2_ENABLE`
+
+#### Changed
+- Make MariaDB 10.6 the default
+- Make PHP 8.1 the default
+- Updated Apache 2.2
+- Updated Apache 2.4
+- Updated Nginx stable
+- Updated Nginx mainline
+- Updated PHP-FPM images [#230](https://github.com/devilbox/docker-php-fpm/pull/230)
+- Updated PHP-FPM images [#231](https://github.com/devilbox/docker-php-fpm/pull/231)
+- Updated phpMyAdmin to 5.1.3
+
+
 ## Release v1.10.5 (2022-03-16)
+
+#### Added
+- Added MariaDB 10.8
 
 #### Changed
 - Updated Bind [#36](https://github.com/cytopia/docker-bind/pull/36)
