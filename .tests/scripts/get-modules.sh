@@ -360,6 +360,11 @@ U=" "  # Unavailable
 echo "| Modules                       | <sup>PHP 5.2</sup> | <sup>PHP 5.3</sup> | <sup>PHP 5.4</sup> | <sup>PHP 5.5</sup> | <sup>PHP 5.6</sup> | <sup>PHP 7.0</sup> | <sup>PHP 7.1</sup> | <sup>PHP 7.2</sup> | <sup>PHP 7.3</sup> | <sup>PHP 7.4</sup> | <sup>PHP 8.0</sup> | <sup>PHP 8.1</sup> | <sup>PHP 8.2</sup> |"
 echo "|-------------------------------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|"
 echo "${MODS}" | while read -r line; do
+	# Ignore modules
+	if [ "${line}" = "Core" ]; then
+		continue
+	fi
+
     # Print current module
 	printf "| %-30s%s" "<sup>${line}</sup>" "|"
 

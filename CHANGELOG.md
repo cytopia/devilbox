@@ -6,7 +6,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
-## Release v1.11.0 (2022-03-18)
+## Release v1.11.0 (2022-03-22)
 
 #### Fixed
 - Fixed pidof issue on QUEMU by replacing it with pgrep #854
