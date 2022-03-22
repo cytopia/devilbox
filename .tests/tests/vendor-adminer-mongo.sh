@@ -97,7 +97,7 @@ if ! run "\
 	| tac \
 	| grep -Ei 'Database.+Collation.+Tables' >/dev/null" \
 	"${RETRIES}" "" "0"; then
-	printf "\\r[FAIL] Adminer MySQL login\\n"
+	printf "\\r[FAIL] Adminer Mongo login\\n"
 	run "curl -sS -c cookie.txt -b cookie.txt \
 		-L \
 		--data 'auth[driver]=mongo' \
@@ -105,7 +105,7 @@ if ! run "\
 		--data 'auth[username]=' \
 		--data 'auth[password]=' \
 		--data 'auth[db]=' \
-		'http://localhost:${HOST_PORT_HTTPD}${URL}?server=mysql&username=root|| true'" "1"
+		'http://localhost:${HOST_PORT_HTTPD}${URL}?mongo=mongo&username=|| true'" "1"
 	run "curl -sS -I -c cookie.txt -b cookie.txt \
 		-L \
 		--data 'auth[driver]=mongo' \
@@ -113,10 +113,10 @@ if ! run "\
 		--data 'auth[username]=' \
 		--data 'auth[password]=' \
 		--data 'auth[db]=' \
-		'http://localhost:${HOST_PORT_HTTPD}${URL}?server=mysql&username=root|| true'" "1"
+		'http://localhost:${HOST_PORT_HTTPD}${URL}?mongo=mongo&username=|| true'" "1"
 	rm -f cookie.txt
 	exit 1
 else
-	printf "\\r[OK]   Adminer MySQL login\\n"
+	printf "\\r[OK]   Adminer Mongo login\\n"
 fi
 rm -f cookie.txt
