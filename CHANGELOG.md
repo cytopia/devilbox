@@ -25,6 +25,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 - Updated Nginx stable
 - Updated Nginx mainline
 - Updated PHP-FPM images [#230](https://github.com/devilbox/docker-php-fpm/pull/230)
+- Updated PHP-FPM images [#231](https://github.com/devilbox/docker-php-fpm/pull/231)
 
 
 ## Release v1.10.5 (2022-03-16)
