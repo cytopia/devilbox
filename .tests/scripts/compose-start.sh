@@ -122,7 +122,7 @@ until cd "${DVLBOX_PATH}" && docker-compose exec -T php mongofiles --host=mongo 
 	i=$(( i + 1 ))
 	if [ "${i}" -eq "60" ]; then
 		printf "[FAIL]\\n"
-		cd "${DVLBOX_PATH}" && docker-compose exec -T php mongofiles --host=mongo list || true
+		run "cd ${DVLBOX_PATH} && docker-compose exec -T php mongofiles --host=mongo list" || true
 		run "cd ${DVLBOX_PATH} && docker-compose logs" || true
 		run "cat ${DVLBOX_PATH}/log/php-fpm-${PHP_SERVER}/php-fpm.error" || true
 		run "cat ${DVLBOX_PATH}/log/${HTTPD_SERVER}/defaultlocalhost-error.log" || true
@@ -145,7 +145,7 @@ until cd "${DVLBOX_PATH}" && docker-compose exec -T php mysql --user=root --pass
 	i=$(( i + 1 ))
 	if [ "${i}" -eq "60" ]; then
 		printf "[FAIL]\\n"
-		cd "${DVLBOX_PATH}" && docker-compose exec -T php mysql --user=root --password="${MYSQL_ROOT_PASSWORD}" --host=mysql -e 'show databases;' || true
+		run "cd ${DVLBOX_PATH} && docker-compose exec -T php mysql --user=root --password=\"${MYSQL_ROOT_PASSWORD}\" --host=mysql -e 'show databases;'" || true
 		run "cd ${DVLBOX_PATH} && docker-compose logs" || true
 		run "cat ${DVLBOX_PATH}/log/php-fpm-${PHP_SERVER}/php-fpm.error" || true
 		run "cat ${DVLBOX_PATH}/log/${HTTPD_SERVER}/defaultlocalhost-error.log" || true
@@ -168,7 +168,7 @@ until cd "${DVLBOX_PATH}" && docker-compose exec -T php pg_isready --host=pgsql 
 	i=$(( i + 1 ))
 	if [ "${i}" -eq "60" ]; then
 		printf "[FAIL]\\n"
-		cd "${DVLBOX_PATH}" && docker-compose exec -T php pg_isready --host=pgsql || true
+		run "cd ${DVLBOX_PATH} && docker-compose exec -T php pg_isready --host=pgsql" || true
 		run "cd ${DVLBOX_PATH} && docker-compose logs" || true
 		run "cat ${DVLBOX_PATH}/log/php-fpm-${PHP_SERVER}/php-fpm.error" || true
 		run "cat ${DVLBOX_PATH}/log/${HTTPD_SERVER}/defaultlocalhost-error.log" || true
