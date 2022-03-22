@@ -12,6 +12,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 - Fixed pidof issue on QUEMU by replacing it with pgrep #854
 - Fixed array definition for PHP < 5.4
 - Fixed bind caching issue  [#37](https://github.com/cytopia/docker-bind/pull/37)
+- Fixed Adminer 4.8.1 CSS issues [#867](https://github.com/cytopia/devilbox/issues/867)
 
 #### Added
 - Allow to globally enable/disable HTTP/2 [#844](https://github.com/cytopia/devilbox/issues/844)
