@@ -5,10 +5,10 @@
 //
 // $_POST submit for sending a test email
 //
-if (isset($_GET['email']) && isset($_GET['subject']) && isset($_GET['message'])) {
-	$mail = $_GET['email'];
-	$subj = $_GET['subject'];
-	$mess = $_GET['message'];
+if (isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])) {
+	$mail = $_POST['email'];
+	$subj = $_POST['subject'];
+	$mess = $_POST['message'];
 	if (! mail($mail, $subj, $mess)) {
 		loadClass('Logger')->error('Could not send mail to: '.$mail.' | subject: '.$subj);
 	}
@@ -119,7 +119,7 @@ $messages = $MyMbox->get($sortOrderArr);
 			<div class="row">
 				<div class="col-md-12">
 
-					<form class="form-inline">
+					<form method="post" class="form-inline">
 						<div class="form-group">
 							<label class="sr-only" for="exampleInputEmail1">Email to</label>
 							<input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter to email">
@@ -132,7 +132,7 @@ $messages = $MyMbox->get($sortOrderArr);
 
 						<div class="form-group">
 							<label class="sr-only" for="exampleInputEmail3">Message</label>
-							<input name="message" type="text" class="form-control" id="exampleInputEmail3" placeholder="Message">
+							<textarea name="message" rows="1" class="form-control" id="exampleInputEmail3" placeholder="Message"></textarea>
 						</div>
 
 						<button type="submit" class="btn btn-primary">Send Email</button>

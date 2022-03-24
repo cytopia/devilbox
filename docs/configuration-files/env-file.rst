@@ -1327,6 +1327,27 @@ This is internally achieved via the ``-m`` argument of |ext_lnk_project_vhost_ge
 
 .. _env_httpd_docroot_dir:
 
+
+HTTPD_HTTP2_ENABLE
+^^^^^^^^^^^^^^^^^^
+
+HTTP/2 protocol settings.
+
+By default each HTTP server (Apache and Nginx) will use HTTP/2 when the browser supports it.
+This setting cannot be set on a vhost level, but must be set globally on a server level.
+
+If you wiush to disable HTTP/2, you can do so with this variable.
+
+* ``1`` HTTP/2 enabled (default)
+* ``0`` HTTP/2 disabled
+
++------------------------+-----------------------------------------+------------------+
+| Name                   | Allowed values                          | Default value    |
++========================+=========================================+==================+
+| ``HTTPD_HTTP2_ENABLE`` | ``0``, ``1``                            | ``1``            |
++------------------------+-----------------------------------------+------------------+
+
+
 HTTPD_DOCROOT_DIR
 ^^^^^^^^^^^^^^^^^
 

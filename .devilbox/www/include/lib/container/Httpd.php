@@ -39,7 +39,7 @@ class Httpd extends BaseClass implements BaseInterface
 		$err = false;
 		if (!$this->canConnect($err, $domain)) {
 			$error[] = 'warning';
-			$error[] = 'DNS server not running.<br/>You won\'t be able to work inside the PHP container.';
+			$error[] = 'Cannot connect to '.$domain.'.<br/>DNS server not running?<br/>You won\'t be able to work inside the PHP container.';
 		}
 
 		if (is_array($error) && count($error)) {
