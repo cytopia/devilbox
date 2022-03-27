@@ -6,6 +6,15 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v1.11.0 (2022-04-01)
+
+#### Changed
+- Changed default PostgreSQL server from `12.4` to `14-alpine`
+- Changed default Redis server from `6.0` to `6.2-alpine`
+- Changed default Memcached server from `1.6` to `1.6-alpine`
+- Changed default MongoDB server from `4.4` to `5.0`
+
+
 ## Release v1.11.0 (2022-03-22)
 
 #### Fixed
