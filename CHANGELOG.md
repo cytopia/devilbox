@@ -8,6 +8,10 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 
 ## Release v1.12.0 (2022-04-01)
 
+The goal of this release is to reduce the overall size of Docker images and bring in latest versions.
+
+**Important:** This release introduces backwards incompatible changes due to only keeping major versions of PostreSQL and therefore removing old volumes. Additionally the PostgreSQL volume names have changed. In order to guarantee a smooth transition, backup your PostgreSQL databases in the previous version before switching and then re-importing them in this version.
+
 #### Added
 - Added CakePHP integration tests for PHP 8+
 
