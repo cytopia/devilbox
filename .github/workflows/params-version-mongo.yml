@@ -10,10 +10,10 @@ name: params
 # Custom Variables
 # -------------------------------------------------------------------------------------------------
 env:
+  # CI for Mongo 2.8 and Mongo 3.0 removed due to segfault
+  # https://github.com/docker-library/mongo/issues/251
   MATRIX: >-
     [
-      {"MONGO_SERVER": "Mongo 2.8"},
-      {"MONGO_SERVER": "Mongo 3.0"},
       {"MONGO_SERVER": "Mongo 3.2"},
       {"MONGO_SERVER": "Mongo 3.4"},
       {"MONGO_SERVER": "Mongo 3.6"},

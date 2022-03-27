@@ -22,6 +22,9 @@ The goal of this release is to reduce the overall size of Docker images and brin
 - Changed default MongoDB server from `4.4` to `5.0`
 - Use tiny Alpine version of Bind container
 
+#### Removed
+- Removed CI for MongoDB `2.8` and MongoDB `3.0` due to segfault: https://github.com/docker-library/mongo/issues/251
+
 
 ## Release v1.11.0 (2022-03-22)
 
