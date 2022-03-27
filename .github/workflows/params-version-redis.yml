@@ -1,0 +1,61 @@
+---
+
+# -------------------------------------------------------------------------------------------------
+# Job Name
+# -------------------------------------------------------------------------------------------------
+name: params
+
+
+# -------------------------------------------------------------------------------------------------
+# Custom Variables
+# -------------------------------------------------------------------------------------------------
+env:
+  MATRIX: >-
+    [
+      {"REDIS_SERVER": "Redis 2.8"},
+      {"REDIS_SERVER": "Redis 3.0"},
+      {"REDIS_SERVER": "Redis 3.0-alpine"},
+      {"REDIS_SERVER": "Redis 3.2"},
+      {"REDIS_SERVER": "Redis 3.2-alpine"},
+      {"REDIS_SERVER": "Redis 4.0"},
+      {"REDIS_SERVER": "Redis 4.0-alpine"},
+      {"REDIS_SERVER": "Redis 5.0"},
+      {"REDIS_SERVER": "Redis 5.0-alpine"},
+      {"REDIS_SERVER": "Redis 6.0"},
+      {"REDIS_SERVER": "Redis 6.0-alpine"},
+      {"REDIS_SERVER": "Redis 6.2"},
+      {"REDIS_SERVER": "Redis 6.2-alpine"},
+      {"REDIS_SERVER": "Redis latest"},
+      {"REDIS_SERVER": "Redis alpine"}
+    ]
+
+
+# -------------------------------------------------------------------------------------------------
+# When to run
+# -------------------------------------------------------------------------------------------------
+on:
+  workflow_call:
+    outputs:
+      matrix:
+        description: "The determined version matrix"
+        value: ${{ jobs.params.outputs.matrix }}
+
+jobs:
+  params:
+    runs-on: ubuntu-latest
+
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - name: "[Set-Output] Matrix"
+        id: set-matrix
+        run: |
+          echo "::set-output name=matrix::$( echo '${{ env.MATRIX }}' | jq -M -c )"
+
+      - name: "[DEBUG] Show settings'"
+        run: |
+          echo 'Matrix'
+          echo '--------------------'
+          echo '${{ steps.set-matrix.outputs.matrix }}'
+          echo
