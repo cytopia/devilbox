@@ -25,9 +25,14 @@
 [![Documentation Status](https://readthedocs.org/projects/devilbox/badge/?version=latest)](https://devilbox.readthedocs.io)
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Lint/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Lint)
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Docs/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Docs)
-[![Build Status](https://github.com/cytopia/devilbox/workflows/Linux/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Linux)
-[![Build Status](https://github.com/cytopia/devilbox/workflows/Config/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Config)
-[![Build Status](https://github.com/cytopia/devilbox/workflows/Versions/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Versions)
+
+[![PHP](https://github.com/cytopia/devilbox/actions/workflows/test-php.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-php.yml)
+[![MySQL](https://github.com/cytopia/devilbox/actions/workflows/test-version-mysql.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-version-mysql.yml)
+[![Memcd](https://github.com/cytopia/devilbox/actions/workflows/test-version-memcd.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-version-memcd.yml)
+[![Mongo](https://github.com/cytopia/devilbox/actions/workflows/test-version-mongo.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-version-mongo.yml)
+[![PgSQL](https://github.com/cytopia/devilbox/actions/workflows/test-version-pgsql.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-version-pgsql.yml)
+[![Redis](https://github.com/cytopia/devilbox/actions/workflows/test-version-redis.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-version-redis.yml)
+
 
 <img width="200" style="width:200px;" src="docs/_includes/figures/https/https-ssl-address-bar.png" /><br/>
 <small><sub>Support for <a href="https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html">valid https</a> out of the box.</sub></small>
