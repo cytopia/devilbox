@@ -14,12 +14,14 @@ The goal of this release is to reduce the overall size of Docker images and brin
 
 #### Added
 - Added CakePHP integration tests for PHP 8+
+- Added `.env` variable `HTTPD_FLAVOUR` to decide between `Debian` or `Alpine` for HTTP server
 
 #### Changed
 - Changed default PostgreSQL server from `12.4` to `14-alpine` (breaking change)
 - Changed default Redis server from `6.0` to `6.2-alpine`
 - Changed default Memcached server from `1.6` to `1.6-alpine`
 - Changed default MongoDB server from `4.4` to `5.0`
+- Changed default HTTPD server flavour from `Debian` to `Alpine`
 - Use tiny Alpine version of Bind container
 
 #### Removed

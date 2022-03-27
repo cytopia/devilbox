@@ -27,11 +27,12 @@
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Docs/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Docs)
 
 [![PHP](https://github.com/cytopia/devilbox/actions/workflows/test-php.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-php.yml)
-[![MySQL](https://github.com/cytopia/devilbox/actions/workflows/test-version-mysql.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-version-mysql.yml)
-[![Memcd](https://github.com/cytopia/devilbox/actions/workflows/test-version-memcd.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-version-memcd.yml)
-[![Mongo](https://github.com/cytopia/devilbox/actions/workflows/test-version-mongo.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-version-mongo.yml)
-[![PgSQL](https://github.com/cytopia/devilbox/actions/workflows/test-version-pgsql.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-version-pgsql.yml)
-[![Redis](https://github.com/cytopia/devilbox/actions/workflows/test-version-redis.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-version-redis.yml)
+[![Httpd](https://github.com/cytopia/devilbox/actions/workflows/test-httpd.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-httpd.yml)
+[![MySQL](https://github.com/cytopia/devilbox/actions/workflows/test-mysql.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-mysql.yml)
+[![Memcd](https://github.com/cytopia/devilbox/actions/workflows/test-memcd.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-memcd.yml)
+[![Mongo](https://github.com/cytopia/devilbox/actions/workflows/test-mongo.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-mongo.yml)
+[![PgSQL](https://github.com/cytopia/devilbox/actions/workflows/test-pgsql.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-pgsql.yml)
+[![Redis](https://github.com/cytopia/devilbox/actions/workflows/test-redis.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-redis.yml)
 
 
 <img width="200" style="width:200px;" src="docs/_includes/figures/https/https-ssl-address-bar.png" /><br/>
