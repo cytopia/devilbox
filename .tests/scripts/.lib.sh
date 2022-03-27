@@ -118,6 +118,52 @@ replace() {
 
 
 ###
+### Print colorized OK message
+###
+print_succ() {
+	local leading_nl="${1}"
+	local trailing_nl="${2}"
+	local message="${3}"
+
+	local green="\\033[0;32m"
+	local reset="\\033[0m"
+
+	if [ "${leading_nl}" = "1" ] && [ "${trailing_nl}" = "1" ]; then
+		printf "\\r${green}[OK]${reset}   %s\\n" "${message}"
+	elif [ "${leading_nl}" = "1" ]; then
+		printf "\\r${green}[OK]${reset}   %s" "${message}"
+	elif [ "${trailing_nl}" = "1" ]; then
+		printf "${green}[OK]${reset}   %s\\n" "${message}"
+	else
+		printf "${green}[OK]${reset}   %s" "${message}"
+	fi
+}
+
+
+###
+### Print colorized FAIL message
+###
+print_fail() {
+	local leading_nl="${1}"
+	local trailing_nl="${2}"
+	local message="${3}"
+
+	local red="\\033[0;31m"
+	local reset="\\033[0m"
+
+	if [ "${leading_nl}" = "1" ] && [ "${trailing_nl}" = "1" ]; then
+		printf "\\r${red}[FAIL]${reset} %s\\n" "${message}"
+	elif [ "${leading_nl}" = "1" ]; then
+		printf "\\r${red}[FAIL]${reset} %s" "${message}"
+	elif [ "${trailing_nl}" = "1" ]; then
+		printf "${red}[FAIL]${reset} %s\\n" "${message}"
+	else
+		printf "${red}[FAIL]${reset} %s" "${message}"
+	fi
+}
+
+
+###
 ### Run command
 ###
 run() {
