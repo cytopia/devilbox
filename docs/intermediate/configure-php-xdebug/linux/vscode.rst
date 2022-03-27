@@ -72,25 +72,32 @@ You will need to configure the path mapping in ``launch.json`` (VSCode configura
       :emphasize-lines: 5,9,10
 
       {
-          "version": "0.2.0",
-          "configurations": [
-              {
-                  "name": "Xdebug for Project mytest",
-                  "type": "php",
-                  "request": "launch",
-                  "port": 9000,
-                  "pathMappings": {
-                      "/shared/httpd/mytest/htdocs": "${workspaceFolder}/htdocs"
-                  }
-              }, {
-                  "name": "Launch currently open script",
-                  "type": "php",
-                  "request": "launch",
-                  "program": "${file}",
-                  "cwd": "${fileDirname}",
-                  "port": 9000
-              }
-          ]
+         "version": "0.2.0",
+         "configurations": [
+            {
+               "name": "Xdebug for Project mytest",
+               "type": "php",
+               "request": "launch",
+               "port": 9000,
+               "pathMappings": {
+                  "/shared/httpd/mytest/htdocs": "${workspaceFolder}/htdocs"
+               },
+               "log": true,
+               "xdebugSettings": {
+                  "max_children": 128,
+                  "max_data": 512,
+                  "max_depth": 3
+               }
+            },
+            {
+               "name": "Launch currently open script",
+               "type": "php",
+               "request": "launch",
+               "program": "${file}",
+               "cwd": "${fileDirname}",
+               "port": 9000
+            }
+         ]
       }
 
    .. important::
@@ -106,7 +113,7 @@ You will need to configure the path mapping in ``launch.json`` (VSCode configura
 Configure php.ini
 -----------------
 
-.. note:: The following example show how to configure PHP Xdebug for PHP 5.6:
+.. note:: The following example show how to configure PHP Xdebug for PHP 7.4:
 
 Create an ``xdebug.ini`` file (must end by ``.ini``):
 
@@ -115,8 +122,8 @@ Create an ``xdebug.ini`` file (must end by ``.ini``):
       # Navigate to the Devilbox git directory
       host> cd path/to/devilbox
 
-      # Navigate to PHP 5.6 ini configuration directory
-      host> cd cfg/php-ini-5.6/
+      # Navigate to PHP 7.4 ini configuration directory
+      host> cd cfg/php-ini-7.4/
 
       # Create and open debug.ini file
       host> vi xdebug.ini
@@ -128,18 +135,18 @@ Copy/paste all of the following lines into the above created ``xdebug.ini`` file
       :emphasize-lines: 7,10
 
       ; Defaults
-      xdebug.default_enable=1
-      xdebug.remote_enable=1
-      xdebug.remote_port=9000
+      zend_extension=xdebug.so
+      xdebug.mode=debug
+      xdebug.client_port=9000
+      xdebug.client_host=docker.for.lin.host.internal
+      xdebug.remote_handler=dbgp
+      xdebug.start_with_request=yes
 
-      ; The Linux way
-      xdebug.remote_connect_back=1
+      ; Controls the protection mechanism for infinite recursion protection
+      xdebug.max_nesting_level=250
 
       ; idekey value is specific to Visual Studio Code
       xdebug.idekey=VSCODE
-
-      ; Optional: Set to true to always auto-start xdebug
-      xdebug.remote_autostart=true
 
 .. note:: Host os and editor specific settings are highlighted in yellow and are worth googling to get a better understanding of the tools you use and to be more efficient at troubleshooting.
 
