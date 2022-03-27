@@ -45,12 +45,12 @@ jobs:
         run: |
           echo '${{ toJson(matrix) }}' | jq -r
 
-      - name: "[DEBUG] Show environment"
+      - name: "[DEBUG] Show env variables"
         shell: bash
         run: |
           env
 
-      - name: "[DEBUG] Show network"
+      - name: "[DEBUG] Show open network ports"
         shell: bash
         run: |
           netstat -an || true
@@ -60,6 +60,11 @@ jobs:
         shell: bash
         run: |
           docker version
+
+      - name: "[DEBUG] Show Docker Compose version"
+        shell: bash
+        run: |
+          docker-compose version
 
       # ------------------------------------------------------------
       # Configure
@@ -101,6 +106,11 @@ jobs:
             # Set the matrix version
             make configure KEY="${KEY}" VAL="${VAL}"
           done <<< "$( echo '${{ toJson(matrix) }}' | jq -r 'keys[]' )"
+
+      - name: "[Configure] Show .env file"
+        run: |
+          cat .env
+
 
       # ------------------------------------------------------------
       # Startup
