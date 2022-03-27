@@ -53,7 +53,7 @@ until curl -sS -I --fail -o /dev/null -w "%{http_code}" "http://localhost:${HOST
 	printf "."
 
 	i=$(( i + 1 ))
-	if [ "${i}" -eq "60" ]; then
+	if [ "${i}" -eq "120" ]; then
 		printf "[FAIL]\\n\\n"
 		echo "---- curl From host ----"
 		curl -sS -v "http://localhost:${HOST_PORT_HTTPD}" || true
@@ -84,7 +84,7 @@ until curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}" 2>/dev/null | grep '
 	printf "."
 
 	i=$(( i + 1 ))
-	if [ "${i}" -eq "60" ]; then
+	if [ "${i}" -eq "120" ]; then
 		printf "[FAIL]\\n"
 		curl -sS -v "http://localhost:${HOST_PORT_HTTPD}"
 		curl -sS -I "http://localhost:${HOST_PORT_HTTPD}"
@@ -120,7 +120,7 @@ until cd "${DVLBOX_PATH}" && docker-compose exec -T php mongofiles --host=mongo 
 	printf "."
 
 	i=$(( i + 1 ))
-	if [ "${i}" -eq "60" ]; then
+	if [ "${i}" -eq "120" ]; then
 		printf "[FAIL]\\n"
 		run "cd ${DVLBOX_PATH} && docker-compose exec -T php mongofiles --host=mongo list" || true
 		run "cd ${DVLBOX_PATH} && docker-compose logs" || true
@@ -143,7 +143,7 @@ until cd "${DVLBOX_PATH}" && docker-compose exec -T php mysql --user=root --pass
 	printf "."
 
 	i=$(( i + 1 ))
-	if [ "${i}" -eq "60" ]; then
+	if [ "${i}" -eq "120" ]; then
 		printf "[FAIL]\\n"
 		run "cd ${DVLBOX_PATH} && docker-compose exec -T php mysql --user=root --password=\"${MYSQL_ROOT_PASSWORD}\" --host=mysql -e 'show databases;'" || true
 		run "cd ${DVLBOX_PATH} && docker-compose logs" || true
@@ -166,7 +166,7 @@ until cd "${DVLBOX_PATH}" && docker-compose exec -T php pg_isready --host=pgsql 
 	printf "."
 
 	i=$(( i + 1 ))
-	if [ "${i}" -eq "60" ]; then
+	if [ "${i}" -eq "120" ]; then
 		printf "[FAIL]\\n"
 		run "cd ${DVLBOX_PATH} && docker-compose exec -T php pg_isready --host=pgsql" || true
 		run "cd ${DVLBOX_PATH} && docker-compose logs" || true
