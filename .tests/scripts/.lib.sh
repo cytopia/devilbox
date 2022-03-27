@@ -47,8 +47,7 @@ get_php_version() {
 	# Check php -v
 	>&2 printf "Fetching PHP version from php -v:   "
 	if ! cli_version="$( run "docker-compose exec -T php php -v \
-		| head -1 \
-		| grep -Eo 'PHP[[:space:]]+[0-9]+\\.[0-9]+' \
+		| grep -Eo '^PHP[[:space:]]+[0-9]+\\.[0-9]+' \
 		| grep -Eo '[0-9]+\\.[0-9]+'" \
 		"${retries}" "${root_path}" "0" )"; then
 		>&2 printf "FAILED\\n"
