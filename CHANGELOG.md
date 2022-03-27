@@ -6,7 +6,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
-## Release v1.11.0 (2022-04-01)
+## Release v1.12.0 (2022-04-01)
 
 #### Added
 - Added CakePHP integration tests for PHP 8+
