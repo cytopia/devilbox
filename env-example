@@ -273,6 +273,12 @@ PHP_SERVER=8.1
 ###
 ### 1.2 Choose HTTPD Server Image
 ###
+### Choose between 'debian' or 'alpine' flavour and then select the version
+###
+### Note: apache-2.2 has no arm64 support on 'alpine' flavour
+###
+HTTPD_FLAVOUR=alpine
+
 #HTTPD_SERVER=apache-2.2
 #HTTPD_SERVER=apache-2.4
 HTTPD_SERVER=nginx-stable
