@@ -15,13 +15,18 @@ on:
         description: 'Apply customized .env configuration?'
         required: true
         type: boolean
+      operating_system:
+        description: 'The operating system to run on'
+        required: true
+        type: string
+
 
 jobs:
   # -----------------------------------------------------------------------------------------------
   # JOB: BUILD
   # -----------------------------------------------------------------------------------------------
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.operating_system }}
     strategy:
       fail-fast: false
       matrix:
@@ -253,4 +258,13 @@ jobs:
           workdir: "${{ github.workspace }}/.tests/"
           command: |
             make logs
+        if: success() || failure()
+
+      - name: "Finish: Shutdown"
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make stop
         if: success() || failure()
