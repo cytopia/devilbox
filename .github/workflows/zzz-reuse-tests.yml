@@ -42,6 +42,7 @@ jobs:
           fetch-depth: 0
 
       - name: "[DEBUG] Show Matrix configuration"
+        shell: bash
         run: |
           echo '${{ toJson(matrix) }}' | jq -r
 
@@ -70,6 +71,7 @@ jobs:
       # Configure
       # ------------------------------------------------------------
       - name: "[Configure] Configure customized configuration"
+        shell: bash
         run: |
           cd "${GITHUB_WORKSPACE}/.tests/"
 
@@ -89,6 +91,7 @@ jobs:
         if: inputs.custom_config
 
       - name: "[Configure] Configure versions"
+        shell: bash
         run: |
           # (1/3) Change to .tests/ directory
           cd "${GITHUB_WORKSPACE}/.tests/"
@@ -108,6 +111,7 @@ jobs:
           done <<< "$( echo '${{ toJson(matrix) }}' | jq -r 'keys[]' )"
 
       - name: "[Configure] Show .env file"
+        shell: bash
         run: |
           cat .env
 
