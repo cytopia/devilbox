@@ -6,7 +6,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
-## Release v2.0.0 (2022-04-01)
+## Release v2.0.0 (2022-03-28)
 
 The goal of this release is to reduce the overall size of Docker images and bring in latest versions.
 
