@@ -1,0 +1,284 @@
+---
+name: Reusable worfklow for tests
+
+on:
+  workflow_call:
+    ###
+    ### Variables
+    ###
+    inputs:
+      matrix:
+        description: 'The test matrix'
+        required: true
+        type: string
+      custom_config:
+        description: 'Apply customized .env configuration?'
+        required: true
+        type: boolean
+      operating_system:
+        description: 'The operating system to run on'
+        required: true
+        type: string
+
+
+jobs:
+  # -----------------------------------------------------------------------------------------------
+  # JOB: BUILD
+  # -----------------------------------------------------------------------------------------------
+  test:
+    runs-on: ${{ inputs.operating_system }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(inputs.matrix) }}
+    steps:
+
+      # ------------------------------------------------------------
+      # Setup repository
+      # ------------------------------------------------------------
+      - name: "[SETUP] Checkout repository (current)"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: "[DEBUG] Show Matrix configuration"
+        shell: bash
+        run: |
+          echo '${{ toJson(matrix) }}' | jq -r
+
+      - name: "[DEBUG] Show env variables"
+        shell: bash
+        run: |
+          env
+
+      - name: "[DEBUG] Show open network ports"
+        shell: bash
+        run: |
+          netstat -an || true
+          ss -tlun || true
+
+      - name: "[DEBUG] Show Docker version"
+        shell: bash
+        run: |
+          docker version
+
+      - name: "[DEBUG] Show Docker Compose version"
+        shell: bash
+        run: |
+          docker-compose version
+
+      # ------------------------------------------------------------
+      # Configure
+      # ------------------------------------------------------------
+      - name: "[Configure] Configure customized configuration"
+        shell: bash
+        run: |
+          cd "${GITHUB_WORKSPACE}/.tests/"
+
+          # Test full customization
+          make configure KEY=DEBUG_COMPOSE_ENTRYPOINT VAL="$(( RANDOM % 3 ))"
+          make configure KEY=DOCKER_LOGS VAL="$(( RANDOM % 1 ))"
+          make configure KEY=TLD_SUFFIX VAL=loc2
+          make configure KEY=TIMEZONE VAL='Europe/Berlin'
+          make configure KEY=PHP_MODULES_DISABLE VAL=
+          make configure KEY=HTTPD_TEMPLATE_DIR VAL=.config
+          make configure KEY=HOST_PORT_HTTPD VAL=8080
+          make configure KEY=HOST_PORT_HTTPD_SSL VAL=8443
+          make configure KEY=MYSQL_ROOT_PASSWORD VAL=mysqlpass
+          make configure KEY=PGSQL_ROOT_USER VAL=pgroot
+          make configure KEY=PGSQL_ROOT_PASSWORD VAL=pgsqlpass
+          make configure KEY=DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN VAL=0
+        if: inputs.custom_config
+
+      - name: "[Configure] Configure versions"
+        shell: bash
+        run: |
+          # (1/3) Change to .tests/ directory
+          cd "${GITHUB_WORKSPACE}/.tests/"
+
+          # (2/3) Change MySQL port 3306 to 3307 (3306 is already taken)
+          make configure KEY=HOST_PORT_MYSQL VAL=3307
+
+          # (3/3) Loop over configured values
+          while IFS= read -r line; do
+            KEY="${line}"
+            VAL="$( echo '${{ toJson(matrix) }}' | jq -r ".${KEY}" | awk '{print $NF}' )"
+            echo "KEY: ${KEY}"
+            echo "VAL: ${VAL}"
+
+            # Set the matrix version
+            make configure KEY="${KEY}" VAL="${VAL}"
+          done <<< "$( echo '${{ toJson(matrix) }}' | jq -r 'keys[]' )"
+
+      - name: "[Configure] Show .env file"
+        shell: bash
+        run: |
+          cat .env
+
+
+      # ------------------------------------------------------------
+      # Startup
+      # ------------------------------------------------------------
+      - name: "[Startup] Pull images"
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make pull
+
+      - name: "[Startup] Start Devilbox"
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make start
+
+      - name: "[Startup] Show Docker logs"
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make logs
+
+      # ------------------------------------------------------------
+      # Run tests
+      # ------------------------------------------------------------
+      - name: Test Modules
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make test-smoke-modules
+
+      - name: Test Config
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make test-smoke-config
+        if: success() || failure()
+
+      - name: Test Intranet
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make test-smoke-intranet
+        if: success() || failure()
+
+      - name: Test Vendors
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make test-smoke-vendors
+        if: success() || failure()
+
+      - name: Test Vhosts
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make test-smoke-vhosts
+        if: success() || failure()
+
+      - name: Test Reverse Proxy
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make test-smoke-rproxies
+        if: success() || failure()
+
+      - name: Test SSL
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make test-smoke-ssl
+        if: success() || failure()
+
+      - name: Test Bind
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make test-smoke-bind
+        if: success() || failure()
+
+      - name: Test Autostart
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make test-smoke-autostart
+        if: success() || failure()
+
+      - name: "Test Framework: CakePHP"
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make test-smoke-framework-cakephp
+        if: success() || failure()
+
+      - name: "Test Framework: Drupal"
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make test-smoke-framework-drupal
+        if: success() || failure()
+
+      - name: "Test Framework: Wordpress"
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make test-smoke-framework-wordpress
+        if: success() || failure()
+
+      - name: "Test Container"
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make test-smoke-container
+        if: success() || failure()
+
+      # ------------------------------------------------------------
+      # Finish
+      # ------------------------------------------------------------
+      - name: "Finish: Docker logs"
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make logs
+        if: success() || failure()
+
+      - name: "Finish: Shutdown"
+        uses: cytopia/shell-command-retry-action@v0.1.3
+        with:
+          retries: 3
+          workdir: "${{ github.workspace }}/.tests/"
+          command: |
+            make stop
+        if: success() || failure()

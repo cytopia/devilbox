@@ -34,7 +34,7 @@ services:
   # Bind (DNS Server)
   # ------------------------------------------------------------
   bind:
-    image: cytopia/bind:0.28
+    image: cytopia/bind:alpine-0.28
     hostname: bind
     restart: always
     ports:
@@ -220,7 +220,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER}:0.43
+    image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-0.47
     hostname: httpd
 
     environment:
@@ -528,52 +528,16 @@ volumes:
   devilbox-pgsql-9.5-alpine:
   devilbox-pgsql-9.6:
   devilbox-pgsql-9.6-alpine:
-  devilbox-pgsql-10.0:
-  devilbox-pgsql-10.0-alpine:
-  devilbox-pgsql-10.1:
-  devilbox-pgsql-10.1-alpine:
-  devilbox-pgsql-10.2:
-  devilbox-pgsql-10.2-alpine:
-  devilbox-pgsql-10.3:
-  devilbox-pgsql-10.3-alpine:
-  devilbox-pgsql-10.4:
-  devilbox-pgsql-10.4-alpine:
-  devilbox-pgsql-10.5:
-  devilbox-pgsql-10.5-alpine:
-  devilbox-pgsql-10.6:
-  devilbox-pgsql-10.6-alpine:
-  devilbox-pgsql-11.0:
-  devilbox-pgsql-11.0-alpine:
-  devilbox-pgsql-11.1:
-  devilbox-pgsql-11.1-alpine:
-  devilbox-pgsql-11.2:
-  devilbox-pgsql-11.2-alpine:
-  devilbox-pgsql-11.3:
-  devilbox-pgsql-11.3-alpine:
-  devilbox-pgsql-11.4:
-  devilbox-pgsql-11.4-alpine:
-  devilbox-pgsql-11.5:
-  devilbox-pgsql-11.5-alpine:
-  devilbox-pgsql-11.6:
-  devilbox-pgsql-11.6-alpine:
-  devilbox-pgsql-11.7:
-  devilbox-pgsql-11.7-alpine:
-  devilbox-pgsql-11.8:
-  devilbox-pgsql-11.8-alpine:
-  devilbox-pgsql-11.9:
-  devilbox-pgsql-11.9-alpine:
-  devilbox-pgsql-12.0:
-  devilbox-pgsql-12.0-alpine:
-  devilbox-pgsql-12.1:
-  devilbox-pgsql-12.1-alpine:
-  devilbox-pgsql-12.2:
-  devilbox-pgsql-12.2-alpine:
-  devilbox-pgsql-12.3:
-  devilbox-pgsql-12.3-alpine:
-  devilbox-pgsql-12.4:
-  devilbox-pgsql-12.4-alpine:
-  devilbox-pgsql-13.0:
-  devilbox-pgsql-13.0-alpine:
+  devilbox-pgsql-10:
+  devilbox-pgsql-10-alpine:
+  devilbox-pgsql-11:
+  devilbox-pgsql-11-alpine:
+  devilbox-pgsql-12:
+  devilbox-pgsql-12-alpine:
+  devilbox-pgsql-13:
+  devilbox-pgsql-13-alpine:
+  devilbox-pgsql-14:
+  devilbox-pgsql-14-alpine:
   devilbox-pgsql-latest:
   devilbox-pgsql-alpine:
 
@@ -588,4 +552,5 @@ volumes:
   devilbox-mongo-4.0:
   devilbox-mongo-4.2:
   devilbox-mongo-4.4:
+  devilbox-mongo-5.0:
   devilbox-mongo-latest:

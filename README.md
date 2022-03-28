@@ -25,9 +25,15 @@
 [![Documentation Status](https://readthedocs.org/projects/devilbox/badge/?version=latest)](https://devilbox.readthedocs.io)
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Lint/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Lint)
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Docs/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Docs)
-[![Build Status](https://github.com/cytopia/devilbox/workflows/Linux/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Linux)
-[![Build Status](https://github.com/cytopia/devilbox/workflows/Config/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Config)
-[![Build Status](https://github.com/cytopia/devilbox/workflows/Versions/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Versions)
+
+[![PHP](https://github.com/cytopia/devilbox/actions/workflows/test-php.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-php.yml)
+[![Httpd](https://github.com/cytopia/devilbox/actions/workflows/test-httpd.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-httpd.yml)
+[![MySQL](https://github.com/cytopia/devilbox/actions/workflows/test-mysql.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-mysql.yml)
+[![Memcd](https://github.com/cytopia/devilbox/actions/workflows/test-memcd.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-memcd.yml)
+[![Mongo](https://github.com/cytopia/devilbox/actions/workflows/test-mongo.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-mongo.yml)
+[![PgSQL](https://github.com/cytopia/devilbox/actions/workflows/test-pgsql.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-pgsql.yml)
+[![Redis](https://github.com/cytopia/devilbox/actions/workflows/test-redis.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-redis.yml)
+
 
 <img width="200" style="width:200px;" src="docs/_includes/figures/https/https-ssl-address-bar.png" /><br/>
 <small><sub>Support for <a href="https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html">valid https</a> out of the box.</sub></small>
@@ -304,7 +310,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="MariaDB 10.5"     href="https://github.com/devilbox/docker-mysql">10.5</a></td>
       <td></td>
       <td><a target="_blank" title="PgSQL 9.6"        href="https://github.com/docker-library/postgres">9.6</a></td>
-      <td><a target="_blank" title="Redis latest"     href="https://github.com/docker-library/redis">latest</a></td>
+      <td><a target="_blank" title="Redis 6.2"        href="https://github.com/docker-library/redis">6.2</a></td>
       <td></td>
       <td><a target="_blank" title="MongoDB 4.2"      href="https://github.com/docker-library/mongo">4.2</a></td>
     </tr>
@@ -315,8 +321,8 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td><a target="_blank" title="MariaDB 10.6"     href="https://github.com/devilbox/docker-mysql">10.6</a></td>
       <td></td>
-      <td>...</td>
-      <td></td>
+      <td><a target="_blank" title="PgSQL 10"         href="https://github.com/docker-library/postgres">10</a></td>
+      <td><a target="_blank" title="Redis latest"     href="https://github.com/docker-library/redis">latest</a></td>
       <td></td>
       <td><a target="_blank" title="MongoDB 4.4"     href="https://github.com/docker-library/mongo">4.4</a></td>
     </tr>
@@ -327,10 +333,10 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td><a target="_blank" title="MariaDB 10.7"     href="https://github.com/devilbox/docker-mysql">10.7</a></td>
       <td></td>
-      <td><a target="_blank" title="PgSQL 12.3"       href="https://github.com/docker-library/postgres">12.3</a></td>
+      <td><a target="_blank" title="PgSQL 11"         href="https://github.com/docker-library/postgres">11</a></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="MongoDB latest"   href="https://github.com/docker-library/mongo">latest</a></td>
+      <td><a target="_blank" title="MongoDB 5.0"     href="https://github.com/docker-library/mongo">5.0</a></td>
     </tr>
     <tr>
       <td></td>
@@ -339,10 +345,10 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PgSQL 12.4"       href="https://github.com/docker-library/postgres">12.4</a></td>
+      <td><a target="_blank" title="PgSQL 12"         href="https://github.com/docker-library/postgres">12</a></td>
       <td></td>
       <td></td>
-      <td></td>
+      <td><a target="_blank" title="MongoDB latest"   href="https://github.com/docker-library/mongo">latest</a></td>
     </tr>
     <tr>
       <td></td>
@@ -351,7 +357,7 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PgSQL 13.0"       href="https://github.com/docker-library/postgres">13.0</a></td>
+      <td><a target="_blank" title="PgSQL 13"         href="https://github.com/docker-library/postgres">13</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -363,7 +369,7 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PgSQL latest"     href="https://github.com/docker-library/postgres">latest</a></td>
+      <td><a target="_blank" title="PgSQL 14"         href="https://github.com/docker-library/postgres">14</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -375,7 +381,7 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
+      <td><a target="_blank" title="PgSQL latest"     href="https://github.com/docker-library/postgres">latest</a></td>
       <td></td>
       <td></td>
       <td></td>

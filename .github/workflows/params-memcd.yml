@@ -1,0 +1,54 @@
+---
+
+# -------------------------------------------------------------------------------------------------
+# Job Name
+# -------------------------------------------------------------------------------------------------
+name: params
+
+
+# -------------------------------------------------------------------------------------------------
+# Custom Variables
+# -------------------------------------------------------------------------------------------------
+env:
+  MATRIX: >-
+    [
+      {"MEMCD_SERVER": "Memcd 1.4"},
+      {"MEMCD_SERVER": "Memcd 1.4-alpine"},
+      {"MEMCD_SERVER": "Memcd 1.5"},
+      {"MEMCD_SERVER": "Memcd 1.5-alpine"},
+      {"MEMCD_SERVER": "Memcd 1.6"},
+      {"MEMCD_SERVER": "Memcd 1.6-alpine"},
+      {"MEMCD_SERVER": "Memcd latest"},
+      {"MEMCD_SERVER": "Memcd alpine"}
+    ]
+
+
+# -------------------------------------------------------------------------------------------------
+# When to run
+# -------------------------------------------------------------------------------------------------
+on:
+  workflow_call:
+    outputs:
+      matrix:
+        description: "The determined version matrix"
+        value: ${{ jobs.params.outputs.matrix }}
+
+jobs:
+  params:
+    runs-on: ubuntu-latest
+
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - name: "[Set-Output] Matrix"
+        id: set-matrix
+        run: |
+          echo "::set-output name=matrix::$( echo '${{ env.MATRIX }}' | jq -M -c )"
+
+      - name: "[DEBUG] Show settings'"
+        run: |
+          echo 'Matrix'
+          echo '--------------------'
+          echo '${{ steps.set-matrix.outputs.matrix }}'
+          echo

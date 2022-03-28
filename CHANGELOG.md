@@ -6,6 +6,28 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v2.0.0 (2022-03-28)
+
+The goal of this release is to reduce the overall size of Docker images and bring in latest versions.
+
+**Important:** This release introduces backwards incompatible changes due to only keeping major versions of PostreSQL and therefore removing old volumes. Additionally the PostgreSQL volume names have changed. In order to guarantee a smooth transition, backup your PostgreSQL databases in the previous version before switching and then re-importing them in this version.
+
+#### Added
+- Added CakePHP integration tests for PHP 8+
+- Added `.env` variable `HTTPD_FLAVOUR` to decide between `Debian` or `Alpine` for HTTP server
+
+#### Changed
+- Changed default PostgreSQL server from `12.4` to `14-alpine` (breaking change)
+- Changed default Redis server from `6.0` to `6.2-alpine`
+- Changed default Memcached server from `1.6` to `1.6-alpine`
+- Changed default MongoDB server from `4.4` to `5.0`
+- Changed default HTTPD server flavour from `Debian` to `Alpine`
+- Use tiny Alpine version of Bind container
+
+#### Removed
+- Removed CI for MongoDB `2.8` and MongoDB `3.0` due to segfault: https://github.com/docker-library/mongo/issues/251
+
+
 ## Release v1.11.0 (2022-03-22)
 
 #### Fixed

@@ -1,0 +1,56 @@
+---
+
+# -------------------------------------------------------------------------------------------------
+# Job Name
+# -------------------------------------------------------------------------------------------------
+name: params
+
+
+# -------------------------------------------------------------------------------------------------
+# Custom Variables
+# -------------------------------------------------------------------------------------------------
+env:
+  # CI for Mongo 2.8 and Mongo 3.0 removed due to local segfault and non-segfault, but error in CI
+  # https://github.com/docker-library/mongo/issues/251
+  #
+  # CI for Mongo 3.2 and 3.4 removed due to non-reproducible error in CI
+  MATRIX: >-
+    [
+      {"MONGO_SERVER": "Mongo 3.6"},
+      {"MONGO_SERVER": "Mongo 4.0"},
+      {"MONGO_SERVER": "Mongo 4.2"},
+      {"MONGO_SERVER": "Mongo 4.4"},
+      {"MONGO_SERVER": "Mongo 5.0"},
+      {"MONGO_SERVER": "Mongo latest"}
+    ]
+
+
+# -------------------------------------------------------------------------------------------------
+# When to run
+# -------------------------------------------------------------------------------------------------
+on:
+  workflow_call:
+    outputs:
+      matrix:
+        description: "The determined version matrix"
+        value: ${{ jobs.params.outputs.matrix }}
+
+jobs:
+  params:
+    runs-on: ubuntu-latest
+
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - name: "[Set-Output] Matrix"
+        id: set-matrix
+        run: |
+          echo "::set-output name=matrix::$( echo '${{ env.MATRIX }}' | jq -M -c )"
+
+      - name: "[DEBUG] Show settings'"
+        run: |
+          echo 'Matrix'
+          echo '--------------------'
+          echo '${{ steps.set-matrix.outputs.matrix }}'
+          echo
