@@ -55,13 +55,13 @@ class OpCacheService
         'debounce_rate'    => 250
     ];
 
-    private function __construct($options = [])
+    private function __construct($options = array())
     {
         $this->options = array_merge($this->defaults, $options);
         $this->data = $this->compileState();
     }
 
-    public static function init($options = [])
+    public static function init($options = array())
     {
         $self = new self($options);
         if (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])
@@ -150,7 +150,7 @@ class OpCacheService
         $status = opcache_get_status();
         $config = opcache_get_configuration();
 
-        $files = [];
+        $files = array();
         if (!empty($status['scripts']) && $this->getOption('allow_filelist')) {
             uasort($status['scripts'], function($a, $b) {
                 return $a['hits'] < $b['hits'];
@@ -192,7 +192,7 @@ class OpCacheService
             ]
         );
 
-        $directives = [];
+        $directives = array();
         ksort($config['directives']);
         foreach ($config['directives'] as $k => $v) {
             $directives[] = ['k' => $k, 'v' => $v];

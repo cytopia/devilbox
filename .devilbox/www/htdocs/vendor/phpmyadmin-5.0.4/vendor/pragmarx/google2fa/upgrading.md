@@ -1,2 +1,0 @@
-# Google2FA
-

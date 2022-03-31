@@ -1,0 +1,59 @@
+---
+
+# -------------------------------------------------------------------------------------------------
+# Job Name
+# -------------------------------------------------------------------------------------------------
+name: params
+
+
+# -------------------------------------------------------------------------------------------------
+# Custom Variables
+# -------------------------------------------------------------------------------------------------
+env:
+  # Note: Older PHP versions use an older version of phpPgMyAdmin, which does not work with later
+  # PgSQL server versions. That's why we need to tell those combinations to use an old PgSQL server
+  MATRIX: >-
+    [
+      {"HTTPD_SERVER": "apache-2.2", "HTTPD_FLAVOUR": "alpine"},
+      {"HTTPD_SERVER": "apache-2.2", "HTTPD_FLAVOUR": "debian"},
+
+      {"HTTPD_SERVER": "apache-2.4", "HTTPD_FLAVOUR": "alpine"},
+      {"HTTPD_SERVER": "apache-2.4", "HTTPD_FLAVOUR": "debian"},
+
+      {"HTTPD_SERVER": "nginx-stable", "HTTPD_FLAVOUR": "alpine"},
+      {"HTTPD_SERVER": "nginx-stable", "HTTPD_FLAVOUR": "debian"},
+
+      {"HTTPD_SERVER": "nginx-mainline", "HTTPD_FLAVOUR": "alpine"},
+      {"HTTPD_SERVER": "nginx-mainline", "HTTPD_FLAVOUR": "debian"}
+    ]
+
+
+# -------------------------------------------------------------------------------------------------
+# When to run
+# -------------------------------------------------------------------------------------------------
+on:
+  workflow_call:
+    outputs:
+      matrix:
+        description: "The determined version matrix"
+        value: ${{ jobs.params.outputs.matrix }}
+
+jobs:
+  params:
+    runs-on: ubuntu-latest
+
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - name: "[Set-Output] Matrix"
+        id: set-matrix
+        run: |
+          echo "::set-output name=matrix::$( echo '${{ env.MATRIX }}' | jq -M -c )"
+
+      - name: "[DEBUG] Show settings'"
+        run: |
+          echo 'Matrix'
+          echo '--------------------'
+          echo '${{ steps.set-matrix.outputs.matrix }}'
+          echo

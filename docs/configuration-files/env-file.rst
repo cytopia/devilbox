@@ -557,11 +557,11 @@ PHP_SERVER
 
 This variable choses your desired PHP-FPM version to be started.
 
-+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
-| Name                    | Allowed values                                                                                                                                                                                                                                         | Default value   |
-+=========================+========================================================================================================================================================================================================================================================+=================+
-| ``PHP_SERVER``          | ``php-fpm-5.2`` |br| ``php-fpm-5.3`` |br| ``php-fpm-5.4`` |br| ``php-fpm-5.5`` |br| ``php-fpm-5.6`` |br| ``php-fpm-7.0`` |br| ``php-fpm-7.1`` |br| ``php-fpm-7.2`` |br| ``php-fpm-7.3`` |br| ``php-fpm-7.4`` |br| ``php-fpm-8.0`` |br| ``php-fpm-8.1`` | ``php-fpm-7.4`` |
-+-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
++-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+| Name                    | Allowed values                                                                                                                                                                                                                                                              | Default value   |
++=========================+=============================================================================================================================================================================================================================================================================+=================+
+| ``PHP_SERVER``          | ``php-fpm-5.2`` |br| ``php-fpm-5.3`` |br| ``php-fpm-5.4`` |br| ``php-fpm-5.5`` |br| ``php-fpm-5.6`` |br| ``php-fpm-7.0`` |br| ``php-fpm-7.1`` |br| ``php-fpm-7.2`` |br| ``php-fpm-7.3`` |br| ``php-fpm-7.4`` |br| ``php-fpm-8.0`` |br| ``php-fpm-8.1`` |br| ``php-fpm-8.2`` | ``php-fpm-8.1`` |
++-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
 
 .. important::
    **PHP 5.2** is available to use, but it is not officially supported. The Devilbox intranet does
@@ -574,7 +574,7 @@ All values are already available in the ``.env`` file and just need to be commen
 
 .. code-block:: bash
    :caption: .env
-   :emphasize-lines: 9
+   :emphasize-lines: 14
 
    host> grep PHP_SERVER .env
 
@@ -587,9 +587,10 @@ All values are already available in the ``.env`` file and just need to be commen
    #PHP_SERVER=php-fpm-7.1
    #PHP_SERVER=php-fpm-7.2
    #PHP_SERVER=php-fpm-7.3
-   PHP_SERVER=php-fpm-7.4
+   #PHP_SERVER=php-fpm-7.4
    #PHP_SERVER=php-fpm-8.0
-   #PHP_SERVER=php-fpm-8.1
+   PHP_SERVER=php-fpm-8.1
+   #PHP_SERVER=php-fpm-8.2
 
 
 .. _env_httpd_server:
@@ -629,14 +630,14 @@ This variable choses your desired MySQL server version to be started.
 +-------------------------+------------------------------------------------------------------------------------------------+------------------+
 | Name                    | Allowed values                                                                                 | Default value    |
 +=========================+================================================================================================+==================+
-| ``MYSQL_SERVER``        | ``mysql-5.5`` |br| ``mysql-5.6`` |br| ``mariadb-10.2`` |br| ``percona-5.7`` |br| and many more | ``mariadb-10.5`` |
+| ``MYSQL_SERVER``        | ``mysql-5.5`` |br| ``mysql-5.6`` |br| ``mariadb-10.2`` |br| ``percona-5.7`` |br| and many more | ``mariadb-10.6`` |
 +-------------------------+------------------------------------------------------------------------------------------------+------------------+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
 
 .. code-block:: bash
    :caption: .env
-   :emphasize-lines: 9
+   :emphasize-lines: 18
 
    host> grep MYSQL_SERVER .env
 
@@ -644,17 +645,20 @@ All values are already available in the ``.env`` file and just need to be commen
    #MYSQL_SERVER=mysql-5.6
    #MYSQL_SERVER=mysql-5.7
    #MYSQL_SERVER=mysql-8.0
+   #MYSQL_SERVER=percona-5.5
+   #MYSQL_SERVER=percona-5.6
+   #MYSQL_SERVER=percona-5.7
+   #MYSQL_SERVER=percona-8.0
    #MYSQL_SERVER=mariadb-5.5
    #MYSQL_SERVER=mariadb-10.0
    #MYSQL_SERVER=mariadb-10.1
    #MYSQL_SERVER=mariadb-10.2
    #MYSQL_SERVER=mariadb-10.3
    #MYSQL_SERVER=mariadb-10.4
-   MYSQL_SERVER=mariadb-10.5
-   #MYSQL_SERVER=percona-5.5
-   #MYSQL_SERVER=percona-5.6
-   #MYSQL_SERVER=percona-5.7
-   #MYSQL_SERVER=percona-8.0
+   #MYSQL_SERVER=mariadb-10.5
+   MYSQL_SERVER=mariadb-10.6
+   #MYSQL_SERVER=mariadb-10.7
+   #MYSQL_SERVER=mariadb-10.8
 
 
 .. _env_pgsql_server:
@@ -667,14 +671,14 @@ This variable choses your desired PostgreSQL server version to be started.
 +-------------------------+-------------------------------------------------------------------+------------------+
 | Name                    | Allowed values                                                    | Default value    |
 +=========================+===================================================================+==================+
-| ``PGSQL_SERVER``        | ``9.1`` |br| ``9.2`` |br| ``9.3`` |br| ``9.4`` |br| and many more | ``12.4``         |
+| ``PGSQL_SERVER``        | ``9.1`` |br| ``9.2`` |br| ``9.3`` |br| ``9.4`` |br| and many more | ``14-alpine``    |
 +-------------------------+-------------------------------------------------------------------+------------------+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
 
 .. code-block:: bash
    :caption: .env
-   :emphasize-lines: 8
+   :emphasize-lines: 24
 
    host> grep PGSQL_SERVER .env
 
@@ -690,52 +694,16 @@ All values are already available in the ``.env`` file and just need to be commen
    #PGSQL_SERVER=9.5-alpine
    #PGSQL_SERVER=9.6
    #PGSQL_SERVER=9.6-alpine
-   #PGSQL_SERVER=10.0
-   #PGSQL_SERVER=10.0-alpine
-   #PGSQL_SERVER=10.1
-   #PGSQL_SERVER=10.1-alpine
-   #PGSQL_SERVER=10.2
-   #PGSQL_SERVER=10.2-alpine
-   #PGSQL_SERVER=10.3
-   #PGSQL_SERVER=10.3-alpine
-   #PGSQL_SERVER=10.4
-   #PGSQL_SERVER=10.4-alpine
-   #PGSQL_SERVER=10.5
-   #PGSQL_SERVER=10.5-alpine
-   #PGSQL_SERVER=10.6
-   #PGSQL_SERVER=10.6-alpine
-   #PGSQL_SERVER=11.0
-   #PGSQL_SERVER=11.0-alpine
-   #PGSQL_SERVER=11.1
-   #PGSQL_SERVER=11.1-alpine
-   #PGSQL_SERVER=11.2
-   #PGSQL_SERVER=11.2-alpine
-   #PGSQL_SERVER=11.3
-   #PGSQL_SERVER=11.3-alpine
-   #PGSQL_SERVER=11.4
-   #PGSQL_SERVER=11.4-alpine
-   #PGSQL_SERVER=11.5
-   #PGSQL_SERVER=11.5-alpine
-   #PGSQL_SERVER=11.6
-   #PGSQL_SERVER=11.6-alpine
-   #PGSQL_SERVER=11.7
-   #PGSQL_SERVER=11.7-alpine
-   #PGSQL_SERVER=11.8
-   #PGSQL_SERVER=11.8-alpine
-   #PGSQL_SERVER=11.9
-   #PGSQL_SERVER=11.9-alpine
-   #PGSQL_SERVER=12.0
-   #PGSQL_SERVER=12.0-alpine
-   #PGSQL_SERVER=12.1
-   #PGSQL_SERVER=12.1-alpine
-   #PGSQL_SERVER=12.2
-   #PGSQL_SERVER=12.2-alpine
-   #PGSQL_SERVER=12.3
-   #PGSQL_SERVER=12.3-alpine
-   PGSQL_SERVER=12.4
-   #PGSQL_SERVER=12.4-alpine
-   #PGSQL_SERVER=13.0
-   #PGSQL_SERVER=13.0-alpine
+   #PGSQL_SERVER=10
+   #PGSQL_SERVER=10-alpine
+   #PGSQL_SERVER=11
+   #PGSQL_SERVER=11-alpine
+   #PGSQL_SERVER=12
+   #PGSQL_SERVER=12-alpine
+   #PGSQL_SERVER=13
+   #PGSQL_SERVER=13-alpine
+   #PGSQL_SERVER=14
+   PGSQL_SERVER=14-alpine
    #PGSQL_SERVER=latest
    #PGSQL_SERVER=alpine
 
@@ -755,14 +723,14 @@ This variable choses your desired Redis server version to be started.
 +-------------------------+-------------------------------------------------------------------+------------------+
 | Name                    | Allowed values                                                    | Default value    |
 +=========================+===================================================================+==================+
-| ``REDIS_SERVER``        | ``2.8`` |br| ``3.0`` |br| ``3.2`` |br| ``4.0`` |br| and many more | ``6.0``          |
+| ``REDIS_SERVER``        | ``2.8`` |br| ``3.0`` |br| ``3.2`` |br| ``4.0`` |br| and many more | ``6.2-alpine``   |
 +-------------------------+-------------------------------------------------------------------+------------------+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
 
 .. code-block:: bash
    :caption: .env
-   :emphasize-lines: 6
+   :emphasize-lines: 15
 
    host> grep REDIS_SERVER .env
 
@@ -775,8 +743,10 @@ All values are already available in the ``.env`` file and just need to be commen
    #REDIS_SERVER=4.0-alpine
    #REDIS_SERVER=5.0
    #REDIS_SERVER=5.0-alpine
-   REDIS_SERVER=6.0
+   #REDIS_SERVER=6.0
    #REDIS_SERVER=6.0-alpine
+   #REDIS_SERVER=6.2
+   REDIS_SERVER=6.2-alpine
    #REDIS_SERVER=latest
    #REDIS_SERVER=alpine
 
@@ -796,14 +766,14 @@ This variable choses your desired Memcached server version to be started.
 +-------------------------+---------------------------------------------------------------------------------+------------------+
 | Name                    | Allowed values                                                                  | Default value    |
 +=========================+=================================================================================+==================+
-| ``MEMCD_SERVER``        | ``1.4`` |br| ``1.4-alpine`` |br| ``1.5`` |br| ``1.5-alpine`` |br| and many more | ``1.6``          |
+| ``MEMCD_SERVER``        | ``1.4`` |br| ``1.4-alpine`` |br| ``1.5`` |br| ``1.5-alpine`` |br| and many more | ``1.6-alpine``   |
 +-------------------------+---------------------------------------------------------------------------------+------------------+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
 
 .. code-block:: bash
    :caption: .env
-   :emphasize-lines: 5
+   :emphasize-lines: 8
 
    host> grep MEMCD_SERVER .env
 
@@ -811,8 +781,8 @@ All values are already available in the ``.env`` file and just need to be commen
    #MEMCD_SERVER=1.4-alpine
    #MEMCD_SERVER=1.5
    #MEMCD_SERVER=1.5-alpine
-   MEMCD_SERVER=1.6
-   #MEMCD_SERVER=1.6-alpine
+   #MEMCD_SERVER=1.6
+   MEMCD_SERVER=1.6-alpine
    #MEMCD_SERVER=latest
    #MEMCD_SERVER=alpine
 
@@ -832,14 +802,14 @@ This variable choses your desired MongoDB server version to be started.
 +-------------------------+-------------------------------------------------------------------+------------------+
 | Name                    | Allowed values                                                    | Default value    |
 +=========================+===================================================================+==================+
-| ``MONGO_SERVER``        | ``2.8`` |br| ``3.0`` |br| ``3.2`` |br| ``3.4`` |br| and many more | ``4.4``          |
+| ``MONGO_SERVER``        | ``2.8`` |br| ``3.0`` |br| ``3.2`` |br| ``3.4`` |br| and many more | ``5.0``          |
 +-------------------------+-------------------------------------------------------------------+------------------+
 
 All values are already available in the ``.env`` file and just need to be commented or uncommented. If multiple values are uncommented, the last uncommented variable one takes precedences:
 
 .. code-block:: bash
    :caption: .env
-   :emphasize-lines: 6
+   :emphasize-lines: 11
 
    host> grep MONGO_SERVER .env
 
@@ -850,7 +820,8 @@ All values are already available in the ``.env`` file and just need to be commen
    #MONGO_SERVER=3.6
    #MONGO_SERVER=4.0
    #MONGO_SERVER=4.2
-   MONGO_SERVER=4.4
+   #MONGO_SERVER=4.4
+   MONGO_SERVER=5.0
    #MONGO_SERVER=latest
 
 .. note::
@@ -1326,6 +1297,27 @@ This is internally achieved via the ``-m`` argument of |ext_lnk_project_vhost_ge
 +-----------------------+-----------------------------------------+------------------+
 
 .. _env_httpd_docroot_dir:
+
+
+HTTPD_HTTP2_ENABLE
+^^^^^^^^^^^^^^^^^^
+
+HTTP/2 protocol settings.
+
+By default each HTTP server (Apache and Nginx) will use HTTP/2 when the browser supports it.
+This setting cannot be set on a vhost level, but must be set globally on a server level.
+
+If you wiush to disable HTTP/2, you can do so with this variable.
+
+* ``1`` HTTP/2 enabled (default)
+* ``0`` HTTP/2 disabled
+
++------------------------+-----------------------------------------+------------------+
+| Name                   | Allowed values                          | Default value    |
++========================+=========================================+==================+
+| ``HTTPD_HTTP2_ENABLE`` | ``0``, ``1``                            | ``1``            |
++------------------------+-----------------------------------------+------------------+
+
 
 HTTPD_DOCROOT_DIR
 ^^^^^^^^^^^^^^^^^

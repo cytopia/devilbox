@@ -6,7 +6,56 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v2.0.0 (2022-03-28)
+
+The goal of this release is to reduce the overall size of Docker images and bring in latest versions.
+
+**Important:** This release introduces backwards incompatible changes due to only keeping major versions of PostreSQL and therefore removing old volumes. Additionally the PostgreSQL volume names have changed. In order to guarantee a smooth transition, backup your PostgreSQL databases in the previous version before switching and then re-importing them in this version.
+
+#### Added
+- Added CakePHP integration tests for PHP 8+
+- Added `.env` variable `HTTPD_FLAVOUR` to decide between `Debian` or `Alpine` for HTTP server
+
+#### Changed
+- Changed default PostgreSQL server from `12.4` to `14-alpine` (breaking change)
+- Changed default Redis server from `6.0` to `6.2-alpine`
+- Changed default Memcached server from `1.6` to `1.6-alpine`
+- Changed default MongoDB server from `4.4` to `5.0`
+- Changed default HTTPD server flavour from `Debian` to `Alpine`
+- Use tiny Alpine version of Bind container
+
+#### Removed
+- Removed CI for MongoDB `2.8` and MongoDB `3.0` due to segfault: https://github.com/docker-library/mongo/issues/251
+
+
+## Release v1.11.0 (2022-03-22)
+
+#### Fixed
+- Fixed pidof issue on QUEMU by replacing it with pgrep #854
+- Fixed array definition for PHP < 5.4
+- Fixed bind caching issue  [#37](https://github.com/cytopia/docker-bind/pull/37)
+- Fixed Adminer 4.8.1 CSS issues [#867](https://github.com/cytopia/devilbox/issues/867)
+
+#### Added
+- Allow to globally enable/disable HTTP/2 [#844](https://github.com/cytopia/devilbox/issues/844)
+- Added New `.env` variable: `HTTPD_HTTP2_ENABLE`
+
+#### Changed
+- Make MariaDB 10.6 the default
+- Make PHP 8.1 the default
+- Updated Apache 2.2
+- Updated Apache 2.4
+- Updated Nginx stable
+- Updated Nginx mainline
+- Updated PHP-FPM images [#230](https://github.com/devilbox/docker-php-fpm/pull/230)
+- Updated PHP-FPM images [#231](https://github.com/devilbox/docker-php-fpm/pull/231)
+- Updated phpMyAdmin to 5.1.3
+
+
 ## Release v1.10.5 (2022-03-16)
+
+#### Added
+- Added MariaDB 10.8
 
 #### Changed
 - Updated Bind [#36](https://github.com/cytopia/docker-bind/pull/36)

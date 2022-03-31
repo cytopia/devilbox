@@ -47,8 +47,7 @@ get_php_version() {
 	# Check php -v
 	>&2 printf "Fetching PHP version from php -v:   "
 	if ! cli_version="$( run "docker-compose exec -T php php -v \
-		| head -1 \
-		| grep -Eo 'PHP[[:space:]]+[0-9]+\\.[0-9]+' \
+		| grep -Eo '^PHP[[:space:]]+[0-9]+\\.[0-9]+' \
 		| grep -Eo '[0-9]+\\.[0-9]+'" \
 		"${retries}" "${root_path}" "0" )"; then
 		>&2 printf "FAILED\\n"
@@ -115,6 +114,52 @@ replace() {
 	fi
 
 	run "perl -pi -e 's${sep}${from}${sep}${to}${sep}g' ${file}"
+}
+
+
+###
+### Print colorized OK message
+###
+print_succ() {
+	local leading_nl="${1}"
+	local trailing_nl="${2}"
+	local message="${3}"
+
+	local green="\\033[0;32m"
+	local reset="\\033[0m"
+
+	if [ "${leading_nl}" = "1" ] && [ "${trailing_nl}" = "1" ]; then
+		printf "\\r${green}[OK]${reset}   %s\\n" "${message}"
+	elif [ "${leading_nl}" = "1" ]; then
+		printf "\\r${green}[OK]${reset}   %s" "${message}"
+	elif [ "${trailing_nl}" = "1" ]; then
+		printf "${green}[OK]${reset}   %s\\n" "${message}"
+	else
+		printf "${green}[OK]${reset}   %s" "${message}"
+	fi
+}
+
+
+###
+### Print colorized FAIL message
+###
+print_fail() {
+	local leading_nl="${1}"
+	local trailing_nl="${2}"
+	local message="${3}"
+
+	local red="\\033[0;31m"
+	local reset="\\033[0m"
+
+	if [ "${leading_nl}" = "1" ] && [ "${trailing_nl}" = "1" ]; then
+		printf "\\r${red}[FAIL]${reset} %s\\n" "${message}"
+	elif [ "${leading_nl}" = "1" ]; then
+		printf "\\r${red}[FAIL]${reset} %s" "${message}"
+	elif [ "${trailing_nl}" = "1" ]; then
+		printf "${red}[FAIL]${reset} %s\\n" "${message}"
+	else
+		printf "${red}[FAIL]${reset} %s" "${message}"
+	fi
 }
 
 

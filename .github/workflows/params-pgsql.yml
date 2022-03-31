@@ -1,0 +1,70 @@
+---
+
+# -------------------------------------------------------------------------------------------------
+# Job Name
+# -------------------------------------------------------------------------------------------------
+name: params
+
+
+# -------------------------------------------------------------------------------------------------
+# Custom Variables
+# -------------------------------------------------------------------------------------------------
+env:
+  MATRIX: >-
+    [
+      {"PGSQL_SERVER": "PgSQL 9.0"},
+      {"PGSQL_SERVER": "PgSQL 9.1"},
+      {"PGSQL_SERVER": "PgSQL 9.2"},
+      {"PGSQL_SERVER": "PgSQL 9.2-alpine"},
+      {"PGSQL_SERVER": "PgSQL 9.3"},
+      {"PGSQL_SERVER": "PgSQL 9.3-alpine"},
+      {"PGSQL_SERVER": "PgSQL 9.4"},
+      {"PGSQL_SERVER": "PgSQL 9.4-alpine"},
+      {"PGSQL_SERVER": "PgSQL 9.5"},
+      {"PGSQL_SERVER": "PgSQL 9.5-alpine"},
+      {"PGSQL_SERVER": "PgSQL 9.6"},
+      {"PGSQL_SERVER": "PgSQL 9.6-alpine"},
+      {"PGSQL_SERVER": "PgSQL 10"},
+      {"PGSQL_SERVER": "PgSQL 10-alpine"},
+      {"PGSQL_SERVER": "PgSQL 11"},
+      {"PGSQL_SERVER": "PgSQL 11-alpine"},
+      {"PGSQL_SERVER": "PgSQL 12"},
+      {"PGSQL_SERVER": "PgSQL 12-alpine"},
+      {"PGSQL_SERVER": "PgSQL 13"},
+      {"PGSQL_SERVER": "PgSQL 13-alpine"},
+      {"PGSQL_SERVER": "PgSQL 14"},
+      {"PGSQL_SERVER": "PgSQL 14-alpine"},
+      {"PGSQL_SERVER": "PgSQL latest"},
+      {"PGSQL_SERVER": "PgSQL alpine"}
+    ]
+
+
+# -------------------------------------------------------------------------------------------------
+# When to run
+# -------------------------------------------------------------------------------------------------
+on:
+  workflow_call:
+    outputs:
+      matrix:
+        description: "The determined version matrix"
+        value: ${{ jobs.params.outputs.matrix }}
+
+jobs:
+  params:
+    runs-on: ubuntu-latest
+
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - name: "[Set-Output] Matrix"
+        id: set-matrix
+        run: |
+          echo "::set-output name=matrix::$( echo '${{ env.MATRIX }}' | jq -M -c )"
+
+      - name: "[DEBUG] Show settings'"
+        run: |
+          echo 'Matrix'
+          echo '--------------------'
+          echo '${{ steps.set-matrix.outputs.matrix }}'
+          echo

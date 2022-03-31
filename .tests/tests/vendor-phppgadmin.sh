@@ -60,11 +60,11 @@ if ! URL="$( run "\
 	| tac \
 	| grep -Eo '/vendor/phppgadmin-[.0-9]+/'" \
 	"${RETRIES}" "" "0" )"; then
-	printf "\\r[FAILED] Retrieve phpPgAdmin URL\\n"
+	print_fail "1" "1" "Retrieve phpPgAdmin URL"
 	run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}/index.php' || true"
 	exit 1
 else
-	printf "\\r[OK]   Retrieve phpPgAdmin URL: %s\\n" "${URL}"
+	print_succ "1" "1" "Retrieve phpPgAdmin URL: ${URL}"
 fi
 
 
@@ -80,18 +80,18 @@ if ! curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}${URL}intro.php" | tac 
 		# 3rd Try
 		sleep 1
 		if ! curl -sS --fail "http://localhost:${HOST_PORT_HTTPD}${URL}intro.php" | tac | tac | grep -Eiq "welcome to phpPgAdmin"; then
-			printf "\\r[FAIL] Fetch %sintro.php\\n" "${URL}"
+			print_fail "1" "1" "Fetch ${URL}intro.php"
 			curl -sS "http://localhost:${HOST_PORT_HTTPD}${URL}intro.php" || true
 			curl -sS -I "http://localhost:${HOST_PORT_HTTPD}${URL}intro.php" || true
 			exit 1
 		else
-			printf "\\r[OK]   Fetch %sintro.php (3 rounds)\\n" "${URL}"
+			print_succ "1" "1" "Fetch ${URL}intro.php (3 rounds)"
 		fi
 	else
-		printf "\\r[OK]   Fetch %sintro.php (2 rounds)\\n" "${URL}"
+		print_succ "1" "1" "Fetch ${URL}intro.php (2 rounds)"
 	fi
 else
-	printf "\\r[OK]   Fetch %sintro.php (1 round)\\n" "${URL}"
+	print_succ "1" "1" "Fetch ${URL}intro.php (1 round)"
 fi
 
 
@@ -106,46 +106,46 @@ LIBPATH="${DVLBOXPATH}/.devilbox/www/htdocs${URL%index\.php}libraries/lib.inc.ph
 
 printf "[TEST] config.inc.php exists"
 if [ ! -f "${CONFIGPATH}" ]; then
-	printf "\\r[FAIL] config.inc.php exists: no\\n"
+	print_fail "1" "1" "config.inc.php exists: no"
 	exit 1
 else
-	printf "\\r[OK]   config.inc.php exists: yes\\n"
+	print_succ "1" "1" "config.inc.php exists: yes"
 fi
 
 # $conf['servers'][0]['host'] = 'pgsql';
 printf "[TEST] config.inc.php check: \$conf['servers'][0]['host'] = 'pgsql';"
 if ! grep -E "^[[:space:]]*\\\$conf\\['servers'\\]\\[0\\]\\['host'\\][[:space:]]*=[[:space:]]*'pgsql';" "${CONFIGPATH}" >/dev/null; then
-	printf "\\r[FAIL] config.inc.php check: \$conf['servers'][0]['host'] = 'pgsql';\\n"
+	print_fail "1" "1" "config.inc.php check: \$conf['servers'][0]['host'] = 'pgsql';"
 	if ! grep 'servers' "${CONFIGPATH}"; then
 		cat "${CONFIGPATH}"
 	fi
 	exit 1
 else
-	printf "\\r[OK]   config.inc.php check: \$conf['servers'][0]['host'] = 'pgsql';\\n"
+	print_succ "1" "1" "config.inc.php check: \$conf['servers'][0]['host'] = 'pgsql';"
 fi
 
 # $conf['extra_login_security'] = false;
 printf "[TEST] config.inc.php check: \$conf['extra_login_security'] = false;"
 if ! grep -E "^[[:space:]]*\\\$conf\\['extra_login_security'\\][[:space:]]*=[[:space:]]*false;" "${CONFIGPATH}" >/dev/null; then
-	printf "\\r[FAIL] config.inc.php check: \$conf['extra_login_security'] = false;\\n"
+	print_fail "1" "1" "config.inc.php check: \$conf['extra_login_security'] = false;"
 	if ! grep 'extra_login_security' "${CONFIGPATH}"; then
 		cat "${CONFIGPATH}"
 	fi
 	exit 1
 else
-	printf "\\r[OK]   config.inc.php check: \$conf['extra_login_security'] = false;\\n"
+	print_succ "1" "1" "config.inc.php check: \$conf['extra_login_security'] = false;"
 fi
 
 # error_reporting(E_ERROR | E_WARNING | E_PARSE);
 printf "[TEST] lib.inc.php check: error_reporting(E_ERROR | E_WARNING | E_PARSE);"
 if ! grep -E "^[[:space:]]*error_reporting\\(E_ERROR[[:space:]]*\\|[[:space:]]*E_WARNING[[:space:]]*\\|[[:space:]]*E_PARSE\\);" "${LIBPATH}" >/dev/null; then
-	printf "\\r[FAIL] lib.inc.php check: error_reporting(E_ERROR | E_WARNING | E_PARSE);\\n"
+	print_fail "1" "1" "lib.inc.php check: error_reporting(E_ERROR | E_WARNING | E_PARSE);"
 	if ! grep 'error_reporting' "${LIBPATH}"; then
 		cat "${LIBPATH}"
 	fi
 	exit 1
 else
-	printf "\\r[OK]   lib.inc.php check: error_reporting(E_ERROR | E_WARNING | E_PARSE);\\n"
+	print_succ "1" "1" "lib.inc.php check: error_reporting(E_ERROR | E_WARNING | E_PARSE);"
 fi
 
 
@@ -163,7 +163,7 @@ if [ "${DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN}" != "1" ]; then
 	###
 	printf "[TEST] Retrieve phpPgAdmin token page"
 	if ! TOKEN_URL="$( run "curl -sS --fail -c cookie.txt 'http://localhost:${HOST_PORT_HTTPD}${URL}servers.php' | tac | tac | grep -Eo '\"redirect\\.php\\?subject=server.+\"' " "${RETRIES}" "" "0" )"; then
-		printf "\\r[FAIL] Retrieve phpPgAdmin login page\\n"
+		print_fail "1" "1" "Retrieve phpPgAdmin login page"
 		run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}${URL}servers.php' || true"
 		run "curl -sSI 'http://localhost:${HOST_PORT_HTTPD}${URL}servers.php' || true"
 		rm -f cookie.txt
@@ -171,7 +171,7 @@ if [ "${DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN}" != "1" ]; then
 	else
 		TOKEN_URL="${TOKEN_URL//\"/}"
 		TOKEN_URL="${TOKEN_URL//&amp;/&}"
-		printf "\\r[OK]   Retrieve phpPgAdmin token page:%s\\n" "${TOKEN_URL}"
+		print_succ "1" "1" "Retrieve phpPgAdmin token page: ${TOKEN_URL}"
 	fi
 
 	###
@@ -180,14 +180,14 @@ if [ "${DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN}" != "1" ]; then
 	printf "[TEST] Retrieve phpPgAdmin login token"
 	# 1st Try
 	if ! TOKEN="$( run "curl -sS --fail -c cookie.txt -b cookie.txt 'http://localhost:${HOST_PORT_HTTPD}${URL}${TOKEN_URL}' | tac | tac | grep -Eo 'loginPassword_[a-zA-Z0-9]+'" "${RETRIES}" "" "0" )"; then
-		printf "\\r[FAIL] Retrieve phpPgAdmin login token\\n"
+		print_fail "1" "1" "Retrieve phpPgAdmin login token"
 		run "curl -sS 'http://localhost:${TOKEN_URL_URL}' || true"
 		run "curl -sSI 'http://localhost:${TOKEN_URL_URL}' || true"
 		rm -f cookie.txt
 		exit 1
 	else
 		TOKEN="$( echo "${TOKEN}" | head -1 )"
-		printf "\\r[OK]   Retrieve phpPgAdmin login token: %s\\n" "${TOKEN}"
+		print_succ "1" "1" "Retrieve phpPgAdmin login token: ${TOKEN}"
 	fi
 
 	###
@@ -204,7 +204,7 @@ if [ "${DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN}" != "1" ]; then
 			--data 'loginSubmit=Login' \
 		'http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php' 2>/dev/null \
 		| grep -q 'Create database'" "${RETRIES}" "" "0"; then
-		printf "\\r[FAIL] Submit phpPgAdmin POST login\\n"
+		print_fail "1" "1" "Submit phpPgAdmin POST login"
 		run "curl -sS -c cookie.txt -b cookie.txt \
 			--data 'subject=server' \
 			--data 'server=pgsql%3A5432%3Aallow' \
@@ -224,7 +224,7 @@ if [ "${DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN}" != "1" ]; then
 		rm -f cookie.txt || true
 		exit 1
 	else
-		printf "\\r[OK]   Submit phpPgAdmin POST login\\n"
+		print_succ "1" "1" "Submit phpPgAdmin POST login"
 	fi
 fi
 
@@ -240,12 +240,12 @@ if [ "$( run "curl -sS --fail \
 	| tac \
 	| tac \
 	| grep -Ec 'data\">(Database|Owner|Collation|Tablespace)'" "${RETRIES}" "" "0" )" != "4" ]; then
-	printf "\\r[FAIL] Evaluate successful phpPgAdmin login\\n"
+	print_fail "1" "1" "Evaluate successful phpPgAdmin login"
 	run "curl -sS 'http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&' || true"
 	run "curl -sS -I 'http://localhost:${HOST_PORT_HTTPD}${URL}redirect.php?subject=server&server=pgsql%3A5432%3Aallow&' || true"
 	rm -f cookie.txt || true
 	exit 1
 else
-	printf "\\r[OK]   Evaluate successful phpPgAdmin login\\n"
+	print_succ "1" "1" "Evaluate successful phpPgAdmin login"
 fi
 rm -f cookie.txt || true
