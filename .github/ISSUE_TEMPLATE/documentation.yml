@@ -28,5 +28,3 @@ body:
       options:
         - "Yes"
         - "No"
-    validations:
-      required: true

@@ -16,6 +16,13 @@ body:
 
   - type: textarea
     attributes:
+      label: Benefits
+      description: Tell us, how this this will be beneficial to the Devilbox.
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
       label: Where can we find information about this?
       description: If you are proposing a software or tool, please add relevant links and documentation.
     validations:
@@ -27,5 +34,3 @@ body:
       options:
         - "Yes"
         - "No"
-    validations:
-      required: true
