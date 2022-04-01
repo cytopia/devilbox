@@ -18,8 +18,8 @@ body:
       label: Have you already looked into this bug?
       description: Please invest some time and check if this bug is already mentioned or documented elsewhere (You may select more than one).
       options:
-        - label: I have read the [Troubleshooting Guide](https://devilbox.readthedocs.io/en/latest/support/troubleshooting.html)
-        - label: I have checked the [Devilbox forum](https://devilbox.discourse.group/)
+        - label: I have checked the [Troubleshooting Guide](https://devilbox.readthedocs.io/en/latest/support/troubleshooting.html)
+        - label: I have checked the [Devilbox Forum](https://devilbox.discourse.group/)
         - label: I have googled this bug already with no luck
         - label: I have checked [existing issues](https://github.com/cytopia/devilbox/issues) for similar bugs
         - label: I have checked [Release notes](https://github.com/cytopia/devilbox/releases)
@@ -113,11 +113,32 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    attributes:
+      label: Have you removed stopped containers before starting?
+      description: "Have you done a `docker-compose rm` before starting up the Devilbox? [More info here](https://docs.docker.com/compose/reference/rm/)"
+      multiple: false
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+
+  - type: dropdown
+    attributes:
+      label: Have you pulled latest Docker images before starting?
+      description: "Have you done a `docker-compose pull` before starting up the Devilbox?"
+      multiple: false
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+
   - type: input
-    id: devilbox-start-command
     attributes:
       label: Devilbox start command
-      description: "What is the command you have used to start the Devilbox?"
+      description: "What is the [start command](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html) you have used to start the Devilbox?"
     validations:
       required: true
 
@@ -125,12 +146,12 @@ body:
     id: log-env-file
     attributes:
       label: "Log: .env file"
-      description: "Please copy and paste your `.env` file into this text aread"
+      description: "Please copy and paste your `.env` file into this text area"
   - type: textarea
     id: log-docker-compose
     attributes:
       label: "Log: docker-compose logs"
-      description: "Please copy and paste the output of `docker-compose logs` into this text aread"
+      description: "Please copy and paste the output of `docker-compose logs` into this text area"
       render: shell
     validations:
       required: true
@@ -139,7 +160,7 @@ body:
     id: log-check-config
     attributes:
       label: "Log: ./check-config.sh"
-      description: "Please copy and paste the output of `./check-config.sh` into this text aread"
+      description: "Please copy and paste the output of `./check-config.sh` into this text area"
       render: shell
     validations:
       required: true
