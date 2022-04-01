@@ -1,0 +1,142 @@
+---
+name: "\U0001F41B Bug report"
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees:
+  - cytopia
+
+body:
+
+  - type: dropdown
+    id: research
+    attributes:
+      label: Did you already look into this bug?
+      description: Please invest some time and check if this bug is already mentioned or documented elsewhere
+      multiple: true
+      options:
+        - I have read the [Troubleshooting Guide](https://devilbox.readthedocs.io/en/latest/support/troubleshooting.html)
+        - I have checked the [Devilbox forum](https://devilbox.discourse.group/)
+        - I have googled this bug
+        - I have checked existing issues for similar bugs
+        - I have checked [Release notes](https://github.com/cytopia/devilbox/releases)
+        - I have not done anything yet
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What is the bug?
+      description: What exactly is the bug or what went wrong?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behaviour
+    attributes:
+      label: Expected behaviour
+      description: What did you expect to happen instead?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: host-os
+    attributes:
+      label: Host Operating System
+      description: What operating system are you using?
+      multiple: false
+      options:
+        - Linux
+        - macOS
+        - Windows
+    validations:
+      required: true
+
+  - type: dropdown
+    id: host-platform
+    attributes:
+      label: Host Platform (amd64, arm64, other)
+      description: What host platform are you running on?
+      options:
+        - amd64
+        - arm64
+        - other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: host-os-linux
+    attributes:
+      label: (Linux only) Is SELinux enabled?
+      description: When using Linux as your host operating system, check if SELinux is enabled or not
+      options:
+        - Yes, SELinux is enabled
+        - No, SELinux is disabled
+        - I don't know
+        - I am not on Linux
+    validations:
+      required: true
+
+  - type: input
+    id: docker-version
+    attributes:
+      label: Docker version
+      description: "What Docker version are you using (`docker --version`)"
+    validations:
+      required: true
+
+  - type: input
+    id: docker-compose-version
+    attributes:
+      label: Docker Compose version
+      description: "What Docker Compose version are you using (`docker-compose --version`)"
+    validations:
+      required: true
+
+  - type: input
+    id: devilbox-version
+    attributes:
+      label: Devilbox version
+      description: "What version of Devilbox are you running (latest master, specific tag, git hash, etc)?"
+    validations:
+      required: true
+
+  - type: input
+    id: devilbox-start-command
+    attributes:
+      label: Devilbox start command
+      description: "What is the command you have used to start the Devilbox?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: How can we reproduce the bug?
+      description: "How do you trigger this bug? Please walk us through it step by step."
+    validations:
+      required: true
+
+  - type: textarea
+    id: log-env-file
+    attributes:
+      label: "Log: `.env` file"
+      description: "Please copy and paste your `.env` file into this text aread"
+  - type: textarea
+    id: log-docker-compose
+    attributes:
+      label: "Log: `docker-compose logs`"
+      description: "Please copy and paste the output of `docker-compose logs` into this text aread"
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: log-check-config
+    attributes:
+      label: "Log: `./check-config.sh`"
+      description: "Please copy and paste the output of `./check-config.sh` into this text aread"
+      render: shell
+    validations:
+      required: true
