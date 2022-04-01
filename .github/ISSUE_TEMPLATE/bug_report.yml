@@ -26,11 +26,10 @@ body:
     validations:
       required: true
 
-  - type: textarea
+  - type: input
     attributes:
-      label: Error message
+      label: (Optional) Error message
       description: If you encountered any error message, copy and paste it here. This will be used for googling the issue.
-      render: shell
     validations:
       required: false
 
@@ -153,6 +152,8 @@ body:
     attributes:
       label: "Config: .env file"
       description: "Please copy and paste your `.env` file into this text area"
+    validations:
+      required: true
 
   - type: textarea
     attributes:
@@ -182,7 +183,7 @@ body:
 
   - type: textarea
     attributes:
-      label: Additional information
-      description: Add any additional information that might help with this bug report. (E.g. customizations from the `autostart/`, `bash/`, `cfg/` or `supervisor/` directory of logfiles from the `log/` directory)
+      label: (Optional) Additional information
+      description: Add any additional information that might help with this bug report. (E.g. customizations from the `autostart/`, `bash/`, `cfg/` or `supervisor/` directory or relevant logfiles from the `log/` directory)
     validations:
       required: false
