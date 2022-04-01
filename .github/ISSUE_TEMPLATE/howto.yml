@@ -24,7 +24,7 @@ body:
         - label: I have checked the [Devilbox Forum](https://devilbox.discourse.group/)
         - label: I have checked [existing issues](https://github.com/cytopia/devilbox/issues)
         - label: I have googled already with no luck
-        - label: I have not done anything yet
+        - label: I have not done any of the above
     validations:
       required: true
 
