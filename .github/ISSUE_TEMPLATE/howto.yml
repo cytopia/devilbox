@@ -1,8 +1,8 @@
 ---
-name: "\U0001F41B How to do ...?"
+name: "❔ How to do ...?"
 description: How do I do X or Y with the Devilbox?
 title: "[Howto]: "
-labels: ["question"]
+labels: ["question", "Community help wanted"]
 assignees:
   - cytopia
 
