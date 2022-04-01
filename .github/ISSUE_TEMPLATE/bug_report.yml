@@ -19,19 +19,26 @@ body:
       description: Please invest some time and check if this bug is already mentioned or documented elsewhere (You may select more than one).
       options:
         - label: I have checked the [Troubleshooting Guide](https://devilbox.readthedocs.io/en/latest/support/troubleshooting.html)
-        - label: I have checked the [Devilbox Forum](https://devilbox.discourse.group/)
-        - label: I have googled this bug already with no luck
+        - label: I have checked [Release notes](https://github.com/cytopia/devilbox/releases) for potential migration steps
         - label: I have checked [existing issues](https://github.com/cytopia/devilbox/issues) for similar bugs
-        - label: I have checked [Release notes](https://github.com/cytopia/devilbox/releases)
-        - label: I have not done anything yet
+        - label: I have googled this bug already with no luck
+        - label: I have not done any of the above
     validations:
       required: true
 
   - type: textarea
+    attributes:
+      label: Error message
+      description: If you encountered any error message, copy and paste it here. This will be used for googling the issue.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
     id: what-happened
     attributes:
-      label: What is the bug?
-      description: What exactly is the bug or what went wrong?
+      label: What went wrong?
+      description: What exactly went wrong of what bug did you encounter?
     validations:
       required: true
 
@@ -47,7 +54,7 @@ body:
     id: steps-to-reproduce
     attributes:
       label: How can we reproduce the bug?
-      description: "How do you trigger this bug? Please walk us through it step by step (This is crucial in order to triage the bug)."
+      description: How do you trigger this bug? Please walk us through it step by step in detail. This is crucial in order to triage the bug and support you in resolving it.
     validations:
       required: true
 
