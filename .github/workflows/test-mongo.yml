@@ -12,9 +12,32 @@ name: Mongo
 on:
   # Runs on Pull Requests
   pull_request:
-
+    paths:
+      - '.devilbox/**'
+      - '.github/workflows/params*.yml'
+      - '.github/workflows/test*.yml'
+      - '.github/workflows/zzz*.yml'
+      - '.tests/**'
+      - 'cfg/vhost-gen/**'
+      - 'compose/**'
+      - 'docker-compose.override.yml-example'
+      - 'docker-compose.yml'
+      - 'env-example'
+      - '!**.md'
   # Runs on master Branch and Tags
   push:
+    paths:
+      - '.devilbox/**'
+      - '.github/workflows/params*.yml'
+      - '.github/workflows/test*.yml'
+      - '.github/workflows/zzz*.yml'
+      - '.tests/**'
+      - 'cfg/vhost-gen/**'
+      - 'compose/**'
+      - 'docker-compose.override.yml-example'
+      - 'docker-compose.yml'
+      - 'env-example'
+      - '!**.md'
     branches:
       - master
     tags:

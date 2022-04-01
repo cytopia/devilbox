@@ -12,9 +12,14 @@ name: Docs
 on:
   # Runs on Pull Requests
   pull_request:
-
+    paths:
+      - 'docs/**'
+      - '!**.md'
   # Runs on master Branch and Tags
   push:
+    paths:
+      - 'docs/**'
+      - '!**.md'
     branches:
       - master
 
