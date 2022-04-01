@@ -84,10 +84,9 @@ body:
       required: true
 
   - type: dropdown
-    id: host-os-linux
     attributes:
       label: (Linux only) Is SELinux enabled?
-      description: When using Linux as your host operating system, check if SELinux is enabled or not
+      description: When using Linux as your host operating system, check if SELinux is enabled or not. [More info here](https://devilbox.readthedocs.io/en/latest/getting-started/install-the-devilbox.html?highlight=selinux#linux-selinux)
       options:
         - Yes, SELinux is enabled
         - No, SELinux is disabled
@@ -100,7 +99,7 @@ body:
     id: docker-version
     attributes:
       label: Docker version
-      description: "What Docker version are you using (`docker --version`)"
+      description: "What Docker version are you using? Please copy and paste the output of `docker --version` into this text area."
     validations:
       required: true
 
@@ -108,7 +107,7 @@ body:
     id: docker-compose-version
     attributes:
       label: Docker Compose version
-      description: "What Docker Compose version are you using (`docker-compose --version`)"
+      description: "What Docker Compose version are you using? Please copy and paste the output of `docker-compose --version` into this text area."
     validations:
       required: true
 
@@ -152,8 +151,26 @@ body:
   - type: textarea
     id: log-env-file
     attributes:
-      label: "Log: .env file"
+      label: "Config: .env file"
       description: "Please copy and paste your `.env` file into this text area"
+
+  - type: textarea
+    attributes:
+      label: "Config: docker-compose.override.yml"
+      description: "If you are using `docker-compose.override.yml`, please copy and paste its contents into this text area."
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: log-check-config
+    attributes:
+      label: "Config: ./check-config.sh"
+      description: "Please copy and paste the output of `./check-config.sh` into this text area"
+      render: shell
+    validations:
+      required: true
+
   - type: textarea
     id: log-docker-compose
     attributes:
@@ -164,17 +181,8 @@ body:
       required: true
 
   - type: textarea
-    id: log-check-config
-    attributes:
-      label: "Log: ./check-config.sh"
-      description: "Please copy and paste the output of `./check-config.sh` into this text area"
-      render: shell
-    validations:
-      required: true
-
-  - type: textarea
     attributes:
       label: Additional information
-      description: Add any additional information that might help with this bug report.
+      description: Add any additional information that might help with this bug report. (E.g. customizations from the `autostart/`, `bash/`, `cfg/` or `supervisor/` directory of logfiles from the `log/` directory)
     validations:
       required: false
