@@ -6,7 +6,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
-## Release v2.1.0 (2022-04-03)
+## Release v2.1.0 (2022-04-05)
 
 This is now a 100% `arm64` compatible release.
 
@@ -22,8 +22,6 @@ This is now a 100% `arm64` compatible release.
 
 #### Removed
 - Removed homebrew due to arm64 issues
-- Removed postgres cmd client and apt repositories due to arm64 issues
-- Removed mongodb cmd client and apt repositories due to arm64 issues
 - Removed Ansible due to arm64 issues
 
 
