@@ -94,7 +94,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.138
+    image: devilbox/php-fpm:${PHP_SERVER}-work-release-0.139
     hostname: php
 
     ##
