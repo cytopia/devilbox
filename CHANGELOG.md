@@ -6,6 +6,12 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v2.1.1 (2022-04-07)
+
+#### Changed
+- Used tagged PHP images (auto-updating)instead early release branch one.
+
+
 ## Release v2.1.0 (2022-04-05)
 
 This is now a 100% `arm64` compatible release.
