@@ -16,6 +16,7 @@
 			<p>I am currently the sole creator and maintainer of the Devilbox and all of its required projects.<br/>If you find this useful or if it makes your daily programming life easier, consider donating to keep this project alive.</p>
 			<ul>
 				<li><a target="_blank" href="https://github.com/sponsors/cytopia"><strong>GitHub sponsorship</strong></a></li>
+				<li><a target="_blank" href="https://opencollective.com/devilbox"><strong>Open Collective</strong></a></li>
 				<li><a target="_blank" href="https://www.patreon.com/devilbox"><strong>Patreon</strong></a></li>
 			</ul>
 			<br/>
@@ -39,55 +40,59 @@
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-php-fpm-5.2">docker-php-fpm-5.2</a></td>
-								<td>Legacy PHP 5.2 base images (amd64 and i386)</td>
+								<td>Legacy PHP 5.2 base images (<code>amd64</code> and <code>i386</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-php-fpm-5.3">docker-php-fpm-5.3</a></td>
-								<td>Legacy PHP 5.3 base images (amd64 and arm64)</td>
+								<td>Legacy PHP 5.3 base images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-php-fpm-5.4">docker-php-fpm-5.4</a></td>
-								<td>Legacy PHP 5.4 base images (amd64 and arm64)</td>
+								<td>Legacy PHP 5.4 base images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-php-fpm-5.5">docker-php-fpm-5.5</a></td>
-								<td>Legacy PHP 5.5 base images (amd64 and arm64)</td>
+								<td>Legacy PHP 5.5 base images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-php-fpm-8.0">docker-php-fpm-8.0</a></td>
-								<td>PHP 8.0 base images (amd64 and arm64)</td>
+								<td>PHP 8.0 base images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-php-fpm-8.1">docker-php-fpm-8.1</a></td>
-								<td>PHP 8.1 base images (amd64 and arm64)</td>
+								<td>PHP 8.1 base images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-php-fpm-8.2">docker-php-fpm-8.2</a></td>
-								<td>Upcoming PHP 8.2 base images (amd64 and arm64)</td>
+								<td>PHP 8.2 base images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-php-fpm">docker-php-fpm</a></td>
-								<td>PHP-FPM Devilbox images</td>
+								<td>PHP-FPM Devilbox images (<code>amd64</code> and <code>arm64</code>)</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-php-fpm-community">docker-php-fpm-community</a></td>
+								<td>PHP-FPM Community images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-mysql">docker-mysql</a></td>
-								<td>MySQL, MariaDB and PerconaDB images (amd64 and arm64)</td>
+								<td>MySQL, MariaDB and PerconaDB images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-apache-2.2">docker-apache-2.2</a></td>
-								<td>Apache 2.2 images (amd64 and arm64)</td>
+								<td>Apache 2.2 images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-apache-2.4">docker-apache-2.4</a></td>
-								<td>Apache 2.4 images (amd64 and arm64)</td>
+								<td>Apache 2.4 images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-nginx-stable">docker-nginx-stable</a></td>
-								<td>Nginx stable images (amd64 and arm64)</td>
+								<td>Nginx stable images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-nginx-mainline">docker-nginx-mainline</a></td>
-								<td>Nginx mainline images (amd64 and arm64)</td>
+								<td>Nginx mainline images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-haproxy">docker-haproxy</a></td>
@@ -95,7 +100,7 @@
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-ngrok">docker-ngrok</a></td>
-								<td>Ngrok image</td>
+								<td>Ngrok image (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-varnish">docker-varnish</a></td>
@@ -142,15 +147,19 @@
 								<td>Re-usable GitHub Action Workflows</td>
 							</tr>
 							<tr>
-								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/cytopia/shell-command-retry-action">shell-command-retry-action</a></td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/cytopia/shell-command-retry-action">shell-command-retry</a></td>
 								<td>GitHub Action</td>
 							</tr>
 							<tr>
-								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/cytopia/docker-tag-action">docker-tag-action</a></td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/cytopia/docker-tag-action">docker-tag</a></td>
 								<td>GitHub Action</td>
 							</tr>
 							<tr>
-								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/cytopia/git-ref-matrix-action">git-ref-matrix-action</a></td>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/cytopia/git-ref-matrix-action">git-ref-matrix</a></td>
+								<td>GitHub Action</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/cytopia/upload-artifact-verify-action">upload-artifact-verify</a></td>
 								<td>GitHub Action</td>
 							</tr>
 							<tr>
