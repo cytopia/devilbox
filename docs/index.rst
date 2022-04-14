@@ -118,6 +118,7 @@ host is ready to be served with your custom domain.
    :maxdepth: 2
 
    custom-container/enable-all-container
+   custom-container/enable-php-community
    custom-container/enable-blackfire
    custom-container/enable-elk-stack
    custom-container/enable-mailhog

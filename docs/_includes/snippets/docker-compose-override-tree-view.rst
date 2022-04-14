@@ -13,6 +13,7 @@ However, each example also exists in its standalone file as shown below:
    ├── docker-compose.override.yml-elk
    ├── docker-compose.override.yml-mailhog
    ├── docker-compose.override.yml-ngrok
+   ├── docker-compose.override.yml-php-community
    ├── docker-compose.override.yml-python-flask
    ├── docker-compose.override.yml-rabbitmq
    ├── docker-compose.override.yml-solr

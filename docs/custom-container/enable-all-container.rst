@@ -56,6 +56,7 @@ That includes, but is not limited to:
 In order to fully customize each container, refer to their own documentation section:
 
 .. seealso::
+   * :ref:`custom_container_enable_php_community`
    * :ref:`custom_container_enable_blackfire`
    * :ref:`custom_container_enable_elk_stack`
    * :ref:`custom_container_enable_mailhog`
