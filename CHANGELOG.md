@@ -6,6 +6,15 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v2.2.0 (2022-04-14)
+
+This release adds PHP-FPM community images via `docker-compose.override.yml`, which easily allows you
+to build upon existing PHP images and customize them for your usecase/workflow.
+
+#### Added
+- Added PHP-FPM Community images: https://github.com/devilbox/docker-php-fpm-community/
+
+
 ## Release v2.1.1 (2022-04-07)
 
 #### Changed
