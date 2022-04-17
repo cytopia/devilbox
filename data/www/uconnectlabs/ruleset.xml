@@ -10,5 +10,6 @@
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found"/>
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
+		<exclude name="WordPress.PHP.DevelopmentFunctions.error_log_trigger_error"/>
 	</rule>
 </ruleset>
