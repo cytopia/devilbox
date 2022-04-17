@@ -160,6 +160,7 @@ test-smoke-autostart:
 ###
 test-smoke-framework-cakephp:
 	$(PWD)/tests/framework-cakephp.sh
+	$(PWD)/tests/framework-cakephp-php8.sh
 
 test-smoke-framework-drupal:
 	$(PWD)/tests/framework-drupal.sh

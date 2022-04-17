@@ -34,7 +34,7 @@ services:
   # Bind (DNS Server)
   # ------------------------------------------------------------
   bind:
-    image: cytopia/bind:0.15
+    image: cytopia/bind:alpine-0.28
     hostname: bind
     restart: always
     ports:
@@ -51,8 +51,7 @@ services:
       ##
       ## Bind wildcard/host settings
       ##
-      - WILDCARD_DNS=${TLD_SUFFIX:-loc}=127.0.0.1
-      - EXTRA_HOSTS=${EXTRA_HOSTS}
+      - DNS_A=*.${TLD_SUFFIX:-loc}=127.0.0.1,${EXTRA_HOSTS:-}
 
       ##
       ## Forwarding
@@ -95,7 +94,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.134
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.139
     hostname: php
 
     ##
@@ -221,7 +220,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER}:0.40
+    image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-0.47
     hostname: httpd
 
     environment:
@@ -249,6 +248,11 @@ services:
       ##
       - WORKER_PROCESSES=${HTTPD_NGINX_WORKER_PROCESSES:-auto}
       - WORKER_CONNECTIONS=${HTTPD_NGINX_WORKER_CONNECTIONS:-1024}
+
+      ##
+      ## Globally enable/disable HTTP/2
+      ##
+      - HTTP2_ENABLE=${HTTPD_HTTP2_ENABLE:-1}
 
       ##
       ## Disable default vhost?
@@ -320,7 +324,7 @@ services:
   # MySQL Database
   # ------------------------------------------------------------
   mysql:
-    image: devilbox/mysql:${MYSQL_SERVER}-0.8
+    image: devilbox/mysql:${MYSQL_SERVER}-0.15
     hostname: mysql
 
     environment:
@@ -503,6 +507,7 @@ volumes:
   devilbox-mariadb-10.5:
   devilbox-mariadb-10.6:
   devilbox-mariadb-10.7:
+  devilbox-mariadb-10.8:
   devilbox-percona-5.5:
   devilbox-percona-5.6:
   devilbox-percona-5.7:
@@ -523,52 +528,16 @@ volumes:
   devilbox-pgsql-9.5-alpine:
   devilbox-pgsql-9.6:
   devilbox-pgsql-9.6-alpine:
-  devilbox-pgsql-10.0:
-  devilbox-pgsql-10.0-alpine:
-  devilbox-pgsql-10.1:
-  devilbox-pgsql-10.1-alpine:
-  devilbox-pgsql-10.2:
-  devilbox-pgsql-10.2-alpine:
-  devilbox-pgsql-10.3:
-  devilbox-pgsql-10.3-alpine:
-  devilbox-pgsql-10.4:
-  devilbox-pgsql-10.4-alpine:
-  devilbox-pgsql-10.5:
-  devilbox-pgsql-10.5-alpine:
-  devilbox-pgsql-10.6:
-  devilbox-pgsql-10.6-alpine:
-  devilbox-pgsql-11.0:
-  devilbox-pgsql-11.0-alpine:
-  devilbox-pgsql-11.1:
-  devilbox-pgsql-11.1-alpine:
-  devilbox-pgsql-11.2:
-  devilbox-pgsql-11.2-alpine:
-  devilbox-pgsql-11.3:
-  devilbox-pgsql-11.3-alpine:
-  devilbox-pgsql-11.4:
-  devilbox-pgsql-11.4-alpine:
-  devilbox-pgsql-11.5:
-  devilbox-pgsql-11.5-alpine:
-  devilbox-pgsql-11.6:
-  devilbox-pgsql-11.6-alpine:
-  devilbox-pgsql-11.7:
-  devilbox-pgsql-11.7-alpine:
-  devilbox-pgsql-11.8:
-  devilbox-pgsql-11.8-alpine:
-  devilbox-pgsql-11.9:
-  devilbox-pgsql-11.9-alpine:
-  devilbox-pgsql-12.0:
-  devilbox-pgsql-12.0-alpine:
-  devilbox-pgsql-12.1:
-  devilbox-pgsql-12.1-alpine:
-  devilbox-pgsql-12.2:
-  devilbox-pgsql-12.2-alpine:
-  devilbox-pgsql-12.3:
-  devilbox-pgsql-12.3-alpine:
-  devilbox-pgsql-12.4:
-  devilbox-pgsql-12.4-alpine:
-  devilbox-pgsql-13.0:
-  devilbox-pgsql-13.0-alpine:
+  devilbox-pgsql-10:
+  devilbox-pgsql-10-alpine:
+  devilbox-pgsql-11:
+  devilbox-pgsql-11-alpine:
+  devilbox-pgsql-12:
+  devilbox-pgsql-12-alpine:
+  devilbox-pgsql-13:
+  devilbox-pgsql-13-alpine:
+  devilbox-pgsql-14:
+  devilbox-pgsql-14-alpine:
   devilbox-pgsql-latest:
   devilbox-pgsql-alpine:
 
@@ -583,4 +552,5 @@ volumes:
   devilbox-mongo-4.0:
   devilbox-mongo-4.2:
   devilbox-mongo-4.4:
+  devilbox-mongo-5.0:
   devilbox-mongo-latest:

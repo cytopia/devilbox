@@ -1,0 +1,11 @@
+# vim: set ft=yaml:
+---
+version: '2.3'
+
+services:
+
+  # -----------------------------------------------------------------------------------------------
+  # PHP Community image
+  # -----------------------------------------------------------------------------------------------
+  php:
+    image: devilbox/php-fpm-community:${PHP_SERVER}-${PHP_COMMUNITY_FLAVOUR:-devilbox}

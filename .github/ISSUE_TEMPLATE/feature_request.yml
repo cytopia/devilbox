@@ -1,0 +1,36 @@
+---
+name: "✨ Feature request"
+description: Suggest an idea or feature for this project
+title: "[Feature]: "
+labels: ["feature"]
+assignees: []
+
+body:
+
+  - type: textarea
+    attributes:
+      label: What is your idea or feature suggestion?
+      description: Tell us, what idea or feature you suggest to be added to the Devilbox.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Benefits
+      description: Tell us, how this this will be beneficial to the Devilbox.
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Where can we find information about this?
+      description: If you are proposing a software or tool, please add relevant links and documentation.
+    validations:
+      required: false
+
+  - type: dropdown
+    attributes:
+      label: Are you willing to provide a PR to address this?
+      options:
+        - "Yes"
+        - "No"

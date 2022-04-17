@@ -1,0 +1,50 @@
+---
+name: "❔ How to do ...?"
+description: How do I do X or Y with the Devilbox?
+title: "[Howto]: "
+labels: ["question", "Community help wanted"]
+assignees: []
+
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        If this is a generic question, please consider using the [Devilbox forum](https://devilbox.discourse.group/) instead.
+
+  - type: checkboxes
+    attributes:
+      label: Have you already checked elsewhere?
+      description: You may select more than one.
+      options:
+        - label: I have read the [Devilbox documentation](https://devilbox.readthedocs.io/en/latest/)
+        - label: I have checked the [Devilbox Troubleshooting Guide](https://devilbox.readthedocs.io/en/latest/)
+        - label: I have checked the [Devilbox FAQ](https://devilbox.readthedocs.io/en/latest/support/faq.html)
+        - label: I have checked the [Devilbox Howto](https://devilbox.readthedocs.io/en/latest/support/howto.html)
+        - label: I have checked the [Devilbox Forum](https://devilbox.discourse.group/)
+        - label: I have checked [existing issues](https://github.com/cytopia/devilbox/issues)
+        - label: I have googled already with no luck
+        - label: I have not done any of the above
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: What are you struggling with?
+      description: Tell the community, what you are struggling with. Be as specific as possible to make it easier for other people to answer your question.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: What have you tried already?
+      description: Add some details on what you have tried already, so this can be ruled out.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: What is your goal?
+      description: Tell the community, what you want to accomplish? This might be helpful to know in order to prevent [XY problems](https://en.wikipedia.org/wiki/XY_problem).
+    validations:
+      required: true

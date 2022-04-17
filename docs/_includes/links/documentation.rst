@@ -34,6 +34,18 @@
      Github: MailHog <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
+.. |ext_lnk_php_community_dockerhub| raw:: html
+
+   <a target="_blank" href="https://hub.docker.com/r/devilbox/php-fpm-community">
+     Dockerhub: PHP-FPM Community <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_php_community_github| raw:: html
+
+   <a target="_blank" href="https://github.com/devilbox/docker-php-fpm-community/">
+     Github: PHP-FPM Community <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
 .. |ext_lnk_mailhog_dockerhub| raw:: html
 
    <a target="_blank" href="https://hub.docker.com/r/mailhog/mailhog/">

@@ -1,0 +1,30 @@
+---
+name: "\U0001F4DD Documentation"
+description: Something is missing or wrong in the documentation.
+title: "[Docs]: "
+labels: ["documentation"]
+assignees:
+  - cytopia
+
+body:
+
+  - type: textarea
+    attributes:
+      label: What is wrong in the documentation?
+      description: Tell us, what is wrong in the documentation?
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: What is missing in the documentation?
+      description: Tell us, what is missing in the documentation?
+    validations:
+      required: false
+
+  - type: dropdown
+    attributes:
+      label: Are you willing to provide a PR to address this?
+      options:
+        - "Yes"
+        - "No"

@@ -1,0 +1,76 @@
+---
+
+# -------------------------------------------------------------------------------------------------
+# Job Name
+# -------------------------------------------------------------------------------------------------
+name: PgSQL
+
+
+# -------------------------------------------------------------------------------------------------
+# When to run
+# -------------------------------------------------------------------------------------------------
+on:
+  # Runs on Pull Requests
+  pull_request:
+    paths:
+      - '.devilbox/**'
+      - '.github/workflows/params*.yml'
+      - '.github/workflows/test*.yml'
+      - '.github/workflows/zzz*.yml'
+      - '.tests/**'
+      - 'cfg/vhost-gen/**'
+      - 'compose/**'
+      - 'docker-compose.override.yml-example'
+      - 'docker-compose.yml'
+      - 'env-example'
+      - '!**.md'
+  # Runs on master Branch and Tags
+  push:
+    paths:
+      - '.devilbox/**'
+      - '.github/workflows/params*.yml'
+      - '.github/workflows/test*.yml'
+      - '.github/workflows/zzz*.yml'
+      - '.tests/**'
+      - 'cfg/vhost-gen/**'
+      - 'compose/**'
+      - 'docker-compose.override.yml-example'
+      - 'docker-compose.yml'
+      - 'env-example'
+      - '!**.md'
+    branches:
+      - master
+    tags:
+      - '[0-9]+.[0-9]+*'
+
+
+jobs:
+  # -----------------------------------------------------------------------------------------------
+  # (1/3) Determine parameter settings
+  # -----------------------------------------------------------------------------------------------
+  params:
+    uses: ./.github/workflows/params-pgsql.yml
+
+
+  # -----------------------------------------------------------------------------------------------
+  # (2/3) Test with default settings
+  # -----------------------------------------------------------------------------------------------
+  default:
+    needs: [params]
+    uses: ./.github/workflows/zzz-reuse-tests.yml
+    with:
+      matrix: ${{ needs.params.outputs.matrix }}
+      custom_config: false
+      operating_system: ubuntu-latest
+
+
+  # -----------------------------------------------------------------------------------------------
+  # (3/3) Test with customizedt settings
+  # -----------------------------------------------------------------------------------------------
+  custom:
+    needs: [params]
+    uses: ./.github/workflows/zzz-reuse-tests.yml
+    with:
+      matrix: ${{ needs.params.outputs.matrix }}
+      custom_config: true
+      operating_system: ubuntu-latest

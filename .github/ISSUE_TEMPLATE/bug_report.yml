@@ -1,0 +1,189 @@
+---
+name: "\U0001F41B Bug report"
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees:
+  - cytopia
+
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+
+  - type: checkboxes
+    attributes:
+      label: Have you already looked into this bug?
+      description: Please invest some time and check if this bug is already mentioned or documented elsewhere (You may select more than one).
+      options:
+        - label: I have checked the [Troubleshooting Guide](https://devilbox.readthedocs.io/en/latest/support/troubleshooting.html)
+        - label: I have checked [Release notes](https://github.com/cytopia/devilbox/releases) for potential migration steps
+        - label: I have checked [existing issues](https://github.com/cytopia/devilbox/issues) for similar bugs
+        - label: I have googled this bug already with no luck
+        - label: I have not done any of the above
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: (Optional) Error message
+      description: If you encountered any error message, copy and paste it here. This will be used for googling the issue.
+    validations:
+      required: false
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What went wrong?
+      description: What exactly went wrong of what bug did you encounter?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behaviour
+    attributes:
+      label: Expected behaviour
+      description: What did you expect to happen instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: How can we reproduce the bug?
+      description: How do you trigger this bug? Please walk us through it step by step in detail. This is crucial in order to triage the bug and support you in resolving it.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: host-os
+    attributes:
+      label: Host Operating System
+      description: What operating system are you using?
+      multiple: false
+      options:
+        - Linux
+        - macOS
+        - Windows
+    validations:
+      required: true
+
+  - type: dropdown
+    id: host-platform
+    attributes:
+      label: Host Platform (amd64, arm64, other)
+      description: What host platform are you running on?
+      options:
+        - amd64
+        - arm64
+        - other
+    validations:
+      required: true
+
+  - type: dropdown
+    attributes:
+      label: (Linux only) Is SELinux enabled?
+      description: When using Linux as your host operating system, check if SELinux is enabled or not. [More info here](https://devilbox.readthedocs.io/en/latest/getting-started/install-the-devilbox.html?highlight=selinux#linux-selinux)
+      options:
+        - Yes, SELinux is enabled
+        - No, SELinux is disabled
+        - I don't know
+        - I am not on Linux
+    validations:
+      required: true
+
+  - type: input
+    id: docker-version
+    attributes:
+      label: Docker version
+      description: "What Docker version are you using? Please copy and paste the output of `docker --version` into this text area."
+    validations:
+      required: true
+
+  - type: input
+    id: docker-compose-version
+    attributes:
+      label: Docker Compose version
+      description: "What Docker Compose version are you using? Please copy and paste the output of `docker-compose --version` into this text area."
+    validations:
+      required: true
+
+  - type: input
+    id: devilbox-version
+    attributes:
+      label: Devilbox version
+      description: "What version of Devilbox are you running (latest master, specific tag, git hash, etc)?"
+    validations:
+      required: true
+
+  - type: dropdown
+    attributes:
+      label: Have you removed stopped containers before starting?
+      description: "Have you done a `docker-compose rm` before starting up the Devilbox? [More info here](https://docs.docker.com/compose/reference/rm/)"
+      multiple: false
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+
+  - type: dropdown
+    attributes:
+      label: Have you pulled latest Docker images before starting?
+      description: "Have you done a `docker-compose pull` before starting up the Devilbox?"
+      multiple: false
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Devilbox start command
+      description: "What is the [start command](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html) you have used to start the Devilbox?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: log-env-file
+    attributes:
+      label: "Config: .env file"
+      description: "Please copy and paste your `.env` file into this text area"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: "Config: docker-compose.override.yml"
+      description: "If you are using `docker-compose.override.yml`, please copy and paste its contents into this text area."
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: log-check-config
+    attributes:
+      label: "Config: ./check-config.sh"
+      description: "Please copy and paste the output of `./check-config.sh` into this text area"
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: log-docker-compose
+    attributes:
+      label: "Log: docker-compose logs"
+      description: "Please copy and paste the output of `docker-compose logs` into this text area"
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: (Optional) Additional information
+      description: Add any additional information that might help with this bug report. (E.g. customizations from the `autostart/`, `bash/`, `cfg/` or `supervisor/` directory or relevant logfiles from the `log/` directory)
+    validations:
+      required: false

@@ -264,15 +264,21 @@ DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN=1
 #PHP_SERVER=7.1
 #PHP_SERVER=7.2
 #PHP_SERVER=7.3
-PHP_SERVER=7.4
+#PHP_SERVER=7.4
 #PHP_SERVER=8.0
-#PHP_SERVER=8.1
+PHP_SERVER=8.1
 #PHP_SERVER=8.2
 
 
 ###
 ### 1.2 Choose HTTPD Server Image
 ###
+### Choose between 'debian' or 'alpine' flavour and then select the version
+###
+### Note: apache-2.2 has no arm64 support on 'alpine' flavour
+###
+HTTPD_FLAVOUR=alpine
+
 #HTTPD_SERVER=apache-2.2
 #HTTPD_SERVER=apache-2.4
 HTTPD_SERVER=nginx-stable
@@ -286,31 +292,40 @@ HTTPD_SERVER=nginx-stable
 #MYSQL_SERVER=mysql-5.6
 #MYSQL_SERVER=mysql-5.7
 #MYSQL_SERVER=mysql-8.0
+#MYSQL_SERVER=percona-5.5
+#MYSQL_SERVER=percona-5.6
+#MYSQL_SERVER=percona-5.7
+#MYSQL_SERVER=percona-8.0
 #MYSQL_SERVER=mariadb-5.5
 #MYSQL_SERVER=mariadb-10.0
 #MYSQL_SERVER=mariadb-10.1
 #MYSQL_SERVER=mariadb-10.2
 #MYSQL_SERVER=mariadb-10.3
 #MYSQL_SERVER=mariadb-10.4
-MYSQL_SERVER=mariadb-10.5
-#MYSQL_SERVER=mariadb-10.6
+#MYSQL_SERVER=mariadb-10.5
+MYSQL_SERVER=mariadb-10.6
 #MYSQL_SERVER=mariadb-10.7
-#MYSQL_SERVER=percona-5.5
-#MYSQL_SERVER=percona-5.6
-#MYSQL_SERVER=percona-5.7
-#MYSQL_SERVER=percona-8.0
+#MYSQL_SERVER=mariadb-10.8
 
 
 ###
 ### 1.4 Choose PostgreSQL Server Image
 ###
+### https://www.postgresql.org/support/versioning/
+###
 ### IMPORTANT: Alpine based images might cause issues on Docker Toolbox or OSX
 ###            https://github.com/docker/toolbox/issues/510
 ###
+#
+# PostgreSQL without arm64 support
+#
 #PGSQL_SERVER=9.0
 #PGSQL_SERVER=9.1
-#PGSQL_SERVER=9.2
 #PGSQL_SERVER=9.2-alpine
+#
+# PostgreSQL with arm64 support
+#
+#PGSQL_SERVER=9.2
 #PGSQL_SERVER=9.3
 #PGSQL_SERVER=9.3-alpine
 #PGSQL_SERVER=9.4
@@ -319,62 +334,16 @@ MYSQL_SERVER=mariadb-10.5
 #PGSQL_SERVER=9.5-alpine
 #PGSQL_SERVER=9.6
 #PGSQL_SERVER=9.6-alpine
-#PGSQL_SERVER=10.0
-#PGSQL_SERVER=10.0-alpine
-#PGSQL_SERVER=10.1
-#PGSQL_SERVER=10.1-alpine
-#PGSQL_SERVER=10.2
-#PGSQL_SERVER=10.2-alpine
-#PGSQL_SERVER=10.3
-#PGSQL_SERVER=10.3-alpine
-#PGSQL_SERVER=10.4
-#PGSQL_SERVER=10.4-alpine
-#PGSQL_SERVER=10.5
-#PGSQL_SERVER=10.5-alpine
-#PGSQL_SERVER=10.6
-#PGSQL_SERVER=10.6-alpine
-#PGSQL_SERVER=10.7
-#PGSQL_SERVER=10.7-alpine
-#PGSQL_SERVER=10.8
-#PGSQL_SERVER=10.8-alpine
-#PGSQL_SERVER=10.9
-#PGSQL_SERVER=10.9-alpine
-#PGSQL_SERVER=10.10
-#PGSQL_SERVER=10.10-alpine
-#PGSQL_SERVER=10.11
-#PGSQL_SERVER=10.11-alpine
-#PGSQL_SERVER=11.0
-#PGSQL_SERVER=11.0-alpine
-#PGSQL_SERVER=11.1
-#PGSQL_SERVER=11.1-alpine
-#PGSQL_SERVER=11.2
-#PGSQL_SERVER=11.2-alpine
-#PGSQL_SERVER=11.3
-#PGSQL_SERVER=11.3-alpine
-#PGSQL_SERVER=11.4
-#PGSQL_SERVER=11.4-alpine
-#PGSQL_SERVER=11.5
-#PGSQL_SERVER=11.5-alpine
-#PGSQL_SERVER=11.6
-#PGSQL_SERVER=11.6-alpine
-#PGSQL_SERVER=11.7
-#PGSQL_SERVER=11.7-alpine
-#PGSQL_SERVER=11.8
-#PGSQL_SERVER=11.8-alpine
-#PGSQL_SERVER=11.9
-#PGSQL_SERVER=11.9-alpine
-#PGSQL_SERVER=12.0
-#PGSQL_SERVER=12.0-alpine
-#PGSQL_SERVER=12.1
-#PGSQL_SERVER=12.1-alpine
-#PGSQL_SERVER=12.2
-#PGSQL_SERVER=12.2-alpine
-#PGSQL_SERVER=12.3
-#PGSQL_SERVER=12.3-alpine
-PGSQL_SERVER=12.4
-#PGSQL_SERVER=12.4-alpine
-#PGSQL_SERVER=13.0
-#PGSQL_SERVER=13.0-alpine
+#PGSQL_SERVER=10
+#PGSQL_SERVER=10-alpine
+#PGSQL_SERVER=11
+#PGSQL_SERVER=11-alpine
+#PGSQL_SERVER=12
+#PGSQL_SERVER=12-alpine
+#PGSQL_SERVER=13
+#PGSQL_SERVER=13-alpine
+#PGSQL_SERVER=14
+PGSQL_SERVER=14-alpine
 #PGSQL_SERVER=latest
 #PGSQL_SERVER=alpine
 
@@ -385,17 +354,25 @@ PGSQL_SERVER=12.4
 ### IMPORTANT: Alpine based images might cause issues on Docker Toolbox or OSX
 ###            https://github.com/docker/toolbox/issues/510
 ###
+#
+# Redis without arm64 support
+#
 #REDIS_SERVER=2.8
 #REDIS_SERVER=3.0
 #REDIS_SERVER=3.0-alpine
+#
+# Redis with arm64 support
+#
 #REDIS_SERVER=3.2
 #REDIS_SERVER=3.2-alpine
 #REDIS_SERVER=4.0
 #REDIS_SERVER=4.0-alpine
 #REDIS_SERVER=5.0
 #REDIS_SERVER=5.0-alpine
-REDIS_SERVER=6.0
+#REDIS_SERVER=6.0
 #REDIS_SERVER=6.0-alpine
+#REDIS_SERVER=6.2
+REDIS_SERVER=6.2-alpine
 #REDIS_SERVER=latest
 #REDIS_SERVER=alpine
 
@@ -406,12 +383,18 @@ REDIS_SERVER=6.0
 ### IMPORTANT: Alpine based images might cause issues on Docker Toolbox or OSX
 ###            https://github.com/docker/toolbox/issues/510
 ###
+#
+# Memcached without arm64 support
+#
 #MEMCD_SERVER=1.4
 #MEMCD_SERVER=1.4-alpine
+#
+# Memcached with arm64 support
+#
 #MEMCD_SERVER=1.5
 #MEMCD_SERVER=1.5-alpine
-MEMCD_SERVER=1.6
-#MEMCD_SERVER=1.6-alpine
+#MEMCD_SERVER=1.6
+MEMCD_SERVER=1.6-alpine
 #MEMCD_SERVER=latest
 #MEMCD_SERVER=alpine
 
@@ -419,14 +402,23 @@ MEMCD_SERVER=1.6
 ###
 ### 1.7 Choose Mongo Server Image
 ###
+### https://www.mongodb.com/evolved
+###
+#
+# MongoDB without arm64 support
+#
 #MONGO_SERVER=2.8
 #MONGO_SERVER=3.0
 #MONGO_SERVER=3.2
+#
+# MongoDB with arm64 support
+#
 #MONGO_SERVER=3.4
 #MONGO_SERVER=3.6
 #MONGO_SERVER=4.0
 #MONGO_SERVER=4.2
-MONGO_SERVER=4.4
+#MONGO_SERVER=4.4
+MONGO_SERVER=5.0
 #MONGO_SERVER=latest
 
 
@@ -555,6 +547,18 @@ PHP_MAIL_CATCH_ALL=2
 ###
 HOST_PORT_HTTPD=80
 HOST_PORT_HTTPD_SSL=443
+
+
+###
+### Globally enable/disable HTTP/2 support
+###
+### This cannot be done on a per vhost level and must be enabled/disabled globally.
+###
+### Values:
+###  * 0: HTTP/2 is disabled
+###  * 1: HTTP/2 is enabled
+###
+HTTPD_HTTP2_ENABLE=1
 
 
 ###

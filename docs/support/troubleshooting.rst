@@ -379,6 +379,13 @@ to read-only by applying the following ``chmod`` command.
    * :ref:`my_cnf`
    * https://github.com/cytopia/devilbox/issues/212
 
+[MariaDB] Assertion failure when executing prepared statement with ? in IN list
+-------------------------------------------------------------------------------
+
+Some MariaDB versions are affected by MDEV-27937 bug, use a fixed version or set in_predicate_conversion_threshold variable to a higher value.
+
+.. seealso:: https://jira.mariadb.org/browse/MDEV-27937
+
 
 Docker Toolbox
 ==============

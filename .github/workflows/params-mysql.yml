@@ -1,0 +1,64 @@
+---
+
+# -------------------------------------------------------------------------------------------------
+# Job Name
+# -------------------------------------------------------------------------------------------------
+name: params
+
+
+# -------------------------------------------------------------------------------------------------
+# Custom Variables
+# -------------------------------------------------------------------------------------------------
+env:
+  MATRIX: >-
+    [
+      {"MYSQL_SERVER": "mysql-5.5"},
+      {"MYSQL_SERVER": "mysql-5.6"},
+      {"MYSQL_SERVER": "mysql-5.7"},
+      {"MYSQL_SERVER": "mysql-8.0"},
+      {"MYSQL_SERVER": "percona-5.5"},
+      {"MYSQL_SERVER": "percona-5.6"},
+      {"MYSQL_SERVER": "percona-5.7"},
+      {"MYSQL_SERVER": "percona-8.0"},
+      {"MYSQL_SERVER": "mariadb-5.5"},
+      {"MYSQL_SERVER": "mariadb-10.0"},
+      {"MYSQL_SERVER": "mariadb-10.1"},
+      {"MYSQL_SERVER": "mariadb-10.2"},
+      {"MYSQL_SERVER": "mariadb-10.3"},
+      {"MYSQL_SERVER": "mariadb-10.4"},
+      {"MYSQL_SERVER": "mariadb-10.5"},
+      {"MYSQL_SERVER": "mariadb-10.6"},
+      {"MYSQL_SERVER": "mariadb-10.7"},
+      {"MYSQL_SERVER": "mariadb-10.8"}
+    ]
+
+
+# -------------------------------------------------------------------------------------------------
+# When to run
+# -------------------------------------------------------------------------------------------------
+on:
+  workflow_call:
+    outputs:
+      matrix:
+        description: "The determined version matrix"
+        value: ${{ jobs.params.outputs.matrix }}
+
+jobs:
+  params:
+    runs-on: ubuntu-latest
+
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - name: "[Set-Output] Matrix"
+        id: set-matrix
+        run: |
+          echo "::set-output name=matrix::$( echo '${{ env.MATRIX }}' | jq -M -c )"
+
+      - name: "[DEBUG] Show settings'"
+        run: |
+          echo 'Matrix'
+          echo '--------------------'
+          echo '${{ steps.set-matrix.outputs.matrix }}'
+          echo
