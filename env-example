@@ -90,14 +90,6 @@ LOCAL_LISTEN_ADDR=
 ###       Mac users should not use the .local TLD, as this will not resolve properly due Apple's
 ###         use of Multicast DNS.##
 ###
-###
-###
-###
-###
-###
-###
-###
-###
 ### Example:
 ###   TLD_SUFFIX=loc
 ### Makes your project available under xxxx.loc
