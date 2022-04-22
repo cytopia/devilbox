@@ -90,6 +90,10 @@ Your DNS server IP address is ``127.0.0.1``.
 
 .. seealso:: :ref:`howto_add_custom_dns_server_on_mac`
 
+.. important::
+   The `.local` TLD will not resolve on MacOs, due to Apple's use of
+   Multicast DNS for this TLD. If you want to use `.local`, you will need
+   to specify each domain in `/etc/hosts` manually.
 
 Docker for Windows
 ------------------
