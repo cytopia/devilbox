@@ -152,6 +152,7 @@ body:
     attributes:
       label: "Config: .env file"
       description: "Please copy and paste your `.env` file into this text area"
+      render: shell
     validations:
       required: true
 
