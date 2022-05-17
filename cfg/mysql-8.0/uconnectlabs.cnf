@@ -1,0 +1,5 @@
+[mysqld]
+;A larger max_allowed_packet is required so that we can import our database backup.
+max_allowed_packet=64M
+
+innodb_log_file_size=256M
