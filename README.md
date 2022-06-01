@@ -869,7 +869,7 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 <a target="_blank" title="Drupal" href="https://www.drupal.org"><img width="64" style="width:64px" src="docs/img/logo_fw/drupal.png" alt="Devilbox"/></a>
 <a target="_blank" title="Joomla" href="https://www.joomla.org"><img width="64" style="width:64px" src="docs/img/logo_fw/joomla.png" alt="Devilbox"/></a>
 <a target="_blank" title="Laravel" href="https://laravel.com"><img width="64" style="width:64px" src="docs/img/logo_fw/laravel.png" alt="Devilbox"/></a>
-<a target="_blank" title="Magento" href="https://magento.com"><img width="64" style="width:64px" src="docs/img/logo_fw/magento.png" alt="Devilbox"/></a>
+<a target="_blank" title="Magento 2" href="https://magento.com"><img width="64" style="width:64px" src="docs/img/logo_fw/magento.png" alt="Devilbox"/></a>
 <a target="_blank" title="PhalconPHP" href="https://phalconphp.com"><img width="64" style="width:64px" src="docs/img/logo_fw/phalcon.png" alt="Devilbox"/></a>
 <a target="_blank" title="PhotonCMS" href="https://photoncms.com"><img width="64" style="width:64px" src="docs/img/logo_fw/photoncms.png" alt="Devilbox"/></a>
 <a target="_blank" title="PrestaShop" href="https://www.prestashop.com/en"><img width="64" style="width:64px" src="docs/img/logo_fw/prestashop.png" alt="Devilbox"/></a>
@@ -889,7 +889,7 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 > [Setup Drupal](https://devilbox.readthedocs.io/en/latest/examples/setup-drupal.html) |
 > [Setup Joomla](https://devilbox.readthedocs.io/en/latest/examples/setup-joomla.html) |
 > [Setup Laravel](https://devilbox.readthedocs.io/en/latest/examples/setup-laravel.html) |
-> [Setup Magento](https://devilbox.readthedocs.io/en/latest/examples/setup-magento.html) |
+> [Setup Magento 2](https://devilbox.readthedocs.io/en/latest/examples/setup-magento2.html) |
 > [Setup PhalconPHP](https://devilbox.readthedocs.io/en/latest/examples/setup-phalcon.html) |
 > [Setup PhotonCMS](https://devilbox.readthedocs.io/en/latest/examples/setup-photon-cms.html) |
 > [Setup PrestaShop](https://devilbox.readthedocs.io/en/latest/examples/setup-presta-shop.html) |
