@@ -243,6 +243,26 @@ services:
       - bind
       - httpd
 
+  # -----------------------------------------------------------------------------------------------
+  # Meilisearch
+  # -----------------------------------------------------------------------------------------------
+  meilisearch:
+    image: getmeili/meilisearch:${MEILI_SERVER:-latest}
+    hostname: meilisearch
+    command: meilisearch
+    environment:
+      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY-""}
+    ports:
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MEILI:-7700}:7700"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.203
+    volumes:
+      - devilbox-meilisearch:/meili_data
+    depends_on:
+      - bind
+      - php
+      - httpd
 
 ###
 ### Volumes
@@ -252,3 +272,4 @@ volumes:
   devilbox-solr:
   devilbox-elastic:
   devilbox-logstash:
+  devilbox-meilisearch:
