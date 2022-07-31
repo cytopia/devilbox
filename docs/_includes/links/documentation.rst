@@ -135,3 +135,16 @@
    <a target="_blank" href="https://github.com/elastic/kibana">
      GitHub: Kibana <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
+
+.. |ext_lnk_meilisearch_github| raw:: html
+
+   <a target="_blank" href="https://github.com/meilisearch/meilisearch">
+     Github: Meilisearch <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_meilisearch_dockerhub| raw:: html
+
+   <a target="_blank" href="https://hub.docker.com/r/getmeili/meilisearch">
+     Dockerhub: Meilisearch <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
