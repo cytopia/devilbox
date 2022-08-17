@@ -1,0 +1,219 @@
+# docker-compose.override.yml
+# IMPORTANT: The version must match the version of docker-compose.yml
+---
+version: '2.3'
+
+x-common: &common
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.139
+    hostname: php
+
+    ##
+    ## All .env variables
+    ##
+    ## Source all variables defined in .env
+    ## This also makes any custom variable available in each PHP/HHVM container
+    ##
+    env_file:
+      - ./.env
+
+    environment:
+      ##
+      ## Debug/Logging
+      ##
+      - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
+      - DEBUG_COMPOSE_ENTRYPOINT
+      - DOCKER_LOGS
+
+      ##
+      ## Tools
+      ##
+      - COMPOSER_MEMORY_LIMIT=-1
+
+      ##
+      ## UserID and GroupID
+      ##
+      - NEW_UID
+      - NEW_GID
+
+      ##
+      ## Adjust timezone
+      ##
+      - TIMEZONE
+
+      ##
+      ## Enable/Disable PHP Modules
+      ##
+      - ENABLE_MODULES=${PHP_MODULES_ENABLE}
+      - DISABLE_MODULES=${PHP_MODULES_DISABLE}
+
+      ##
+      ## Mail-catching
+      ##
+      - ENABLE_MAIL=${PHP_MAIL_CATCH_ALL:-2}
+
+      ##
+      ## Enable 127.0.0.1 Port-forwarding
+      ##
+      - FORWARD_PORTS_TO_LOCALHOST=80:httpd:80,443:httpd:443,3306:mysql:3306,5432:pgsql:5432,6379:redis:6379,11211:memcd:11211,27017:mongo:27017
+
+      ##
+      ## MySQL Backups
+      ##
+      - MYSQL_BACKUP_USER=root
+      - MYSQL_BACKUP_PASS=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_BACKUP_HOST=mysql
+
+    dns:
+      - 172.16.238.100
+
+    # MacOS and Windows have this by default, this hack also allows it for Linux
+    extra_hosts:
+      docker.for.lin.host.internal: 172.16.238.1
+      docker.for.lin.localhost: 172.16.238.1
+
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.10
+
+    volumes:
+      # ---- Format: ----
+      # HOST-DIRECTORY : DOCKER-DIRECTORY
+
+      # Mount custom intranet
+      - ${DEVILBOX_PATH}/.devilbox/www:/var/www/default:ro${MOUNT_OPTIONS}
+
+      # Mount custom mass virtual hosting
+      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:rw${MOUNT_OPTIONS}
+
+      # Mount logs
+      - ${DEVILBOX_PATH}/log/php-fpm-${PHP_SERVER}:/var/log/php:rw${MOUNT_OPTIONS}
+
+      # Mount Mail directory
+      - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
+
+      # Mount DB Backup directory
+      - ${HOST_PATH_BACKUPDIR:-./backups}:/shared/backups:rw${MOUNT_OPTIONS}
+
+      # Mount devilbox user-defined *.ini files in order
+      # to overwrite the default PHP.ini configuration
+      - ${DEVILBOX_PATH}/cfg/php-ini-${PHP_SERVER}:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+
+      # Mount devilbox user-defined PHP-FPM *.conf files in order
+      # to overwrite the default PHP-FPM configuration
+      - ${DEVILBOX_PATH}/cfg/php-fpm-${PHP_SERVER}:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+
+      # Mount devilbox user-defined *.so files in order
+      # to load custom PHP modules
+      - ${DEVILBOX_PATH}/mod/php-fpm-${PHP_SERVER}:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
+
+      # Mount devilbox user-defined PHP-FPM startup *.sh scripts
+      - ${DEVILBOX_PATH}/cfg/php-startup-${PHP_SERVER}:/startup.1.d:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/autostart:/startup.2.d:rw${MOUNT_OPTIONS}
+
+      # Mount devilbox user-defined bash config
+      - ${DEVILBOX_PATH}/bash:/etc/bashrc-devilbox.d:rw${MOUNT_OPTIONS}
+
+      # Mount devilbox user-defined supervisord config
+      - ${DEVILBOX_PATH}/supervisor:/etc/supervisor/custom.d:rw${MOUNT_OPTIONS}
+
+      # Certificate Authority public key
+      - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
+
+      # Users SSH directory (read-only)
+      - ${HOST_PATH_SSH_DIR}:/home/devilbox/.ssh:ro${MOUNT_OPTIONS}
+
+    depends_on:
+      - bind
+
+services:
+  php81:
+    <<: *common
+    image: devilbox/php-fpm:8.1-work-0.139
+    hostname: php81
+    environment:
+      - ${DEVILBOX_PATH}/log/php-fpm-8.1:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-8.1:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-8.1:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-8.1:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-startup-8.1:/startup.1.d:rw${MOUNT_OPTIONS}
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.81
+  php80:
+    <<: *common
+    image: devilbox/php-fpm:8.0-work-0.139
+    hostname: php80
+    environment:
+      - ${DEVILBOX_PATH}/log/php-fpm-8.0:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-8.0:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-8.0:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-8.0:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-startup-8.0:/startup.1.d:rw${MOUNT_OPTIONS}
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.80
+  php74:
+    <<: *common
+    image: devilbox/php-fpm:7.4-work-0.139
+    hostname: php74
+    environment:
+      - ${DEVILBOX_PATH}/log/php-fpm-7.4:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-7.4:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-7.4:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-7.4:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-startup-7.4:/startup.1.d:rw${MOUNT_OPTIONS}
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.74
+  php73:
+    <<: *common
+    image: devilbox/php-fpm:7.3-work-0.139
+    hostname: php73
+    environment:
+      - ${DEVILBOX_PATH}/log/php-fpm-7.3:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-7.3:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-7.3:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-7.3:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-startup-7.3:/startup.1.d:rw${MOUNT_OPTIONS}
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.73
+  php72:
+    <<: *common
+    image: devilbox/php-fpm:7.2-work-0.139
+    hostname: php72
+    environment:
+      - ${DEVILBOX_PATH}/log/php-fpm-7.2:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-7.2:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-7.2:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-7.2:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-startup-7.2:/startup.1.d:rw${MOUNT_OPTIONS}
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.72
+  php71:
+    <<: *common
+    image: devilbox/php-fpm:7.1-work-0.139
+    hostname: php71
+    environment:
+      - ${DEVILBOX_PATH}/log/php-fpm-7.1:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-7.1:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-7.1:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-7.1:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-startup-7.1:/startup.1.d:rw${MOUNT_OPTIONS}
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.71
+  php70:
+    <<: *common
+    image: devilbox/php-fpm:7.0-work-0.139
+    hostname: php70
+    environment:
+      - ${DEVILBOX_PATH}/log/php-fpm-7.0:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-7.0:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-7.0:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-7.0:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-startup-7.0:/startup.1.d:rw${MOUNT_OPTIONS}
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.70

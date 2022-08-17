@@ -14,7 +14,6 @@
 ######################################
 
 # Ignore variable data
-/.env
 /backups/*
 
 # Ignore Data dirs
@@ -22,9 +21,6 @@
 
 # Ignore Certificate Authority
 /ca/*
-
-# Ignore compose override file
-/docker-compose.override.yml
 
 # Ignore logs
 /log/apache-2.2/*
