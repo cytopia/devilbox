@@ -126,6 +126,20 @@ x-common: &common
       - bind
 
 services:
+  mongo:
+    image: alpine
+    entrypoint: []
+  pgsql:
+    image: alpine
+    entrypoint: []
+  redis:
+    image: alpine
+    entrypoint: []
+    command: ''
+  memcd:
+    image: alpine
+    entrypoint: []
+
   php81:
     <<: *common
     image: devilbox/php-fpm:8.1-work-0.139
