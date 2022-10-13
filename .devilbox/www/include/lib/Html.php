@@ -263,7 +263,7 @@ HTML;
 			<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse footer">
 				<div class="container justify-content-end">
 					<ul class="nav navbar-nav">
-						<li class="nav-item nav-link">Render time: ${render_time} sec</li>
+						<li class="nav-item nav-link">Render time: {$render_time} sec</li>
 						<li class="nav-item"><a class="nav-link" target="_blank" href="https://github.com/cytopia/devilbox"><code>Github</code></a></li>
 						<li class="nav-item"><a class="nav-link" href="/credits.php"><code>Credits</code></a></li>
 						<li class="nav-item"><a class="nav-link" href="/support.php"><code>Support</code></a></li>
