@@ -4,9 +4,9 @@
      Official CakePHP Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
-.. |ext_lnk_example_codeignitor_documentation| raw:: html
+.. |ext_lnk_example_codeigniter_documentation| raw:: html
 
-   <a target="_blank" href="https://www.codeigniter.com/user_guide/installation/index.html">
+   <a target="_blank" href="https://www.codeigniter.com/userguide3/installation/index.html">
      Official CodeIgniter Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
