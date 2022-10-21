@@ -12,7 +12,7 @@ This example will use ``wget`` to install CodeIgniter from within the Devilbox P
 After completing the below listed steps, you will have a working CodeIgniter setup ready to be
 served via http and https.
 
-.. seealso:: |ext_lnk_example_codeignitor_documentation|
+.. seealso:: |ext_lnk_example_codeigniter_documentation|
 
 
 **Table of Contents**
