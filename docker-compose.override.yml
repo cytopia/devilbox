@@ -231,3 +231,38 @@ services:
     networks:
       app_net:
         ipv4_address: 172.16.238.70
+
+  # -----------------------------------------------------------------------------------------------
+  # Ngrok
+  # -----------------------------------------------------------------------------------------------
+  # ngrok:
+  #   image: devilbox/ngrok:0.3
+  #   hostname: ngrok
+  #   environment:
+  #     - HTTP_TUNNELS=${NGROK_HTTP_TUNNELS:-httpd:httpd:80}
+  #     - AUTHTOKEN=${NGROK_AUTHTOKEN:-}
+  #     - REGION=${NGROK_REGION:-us}
+  #   ports:
+  #     - "${LOCAL_LISTEN_ADDR}${HOST_PORT_NGROK:-4040}:4040"
+  #   networks:
+  #     app_net:
+  #       ipv4_address: 172.16.238.202
+  #   depends_on:
+  #     - bind
+  #     - php
+  #     - httpd
+
+  buggregator:
+    image: butschster/buggregator:latest
+    ports:
+    - 23517:8000 # Open http://127.0.0.1:23517/ in your browser
+    - 1025:1025
+    - 9912:9912
+    - 9913:9913
+    environment:
+        AUTH_ENABLED: false
+        AUTH_USERNAME: admin
+        AUTH_PASSWORD: secret
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.199
