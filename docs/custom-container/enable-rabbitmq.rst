@@ -136,7 +136,7 @@ Let's assume you want to start ``php``, ``httpd``, ``bind``, ``rabbit``.
 
 .. code-block:: bash
 
-   host> docker-compose up -d php httpd bind rabbitmq
+   host> docker-compose up -d php httpd bind rabbit
 
 .. seealso:: :ref:`start_the_devilbox`
 
