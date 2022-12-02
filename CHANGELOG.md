@@ -19,13 +19,13 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 - Added PHP extension: `zstd` [#PHP-FPM 0.144](https://github.com/devilbox/docker-php-fpm/releases/tag/0.144)
 - Added serializer to Redis extension: `lz4`, `lzf` and` zstd` [#PHP-FPM 0.144](https://github.com/devilbox/docker-php-fpm/releases/tag/0.144)
 
-#### Changed
+### Changed
 - Switched to `phalcon` 5.x extension for PHP 8.0 and PHP 8.1 [#913](https://github.com/cytopia/devilbox/issues/913), [#PHP-FPM 0.143](https://github.com/devilbox/docker-php-fpm/releases/tag/0.143)
 - Updated to latest minor versions of Apache 2.2, Apache 2.4, Nginx stable and Nginx mainline
 - Updated to latest minor versions of PHP [#917](https://github.com/cytopia/devilbox/issues/917)
 - Updated PHP extensions to lastest versions [#899](https://github.com/cytopia/devilbox/issues/899)
 
-#### Removed
+### Removed
 - Removed Phalcon DevTools for PHP 7.4 due to build error [#PHP-FPM 0.142](https://github.com/devilbox/docker-php-fpm/releases/tag/0.142)
 
 
