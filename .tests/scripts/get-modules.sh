@@ -20,326 +20,70 @@ RETRIES=10
 # -------------------------------------------------------------------------------------------------
 
 PHP_TAG="$( grep 'devilbox/php' "${DVLBOX_PATH}/docker-compose.yml" | sed 's/^.*-work-//g' )"
+PHP_MOD="$( run "curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/doc/php-modules.md'" "${RETRIES}" )";
 
 
-###
-### Get PHP core modules (5 rounds)
-###
-if ! PHP52_BASE="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '52-base' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 5.2"
-	exit 1
-fi
+get_modules() {
+	local php_version="${1}"
+	local stage="${2}"
+	local modules=
+	local names=
 
-if ! PHP53_BASE="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '53-base' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 5.3"
-	exit 1
-fi
+	modules="$( \
+		echo "${PHP_MOD}" \
+		| grep -E "ext_${stage}_.+_${php_version}" \
+		| grep -v '><' \
+		| sed \
+			-e "s|.*ext_${stage}_||g" \
+			-e "s|_${php_version}.*||g" \
+	)"
+	# Ensure to fetch name with correct upper-/lower-case
+	while read -r module; do
+		name="$( \
+			echo "${PHP_MOD}" \
+			| grep -Eio ">${module}<" \
+			| sed -e 's|>||g' -e 's|<||g' \
+			| sort -u \
+		)"
+		names="$( printf "%s\n%s" "${names}" "${name}" )"
+	done < <(echo "${modules}")
 
-if ! PHP54_BASE="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '54-base' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 5.4"
-	exit 1
-fi
+	# Remove leading and trailing newline
+	names="$( echo "${names}" | grep -v '^$' )"
 
-if ! PHP55_BASE="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '55-base' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 5.5"
-	exit 1
-fi
+	# Output comma separated
+	echo "${names}" | paste -d, -s
+}
 
-if ! PHP56_BASE="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '56-base' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 5.6"
-	exit 1
-fi
 
-if ! PHP70_BASE="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '70-base' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 7.0"
-	exit 1
-fi
+PHP52_BASE="$( get_modules "5.2" "base" )"
+PHP53_BASE="$( get_modules "5.3" "base" )"
+PHP54_BASE="$( get_modules "5.4" "base" )"
+PHP55_BASE="$( get_modules "5.5" "base" )"
+PHP56_BASE="$( get_modules "5.6" "base" )"
+PHP70_BASE="$( get_modules "7.0" "base" )"
+PHP71_BASE="$( get_modules "7.1" "base" )"
+PHP72_BASE="$( get_modules "7.2" "base" )"
+PHP73_BASE="$( get_modules "7.3" "base" )"
+PHP74_BASE="$( get_modules "7.4" "base" )"
+PHP80_BASE="$( get_modules "8.0" "base" )"
+PHP81_BASE="$( get_modules "8.1" "base" )"
+PHP82_BASE="$( get_modules "8.2" "base" )"
 
-if ! PHP71_BASE="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '71-base' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 7.1"
-	exit 1
-fi
+PHP52_MODS="$( get_modules "5.2" "mods" )"
+PHP53_MODS="$( get_modules "5.3" "mods" )"
+PHP54_MODS="$( get_modules "5.4" "mods" )"
+PHP55_MODS="$( get_modules "5.5" "mods" )"
+PHP56_MODS="$( get_modules "5.6" "mods" )"
+PHP70_MODS="$( get_modules "7.0" "mods" )"
+PHP71_MODS="$( get_modules "7.1" "mods" )"
+PHP72_MODS="$( get_modules "7.2" "mods" )"
+PHP73_MODS="$( get_modules "7.3" "mods" )"
+PHP74_MODS="$( get_modules "7.4" "mods" )"
+PHP80_MODS="$( get_modules "8.0" "mods" )"
+PHP81_MODS="$( get_modules "8.1" "mods" )"
+PHP82_MODS="$( get_modules "8.2" "mods" )"
 
-if ! PHP72_BASE="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '72-base' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 7.2"
-	exit 1
-fi
-
-if ! PHP73_BASE="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '73-base' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 7.3"
-	exit 1
-fi
-
-if ! PHP74_BASE="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '74-base' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 7.4"
-	exit 1
-fi
-
-if ! PHP80_BASE="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '80-base' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 8.0"
-	exit 1
-fi
-
-if ! PHP81_BASE="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '81-base' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 8.1"
-	exit 1
-fi
-
-if ! PHP82_BASE="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '82-base' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 8.2"
-	exit 1
-fi
-
-###
-### Get PHP mods modules (5 rounds)
-###
-
-if ! PHP52_MODS="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '52-mods' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 5.2"
-	exit 1
-fi
-
-if ! PHP53_MODS="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '53-mods' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 5.3"
-	exit 1
-fi
-
-if ! PHP54_MODS="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '54-mods' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 5.4"
-	exit 1
-fi
-
-if ! PHP55_MODS="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '55-mods' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 5.5"
-	exit 1
-fi
-
-if ! PHP56_MODS="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '56-mods' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 5.6"
-	exit 1
-fi
-
-if ! PHP70_MODS="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '70-mods' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 7.0"
-	exit 1
-fi
-
-if ! PHP71_MODS="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '71-mods' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 7.1"
-	exit 1
-fi
-
-if ! PHP72_MODS="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '72-mods' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 7.2"
-	exit 1
-fi
-
-if ! PHP73_MODS="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '73-mods' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 7.3"
-	exit 1
-fi
-
-if ! PHP74_MODS="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '74-mods' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 7.4"
-	exit 1
-fi
-
-if ! PHP80_MODS="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '80-mods' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 8.0"
-	exit 1
-fi
-
-if ! PHP81_MODS="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '81-mods' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 8.1"
-	exit 1
-fi
-
-if ! PHP82_MODS="$( run "\
-	curl -sS 'https://raw.githubusercontent.com/devilbox/docker-php-fpm/${PHP_TAG}/README.md' \
-	| tac \
-	| tac \
-	| grep -E '82-mods' \
-	| sed \
-		-e 's/.*\">//g' \
-		-e 's/<.*//g'" "${RETRIES}" )"; then
-	>&2 echo "Failed to retrieve modules for PHP 8.2"
-	exit 1
-fi
 
 ###
 ### Todo: add ioncube
