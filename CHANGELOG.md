@@ -6,6 +6,29 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v2.3.0 (2022-12-02)
+
+### Fixed
+- Fixed correct permission for `/opt/nvm` in PHP container [#499](https://github.com/cytopia/devilbox/issues/499), [#PHP-FPM 0.141](https://github.com/devilbox/docker-php-fpm/releases/tag/0.141)
+- Fixed Debian Jessie repository trust beyond EOL [#PHP-FPM 0.140](https://github.com/devilbox/docker-php-fpm/releases/tag/0.140)
+
+### Added
+- Added env var to Bind to specify overall memory consumption via `MAX_CACHE_SIZE` [#BIND 0.30](https://github.com/cytopia/docker-bind/releases/tag/0.30)
+- Added PHP extension: `lz4` [#PHP-FPM 0.144](https://github.com/devilbox/docker-php-fpm/releases/tag/0.144)
+- Added PHP extension: `lzf` [#PHP-FPM 0.144](https://github.com/devilbox/docker-php-fpm/releases/tag/0.144)
+- Added PHP extension: `zstd` [#PHP-FPM 0.144](https://github.com/devilbox/docker-php-fpm/releases/tag/0.144)
+- Added serializer to Redis extension: `lz4`, `lzf` and` zstd` [#PHP-FPM 0.144](https://github.com/devilbox/docker-php-fpm/releases/tag/0.144)
+
+#### Changed
+- Switched to `phalcon` 5.x extension for PHP 8.0 and PHP 8.1 [#913](https://github.com/cytopia/devilbox/issues/913), [#PHP-FPM 0.143](https://github.com/devilbox/docker-php-fpm/releases/tag/0.143)
+- Updated to latest minor versions of Apache 2.2, Apache 2.4, Nginx stable and Nginx mainline
+- Updated to latest minor versions of PHP [#917](https://github.com/cytopia/devilbox/issues/917)
+- Updated PHP extensions to lastest versions [#899](https://github.com/cytopia/devilbox/issues/899)
+
+#### Removed
+- Removed Phalcon DevTools for PHP 7.4 due to build error [#PHP-FPM 0.142](https://github.com/devilbox/docker-php-fpm/releases/tag/0.142)
+
+
 ## Release v2.2.0 (2022-04-14)
 
 This release adds PHP-FPM community images via `docker-compose.override.yml`, which easily allows you
