@@ -6,7 +6,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
-## Release v2.3.0 (2022-12-02)
+## Release v2.3.0 (2022-12-04)
 
 ### Fixed
 - Fixed correct permission for `/opt/nvm` in PHP container [#499](https://github.com/cytopia/devilbox/issues/499), [#PHP-FPM 0.141](https://github.com/devilbox/docker-php-fpm/releases/tag/0.141)
