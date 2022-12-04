@@ -34,6 +34,8 @@ env:
       {"PGSQL_SERVER": "PgSQL 13-alpine"},
       {"PGSQL_SERVER": "PgSQL 14"},
       {"PGSQL_SERVER": "PgSQL 14-alpine"},
+      {"PGSQL_SERVER": "PgSQL 15"},
+      {"PGSQL_SERVER": "PgSQL 15-alpine"},
       {"PGSQL_SERVER": "PgSQL latest"},
       {"PGSQL_SERVER": "PgSQL alpine"}
     ]
