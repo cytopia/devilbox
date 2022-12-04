@@ -513,6 +513,8 @@ volumes:
   devilbox-mariadb-10.6:
   devilbox-mariadb-10.7:
   devilbox-mariadb-10.8:
+  devilbox-mariadb-10.9:
+  devilbox-mariadb-10.10:
   devilbox-percona-5.5:
   devilbox-percona-5.6:
   devilbox-percona-5.7:
@@ -543,6 +545,8 @@ volumes:
   devilbox-pgsql-13-alpine:
   devilbox-pgsql-14:
   devilbox-pgsql-14-alpine:
+  devilbox-pgsql-15:
+  devilbox-pgsql-15-alpine:
   devilbox-pgsql-latest:
   devilbox-pgsql-alpine:
 
