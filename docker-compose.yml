@@ -329,7 +329,7 @@ services:
   # MySQL Database
   # ------------------------------------------------------------
   mysql:
-    image: devilbox/mysql:${MYSQL_SERVER}-0.15
+    image: devilbox/mysql:${MYSQL_SERVER}-0.19
     hostname: mysql
 
     environment:
