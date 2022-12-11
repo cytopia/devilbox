@@ -659,6 +659,8 @@ All values are already available in the ``.env`` file and just need to be commen
    MYSQL_SERVER=mariadb-10.6
    #MYSQL_SERVER=mariadb-10.7
    #MYSQL_SERVER=mariadb-10.8
+   #MYSQL_SERVER=mariadb-10.9
+   #MYSQL_SERVER=mariadb-10.10
 
 
 .. _env_pgsql_server:
@@ -704,6 +706,8 @@ All values are already available in the ``.env`` file and just need to be commen
    #PGSQL_SERVER=13-alpine
    #PGSQL_SERVER=14
    PGSQL_SERVER=14-alpine
+   #PGSQL_SERVER=15
+   #PGSQL_SERVER=15-alpine
    #PGSQL_SERVER=latest
    #PGSQL_SERVER=alpine
 
@@ -747,6 +751,8 @@ All values are already available in the ``.env`` file and just need to be commen
    #REDIS_SERVER=6.0-alpine
    #REDIS_SERVER=6.2
    REDIS_SERVER=6.2-alpine
+   #REDIS_SERVER=7.0
+   #REDIS_SERVER=7.0-alpine
    #REDIS_SERVER=latest
    #REDIS_SERVER=alpine
 
