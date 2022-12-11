@@ -25,6 +25,8 @@ env:
       {"REDIS_SERVER": "Redis 6.0-alpine"},
       {"REDIS_SERVER": "Redis 6.2"},
       {"REDIS_SERVER": "Redis 6.2-alpine"},
+      {"REDIS_SERVER": "Redis 7.0"},
+      {"REDIS_SERVER": "Redis 7.0-alpine"},
       {"REDIS_SERVER": "Redis latest"},
       {"REDIS_SERVER": "Redis alpine"}
     ]

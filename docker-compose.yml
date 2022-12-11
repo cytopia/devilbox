@@ -34,7 +34,7 @@ services:
   # Bind (DNS Server)
   # ------------------------------------------------------------
   bind:
-    image: cytopia/bind:alpine-0.28
+    image: cytopia/bind:alpine-0.34
     hostname: bind
     restart: always
     ports:
@@ -47,6 +47,11 @@ services:
       ## Debug?
       ##
       - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
+
+      ##
+      ## Memory consumption
+      ##
+      - MAX_CACHE_SIZE=${BIND_MAX_CACHE_SIZE:-90%}
 
       ##
       ## Bind wildcard/host settings
@@ -94,7 +99,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.139
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.144
     hostname: php
 
     ##
@@ -220,7 +225,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-0.47
+    image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-0.48
     hostname: httpd
 
     environment:
@@ -324,7 +329,7 @@ services:
   # MySQL Database
   # ------------------------------------------------------------
   mysql:
-    image: devilbox/mysql:${MYSQL_SERVER}-0.15
+    image: devilbox/mysql:${MYSQL_SERVER}-0.19
     hostname: mysql
 
     environment:
@@ -508,6 +513,8 @@ volumes:
   devilbox-mariadb-10.6:
   devilbox-mariadb-10.7:
   devilbox-mariadb-10.8:
+  devilbox-mariadb-10.9:
+  devilbox-mariadb-10.10:
   devilbox-percona-5.5:
   devilbox-percona-5.6:
   devilbox-percona-5.7:
@@ -538,6 +545,8 @@ volumes:
   devilbox-pgsql-13-alpine:
   devilbox-pgsql-14:
   devilbox-pgsql-14-alpine:
+  devilbox-pgsql-15:
+  devilbox-pgsql-15-alpine:
   devilbox-pgsql-latest:
   devilbox-pgsql-alpine:
 
