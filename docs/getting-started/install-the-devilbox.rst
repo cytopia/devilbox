@@ -44,7 +44,7 @@ copied to a file named ``.env``. (Pay attention to the leading dot).
 
    host> cp env-example .env
 
-The ``.env`` file does nothing else then providing environment variables for Docker Compose
+The ``.env`` file does nothing else than providing environment variables for Docker Compose
 and in this case it is used as the main configuration file for the Devilbox by providing all kinds
 of settings (such as which version to start up).
 
