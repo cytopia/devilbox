@@ -41,10 +41,10 @@ if (isset($_GET['get-body']) && is_numeric($_GET['get-body'])) {
 		$body = $structure->parts[0]->body;
 	}
 
-	exit(json_encode([
+	exit(json_encode(array(
 		'raw' => htmlentities($message['raw']),
 		'body' => $body,
-	]));
+	)));
 }
 
 if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
