@@ -323,7 +323,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="MariaDB 10.6"     href="https://github.com/devilbox/docker-mysql">10.6</a></td>
       <td></td>
       <td><a target="_blank" title="PgSQL 10"         href="https://github.com/docker-library/postgres">10</a></td>
-      <td><a target="_blank" title="Redis latest"     href="https://github.com/docker-library/redis">latest</a></td>
+      <td><a target="_blank" title="Redis 7.0"        href="https://github.com/docker-library/redis">7.0</a></td>
       <td></td>
       <td><a target="_blank" title="MongoDB 4.4"     href="https://github.com/docker-library/mongo">4.4</a></td>
     </tr>
@@ -335,7 +335,7 @@ Every single attachable container comes with many different versions. In order t
       <td><a target="_blank" title="MariaDB 10.7"     href="https://github.com/devilbox/docker-mysql">10.7</a></td>
       <td></td>
       <td><a target="_blank" title="PgSQL 11"         href="https://github.com/docker-library/postgres">11</a></td>
-      <td></td>
+      <td><a target="_blank" title="Redis latest"     href="https://github.com/docker-library/redis">latest</a></td>
       <td></td>
       <td><a target="_blank" title="MongoDB 5.0"     href="https://github.com/docker-library/mongo">5.0</a></td>
     </tr>
@@ -344,7 +344,7 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td><a target="_blank" title="PHP 7.4"          href="https://github.com/devilbox/docker-php-fpm">7.4</a></td>
       <td></td>
-      <td></td>
+      <td><a target="_blank" title="MariaDB 10.8"     href="https://github.com/devilbox/docker-mysql">10.8</a></td>
       <td></td>
       <td><a target="_blank" title="PgSQL 12"         href="https://github.com/docker-library/postgres">12</a></td>
       <td></td>
@@ -356,9 +356,9 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td><a target="_blank" title="PHP 8.0"          href="https://github.com/devilbox/docker-php-fpm">8.0</a></td>
       <td></td>
+      <td><a target="_blank" title="MariaDB 10.9"     href="https://github.com/devilbox/docker-mysql">10.9</a></td>
       <td></td>
-      <td></td>
-      <td><a target="_blank" title="PgSQL 13"         href="https://github.com/docker-library/postgres">13</a></td>
+      <td><a target="_blank" title="PgSQL ..."         href="https://github.com/docker-library/postgres">...</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -368,9 +368,9 @@ Every single attachable container comes with many different versions. In order t
       <td></td>
       <td><a target="_blank" title="PHP 8.1"          href="https://github.com/devilbox/docker-php-fpm">8.1</a></td>
       <td></td>
+      <td><a target="_blank" title="MariaDB 10.10"    href="https://github.com/devilbox/docker-mysql">10.10</a></td>
       <td></td>
-      <td></td>
-      <td><a target="_blank" title="PgSQL 14"         href="https://github.com/docker-library/postgres">14</a></td>
+      <td><a target="_blank" title="PgSQL 15"         href="https://github.com/docker-library/postgres">15</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -773,6 +773,8 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <sup>json</sup>               |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>ldap</sup>               |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>libxml</sup>             |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
+| <sup>lz4</sup>                |         |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
+| <sup>lzf</sup>                |         |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>mbstring</sup>           |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>mcrypt</sup>             |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |
 | <sup>memcache</sup>           |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
@@ -786,6 +788,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <sup>mysqlnd</sup>            |         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>OAuth</sup>              |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>oci8</sup>               |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |
+| <sup>OPcache</sup>            |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>openssl</sup>            |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>pcntl</sup>              |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>pcre</sup>               |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
@@ -798,11 +801,12 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <sup>pdo_sqlite</sup>         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>pdo_sqlsrv</sup>         |         |         |         |         |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |
 | <sup>pgsql</sup>              |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
-| <sup>phalcon</sup>            |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |         |         |         |
+| <sup>phalcon</sup>            |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |         |
 | <sup>Phar</sup>               |    🗸    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>posix</sup>              |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>pspell</sup>             |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>psr</sup>                |         |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |
+| <sup>random</sup>             |         |         |         |         |         |         |         |         |         |         |         |         |    ✔    |
 | <sup>rdkafka</sup>            |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |
 | <sup>readline</sup>           |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>recode</sup>             |    ✔    |    ✔    |    ✔    |    ✔    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |         |         |
@@ -817,11 +821,10 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <sup>sodium</sup>             |         |         |         |         |         |         |         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>solr</sup>               |         |         |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
 | <sup>SPL</sup>                |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
-| <sup>SQLite</sup>             |    ✔    |    ✔    |         |         |         |         |         |         |         |         |         |         |         |
+| <sup>sqlite</sup>             |    ✔    |    ✔    |         |         |         |         |         |         |         |         |         |         |         |
 | <sup>sqlite3</sup>            |         |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>sqlsrv</sup>             |         |         |         |         |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |
 | <sup>ssh2</sup>               |         |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |         |
-| <sup>standard</sup>           |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>swoole</sup>             |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |         |
 | <sup>sysvmsg</sup>            |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>sysvsem</sup>            |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
@@ -832,7 +835,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <sup>uuid</sup>               |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>vips</sup>               |         |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
 | <sup>wddx</sup>               |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |         |         |
-| <sup>xdebug</sup>             |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
+| <sup>Xdebug</sup>             |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>xlswriter</sup>          |         |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>xml</sup>                |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>xmlreader</sup>          |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
@@ -840,9 +843,9 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <sup>xmlwriter</sup>          |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>xsl</sup>                |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>yaml</sup>               |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
-| <sup>Zend OPcache</sup>       |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>zip</sup>                |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>zlib</sup>               |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
+| <sup>zstd</sup>               |         |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 <!-- /modules -->
 
 > * Core enabled (cannot be disabled): **✔**

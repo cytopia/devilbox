@@ -29,7 +29,9 @@ env:
       {"MYSQL_SERVER": "mariadb-10.5"},
       {"MYSQL_SERVER": "mariadb-10.6"},
       {"MYSQL_SERVER": "mariadb-10.7"},
-      {"MYSQL_SERVER": "mariadb-10.8"}
+      {"MYSQL_SERVER": "mariadb-10.8"},
+      {"MYSQL_SERVER": "mariadb-10.9"},
+      {"MYSQL_SERVER": "mariadb-10.10"}
     ]
 
 

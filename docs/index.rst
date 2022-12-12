@@ -177,6 +177,7 @@ host is ready to be served with your custom domain.
 
    examples/setup-cakephp
    examples/setup-codeigniter
+   examples/setup-codeigniter4
    examples/setup-contao
    examples/setup-craftcms
    examples/setup-drupal

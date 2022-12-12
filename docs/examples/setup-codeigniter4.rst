@@ -1,18 +1,16 @@
 .. include:: /_includes/all.rst
 .. include:: /_includes/snippets/__ANNOUNCEMENTS__.rst
 
-.. _example_setup_codeigniter:
+.. _example_setup_codeigniter4:
 
-*****************
-Setup CodeIgniter
-*****************
-
-This example will use ``wget`` to install CodeIgniter from within the Devilbox PHP container.
+******************
+Setup CodeIgniter4
+******************
 
 After completing the below listed steps, you will have a working CodeIgniter setup ready to be
 served via http and https.
 
-.. seealso:: |ext_lnk_example_codeigniter_documentation|
+.. seealso:: |ext_lnk_example_codeigniter4_documentation|
 
 
 **Table of Contents**
@@ -79,7 +77,7 @@ The vhost directory defines the name under which your project will be available.
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd $ mkdir my-ci
+   devilbox@php-8.1.6 in /shared/httpd $ mkdir my-ci
 
 .. seealso:: :ref:`env_tld_suffix`
 
@@ -91,20 +89,18 @@ Navigate into your newly created vhost directory and install CodeIgniter.
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd $ cd my-ci
-   devilbox@php-7.0.20 in /shared/httpd/my-ci $ wget https://github.com/bcit-ci/CodeIgniter/archive/3.1.8.tar.gz
-   devilbox@php-7.0.20 in /shared/httpd/my-ci $ tar xfvz 3.1.8.tar.gz
+   devilbox@php-8.1.6 in /shared/httpd $ cd my-ci
+   devilbox@php-8.1.6 in /shared/httpd/my-ci $ composer create-project codeigniter4/appstarter ci4app
 
 How does the directory structure look after installation:
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd/my-ci $ tree -L 1
+   devilbox@php-8.1.6 in /shared/httpd/my-ci $ tree -L 1
    .
-   ├── 3.1.8.tar.gz
-   └── CodeIgniter-3.1.8
+   └── ci4app
 
-   1 directory, 1 file
+   1 directory, 0 files
 
 
 4. Symlink webroot
@@ -121,19 +117,18 @@ to its expected path.
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd/my-ci $ ln -s CodeIgniter-3.1.8/ htdocs
+   devilbox@php-8.1.6 in /shared/httpd/my-ci $ ln -s ci4app/public htdocs
 
 How does the directory structure look after symlinking:
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd/my-ci $ tree -L 1
+   devilbox@php-8.1.6 in /shared/httpd/my-ci $ tree -L 1
    .
-   ├── 3.1.8.tar.gz
-   ├── CodeIgniter-3.1.8
-   └── htdocs -> CodeIgniter-3.1.8
+   ├── ci4app
+   └── htdocs -> ci4app/public
 
-   2 directories, 1 file
+   2 directories, 0 files
 
 As you can see from the above directory structure, ``htdocs`` is available in its expected
 path and points to the frameworks entrypoint.
@@ -150,7 +145,7 @@ path and points to the frameworks entrypoint.
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd/my-ci $ mysql -u root -h 127.0.0.1 -p -e 'CREATE DATABASE my_ci;'
+   devilbox@php-8.1.6 in /shared/httpd/my-ci $ mysql -u root -h 127.0.0.1 -p -e 'CREATE DATABASE my_ci;'
 
 
 6. Configure database connection
@@ -158,34 +153,32 @@ path and points to the frameworks entrypoint.
 
 .. code-block:: bash
 
-   devilbox@php-7.0.20 in /shared/httpd/my-ci $ vi htdocs/application/config/database.php
+   devilbox@php-8.1.6 in /shared/httpd/my-ci $ vi htdocs/app/Config/Database.php
 
 .. code-block:: php
-   :caption: htdocs/application/config/database.php
+   :caption: htdocs/app/Config/Database.php
    :emphasize-lines: 4-7
 
    <?php
-   $db['default'] = array(
-           'dsn'   => '',
-           'hostname' => '127.0.0.1',
-           'username' => 'root',
-           'password' => '',
-           'database' => 'my_ci',
-           'dbdriver' => 'mysqli',
-           'dbprefix' => '',
-           'pconnect' => FALSE,
-           'db_debug' => (ENVIRONMENT !== 'production'),
-           'cache_on' => FALSE,
-           'cachedir' => '',
-           'char_set' => 'utf8',
-           'dbcollat' => 'utf8_general_ci',
-           'swap_pre' => '',
-           'encrypt' => FALSE,
-           'compress' => FALSE,
-           'stricton' => FALSE,
-           'failover' => array(),
-           'save_queries' => TRUE
-   );
+        public $default = [
+            'DSN'      => '',
+            'hostname' => '127.0.0.1',
+            'username' => 'root',
+            'password' => '',
+            'database' => 'my_ci',
+            'DBDriver' => 'MySQLi',
+            'DBPrefix' => '',
+            'pConnect' => false,
+            'DBDebug'  => (ENVIRONMENT !== 'production'),
+            'charset'  => 'utf8',
+            'DBCollat' => 'utf8_general_ci',
+            'swapPre'  => '',
+            'encrypt'  => false,
+            'compress' => false,
+            'strictOn' => false,
+            'failover' => [],
+            'port'     => 3306,
+        ];
 
 
 7. DNS record
