@@ -17,6 +17,7 @@ autostart feature.
 
    * :ref:`custom_scripts_per_php_version` (individually for different PHP versions)
    * :ref:`custom_scripts_globally` (equal for all PHP versions)
+   * :ref:`custom_scripts_per_project` (stored in project directory)
 
 
 **Table of Contents**
