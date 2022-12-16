@@ -8,8 +8,8 @@ Autostarting NodeJS Apps
 ************************
 
 
-You can have all of your NodeJS applications spin up automtically as soon as you ``docker-compose up``.
-This can be achieved by makeing use of |ext_lnk_tool_pm2| (Node.js Process Manager) and the
+You can have all of your NodeJS applications spin up automatically as soon as you ``docker-compose up``.
+This can be achieved by making use of |ext_lnk_tool_pm2| (Node.js Process Manager) and the
 autostart feature.
 
 .. seealso::
@@ -59,7 +59,7 @@ Pre-built
 =========
 
 Instead of writing multiple scripts for multiple applications, you can also make use of the
-pre-shipped script that allows you to start unlimitted NodeJS applications via |ext_lnk_tool_pm2|.
+pre-shipped script that allows you to start unlimited NodeJS applications via |ext_lnk_tool_pm2|.
 
 The following script is provided in ``autostart/run-node-js-projects.sh-example`` and needs to be
 copied to a file ending by ``.sh``
@@ -71,7 +71,7 @@ copied to a file ending by ``.sh``
    host> cp run-node-js-projects.sh-example run-node-js-projects.sh
 
 
-In that newly created file, you can simply add the full paths (path inside the Docker containre)
+In that newly created file, you can simply add the full paths (path inside the Docker container)
 of your Javascript files that need to be started. There is already one example which is not
 commented. Change this to your path and add as many lines as you have projects to startup.
 

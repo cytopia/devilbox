@@ -98,7 +98,7 @@ Examples
 Installing Microsoft ODBC driver
 --------------------------------
 
-This example will add Microsofts ODBC driver to PHP 7.1. These drivers are required in order to
+This example will add Microsoft's ODBC driver to PHP 7.1. These drivers are required in order to
 make the PHP modules ``pdo_sqlsrv`` and ``sqlsrv`` work. The two mentioned modules are already
 available in the PHP container, but are explicitly disabled via :ref:`env_file_php_modules_disable`.
 
@@ -108,7 +108,7 @@ requires every user to accept a license/EULA by Microsoft.
 
 .. code-block:: bash
 
-   # Navigate to starup dir of PHP 7.1
+   # Navigate to startup dir of PHP 7.1
    host> cd path/to/devilbox/cfg/php-startup-7.1
 
    # Create an .sh file
@@ -117,7 +117,7 @@ requires every user to accept a license/EULA by Microsoft.
    # Open the file in your favourite editor
    host> vi ms-odbc.sh
 
-Paste the following into ``ms-obbc.sh`` and **ensure to accept the EULA** by changing
+Paste the following into ``ms-odbc.sh`` and **ensure to accept the EULA** by changing
 ``ACCEPT_EULA=N`` to ``ACCEPT_EULA=Y``.
 
 .. code-block:: bash
@@ -168,7 +168,7 @@ Paste the following into ``ms-obbc.sh`` and **ensure to accept the EULA** by cha
    ### EULA accepted, so we can proceed
    ###
 
-   # Extract latest *.deb packate
+   # Extract latest *.deb package
    MSODBC_DEB="$( curl -k -sS "${MSODBC_URL}" | grep -Eo 'msodbcsql[-._0-9]+?_amd64\.deb' | tail -1 )"
 
    # Download to temporary location
