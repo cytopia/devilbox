@@ -36,31 +36,32 @@ if (loadClass('Helper')->isLoggedIn()) {
 	//
 	else if (isset($_GET['software'])) {
 		$no = '<span class="text-danger">not installed</span>';
+		$no_mod = '<span class="text-warning">PHP module not loaded</span>';
 		$software = array();
 
-		if ($_GET['software'] == 'composer') {
+		if ($_GET['software'] == 'angular_cli') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getAngularCliVersion()) !== false) ? $version : $no
+			));
+		}
+		else if ($_GET['software'] == 'asgardcms_installer') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getAsgardCmsInstallerVersion()) !== false) ? $version : $no
+			));
+		}
+		else if ($_GET['software'] == 'codeception') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getCodeceptionVersion()) !== false) ? $version : $no
+			));
+		}
+		else if ($_GET['software'] == 'composer') {
 			echo json_encode(array(
 				$_GET['software'] => (($version = loadClass('Php')->getComposerVersion()) !== false) ? $version : $no
 			));
 		}
-		else if ($_GET['software'] == 'drupalc') {
+		else if ($_GET['software'] == 'deployer') {
 			echo json_encode(array(
-				$_GET['software'] => (($version = loadClass('Php')->getDrupalConsoleVersion()) !== false) ? $version : $no
-			));
-		}
-		else if ($_GET['software'] == 'drush7') {
-			echo json_encode(array(
-				$_GET['software'] => (($version = loadClass('Php')->getDrushVersion(7)) !== false) ? $version : $no
-			));
-		}
-		else if ($_GET['software'] == 'drush8') {
-			echo json_encode(array(
-				$_GET['software'] => (($version = loadClass('Php')->getDrushVersion(8)) !== false) ? $version : $no
-			));
-		}
-		else if ($_GET['software'] == 'drush9') {
-			echo json_encode(array(
-				$_GET['software'] => (($version = loadClass('Php')->getDrushVersion(9)) !== false) ? $version : $no
+				$_GET['software'] => (($version = loadClass('Php')->getDeployerVersion()) !== false) ? $version : $no
 			));
 		}
 		else if ($_GET['software'] == 'git') {
@@ -68,14 +69,34 @@ if (loadClass('Helper')->isLoggedIn()) {
 				$_GET['software'] => (($version = loadClass('Php')->getGitVersion()) !== false) ? $version : $no
 			));
 		}
-		else if ($_GET['software'] == 'laravel') {
+		else if ($_GET['software'] == 'grunt_cli') {
 			echo json_encode(array(
-				$_GET['software'] => (($version = loadClass('Php')->getLaravelVersion()) !== false) ? $version : $no
+				$_GET['software'] => (($version = loadClass('Php')->getGruntCliVersion()) !== false) ? $version : $no
+			));
+		}
+		else if ($_GET['software'] == 'gulp') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getGulpVersion()) !== false) ? $version : $no
+			));
+		}
+		else if ($_GET['software'] == 'laravel_installer') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getLaravelInstallerVersion()) !== false) ? $version : $no
+			));
+		}
+		else if ($_GET['software'] == 'laravel_lumen') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getLaravelLumenVersion()) !== false) ? $version : $no
 			));
 		}
 		else if ($_GET['software'] == 'mds') {
 			echo json_encode(array(
 				$_GET['software'] => (($version = loadClass('Php')->getMdsVersion()) !== false) ? $version : $no
+			));
+		}
+		else if ($_GET['software'] == 'mupdf_tools') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getMupdfToolsVersion()) !== false) ? $version : $no
 			));
 		}
 		else if ($_GET['software'] == 'node') {
@@ -88,19 +109,50 @@ if (loadClass('Helper')->isLoggedIn()) {
 				$_GET['software'] => (($version = loadClass('Php')->getNpmVersion()) !== false) ? $version : $no
 			));
 		}
-		else if ($_GET['software'] == 'phalcon') {
+		else if ($_GET['software'] == 'phalcon_devtools') {
+			if (!extension_loaded('phalcon')) {
+				echo json_encode(array(
+					$_GET['software'] => $no_mod
+				));
+			} else {
+				echo json_encode(array(
+					$_GET['software'] => (($version = loadClass('Php')->getPhalconDevtoolsVersion()) !== false) ? $version : $no
+				));
+			}
+		}
+		else if ($_GET['software'] == 'phpunit') {
 			echo json_encode(array(
-				$_GET['software'] => (($version = loadClass('Php')->getPhalconVersion()) !== false) ? $version : $no
+				$_GET['software'] => (($version = loadClass('Php')->getPhpunitVersion()) !== false) ? $version : $no
 			));
 		}
-		else if ($_GET['software'] == 'symfony') {
+		else if ($_GET['software'] == 'stylelint') {
 			echo json_encode(array(
-				$_GET['software'] => (($version = loadClass('Php')->getSymfonyVersion()) !== false) ? $version : $no
+				$_GET['software'] => (($version = loadClass('Php')->getStylelintVersion()) !== false) ? $version : $no
+			));
+		}
+		else if ($_GET['software'] == 'symfony_cli') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getSymfonyCliVersion()) !== false) ? $version : $no
+			));
+		}
+		else if ($_GET['software'] == 'vue_cli') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getVueCliVersion()) !== false) ? $version : $no
+			));
+		}
+		else if ($_GET['software'] == 'webpack_cli') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getWebpackCliVersion()) !== false) ? $version : $no
 			));
 		}
 		else if ($_GET['software'] == 'wpcli') {
 			echo json_encode(array(
 				$_GET['software'] => (($version = loadClass('Php')->getWpcliVersion()) !== false) ? $version : $no
+			));
+		}
+		else if ($_GET['software'] == 'yarn') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getYarnVersion()) !== false) ? $version : $no
 			));
 		} else {
 			echo json_encode(array($_GET['software'] => 'unknown software'));
