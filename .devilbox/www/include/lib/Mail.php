@@ -71,6 +71,22 @@ class Mail
 
 
 	/**
+	 * Returns a single message
+	 * 
+	 * @param int $messageIndex The zero-based index of the message to return.
+	 */
+	public function getMessage($messageIndex){
+		$message	= $this->_Mbox->get($messageIndex);
+		$Decoder	= new \Mail_mimeDecode($message, "\r\n");
+		return array(
+			'num'		=> $messageIndex + 1,
+			'raw'		=> $message,
+			'decoded'	=> $Decoder->decode($this->_defaultMimeParams)
+		);
+	}
+
+
+	/**
 	 * Retrieve emails.
 	 *
 	 * @param  mixed[] $sort array($sort => $order) Array
@@ -87,13 +103,7 @@ class Mail
 
 		// Get messages in reverse order (last entry first)
 		for ($n = $total; $n >= 0; --$n) {
-			$message	= $this->_Mbox->get($n);
-			$Decoder	= new \Mail_mimeDecode($message, "\r\n");
-			$messages[]	= array(
-				'num'		=> $n + 1,
-				'raw'		=> $message,
-				'decoded'	=> $Decoder->decode($this->_defaultMimeParams)
-			);
+			$messages[]	= $this->getMessage($n);
 		}
 
 		// Optionally sort messages
