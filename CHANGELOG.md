@@ -37,10 +37,11 @@ Additionally I am moving away from Gitter to **Discord**. See reason and announc
 - Intranet: Fixed PostgreSQL database overview
 - Fixed PATH for all pre-installed composer and node tools
 
-### Updated
+### Changed
 - Updated PHP versions (https://github.com/cytopia/devilbox/issues/940)
 - Updated MySQL versions
 - Intranet: Improved installed tools overview (index.php)
+- Intranet: Delayed message loading (https://github.com/cytopia/devilbox/pull/904)
 
 ### Added
 - Added tool `mhsendmail` for arm64 images
