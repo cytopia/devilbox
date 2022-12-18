@@ -1,12 +1,18 @@
 ---
 blank_issues_enabled: false
 contact_links:
+  - name: Devilbox Discord Chat
+    url: https://discord.gg/2wP3V6kBj4
+    about: Please notify or discuss about any other requests here.
+
+  - name: Devilbox Discourse Forum
+    url: https://devilbox.discourse.group/
+    about: Please ask and answer general questions here.
+
   - name: Devilbox Community Support
     url: https://devilbox.discourse.group/
     about: Please ask and answer questions here.
-  - name: Devilbox Gitter Chat
-    url: https://gitter.im/devilbox/Lobby
-    about: Please ask and answer questions here.
+
   - name: Devilbox documentation
     url: https://devilbox.readthedocs.io/
     about: Find the Devilbox documentation here.

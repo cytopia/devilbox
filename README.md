@@ -15,10 +15,9 @@
 **[License](#license)**
 
 ![Devilbox](docs/_includes/figures/devilbox/devilbox-intranet-dash-all.png)
-
 [![Release](https://img.shields.io/github/release/cytopia/devilbox.svg?colorB=orange)](https://github.com/cytopia/devilbox/releases)
-[![Gitter](https://badges.gitter.im/devilbox/Lobby.svg)](https://gitter.im/devilbox/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Discourse](https://img.shields.io/discourse/https/devilbox.discourse.group/status.svg?colorB=%234CB697)](https://devilbox.discourse.group)
+[![Discord](https://img.shields.io/discord/1051541389256704091?color=8c9eff&label=Discord&logo=discord)](https://discord.gg/2wP3V6kBj4)
+[![Discourse](https://img.shields.io/discourse/https/devilbox.discourse.group/status.svg?colorB=%234CB697&label=Discourse&logo=discourse)](https://devilbox.discourse.group)
 [![type](https://img.shields.io/badge/type-Docker-blue.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-MIT-%233DA639.svg)](https://opensource.org/licenses/MIT)
 
@@ -115,15 +114,15 @@ works out of the box up to a shared development infrastructure for a corporate n
 In order to be aware about all that features, ensure to have skimmed over the
 **[documentation](https://devilbox.readthedocs.io)**, so you know what can be done and how that might
 simplify your every-day life. If you ever run into any unforseen issues, feel free to join the
-**[chat](https://gitter.im/devilbox/Lobby)** or visit the **[forums](https://devilbox.discourse.group)** and get community support quickly.
+**[Discord chat](https://discord.gg/2wP3V6kBj4)** or visit the **[forums](https://devilbox.discourse.group)** and get community support quickly.
 
 <table width="100%" style="width:100%; display:table;">
  <thead>
   <tr>
-   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://devilbox.readthedocs.io">Documentation</a></h3></th>
-   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://gitter.im/devilbox/Lobby">Chat</a></h3></th>
-   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://devilbox.discourse.group">Forum</a></h3></th>
-   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://github.com/devilbox/flames">Flames</a></h3></th>
+   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://devilbox.readthedocs.io">📘 Docs</a></h3></th>
+   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://discord.gg/2wP3V6kBj4">🎮 Discord</a></h3></th>
+   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://devilbox.discourse.group">🗪 Forum</a></h3></th>
+   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://github.com/devilbox/flames">🔥 Flames</a></h3></th>
   </tr>
  </thead>
  <tbody style="vertical-align: middle; text-align: center;">
@@ -134,8 +133,8 @@ simplify your every-day life. If you ever run into any unforseen issues, feel fr
     </a>
    </td>
    <td>
-    <a target="_blank" href="https://gitter.im/devilbox/Lobby">
-     <img title="Chat on Gitter" name="Chat on Gitter" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/gitter.png" />
+    <a target="_blank" href="https://discord.gg/2wP3V6kBj4">
+     <img title="Chat on Discord" name="Chat on Discord" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discord.png" />
     </a>
    </td>
    <td>
@@ -151,7 +150,7 @@ simplify your every-day life. If you ever run into any unforseen issues, feel fr
   </tr>
   <tr>
   <td><a target="_blank" href="https://devilbox.readthedocs.io">devilbox.readthedocs.io</a></td>
-  <td><a target="_blank" href="https://gitter.im/devilbox/Lobby">gitter.im/devilbox</a></td>
+  <td><a target="_blank" href="https://discord.gg/2wP3V6kBj4">discord/devilbox</a></td>
   <td><a target="_blank" href="https://devilbox.discourse.group">devilbox.discourse.group</a></td>
   <td><a target="_blank" href="https://github.com/devilbox/flames">github.com/devilbox/flames</a></td>
   </tr>
