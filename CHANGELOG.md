@@ -6,6 +6,52 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v2.4.0 (2022-12-18)
+
+This release might be a bit bumpy due to a massive amount of changes in upstream projects. If you encounter issues, please do raise tickets.
+
+### General
+
+#### New PHP-FPM images
+This release uses a new set of PHP-FPM images. They have been heavily rewritten and modularized in order to make PHP extension and PHP tool generation more easy. See the following release notes for details:
+
+> 499 changed files with 29,281 additions and 13,977 deletions.
+
+* https://github.com/devilbox/docker-php-fpm/releases/tag/0.145
+* https://github.com/devilbox/docker-php-fpm/releases/tag/0.146
+* https://github.com/devilbox/docker-php-fpm/releases/tag/0.147
+
+#### How to add modules/tools?
+* **[How to build PHP modules](https://github.com/devilbox/docker-php-fpm/blob/master/php_modules/README.md)**
+* **[How to install tools in PHP images](https://github.com/devilbox/docker-php-fpm/blob/master/php_tools/README.md)**
+
+#### Available Tools
+You can now also find a detailed overview about what tools are installed in what PHP version image. See here: https://github.com/devilbox/docker-php-fpm/blob/master/doc/available-tools.md
+
+#### Gitter -> Discord
+Additionally I am moving away from Gitter to **Discord**. See reason and announcement here: https://devilbox.discourse.group/t/migrating-from-gitter-to-discord/716/2
+
+**🎮 Discord:** https://discord.gg/2wP3V6kBj4
+
+### Fixed
+- Intranet: Fixed PostgreSQL database overview
+- Fixed PATH for all pre-installed composer and node tools
+
+### Changed
+- Updated PHP versions (https://github.com/cytopia/devilbox/issues/940)
+- Updated MySQL versions
+- Intranet: Improved installed tools overview (index.php)
+- Intranet: Delayed message loading (https://github.com/cytopia/devilbox/pull/904)
+
+### Added
+- Added tool `mhsendmail` for arm64 images
+- Added tool `wkhtmltopdf` for arm64 images (https://github.com/cytopia/devilbox/issues/936)
+- Added tool `taskfile` (https://github.com/cytopia/devilbox/issues/934)
+
+### Removed
+- Removed tool `drush` (detail: https://github.com/cytopia/devilbox/issues/930#issuecomment-1344764908)
+
+
 ## Release v2.3.0 (2022-12-04)
 
 ### Fixed

@@ -334,10 +334,117 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 			<div class="row">
 				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 col-margin">
 					<div class="dash-box">
-						<div class="dash-box-head"><i class="fa fa-info-circle" aria-hidden="true"></i> PHP Container Setup</div>
+						<div class="dash-box-head"><i class="fa fa-info-circle" aria-hidden="true"></i> Available CLI Tools</div>
 						<div class="dash-box-body">
+							<p><small>You can also enter the php container via <code style="background-color:#3d3d3d;">./shell.sh</code> and use the following cli tools:</small></p>
 							<table class="table table-striped table-hover table-bordered table-sm font-small">
-								<p><small>You can also enter the php container and work from inside. The following is available inside the container:</small></p>
+								<thead class="thead-inverse">
+									<tr>
+										<th colspan="2">Tools</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th>Angular Cli</th>
+										<td id="app_angular_cli"></td>
+									</tr>
+									<tr>
+										<th>AsgardCMS Installer</th>
+										<td id="app_asgardcms_installer"></td>
+									</tr>
+									<tr>
+										<th>Codeception</th>
+										<td id="app_codeception"></td>
+									</tr>
+									<tr>
+										<th>Composer</th>
+										<td id="app_composer"></td>
+									</tr>
+									<tr>
+										<th>Deployer</th>
+										<td id="app_deployer"></td>
+									</tr>
+									<tr>
+										<th>Git</th>
+										<td id="app_git"></td>
+									</tr>
+									<tr>
+										<th>Grunt Cli</th>
+										<td id="app_grunt_cli"></td>
+									</tr>
+									<tr>
+										<th>Gulp</th>
+										<td id="app_gulp"></td>
+									</tr>
+									<tr>
+										<th>Laravel Installer</th>
+										<td id="app_laravel_installer"></td>
+									</tr>
+									<tr>
+										<th>Laravel Lumen</th>
+										<td id="app_laravel_lumen"></td>
+									</tr>
+									<tr>
+										<th>Mupdf Tools</th>
+										<td id="app_mupdf_tools"></td>
+									</tr>
+									<tr>
+										<th>mysqldump-secure</th>
+										<td id="app_mds"></td>
+									</tr>
+									<tr>
+										<th>Node</th>
+										<td id="app_node"></td>
+									</tr>
+									<tr>
+										<th>Npm</th>
+										<td id="app_npm"></td>
+									</tr>
+									<tr>
+										<th>Phalcon Devtools</th>
+										<td id="app_phalcon_devtools"></td>
+									</tr>
+									<tr>
+										<th>Phpunit</th>
+										<td id="app_phpunit"></td>
+									</tr>
+									<tr>
+										<th>Stylelint</th>
+										<td id="app_stylelint"></td>
+									</tr>
+									<tr>
+										<th>Symfony Cli</th>
+										<td id="app_symfony_cli"></td>
+									</tr>
+									<tr>
+										<th>Vue Cli</th>
+										<td id="app_vue_cli"></td>
+									</tr>
+									<tr>
+										<th>Webpack Cli</th>
+										<td id="app_webpack_cli"></td>
+									</tr>
+									<tr>
+										<th>Wordpress Cli</th>
+										<td id="app_wpcli"></td>
+									</tr>
+									<tr>
+										<th>Yarn</th>
+										<td id="app_yarn"></td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 offset-lg-4 offset-md-0 offset-sm-0 col-margin">
+					<div class="dash-box">
+						<div class="dash-box-head"><i class="fa fa-info-circle" aria-hidden="true"></i> PHP Container Status</div>
+						<div class="dash-box-body">
+							<p><small>You have made the following base configuration to the Devilbox:</small></p>
+							<table class="table table-striped table-hover table-bordered table-sm font-small">
 								<thead class="thead-inverse">
 									<tr>
 										<th colspan="2">Settings</th>
@@ -374,78 +481,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 									</tr>
 								</tbody>
 							</table>
-
-							<table class="table table-striped table-hover table-bordered table-sm font-small">
-								<thead class="thead-inverse">
-									<tr>
-										<th colspan="2">Tools</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th>composer</th>
-										<td id="app_composer"></td>
-									</tr>
-									<tr>
-										<th>drupal-console</th>
-										<td id="app_drupalc"></td>
-									</tr>
-									<tr>
-										<th>drush7</th>
-										<td id="app_drush7"></td>
-									</tr>
-									<tr>
-										<th>drush8</th>
-										<td id="app_drush8"></td>
-									</tr>
-									<tr>
-										<th>drush9</th>
-										<td id="app_drush9"></td>
-									</tr>
-									<tr>
-										<th>git</th>
-										<td id="app_git"></td>
-									</tr>
-									<tr>
-										<th>Laravel installer</th>
-										<td id="app_laravel"></td>
-									</tr>
-									<tr>
-										<th>mysqldump-secure</th>
-										<td id="app_mds"></td>
-									</tr>
-									<tr>
-										<th>node</th>
-										<td id="app_node"></td>
-									</tr>
-									<tr>
-										<th>npm</th>
-										<td id="app_npm"></td>
-									</tr>
-									<tr>
-										<th>Phalcon devtools</th>
-										<td id="app_phalcon"></td>
-									</tr>
-									<tr>
-										<th>Symfony installer</th>
-										<td id="app_symfony"></td>
-									</tr>
-									<tr>
-										<th>Wordpress cli</th>
-										<td id="app_wpcli"></td>
-									</tr>
-								</tbody>
-							</table>
-
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 offset-lg-4 offset-md-0 offset-sm-0 col-margin">
-					<div class="dash-box">
-						<div class="dash-box-head"><i class="fa fa-info-circle" aria-hidden="true"></i> PHP Container Status</div>
-						<div class="dash-box-body">
-							<p><small>The PHP Docker can connect to the following services via the specified hostnames and IP addresses.</small></p>
+							<p><small>The PHP container can connect to the following services via the specified hostnames and IP addresses.</small></p>
 							<table class="table table-striped table-hover table-bordered table-sm font-small">
 								<thead class="thead-inverse">
 									<tr>
@@ -913,19 +949,28 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 				xhttp.open('GET', '_ajax_callback.php?software='+app, true);
 				xhttp.send();
 			}
+			updateVersions('angular_cli');
+			updateVersions('asgardcms_installer');
+			updateVersions('codeception');
 			updateVersions('composer');
-			updateVersions('drupalc');
-			updateVersions('drush7');
-			updateVersions('drush8');
-			updateVersions('drush9');
+			updateVersions('deployer');
 			updateVersions('git');
-			updateVersions('laravel');
+			updateVersions('grunt_cli');
+			updateVersions('gulp');
+			updateVersions('laravel_installer');
+			updateVersions('laravel_lumen');
 			updateVersions('mds');
+			updateVersions('mupdf_tools');
 			updateVersions('node');
 			updateVersions('npm');
-			updateVersions('phalcon');
-			updateVersions('symfony');
+			updateVersions('phalcon_devtools');
+			updateVersions('phpunit');
+			updateVersions('stylelint');
+			updateVersions('symfony_cli');
+			updateVersions('vue_cli');
+			updateVersions('webpack_cli');
 			updateVersions('wpcli');
+			updateVersions('yarn');
 		})();
 		</script>
 	</body>
