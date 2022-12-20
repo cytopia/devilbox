@@ -122,6 +122,7 @@ host is ready to be served with your custom domain.
    custom-container/enable-blackfire
    custom-container/enable-elk-stack
    custom-container/enable-mailhog
+   custom-container/enable-meilisearch
    custom-container/enable-ngrok
    custom-container/enable-python-flask
    custom-container/enable-rabbitmq
