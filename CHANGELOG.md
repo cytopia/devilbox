@@ -6,6 +6,88 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v3.0.0-beta-0.1 (2022-12-24) 🎅🎄🎁
+
+This is a beta release, using a completely rewritten set of HTTPD server, which allow easy reverse Proxy integration and different PHP versions per project:
+
+* https://github.com/devilbox/docker-nginx-stable/pull/55
+* https://github.com/devilbox/docker-nginx-mainline/pull/57
+* https://github.com/devilbox/docker-apache-2.2/pull/53
+* https://github.com/devilbox/docker-apache-2.4/pull/54
+
+Once it has been tested by the community, and potential errors have been addressed, a new major version will be released.
+
+**IMPORTANT:** This release required you to copy `env-example` over onto `.env` due to some changes in variables.
+
+### TL;DR
+
+1. **Multiple PHP Versions**<br/>
+    Here is an example to run one project with a specific PHP version<br/>
+    ```bash
+    # Enable all PHP versions
+    cp compose/docker-compose.override.yml-php-multi.yml docker-compose.override.yml
+    # Start default set and php80
+    docker-compose up php httpd bind php80
+    ```
+    file: `/shared/httpd/<project>/.devilbox/backend.cfg`
+    ```
+    conf:phpfpm:tcp:php80:9000
+    ```
+2. **Automated Reverse Proxy setup**<br/>
+    Here is an example to proxy one project to a backend service (e.g. NodeJS or Python application, which runs in the PHP container on port 3000)<br/>
+    file: `/shared/httpd/<project>/.devilbox/backend.cfg`
+    ```
+    conf:rproxy:http:127.0.0.1:3000
+    ```
+#### PHP hostnames and IP addresses
+
+| PHP Version | Hostname | IP address     |
+|-------------|----------|----------------|
+| 5.4         | php54    | 172.16.238.201 |
+| 5.5         | php54    | 172.16.238.202 |
+| 5.6         | php54    | 172.16.238.203 |
+| 7.0         | php70    | 172.16.238.204 |
+| 7.1         | php71    | 172.16.238.205 |
+| 7.2         | php72    | 172.16.238.206 |
+| 7.3         | php73    | 172.16.238.207 |
+| 7.4         | php74    | 172.16.238.208 |
+| 8.0         | php80    | 172.16.238.209 |
+| 8.1         | php81    | 172.16.238.210 |
+| 8.2         | php82    | 172.16.238.211 |
+
+### Important
+
+Currently the Intranet Command and Control Center is not yet self sufficient as it requires a supervisord configuration file.
+
+In the root of the Devilbox repository, add `supervisorctl.conf` into `supervisor/` directory. **Important:** It must have this name.
+```ini
+[supervisorctl]
+serverurl=http://httpd:9001
+username=supervisord
+password=mypassword
+```
+
+### Fixed
+- Fixed Protocol substitution bug in Reverse Proxy generation for Apache 2.2 and Apache 2.4 [vhost-gen #49](https://github.com/devilbox/vhost-gen/pull/49) [vhost-gen #50](https://github.com/devilbox/vhost-gen/pull/50)
+- Fixed missing module `mod_proxy_html` in Apache 2.4 as per requirement from `vhost-gen` for Reverse Proxy setup
+- Fixed encoding issue with Apache 2.4 Reverse Proxy by enabling `mod_xml2enc` module (Required by `mod_proxy_html`)
+- Allow to run different PHP versions per project. fixes [#146](https://github.com/cytopia/devilbox/issues/146)
+
+### Added
+- New HTTPD server capable of auto reverse proxy creation (and different PHP versions per project)
+- Intranet: Added Command & Control center to view watcherd logs and retrigger config in case of vhost changes
+- Environment variable `DEVILBOX_HTTPD_MGMT_PASS`
+- Environment variable `DEVILBOX_HTTPD_MGMT_USER`
+- New Docker Compose Override file `docker-compose.override.yml-php-multi.yml` (allows to run multiple PHP versions).
+- Update Bind to latest version
+
+### Changed
+- Disabled `psr` extension by default [php-psr #78](https://github.com/jbboehr/php-psr/issues/78#issuecomment-722290110)
+- Disabled `phalcon` extension by default
+- Environment variable `DEBUG_COMPOSE_ENTRYPOINT` renamed to `DEBUG_ENTRYPOINT`
+- Environment variable `HTTPD_TIMEOUT_TO_PHP_FPM` renamed to `HTTPD_BACKEND_TIMEOUT`
+
+
 ## Release v2.4.0 (2022-12-18)
 
 This release might be a bit bumpy due to a massive amount of changes in upstream projects. If you encounter issues, please do raise tickets.
