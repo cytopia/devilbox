@@ -31,7 +31,7 @@
 							</thead>
 							<tbody>
 								<?php
-									$totals = 70;
+									$totals = 10;
 									$filler = '&nbsp;';
 									for ($i=0; $i<$totals; $i++) {
 										$filler = $filler. '&nbsp;';

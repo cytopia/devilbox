@@ -46,7 +46,7 @@ services:
       ##
       ## Debug?
       ##
-      - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
+      - DEBUG_ENTRYPOINT=${DEBUG_ENTRYPOINT:-2}
 
       ##
       ## Memory consumption
@@ -113,10 +113,16 @@ services:
 
     environment:
       ##
+      ## Supervisord Management (to connect to HTTPD supvervisord)
+      ##
+      - SVCTL_LISTEN_PORT=9001
+      - SVCTL_USER=${DEVILBOX_HTTPD_MGMT_USER:-supervisor}
+      - SVCTL_PASS=${DEVILBOX_HTTPD_MGMT_PASS:-mypassword}
+
+      ##
       ## Debug/Logging
       ##
-      - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
-      - DEBUG_COMPOSE_ENTRYPOINT
+      - DEBUG_ENTRYPOINT=${DEBUG_ENTRYPOINT:-2}
       - DOCKER_LOGS
 
       ##
@@ -225,16 +231,26 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-0.48
+    image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-release-0.49b
     hostname: httpd
 
     environment:
 
       ##
+      ## Supervisord Management
+      ##
+      - SVCTL_ENABLE=1
+      - SVCTL_LISTEN_ADDR=0.0.0.0
+      - SVCTL_LISTEN_PORT=9001
+      - SVCTL_REMOTE_LOGS_ENABLE=1
+      - SVCTL_USER=${DEVILBOX_HTTPD_MGMT_USER:-supervisor}
+      - SVCTL_PASS=${DEVILBOX_HTTPD_MGMT_PASS:-mypassword}
+
+      ##
       ## Debug/Logging
       ##
-      - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
-      - DEBUG_RUNTIME=${DEBUG_COMPOSE_ENTRYPOINT}
+      - DEBUG_ENTRYPOINT=${DEBUG_ENTRYPOINT:-2}
+      - DEBUG_RUNTIME=1
       - DOCKER_LOGS
 
       ##
@@ -268,25 +284,23 @@ services:
       - MAIN_VHOST_SSL_TYPE=${HTTPD_VHOST_SSL_TYPE:-both}
       - MAIN_VHOST_SSL_GEN=1
       - MAIN_VHOST_SSL_CN=${DEVILBOX_UI_SSL_CN:-localhost}
+      - MAIN_VHOST_BACKEND=conf:phpfpm:tcp:172.16.238.10:9000
+      - MAIN_VHOST_BACKEND_TIMEOUT=${HTTPD_BACKEND_TIMEOUT:-180}
+      - MAIN_VHOST_ALIASES_ALLOW=/devilbox-api/:/var/www/default/api, /vhost.d/:/etc/httpd
 
       ##
       ## Enable Mass Vhosts
       ##
       - MASS_VHOST_ENABLE=1
-      - MASS_VHOST_TLD=.${TLD_SUFFIX}
-      - MASS_VHOST_DOCROOT=${HTTPD_DOCROOT_DIR}
-      - MASS_VHOST_TPL=${HTTPD_TEMPLATE_DIR}
+      - MASS_VHOST_TLD_SUFFIX=.${TLD_SUFFIX}
+      - MASS_VHOST_DOCROOT_DIR=${HTTPD_DOCROOT_DIR}
+      - MASS_VHOST_TEMPLATE_DIR=${HTTPD_TEMPLATE_DIR}
       - MASS_VHOST_SSL_TYPE=${HTTPD_VHOST_SSL_TYPE:-both}
       - MASS_VHOST_SSL_GEN=1
-
-      ##
-      ## PHP-FPM Remote Server
-      ##
-      - COMPAT=${PHP_SERVER}
-      - PHP_FPM_ENABLE=1
-      - PHP_FPM_SERVER_ADDR=172.16.238.10
-      - PHP_FPM_SERVER_PORT=9000
-      - PHP_FPM_TIMEOUT=${HTTPD_TIMEOUT_TO_PHP_FPM:-180}
+      - MASS_VHOST_BACKEND=conf:phpfpm:tcp:172.16.238.10:9000
+      - MASS_VHOST_BACKEND_REWRITE=file:backend.cfg
+      - MASS_VHOST_BACKEND_TIMEOUT=${HTTPD_BACKEND_TIMEOUT:-180}
+      - MASS_VHOST_ALIASES_ALLOW=/devilbox-api/:/var/www/default/api:http(s)?://(.*)$$
 
     ports:
       # ---- Format: ----
@@ -315,7 +329,7 @@ services:
       - ${DEVILBOX_PATH}/cfg/vhost-gen:/etc/vhost-gen.d:rw${MOUNT_OPTIONS}
 
       # Mount logs
-      - ${DEVILBOX_PATH}/log/${HTTPD_SERVER}:/var/log/${HTTPD_SERVER}:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/log/${HTTPD_SERVER}:/var/log/httpd:rw${MOUNT_OPTIONS}
 
       # Certificate Authority public key
       - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}

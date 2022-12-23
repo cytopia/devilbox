@@ -250,7 +250,7 @@ $messages = $MyMbox->get($sortOrderArr);
 				$.get('?get-body=' + id, function(response){
 					response = JSON.parse(response);
 					row.find('.raw-email-body').html(response.raw);
-					
+
 					const body = response.body;
 					if(body === null){
 						row.find('.alert').show();
