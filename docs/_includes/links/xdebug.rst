@@ -36,7 +36,7 @@
 
 .. |ext_lnk_xdebug_ide_atom_php_debug| raw:: html
 
-   <a target="_blank" href="https://atom.io/packages/php-debug">
+   <a target="_blank" href="https://github.blog/2022-06-08-sunsetting-atom/">
      php-debug <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
