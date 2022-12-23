@@ -72,7 +72,7 @@
 
 .. |ext_lnk_example_magento2_documentation| raw:: html
 
-   <a target="_blank" href="https://devdocs.magento.com/guides/v2.2/install-gde/bk-install-guide.html">
+   <a target="_blank" href="https://docs.magento.com/user-guide/v2.3/magento/installation.html">
      Official Magento 2 Documentation <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
