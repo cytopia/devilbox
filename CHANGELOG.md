@@ -44,8 +44,8 @@ Once it has been tested by the community, and potential errors have been address
 | PHP Version | Hostname | IP address     |
 |-------------|----------|----------------|
 | 5.4         | php54    | 172.16.238.201 |
-| 5.5         | php54    | 172.16.238.202 |
-| 5.6         | php54    | 172.16.238.203 |
+| 5.5         | php55    | 172.16.238.202 |
+| 5.6         | php56    | 172.16.238.203 |
 | 7.0         | php70    | 172.16.238.204 |
 | 7.1         | php71    | 172.16.238.205 |
 | 7.2         | php72    | 172.16.238.206 |
