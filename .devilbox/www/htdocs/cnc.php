@@ -1,7 +1,30 @@
 <?php require '../config.php';  ?>
 <?php loadClass('Helper')->authPage(); ?>
+<?php
+// TODO: This is currently a temporary hack to talk to supervisor on the HTTPD server
+function run_supervisor_command($command) {
+	$supervisor_config_file = '/tmp/supervisorctl.conf';
+	$port = getenv('SVCTL_LISTEN_PORT');
+	$user = getenv('SVCTL_USER');
+	$pass = getenv('SVCTL_PASS');
+
+	$content = "[supervisorctl]\n";
+	$content .= "serverurl=http://httpd:" . $port . "\n";
+	$content .= "username=" . $user . "\n";
+	$content .= "password=" . $pass . "\n";
+
+	$fp = fopen($supervisor_config_file, 'w');
+	fwrite($fp, $content);
+	fclose($fp);
+
+	return loadClass('Helper')->exec('supervisorctl -c ' . $supervisor_config_file . ' ' . $command);
+}
+
+
+?>
 <?php if ( isset($_POST['watcherd']) && $_POST['watcherd'] == 'reload' ) {
-	loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf restart watcherd');
+	run_supervisor_command('restart watcherd');
+	//loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf restart watcherd');
 	sleep(1);
 	loadClass('Helper')->redirect('/cnc.php');
 }
@@ -24,8 +47,10 @@
 				<div class="col-md-12">
 
 					<?php
-						$status_w = loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf status watcherd');
-						$status_h = loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf status httpd');
+						$status_w = run_supervisor_command('status watcherd');
+						$status_h = run_supervisor_command('status httpd');
+						//$status_w = loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf status watcherd');
+						//$status_h = loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf status httpd');
 
 						$words = preg_split("/\s+/", $status_w);
 						$data_w = array(
@@ -77,13 +102,15 @@
 					<h3>watcherd stderr</h3>
 					<br/>
 					<?php
-						$output = loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf  tail -1000000 watcherd stderr');
+						$output = run_supervisor_command('tail -1000000 watcherd stderr');
+						//$output = loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf  tail -1000000 watcherd stderr');
 						echo '<pre>' . $output . '</pre>';
 					?>
 					<h3>watcherd stdout</h3>
 					<br/>
 					<?php
-						$output = loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf  tail -1000000 watcherd');
+						$output = run_supervisor_command('tail -1000000 watcherd');
+						//$output = loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf  tail -1000000 watcherd');
 						echo '<pre>' . $output . '</pre>';
 					?>
 
