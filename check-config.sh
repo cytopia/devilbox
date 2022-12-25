@@ -430,7 +430,7 @@ fi
 
 
 #--------------------------------------------------------------------------------------------------
-# Ensure cfg/, mod/ and log/ directories exist
+# Ensure cfg/ and log/ directories exist
 #--------------------------------------------------------------------------------------------------
 print_head_1 "Checking required Devilbox core directories exist"
 
@@ -462,21 +462,6 @@ while read -r php_version; do
 done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
 if [ "${DIR_MISSING}" = "0" ]; then
 	log_ok "All PHP log/ sub directories are present"
-fi
-
-# /mod/php-fpm-VERSION
-DIR_MISSING=0
-while read -r php_version; do
-	if [ ! -d "mod/php-fpm-${php_version}" ]; then
-		log_err "Directory 'mod/php-fpm-${php_version}' is missing"
-		RET_CODE=$(( RET_CODE + 1))
-		DIR_MISSING=1
-	else
-		log_debug "Directory 'mod/php-fpm-${php_version}' is present"
-	fi
-done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
-if [ "${DIR_MISSING}" = "0" ]; then
-	log_ok "All PHP mod/ sub directories are present"
 fi
 
 # /cfg/apache|nginx-VERSION
@@ -522,7 +507,6 @@ DEVILBOX_DIRS=(
 	"cfg"
 	"compose"
 	"log"
-	"mod"
 	"supervisor"
 )
 
@@ -591,7 +575,6 @@ DEVILBOX_DIRS=(
 	"ca"
 	"cfg"
 	"compose"
-	"mod"
 	"supervisor"
 )
 
