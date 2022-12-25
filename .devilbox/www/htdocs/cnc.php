@@ -119,7 +119,7 @@ function run_supervisor_command($command) {
 					?>
 					<h3>watcherd stdout</h3>
 					<br/>
-						<?php
+					<?php
 						$output = run_supervisor_command('tail -1000000 watcherd');
 						echo '<pre>';
 						foreach(preg_split("/((\r?\n)|(\r\n?))/", $output) as $line) {
