@@ -55,18 +55,6 @@ Once it has been tested by the community, and potential errors have been address
 | 8.1         | php81    | 172.16.238.210 |
 | 8.2         | php82    | 172.16.238.211 |
 
-### Important
-
-Currently the Intranet Command and Control Center is not yet self sufficient as it requires a supervisord configuration file.
-
-In the root of the Devilbox repository, add `supervisorctl.conf` into `supervisor/` directory. **Important:** It must have this name.
-```ini
-[supervisorctl]
-serverurl=http://httpd:9001
-username=supervisord
-password=mypassword
-```
-
 ### Fixed
 - Fixed Protocol substitution bug in Reverse Proxy generation for Apache 2.2 and Apache 2.4 [vhost-gen #49](https://github.com/devilbox/vhost-gen/pull/49) [vhost-gen #50](https://github.com/devilbox/vhost-gen/pull/50)
 - Fixed missing module `mod_proxy_html` in Apache 2.4 as per requirement from `vhost-gen` for Reverse Proxy setup
