@@ -214,11 +214,10 @@ class Httpd extends BaseClass implements BaseInterface
 
 		$type = $arr[1];
 		$prot = $arr[2];
-		$addr = '';
+		$addr = '';  // this may contain ':' itself due to IPv6 addresses
 		for ($i=3; $i<(count($arr)-1); $i++) {
 			$addr .= $arr[$i];
 		}
-		$addr = $arr[3]; // this may contain ':' itself
 		$port = $arr[count($arr) - 1];
 
 		return $prot.'://'.$addr.':'.$port;
