@@ -24,7 +24,6 @@ function run_supervisor_command($command) {
 ?>
 <?php if ( isset($_POST['watcherd']) && $_POST['watcherd'] == 'reload' ) {
 	run_supervisor_command('restart watcherd');
-	//loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf restart watcherd');
 	sleep(1);
 	loadClass('Helper')->redirect('/cnc.php');
 }
@@ -49,22 +48,20 @@ function run_supervisor_command($command) {
 					<?php
 						$status_w = run_supervisor_command('status watcherd');
 						$status_h = run_supervisor_command('status httpd');
-						//$status_w = loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf status watcherd');
-						//$status_h = loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf status httpd');
 
 						$words = preg_split("/\s+/", $status_w);
 						$data_w = array(
-							'name' => $words[0],
-							'state' => $words[1],
-							'pid' => preg_replace('/,$/', '', $words[3]),
-							'uptime' => $words[5],
+							'name'   => isset($words[0]) ? $words[0] : '',
+							'state'  => isset($words[1]) ? $words[1] : '',
+							'pid'    => isset($words[3]) ? preg_replace('/,$/', '', $words[3]) : '',
+							'uptime' => isset($words[5]) ? $words[5] : '',
 						);
 						$words = preg_split("/\s+/", $status_h);
 						$data_h = array(
-							'name' => $words[0],
-							'state' => $words[1],
-							'pid' => preg_replace('/,$/', '', $words[3]),
-							'uptime' => $words[5],
+							'name'   => isset($words[0]) ? $words[0] : '',
+							'state'  => isset($words[1]) ? $words[1] : '',
+							'pid'    => isset($words[3]) ? preg_replace('/,$/', '', $words[3]) : '',
+							'uptime' => isset($words[5]) ? $words[5] : '',
 						);
 					?>
 					<h3>Daemon overview</h3><br/>
@@ -103,15 +100,41 @@ function run_supervisor_command($command) {
 					<br/>
 					<?php
 						$output = run_supervisor_command('tail -1000000 watcherd stderr');
-						//$output = loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf  tail -1000000 watcherd stderr');
-						echo '<pre>' . $output . '</pre>';
+						echo '<pre>';
+						foreach(preg_split("/((\r?\n)|(\r\n?))/", $output) as $line) {
+							if ( strpos($line, "[ERR]") !== false ) {
+								echo '<span style="color: #ff0000">' . $line . '</span>';
+							} else if ( strpos($line, "[emerg]") !== false ) {
+								echo '<span style="color: #ff0000">' . $line . '</span>';
+							} else if ( strpos($line, "Syntax error") !== false ) {
+								echo '<span style="color: #ff0000">' . $line . '</span>';
+							} else if ( strpos($line, "[WARN]") !== false ) {
+								echo '<span style="color: #ccaa00">' . $line . '</span>';
+							} else {
+								echo $line;
+							}
+							echo "\n";
+						}
+						echo '</pre>';
 					?>
 					<h3>watcherd stdout</h3>
 					<br/>
-					<?php
+						<?php
 						$output = run_supervisor_command('tail -1000000 watcherd');
-						//$output = loadClass('Helper')->exec('supervisorctl -c /etc/supervisor/custom.d/supervisorctl.conf  tail -1000000 watcherd');
-						echo '<pre>' . $output . '</pre>';
+						echo '<pre>';
+						foreach(preg_split("/((\r?\n)|(\r\n?))/", $output) as $line) {
+							$pos_info = strpos($line, "[INFO]");
+							$pos_ok   = strpos($line, "[OK]");
+							if ( $pos_ok !== false ) {
+								echo '<span style="color: #669a00"><strong>' . $line . '</strong></span>';
+							} else if ( $pos_info !== false && $pos_info == 0 ) {
+								echo '<span style="color: #0088cd">' . $line . '</span>';
+							} else {
+								echo $line;
+							}
+							echo "\n";
+						}
+						echo '</pre>';
 					?>
 
 				</div>
