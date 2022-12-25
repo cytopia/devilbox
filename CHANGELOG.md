@@ -64,6 +64,7 @@ Once it has been tested by the community, and potential errors have been address
 ### Added
 - New HTTPD server capable of auto reverse proxy creation (and different PHP versions per project)
 - Intranet: Added Command & Control center to view watcherd logs and retrigger config in case of vhost changes
+- Intranet: vhost page now also shows the configured Backend
 - Environment variable `DEVILBOX_HTTPD_MGMT_PASS`
 - Environment variable `DEVILBOX_HTTPD_MGMT_USER`
 - New Docker Compose Override file `docker-compose.override.yml-php-multi.yml` (allows to run multiple PHP versions).

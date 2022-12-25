@@ -24,6 +24,7 @@
 								<tr>
 									<th>Project</th>
 									<th>DocumentRoot</th>
+									<th>Backend</th>
 									<th>Config</th>
 									<th>Valid</th>
 									<th>URL</th>
@@ -31,7 +32,7 @@
 							</thead>
 							<tbody>
 								<?php
-									$totals = 10;
+									$totals = 0;
 									$filler = '&nbsp;';
 									for ($i=0; $i<$totals; $i++) {
 										$filler = $filler. '&nbsp;';
@@ -41,6 +42,7 @@
 									<tr>
 										<td><?php echo $vHost['name'];?></td>
 										<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR');?>/<?php echo $vHost['name'];?>/<?php echo loadClass('Helper')->getEnv('HTTPD_DOCROOT_DIR');?></td>
+										<td><?php echo loadClass('Httpd')->getVhostBackend($vHost['name']); ?></td>
 										<td>
 											<a title="Virtual host: <?php echo $vHost['name'];?>.conf" target="_blank" href="/vhost.d/<?php echo $vHost['name'];?>.conf"><i class="fa fa-cog" aria-hidden="true"></i></a>
 											<?php if (($vhostGen = loadClass('Httpd')->getVhostgenTemplatePath($vHost['name'])) !== false): ?>
