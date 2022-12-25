@@ -48,25 +48,15 @@ x-app: &default-php
     # to overwrite the default PHP-FPM configuration
     - ${DEVILBOX_PATH}/cfg/php-fpm-${PHP_SERVER}:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
 
-    # Mount devilbox user-defined *.so files in order
-    # to load custom PHP modules
-    - ${DEVILBOX_PATH}/mod/php-fpm-${PHP_SERVER}:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
-
     # Mount devilbox user-defined PHP-FPM startup *.sh scripts
     - ${DEVILBOX_PATH}/cfg/php-startup-${PHP_SERVER}:/startup.1.d:rw${MOUNT_OPTIONS}
     - ${DEVILBOX_PATH}/autostart:/startup.2.d:rw${MOUNT_OPTIONS}
-
-    # Mount devilbox user-defined bash config
-    - ${DEVILBOX_PATH}/bash:/etc/bashrc-devilbox.d:rw${MOUNT_OPTIONS}
 
     # Mount devilbox user-defined supervisord config
     - ${DEVILBOX_PATH}/supervisor:/etc/supervisor/custom.d:rw${MOUNT_OPTIONS}
 
     # Certificate Authority public key
     - ${DEVILBOX_PATH}/ca:/ca:rw${MOUNT_OPTIONS}
-
-    # Users SSH directory (read-only)
-    - ${HOST_PATH_SSH_DIR}:/home/devilbox/.ssh:ro${MOUNT_OPTIONS}
 
   depends_on:
     - bind
