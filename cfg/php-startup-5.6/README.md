@@ -1,4 +1,4 @@
-# Custom startup scripts (per PHP version)
+# Custom startup scripts (for PHP 5.6 only)
 
 Any script inside this directory ending by `.sh` will be executed during the PHP container startup.
 This is useful to apply your custom settings such as installing software that usually requires

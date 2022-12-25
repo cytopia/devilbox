@@ -1,4 +1,4 @@
-# PHP-FPM config directory
+# PHP-FPM 7.3 config directory
 
 ## General
 
