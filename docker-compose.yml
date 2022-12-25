@@ -227,7 +227,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-release-0.49b
+    image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-1.0-beta1
     hostname: httpd
 
     environment:
