@@ -1,4 +1,4 @@
-# PHP-FPM config directory
+# PHP-FPM 8.2 config directory
 
 ## General
 

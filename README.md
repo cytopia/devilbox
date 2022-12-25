@@ -377,7 +377,7 @@ Every single attachable container comes with many different versions. In order t
     <tr>
       <td></td>
       <td></td>
-      <td><a target="_blank" title="PHP 8.2"          href="https://github.com/devilbox/docker-php-fpm">8.2</a></a><sup>[2]</sup></td>
+      <td><a target="_blank" title="PHP 8.2"          href="https://github.com/devilbox/docker-php-fpm">8.2</a><!-- <sup>[2]</sup> --></td>
       <td></td>
       <td></td>
       <td></td>
@@ -391,7 +391,7 @@ Every single attachable container comes with many different versions. In order t
 
 <small><strong><sup>[1]</sup></strong> <strong>PHP 5.2</strong> is available to use, but it is not officially supported. The Devilbox intranet does not work with this version as PHP 5.2 does not support namespaces. Furthermore PHP 5.2 does only work with Apache 2.4, Nginx stable and Nginx mainline. It does not work with Apache 2.2. Use at your own risk.</small>
 
-<small><strong><sup>[2]</sup></strong> <strong>PHP 8.2</strong> is an upcoming unreleased versions of PHP, which is directly built out of their [official git branches](https://github.com/php/php-src/) every night to assure you will leverage their latest features.</small>
+<!-- <small><strong><sup>[2]</sup></strong> <strong>PHP 8.2</strong> is an upcoming unreleased versions of PHP, which is directly built out of their [official git branches](https://github.com/php/php-src/) every night to assure you will leverage their latest features.</small> -->
 
 > **Documentation:**
 > [Change container versions](https://devilbox.readthedocs.io/en/latest/getting-started/change-container-versions.html)
@@ -559,10 +559,6 @@ The Devilbox has everything setup for you. The only thing you will have to insta
     <td>Overwrite any setting for PHP.</td>
   </tr>
   <tr>
-    <td>:star: Custom PHP modules</td>
-    <td>Load custom PHP modules on the fly.</td>
-  </tr>
-  <tr>
     <td>:star: Email catch-all</td>
     <td>All outgoing emails are catched and will be presented in the included intranet.</td>
   </tr>
@@ -611,7 +607,7 @@ The following batteries are available in the Devilbox intranet by default:
   <td><a href="https://www.phpmyadmin.net">phpMyAdmin</a></td>
   <td><a href="http://phppgadmin.sourceforge.net">phpPgAdmin</a></td>
   <td><a href="https://github.com/sasanrose/phpredmin">phpRedMin</a></td>
-  <td><a href="https://github.com/elijaa/phpmemcachedadmin">PHPMemcached Admin</a></td>
+  <td><a href="https://github.com/elijaa/phpmemcachedadmin">PHP Memcached Admin</a></td>
   <td><a href="https://github.com/PeeHaa/OpCacheGUI">OpCache GUI</a></td>
   <td>Mail viewer</td>
  </tr>
@@ -646,10 +642,6 @@ The following tools will assist you on creating new projects easily as well as h
   <tr>
     <td>:wrench: <a href="https://github.com/cytopia/linkcheck">linkcheck</a></td>
     <td><code>linkcheck</code> is a command line tool that searches for URLs in files (optionally limited by extension) and validates their HTTP status code.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://brew.sh/">homebrew</a></td>
-    <td><code>brew</code> is a MacOS Homenbrew for Linux.</td>
   </tr>
   <tr>
     <td>:wrench: <a href="https://github.com/DavidAnson/markdownlint">markdownlint</a></td>
@@ -708,11 +700,9 @@ The following tools will assist you on creating new projects easily as well as h
 
 Well-known and popular tools will be at your service as well:
 
-<a target="_blank" title="Ansible" href="https://www.ansible.com/"><img width="64" style="width:64px" src="docs/img/logo_tools/ansible.png" alt="Devilbox"/></a>
 <a target="_blank" title="CodeCeption" href="https://codeception.com/"><img width="64" style="width:64px" src="docs/img/logo_tools/codeception.png" alt="Devilbox"/></a>
 <a target="_blank" title="Composer" href="https://getcomposer.org"><img width="64" style="width:64px" src="docs/img/logo_tools/composer.png" alt="Devilbox"/></a>
 <a target="_blank" title="Drupal Console" href="https://drupalconsole.com"><img width="64" style="battery" src="docs/img/logo_tools/drupal-console.png" alt="Devilbox"/></a>
-<a target="_blank" title="Drush" href="https://www.drupal.org/project/drush"><img width="64" style="width:64px;" src="docs/img/logo_tools/drush.png" alt="Devilbox"/></a>
 <a target="_blank" title="ESLint" href="https://eslint.org/"><img width="64" style="width:64px;" src="docs/img/logo_tools/eslint.png" alt="Devilbox"/></a>
 <a target="_blank" title="Git" href="https://git-scm.com"><img width="64" style="width:64px;" src="docs/img/logo_tools/git.png" alt="Devilbox"/></a>
 <a target="_blank" title="Gulp" href="https://gulpjs.com/"><img width="64" style="width:64px;" src="docs/img/logo_tools/gulp.png" alt="Devilbox"/></a>
@@ -856,10 +846,6 @@ PHP modules can be enabled or disabled on demand to reflect the state of your ta
 > **Documentation:**
 > [Enable/disable PHP modules](https://devilbox.readthedocs.io/en/latest/intermediate/enable-disable-php-modules.html)
 
-#### Custom PHP Modules
-
-You can also copy any custom modules into `mod/(php-fpm)-<VERSION>` and add a custom `*.ini` file to load them.
-
 #### Supported PHP Frameworks
 
 As far as tested there are no limitations and you can use any Framework or CMS just as you would on your live environment. Below are a few examples of extensively tested Frameworks and CMS:
@@ -980,6 +966,7 @@ To increase visibility and bug-free operation:
 * Star this project
 * Open up issues for bugs and feature requests
 * Clone this project and submit fixes or features
+* Visit the [Devilbox Discord Chat](https://discord.gg/2wP3V6kBj4) to exchange about setups
 * Visit the [Devilbox Community Forums](https://devilbox.discourse.group) for announcements and to help others
 
 Additionally you can [subscribe to Devilbox on CodeTriage](https://www.codetriage.com/cytopia/devilbox),

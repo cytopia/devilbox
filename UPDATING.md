@@ -3,6 +3,17 @@
 This document will hold all information on how to update between major versions.
 
 
+## Update from `v2.4.0` to `v3.0.0` (`v3.0.0-beta-1`)
+
+**PR:** https://github.com/cytopia/devilbox/pull/942
+
+This PR introduces new `.env` variables, so you are required to copy `env-example` over to `.env`.
+Also ensure to stop and remove containers.
+```bash
+docker-compose stop
+docker-compose rm -f
+```
+
 ## Update from `v1.8.1` to `v1.8.2`
 
 **PR:** https://github.com/cytopia/devilbox/pull/750

@@ -196,6 +196,33 @@ class Httpd extends BaseClass implements BaseInterface
 		return false;
 	}
 
+	public function getVhostBackend($vhost)
+	{
+		$dir = loadClass('Helper')->getEnv('HTTPD_TEMPLATE_DIR');
+		$name = 'backend.cfg';
+		$file = '/shared/httpd/'.$vhost.'/'.$dir.'/'.$name;
+		if (!file_exists($file)) {
+			return 'default';
+		}
+
+		$fp = fopen($file, 'r');
+		$cont = stream_get_contents($fp);
+		fclose($fp);
+
+		// conf:<type>:<proto>:<server>:<port>
+		$arr = explode(':', $cont);
+
+		$type = $arr[1];
+		$prot = $arr[2];
+		$addr = '';  // this may contain ':' itself due to IPv6 addresses
+		for ($i=3; $i<(count($arr)-1); $i++) {
+			$addr .= $arr[$i];
+		}
+		$port = $arr[count($arr) - 1];
+
+		return $prot.'://'.$addr.':'.$port;
+	}
+
 
 	/*********************************************************************************
 	 *

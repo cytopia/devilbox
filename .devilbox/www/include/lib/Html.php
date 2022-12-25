@@ -19,6 +19,10 @@ class Html
 				'path' => '/vhosts.php'
 			),
 			array(
+				'name' => 'C&C',
+				'path' => '/cnc.php'
+			),
+			array(
 				'name' => 'Emails',
 				'path' => '/mail.php'
 			)

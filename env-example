@@ -28,10 +28,12 @@
 ### Show all executed commands in each
 ### docker image during docker-compose up?
 ###
-### 0: Quiet
-### 1: Verbose
-### 2: More verbose
-DEBUG_COMPOSE_ENTRYPOINT=2
+### 0: Errors
+### 1: Errors, Warnings
+### 2: Errors, Warnings, Infos  (Recommended)
+### 3: Errors, Warnings, Infos, Debug
+### 4: Errors, Warnings, Infos, Debug, Trace
+DEBUG_ENTRYPOINT=2
 
 
 ###
@@ -235,6 +237,12 @@ DEVILBOX_VENDOR_PHPMYADMIN_AUTOLOGIN=1
 ###   DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN=0
 ###
 DEVILBOX_VENDOR_PHPPGADMIN_AUTOLOGIN=1
+
+###
+### HTTPD Supvervisord management
+###
+DEVILBOX_HTTPD_MGMT_USER=supervisord
+DEVILBOX_HTTPD_MGMT_PASS=mypassword
 
 
 
@@ -515,7 +523,7 @@ PHP_MODULES_ENABLE=
 ###
 ### PHP_MODULES_DISABLE=xdebug,imagick,swoole
 ###
-PHP_MODULES_DISABLE=oci8,PDO_OCI,pdo_sqlsrv,sqlsrv,rdkafka,swoole
+PHP_MODULES_DISABLE=oci8,PDO_OCI,pdo_sqlsrv,sqlsrv,rdkafka,swoole,psr,phalcon
 
 
 ###
@@ -609,13 +617,16 @@ HTTPD_TEMPLATE_DIR=.devilbox
 
 
 ###
-### Webserver timeout (in seconds) to upstream PHP-FPM server
+### Remote (Upstream) Backend Timeout
 ###
-### This value should be greater than PHP's max_execution_time,
-### otherwise the php script could still run and the webserver will
-### simply drop the connection before getting an answer by PHP.
+### This setting specifies the Timeout for a remote Backend server,
+### such as PHP-FPM or a Reverse Proxy.
 ###
-HTTPD_TIMEOUT_TO_PHP_FPM=180
+### As for PHP, keep in mind that this value should be greater than
+### PHP's max_execution_time,otherwise the php script could still
+### run and the webserver will simply drop the connection before getting an answer by PHP.
+###
+HTTPD_BACKEND_TIMEOUT=180
 
 
 ###

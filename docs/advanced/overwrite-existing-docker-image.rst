@@ -67,7 +67,7 @@ First you simply copy the while definition of the bind service from ``docker-com
          ##
          ## Debug?
          ##
-         - DEBUG_ENTRYPOINT=${DEBUG_COMPOSE_ENTRYPOINT}
+         - DEBUG_ENTRYPOINT=${DEBUG_ENTRYPOINT}
          - DOCKER_LOGS=1
 
          ##

@@ -76,7 +76,7 @@ jobs:
           cd "${GITHUB_WORKSPACE}/.tests/"
 
           # Test full customization
-          make configure KEY=DEBUG_COMPOSE_ENTRYPOINT VAL="$(( RANDOM % 3 ))"
+          make configure KEY=DEBUG_ENTRYPOINT VAL="$(( RANDOM % 3 ))"
           make configure KEY=DOCKER_LOGS VAL="$(( RANDOM % 1 ))"
           make configure KEY=TLD_SUFFIX VAL=loc2
           make configure KEY=TIMEZONE VAL='Europe/Berlin'
