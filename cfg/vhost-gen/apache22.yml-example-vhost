@@ -54,10 +54,10 @@ vhost: |
   __REDIRECT__
   __SSL__
   __VHOST_DOCROOT__
-  __VHOST_RPROXY__
   __PHP_FPM__
   __ALIASES__
   __DENIES__
+  __VHOST_RPROXY__
   __SERVER_STATUS__
       # Custom directives
   __CUSTOM__
@@ -84,13 +84,30 @@ vhost_type:
         Allow from all
     </Directory>
 
-  # Reverse Proxy (-r)
+  # Reverse Proxy (-r http(s)://ADDR:PORT)
   rproxy: |
-    # Define the vhost to reverse proxy
-    ProxyRequests On
+    # Define Reverse Proxy
+    ProxyRequests     Off
     ProxyPreserveHost On
-    ProxyPass __LOCATION__ __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT____LOCATION__
-    ProxyPassReverse __LOCATION__ __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT____LOCATION__
+    ProxyPass         __LOCATION__ __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT__/ retry=0
+    ProxyPassReverse  __LOCATION__ __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT__/
+
+  # Reverse Proxy with websocket support (-r ws(s)://ADDR:PORT)
+  rproxy_ws: |
+    # Define Reverse Proxy with Websock support
+    ProxyRequests     Off
+    ProxyPreserveHost On
+    <location __LOCATION__>
+        # Websocket Rewrite Settings
+        RewriteEngine On
+        RewriteCond %{HTTP:Connection} Upgrade   [NC]
+        RewriteCond %{HTTP:Upgrade}    websocket [NC]
+        RewriteRule ^/?(.*)$ __WS_PROTO__://__PROXY_ADDR__:__PROXY_PORT__/$1 [P,L]
+
+        # Reverse Proxy Settings
+        ProxyPass         __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT__/ retry=0
+        ProxyPassReverse  __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT__/
+    </location>
 
 
 ###
@@ -120,6 +137,7 @@ features:
     # Alias Definition
     Alias "__ALIAS__" "__PATH____ALIAS__"
     <Location "__ALIAS__">
+        ProxyPass !
     __XDOMAIN_REQ__
     </Location>
     <Directory "__PATH____ALIAS__">

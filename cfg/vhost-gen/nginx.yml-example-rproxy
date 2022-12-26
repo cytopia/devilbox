@@ -48,8 +48,11 @@ vhost: |
 
       # Reverse Proxy definition (Ensure to adjust the port, currently '8000')
       location / {
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
+        # https://stackoverflow.com/a/72586833
+        proxy_set_header Host            $host;
+        proxy_set_header X-Real-IP       $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # Proxy connection
         proxy_pass http://php:8000;
       }
 

@@ -47,10 +47,10 @@ vhost: |
       ErrorLog   "__ERROR_LOG__"
 
       # Reverse Proxy definition (Ensure to adjust the port, currently '8000')
-      ProxyRequests On
+      ProxyRequests     Off
       ProxyPreserveHost On
-      ProxyPass / http://php:8000/
-      ProxyPassReverse / http://php:8000/
+      ProxyPass         / http://php:8000/ retry=0
+      ProxyPassReverse  / http://php:8000/
 
   __REDIRECT__
   __SSL__
@@ -93,6 +93,7 @@ features:
     # Alias Definition
     Alias "__ALIAS__" "__PATH____ALIAS__"
     <Location "__ALIAS__">
+        ProxyPass !
     __XDOMAIN_REQ__
     </Location>
     <Directory "__PATH____ALIAS__">
