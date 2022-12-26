@@ -44,6 +44,7 @@ Once you're done with `backend.cfg` changes, head over to the Intranet C&C page 
 
 ### Changed
 - Do not mount any startup/autostart script directories for multi-php compose as they do not contain tools
+- Updated vhost-gen templates in `cfg/vhost-gen` (replace your project templates with new ones)
 
 
 ## Release v3.0.0-beta-0.1 (2022-12-24) 🎅🎄🎁
