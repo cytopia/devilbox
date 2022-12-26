@@ -129,7 +129,7 @@
 					var el_href = document.getElementById('href-' + vhost);
 					var error = this.responseText;
 
-					if (this.readyState == 4 && this.status == 200) {
+					if (this.readyState == 4 && (this.status == 200 || this.status == 426)) {
 						clearTimeout(xmlHttpTimeout);
 						el_valid.className += ' bg-success';
 						if (el_valid.innerHTML != 'WARN') {
