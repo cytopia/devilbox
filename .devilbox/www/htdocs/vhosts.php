@@ -83,7 +83,7 @@
 					var el_valid;
 					var el_href;
 
-					if (this.readyState == 4 && this.status == 200) {
+					if (this.readyState == 4 && this.status == 200 || this.status == 426) {
 						el_valid = document.getElementById('valid-' + vhost);
 						el_href = document.getElementById('href-' + vhost);
 						error = this.responseText;
