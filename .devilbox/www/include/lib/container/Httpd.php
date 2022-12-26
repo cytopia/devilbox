@@ -29,10 +29,18 @@ class Httpd extends BaseClass implements BaseInterface
 		$url		= 'http://'.$domain;
 		$error		= array();
 
-		// 1. Check htdocs folder
-		if (!$this->_is_valid_dir($docroot)) {
-			$error[] = 'error';
-			$error[] = 'Missing <strong>'.$htdocs.'</strong> directory in: <strong>'.loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR').'/'.$vhost.'/</strong>';
+
+		$backend    = $this->getVhostBackend($vhost);
+		$pos_def    = strpos($backend, 'default');
+		$pos_phpfpm = strpos($backend, 'tcp://');
+
+		// Only if backend 'default' or 'phpfpm', we need a htdocs/ directory
+		if ( ($pos_def !== false && $pos_def == 0) || ($pos_phpfpm !== false && $pos_phpfpm == 0) ) {
+			// 1. Check htdocs folder
+			if (!$this->_is_valid_dir($docroot)) {
+				$error[] = 'error';
+				$error[] = 'Missing <strong>'.$htdocs.'</strong> directory in: <strong>'.loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR').'/'.$vhost.'/</strong>';
+			}
 		}
 
 		// 2. Check internal DNS server
