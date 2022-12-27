@@ -60,6 +60,60 @@
 				</div>
 			</div>
 
+			<?php
+			$cmd="netstat -wneeplt 2>/dev/null | sort | grep '\s1000\s' | awk '{print \"app=\"\$9\"|addr=\"\$4}' | sed 's/\(app=\)\([0-9]*\/\)/\\1/g' | sed 's/\(.*\)\(:[0-9][0-9]*\)/\\1|port=\\2/g' | sed 's/port=:/port=/g'";
+			$output=loadClass('Helper')->exec($cmd);
+			$daemons = array();
+			foreach (preg_split("/((\r?\n)|(\r\n?))/", $output) as $line) {
+				$section = preg_split("/\|/", $line);
+				if (count($section) == 3) {
+					$tool = preg_split("/=/", $section[0]);
+					$addr = preg_split("/=/", $section[1]);
+					$port = preg_split("/=/", $section[2]);
+					$tool = $tool[1];
+					$addr = $addr[1];
+					$port = $port[1];
+					$daemons[] = array(
+						'tool' => $tool,
+						'addr' => $addr,
+						'port' => $port
+					);
+				}
+			}
+			?>
+			<?php if (count($daemons)): ?>
+			<br/>
+			<br/>
+			<div class="row">
+				<div class="col-md-12">
+
+					<h2>Local listening daemons</h2>
+					<table class="table table-striped">
+						<thead class="thead-inverse">
+							<tr>
+								<th>Application</th>
+								<th>Listen Address</th>
+								<th>Listen Port</th>
+								<th>Host</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach ($daemons as $daemon): ?>
+								<tr>
+									<td><?php echo $daemon['tool']; ?></td>
+									<td><?php echo $daemon['addr']; ?></td>
+									<td><?php echo $daemon['port']; ?></td>
+									<td>php (172.16.238.10)</td>
+								</tr>
+							<?php endforeach; ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<?php endif; ?>
+
+
+
 		</div><!-- /.container -->
 
 		<?php echo loadClass('Html')->getFooter(); ?>
