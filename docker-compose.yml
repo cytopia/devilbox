@@ -99,7 +99,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.147
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.148
     hostname: php
 
     ##
@@ -227,7 +227,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-1.0-beta1
+    image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-1.0-beta2
     hostname: httpd
 
     environment:

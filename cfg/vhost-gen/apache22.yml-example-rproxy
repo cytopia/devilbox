@@ -34,9 +34,22 @@
 #    __ERROR_LOG__
 #
 
+###
+### Notes about Apache
+###
+
+#
+# 1. Each same directive is checked in order of definition (last one wins)
+# 2. Directives are ordered: Directory, DirectoryMatch, Files, and finally Location (last one wins)
+#   * Last match always takes precedence
+#
+# Exception: Directories, where shortest path is matched first
+# Exception: ProxyPass and Alias first match and then stops
 
 ###
 ### Basic vHost skeleton
+###
+### Note: Reverse Proxy section must be last for Apache 2.2
 ###
 vhost: |
   <VirtualHost __DEFAULT_VHOST__:__PORT__>
@@ -45,11 +58,17 @@ vhost: |
       CustomLog  "__ACCESS_LOG__" combined
       ErrorLog   "__ERROR_LOG__"
 
-      # Reverse Proxy definition (Ensure to adjust the port, currently '8000')
-      ProxyRequests On
+      # ProxyRequests:     Disable "Forward Proxy"
+      # ProxyPreserveHost: Pass "Host" header to remote
+      # ProxyVia:          Add "Via" header
+      ProxyRequests     Off
       ProxyPreserveHost On
-      ProxyPass / http://php:8000/
-      ProxyPassReverse / http://php:8000/
+      ProxyVia          On
+      <Location />
+          # Reverse Proxy definition (Ensure to adjust the port, currently '8000')
+          ProxyPass         http://php:8000/ retry=0
+          ProxyPassReverse  http://php:8000/
+      </Location>
 
   __REDIRECT__
   __SSL__
@@ -92,6 +111,7 @@ features:
     # Alias Definition
     Alias "__ALIAS__" "__PATH____ALIAS__"
     <Location "__ALIAS__">
+        ProxyPass !
     __XDOMAIN_REQ__
     </Location>
     <Directory "__PATH____ALIAS__">
@@ -101,10 +121,10 @@ features:
 
   deny: |
     # Deny Definition
-    <FilesMatch "__REGEX__">
+    <LocationMatch "__REGEX__">
         Order allow,deny
         Deny from all
-    </FilesMatch>
+    </LocationMatch>
 
   server_status: |
     # Status Page

@@ -6,6 +6,47 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v3.0.0-beta-0.2 (2022-12-27)
+
+The Backend configuration now supports websockets as well:
+
+file: `/shared/httpd/<project>/.devilbox/backend.cfg`
+```bash
+# PHP-FPM backend
+conf:phpfpm:tcp:php80:9000
+
+# HTTP Reverse Proxy backend
+conf:rproxy:http:172.16.238.10:3000
+
+# HTTPS Reverse Proxy backend
+conf:rproxy:https:172.16.238.10:3000
+
+# Websocket Reverse Proxy backend
+conf:rproxy:ws:172.16.238.10:3000
+
+# SSL Websocket Reverse Proxy backend
+conf:rproxy:wss:172.16.238.10:3000
+```
+
+Once you're done with `backend.cfg` changes, head over to the Intranet C&C page (http://localhost/cnc.php) and Reload `watcherd`.
+
+
+### Fixed
+- Intranet: vhost overview: allow HTTP 426 to succeed in vhost page (websocket projects)
+- Intranet: vhost overview: Reverse Proxy or Websocket backends do not require a `htdocs/` dir for healthcheck
+- Fixed reverse proxy template generation for Apache 2.2 and Apache 2.4 [vhost-gen #51](https://github.com/devilbox/vhost-gen/pull/51)
+- Fixed Nginx hash bucket size length to allow long hostnames
+
+### Added
+- Reverse Proxy automation for websocket projects (`ws://<host>:<port>` or `wss:<host>:<port>`) (Does not work with Apache 2.2)
+- Added tool `wscat` to be able to test websocket connections
+- Intranet: vhost overview now also shows websocket projects
+
+### Changed
+- Do not mount any startup/autostart script directories for multi-php compose as they do not contain tools
+- Updated vhost-gen templates in `cfg/vhost-gen` (replace your project templates with new ones)
+
+
 ## Release v3.0.0-beta-0.1 (2022-12-24) 🎅🎄🎁
 
 This is a beta release, using a completely rewritten set of HTTPD server, which allow easy reverse Proxy integration and different PHP versions per project:

@@ -31,13 +31,6 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php
-									$totals = 0;
-									$filler = '&nbsp;';
-									for ($i=0; $i<$totals; $i++) {
-										$filler = $filler. '&nbsp;';
-									}
-								?>
 								<?php foreach ($vHosts as $vHost): ?>
 									<tr>
 										<td><?php echo $vHost['name'];?></td>
@@ -46,11 +39,13 @@
 										<td>
 											<a title="Virtual host: <?php echo $vHost['name'];?>.conf" target="_blank" href="/vhost.d/<?php echo $vHost['name'];?>.conf"><i class="fa fa-cog" aria-hidden="true"></i></a>
 											<?php if (($vhostGen = loadClass('Httpd')->getVhostgenTemplatePath($vHost['name'])) !== false): ?>
-												<a title="vhost-gen: <?php echo basename($vhostGen);?> for <?php echo $vHost['name'];?>" href="/info_vhostgen.php?name=<?php echo $vHost['name'];?>"><i class="fa fa-filter" aria-hidden="true"></i></a>
+												<a title="vhost-gen: <?php echo basename($vhostGen);?> for <?php echo $vHost['name'];?>" href="/info_vhostgen.php?name=<?php echo $vHost['name'];?>">
+													<i class="fa fa-filter" aria-hidden="true"></i>
+												</a>
 											<?php endif; ?>
 										</td>
-										<td class="text-xs-center text-xs-small" id="valid-<?php echo $vHost['name'];?>">&nbsp;&nbsp;&nbsp;</td>
-										<td id="href-<?php echo $vHost['name'];?>"><?php echo $filler;?></td>
+										<td style="min-width:60px;" class="text-xs-center text-xs-small" id="valid-<?php echo $vHost['name'];?>"></td>
+										<td style="min-width:260px;" id="href-<?php echo $vHost['name'];?>"></td>
 									</tr>
 									<input type="hidden" name="vhost[]" class="vhost" value="<?php echo $vHost['name'];?>" />
 								<?php endforeach; ?>
@@ -64,6 +59,60 @@
 					<?php endif;?>
 				</div>
 			</div>
+
+			<?php
+			$cmd="netstat -wneeplt 2>/dev/null | sort | grep '\s1000\s' | awk '{print \"app=\"\$9\"|addr=\"\$4}' | sed 's/\(app=\)\([0-9]*\/\)/\\1/g' | sed 's/\(.*\)\(:[0-9][0-9]*\)/\\1|port=\\2/g' | sed 's/port=:/port=/g'";
+			$output=loadClass('Helper')->exec($cmd);
+			$daemons = array();
+			foreach (preg_split("/((\r?\n)|(\r\n?))/", $output) as $line) {
+				$section = preg_split("/\|/", $line);
+				if (count($section) == 3) {
+					$tool = preg_split("/=/", $section[0]);
+					$addr = preg_split("/=/", $section[1]);
+					$port = preg_split("/=/", $section[2]);
+					$tool = $tool[1];
+					$addr = $addr[1];
+					$port = $port[1];
+					$daemons[] = array(
+						'tool' => $tool,
+						'addr' => $addr,
+						'port' => $port
+					);
+				}
+			}
+			?>
+			<?php if (count($daemons)): ?>
+			<br/>
+			<br/>
+			<div class="row">
+				<div class="col-md-12">
+
+					<h2>Local listening daemons</h2>
+					<table class="table table-striped">
+						<thead class="thead-inverse">
+							<tr>
+								<th>Application</th>
+								<th>Listen Address</th>
+								<th>Listen Port</th>
+								<th>Host</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach ($daemons as $daemon): ?>
+								<tr>
+									<td><?php echo $daemon['tool']; ?></td>
+									<td><?php echo $daemon['addr']; ?></td>
+									<td><?php echo $daemon['port']; ?></td>
+									<td>php (172.16.238.10)</td>
+								</tr>
+							<?php endforeach; ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<?php endif; ?>
+
+
 
 		</div><!-- /.container -->
 
@@ -83,7 +132,7 @@
 					var el_valid;
 					var el_href;
 
-					if (this.readyState == 4 && this.status == 200) {
+					if (this.readyState == 4 && this.status == 200 || this.status == 426) {
 						el_valid = document.getElementById('valid-' + vhost);
 						el_href = document.getElementById('href-' + vhost);
 						error = this.responseText;
@@ -129,13 +178,14 @@
 					var el_href = document.getElementById('href-' + vhost);
 					var error = this.responseText;
 
-					if (this.readyState == 4 && this.status == 200) {
+					if (this.readyState == 4 && (this.status == 200 || this.status == 426)) {
 						clearTimeout(xmlHttpTimeout);
 						el_valid.className += ' bg-success';
 						if (el_valid.innerHTML != 'WARN') {
 							el_valid.innerHTML = 'OK';
 						}
-						el_href.innerHTML = '<a target="_blank" href="'+proto+'//'+name+port+'">'+name+port+'</a>' + el_href.innerHTML;
+						//el_href.innerHTML = '(<a target="_blank" href="'+proto+'//localhost/devilbox-project/'+name+'">ext</a>) <a target="_blank" href="'+proto+'//'+name+port+'">'+name+port+'</a>' + el_href.innerHTML;
+						el_href.innerHTML = '<a target="_blank" href="'+proto+'//'+name+port+'">'+name+port+'</a>';
 					} else {
 						//console.log(vhost);
 					}
