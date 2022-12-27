@@ -6,7 +6,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
-## Release v3.0.0-beta-0.2 (2022-12-26)
+## Release v3.0.0-beta-0.2 (2022-12-27)
 
 The Backend configuration now supports websockets as well:
 
