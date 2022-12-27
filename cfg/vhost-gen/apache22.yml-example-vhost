@@ -40,9 +40,22 @@
 #    __PHP_PORT__
 #
 
+###
+### Notes about Apache
+###
+
+#
+# 1. Each same directive is checked in order of definition (last one wins)
+# 2. Directives are ordered: Directory, DirectoryMatch, Files, and finally Location (last one wins)
+#   * Last match always takes precedence
+#
+# Exception: Directories, where shortest path is matched first
+# Exception: ProxyPass and Alias first match and then stops
 
 ###
 ### Basic vHost skeleton
+###
+### Note: Reverse Proxy section must be last for Apache 2.2
 ###
 vhost: |
   <VirtualHost __DEFAULT_VHOST__:__PORT__>
@@ -57,10 +70,10 @@ vhost: |
   __PHP_FPM__
   __ALIASES__
   __DENIES__
-  __VHOST_RPROXY__
   __SERVER_STATUS__
       # Custom directives
   __CUSTOM__
+  __VHOST_RPROXY__
   </VirtualHost>
 
 ###
@@ -86,28 +99,36 @@ vhost_type:
 
   # Reverse Proxy (-r http(s)://ADDR:PORT)
   rproxy: |
-    # Define Reverse Proxy
+    # ProxyRequests:     Disable "Forward Proxy"
+    # ProxyPreserveHost: Pass "Host" header to remote
+    # ProxyVia:          Add "Via" header
     ProxyRequests     Off
     ProxyPreserveHost On
-    ProxyPass         __LOCATION__ __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT__/ retry=0
-    ProxyPassReverse  __LOCATION__ __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT__/
+    ProxyVia          On
+    <Location __LOCATION__>
+        # Reverse Proxy
+        ProxyPass         __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT__/ retry=0
+        ProxyPassReverse  __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT__/
+    </Location>
 
   # Reverse Proxy with websocket support (-r ws(s)://ADDR:PORT)
   rproxy_ws: |
-    # Define Reverse Proxy with Websock support
+    # ProxyRequests:     Disable "Forward Proxy"
+    # ProxyPreserveHost: Pass "Host" header to remote
+    # ProxyVia:          Add "Via" header
     ProxyRequests     Off
     ProxyPreserveHost On
-    <location __LOCATION__>
+    ProxyVia          On
+    <Location __LOCATION__>
         # Websocket Rewrite Settings
         RewriteEngine On
         RewriteCond %{HTTP:Connection} Upgrade   [NC]
         RewriteCond %{HTTP:Upgrade}    websocket [NC]
         RewriteRule ^/?(.*)$ __WS_PROTO__://__PROXY_ADDR__:__PROXY_PORT__/$1 [P,L]
-
-        # Reverse Proxy Settings
+        # Reverse Proxy
         ProxyPass         __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT__/ retry=0
         ProxyPassReverse  __PROXY_PROTO__://__PROXY_ADDR__:__PROXY_PORT__/
-    </location>
+    </Location>
 
 
 ###
@@ -147,10 +168,10 @@ features:
 
   deny: |
     # Deny Definition
-    <FilesMatch "__REGEX__">
+    <LocationMatch "__REGEX__">
         Order allow,deny
         Deny from all
-    </FilesMatch>
+    </LocationMatch>
 
   server_status: |
     # Status Page
