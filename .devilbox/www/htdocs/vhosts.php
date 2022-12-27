@@ -31,13 +31,6 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php
-									$totals = 0;
-									$filler = '&nbsp;';
-									for ($i=0; $i<$totals; $i++) {
-										$filler = $filler. '&nbsp;';
-									}
-								?>
 								<?php foreach ($vHosts as $vHost): ?>
 									<tr>
 										<td><?php echo $vHost['name'];?></td>
@@ -46,11 +39,13 @@
 										<td>
 											<a title="Virtual host: <?php echo $vHost['name'];?>.conf" target="_blank" href="/vhost.d/<?php echo $vHost['name'];?>.conf"><i class="fa fa-cog" aria-hidden="true"></i></a>
 											<?php if (($vhostGen = loadClass('Httpd')->getVhostgenTemplatePath($vHost['name'])) !== false): ?>
-												<a title="vhost-gen: <?php echo basename($vhostGen);?> for <?php echo $vHost['name'];?>" href="/info_vhostgen.php?name=<?php echo $vHost['name'];?>"><i class="fa fa-filter" aria-hidden="true"></i></a>
+												<a title="vhost-gen: <?php echo basename($vhostGen);?> for <?php echo $vHost['name'];?>" href="/info_vhostgen.php?name=<?php echo $vHost['name'];?>">
+													<i class="fa fa-filter" aria-hidden="true"></i>
+												</a>
 											<?php endif; ?>
 										</td>
-										<td class="text-xs-center text-xs-small" id="valid-<?php echo $vHost['name'];?>">&nbsp;&nbsp;&nbsp;</td>
-										<td id="href-<?php echo $vHost['name'];?>"><?php echo $filler;?></td>
+										<td style="min-width:60px;" class="text-xs-center text-xs-small" id="valid-<?php echo $vHost['name'];?>"></td>
+										<td style="min-width:260px;" id="href-<?php echo $vHost['name'];?>"></td>
 									</tr>
 									<input type="hidden" name="vhost[]" class="vhost" value="<?php echo $vHost['name'];?>" />
 								<?php endforeach; ?>
@@ -135,7 +130,8 @@
 						if (el_valid.innerHTML != 'WARN') {
 							el_valid.innerHTML = 'OK';
 						}
-						el_href.innerHTML = '<a target="_blank" href="'+proto+'//'+name+port+'">'+name+port+'</a>' + el_href.innerHTML;
+						//el_href.innerHTML = '(<a target="_blank" href="'+proto+'//localhost/devilbox-project/'+name+'">ext</a>) <a target="_blank" href="'+proto+'//'+name+port+'">'+name+port+'</a>' + el_href.innerHTML;
+						el_href.innerHTML = '<a target="_blank" href="'+proto+'//'+name+port+'">'+name+port+'</a>';
 					} else {
 						//console.log(vhost);
 					}
