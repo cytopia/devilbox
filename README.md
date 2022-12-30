@@ -18,9 +18,9 @@
 [![Release](https://img.shields.io/github/release/cytopia/devilbox.svg?colorB=orange)](https://github.com/cytopia/devilbox/releases)
 [![Discord](https://img.shields.io/discord/1051541389256704091?color=8c9eff&label=Discord&logo=discord)](https://discord.gg/2wP3V6kBj4)
 [![Discourse](https://img.shields.io/discourse/https/devilbox.discourse.group/status.svg?colorB=%234CB697&label=Discourse&logo=discourse)](https://devilbox.discourse.group)
-[![type](https://img.shields.io/badge/type-Docker-blue.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-MIT-%233DA639.svg)](https://opensource.org/licenses/MIT)
 
+<!--
 [![Documentation Status](https://readthedocs.org/projects/devilbox/badge/?version=latest)](https://devilbox.readthedocs.io)
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Lint/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Lint)
 [![Build Status](https://github.com/cytopia/devilbox/workflows/Docs/badge.svg)](https://github.com/cytopia/devilbox/actions?workflow=Docs)
@@ -32,39 +32,336 @@
 [![Mongo](https://github.com/cytopia/devilbox/actions/workflows/test-mongo.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-mongo.yml)
 [![PgSQL](https://github.com/cytopia/devilbox/actions/workflows/test-pgsql.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-pgsql.yml)
 [![Redis](https://github.com/cytopia/devilbox/actions/workflows/test-redis.yml/badge.svg)](https://github.com/cytopia/devilbox/actions/workflows/test-redis.yml)
-
-**Available Architectures:**  `amd64`, `arm64`
-
+-->
+<!--
 <img width="200" style="width:200px;" src="docs/_includes/figures/https/https-ssl-address-bar.png" /><br/>
 <small><sub>Support for <a href="https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html">valid https</a> out of the box.</sub></small>
+-->
 
-The Devilbox is a modern and highly customisable **dockerized PHP stack** supporting full **LAMP**
-and **MEAN** and running on all major platforms.  The main goal is to easily switch and combine
-any version required for local development. It supports an **unlimited number of projects** for
-which **vhosts**, **SSL certificates** and **DNS records** are created automatically.
-**Reverse proxies** per project are supported to ensure listening server such as NodeJS can also be reached.
-Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
+The Devilbox is a versatile and highly customisable zero-conf PHP Docker stack supporting **LEMP** and **MEAN** as well as **Websockets**, **Node**, **Python** and **Golang** via automated Reverse Proxy integraton.
 
-Furthermore, the Devilbox provides an **identical** and **reproducible development environment** for different host operating systems.
+The main goal is to provide a reproducible development environment that runs on all major platforms and is able to switch and combine any version required for your projects.
+It supports an **unlimited number of projects** for which **vhosts**, **SSL certificates** and **DNS records** are created automatically.
+Email interception and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
 
-**Requirements**
+All created projects (frontend or backend) will be able to communicate with one another to support the emulation of a complete microservice architecture or an API landscape.
+
+**Available Architectures:** `amd64`, `arm64`<br/>
+**Available PHP Versions:** `5.2`, `5.3`, `5.4`, `5.5`, `5.6`, `7.0`, `7.1`, `7.2`, `7.3`, `7.4`, `8.0`, `8.1`, `8.2`
+
+
+
+## 🚀 Quickstart
+
+<details><summary>❗ System Requirements</summary>
+<br/>
+The Devilbox runs on all major operating systems and its only requirement is <code>Docker</code> and <code>Docker Compose</code>:<br/><br/>
 
 ![Linux](https://raw.githubusercontent.com/cytopia/icons/master/64x64/linux.png)
 ![OSX](https://raw.githubusercontent.com/cytopia/icons/master/64x64/osx.png)
 ![Windows](https://raw.githubusercontent.com/cytopia/icons/master/64x64/windows.png)
 ![Plus](https://raw.githubusercontent.com/cytopia/icons/master/64x64/plus.png)
 ![Docker](https://raw.githubusercontent.com/cytopia/icons/master/64x64/docker.png)
+<br/>
 
 * [Docker Engine 17.06.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-23)
 * [Docker Compose 1.16.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-23)
+</details>
 
-## Architecture
+<br/>
+Be up and running in 2 minutes.
+<details style="margin-bottom:0px !important;"><summary>🚀 Install and Run: Linux</summary>
 
-#### Available Stacks
+<h3>Linux: Install</h3>
 
-The Devilbox aims to be a swiss army knife for local development by providing you all the services
-you would ever need. To get an idea about the architecture behind it and to also see what's available
-have a look at the following diagrams and tables.
+1. Download the Devilbox
+   ```bash
+   git clone https://github.com/cytopia/devilbox
+   ```
+2. Enter the Devilbox git directory
+   ```bash
+   cd devilbox
+   ```
+3. Copy the default environment file
+   ```bash
+   cp env-example .env
+   ```
+
+<h3>Linux: Run</h3>
+
+> <strong>:warning: Important: </strong> Ensure that nothing is listening on port <code>80</code> and <code>443</code> on your host system. These ports are required by the Devilbox webserver.
+
+<br/>
+
+1. Start `httpd`, `php` and `mysql` container
+   ```bash
+   # This step may take a few minutes as required
+   # Docker images have to be pulled initially.
+
+   # Inside the Devilbox git directory
+   docker-compose up httpd php mysql
+   ```
+2. Visit http://localhost in your browser
+
+<br/>
+</details>
+
+
+<details><summary>🚀 Install and Run: MacOS</summary>
+
+<h3>MacOS: Install</h3>
+
+1. Download the Devilbox
+   ```bash
+   git clone https://github.com/cytopia/devilbox
+   ```
+2. Enter the Devilbox git directory
+   ```bash
+   cd devilbox
+   ```
+3. Copy the default environment file
+   ```bash
+   cp env-example .env
+   ```
+
+<h3>MacOS: Run</h3>
+
+> <strong>:warning: Important: </strong> Ensure that nothing is listening on port <code>80</code> and <code>443</code> on your host system. These ports are required by the Devilbox webserver.
+
+<br/>
+
+1. Start `httpd`, `php` and `mysql` container
+   ```bash
+   # This step may take a few minutes as required
+   # Docker images have to be pulled initially.
+
+   # Inside the Devilbox git directory
+   docker-compose up httpd php mysql
+   ```
+2. Visit http://localhost in your browser
+
+<br/>
+</details>
+
+
+<details><summary>🚀 Install and Run: Windows</summary>
+<br/>
+<strong>Note: </strong> If you are using <code>WSL2</code>, refer to the Linux guide instead.
+<br/>
+
+<h3>Windows: Install</h3>
+
+1. Clone <code>https://github.com/cytopia/devilbox</code> to <code>C:\devilbox</code> with <a href="https://git-scm.com/downloads">Git for Windows</a>
+2. Copy <code>C:\devilbox\env-example</code> to <code>C:\devilbox\.env</code>
+
+
+<h3>Windows: Run</h3>
+
+> <strong>:warning: Important: </strong> Ensure that nothing is listening on port <code>80</code> and <code>443</code> on your host system. These ports are required by the Devilbox webserver.
+
+<a href="https://devilbox.readthedocs.io/en/latest/howto/terminal/open-terminal-on-win.html">Open a terminal on Windows</a> and start `httpd`, `php` and `mysql` container:
+<br/>
+
+1. Start `httpd`, `php` and `mysql` container
+   ```bash
+   # This step may take a few minutes as required
+   # Docker images have to be pulled initially.
+
+   # Inside the Devilbox git directory
+   docker-compose up httpd php mysql
+   ```
+2. Visit http://localhost in your browser
+
+<br/>
+</details>
+
+
+<details><summary>💻 Enter the work container</summary>
+<h3>Enter the work container</h3>
+
+The Devilbox allows you to work on your projects on the host system as well as inside the work container. Your project files will be available at both locations. The workflow ususally is:
+
+1. Use your prefered IDE (e.g. PhpStorm) on your host system to add and alter files
+2. Work inside the container to run common cli tools such as `node`, `composer`, `npm`, `phpcs`, `webpack` and many more.
+
+To enter the work container, simply run `./shell.sh`
+
+1. On Linux, MacOS and Windows with WSL2
+   ```bash
+   # Inside the Devilbox git directory
+   ./shell.sh
+   ```
+2. On Windows without WSL2
+   ```bash
+   # Inside the Devilbox git directory
+   ./shell.bat
+   ```
+
+</details>
+
+
+
+## 💡 Examples
+
+Create your first project:
+<details><summary>Example: Dummy Project</summary>
+</details>
+<details><summary>Example: PHP Framework</summary>
+<p>
+
+Find all the examples in the documentation:
+
+<a target="_blank" title="How to Setup CakePHP on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-cakephp.html"><img width="48" style="width:48px" src="docs/img/logo_fw/cake.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup CodeIgniter on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-codeigniter.html"><img width="48" style="width:48px" src="docs/img/logo_fw/codeigniter.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup Contao on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-contao.html"><img width="48" style="width:48px" src="docs/img/logo_fw/contao.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup CraftCMS on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-craftcms.html"><img width="48" style="width:48px" src="docs/img/logo_fw/craftcms.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup Drupal on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-drupal.html"><img width="48" style="width:48px" src="docs/img/logo_fw/drupal.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup Joomla on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-joomla.html"><img width="48" style="width:48px" src="docs/img/logo_fw/joomla.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup Laravel on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-laravel.html"><img width="48" style="width:48px" src="docs/img/logo_fw/laravel.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup Magento 2 on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-magento2.html"><img width="48" style="width:48px" src="docs/img/logo_fw/magento.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup PhalconPHP on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-phalcon.html"><img width="48" style="width:48px" src="docs/img/logo_fw/phalcon.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup PhotonCMS on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-photon-cms.html"><img width="48" style="width:48px" src="docs/img/logo_fw/photoncms.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup PrestaShop on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-presta-shop.html"><img width="48" style="width:48px" src="docs/img/logo_fw/prestashop.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup ProcessWire on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-processwire.html"><img width="48" style="width:48px" src="docs/img/logo_fw/processwire.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup Shopware on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-shopware.html"><img width="48" style="width:48px" src="docs/img/logo_fw/shopware.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup Symfony on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-symfony.html"><img width="48" style="width:48px" src="docs/img/logo_fw/symfony.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup Typo3 on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-typo3.html"><img width="48" style="width:48px" src="docs/img/logo_fw/typo3.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup WordPress on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-wordpress.html"><img width="48" style="width:48px" src="docs/img/logo_fw/wordpress.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup Yii on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-yii.html"><img width="48" style="width:48px" src="docs/img/logo_fw/yii.png" alt="Devilbox"/></a>
+<a target="_blank" title="How to Setup Zend on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-zend.html"><img width="48" style="width:48px" src="docs/img/logo_fw/zend.png" alt="Devilbox"/></a>
+
+</p>
+</details>
+
+
+
+## :star: Features
+
+The Devilbox tries to be a zero-configuration stack out of the box and has automated all the boring tasks. Additionally it provides common feature required for everyday work.
+
+<details><summary><strong>Automated Project creation</strong> (for unlimited projects)</summary>
+  New projects are created, simply by adding a new directory (vhost, ssl, dns records are all zero-conf)
+</details>
+<details><summary><strong>Automated Reverse Proxy integration</strong></summary>
+  Each project can specify its own **`http`** or **`https`** Reverse Proxy
+</details>
+<details><summary><strong>Automated Websocket Proxy integration</strong></summary>
+  Each project can specify its own **`ws`** or **`wss`** Websocket Reverse Proxy
+</details>
+<details><summary><strong>Automated valid Browser HTTPS</strong></summary>
+  HTTPS vhosts certs are created automatically and signed by bundled CA, which needs to be imported once
+</details>
+<details><summary><strong>Automated DNS</strong></summary>
+  The bundled DNS server ensures that DNS records are always available for each project (zero-conf)
+</details>
+<details><summary><strong>Unlimited Projects</strong></summary>
+  You can have as many projects as you want
+</details>
+<details><summary><strong>Different PHP versions per Project</strong></summary>
+  Each project can be run with a different PHP version
+</details>
+<details><summary><strong>Different Remote Backends per Project</strong> (Node, Python, Golang, etc)</summary>
+  Each project can be powered by a different Remote Backend (e.g. **Node**, **Golang**, **Python**, etc)
+</details>
+<details><summary><strong>Custom Project Domains</strong></summary>
+  Choose any development domain you desire: `.loc`, `.local`, `.dev` or even real domains `.example.com`
+</details>
+<details><summary><strong>Inter-Project communication</strong></summary>
+  Each project can communicate with any other project (e.g.: Make API requests like in a microservice landscape)
+</details>
+<details><summary><strong>Email Interceptor</strong></summary>
+  All outbound emails are intercepted and shown in the Intranet to not accidentally reach real domains
+</details>
+<details><summary><strong>Profiling and Debugging</strong></summary>
+  Xdebug and other profiling tools are available by default.
+</details>
+<details><summary><strong>Devilbox Intranet</strong></summary>
+  Devilbox Intranet shows the currently applied stack, projects, emails, configuration and customizations.
+  It Bundles Adminer, phpMyAdmin, phpPgAdmin, phpRedmin, phpMemcached OPCache Gui and many more
+</details>
+<details><summary><strong>Self-validation and full customization</strong></summary>
+</details>
+<details><summary><strong>File ownership and permission sync</strong></summary>
+</details>
+<details><summary><strong>Extendable with custom docker images</strong></summary>
+</details>
+<details><summary><strong>All major developer tools included</strong></summary>
+</details>
+<details><summary><strong>All major frameworks supported</strong></summary>
+</details>
+
+
+
+<h2><img id="the-devilbox-stack" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> The Devilbox Stack</h2>
+
+The Devilbox aims to be a swiss army knife for local development by providing you all the services you would ever need. To get an idea about the architecture behind it and to also see what's available have a look at its components and usage.
+
+<details style="margin-bottom: 0px !important;"><summary><h3>💻 Modes of operation</h3></summary>
+
+You can startup and operate the Devilbox in three different ways via `docker-compose`:
+
+1. Selective startup
+2. On Demand (add/remove container while running)
+3. Full startup
+
+#### Selective startup
+
+If you already know what kind of container you need before starting the Devilbox, you can just specify them explicitly.
+
+```bash
+# Inside the Devilbox git directory start httpd php mysql and redis
+docker-compose up httpd php mysql redis
+```
+
+The Intranet will show you what container you have currently running:
+
+![Devilbox](docs/img/devilbox-dash-selective.png)
+
+
+#### On Demand
+
+If the Devilbox is already started you can attach more container on-the-fly,
+
+```bash
+# Inside the Devilbox git directory attach mongo and memcached
+docker-compose up mongo memcd
+```
+
+You can also shut down specific containers that you do not need
+
+```bash
+# Inside the Devilbox git directory shutdown redis
+docker-compose stop redis
+```
+
+#### Full startup
+
+If you just want to start everything, run `docker-compose up` without any arguments
+
+```bash
+# Inside the Devilbox git directory start them all
+docker-compose up
+```
+
+The Intranet will show you what container you have currently running:
+
+![Devilbox](docs/_includes/figures/devilbox/devilbox-intranet-dash-all.png)
+
+If you prefer a visual guide, have a look at the two introduction videos on Youtube:
+<br/>
+<br/>
+<a target="_blank" title="Devilbox - Setup and Workflow" href="https://www.youtube.com/watch?v=reyZMyt2Zzo"><img title="Devilbox - Setup and Workflow" src="docs/img/devilbox_01-setup-and-workflow.png" /></a>
+<a target="_blank" title="Devilbox - Email Interception" href="https://www.youtube.com/watch?v=e-U-C5WhxGY"><img title="Devilbox - Email Interception" src="docs/img/devilbox_02-email-catch-all.png" /></a>
+
+> **Documentation:**
+> [Install the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/install-the-devilbox.html) |
+> [Start the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html) |
+> [.env file](https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html)
+
+</details>
+
+
+<details style="margin-bottom: 0px;"><summary><h3>👷 Architecture</h3></summary>
 
 <table width="100%" style="width:100%;display:table">
  <tr>
@@ -86,10 +383,10 @@ have a look at the following diagrams and tables.
   </td>
  </tr>
 </table>
+</details>
 
-> [Devilbox artwork](https://github.com/devilbox/artwork)
 
-#### Available Container
+<details style="margin-bottom: 0px;"><summary><h3>🐋 Available Container</h3></summary>
 
 The following table lists all integrated and pre-configured Docker container shipped by the Devilbox.
 Only the webserver and PHP container are mandatory, all others are optional and don't need to be started.
@@ -103,116 +400,19 @@ Each of them is also available in multiple different versions in order to reflec
 |         |            |                | PerconaDB  | Redis     |                | Kibana        | MailHog   |
 |         |            |                | PostgreSQL |           |                |               | Ngrok     |
 
+<br/>
+
 > **Documentation:**
 > [Available Container](https://devilbox.readthedocs.io/en/latest/readings/available-container.html)
 
-## Community
+</details>
 
-The Devilbox has a lot of features reaching from a simple single-user development environment that
-works out of the box up to a shared development infrastructure for a corporate network.
 
-In order to be aware about all that features, ensure to have skimmed over the
-**[documentation](https://devilbox.readthedocs.io)**, so you know what can be done and how that might
-simplify your every-day life. If you ever run into any unforseen issues, feel free to join the
-**[Discord chat](https://discord.gg/2wP3V6kBj4)** or visit the **[forums](https://devilbox.discourse.group)** and get community support quickly.
-
-<table width="100%" style="width:100%; display:table;">
- <thead>
-  <tr>
-   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://devilbox.readthedocs.io">📘 Docs</a></h3></th>
-   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://discord.gg/2wP3V6kBj4">🎮 Discord</a></h3></th>
-   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://devilbox.discourse.group">🗪 Forum</a></h3></th>
-   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://github.com/devilbox/flames">🔥 Flames</a></h3></th>
-  </tr>
- </thead>
- <tbody style="vertical-align: middle; text-align: center;">
-  <tr>
-   <td>
-    <a target="_blank" href="https://devilbox.readthedocs.io">
-     <img title="Documentation" name="Documentation" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/readthedocs.png" />
-    </a>
-   </td>
-   <td>
-    <a target="_blank" href="https://discord.gg/2wP3V6kBj4">
-     <img title="Chat on Discord" name="Chat on Discord" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discord.png" />
-    </a>
-   </td>
-   <td>
-    <a target="_blank" href="https://devilbox.discourse.group">
-     <img title="Devilbox Forums" name="Forum" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discourse.png" />
-    </a>
-   </td>
-   <td>
-    <a target="_blank" href="https://github.com/devilbox/flames">
-     <img title="Devilbox Flames" name="Flames" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/flames2.png" />
-    </a>
-   </td>
-  </tr>
-  <tr>
-  <td><a target="_blank" href="https://devilbox.readthedocs.io">devilbox.readthedocs.io</a></td>
-  <td><a target="_blank" href="https://discord.gg/2wP3V6kBj4">discord/devilbox</a></td>
-  <td><a target="_blank" href="https://devilbox.discourse.group">devilbox.discourse.group</a></td>
-  <td><a target="_blank" href="https://github.com/devilbox/flames">github.com/devilbox/flames</a></td>
-  </tr>
- </tbody>
-</table>
-
-## Usage
-
-#### Quick start
-
-<table width="100%" style="width:100%; display:table;">
- <thead>
-  <tr>
-   <th width="50%" style="width:50%;">Linux and MacOS</th>
-   <th width="50%" style="width:50%;">Windows</th>
-  </tr>
- </thead>
- <tbody style="vertical-align: bottom;">
-  <tr>
-   <td>
-<div class="highlight highlight-source-shell"><pre># Get the Devilbox
-git clone https://github.com/cytopia/devilbox</pre></div>
-<div class="highlight highlight-source-shell"><pre># Create docker-compose environment file
-cd devilbox
-cp env-example .env</pre></div>
-<div class="highlight highlight-source-shell"><pre># Edit your configuration
-vim .env</pre></div>
-<div class="highlight highlight-source-shell"><pre># Start all container
-docker-compose up</pre></div>
-   </td>
-   <td>
-    1. Clone <code>https://github.com/cytopia/devilbox</code> to <code>C:\devilbox</code> with <a href="https://git-scm.com/downloads">Git for Windows</a><br/><br/>
-    2. Copy <code>C:\devilbox\env-example</code> to <code>C:\devilbox\.env</code><br/><br/>
-    3. Edit <code>C:\devilbox\.env</code><br/><br/>
-    4. <a href="https://devilbox.readthedocs.io/en/latest/howto/terminal/open-terminal-on-win.html">Open a terminal on Windows</a> and type:<br/><br/><br/>
-    <pre># Start all container
-C:\devilbox> docker-compose up</pre></div>
-   </td>
-  </tr>
- </tbody>
-</table>
-
-> **Documentation:**
-> [Install the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/install-the-devilbox.html) |
-> [Start the Devilbox](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html) |
-> [.env file](https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html)
-
-#### Selective start
-
-The above will start all containers, you can however also just start the containers you actually need. This is achieved by simply specifying them in the docker-compose command.
-
-```bash
-docker-compose up httpd php mysql redis
-```
-> **Documentation:**
-> [Start only some container](https://devilbox.readthedocs.io/en/latest/getting-started/start-the-devilbox.html#start-some-container)
-
-![Devilbox](docs/img/devilbox-dash-selective.png)
-
-#### Run different versions
+<details style="margin-bottom: 0px;"><summary><h3>📌 Version Matrix</h3></summary>
 
 Every single attachable container comes with many different versions. In order to select the desired version for a container, simply edit the `.env` file and uncomment the version of choice. Any combination is possible.
+
+#### Run different versions
 
 <table>
   <thead>
@@ -389,6 +589,7 @@ Every single attachable container comes with many different versions. In order t
   </tbody>
 </table>
 
+<br/>
 <small><strong><sup>[1]</sup></strong> <strong>PHP 5.2</strong> is available to use, but it is not officially supported. The Devilbox intranet does not work with this version as PHP 5.2 does not support namespaces. Furthermore PHP 5.2 does only work with Apache 2.4, Nginx stable and Nginx mainline. It does not work with Apache 2.2. Use at your own risk.</small>
 
 <!-- <small><strong><sup>[2]</sup></strong> <strong>PHP 8.2</strong> is an upcoming unreleased versions of PHP, which is directly built out of their [official git branches](https://github.com/php/php-src/) every night to assure you will leverage their latest features.</small> -->
@@ -462,269 +663,23 @@ Additionally to the default stack, there are a variety of other services that ca
  </tbody>
 </table>
 
+<br/>
+
 > **Documentation:**
 > [Enable custom container](https://devilbox.readthedocs.io/en/latest/custom-container/enable-all-container.html)
 
-#### Enter the container
+</details>
 
-You can also work directly inside the php container. Simply use the bundled scripts `shell.sh` (or `shell.bat` for Windows).
-The `PS1` will automatically be populated with current chosen php version.
-Navigate the the Devilbox directory and type the below listed command:
 
-<table width="100%" style="width:100%; display:table;">
- <thead>
-  <tr>
-   <th width="50%" style="width:33%;">Linux and MacOS</th>
-   <th width="50%" style="width:33%;">Windows</th>
-  </tr>
- </thead>
- <tbody style="vertical-align: bottom;">
-  <tr>
-   <td>
-<div class="highlight highlight-source-shell"><pre>host> ./shell.sh
-devilbox@php-7.0.19 in /shared/httpd $</pre></div>
-   </td>
-   <td>
-<div class="highlight highlight-source-shell"><pre>C:\devilbox> shell.bat
-devilbox@php-7.0.19 in /shared/httpd $</pre></div>
-   </td>
-  </tr>
- </tbody>
-</table>
-
-Your projects can be found in `/shared/httpd`. DNS records are automatically available inside the php container. Also every other service will be available on `127.0.0.1` inside the php container (tricky socat port-forwarding).
-
-> **Documentation:**
-> [Work inside the PHP container](https://devilbox.readthedocs.io/en/latest/intermediate/work-inside-the-php-container.html) |
-> [Directory overview](https://devilbox.readthedocs.io/en/latest/getting-started/directory-overview.html)
-
-#### Quick Video intro
-
-[![Devilbox setup and workflow](docs/img/devilbox_01-setup-and-workflow.png "devilbox - setup and workflow")](https://www.youtube.com/watch?v=reyZMyt2Zzo)
-[![Devilbox email catch-all](docs/img/devilbox_02-email-catch-all.png "devilbox - email catch-all")](https://www.youtube.com/watch?v=e-U-C5WhxGY)
-
-## Feature overview
-
-The Devilbox has everything setup for you. The only thing you will have to install is [Docker](https://docs.docker.com/engine/installation/) and [Docker Compose](https://docs.docker.com/compose/install/). Virtual hosts and DNS entries will be created automatically, just by adding new project folders.
-
-> **Documentation:**
-> [Devilbox Prerequisites](https://devilbox.readthedocs.io/en/latest/getting-started/prerequisites.html)
-
-#### Features
-
-<table>
-<tbody>
-  <tr>
-    <td width="220" style="width:220px;">:star: HTTPS support</td>
-    <td>HTTPS is available by default for all projects and the bundled Intranet.</td>
-  </tr>
-  <tr>
-    <td>:star: HTTP/2 support</td>
-    <td>All HTTPS connections will offer <a href="https://en.wikipedia.org/wiki/HTTP/2">HTTP/2</a> as the default protocol, except for Apache 2.2 which does not support it.</td>
-  </tr>
-  <tr>
-    <td>:star: Auto virtual hosts</td>
-    <td>New virtual hosts are created automatically and instantly whenever you add a project directory. This is done internally via <a href="https://github.com/devilbox/vhost-gen">vhost-gen</a> and <a href="https://github.com/devilbox/watcherd">watcherd</a>.</td>
-  </tr>
-  <tr>
-    <td>:star: Automated SSL certs</td>
-    <td>Valid SSL certificates for HTTPS are automatically created for each vhost and signed by the Devilbox CA.</td>
-  </tr>
-  <tr>
-    <td>:star: Unlimited vhosts</td>
-    <td>Run as many projects as you need with a single instance of the Devilbox.</td>
-  </tr>
-  <tr>
-    <td>:star: Custom vhosts</td>
-    <td>You can overwrite and customise the default applied vhost configuration for every single vhost.</td>
-  </tr>
-  <tr>
-    <td>:star: Reverse proxy</td>
-    <td>Have your NodeJS application served with a nice domain name and valid HTTPS.</td>
-  </tr>
-  <tr>
-    <td>:star: Custom domains</td>
-    <td>Choose whatever development domain you desire: <code>*.loc</code>, <code>*.dev</code> or use real domains as well: <code>*.example.com</code></td>
-  </tr>
-  <tr>
-    <td>:star: Auto DNS</td>
-    <td>An integrated BIND server is able to create DNS entries automatically for your chosen domains.</td>
-  </tr>
-  <tr>
-    <td>:star: Auto start scripts</td>
-    <td>Custom startup scripts can be provided for all PHP container equally and also differently per PHP version to install custom software or automatically startup up your required tools.</td>
-  </tr>
-  <tr>
-    <td>:star: Custom PHP config</td>
-    <td>Overwrite any setting for PHP.</td>
-  </tr>
-  <tr>
-    <td>:star: Email catch-all</td>
-    <td>All outgoing emails are catched and will be presented in the included intranet.</td>
-  </tr>
-  <tr>
-    <td>:star: Self-validation</td>
-    <td>Projects and configuration options are validated and marked in the intranet.</td>
-  </tr>
-  <tr>
-    <td>:star: Xdebug</td>
-    <td>Xdebug and a full blown PHP-FPM server is ready to serve.</td>
-  </tr>
-  <tr>
-    <td>:star: Devilbox Flames</td>
-    <td>Devilbox community plugins a.k.a. Devilbox Flames.</td>
-  </tr>
-  <tr>
-    <td>:star: Many more</td>
-    <td>See Documentation for all available features.</td>
-  </tr>
-</tbody>
-</table>
-
-> **Documentation:**
-> [Setup Auto DNS](https://devilbox.readthedocs.io/en/latest/intermediate/setup-auto-dns.html) |
-> [Setup valid HTTPS](https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html) |
-> [Configure Xdebug](https://devilbox.readthedocs.io/en/latest/intermediate/configure-php-xdebug.html) |
-> [Customize PHP](https://devilbox.readthedocs.io/en/latest/advanced/customize-php-globally.html)
-
-#### Batteries
-
-The following batteries are available in the Devilbox intranet by default:
-
-<table width="100%" style="width:100%; display:table;">
-<tbody style="text-align:center;">
- <tr>
-  <td><a href="https://www.adminer.org"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/adminer.png" alt="Adminer" /></a></td>
-  <td><a href="https://www.phpmyadmin.net"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phpmyadmin.png" alt="phpMyAdmin" /></a></td>
-  <td><a href="http://phppgadmin.sourceforge.net"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phppgadmin.png" alt="phpPgAdmin" /></a></td>
-  <td><a href="https://github.com/sasanrose/phpredmin"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phpredmin.png" alt="phpRedMin" /></a></td>
-  <td><a href="https://github.com/elijaa/phpmemcachedadmin"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phpmemcachedadmin.png" alt="PHPMemcachedAdmin" /></a></td>
-  <td><a href="https://github.com/PeeHaa/OpCacheGUI"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/opcachegui.png" alt="OpCacheGUI" /></a></td>
-  <td><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/email.png" alt="Mail viewer" /></td>
- </tr>
- <tr>
-  <td><a href="https://www.adminer.org">Adminer</a></td>
-  <td><a href="https://www.phpmyadmin.net">phpMyAdmin</a></td>
-  <td><a href="http://phppgadmin.sourceforge.net">phpPgAdmin</a></td>
-  <td><a href="https://github.com/sasanrose/phpredmin">phpRedMin</a></td>
-  <td><a href="https://github.com/elijaa/phpmemcachedadmin">PHP Memcached Admin</a></td>
-  <td><a href="https://github.com/PeeHaa/OpCacheGUI">OpCache GUI</a></td>
-  <td>Mail viewer</td>
- </tr>
-</tbody>
-</table>
-
-> **Documentation:**
-> [Devilbox Intranet](https://devilbox.readthedocs.io/en/latest/getting-started/devilbox-intranet.html)
-
-#### Tools
-
-The following tools will assist you on creating new projects easily as well as helping you check your code against guidelines.
-
-<table>
-<tbody>
-  <tr>
-    <td width="220" style="width:220px;">:wrench: <a href="https://github.com/cytopia/awesome-ci">awesome-ci</a></td>
-    <td>A set of tools for static code analysis:<br/><br/><code>file-cr</code>, <code>file-crlf</code>, <code>file-empty</code>, <code>file-nullbyte-char</code>, <code>file-trailing-newline</code>, <code>file-trailing-single-newline</code>, <code>file-trailing-space</code>, <code>file-utf8</code>, <code>file-utf8-bom</code>, <code>git-conflicts</code>, <code>git-ignored</code>, <code>inline-css</code>, <code>inline-js</code>, <code>regex-grep</code>, <code>regex-perl</code>, <code>syntax-bash</code>, <code>syntax-css</code>, <code>syntax-js</code>, <code>syntax-json</code>, <code>syntax-markdown</code>, <code>syntax-perl</code>, <code>syntax-php</code>, <code>syntax-python</code>, <code>syntax-ruby</code>, <code>syntax-scss</code>, <code>syntax-sh</code></td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/nvie/gitflow">git flow</a></td>
-    <td><code>git-flow</code> is a Git extensions to provide high-level repository operations for Vincent Driessen's branching model.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/zaach/jsonlint">json lint</a></td>
-    <td><code>jsonlint</code> is a command line linter for JSON files.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/laravel/installer">laravel installer</a></td>
-    <td><code>laravel</code> is a command line tool that lets you easily install the Laravel framework.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/cytopia/linkcheck">linkcheck</a></td>
-    <td><code>linkcheck</code> is a command line tool that searches for URLs in files (optionally limited by extension) and validates their HTTP status code.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/DavidAnson/markdownlint">markdownlint</a></td>
-    <td><code>markdownlint</code> is a markdown linter.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/markdownlint/markdownlint">mdl</a></td>
-    <td><code>mdl</code> is a markdown linter.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/phalcon/phalcon-devtools">phalcon devtools</a></td>
-    <td><code>phalcon</code> is a command line tool that lets you easily install the PhalconPHP framework.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/photoncms/installer">photon installer</a></td>
-    <td><code>photon</code> is a command line tool that lets you easily install the PhotonCMS.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/squizlabs/PHP_CodeSniffer">php code sniffer</a></td>
-    <td><code>phpcs</code> is a command line tool that tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/squizlabs/PHP_CodeSniffer">php code beautifier</a></td>
-    <td><code>phpcbf</code> is a command line tool that automatically correct coding standard violations.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">php cs fixer</a></td>
-    <td><code>php-cs-fixer</code> is a tool to automatically fix PHP Coding Standards issues.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/Unitech/pm2">pm2</a></td>
-    <td><code>pm2</code> is Node.js Production Process Manager with a built-in Load Balancer.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/stylelint/stylelint">stylelint</a></td>
-    <td><code>stylelint</code> is a css/scss linter.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/symfony/symfony-installer">symfony installer</a></td>
-    <td><code>symfony</code> is a command line tool that lets you easily install the Symfony framework.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/jonas/tig">tig</a></td>
-    <td><code>tig</code> is a text-mode interface for git.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://wp-cli.org">wp-cli</a></td>
-    <td><code>wp</code> is a command line tool that lets you easily install WordPress.</td>
-  </tr>
-  <tr>
-    <td>:wrench: <a href="https://github.com/adrienverge/yamllint">yamllint</a></td>
-    <td><code>yamllint</code> is a linter for yaml files.</td>
-  </tr>
-</tbody>
-</table>
-
-Well-known and popular tools will be at your service as well:
-
-<a target="_blank" title="CodeCeption" href="https://codeception.com/"><img width="64" style="width:64px" src="docs/img/logo_tools/codeception.png" alt="Devilbox"/></a>
-<a target="_blank" title="Composer" href="https://getcomposer.org"><img width="64" style="width:64px" src="docs/img/logo_tools/composer.png" alt="Devilbox"/></a>
-<a target="_blank" title="Drupal Console" href="https://drupalconsole.com"><img width="64" style="battery" src="docs/img/logo_tools/drupal-console.png" alt="Devilbox"/></a>
-<a target="_blank" title="ESLint" href="https://eslint.org/"><img width="64" style="width:64px;" src="docs/img/logo_tools/eslint.png" alt="Devilbox"/></a>
-<a target="_blank" title="Git" href="https://git-scm.com"><img width="64" style="width:64px;" src="docs/img/logo_tools/git.png" alt="Devilbox"/></a>
-<a target="_blank" title="Gulp" href="https://gulpjs.com/"><img width="64" style="width:64px;" src="docs/img/logo_tools/gulp.png" alt="Devilbox"/></a>
-<a target="_blank" title="Grunt" href="https://gruntjs.com/"><img width="64" style="width:64px;" src="docs/img/logo_tools/grunt.png" alt="Devilbox"/></a>
-<a target="_blank" title="mysqldump-secure" href="https://mysqldump-secure.org"><img width="64" style="width:64px;" src="docs/img/logo_tools/mysqldump-secure.png" alt="Devilbox"/></a>
-<a target="_blank" title="NodeJS" href="https://nodejs.org"><img width="64" style="width:64px;" src="docs/img/logo_tools/nodejs.png" alt="Devilbox"/></a>
-<a target="_blank" title="NPM" href="https://www.npmjs.com"><img width="64" style="width:64px;" src="docs/img/logo_tools/npm.png" alt="Devilbox"/></a>
-<a target="_blank" title="PHPUnit" href="https://phpunit.de/"><img width="64" style="width:64px;" src="docs/img/logo_tools/phpunit.png" alt="Devilbox"/></a>
-<a target="_blank" title="Sass" href="https://sass-lang.com/"><img width="64" style="width:64px;" src="docs/img/logo_tools/sass.png" alt="Devilbox"/></a>
-<a target="_blank" title="Webpack" href="https://webpack.js.org/"><img width="64" style="width:64px;" src="docs/img/logo_tools/webpack.png" alt="Devilbox"/></a>
-<a target="_blank" title="Yarn" href="https://yarnpkg.com/en/"><img width="64" style="width:64px;" src="docs/img/logo_tools/yarn.png" alt="Devilbox"/></a>
-
-> **Documentation:**
-> [Available Tools](https://devilbox.readthedocs.io/en/latest/readings/available-tools.html)
-
-#### Available PHP Modules
+<details><summary><h3>⚙️ Available PHP Extensions</h3></summary>
 
 The Devilbox is a development stack, so it is made sure that a lot of PHP modules are available out of the box in order to work with many different frameworks.
 
 > * Core enabled (cannot be disabled): **✔**
 > * Enabled (can be disabled): 🗸
 > * Available, but disabled (can be enabled): **d**
+
+<br/>
 
 <!-- modules -->
 | Modules                       | <sup>PHP 5.2</sup> | <sup>PHP 5.3</sup> | <sup>PHP 5.4</sup> | <sup>PHP 5.5</sup> | <sup>PHP 5.6</sup> | <sup>PHP 7.0</sup> | <sup>PHP 7.1</sup> | <sup>PHP 7.2</sup> | <sup>PHP 7.3</sup> | <sup>PHP 7.4</sup> | <sup>PHP 8.0</sup> | <sup>PHP 8.1</sup> | <sup>PHP 8.2</sup> |
@@ -837,14 +792,158 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <sup>zstd</sup>               |         |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 <!-- /modules -->
 
+<br/>
+
 > * Core enabled (cannot be disabled): **✔**
 > * Enabled (can be disabled): 🗸
 > * Available, but disabled (can be enabled): **d**
 
+<br/>
 PHP modules can be enabled or disabled on demand to reflect the state of your target environment.
 
 > **Documentation:**
 > [Enable/disable PHP modules](https://devilbox.readthedocs.io/en/latest/intermediate/enable-disable-php-modules.html)
+
+</details>
+
+
+<details><summary><h3>🛠️ Available Tools</h3></summary>
+
+Well-known and popular tools will be at your service:
+
+<a target="_blank" title="CodeCeption" href="https://codeception.com/"><img width="64" style="width:64px" src="docs/img/logo_tools/codeception.png" alt="Devilbox"/></a>
+<a target="_blank" title="Composer" href="https://getcomposer.org"><img width="64" style="width:64px" src="docs/img/logo_tools/composer.png" alt="Devilbox"/></a>
+<a target="_blank" title="Drupal Console" href="https://drupalconsole.com"><img width="64" style="battery" src="docs/img/logo_tools/drupal-console.png" alt="Devilbox"/></a>
+<a target="_blank" title="ESLint" href="https://eslint.org/"><img width="64" style="width:64px;" src="docs/img/logo_tools/eslint.png" alt="Devilbox"/></a>
+<a target="_blank" title="Git" href="https://git-scm.com"><img width="64" style="width:64px;" src="docs/img/logo_tools/git.png" alt="Devilbox"/></a>
+<a target="_blank" title="Gulp" href="https://gulpjs.com/"><img width="64" style="width:64px;" src="docs/img/logo_tools/gulp.png" alt="Devilbox"/></a>
+<a target="_blank" title="Grunt" href="https://gruntjs.com/"><img width="64" style="width:64px;" src="docs/img/logo_tools/grunt.png" alt="Devilbox"/></a>
+<a target="_blank" title="mysqldump-secure" href="https://mysqldump-secure.org"><img width="64" style="width:64px;" src="docs/img/logo_tools/mysqldump-secure.png" alt="Devilbox"/></a>
+<a target="_blank" title="NodeJS" href="https://nodejs.org"><img width="64" style="width:64px;" src="docs/img/logo_tools/nodejs.png" alt="Devilbox"/></a>
+<a target="_blank" title="NPM" href="https://www.npmjs.com"><img width="64" style="width:64px;" src="docs/img/logo_tools/npm.png" alt="Devilbox"/></a>
+<a target="_blank" title="PHPUnit" href="https://phpunit.de/"><img width="64" style="width:64px;" src="docs/img/logo_tools/phpunit.png" alt="Devilbox"/></a>
+<a target="_blank" title="Sass" href="https://sass-lang.com/"><img width="64" style="width:64px;" src="docs/img/logo_tools/sass.png" alt="Devilbox"/></a>
+<a target="_blank" title="Webpack" href="https://webpack.js.org/"><img width="64" style="width:64px;" src="docs/img/logo_tools/webpack.png" alt="Devilbox"/></a>
+<a target="_blank" title="Yarn" href="https://yarnpkg.com/en/"><img width="64" style="width:64px;" src="docs/img/logo_tools/yarn.png" alt="Devilbox"/></a>
+
+<!-- tools -->
+<!-- TOOLS_WORK_START -->
+
+| Tool                                       | PHP 5.2 | PHP 5.3 | PHP 5.4 | PHP 5.5 | PHP 5.6 | PHP 7.0 | PHP 7.1 | PHP 7.2 | PHP 7.3 | PHP 7.4 | PHP 8.0 | PHP 8.1 | PHP 8.2 |
+|--------------------------------------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
+| [angular-cli][lnk_angular-cli]             |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [asgardcms][lnk_asgardcms]                 |         |         |         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [awesome-ci][lnk_awesome-ci]               |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [codeception][lnk_codeception]             |         |         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [**composer**][lnk_**composer**]           |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [**corepack**][lnk_**corepack**]           |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [deployer][lnk_deployer]                   |         |         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [eslint][lnk_eslint]                       |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [git][lnk_git]                             |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [git-flow][lnk_git-flow]                   |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [grunt-cli][lnk_grunt-cli]                 |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [gulp][lnk_gulp]                           |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [jq][lnk_jq]                               |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [jsonlint][lnk_jsonlint]                   |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [laravel-installer][lnk_laravel-installer] |         |         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [laravel-lumen][lnk_laravel-lumen]         |         |         |         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [linkcheck][lnk_linkcheck]                 |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [mdl][lnk_mdl]                             |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [mdlint][lnk_mdlint]                       |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [mupdf-tools][lnk_mupdf-tools]             |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [net-tools][lnk_net-tools]                 |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [**node**][lnk_**node**]                   |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [**npm**][lnk_**npm**]                     |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [**nvm**][lnk_**nvm**]                     |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [phalcon-devtools][lnk_phalcon-devtools]   |         |         |         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |         |
+| [php-cs-fixer][lnk_php-cs-fixer]           |         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |         |
+| [phpcbf][lnk_phpcbf]                       |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [phpcs][lnk_phpcs]                         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [phpmd][lnk_phpmd]                         |         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [phpunit][lnk_phpunit]                     |         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [**pip**][lnk_**pip**]                     |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [pm2][lnk_pm2]                             |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [pwncat][lnk_pwncat]                       |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [rsync][lnk_rsync]                         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [sass][lnk_sass]                           |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [shellcheck][lnk_shellcheck]               |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [ssh][lnk_ssh]                             |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [stylelint][lnk_stylelint]                 |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [svn][lnk_svn]                             |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [symfony-cli][lnk_symfony-cli]             |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [taskfile][lnk_taskfile]                   |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [tig][lnk_tig]                             |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [vim][lnk_vim]                             |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [vue-cli][lnk_vue-cli]                     |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [webpack-cli][lnk_webpack-cli]             |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [wkhtmltopdf][lnk_wkhtmltopdf]             |         |         |         |         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [wp-cli][lnk_wp-cli]                       |         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [wscat][lnk_wscat]                         |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [yamllint][lnk_yamllint]                   |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [**yarn**][lnk_**yarn**]                   |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [yq][lnk_yq]                               |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+| [zsh][lnk_zsh]                             |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |    ✓    |
+
+[lnk_angular-cli]: ../php_tools/angular-cli
+[lnk_asgardcms]: ../php_tools/asgardcms
+[lnk_awesome-ci]: ../php_tools/awesome-ci
+[lnk_codeception]: ../php_tools/codeception
+[lnk_**composer**]: https://getcomposer.org/
+[lnk_**corepack**]: https://nodejs.org/api/corepack.html
+[lnk_deployer]: ../php_tools/deployer
+[lnk_eslint]: ../php_tools/eslint
+[lnk_git]: ../php_tools/git
+[lnk_git-flow]: ../php_tools/git-flow
+[lnk_grunt-cli]: ../php_tools/grunt-cli
+[lnk_gulp]: ../php_tools/gulp
+[lnk_jq]: ../php_tools/jq
+[lnk_jsonlint]: ../php_tools/jsonlint
+[lnk_laravel-installer]: ../php_tools/laravel-installer
+[lnk_laravel-lumen]: ../php_tools/laravel-lumen
+[lnk_linkcheck]: ../php_tools/linkcheck
+[lnk_mdl]: ../php_tools/mdl
+[lnk_mdlint]: ../php_tools/mdlint
+[lnk_mupdf-tools]: ../php_tools/mupdf-tools
+[lnk_net-tools]: ../php_tools/net-tools
+[lnk_**node**]: https://nodejs.org/en/
+[lnk_**npm**]: https://nodejs.org/en/knowledge/getting-started/npm/what-is-npm/
+[lnk_**nvm**]: https://github.com/nvm-sh/nvm
+[lnk_phalcon-devtools]: ../php_tools/phalcon-devtools
+[lnk_php-cs-fixer]: ../php_tools/php-cs-fixer
+[lnk_phpcbf]: ../php_tools/phpcbf
+[lnk_phpcs]: ../php_tools/phpcs
+[lnk_phpmd]: ../php_tools/phpmd
+[lnk_phpunit]: ../php_tools/phpunit
+[lnk_**pip**]: https://pypi.org/
+[lnk_pm2]: ../php_tools/pm2
+[lnk_pwncat]: ../php_tools/pwncat
+[lnk_rsync]: ../php_tools/rsync
+[lnk_sass]: ../php_tools/sass
+[lnk_shellcheck]: ../php_tools/shellcheck
+[lnk_ssh]: ../php_tools/ssh
+[lnk_stylelint]: ../php_tools/stylelint
+[lnk_svn]: ../php_tools/svn
+[lnk_symfony-cli]: ../php_tools/symfony-cli
+[lnk_taskfile]: ../php_tools/taskfile
+[lnk_tig]: ../php_tools/tig
+[lnk_vim]: ../php_tools/vim
+[lnk_vue-cli]: ../php_tools/vue-cli
+[lnk_webpack-cli]: ../php_tools/webpack-cli
+[lnk_wkhtmltopdf]: ../php_tools/wkhtmltopdf
+[lnk_wp-cli]: ../php_tools/wp-cli
+[lnk_wscat]: ../php_tools/wscat
+[lnk_yamllint]: ../php_tools/yamllint
+[lnk_**yarn**]: https://yarnpkg.com/cli/install
+[lnk_yq]: ../php_tools/yq
+[lnk_zsh]: ../php_tools/zsh
+
+<!-- TOOLS_WORK_END -->
+<!-- /tools -->
+
+</details>
+
+
+<details><summary><h3>🔌 Supported Frameworks</h3></summary>
 
 #### Supported PHP Frameworks
 
@@ -904,25 +1003,55 @@ starts up as soon as you run `docker-compose up`.
 > [Setup reverse proxy NodeJs](https://devilbox.readthedocs.io/en/latest/examples/setup-reverse-proxy-nodejs.html) |
 > [Setup reverse proxy Sphinx documentation](https://devilbox.readthedocs.io/en/latest/examples/setup-reverse-proxy-sphinx-docs.html)
 
-## Intranet overview
+</details>
+
+
+<details><summary><h3><img id="the-devilbox-stack" width="20" src="https://github.com/devilbox/artwork/raw/master/submissions_logo/cytopia/01/png/logo_64_trans.png"> Devilbox Intranet</h3></summary>
 
 The Devilbox comes with a pre-configured intranet on `http://localhost` and `https://localhost`. This can be explicitly disabled or password-protected. The intranet will not only show you, the chosen configuration, but also validate the status of the current configuration, such as if **DNS records** exists (on host and container), are directories properly set-up. Additionally it provides external tools to let you interact with databases and emails.
 
 * **Virtual Host overview** (validates directories and DNS)
-* **Database overview** (MySQL, PgSQL, Redis, Memcache, ...)
+* **Command & Control**
 * **Email overview**
+* **Database overview** (MySQL, PgSQL, Redis, Memcache, ...)
 * **Info pages** (Httpd, MySQL, PgSQL, Redis, Memcache, ...)
-* **[Adminer](https://www.adminer.org)**
-* **[phpMyAdmin](https://www.phpmyadmin.net)**
-* **[phpPgAdmin](http://phppgadmin.sourceforge.net)**
-* **[phpRedMin](https://github.com/sasanrose/phpredmin)**
-* **[PHPMemcachedAdmin](https://github.com/elijaa/phpmemcachedadmin)**
-* **[OpcacheGUI](https://github.com/PeeHaa/OpCacheGUI)**
+* And many more...
+
+<br/>
+
+The following batteries are available in the Devilbox intranet by default:
+
+<table width="100%" style="width:100%; display:table;">
+<tbody style="text-align:center;">
+ <tr>
+  <td><a href="https://www.adminer.org"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/adminer.png" alt="Adminer" /></a></td>
+  <td><a href="https://www.phpmyadmin.net"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phpmyadmin.png" alt="phpMyAdmin" /></a></td>
+  <td><a href="http://phppgadmin.sourceforge.net"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phppgadmin.png" alt="phpPgAdmin" /></a></td>
+  <td><a href="https://github.com/sasanrose/phpredmin"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phpredmin.png" alt="phpRedMin" /></a></td>
+  <td><a href="https://github.com/elijaa/phpmemcachedadmin"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/phpmemcachedadmin.png" alt="PHPMemcachedAdmin" /></a></td>
+  <td><a href="https://github.com/PeeHaa/OpCacheGUI"><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/opcachegui.png" alt="OpCacheGUI" /></a></td>
+  <td><img width="64" style="width:64px;" src="https://raw.githubusercontent.com/cytopia/icons/master/128x128/email.png" alt="Mail viewer" /></td>
+ </tr>
+ <tr>
+  <td><a href="https://www.adminer.org">Adminer</a></td>
+  <td><a href="https://www.phpmyadmin.net">phpMyAdmin</a></td>
+  <td><a href="http://phppgadmin.sourceforge.net">phpPgAdmin</a></td>
+  <td><a href="https://github.com/sasanrose/phpredmin">phpRedMin</a></td>
+  <td><a href="https://github.com/elijaa/phpmemcachedadmin">PHP Memcached Admin</a></td>
+  <td><a href="https://github.com/PeeHaa/OpCacheGUI">OpCache GUI</a></td>
+  <td>Mail viewer</td>
+ </tr>
+</tbody>
+</table>
+<br/>
 
 > **Documentation:**
 > [Devilbox Intranet](https://devilbox.readthedocs.io/en/latest/getting-started/devilbox-intranet.html)
 
-## Screenshots
+</details>
+
+
+<details><summary><h3>📸 Screenshots</h3></summary>
 
 A few examples of how the built-in intranet looks like.
 
@@ -946,12 +1075,69 @@ A few examples of how the built-in intranet looks like.
   <td></td>
  </tr>
 </table>
+</details>
 
-## Contributing [![Open Source Helpers](https://www.codetriage.com/cytopia/devilbox/badges/users.svg)](https://www.codetriage.com/cytopia/devilbox)
+
+
+## 👫 Community
+
+The Devilbox has a lot of features reaching from a simple single-user development environment that
+works out of the box up to a shared development infrastructure for a corporate network.
+
+In order to be aware about all that features, ensure to have skimmed over the
+**[documentation](https://devilbox.readthedocs.io)**, so you know what can be done and how that might
+simplify your every-day life. If you ever run into any unforseen issues, feel free to join the
+**[Discord chat](https://discord.gg/2wP3V6kBj4)** or visit the **[forums](https://devilbox.discourse.group)** and get community support quickly.
+
+<table width="100%" style="width:100%; display:table;">
+ <thead>
+  <tr>
+   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://devilbox.readthedocs.io">📘 Docs</a></h3></th>
+   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://discord.gg/2wP3V6kBj4">🎮 Discord</a></h3></th>
+   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://devilbox.discourse.group">🗪 Forum</a></h3></th>
+   <th width="25%" style="width:25%;"><h3><a target="_blank" href="https://github.com/devilbox/flames">🔥 Flames</a></h3></th>
+  </tr>
+ </thead>
+ <tbody style="vertical-align: middle; text-align: center;">
+  <tr>
+   <td>
+    <a target="_blank" href="https://devilbox.readthedocs.io">
+     <img title="Documentation" name="Documentation" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/readthedocs.png" />
+    </a>
+   </td>
+   <td>
+    <a target="_blank" href="https://discord.gg/2wP3V6kBj4">
+     <img title="Chat on Discord" name="Chat on Discord" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discord.png" />
+    </a>
+   </td>
+   <td>
+    <a target="_blank" href="https://devilbox.discourse.group">
+     <img title="Devilbox Forums" name="Forum" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/discourse.png" />
+    </a>
+   </td>
+   <td>
+    <a target="_blank" href="https://github.com/devilbox/flames">
+     <img title="Devilbox Flames" name="Flames" src="https://raw.githubusercontent.com/cytopia/icons/master/400x400/flames2.png" />
+    </a>
+   </td>
+  </tr>
+  <tr>
+  <td><a target="_blank" href="https://devilbox.readthedocs.io">devilbox.readthedocs.io</a></td>
+  <td><a target="_blank" href="https://discord.gg/2wP3V6kBj4">discord/devilbox</a></td>
+  <td><a target="_blank" href="https://devilbox.discourse.group">devilbox.discourse.group</a></td>
+  <td><a target="_blank" href="https://github.com/devilbox/flames">github.com/devilbox/flames</a></td>
+  </tr>
+ </tbody>
+</table>
+
+
+
+## 🤝 Contributing
 
 The Devilbox is still a young project with a long roadmap of features to come. Features are
 decided by you - **the community**, so any kind of contribution is welcome.
 
+<!--
 [![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/0)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/0)
 [![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/1)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/1)
 [![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/2)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/2)
@@ -961,6 +1147,8 @@ decided by you - **the community**, so any kind of contribution is welcome.
 [![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/6)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/6)
 [![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/7)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/7)
 
+-->
+
 To increase visibility and bug-free operation:
 
 * Star this project
@@ -969,16 +1157,17 @@ To increase visibility and bug-free operation:
 * Visit the [Devilbox Discord Chat](https://discord.gg/2wP3V6kBj4) to exchange about setups
 * Visit the [Devilbox Community Forums](https://devilbox.discourse.group) for announcements and to help others
 
-Additionally you can [subscribe to Devilbox on CodeTriage](https://www.codetriage.com/cytopia/devilbox),
-read up on [CONTRIBUTING.md](CONTRIBUTING.md) and check the [ROADMAP](https://github.com/cytopia/devilbox/issues/23) about what is already planned for the near future.
 
-## Logos
+
+## 🌀 Logos
 
 Logos and banners can be found at **[devilbox/artwork](https://github.com/devilbox/artwork)**. Feel free to use or modify them by the terms of their license.
 
 <img style="width:64px; height:64px;" width="64" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_logo/cytopia/01/png/logo_128_trans.png?raw=true" /> <img style="width:64px; height:64px;" width="64" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_logo/cytopia/02/png/logo_128_trans.png?raw=true" /> <img style="height:64px;" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_banner/cytopia/01/png/banner_128_trans.png?raw=true" />
 
-## License
+
+
+## 🗎 License
 
 **[MIT License](LICENSE.md)**
 
