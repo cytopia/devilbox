@@ -219,13 +219,13 @@ print_head_1 "Checking .env file values"
 
 WRONG_ENV_FILES_VALUES=0
 
-DEBUG_COMPOSE_ENTRYPOINT="$( get_env_value "DEBUG_COMPOSE_ENTRYPOINT" )"
-if [ "${DEBUG_COMPOSE_ENTRYPOINT}" != "0" ] && [ "${DEBUG_COMPOSE_ENTRYPOINT}" != "1" ] && [ "${DEBUG_COMPOSE_ENTRYPOINT}" != "2" ]; then
-	log_err "Variable 'DEBUG_COMPOSE_ENTRYPOINT' should be 0, 1 or 2. Has: ${DEBUG_COMPOSE_ENTRYPOINT}"
+DEBUG_ENTRYPOINT="$( get_env_value "DEBUG_ENTRYPOINT" )"
+if [ "${DEBUG_ENTRYPOINT}" != "0" ] && [ "${DEBUG_ENTRYPOINT}" != "1" ] && [ "${DEBUG_ENTRYPOINT}" != "2" ] && [ "${DEBUG_ENTRYPOINT}" != "3" ] && [ "${DEBUG_ENTRYPOINT}" != "3" ]; then
+	log_err "Variable 'DEBUG_ENTRYPOINT' should be 0, 1 or 2. Has: ${DEBUG_ENTRYPOINT}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
 else
-	log_debug "Variable 'DEBUG_COMPOSE_ENTRYPOINT' has correct value: ${DEBUG_COMPOSE_ENTRYPOINT}"
+	log_debug "Variable 'DEBUG_ENTRYPOINT' has correct value: ${DEBUG_ENTRYPOINT}"
 fi
 
 DOCKER_LOGS="$( get_env_value "DOCKER_LOGS" )"
@@ -430,7 +430,7 @@ fi
 
 
 #--------------------------------------------------------------------------------------------------
-# Ensure cfg/, mod/ and log/ directories exist
+# Ensure cfg/ and log/ directories exist
 #--------------------------------------------------------------------------------------------------
 print_head_1 "Checking required Devilbox core directories exist"
 
@@ -462,21 +462,6 @@ while read -r php_version; do
 done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
 if [ "${DIR_MISSING}" = "0" ]; then
 	log_ok "All PHP log/ sub directories are present"
-fi
-
-# /mod/php-fpm-VERSION
-DIR_MISSING=0
-while read -r php_version; do
-	if [ ! -d "mod/php-fpm-${php_version}" ]; then
-		log_err "Directory 'mod/php-fpm-${php_version}' is missing"
-		RET_CODE=$(( RET_CODE + 1))
-		DIR_MISSING=1
-	else
-		log_debug "Directory 'mod/php-fpm-${php_version}' is present"
-	fi
-done < <(grep -E '^#?PHP_SERVER=' env-example  | awk -F'=' '{print $2}')
-if [ "${DIR_MISSING}" = "0" ]; then
-	log_ok "All PHP mod/ sub directories are present"
 fi
 
 # /cfg/apache|nginx-VERSION
@@ -522,7 +507,6 @@ DEVILBOX_DIRS=(
 	"cfg"
 	"compose"
 	"log"
-	"mod"
 	"supervisor"
 )
 
@@ -591,7 +575,6 @@ DEVILBOX_DIRS=(
 	"ca"
 	"cfg"
 	"compose"
-	"mod"
 	"supervisor"
 )
 

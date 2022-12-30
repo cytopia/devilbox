@@ -12,8 +12,8 @@
 
 .. |ext_lnk_doc_bind_soa| raw:: html
 
-   <a target="_blank" href="https://bind9.readthedocs.io/en/latest/introduction.html?highlight=soa#secondary-servers">
-     BIND SOA <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   <a target="_blank" href="https://bind9.readthedocs.io/en/latest/reference.html">
+     BIND Reference <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
 
 .. |ext_lnk_doc_wiki_database_timezones| raw:: html
@@ -135,3 +135,16 @@
    <a target="_blank" href="https://github.com/elastic/kibana">
      GitHub: Kibana <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
    </a>
+
+.. |ext_lnk_meilisearch_github| raw:: html
+
+   <a target="_blank" href="https://github.com/meilisearch/meilisearch">
+     Github: Meilisearch <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+
+.. |ext_lnk_meilisearch_dockerhub| raw:: html
+
+   <a target="_blank" href="https://hub.docker.com/r/getmeili/meilisearch">
+     Dockerhub: Meilisearch <img src="https://raw.githubusercontent.com/cytopia/icons/master/11x11/ext-link.png" />
+   </a>
+

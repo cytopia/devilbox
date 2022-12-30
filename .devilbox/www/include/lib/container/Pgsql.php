@@ -71,7 +71,8 @@ class Pgsql extends BaseClass implements BaseInterface
 	public function __destruct()
 	{
 		if ($this->_link) {
-			pg_close($this->_link);
+			// DO NOT CLOSE. It is kind of shared.
+			//pg_close($this->_link);
 		}
 	}
 
@@ -148,7 +149,7 @@ class Pgsql extends BaseClass implements BaseInterface
 		// Get schemas for each database
 		foreach ($databases as $name => &$database) {
 			$PSQL = new Pgsql(
-				$this->getIpAddress(),
+				$GLOBALS['PGSQL_HOST_NAME'],
 				array(
 					'user' => loadClass('Helper')->getEnv('PGSQL_ROOT_USER'),
 					'pass' => loadClass('Helper')->getEnv('PGSQL_ROOT_PASSWORD'),
@@ -179,7 +180,7 @@ class Pgsql extends BaseClass implements BaseInterface
 	public function getSchemaSize($database, $schema)
 	{
 		$PSQL = new Pgsql(
-			$this->getIpAddress(),
+			$GLOBALS['PGSQL_HOST_NAME'],
 			array(
 				'user' => loadClass('Helper')->getEnv('PGSQL_ROOT_USER'),
 				'pass' => loadClass('Helper')->getEnv('PGSQL_ROOT_PASSWORD'),
@@ -217,7 +218,7 @@ class Pgsql extends BaseClass implements BaseInterface
 	public function getTableCount($database, $schema)
 	{
 		$PSQL = new Pgsql(
-			$this->getIpAddress(),
+			$GLOBALS['PGSQL_HOST_NAME'],
 			array(
 				'user' => loadClass('Helper')->getEnv('PGSQL_ROOT_USER'),
 				'pass' => loadClass('Helper')->getEnv('PGSQL_ROOT_PASSWORD'),

@@ -1,4 +1,4 @@
-# PHP-FPM config directory
+# PHP-FPM 5.6 config directory
 
 ## General
 

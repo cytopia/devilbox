@@ -71,4 +71,4 @@ run "curl -sS --fail -XPOST 'http://localhost:${HOST_PORT_HTTPD}/mail.php' -d 'e
 # Validate
 run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/mail.php' | tac | tac | grep '${MY_MAIL}' >/dev/null" "${RETRIES}"
 run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/mail.php' | tac | tac | grep '${MY_SUBJ}' >/dev/null" "${RETRIES}"
-run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/mail.php' | tac | tac | grep '${MY_MESS}' >/dev/null" "${RETRIES}"
+run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/mail.php?get-body=1' | tac | tac | grep '${MY_MESS}' >/dev/null" "${RETRIES}"

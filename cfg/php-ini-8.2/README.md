@@ -1,4 +1,4 @@
-# PHP ini directory
+# PHP 8.2 ini directory
 
 ## General
 

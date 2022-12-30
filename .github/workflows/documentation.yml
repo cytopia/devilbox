@@ -36,7 +36,7 @@ jobs:
         target:
           - build
           - linkcheck
-          - linkcheck2
+          # - linkcheck2
 
     name: "[Docs ${{ matrix.target }}]"
     steps:

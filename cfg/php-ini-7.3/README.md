@@ -1,4 +1,4 @@
-# PHP ini directory
+# PHP 7.3 ini directory
 
 ## General
 

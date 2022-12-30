@@ -6,6 +6,164 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v3.0.0-beta-0.2 (2022-12-27)
+
+The Backend configuration now supports websockets as well:
+
+file: `/shared/httpd/<project>/.devilbox/backend.cfg`
+```bash
+# PHP-FPM backend
+conf:phpfpm:tcp:php80:9000
+
+# HTTP Reverse Proxy backend
+conf:rproxy:http:172.16.238.10:3000
+
+# HTTPS Reverse Proxy backend
+conf:rproxy:https:172.16.238.10:3000
+
+# Websocket Reverse Proxy backend
+conf:rproxy:ws:172.16.238.10:3000
+
+# SSL Websocket Reverse Proxy backend
+conf:rproxy:wss:172.16.238.10:3000
+```
+
+Once you're done with `backend.cfg` changes, head over to the Intranet C&C page (http://localhost/cnc.php) and Reload `watcherd`.
+
+
+### Fixed
+- Intranet: vhost overview: allow HTTP 426 to succeed in vhost page (websocket projects)
+- Intranet: vhost overview: Reverse Proxy or Websocket backends do not require a `htdocs/` dir for healthcheck
+- Fixed reverse proxy template generation for Apache 2.2 and Apache 2.4 [vhost-gen #51](https://github.com/devilbox/vhost-gen/pull/51)
+- Fixed Nginx hash bucket size length to allow long hostnames
+
+### Added
+- Reverse Proxy automation for websocket projects (`ws://<host>:<port>` or `wss:<host>:<port>`) (Does not work with Apache 2.2)
+- Added tool `wscat` to be able to test websocket connections
+- Intranet: vhost overview now also shows websocket projects
+
+### Changed
+- Do not mount any startup/autostart script directories for multi-php compose as they do not contain tools
+- Updated vhost-gen templates in `cfg/vhost-gen` (replace your project templates with new ones)
+
+
+## Release v3.0.0-beta-0.1 (2022-12-24) 🎅🎄🎁
+
+This is a beta release, using a completely rewritten set of HTTPD server, which allow easy reverse Proxy integration and different PHP versions per project:
+
+* https://github.com/devilbox/docker-nginx-stable/pull/55
+* https://github.com/devilbox/docker-nginx-mainline/pull/57
+* https://github.com/devilbox/docker-apache-2.2/pull/53
+* https://github.com/devilbox/docker-apache-2.4/pull/54
+
+Once it has been tested by the community, and potential errors have been addressed, a new major version will be released.
+
+**IMPORTANT:** This release required you to copy `env-example` over onto `.env` due to some changes in variables.
+
+### TL;DR
+
+1. **Multiple PHP Versions**<br/>
+    Here is an example to run one project with a specific PHP version<br/>
+    ```bash
+    # Enable all PHP versions
+    cp compose/docker-compose.override.yml-php-multi.yml docker-compose.override.yml
+    # Start default set and php80
+    docker-compose up php httpd bind php80
+    ```
+    file: `/shared/httpd/<project>/.devilbox/backend.cfg`
+    ```
+    conf:phpfpm:tcp:php80:9000
+    ```
+2. **Automated Reverse Proxy setup**<br/>
+    Here is an example to proxy one project to a backend service (e.g. NodeJS or Python application, which runs in the PHP container on port 3000)<br/>
+    file: `/shared/httpd/<project>/.devilbox/backend.cfg`
+    ```
+    conf:rproxy:http:127.0.0.1:3000
+    ```
+#### PHP hostnames and IP addresses
+
+| PHP Version | Hostname | IP address     |
+|-------------|----------|----------------|
+| 5.4         | php54    | 172.16.238.201 |
+| 5.5         | php55    | 172.16.238.202 |
+| 5.6         | php56    | 172.16.238.203 |
+| 7.0         | php70    | 172.16.238.204 |
+| 7.1         | php71    | 172.16.238.205 |
+| 7.2         | php72    | 172.16.238.206 |
+| 7.3         | php73    | 172.16.238.207 |
+| 7.4         | php74    | 172.16.238.208 |
+| 8.0         | php80    | 172.16.238.209 |
+| 8.1         | php81    | 172.16.238.210 |
+| 8.2         | php82    | 172.16.238.211 |
+
+### Fixed
+- Fixed Protocol substitution bug in Reverse Proxy generation for Apache 2.2 and Apache 2.4 [vhost-gen #49](https://github.com/devilbox/vhost-gen/pull/49) [vhost-gen #50](https://github.com/devilbox/vhost-gen/pull/50)
+- Fixed missing module `mod_proxy_html` in Apache 2.4 as per requirement from `vhost-gen` for Reverse Proxy setup
+- Fixed encoding issue with Apache 2.4 Reverse Proxy by enabling `mod_xml2enc` module (Required by `mod_proxy_html`)
+- Allow to run different PHP versions per project. fixes [#146](https://github.com/cytopia/devilbox/issues/146)
+
+### Added
+- New HTTPD server capable of auto reverse proxy creation (and different PHP versions per project)
+- Intranet: Added Command & Control center to view watcherd logs and retrigger config in case of vhost changes
+- Intranet: vhost page now also shows the configured Backend
+- Environment variable `DEVILBOX_HTTPD_MGMT_PASS`
+- Environment variable `DEVILBOX_HTTPD_MGMT_USER`
+- New Docker Compose Override file `docker-compose.override.yml-php-multi.yml` (allows to run multiple PHP versions).
+- Update Bind to latest version
+
+### Changed
+- Disabled `psr` extension by default [php-psr #78](https://github.com/jbboehr/php-psr/issues/78#issuecomment-722290110)
+- Disabled `phalcon` extension by default
+- Environment variable `DEBUG_COMPOSE_ENTRYPOINT` renamed to `DEBUG_ENTRYPOINT`
+- Environment variable `HTTPD_TIMEOUT_TO_PHP_FPM` renamed to `HTTPD_BACKEND_TIMEOUT`
+
+
+## Release v2.4.0 (2022-12-18)
+
+This release might be a bit bumpy due to a massive amount of changes in upstream projects. If you encounter issues, please do raise tickets.
+
+### General
+
+#### New PHP-FPM images
+This release uses a new set of PHP-FPM images. They have been heavily rewritten and modularized in order to make PHP extension and PHP tool generation more easy. See the following release notes for details:
+
+> 499 changed files with 29,281 additions and 13,977 deletions.
+
+* https://github.com/devilbox/docker-php-fpm/releases/tag/0.145
+* https://github.com/devilbox/docker-php-fpm/releases/tag/0.146
+* https://github.com/devilbox/docker-php-fpm/releases/tag/0.147
+
+#### How to add modules/tools?
+* **[How to build PHP modules](https://github.com/devilbox/docker-php-fpm/blob/master/php_modules/README.md)**
+* **[How to install tools in PHP images](https://github.com/devilbox/docker-php-fpm/blob/master/php_tools/README.md)**
+
+#### Available Tools
+You can now also find a detailed overview about what tools are installed in what PHP version image. See here: https://github.com/devilbox/docker-php-fpm/blob/master/doc/available-tools.md
+
+#### Gitter -> Discord
+Additionally I am moving away from Gitter to **Discord**. See reason and announcement here: https://devilbox.discourse.group/t/migrating-from-gitter-to-discord/716/2
+
+**🎮 Discord:** https://discord.gg/2wP3V6kBj4
+
+### Fixed
+- Intranet: Fixed PostgreSQL database overview
+- Fixed PATH for all pre-installed composer and node tools
+
+### Changed
+- Updated PHP versions (https://github.com/cytopia/devilbox/issues/940)
+- Updated MySQL versions
+- Intranet: Improved installed tools overview (index.php)
+- Intranet: Delayed message loading (https://github.com/cytopia/devilbox/pull/904)
+
+### Added
+- Added tool `mhsendmail` for arm64 images
+- Added tool `wkhtmltopdf` for arm64 images (https://github.com/cytopia/devilbox/issues/936)
+- Added tool `taskfile` (https://github.com/cytopia/devilbox/issues/934)
+
+### Removed
+- Removed tool `drush` (detail: https://github.com/cytopia/devilbox/issues/930#issuecomment-1344764908)
+
+
 ## Release v2.3.0 (2022-12-04)
 
 ### Fixed

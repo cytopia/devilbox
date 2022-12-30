@@ -1,4 +1,4 @@
-# PHP ini directory
+# PHP 5.2 ini directory
 
 ## General
 
