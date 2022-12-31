@@ -8,6 +8,8 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 
 ## Release v3.0.0-beta-0.3 (2022-12-31)
 
+This release provides the `dvl.to` domain to be used with `TLD_SUFFIX` (set to default), which eliminates the need to set any entries in `/etc/hosts`, as all of its subdomain will point to `127.0.0.1` via official DNS. Domain has been acquired thanks to awesome sponsors!
+
 ### Fixed
 - Intranet: mail.php fixed deprecation warnings [#798](https://github.com/cytopia/devilbox/issues/798)
 
