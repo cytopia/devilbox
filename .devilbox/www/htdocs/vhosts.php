@@ -37,11 +37,70 @@
 										<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR');?>/<?php echo $vHost['name'];?>/<?php echo loadClass('Helper')->getEnv('HTTPD_DOCROOT_DIR');?></td>
 										<td><?php echo loadClass('Httpd')->getVhostBackend($vHost['name']); ?></td>
 										<td>
-											<a title="Virtual host: <?php echo $vHost['name'];?>.conf" target="_blank" href="/vhost.d/<?php echo $vHost['name'];?>.conf"><i class="fa fa-cog" aria-hidden="true"></i></a>
-											<?php if (($vhostGen = loadClass('Httpd')->getVhostgenTemplatePath($vHost['name'])) !== false): ?>
-												<a title="vhost-gen: <?php echo basename($vhostGen);?> for <?php echo $vHost['name'];?>" href="/info_vhostgen.php?name=<?php echo $vHost['name'];?>">
-													<i class="fa fa-filter" aria-hidden="true"></i>
-												</a>
+											<!-- [httpd.conf] Button trigger modal -->
+											<a href="#"><i class="fa fa-cog" aria-hidden="true" data-toggle="modal" data-target="#vhost_conf_<?php echo $vHost['name'];?>"></i></a>
+											<!-- [httpd.conf] Modal -->
+											<div class="modal" id="vhost_conf_<?php echo $vHost['name'];?>" tabindex="-1" role="dialog" aria-labelledby="vhost_conf_<?php echo $vHost['name'];?>Label" aria-hidden="true">
+												<div class="modal-dialog modal-lg" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="vhost_conf_<?php echo $vHost['name'];?>Label"><?php echo '<strong>httpd.conf: </strong><code>'.$vHost['name'].'.'.loadClass('Httpd')->getTldSuffix(). '</code>'; ?></h5>
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<?php
+																$tpl = loadClass('Httpd')->getVhostgenTemplatePath($vHost['name']);
+																echo $tpl;
+															?>
+															<?php $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]"; ?>
+															<?php $src = file_get_contents($url.'/vhost.d/' . $vHost['name'] . '.conf'); ?>
+															<?php //$src = htmlentities($src); ?>
+															<?php $src = str_replace('<', '&lt;', $src); ?>
+															<?php $src = str_replace('>', '&gt;', $src); ?>
+															<?php $src = preg_replace('/"(.+)"/m',       '<span style="color: blue;">"\1"</span>', $src); ?>
+															<?php $src = preg_replace("/'(.+)'/m",       '<span style="color: blue;">'."'".'\1'."'".'</span>', $src); ?>
+															<?php $src = preg_replace('/^(\s*#)(.*)$/m', '<span style="color: gray;">\1\2</span>', $src); ?>
+															<?php echo '<pre><code>' . $src . '</code></pre>';?>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<?php if (($vhostGenPath = loadClass('Httpd')->getVhostgenTemplatePath($vHost['name'])) !== false): ?>
+												<!-- [vhost-gen] Button trigger modal -->
+												<a href="#"><i class="fa fa-filter" aria-hidden="true" data-toggle="modal" data-target="#vhost_tpl_<?php echo $vHost['name'];?>"></i></a>
+												<!-- [vhost-gen] Modal -->
+												<div class="modal" id="vhost_tpl_<?php echo $vHost['name'];?>" tabindex="-1" role="dialog" aria-labelledby="vhost_tpl_<?php echo $vHost['name'];?>Label" aria-hidden="true">
+													<div class="modal-dialog modal-lg" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="vhost_tpl_<?php echo $vHost['name'];?>Label"><?php echo '<code>'.$vhostGenPath.'</code>'; ?></h5>
+																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+																</button>
+															</div>
+															<div class="modal-body">
+																<?php $src = file_get_contents($vhostGenPath); ?>
+																<?php //$src = htmlentities($src); ?>
+																<?php $src = str_replace('<', '&lt;', $src); ?>
+																<?php $src = str_replace('>', '&gt;', $src); ?>
+																<?php $src = preg_replace('/"(.+)"/m',        '<span style="color: blue;">"\1"</span>', $src); ?>
+																<?php $src = preg_replace("/'(.+)'/m",        '<span style="color: blue;">'."'".'\1'."'".'</span>', $src); ?>
+																<?php $src = preg_replace('/^(\s*#)(.*)$/m',  '<span style="color: gray;">\1\2</span>', $src); ?>
+																<?php $src = preg_replace('/^(\s*[_a-z]+):/m', '<span style="color: green;"><strong>\1</strong></span>:', $src); ?>
+																<?php $src = preg_replace('/(__[_A-Z]+__)/m', '<span style="color: red;">\1</span>', $src); ?>
+																<?php echo '<pre><code>' . $src . '</code></pre>';?>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+															</div>
+														</div>
+													</div>
+												</div>
 											<?php endif; ?>
 										</td>
 										<td style="min-width:60px;" class="text-xs-center text-xs-small" id="valid-<?php echo $vHost['name'];?>"></td>
