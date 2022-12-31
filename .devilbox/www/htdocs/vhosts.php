@@ -58,9 +58,13 @@
 															<?php //$src = htmlentities($src); ?>
 															<?php $src = str_replace('<', '&lt;', $src); ?>
 															<?php $src = str_replace('>', '&gt;', $src); ?>
-															<?php $src = preg_replace('/"(.+)"/m',       '<span style="color: blue;">"\1"</span>', $src); ?>
-															<?php $src = preg_replace("/'(.+)'/m",       '<span style="color: blue;">'."'".'\1'."'".'</span>', $src); ?>
-															<?php $src = preg_replace('/^(\s*#)(.*)$/m', '<span style="color: gray;">\1\2</span>', $src); ?>
+															<?php $src = preg_replace('/&lt;(\/?.*)&gt;/m', '<strong>&lt;\1&gt;</strong>', $src); // Apache directives ?>
+															<?php $src = preg_replace('/(.*{\s*)$/m',       '<strong>\1</strong>',         $src); // Nginx directives ?>
+															<?php $src = preg_replace('/^(\s*}\s*)$/m',     '<strong>\1</strong>',         $src); // Nginx directives ?>
+															<?php //$src = preg_replace('/"(.+)"/m',       '<span style="color: blue;">"\1"</span>', $src); ?>
+															<?php $src = preg_replace('/^(\s*(?!<#)[^#"]*)"(.*)"/m',  '\1<span style="color: blue;">"\2"</span>', $src);  // double quotes?>
+															<?php $src = preg_replace("/^(\s*(?!<#)[^#']*)'(.*)'/m",  '\1<span style="color: blue;">"\2"</span>', $src);  // single quotes ?>
+															<?php $src = preg_replace('/^(\s*#)(.*)$/m',              '<span style="color: gray;">\1\2</span>',   $src);  // comments ?>
 															<?php echo '<pre><code>' . $src . '</code></pre>';?>
 														</div>
 														<div class="modal-footer">
@@ -87,11 +91,16 @@
 																<?php //$src = htmlentities($src); ?>
 																<?php $src = str_replace('<', '&lt;', $src); ?>
 																<?php $src = str_replace('>', '&gt;', $src); ?>
-																<?php $src = preg_replace('/"(.+)"/m',        '<span style="color: blue;">"\1"</span>', $src); ?>
-																<?php $src = preg_replace("/'(.+)'/m",        '<span style="color: blue;">'."'".'\1'."'".'</span>', $src); ?>
-																<?php $src = preg_replace('/^(\s*#)(.*)$/m',  '<span style="color: gray;">\1\2</span>', $src); ?>
-																<?php $src = preg_replace('/^(\s*[_a-z]+):/m', '<span style="color: green;"><strong>\1</strong></span>:', $src); ?>
-																<?php $src = preg_replace('/(__[_A-Z]+__)/m', '<span style="color: red;">\1</span>', $src); ?>
+																<?php $src = preg_replace('/&lt;(\/?.*)&gt;/m', '<strong>&lt;\1&gt;</strong>', $src); // Apache directives ?>
+																<?php $src = preg_replace('/(.*{\s*)$/m',       '<strong>\1</strong>',         $src); // Nginx directives ?>
+																<?php $src = preg_replace('/^(\s*}\s*)$/m',     '<strong>\1</strong>',         $src); // Nginx directives ?>
+																<?php //$src = preg_replace('/"(.+)"/m',        '<span style="color: blue;">"\1"</span>', $src); ?>
+																<?php //$src = preg_replace("/'(.+)'/m",        '<span style="color: blue;">'."'".'\1'."'".'</span>', $src); ?>
+																<?php $src = preg_replace('/^(\s*(?!<#)[^#"]*)"(.*)"/m', '\1<span style="color: blue;">"\2"</span>',                $src); // double quotes ?>
+																<?php $src = preg_replace("/^(\s*(?!<#)[^#']*)'(.*)'/m", '\1<span style="color: blue;">"\2"</span>',                $src); // single quotes ?>
+																<?php $src = preg_replace('/^(\s*#)(.*)$/m',             '<span style="color: gray;">\1\2</span>',                  $src); // comments ?>
+																<?php $src = preg_replace('/^(\s*[_a-z]+):/m',           '<span style="color: green;"><strong>\1</strong></span>:', $src); // yaml keys ?>
+																<?php $src = preg_replace('/(__[_A-Z]+__)/m',            '<span style="color: red;">\1</span>',                     $src); // variables ?>
 																<?php echo '<pre><code>' . $src . '</code></pre>';?>
 															</div>
 															<div class="modal-footer">
