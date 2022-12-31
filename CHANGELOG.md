@@ -6,6 +6,20 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v3.0.0-beta-0.3 (2022-12-31)
+
+### Fixed
+- Intranet: mail.php fixed deprecation warnings [#798](https://github.com/cytopia/devilbox/issues/798)
+
+### Changed
+- Use `dvl.to` as default `TLD_SUFFIX` (it always poits to `127.0.0.1` removing the need to create `/etc/hosts` entries)
+
+### Added
+- Intranet: vhost overview shows listening ports
+- Intranet: vhost overview now has modals to show httpd and vhost-gen configs
+- Docs: Show available tools per version in README.md
+
+
 ## Release v3.0.0-beta-0.2 (2022-12-27)
 
 The Backend configuration now supports websockets as well:
