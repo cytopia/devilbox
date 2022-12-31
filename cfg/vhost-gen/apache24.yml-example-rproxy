@@ -137,13 +137,16 @@ features:
         Require all granted
     </Location>
 
+  # https://stackoverflow.com/a/42558499
+  # https://fetch.spec.whatwg.org/#forbidden-header-name
   xdomain_request: |
     # Allow cross domain request from these hosts
     SetEnvIf Origin "__REGEX__" AccessControlAllowOrigin=$0
-    Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
-    Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
+    Header always set Access-Control-Allow-Origin   %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+    Header always set Access-Control-Allow-Methods  "HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers  "Accept, Authorization, Content-Security-Policy, Content-Type, Location, Origin, X-Requested-With"
+    Header always set Access-Control-Expose-Headers "Content-Security-Policy, Location"
     Header always set Access-Control-Max-Age "0"
-    Header always set Access-Control-Allow-Headers "x-requested-with, Content-Type, origin, authorization, accept, client-security-token"
     # Added a rewrite to respond with a 200 SUCCESS on every OPTIONS request.
     RewriteEngine On
     RewriteCond %{REQUEST_METHOD} OPTIONS

@@ -114,11 +114,12 @@ features:
 
   xdomain_request: |
     # Allow cross domain request from these hosts
+    # https://fetch.spec.whatwg.org/#forbidden-header-name
     if ( $http_origin ~* (__REGEX__) ) {
-        add_header "Access-Control-Allow-Origin" "$http_origin";
-        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
-        add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range';
-        add_header 'Access-Control-Expose-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range';
+        add_header "Access-Control-Allow-Origin"   "$http_origin";
+        add_header 'Access-Control-Allow-Methods'  'HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS';
+        add_header 'Access-Control-Allow-Headers'  'Accept, Authorization, Content-Security-Policy, Content-Type, Location, Origin, X-Requested-With';
+        add_header 'Access-Control-Expose-Headers' 'Content-Security-Policy, Location';
         add_header 'Access-Control-Max-Age' 0;
         return 200;
     }
