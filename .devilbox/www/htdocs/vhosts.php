@@ -37,23 +37,22 @@
 										<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR');?>/<?php echo $vHost['name'];?>/<?php echo loadClass('Helper')->getEnv('HTTPD_DOCROOT_DIR');?></td>
 										<td><?php echo loadClass('Httpd')->getVhostBackend($vHost['name']); ?></td>
 										<td>
+											<?php $id_vhost_httpd    = str_replace('=', '', base64_encode('vhost_httpd_conf_' . $vHost['name'])); ?>
+											<?php $id_vhost_vhostgen = str_replace('=', '', base64_encode('vhost_vhost_gen_' . $vHost['name'])); ?>
+
 											<!-- [httpd.conf] Button trigger modal -->
-											<a href="#"><i class="fa fa-cog" aria-hidden="true" data-toggle="modal" data-target="#vhost_conf_<?php echo $vHost['name'];?>"></i></a>
+											<a href="#"><i class="fa fa-cog" aria-hidden="true" data-toggle="modal" data-target="#<?php echo $id_vhost_httpd;?>"></i></a>
 											<!-- [httpd.conf] Modal -->
-											<div class="modal" id="vhost_conf_<?php echo $vHost['name'];?>" tabindex="-1" role="dialog" aria-labelledby="vhost_conf_<?php echo $vHost['name'];?>Label" aria-hidden="true">
+											<div class="modal" id="<?php echo $id_vhost_httpd;?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $id_vhost_httpd;?>Label" aria-hidden="true">
 												<div class="modal-dialog modal-lg" role="document">
 													<div class="modal-content">
 														<div class="modal-header">
-															<h5 class="modal-title" id="vhost_conf_<?php echo $vHost['name'];?>Label"><?php echo '<strong>httpd.conf: </strong><code>'.$vHost['name'].'.'.loadClass('Httpd')->getTldSuffix(). '</code>'; ?></h5>
+															<h5 class="modal-title" id="<?php echo $id_vhost_httpd;?>Label"><?php echo '<strong>httpd.conf: </strong><code>'.$vHost['name'].'.'.loadClass('Httpd')->getTldSuffix(). '</code>'; ?></h5>
 															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 															<span aria-hidden="true">&times;</span>
 															</button>
 														</div>
 														<div class="modal-body">
-															<?php
-																$tpl = loadClass('Httpd')->getVhostgenTemplatePath($vHost['name']);
-																echo $tpl;
-															?>
 															<?php $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]"; ?>
 															<?php $src = file_get_contents($url.'/vhost.d/' . $vHost['name'] . '.conf'); ?>
 															<?php //$src = htmlentities($src); ?>
@@ -72,13 +71,13 @@
 											</div>
 											<?php if (($vhostGenPath = loadClass('Httpd')->getVhostgenTemplatePath($vHost['name'])) !== false): ?>
 												<!-- [vhost-gen] Button trigger modal -->
-												<a href="#"><i class="fa fa-filter" aria-hidden="true" data-toggle="modal" data-target="#vhost_tpl_<?php echo $vHost['name'];?>"></i></a>
+												<a href="#"><i class="fa fa-filter" aria-hidden="true" data-toggle="modal" data-target="#<?php echo $id_vhost_vhostgen;?>"></i></a>
 												<!-- [vhost-gen] Modal -->
-												<div class="modal" id="vhost_tpl_<?php echo $vHost['name'];?>" tabindex="-1" role="dialog" aria-labelledby="vhost_tpl_<?php echo $vHost['name'];?>Label" aria-hidden="true">
+												<div class="modal" id="<?php echo $id_vhost_vhostgen;?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $id_vhost_vhostgen;?>Label" aria-hidden="true">
 													<div class="modal-dialog modal-lg" role="document">
 														<div class="modal-content">
 															<div class="modal-header">
-																<h5 class="modal-title" id="vhost_tpl_<?php echo $vHost['name'];?>Label"><?php echo '<code>'.$vhostGenPath.'</code>'; ?></h5>
+																<h5 class="modal-title" id="<?php echo $id_vhost_vhostgen;?>Label"><?php echo '<code>'.$vhostGenPath.'</code>'; ?></h5>
 																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 																</button>
