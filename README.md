@@ -68,7 +68,6 @@ The Devilbox runs on all major operating systems and its only requirement is <co
 * [Docker Compose 1.16.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-23)
 </details>
 
-<br/>
 Be up and running in 2 minutes.
 <details style="margin-bottom:0px !important;"><summary>🚀 Install and Run: Linux</summary>
 
