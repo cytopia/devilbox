@@ -90,15 +90,18 @@ LOCAL_LISTEN_ADDR=
 ###
 ### Note: In addition to period or dot character ('.'), only ALPHA ([a-zA-Z]+) characters are supported.
 ###       Mac users should not use the .local TLD, as this will not resolve properly due Apple's
-###         use of Multicast DNS.##
+###       use of Multicast DNS.
+###
+### Note: If you use 'dvl.to' then there is no need for additional DNS as this always points
+###       to 127.0.0.1 by default.
 ###
 ### Example:
 ###   TLD_SUFFIX=loc
-### Makes your project available under xxxx.loc
+### Makes your project available under <project>.loc
 ###
 ### Example:
 ###   TLD_SUFFIX=local
-### Makes your project available under xxxx.local
+### Makes your project available under <project>.local
 ###
 TLD_SUFFIX=dvl.to
 
