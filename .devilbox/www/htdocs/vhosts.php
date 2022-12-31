@@ -26,8 +26,8 @@
 									<th>DocumentRoot</th>
 									<th>Backend</th>
 									<th>Config</th>
-									<th>Valid</th>
-									<th>URL</th>
+									<th style="width:60px;">Valid</th>
+									<th style="width:260px;">URL</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -111,8 +111,8 @@
 												</div>
 											<?php endif; ?>
 										</td>
-										<td style="min-width:60px;" class="text-xs-center text-xs-small" id="valid-<?php echo $vHost['name'];?>"></td>
-										<td style="min-width:260px;" id="href-<?php echo $vHost['name'];?>"></td>
+										<td class="text-xs-center text-xs-small" id="valid-<?php echo $vHost['name'];?>"></td>
+										<td id="href-<?php echo $vHost['name'];?>"></td>
 									</tr>
 									<input type="hidden" name="vhost[]" class="vhost" value="<?php echo $vHost['name'];?>" />
 								<?php endforeach; ?>
