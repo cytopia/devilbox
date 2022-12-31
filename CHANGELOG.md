@@ -54,6 +54,7 @@ Once you're done with `backend.cfg` changes, head over to the Intranet C&C page 
 ### Added
 - Reverse Proxy automation for websocket projects (`ws://<host>:<port>` or `wss:<host>:<port>`) (Does not work with Apache 2.2)
 - Added tool `wscat` to be able to test websocket connections
+- Intranet: show `wscat` version
 - Intranet: vhost overview now also shows websocket projects
 
 ### Changed
