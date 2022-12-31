@@ -100,7 +100,7 @@ LOCAL_LISTEN_ADDR=
 ###   TLD_SUFFIX=local
 ### Makes your project available under xxxx.local
 ###
-TLD_SUFFIX=loc
+TLD_SUFFIX=dvl.to
 
 
 ###
