@@ -205,8 +205,9 @@ To enter the work container, simply run `./shell.sh`
 Create your first project:
 <details><summary>Example: Dummy Project</summary>
 </details>
+
+
 <details><summary>Example: PHP Framework</summary>
-<p>
 
 Find all the examples in the documentation:
 
@@ -228,8 +229,6 @@ Find all the examples in the documentation:
 <a target="_blank" title="How to Setup WordPress on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-wordpress.html"><img width="48" style="width:48px" src="docs/img/logo_fw/wordpress.png" alt="Devilbox"/></a>
 <a target="_blank" title="How to Setup Yii on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-yii.html"><img width="48" style="width:48px" src="docs/img/logo_fw/yii.png" alt="Devilbox"/></a>
 <a target="_blank" title="How to Setup Zend on the Devilbox" href="https://devilbox.readthedocs.io/en/latest/examples/setup-zend.html"><img width="48" style="width:48px" src="docs/img/logo_fw/zend.png" alt="Devilbox"/></a>
-
-</p>
 </details>
 
 
@@ -1135,18 +1134,6 @@ simplify your every-day life. If you ever run into any unforseen issues, feel fr
 
 The Devilbox is still a young project with a long roadmap of features to come. Features are
 decided by you - **the community**, so any kind of contribution is welcome.
-
-<!--
-[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/0)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/0)
-[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/1)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/1)
-[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/2)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/2)
-[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/3)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/3)
-[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/4)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/4)
-[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/5)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/5)
-[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/6)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/6)
-[![](https://sourcerer.io/fame/cytopia/cytopia/devilbox/images/7)](https://sourcerer.io/fame/cytopia/cytopia/devilbox/links/7)
-
--->
 
 To increase visibility and bug-free operation:
 
