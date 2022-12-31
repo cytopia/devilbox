@@ -345,7 +345,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 								</thead>
 								<tbody>
 									<tr>
-										<th>Angular Cli</th>
+										<th style="width: 50%;">Angular Cli</th>
 										<td id="app_angular_cli"></td>
 									</tr>
 									<tr>
