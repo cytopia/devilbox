@@ -67,6 +67,10 @@
 								<td>PHP 8.2 base images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
 							<tr>
+								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-php-fpm-8.3">docker-php-fpm-8.3</a></td>
+								<td>PHP 8.3 base images (<code>amd64</code> and <code>arm64</code>)</td>
+							</tr>
+							<tr>
 								<td><i class="fa fa-github-alt" aria-hidden="true"></i> <a target="_blank" href="https://github.com/devilbox/docker-php-fpm">docker-php-fpm</a></td>
 								<td>PHP-FPM Devilbox images (<code>amd64</code> and <code>arm64</code>)</td>
 							</tr>
