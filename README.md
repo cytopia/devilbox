@@ -38,11 +38,11 @@
 <small><sub>Support for <a href="https://devilbox.readthedocs.io/en/latest/intermediate/setup-valid-https.html">valid https</a> out of the box.</sub></small>
 -->
 
-The Devilbox is a versatile and highly customisable zero-conf **PHP Docker** stack supporting **LEMP** and **MEAN** as well as **Websockets**, **Node**, **Python** and **Golang** via automated Reverse Proxy integraton.
+The Devilbox is a versatile and highly customisable zero-conf PHP Docker stack supporting LEMP and MEAN as well as Websockets, Node, Python and Golang via automated Reverse Proxy integraton.
 <br/>
 <br/>
 The main goal is to provide a reproducible development environment that runs on all major platforms and is able to switch and combine any version you need.
-It supports an **unlimited number of projects** for which **vhosts**, **SSL certificates** and **DNS records** are created automatically.
+It supports an unlimited number of projects for which vhosts, SSL certificates and DNS records are created automatically.
 Email interception and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
 <br/>
 <br/>
@@ -71,7 +71,8 @@ The Devilbox runs on all major operating systems and its only requirement is <co
 * [Docker Compose 1.16.0+](https://docs.docker.com/compose/compose-file/compose-versioning/#version-23)
 </details>
 
-Be up and running in 2 minutes.
+**Be up and running in 2 minutes.**
+
 <details style="margin-bottom:0px;"><summary>🚀 Install and Run: Linux</summary>
 
 <h3>Linux: Install</h3>
@@ -205,7 +206,8 @@ To enter the work container, simply run `./shell.sh`
 
 ## 💡 Examples
 
-Create your first project:
+**Create your first project:**
+
 <details><summary>Example: Dummy Project</summary>
 
 1. Start the container you need:
@@ -1014,7 +1016,7 @@ Well-known and popular tools will be at your service:
 
 <h3>Supported Frameworks</h3>
 
-#### Supported PHP Frameworks
+#### PHP Frameworks
 
 As far as tested there are no limitations and you can use any Framework or CMS just as you would on your live environment. Below are a few examples of extensively tested Frameworks and CMS:
 
@@ -1057,7 +1059,7 @@ As far as tested there are no limitations and you can use any Framework or CMS j
 > [Setup Yii](https://devilbox.readthedocs.io/en/latest/examples/setup-yii.html) |
 > [Setup Zend](https://devilbox.readthedocs.io/en/latest/examples/setup-zend.html)
 
-#### Supported reverse proxied applications
+#### Reverse Proxy Applications
 
 As far as tested there are no limitations and you can use any application that creates an open port.
 These ports will be reverse proxied by the web server and even allow you to use **valid HTTPS** for them.
