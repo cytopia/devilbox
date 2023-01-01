@@ -94,7 +94,7 @@ MODS="$( echo "${PHP52_MODS}, ${PHP53_MODS}, ${PHP54_MODS}, ${PHP55_MODS}, ${PHP
 ###
 ### Get disabled modules
 ###
-DISABLED=",blackfire,ioncube,phalcon,psr,$( grep -E '^PHP_MODULES_DISABLE=' "${DVLBOX_PATH}/env-example" | sed 's/.*=//g' ),"
+DISABLED=",blackfire,ioncube,phalcon,psr,xhprof,$( grep -E '^PHP_MODULES_DISABLE=' "${DVLBOX_PATH}/env-example" | sed 's/.*=//g' ),"
 #echo $DISABLED
 B="✔"  # Enabled base modules (cannot be disabled)
 E="🗸"  # Enabled mods modules (can be disabled)

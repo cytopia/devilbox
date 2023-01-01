@@ -326,9 +326,9 @@ The Devilbox tries to be a zero-configuration stack out of the box and has autom
   <td>
    <strong>Intranet</strong><br/>
    :star: <code>Virtual Hosts</code><br/>
+   :star: <code>C&C</code><br/>
    :star: <code>Email Reader</code><br/>
    :star: <code>OpCache Gui</code><br/>
-   :star: <code>XHProf UI</code><br/>
   </td>
   <td>
    <strong>Batteries</strong><br/>
@@ -845,6 +845,7 @@ The Devilbox is a development stack, so it is made sure that a lot of PHP module
 | <sup>vips</sup>               |         |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |
 | <sup>wddx</sup>               |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |         |         |         |         |
 | <sup>Xdebug</sup>             |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
+| <sup>xhprof</sup>             |         |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |    d    |
 | <sup>xlswriter</sup>          |         |         |         |         |         |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |    🗸    |
 | <sup>xml</sup>                |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
 | <sup>xmlreader</sup>          |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |    ✔    |
@@ -873,7 +874,7 @@ PHP modules can be enabled or disabled on demand to reflect the state of your ta
 </details>
 
 
-<details><summary><strong>🛠️ Available Tools</strong></summary>
+<details><summary><strong>🛠️ Available CLI Tools</strong></summary>
 
 <h3>Available Tools</h3>
 
@@ -1242,10 +1243,13 @@ Logos and banners can be found at **[devilbox/artwork](https://github.com/devilb
 
 <img style="width:64px; height:64px;" width="64" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_logo/cytopia/01/png/logo_128_trans.png?raw=true" /> <img style="width:64px; height:64px;" width="64" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_logo/cytopia/02/png/logo_128_trans.png?raw=true" /> <img style="height:64px;" height="64" src="https://github.com/devilbox/artwork/blob/master/submissions_banner/cytopia/01/png/banner_128_trans.png?raw=true" />
 
-
-
 ## 🗎 License
 
 **[MIT License](LICENSE.md)**
 
 Copyright (c) 2016 **[cytopia](https://github.com/cytopia)**
+
+
+<a href="https://github.com/cytopia/devilbox/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=cytopia/devilbox" />
+</a>
