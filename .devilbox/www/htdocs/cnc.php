@@ -65,7 +65,7 @@ function run_supervisor_command($command) {
 						);
 					?>
 					<h3>Daemon overview</h3><br/>
-					<p>If you made a change to any vhost settings, you can trigger a manual reload here.</p>
+					<p>If you made any changes to vhost settings (vhost-gen templates or backend configuration) or to the webserver configuration itself, you can trigger a manual reload of <code>watcherd</code> here to apply them. No need to restart the Docker Compose stack.</p>
 					<table class="table table-striped">
 						<thead class="thead-inverse">
 							<tr>
