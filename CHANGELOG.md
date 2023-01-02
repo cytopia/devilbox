@@ -6,7 +6,7 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
-## Release v3.0.0-beta-0.3 (2022-12-31)
+## Release v3.0.0-beta-0.3 (2022-01-02)
 
 This release provides the `dvl.to` domain to be used with `TLD_SUFFIX` (set to default), which eliminates the need to set any entries in `/etc/hosts`, as all of its subdomain will point to `127.0.0.1` via official DNS. Domain has been acquired thanks to awesome sponsors!
 
@@ -20,6 +20,7 @@ This release provides the `dvl.to` domain to be used with `TLD_SUFFIX` (set to d
 - Intranet: vhost overview shows listening ports
 - Intranet: vhost overview now has modals to show httpd and vhost-gen configs
 - Docs: Show available tools per version in README.md
+- Added `xhprof` PHP extension
 
 
 ## Release v3.0.0-beta-0.2 (2022-12-27)
