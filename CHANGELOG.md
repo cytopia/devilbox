@@ -12,6 +12,7 @@ This release provides the `dvl.to` domain to be used with `TLD_SUFFIX` (set to d
 
 ### Fixed
 - Intranet: mail.php fixed deprecation warnings [#798](https://github.com/cytopia/devilbox/issues/798)
+- Added `host.docker.internal` to extra_hosts to be able to connect to the host system [#919](https://github.com/cytopia/devilbox/issues/919)
 
 ### Changed
 - Use `dvl.to` as default `TLD_SUFFIX` (it always poits to `127.0.0.1` removing the need to create `/etc/hosts` entries)
