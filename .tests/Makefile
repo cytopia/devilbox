@@ -6,9 +6,21 @@ endif
 # -------------------------------------------------------------------------------------------------
 # Misc Targets
 # -------------------------------------------------------------------------------------------------
-update-readme:
+.PHONY: update-readme
+update-readme: _update-readme-modules
+update-readme: _update-readme-tools
+
+.PHONY: _update-readme-modules
+_update-readme-modules:
 	cat "../README.md" \
 		| perl -0 -pe "s#<!-- modules -->.*<!-- /modules -->#<!-- modules -->\n$$(./scripts/get-modules.sh)\n<!-- /modules -->#s" \
+		> "../README.md.tmp"
+	yes | mv -f "../README.md.tmp" "../README.md"
+
+.PHONY: _update-readme-tools
+_update-readme-tools:
+	cat "../README.md" \
+		| perl -0 -pe "s#<!-- tools -->.*<!-- /tools -->#<!-- tools -->\n$$(./scripts/get-tools.sh)\n<!-- /tools -->#s" \
 		> "../README.md.tmp"
 	yes | mv -f "../README.md.tmp" "../README.md"
 

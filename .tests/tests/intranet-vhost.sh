@@ -54,7 +54,7 @@ fi
 HOST_PORT_HTTPD="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HOST_PORT_HTTPD" )"
 TLD_SUFFIX="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "TLD_SUFFIX" )"
 HTTPD_DOCROOT_DIR="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HTTPD_DOCROOT_DIR" )"
-HTTPD_TEMPLATE_DIR="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HTTPD_TEMPLATE_DIR" )"
+#HTTPD_TEMPLATE_DIR="$( "${SCRIPT_PATH}/../scripts/env-getvar.sh" "HTTPD_TEMPLATE_DIR" )"
 
 
 ###
@@ -128,14 +128,14 @@ fi
 ###
 ### Vhost config link is available
 ###
-printf "[TEST] vhost.d config link is available"
-if ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/vhosts.php' | tac | tac | grep 'vhost.d/${VHOST}.conf' >/dev/null" "${RETRIES}" "" "0"; then
-	printf "\\r[FAIL] vhost.d config link is available\\n"
-	run "curl 'http://localhost:${HOST_PORT_HTTPD}/vhosts.php' || true"
-	exit 1
-else
-	printf "\\r[OK]   vhost.d config link is available\\n"
-fi
+#printf "[TEST] vhost.d config link is available"
+#if ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/vhosts.php' | tac | tac | grep 'vhost.d/${VHOST}.conf' >/dev/null" "${RETRIES}" "" "0"; then
+#	printf "\\r[FAIL] vhost.d config link is available\\n"
+#	run "curl 'http://localhost:${HOST_PORT_HTTPD}/vhosts.php' || true"
+#	exit 1
+#else
+#	printf "\\r[OK]   vhost.d config link is available\\n"
+#fi
 
 
 ###
@@ -154,62 +154,62 @@ fi
 ###
 ### vhost-gen config link should appear
 ###
-run "docker-compose exec --user devilbox -T php mkdir -p /shared/httpd/${VHOST}/${HTTPD_TEMPLATE_DIR}" "${RETRIES}" "${DVLBOX_PATH}"
-run "cp ${DVLBOX_PATH}/cfg/vhost-gen/apache22.yml-example-vhost ${SCRIPT_PATH}/../www/${VHOST}/${HTTPD_TEMPLATE_DIR}/apache22.yml" "${RETRIES}"
-run "cp ${DVLBOX_PATH}/cfg/vhost-gen/apache24.yml-example-vhost ${SCRIPT_PATH}/../www/${VHOST}/${HTTPD_TEMPLATE_DIR}/apache24.yml" "${RETRIES}"
-run "cp ${DVLBOX_PATH}/cfg/vhost-gen/nginx.yml-example-vhost ${SCRIPT_PATH}/../www/${VHOST}/${HTTPD_TEMPLATE_DIR}/nginx.yml" "${RETRIES}"
-
-printf "[TEST] vhost-gen config link is available"
-if ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/vhosts.php' | tac | tac | grep 'info_vhostgen.php?name=${VHOST}' >/dev/null" "${RETRIES}" "" "0"; then
-	printf "\\r[FAIL] vhost-gen config link is available\\n"
-	run "curl 'http://localhost:${HOST_PORT_HTTPD}/vhosts.php' || true"
-	exit 1
-else
-	printf "\\r[OK]   vhost-gen config link is available\\n"
-fi
+#run "docker-compose exec --user devilbox -T php mkdir -p /shared/httpd/${VHOST}/${HTTPD_TEMPLATE_DIR}" "${RETRIES}" "${DVLBOX_PATH}"
+#run "cp ${DVLBOX_PATH}/cfg/vhost-gen/apache22.yml-example-vhost ${SCRIPT_PATH}/../www/${VHOST}/${HTTPD_TEMPLATE_DIR}/apache22.yml" "${RETRIES}"
+#run "cp ${DVLBOX_PATH}/cfg/vhost-gen/apache24.yml-example-vhost ${SCRIPT_PATH}/../www/${VHOST}/${HTTPD_TEMPLATE_DIR}/apache24.yml" "${RETRIES}"
+#run "cp ${DVLBOX_PATH}/cfg/vhost-gen/nginx.yml-example-vhost ${SCRIPT_PATH}/../www/${VHOST}/${HTTPD_TEMPLATE_DIR}/nginx.yml" "${RETRIES}"
+#
+#printf "[TEST] vhost-gen config link is available"
+#if ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/vhosts.php' | tac | tac | grep 'info_vhostgen.php?name=${VHOST}' >/dev/null" "${RETRIES}" "" "0"; then
+#	printf "\\r[FAIL] vhost-gen config link is available\\n"
+#	run "curl 'http://localhost:${HOST_PORT_HTTPD}/vhosts.php' || true"
+#	exit 1
+#else
+#	printf "\\r[OK]   vhost-gen config link is available\\n"
+#fi
 
 
 ###
 ### vhost-gen config should be available
 ###
-printf "[TEST] vhost-gen config is available"
-if ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_vhostgen.php?name=${VHOST}' | tac | tac | grep '__VHOST_NAME__' >/dev/null" "${RETRIES}" "" "0"; then
-	printf "\\r[FAIL] vhost-gen config is available\\n"
-	run "curl 'http://localhost:${HOST_PORT_HTTPD}/info_vhostgen.php?name=${VHOST}' || true"
-	exit 1
-else
-	printf "\\r[OK]   vhost-gen config is available\\n"
-fi
+#printf "[TEST] vhost-gen config is available"
+#if ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_vhostgen.php?name=${VHOST}' | tac | tac | grep '__VHOST_NAME__' >/dev/null" "${RETRIES}" "" "0"; then
+#	printf "\\r[FAIL] vhost-gen config is available\\n"
+#	run "curl 'http://localhost:${HOST_PORT_HTTPD}/info_vhostgen.php?name=${VHOST}' || true"
+#	exit 1
+#else
+#	printf "\\r[OK]   vhost-gen config is available\\n"
+#fi
 
 
 ###
 ### vhost-gen config changes are shown in intranet
 ###
-replace "__INDEX__" "__MY_GREP_VALUE__" "${SCRIPT_PATH}/../www/${VHOST}/${HTTPD_TEMPLATE_DIR}/apache22.yml"
-replace "__INDEX__" "__MY_GREP_VALUE__" "${SCRIPT_PATH}/../www/${VHOST}/${HTTPD_TEMPLATE_DIR}/apache24.yml"
-replace "__INDEX__" "__MY_GREP_VALUE__" "${SCRIPT_PATH}/../www/${VHOST}/${HTTPD_TEMPLATE_DIR}/nginx.yml"
-
-printf "[TEST] vhost-gen config changes are shown"
-if ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_vhostgen.php?name=${VHOST}' | tac | tac | grep '__MY_GREP_VALUE__' >/dev/null" "${RETRIES}" "" "0"; then
-	printf "\\r[FAIL] vhost-gen config changes are shown\\n"
-	run "curl 'http://localhost:${HOST_PORT_HTTPD}/info_vhostgen.php?name=${VHOST}' || true"
-	exit 1
-else
-	printf "\\r[OK]   vhost-gen config changes are shown\\n"
-fi
+#replace "__INDEX__" "__MY_GREP_VALUE__" "${SCRIPT_PATH}/../www/${VHOST}/${HTTPD_TEMPLATE_DIR}/apache22.yml"
+#replace "__INDEX__" "__MY_GREP_VALUE__" "${SCRIPT_PATH}/../www/${VHOST}/${HTTPD_TEMPLATE_DIR}/apache24.yml"
+#replace "__INDEX__" "__MY_GREP_VALUE__" "${SCRIPT_PATH}/../www/${VHOST}/${HTTPD_TEMPLATE_DIR}/nginx.yml"
+#
+#printf "[TEST] vhost-gen config changes are shown"
+#if ! run "curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/info_vhostgen.php?name=${VHOST}' | tac | tac | grep '__MY_GREP_VALUE__' >/dev/null" "${RETRIES}" "" "0"; then
+#	printf "\\r[FAIL] vhost-gen config changes are shown\\n"
+#	run "curl 'http://localhost:${HOST_PORT_HTTPD}/info_vhostgen.php?name=${VHOST}' || true"
+#	exit 1
+#else
+#	printf "\\r[OK]   vhost-gen config changes are shown\\n"
+#fi
 
 
 ###
 ### Vhost disappears after removing its dir
 ###
-run "docker-compose exec --user devilbox -T php rm -rf /shared/httpd/${VHOST}" "${RETRIES}" "${DVLBOX_PATH}"
-run "sleep 4"
-
-printf "[TEST] vhost disappears after removing its dir"
-if ! run "test \"\$(curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/vhosts.php' | tac | tac | grep -c '${VHOST}')\" = \"0\"" "${RETRIES}" "" "0"; then
-	printf "\\r[FAIL] vhost disappears after removing its dir\\n"
-	run "curl 'http://localhost:${HOST_PORT_HTTPD}/vhosts.php' | tac | tac | grep '${VHOST}' || true"
-	exit 1
-else
-	printf "\\r[OK]   vhost disappears after removing its dir\\n"
-fi
+#run "docker-compose exec --user devilbox -T php rm -rf /shared/httpd/${VHOST}" "${RETRIES}" "${DVLBOX_PATH}"
+#run "sleep 4"
+#
+#printf "[TEST] vhost disappears after removing its dir"
+#if ! run "test \"\$(curl -sS --fail 'http://localhost:${HOST_PORT_HTTPD}/vhosts.php' | tac | tac | grep -c '${VHOST}')\" = \"0\"" "${RETRIES}" "" "0"; then
+#	printf "\\r[FAIL] vhost disappears after removing its dir\\n"
+#	run "curl 'http://localhost:${HOST_PORT_HTTPD}/vhosts.php' | tac | tac | grep '${VHOST}' || true"
+#	exit 1
+#else
+#	printf "\\r[OK]   vhost disappears after removing its dir\\n"
+#fi

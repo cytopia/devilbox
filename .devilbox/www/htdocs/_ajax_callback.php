@@ -150,6 +150,11 @@ if (loadClass('Helper')->isLoggedIn()) {
 				$_GET['software'] => (($version = loadClass('Php')->getWpcliVersion()) !== false) ? $version : $no
 			));
 		}
+		else if ($_GET['software'] == 'wscat') {
+			echo json_encode(array(
+				$_GET['software'] => (($version = loadClass('Php')->getWscatVersion()) !== false) ? $version : $no
+			));
+		}
 		else if ($_GET['software'] == 'yarn') {
 			echo json_encode(array(
 				$_GET['software'] => (($version = loadClass('Php')->getYarnVersion()) !== false) ? $version : $no
