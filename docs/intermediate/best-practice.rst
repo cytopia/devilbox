@@ -82,6 +82,18 @@ Version control service config files
 * Separate data partition, backups
 
 
+Version control ``php.ini`` files
+---------------------------------
+
+The ``*.ini`` files in ``devilbox/cfg/...`` are also ignored by git.
+
+You can use a separate **configfiles** git repository, like with ``.env``.
+
+Just store these files in your repository and hardlink them to
+the Devilbox git directiry. This way you make sure that you keep your file, even when the Devilbox
+git directory is deleted and you also have a means of keeping track about changes you made.
+
+
 PHP project hostname settings
 =============================
 
