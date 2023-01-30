@@ -113,6 +113,9 @@ services:
       - ./.env
 
     environment:
+      # Where PHP is looking for ini files
+      - PHP_INI_SCAN_DIR=/usr/local/etc/php/conf.d:/etc/php-custom.d
+
       ##
       ## Supervisord Management (to connect to HTTPD supvervisord)
       ##

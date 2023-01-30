@@ -20,7 +20,8 @@
 ;
 [PHP]
 
-; Xdebug
+; Xdebug (version 2.9.8)
+;
 ; Use these settings to enable Xdebug for PHP
 ; Make sure to read up on Xdebug some settings might significantly slow down requests.
 ; The following is just an example configuration and should be adjusted
