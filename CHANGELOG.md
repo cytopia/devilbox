@@ -6,6 +6,22 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v3.0.0-beta-0.4 (2022-01-30)
+
+### Fixed
+- Ignore directories starting with a `.` in `/shared/httpd` (invalid server names)
+- Fixed: `Creation of dynamic property Mail_Mbox::$_file is deprecated` (PHP 8.2)
+- Fixed: Xdebug default configuration files in cfg/php-ini-X.Y/devilbox-php.ini-xdebug [#866](https://github.com/cytopia/devilbox/issues/866)
+- Fixed: Show httpd access logs via docker logs when `DOCKER_LOGS=1` instead of piping it to supervisord [#956](https://github.com/cytopia/devilbox/issues/956)
+
+### Added
+- Intranet: Allow to reload PHP-FPM to reflect `php.ini` or `php-fpm.conf` changes on-the-fly without restarting docker-compose
+
+### Changed
+- Updated httpd images
+- Updated php-fpm images
+
+
 ## Release v3.0.0-beta-0.3 (2022-01-02)
 
 This release provides the `dvl.to` domain to be used with `TLD_SUFFIX` (set to default), which eliminates the need to set any entries in `/etc/hosts`, as all of its subdomain will point to `127.0.0.1` via official DNS. Domain has been acquired thanks to awesome sponsors!
