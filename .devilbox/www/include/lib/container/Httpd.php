@@ -71,7 +71,7 @@ class Httpd extends BaseClass implements BaseInterface
 
 		if ($handle = opendir($docRoot)) {
 			while (false !== ($directory = readdir($handle))) {
-				if ($this->_is_valid_dir($docRoot . DIRECTORY_SEPARATOR . $directory) && $directory != '.' && $directory != '..') {
+				if ($this->_is_valid_dir($docRoot . DIRECTORY_SEPARATOR . $directory) && $directory[0] != '.' ) {
 
 					$vhosts[$directory] = array(
 						'name'		=> $directory,

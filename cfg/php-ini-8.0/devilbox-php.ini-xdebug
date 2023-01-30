@@ -20,16 +20,32 @@
 ;
 [PHP]
 
-; Xdebug
-; https://3.xdebug.org/docs/upgrade_guide
+; Xdebug (version 3.x.x - latest)
+; Upgrade Guide:  https://3.xdebug.org/docs/upgrade_guide
+; Settings Guide: https://xdebug.org/docs/all_settings
+;
 ; Use these settings to enable Xdebug for PHP
 ; Make sure to read up on Xdebug some settings might significantly slow down requests.
-; The following is just an example configuration and should be adjusted
+; The following is just an example configuration and should be adjusted.
+
+; Defaults
 xdebug.mode               = debug
-xdebug.start_with_request = yes
 xdebug.remote_handler     = dbgp
-xdebug.remote_port        = 9000
-xdebug.idekey             = PHPSTORM
-xdebug.remote_log         = /var/log/php/xdebug.log
+xdebug.start_with_request = yes
+;xdebug.start_with_request = trigger
+;xdebug.trigger_value      = randomkey
+
+; How to connect
+xdebug.client_port          = 9000
+xdebug.client_host          = host.docker.internal
+xdebug.discover_client_host = 0
+
+; Logging
+xdebug.log       = /var/log/php/xdebug.log
+xdebug.log_level = 7
+
+; IDE Configuration
+xdebug.idekey    = PHPSTORM
+;xdebug.idekey    = VSCODE
 
 ; vim: set ft=dosini:

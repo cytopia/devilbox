@@ -100,7 +100,7 @@ services:
   # PHP
   # ------------------------------------------------------------
   php:
-    image: devilbox/php-fpm:${PHP_SERVER}-work-0.150
+    image: devilbox/php-fpm:${PHP_SERVER}-work-0.151
     hostname: php
 
     ##
@@ -113,9 +113,13 @@ services:
       - ./.env
 
     environment:
+      # Where PHP is looking for ini files
+      - PHP_INI_SCAN_DIR=/usr/local/etc/php/conf.d:/etc/php-custom.d
+
       ##
       ## Supervisord Management (to connect to HTTPD supvervisord)
       ##
+      - SVCTL_ENABLE=1
       - SVCTL_LISTEN_PORT=9001
       - SVCTL_USER=${DEVILBOX_HTTPD_MGMT_USER:-supervisor}
       - SVCTL_PASS=${DEVILBOX_HTTPD_MGMT_PASS:-mypassword}
@@ -229,7 +233,7 @@ services:
   # Web Server
   # ------------------------------------------------------------
   httpd:
-    image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-1.0
+    image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-1.2
     hostname: httpd
 
     environment:

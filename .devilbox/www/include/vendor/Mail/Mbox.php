@@ -190,6 +190,12 @@ class Mail_Mbox extends PEAR
     var $autoReopen = true;
 
 
+	/**
+	 * cytoia added to prevent deprecation warning about dynamically creating
+	 * this variable inside the constructor
+	 */
+	var $_file = null;
+
 
     /**
      * Create a new Mbox class instance.
