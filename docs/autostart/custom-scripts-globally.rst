@@ -13,11 +13,15 @@ the initial startup.
 
 .. seealso::
    * :ref:`custom_scripts_per_php_version` (individually for different PHP versions)
+   * :ref:`custom_scripts_per_project` (stored in project directory)
    * :ref:`autostarting_nodejs_apps`
 
 
 .. note::
-   Global scripts are always executed **after** per PHP version scripts.
+   Scripts are executed in the following order:
+   1. per PHP version scripts
+   2. global scripts
+   3. per project scripts
 
 
 **Table of Contents**
@@ -75,6 +79,12 @@ How
 The scripts will always be executed inside the PHP container (Debian Linux) and will be run with
 ``root`` privileges. It is however possible to drop privileges within the script to have them
 executed as a normal user.
+
+Environment Variables
+---------------------
+
+The following environment variables will be available to your script:
+   * All variables that have been set in your ``.env`` file
 
 
 Examples

@@ -13,11 +13,15 @@ the initial startup.
 
 .. seealso::
    * :ref:`custom_scripts_globally` (equal for all PHP versions)
+   * :ref:`custom_scripts_per_project` (stored in project directory)
    * :ref:`autostarting_nodejs_apps`
 
 
 .. note::
-   Per PHP version scripts are always executed **before** global scripts.
+   Scripts are executed in the following order:
+   1. per PHP version scripts
+   2. global scripts
+   3. per project scripts
 
 
 **Table of Contents**
@@ -81,6 +85,12 @@ The scripts will always be executed inside the PHP container (Debian Linux) and 
 ``root`` privileges. It is however possible to drop privileges within the script to have them
 executed as a normal user.
 
+Environment Variables
+---------------------
+
+The following environment variables will be available to your script:
+   * All variables that have been set in your ``.env`` file
+
 
 Examples
 ========
@@ -88,7 +98,7 @@ Examples
 Installing Microsoft ODBC driver
 --------------------------------
 
-This example will add Microsofts ODBC driver to PHP 7.1. These drivers are required in order to
+This example will add Microsoft's ODBC driver to PHP 7.1. These drivers are required in order to
 make the PHP modules ``pdo_sqlsrv`` and ``sqlsrv`` work. The two mentioned modules are already
 available in the PHP container, but are explicitly disabled via :ref:`env_file_php_modules_disable`.
 
@@ -98,7 +108,7 @@ requires every user to accept a license/EULA by Microsoft.
 
 .. code-block:: bash
 
-   # Navigate to starup dir of PHP 7.1
+   # Navigate to startup dir of PHP 7.1
    host> cd path/to/devilbox/cfg/php-startup-7.1
 
    # Create an .sh file
@@ -107,7 +117,7 @@ requires every user to accept a license/EULA by Microsoft.
    # Open the file in your favourite editor
    host> vi ms-odbc.sh
 
-Paste the following into ``ms-obbc.sh`` and **ensure to accept the EULA** by changing
+Paste the following into ``ms-odbc.sh`` and **ensure to accept the EULA** by changing
 ``ACCEPT_EULA=N`` to ``ACCEPT_EULA=Y``.
 
 .. code-block:: bash
@@ -158,7 +168,7 @@ Paste the following into ``ms-obbc.sh`` and **ensure to accept the EULA** by cha
    ### EULA accepted, so we can proceed
    ###
 
-   # Extract latest *.deb packate
+   # Extract latest *.deb package
    MSODBC_DEB="$( curl -k -sS "${MSODBC_URL}" | grep -Eo 'msodbcsql[-._0-9]+?_amd64\.deb' | tail -1 )"
 
    # Download to temporary location
