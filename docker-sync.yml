@@ -1,0 +1,63 @@
+version: '2'
+
+
+options:
+  # The path to devilbox docker-compose.yml file
+  compose-file-path: 'docker-compose.yml'
+
+  # The path to your custom docker-compose-dev.yml file
+  compose-dev-file-path: 'docker-compose-dev.yml'
+
+
+syncs:
+  # ------------------------------------------------------------
+  # Devilbox Intranet
+  # ------------------------------------------------------------
+  devilbox-intranet-sync:
+    # which folder to watch / sync from - you can use tilde (~), it will get expanded.
+    # Be aware that the trailing slash makes a difference
+    # if you add them, only the inner parts of the folder gets synced, otherwise the parent folder
+    # will be synced as top-level folder
+    src: '${DEVILBOX_PATH}/.devilbox/www/'
+
+    # this does not user groupmap but rather configures the server to map
+    # optional: usually if you map users you want to set the user id of your application
+    # container here
+    sync_userid: '${NEW_UID}'
+
+    # OS aware sync strategy, default to:
+    # * native_osx under MacOS (native)
+    # * unison under MacOS (docker-machine)
+    # * native docker volume under linux
+    #sync_strategy: 'unison'
+
+    # optional, a list of excludes. These patterns will not be synced see:
+    # http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#ignore
+    # for the possible syntax and see sync_excludes_type below
+    sync_excludes: ['.gitignore', '.git/', '.idea/', '.vscode/']
+
+  # ------------------------------------------------------------
+  # Devilbox Projects
+  # ------------------------------------------------------------
+  devilbox-data-www-sync:
+    # which folder to watch / sync from - you can use tilde (~), it will get expanded.
+    # Be aware that the trailing slash makes a difference
+    # if you add them, only the inner parts of the folder gets synced, otherwise the parent folder
+    # will be synced as top-level folder
+    src: '${HOST_PATH_HTTPD_DATADIR}/'
+
+    # this does not user groupmap but rather configures the server to map
+    # optional: usually if you map users you want to set the user id of your application
+    # container here
+    sync_userid: '${NEW_UID}'
+
+    # OS aware sync strategy, default to:
+    # * native_osx under MacOS (native)
+    # * unison under MacOS (docker-machine)
+    # * native docker volume under linux
+    #sync_strategy: 'unison'
+
+    # optional, a list of excludes. These patterns will not be synced see:
+    # http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#ignore
+    # for the possible syntax and see sync_excludes_type below
+    sync_excludes: ['.gitignore', '.git/', '.idea/', '.vscode/']
