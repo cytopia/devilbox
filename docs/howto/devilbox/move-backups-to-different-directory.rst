@@ -34,7 +34,7 @@ Now Adjust the value of :ref:`env_host_path_backupdir`
    :caption: .env
    :emphasize-lines: 1
 
-   HOST_PATH_HTTPD_DATADIR=/home/user/backups/devilbox/
+   HOST_PATH_BACKUPDIR=/home/user/backups/devilbox/
 
 That's it, whenever you start up the Devilbox, ``/home/user/backups/devilbox/`` will be mounted into
 the PHP container into ``/shared/backups/``.
