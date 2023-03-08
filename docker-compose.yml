@@ -160,6 +160,7 @@ services:
     extra_hosts:
       docker.for.lin.host.internal: 172.16.238.1
       docker.for.lin.localhost: 172.16.238.1
+      host.docker.internal: host-gateway
 
     networks:
       app_net:
