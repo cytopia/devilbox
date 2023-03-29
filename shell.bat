@@ -1,3 +1,5 @@
+@echo off
+
 set php=php
 
 if not "%~1"=="" (
