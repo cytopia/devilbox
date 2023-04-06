@@ -28,9 +28,22 @@ x-app: &default-php
 
 
 # ------------------------------------------------------------
-# PHP Services
+# Services
 # ------------------------------------------------------------
 services:
+  mongo:
+    image: alpine
+    entrypoint: []
+  pgsql:
+    image: alpine
+    entrypoint: []
+  redis:
+    image: alpine
+    entrypoint: []
+    command: ''
+  memcd:
+    image: alpine
+    entrypoint: []
 
   php70:
     <<: *default-php
