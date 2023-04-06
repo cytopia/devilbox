@@ -32,60 +32,6 @@ x-app: &default-php
 # ------------------------------------------------------------
 services:
 
-  php54:
-    <<: *default-php
-    image: devilbox/php-fpm:5.4-prod-0.150
-    hostname: php54
-    networks:
-      app_net:
-        ipv4_address: 172.16.238.201
-    volumes:
-      # Specific volumes
-      - ${DEVILBOX_PATH}/cfg/php-ini-5.4:/etc/php-custom.d:ro${MOUNT_OPTIONS}
-      - ${DEVILBOX_PATH}/cfg/php-fpm-5.4:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
-      # - ${DEVILBOX_PATH}/cfg/php-startup-5.4:/startup.1.d:rw${MOUNT_OPTIONS}
-      # Generic volumes
-      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:rw${MOUNT_OPTIONS}
-      - ${DEVILBOX_PATH}/supervisor:/etc/supervisor/custom.d:rw${MOUNT_OPTIONS}
-      # - ${DEVILBOX_PATH}/autostart:/startup.2.d:rw${MOUNT_OPTIONS}
-      - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
-
-  php55:
-    <<: *default-php
-    image: devilbox/php-fpm:5.5-prod-0.150
-    hostname: php55
-    networks:
-      app_net:
-        ipv4_address: 172.16.238.202
-    volumes:
-      # Specific volumes
-      - ${DEVILBOX_PATH}/cfg/php-ini-5.5:/etc/php-custom.d:ro${MOUNT_OPTIONS}
-      - ${DEVILBOX_PATH}/cfg/php-fpm-5.5:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
-      # - ${DEVILBOX_PATH}/cfg/php-startup-5.5:/startup.1.d:rw${MOUNT_OPTIONS}
-      # Generic volumes
-      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:rw${MOUNT_OPTIONS}
-      - ${DEVILBOX_PATH}/supervisor:/etc/supervisor/custom.d:rw${MOUNT_OPTIONS}
-      # - ${DEVILBOX_PATH}/autostart:/startup.2.d:rw${MOUNT_OPTIONS}
-      - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
-
-  php56:
-    <<: *default-php
-    image: devilbox/php-fpm:5.6-prod-0.150
-    hostname: php56
-    networks:
-      app_net:
-        ipv4_address: 172.16.238.203
-    volumes:
-      # Specific volumes
-      - ${DEVILBOX_PATH}/cfg/php-ini-5.6:/etc/php-custom.d:ro${MOUNT_OPTIONS}
-      - ${DEVILBOX_PATH}/cfg/php-fpm-5.6:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
-      # - ${DEVILBOX_PATH}/cfg/php-startup-5.6:/startup.1.d:rw${MOUNT_OPTIONS}
-      # Generic volumes
-      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:rw${MOUNT_OPTIONS}
-      - ${DEVILBOX_PATH}/supervisor:/etc/supervisor/custom.d:rw${MOUNT_OPTIONS}
-      # - ${DEVILBOX_PATH}/autostart:/startup.2.d:rw${MOUNT_OPTIONS}
-      - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
-
   php70:
     <<: *default-php
     image: devilbox/php-fpm:7.0-prod-0.150
@@ -176,23 +122,23 @@ services:
       # - ${DEVILBOX_PATH}/autostart:/startup.2.d:rw${MOUNT_OPTIONS}
       - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
 
-  php80:
-    <<: *default-php
-    image: devilbox/php-fpm:8.0-prod-0.150
-    hostname: php80
-    networks:
-      app_net:
-        ipv4_address: 172.16.238.209
-    volumes:
-      # Specific volumes
-      - ${DEVILBOX_PATH}/cfg/php-ini-8.0:/etc/php-custom.d:ro${MOUNT_OPTIONS}
-      - ${DEVILBOX_PATH}/cfg/php-fpm-8.0:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
-      # - ${DEVILBOX_PATH}/cfg/php-startup-8.0:/startup.1.d:rw${MOUNT_OPTIONS}
-      # Generic volumes
-      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:rw${MOUNT_OPTIONS}
-      - ${DEVILBOX_PATH}/supervisor:/etc/supervisor/custom.d:rw${MOUNT_OPTIONS}
-      # - ${DEVILBOX_PATH}/autostart:/startup.2.d:rw${MOUNT_OPTIONS}
-      - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
+  # php80:
+  #   <<: *default-php
+  #   image: devilbox/php-fpm:8.0-prod-0.150
+  #   hostname: php80
+  #   networks:
+  #     app_net:
+  #       ipv4_address: 172.16.238.209
+  #   volumes:
+  #     # Specific volumes
+  #     - ${DEVILBOX_PATH}/cfg/php-ini-8.0:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+  #     - ${DEVILBOX_PATH}/cfg/php-fpm-8.0:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+  #     # - ${DEVILBOX_PATH}/cfg/php-startup-8.0:/startup.1.d:rw${MOUNT_OPTIONS}
+  #     # Generic volumes
+  #     - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:rw${MOUNT_OPTIONS}
+  #     - ${DEVILBOX_PATH}/supervisor:/etc/supervisor/custom.d:rw${MOUNT_OPTIONS}
+  #     # - ${DEVILBOX_PATH}/autostart:/startup.2.d:rw${MOUNT_OPTIONS}
+  #     - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
 
   php81:
     <<: *default-php
@@ -212,23 +158,23 @@ services:
       # - ${DEVILBOX_PATH}/autostart:/startup.2.d:rw${MOUNT_OPTIONS}
       - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
 
-  php82:
-    <<: *default-php
-    image: devilbox/php-fpm:8.2-prod-0.150
-    hostname: php82
-    networks:
-      app_net:
-        ipv4_address: 172.16.238.211
-    volumes:
-      # Specific volumes
-      - ${DEVILBOX_PATH}/cfg/php-ini-8.2:/etc/php-custom.d:ro${MOUNT_OPTIONS}
-      - ${DEVILBOX_PATH}/cfg/php-fpm-8.2:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
-      # - ${DEVILBOX_PATH}/cfg/php-startup-8.2:/startup.1.d:rw${MOUNT_OPTIONS}
-      # Generic volumes
-      - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:rw${MOUNT_OPTIONS}
-      - ${DEVILBOX_PATH}/supervisor:/etc/supervisor/custom.d:rw${MOUNT_OPTIONS}
-      # - ${DEVILBOX_PATH}/autostart:/startup.2.d:rw${MOUNT_OPTIONS}
-      - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
+  # php82:
+  #   <<: *default-php
+  #   image: devilbox/php-fpm:8.2-prod-0.150
+  #   hostname: php82
+  #   networks:
+  #     app_net:
+  #       ipv4_address: 172.16.238.211
+  #   volumes:
+  #     # Specific volumes
+  #     - ${DEVILBOX_PATH}/cfg/php-ini-8.2:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+  #     - ${DEVILBOX_PATH}/cfg/php-fpm-8.2:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+  #     # - ${DEVILBOX_PATH}/cfg/php-startup-8.2:/startup.1.d:rw${MOUNT_OPTIONS}
+  #     # Generic volumes
+  #     - ${HOST_PATH_HTTPD_DATADIR}:/shared/httpd:rw${MOUNT_OPTIONS}
+  #     - ${DEVILBOX_PATH}/supervisor:/etc/supervisor/custom.d:rw${MOUNT_OPTIONS}
+  #     # - ${DEVILBOX_PATH}/autostart:/startup.2.d:rw${MOUNT_OPTIONS}
+  #     - devilbox-mail:/var/mail:rw${MOUNT_OPTIONS}
 
 
   # -----------------------------------------------------------------------------------------------
