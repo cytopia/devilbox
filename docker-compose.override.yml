@@ -71,6 +71,7 @@ x-common: &common
       docker.for.lin.host.internal: 172.16.238.1
       docker.for.lin.localhost: 172.16.238.1
       docker.for.wsl2.host.internal: ${IP}
+      host.docker.internal: host-gateway
 
     networks:
       app_net:
