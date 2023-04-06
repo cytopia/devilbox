@@ -70,6 +70,7 @@ x-common: &common
     extra_hosts:
       docker.for.lin.host.internal: 172.16.238.1
       docker.for.lin.localhost: 172.16.238.1
+      docker.for.wsl2.host.internal: ${IP}
 
     networks:
       app_net:
@@ -150,6 +151,11 @@ services:
       - ${DEVILBOX_PATH}/cfg/php-fpm-8.1:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/mod/php-fpm-8.1:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/cfg/php-startup-8.1:/startup.1.d:rw${MOUNT_OPTIONS}
+    volumes:
+      - ${DEVILBOX_PATH}/log/php-fpm-8.1:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-8.1:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-8.1:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-8.1:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
     networks:
       app_net:
         ipv4_address: 172.16.238.81
@@ -163,6 +169,11 @@ services:
       - ${DEVILBOX_PATH}/cfg/php-fpm-8.0:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/mod/php-fpm-8.0:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/cfg/php-startup-8.0:/startup.1.d:rw${MOUNT_OPTIONS}
+    volumes:
+      - ${DEVILBOX_PATH}/log/php-fpm-8.0:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-8.0:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-8.0:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-8.0:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
     networks:
       app_net:
         ipv4_address: 172.16.238.80
@@ -176,6 +187,11 @@ services:
       - ${DEVILBOX_PATH}/cfg/php-fpm-7.4:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/mod/php-fpm-7.4:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/cfg/php-startup-7.4:/startup.1.d:rw${MOUNT_OPTIONS}
+    volumes:
+      - ${DEVILBOX_PATH}/log/php-fpm-7.4:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-7.4:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-7.4:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-7.4:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
     networks:
       app_net:
         ipv4_address: 172.16.238.74
@@ -189,6 +205,11 @@ services:
       - ${DEVILBOX_PATH}/cfg/php-fpm-7.3:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/mod/php-fpm-7.3:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/cfg/php-startup-7.3:/startup.1.d:rw${MOUNT_OPTIONS}
+    volumes:
+      - ${DEVILBOX_PATH}/log/php-fpm-7.3:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-7.3:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-7.3:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-7.3:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
     networks:
       app_net:
         ipv4_address: 172.16.238.73
@@ -202,6 +223,11 @@ services:
       - ${DEVILBOX_PATH}/cfg/php-fpm-7.2:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/mod/php-fpm-7.2:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/cfg/php-startup-7.2:/startup.1.d:rw${MOUNT_OPTIONS}
+    volumes:
+      - ${DEVILBOX_PATH}/log/php-fpm-7.2:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-7.2:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-7.2:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-7.2:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
     networks:
       app_net:
         ipv4_address: 172.16.238.72
@@ -215,6 +241,11 @@ services:
       - ${DEVILBOX_PATH}/cfg/php-fpm-7.1:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/mod/php-fpm-7.1:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/cfg/php-startup-7.1:/startup.1.d:rw${MOUNT_OPTIONS}
+    volumes:
+      - ${DEVILBOX_PATH}/log/php-fpm-7.1:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-7.1:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-7.1:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-7.1:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
     networks:
       app_net:
         ipv4_address: 172.16.238.71
@@ -228,6 +259,11 @@ services:
       - ${DEVILBOX_PATH}/cfg/php-fpm-7.0:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/mod/php-fpm-7.0:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
       - ${DEVILBOX_PATH}/cfg/php-startup-7.0:/startup.1.d:rw${MOUNT_OPTIONS}
+    volumes:
+      - ${DEVILBOX_PATH}/log/php-fpm-7.0:/var/log/php:rw${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-ini-7.0:/etc/php-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/cfg/php-fpm-7.0:/etc/php-fpm-custom.d:ro${MOUNT_OPTIONS}
+      - ${DEVILBOX_PATH}/mod/php-fpm-7.0:/usr/lib64/php/custom-modules:ro${MOUNT_OPTIONS}
     networks:
       app_net:
         ipv4_address: 172.16.238.70
@@ -251,4 +287,3 @@ services:
   #     - bind
   #     - php
   #     - httpd
-

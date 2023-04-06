@@ -171,6 +171,7 @@ services:
     extra_hosts:
       docker.for.lin.host.internal: 172.16.238.1
       docker.for.lin.localhost: 172.16.238.1
+      docker.for.wsl2.host.internal: ${IP}
 
     networks:
       app_net:
