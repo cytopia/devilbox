@@ -140,6 +140,11 @@ class Php extends BaseClass implements BaseInterface
 		$output = loadClass('Helper')->exec('wp --version 2>/dev/null | grep -i ^WP', $output);
 		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
 	}
+	public function getWscatVersion()
+	{
+		$output = loadClass('Helper')->exec('wscat --version 2>/dev/null | head -1', $output);
+		return loadClass('Helper')->egrep('/[0-9.]+/', $output);
+	}
 	public function getYarnVersion()
 	{
 		$output = loadClass('Helper')->exec('yarn --version 2>/dev/null', $output);

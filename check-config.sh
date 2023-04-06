@@ -220,8 +220,8 @@ print_head_1 "Checking .env file values"
 WRONG_ENV_FILES_VALUES=0
 
 DEBUG_ENTRYPOINT="$( get_env_value "DEBUG_ENTRYPOINT" )"
-if [ "${DEBUG_ENTRYPOINT}" != "0" ] && [ "${DEBUG_ENTRYPOINT}" != "1" ] && [ "${DEBUG_ENTRYPOINT}" != "2" ] && [ "${DEBUG_ENTRYPOINT}" != "3" ] && [ "${DEBUG_ENTRYPOINT}" != "3" ]; then
-	log_err "Variable 'DEBUG_ENTRYPOINT' should be 0, 1 or 2. Has: ${DEBUG_ENTRYPOINT}"
+if [ "${DEBUG_ENTRYPOINT}" != "0" ] && [ "${DEBUG_ENTRYPOINT}" != "1" ] && [ "${DEBUG_ENTRYPOINT}" != "2" ] && [ "${DEBUG_ENTRYPOINT}" != "3" ] && [ "${DEBUG_ENTRYPOINT}" != "4" ]; then
+	log_err "Variable 'DEBUG_ENTRYPOINT' should be 0, 1, 2, 3 or 4. Has: ${DEBUG_ENTRYPOINT}"
 	RET_CODE=$(( RET_CODE + 1))
 	WRONG_ENV_FILES_VALUES=1
 else

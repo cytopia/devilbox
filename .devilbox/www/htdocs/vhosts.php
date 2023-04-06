@@ -26,8 +26,8 @@
 									<th>DocumentRoot</th>
 									<th>Backend</th>
 									<th>Config</th>
-									<th>Valid</th>
-									<th>URL</th>
+									<th style="width:60px;">Valid</th>
+									<th style="width:260px;">URL</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -37,15 +37,82 @@
 										<td><?php echo loadClass('Helper')->getEnv('HOST_PATH_HTTPD_DATADIR');?>/<?php echo $vHost['name'];?>/<?php echo loadClass('Helper')->getEnv('HTTPD_DOCROOT_DIR');?></td>
 										<td><?php echo loadClass('Httpd')->getVhostBackend($vHost['name']); ?></td>
 										<td>
-											<a title="Virtual host: <?php echo $vHost['name'];?>.conf" target="_blank" href="/vhost.d/<?php echo $vHost['name'];?>.conf"><i class="fa fa-cog" aria-hidden="true"></i></a>
-											<?php if (($vhostGen = loadClass('Httpd')->getVhostgenTemplatePath($vHost['name'])) !== false): ?>
-												<a title="vhost-gen: <?php echo basename($vhostGen);?> for <?php echo $vHost['name'];?>" href="/info_vhostgen.php?name=<?php echo $vHost['name'];?>">
-													<i class="fa fa-filter" aria-hidden="true"></i>
-												</a>
+											<?php $id_vhost_httpd    = str_replace('=', '', base64_encode('vhost_httpd_conf_' . $vHost['name'])); ?>
+											<?php $id_vhost_vhostgen = str_replace('=', '', base64_encode('vhost_vhost_gen_' . $vHost['name'])); ?>
+
+											<!-- [httpd.conf] Button trigger modal -->
+											<a href="#"><i class="fa fa-cog" aria-hidden="true" data-toggle="modal" data-target="#<?php echo $id_vhost_httpd;?>"></i></a>
+											<!-- [httpd.conf] Modal -->
+											<div class="modal" id="<?php echo $id_vhost_httpd;?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $id_vhost_httpd;?>Label" aria-hidden="true">
+												<div class="modal-dialog modal-lg" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="<?php echo $id_vhost_httpd;?>Label"><?php echo '<strong>httpd.conf: </strong><code>'.$vHost['name'].'.'.loadClass('Httpd')->getTldSuffix(). '</code>'; ?></h5>
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<?php $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]"; ?>
+															<?php $src = file_get_contents($url.'/vhost.d/' . $vHost['name'] . '.conf'); ?>
+															<?php //$src = htmlentities($src); ?>
+															<?php $src = str_replace('<', '&lt;', $src); ?>
+															<?php $src = str_replace('>', '&gt;', $src); ?>
+															<?php $src = preg_replace('/&lt;(\/?.*)&gt;/m', '<strong>&lt;\1&gt;</strong>', $src); // Apache directives ?>
+															<?php $src = preg_replace('/(.*{\s*)$/m',       '<strong>\1</strong>',         $src); // Nginx directives ?>
+															<?php $src = preg_replace('/^(\s*}\s*)$/m',     '<strong>\1</strong>',         $src); // Nginx directives ?>
+															<?php //$src = preg_replace('/"(.+)"/m',       '<span style="color: blue;">"\1"</span>', $src); ?>
+															<?php $src = preg_replace('/^(\s*(?!<#)[^#"]*)"(.*)"/m',  '\1<span style="color: blue;">"\2"</span>', $src);  // double quotes?>
+															<?php $src = preg_replace("/^(\s*(?!<#)[^#']*)'(.*)'/m",  '\1<span style="color: blue;">"\2"</span>', $src);  // single quotes ?>
+															<?php $src = preg_replace('/^(\s*#)(.*)$/m',              '<span style="color: gray;">\1\2</span>',   $src);  // comments ?>
+															<?php echo '<pre><code>' . $src . '</code></pre>';?>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<?php if (($vhostGenPath = loadClass('Httpd')->getVhostgenTemplatePath($vHost['name'])) !== false): ?>
+												<!-- [vhost-gen] Button trigger modal -->
+												<a href="#"><i class="fa fa-filter" aria-hidden="true" data-toggle="modal" data-target="#<?php echo $id_vhost_vhostgen;?>"></i></a>
+												<!-- [vhost-gen] Modal -->
+												<div class="modal" id="<?php echo $id_vhost_vhostgen;?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $id_vhost_vhostgen;?>Label" aria-hidden="true">
+													<div class="modal-dialog modal-lg" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="<?php echo $id_vhost_vhostgen;?>Label"><?php echo '<code>'.$vhostGenPath.'</code>'; ?></h5>
+																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+																</button>
+															</div>
+															<div class="modal-body">
+																<?php $src = file_get_contents($vhostGenPath); ?>
+																<?php //$src = htmlentities($src); ?>
+																<?php $src = str_replace('<', '&lt;', $src); ?>
+																<?php $src = str_replace('>', '&gt;', $src); ?>
+																<?php $src = preg_replace('/&lt;(\/?.*)&gt;/m', '<strong>&lt;\1&gt;</strong>', $src); // Apache directives ?>
+																<?php $src = preg_replace('/(.*{\s*)$/m',       '<strong>\1</strong>',         $src); // Nginx directives ?>
+																<?php $src = preg_replace('/^(\s*}\s*)$/m',     '<strong>\1</strong>',         $src); // Nginx directives ?>
+																<?php //$src = preg_replace('/"(.+)"/m',        '<span style="color: blue;">"\1"</span>', $src); ?>
+																<?php //$src = preg_replace("/'(.+)'/m",        '<span style="color: blue;">'."'".'\1'."'".'</span>', $src); ?>
+																<?php $src = preg_replace('/^(\s*(?!<#)[^#"]*)"(.*)"/m', '\1<span style="color: blue;">"\2"</span>',                $src); // double quotes ?>
+																<?php $src = preg_replace("/^(\s*(?!<#)[^#']*)'(.*)'/m", '\1<span style="color: blue;">"\2"</span>',                $src); // single quotes ?>
+																<?php $src = preg_replace('/^(\s*#)(.*)$/m',             '<span style="color: gray;">\1\2</span>',                  $src); // comments ?>
+																<?php $src = preg_replace('/^(\s*[_a-z]+):/m',           '<span style="color: green;"><strong>\1</strong></span>:', $src); // yaml keys ?>
+																<?php $src = preg_replace('/(__[_A-Z]+__)/m',            '<span style="color: red;">\1</span>',                     $src); // variables ?>
+																<?php echo '<pre><code>' . $src . '</code></pre>';?>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+															</div>
+														</div>
+													</div>
+												</div>
 											<?php endif; ?>
 										</td>
-										<td style="min-width:60px;" class="text-xs-center text-xs-small" id="valid-<?php echo $vHost['name'];?>"></td>
-										<td style="min-width:260px;" id="href-<?php echo $vHost['name'];?>"></td>
+										<td class="text-xs-center text-xs-small" id="valid-<?php echo $vHost['name'];?>"></td>
+										<td id="href-<?php echo $vHost['name'];?>"></td>
 									</tr>
 									<input type="hidden" name="vhost[]" class="vhost" value="<?php echo $vHost['name'];?>" />
 								<?php endforeach; ?>

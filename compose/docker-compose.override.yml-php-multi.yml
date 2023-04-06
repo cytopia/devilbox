@@ -34,7 +34,7 @@ services:
 
   php54:
     <<: *default-php
-    image: devilbox/php-fpm:5.4-prod-0.148
+    image: devilbox/php-fpm:5.4-prod-0.150
     hostname: php54
     networks:
       app_net:
@@ -52,7 +52,7 @@ services:
 
   php55:
     <<: *default-php
-    image: devilbox/php-fpm:5.5-prod-0.148
+    image: devilbox/php-fpm:5.5-prod-0.150
     hostname: php55
     networks:
       app_net:
@@ -70,7 +70,7 @@ services:
 
   php56:
     <<: *default-php
-    image: devilbox/php-fpm:5.6-prod-0.148
+    image: devilbox/php-fpm:5.6-prod-0.150
     hostname: php56
     networks:
       app_net:
@@ -88,7 +88,7 @@ services:
 
   php70:
     <<: *default-php
-    image: devilbox/php-fpm:7.0-prod-0.148
+    image: devilbox/php-fpm:7.0-prod-0.150
     hostname: php70
     networks:
       app_net:
@@ -106,7 +106,7 @@ services:
 
   php71:
     <<: *default-php
-    image: devilbox/php-fpm:7.1-prod-0.148
+    image: devilbox/php-fpm:7.1-prod-0.150
     hostname: php71
     networks:
       app_net:
@@ -124,7 +124,7 @@ services:
 
   php72:
     <<: *default-php
-    image: devilbox/php-fpm:7.2-prod-0.148
+    image: devilbox/php-fpm:7.2-prod-0.150
     hostname: php72
     networks:
       app_net:
@@ -142,7 +142,7 @@ services:
 
   php73:
     <<: *default-php
-    image: devilbox/php-fpm:7.3-prod-0.148
+    image: devilbox/php-fpm:7.3-prod-0.150
     hostname: php73
     networks:
       app_net:
@@ -160,7 +160,7 @@ services:
 
   php74:
     <<: *default-php
-    image: devilbox/php-fpm:7.4-prod-0.148
+    image: devilbox/php-fpm:7.4-prod-0.150
     hostname: php74
     networks:
       app_net:
@@ -178,7 +178,7 @@ services:
 
   php80:
     <<: *default-php
-    image: devilbox/php-fpm:8.0-prod-0.148
+    image: devilbox/php-fpm:8.0-prod-0.150
     hostname: php80
     networks:
       app_net:
@@ -196,7 +196,7 @@ services:
 
   php81:
     <<: *default-php
-    image: devilbox/php-fpm:8.1-prod-0.148
+    image: devilbox/php-fpm:8.1-prod-0.150
     hostname: php81
     networks:
       app_net:
@@ -214,7 +214,7 @@ services:
 
   php82:
     <<: *default-php
-    image: devilbox/php-fpm:8.2-prod-0.148
+    image: devilbox/php-fpm:8.2-prod-0.150
     hostname: php82
     networks:
       app_net:

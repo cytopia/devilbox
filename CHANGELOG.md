@@ -6,6 +6,24 @@ Make sure to have a look at [UPDATING.md](https://github.com/cytopia/devilbox/bl
 ## Unreleased
 
 
+## Release v3.0.0-beta-0.3 (2022-01-02)
+
+This release provides the `dvl.to` domain to be used with `TLD_SUFFIX` (set to default), which eliminates the need to set any entries in `/etc/hosts`, as all of its subdomain will point to `127.0.0.1` via official DNS. Domain has been acquired thanks to awesome sponsors!
+
+### Fixed
+- Intranet: mail.php fixed deprecation warnings [#798](https://github.com/cytopia/devilbox/issues/798)
+- Added `host.docker.internal` to extra_hosts to be able to connect to the host system [#919](https://github.com/cytopia/devilbox/issues/919)
+
+### Changed
+- Use `dvl.to` as default `TLD_SUFFIX` (it always poits to `127.0.0.1` removing the need to create `/etc/hosts` entries)
+
+### Added
+- Intranet: vhost overview shows listening ports
+- Intranet: vhost overview now has modals to show httpd and vhost-gen configs
+- Docs: Show available tools per version in README.md
+- Added `xhprof` PHP extension
+
+
 ## Release v3.0.0-beta-0.2 (2022-12-27)
 
 The Backend configuration now supports websockets as well:
@@ -40,6 +58,7 @@ Once you're done with `backend.cfg` changes, head over to the Intranet C&C page 
 ### Added
 - Reverse Proxy automation for websocket projects (`ws://<host>:<port>` or `wss:<host>:<port>`) (Does not work with Apache 2.2)
 - Added tool `wscat` to be able to test websocket connections
+- Intranet: show `wscat` version
 - Intranet: vhost overview now also shows websocket projects
 
 ### Changed

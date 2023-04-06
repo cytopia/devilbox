@@ -345,7 +345,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 								</thead>
 								<tbody>
 									<tr>
-										<th>Angular Cli</th>
+										<th style="width: 50%;">Angular Cli</th>
 										<td id="app_angular_cli"></td>
 									</tr>
 									<tr>
@@ -427,6 +427,10 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 									<tr>
 										<th>Wordpress Cli</th>
 										<td id="app_wpcli"></td>
+									</tr>
+									<tr>
+										<th>Wscat</th>
+										<td id="app_wscat"></td>
 									</tr>
 									<tr>
 										<th>Yarn</th>
@@ -970,6 +974,7 @@ $HEALTH_PERCENT = 100 - ceil(100 * $HEALTH_FAILS / $HEALTH_TOTAL);
 			updateVersions('vue_cli');
 			updateVersions('webpack_cli');
 			updateVersions('wpcli');
+			updateVersions('wscat');
 			updateVersions('yarn');
 		})();
 		</script>
