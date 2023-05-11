@@ -457,7 +457,8 @@ Each of them is also available in multiple different versions in order to reflec
 | HAProxy | Apache     | PHP            | MariaDB    | Memcached | RabbitMQ       | ElasticSearch | Bind      |
 | Varnish | Nginx      | Python (Flask) | MySQL      | MongoDB   | Solr           | Logstash      | Blackfire |
 |         |            |                | PerconaDB  | Redis     |                | Kibana        | MailHog   |
-|         |            |                | PostgreSQL |           |                |               | Ngrok     |
+|         |            |                | PostgreSQL |           |                |               | Mailpit   |
+|         |            |                |            |           |                |               | Ngrok     |
 
 <br/>
 
@@ -670,6 +671,7 @@ Additionally to the default stack, there are a variety of other services that ca
    <th>Blackfire</th>
    <th>ELK</th>
    <th>MailHog</th>
+   <th>Mailpit</th>
    <th>Ngrok</th>
    <th>RabbitMQ</th>
    <th>Solr</th>
@@ -683,6 +685,7 @@ Additionally to the default stack, there are a variety of other services that ca
    <td><a target="_blank" title="Blackfire 1.8"    href="https://github.com/blackfireio/docker">1.8</a></td>
    <td><a target="_blank" title="ELK stack"        href="https://www.docker.elastic.co">5.x.y</a></td>
    <td><a target="_blank" title="MailHog v1.0.0"   href="https://github.com/mailhog/MailHog">v1.0.0</a></td>
+   <td><a target="_blank" title="Mailpit v1.x"     href="https://github.com/axllent/mailpit">v1.x</a></td>
    <td><a target="_blank" title="Ngrok 2.x"        href="https://github.com/devilbox/docker-ngrok">2.x</a></td>
    <td><a target="_blank" title="RabbitMQ 3.6"     href="https://github.com/rabbitmq/rabbitmq-server">3.6</a></td>
    <td><a target="_blank" title="Solr 5"           href="https://github.com/apache/lucene-solr">5</a></td>
@@ -694,6 +697,7 @@ Additionally to the default stack, there are a variety of other services that ca
    <td>...</td>
    <td><a target="_blank" title="ELK stack"        href="https://www.docker.elastic.co">6.x.y</a></td>
    <td><a target="_blank" title="MailHog latest"   href="https://github.com/mailhog/MailHog">latest</a></td>
+   <td><a target="_blank" title="Mailpit latest"   href="https://github.com/axllent/mailpit">latest</a></td>
    <td></td>
    <td><a target="_blank" title="RabbitMQ 3.7"     href="https://github.com/rabbitmq/rabbitmq-server">3.7</a></td>
    <td><a target="_blank" title="Solr 6"           href="https://github.com/apache/lucene-solr">6</a></td>
