@@ -1,0 +1,23 @@
+# vim: set ft=yaml:
+---
+version: '2.3'
+
+services:
+
+  # -----------------------------------------------------------------------------------------------
+  # Mailpit
+  # -----------------------------------------------------------------------------------------------
+  mailpit:
+    image: axllent/mailpit:${MAILPIT_SERVER:-latest}
+    hostname: mailpit
+    restart: unless-stopped
+    ports:
+      - "${LOCAL_LISTEN_ADDR}${SMTP_PORT_MAILPIT:-1025}:1025"
+      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MAILPIT:-8025}:8025"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.201
+    depends_on:
+      - bind
+      - php
+      - httpd
