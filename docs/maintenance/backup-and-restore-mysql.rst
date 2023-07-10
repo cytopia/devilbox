@@ -33,6 +33,10 @@ dump date, dump options as well as the server version it came from.
 Mysqldump-secure
 ----------------
 
+.. note::
+   On multi-PHP setup make sure you have the :ref:`following variables <env_mysql_dump_secure>` declared.
+   In case they are missing the ``mysqldump-secure`` command will fail on PHP containers other than the default.
+
 |ext_lnk_tool_mysqldump_secure|  is bundled, setup and ready to use in every PHP container.
 You can run it without any arguments and it will dump each available database as a
 separated compressed file. Backups will be located in ``./backups/mysql/`` inside the Devilbox

@@ -1593,6 +1593,26 @@ be able to display information inside the bundled intranet.
    Keep this variable in sync with the actual MySQL root password.
 
 
+MySQL Dump Secure
+-----------------
+
+.. _env_mysql_dump_secure:
+
+Those variables are used on ``docker-entrypoint`` in order to create a ``cnf`` file for the ``mysqldump-secure`` command.
+By default they should work correctly for the PHP container specified in ``.env`` but if they are left undeclared in multi-php setup,
+the other PHP containers would not be able to dump the database correctly.
+
++-------------------------+-------------------+---------------------+
+| Name                    | Allowed values    | Default value       |
++=========================+===================+=====================+
+| ``MYSQL_BACKUP_USER``   | any string        | none                |
++-------------------------+-------------------+---------------------+
+| ``MYSQL_BACKUP_PASS``   | any string        | none                |
++-------------------------+-------------------+---------------------+
+| ``MYSQL_BACKUP_HOST``   | any string        | none                |
++-------------------------+-------------------+---------------------+
+
+
 PostgreSQL
 ----------
 
