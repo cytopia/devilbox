@@ -36,7 +36,7 @@ services:
   bind:
     image: cytopia/bind:alpine-0.35
     hostname: bind
-    restart: always
+    restart: unless-stopped
     ports:
       # [local-machine:]local-port:docker-port
       - "${LOCAL_LISTEN_ADDR}${HOST_PORT_BIND:-1053}:53/tcp"
@@ -102,6 +102,7 @@ services:
   php:
     image: devilbox/php-fpm:${PHP_SERVER}-work-0.150
     hostname: php
+    restart: unless-stopped
 
     ##
     ## All .env variables
@@ -231,6 +232,7 @@ services:
   httpd:
     image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-1.0
     hostname: httpd
+    restart: unless-stopped
 
     environment:
 
@@ -343,6 +345,7 @@ services:
   mysql:
     image: devilbox/mysql:${MYSQL_SERVER}-0.21
     hostname: mysql
+    restart: unless-stopped
 
     environment:
       - MYSQL_ROOT_PASSWORD
