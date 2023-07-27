@@ -155,7 +155,7 @@ The Devilbox runs on all major operating systems and its only requirement is <co
 <h3>Windows: Install</h3>
 
 1. Clone <code>https://github.com/cytopia/devilbox</code> to <code>C:\devilbox</code> with <a href="https://git-scm.com/downloads">Git for Windows</a>
-2. Copy <code>C:\devilbox\env-example</code> to <code>C:\devilbox\.env</code>
+2. Copy <code>C:\devilbox\env-example</code> to <code>C:\devilbox\\.env</code>
 
 
 <h3>Windows: Run</h3>
