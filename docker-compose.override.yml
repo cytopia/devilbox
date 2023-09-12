@@ -10,7 +10,7 @@ version: '2.3'
 ### Default PHP-FPM config
 ###
 x-app: &default-php
-  restart: unless-stopped
+  # restart: unless-stopped
   env_file:
     - ./.env
   environment:
