@@ -28,8 +28,8 @@
 xdebug.mode               = debug
 xdebug.start_with_request = yes
 xdebug.remote_handler   = dbgp
-xdebug.remote_port      = 9000
+xdebug.client      = 9000
 xdebug.idekey           = PHPSTORM
-xdebug.remote_log       = /var/log/php/xdebug.log
+xdebug.log       = /var/log/php/xdebug.log
 
 ; vim: set ft=dosini:
