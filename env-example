@@ -106,6 +106,7 @@ LOCAL_LISTEN_ADDR=
 TLD_SUFFIX=dvl.to
 
 
+
 ###
 ### Optional DNS configuration
 ### Allows you to add extra DNS records (above the wildcard entry)
@@ -777,6 +778,7 @@ HOST_PORT_MONGO=27017
 ### Expose Bind Port to Host
 ###
 HOST_PORT_BIND=1053
+DNS_LOCAL_ADDRESS=192.168.1.58
 
 
 ###
