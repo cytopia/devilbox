@@ -99,7 +99,7 @@ services:
   # DNS LAN
   # ------------------------------------------------------------
   dnslan:
-    image: cytopia/bind:alpine-0.35
+    image: cytopia/bind
     hostname: dnslan
     restart: always
 
@@ -119,6 +119,13 @@ services:
       ##
       - DNS_FORWARDER=${BIND_DNS_RESOLVER:-8.8.8.8,8.8.4.4}
 
+      ##
+      ## Allow Query
+      ##
+      - ALLOW_QUERY=any
+
+
+      
   # ------------------------------------------------------------
   # PHP
   # ------------------------------------------------------------
