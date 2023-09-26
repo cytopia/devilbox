@@ -55,7 +55,7 @@ vim /etc/hosts
 
 ```
 
-<p>retrive 'host.docker.internal' IP => ex. `192.168.65.254`</p>
+retrive 'host.docker.internal' IP => ex. `192.168.65.254`
 
 ```
 cd devilbox/cfg/php-ini-X.X
