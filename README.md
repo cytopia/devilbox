@@ -78,6 +78,8 @@ xdebug.idekey             = vsc
 xdebug.remote_log         = /var/log/php/xdebug.log
 ```
 
+Install `PHP Debug` extension for vsCode
+
 
 
 
