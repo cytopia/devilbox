@@ -55,7 +55,16 @@ vim /etc/hosts
 
 ```
 
-retrive 'host.docker.internal' IP => ex. `192.168.65.254`
+Search somethings like this:
+
+```
+192.168.65.254    host.docker.interna
+```
+
+```
+cd devilbox/cfg/php-ini-X.X
+cp devilbox-php.in xdebug.ini
+```
 
 ```
 cd devilbox/cfg/php-ini-X.X
