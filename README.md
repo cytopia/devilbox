@@ -19,6 +19,7 @@ HTTPD_SERVER=apache-2.4
 MYSQL_SERVER=mariadb-10.6
 HOST_PATH_HTTPD_DATADIR=../www
 MYSQL_ROOT_PASSWORD=root
+HTTPD_DOCROOT_DIR=
 ```
 
 <h2>Start containers Foreground</h2>
@@ -50,8 +51,15 @@ selected containers     ->  docker-compose up -d httpd php mysql
 ```
 cd devilbox
 ./shell.sh
-nano /etc/hosts
+vim /etc/hosts
 
+```
+
+<p>retrive 'host.docker.internal' IP</p>
+
+```
+cd devilbox/cfg/php-ini-X.X
+cp devilbox-php.in xdebug.ini
 ```
 
 
