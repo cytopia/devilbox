@@ -61,15 +61,13 @@ Search somethings like this:
 192.168.65.254    host.docker.interna
 ```
 
-```
-cd devilbox/cfg/php-ini-X.X
-cp devilbox-php.in xdebug.ini
-```
+overwrite php.ini
 
 ```
 cd devilbox/cfg/php-ini-X.X
 cp devilbox-php.in xdebug.ini
 ```
+
 
 
 
