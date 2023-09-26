@@ -1,5 +1,7 @@
 <h1>The DevilBox</h1>
+
 <br>
+
 <h2>Clone DevilBox and create .env file</h2>
 
 ```
@@ -31,6 +33,14 @@ selected containers     ->  docker-compose up httpd php mysql
 ```
 all containers          ->  docker-compose up -d
 selected containers     ->  docker-compose up -d httpd php mysql
+```
+
+<br>
+
+<h2>Configure Xdebug</h2>
+
+```
+text
 ```
 
 
