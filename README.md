@@ -58,7 +58,7 @@ vim /etc/hosts
 Search somethings like this:
 
 ```
-192.168.65.254    host.docker.interna
+192.168.65.254    host.docker.internal
 ```
 
 overwrite php.ini
