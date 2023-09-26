@@ -74,7 +74,7 @@ xdebug.start_with_request = yes
 xdebug.remote_handler     = dbgp
 xdebug.client_port        = 9003
 xdebug.client_host        = 192.168.65.254
-xdebug.idekey             = PHPSTORM
+xdebug.idekey             = vsc
 xdebug.remote_log         = /var/log/php/xdebug.log
 ```
 
