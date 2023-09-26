@@ -22,16 +22,15 @@ MYSQL_ROOT_PASSWORD=root
 <h2>Start containers Foreground</h2>
 
 ```
-**khjjhkl**
 all containers          ->  docker-compose up
-**selected containers**     ->  docker-compose up httpd php mysql
+selected containers     ->  docker-compose up httpd php mysql
 ```
 
 <h2>Start containers Background</h2>
 
 ```
-**all containers**          ->  docker-compose up -d
-**selected containers**     ->  docker-compose up -d httpd php mysql
+all containers          ->  docker-compose up -d
+selected containers     ->  docker-compose up -d httpd php mysql
 ```
 
 
