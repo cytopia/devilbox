@@ -78,7 +78,21 @@ xdebug.idekey             = vsc
 xdebug.remote_log         = /var/log/php/xdebug.log
 ```
 
-Install `PHP Debug` extension for vsCode
+Install `PHP Debug` extension for vsCode and configure launch.json
+
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Listen for Xdebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003
+        }
+    ]
+}
+```
 
 
 
