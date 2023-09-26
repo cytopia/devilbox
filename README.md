@@ -36,7 +36,7 @@ selected containers     ->  docker-compose up -d httpd php mysql
 ```
 
 <br>
----
+___
 <br>
 
 <h2>Configure Xdebug</h2>
