@@ -48,7 +48,10 @@ selected containers     ->  docker-compose up -d httpd php mysql
 <h2>Retrive  IP</h2>
 
 ```
-text
+cd devilbox
+./shell.sh
+nano /etc/hosts
+
 ```
 
 
