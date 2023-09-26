@@ -11,10 +11,10 @@ cp env-example .env
 <h2>Configure .env file</h2>
 
 ```
-TLD_SUFFIX=brainin
-PHP_SERVER=7.4
+TLD_SUFFIX=dvl.to
+PHP_SERVER=8.1
 HTTPD_SERVER=apache-2.4
-MYSQL_SERVER=mysql-5.7
+MYSQL_SERVER=mariadb-10.6
 HOST_PATH_HTTPD_DATADIR=../www
 MYSQL_ROOT_PASSWORD=root
 ```
