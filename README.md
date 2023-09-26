@@ -61,11 +61,21 @@ Search somethings like this:
 192.168.65.254    host.docker.internal
 ```
 
-overwrite php.ini
+create xdebug.ini
 
 ```
 cd devilbox/cfg/php-ini-X.X
 cp devilbox-php.in xdebug.ini
+```
+
+```
+xdebug.mode               = debug
+xdebug.start_with_request = yes
+xdebug.remote_handler     = dbgp
+xdebug.client_port        = 9003
+xdebug.client_host        = 192.168.65.254
+xdebug.idekey             = PHPSTORM
+xdebug.remote_log         = /var/log/php/xdebug.log
 ```
 
 
