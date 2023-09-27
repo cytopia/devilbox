@@ -60,6 +60,7 @@ When the Devilbox starts up for the first time, it will generate a Certificate A
 
 <h2>Windows</h2>
 
+| Method | Command |
 | --- | --- |
 | git status | List all new or modified files |
 | git diff | Show file differences that haven't been staged |
