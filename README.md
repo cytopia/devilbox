@@ -54,6 +54,15 @@ The option are: both, redir, ssl, plain
 HTTPD_VHOST_SSL_TYPE=both
 ```
 
+<h2>Store Certificate authority</h2>
+
+When the Devilbox starts up for the first time, it will generate a Certificate Authority  and will store its public and private key in `devilbox/ca` folder.
+
+<h2>Windows</h2>
+
+| `Add` | List all *new or modified* files |
+| `Remove` | Show file differences that **haven't been** staged |
+
 <br>
 
 ---
