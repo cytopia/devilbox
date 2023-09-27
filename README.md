@@ -60,8 +60,10 @@ When the Devilbox starts up for the first time, it will generate a Certificate A
 
 <h2>Windows</h2>
 
-| `Add` | List all *new or modified* files |
-| `Remove` | Show file differences that **haven't been** staged |
+| Command | Description |
+| --- | --- |
+| git status | List all new or modified files |
+| git diff | Show file differences that haven't been staged |
 
 <br>
 
