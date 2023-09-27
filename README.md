@@ -100,6 +100,10 @@ Search somethings like this:
 192.168.65.254    host.docker.internal
 ```
 
+```
+ip addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
+```
+
 create xdebug.ini
 
 ```bash
