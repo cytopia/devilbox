@@ -88,7 +88,6 @@ When the Devilbox starts up for the first time, it will generate a Certificate A
 cd devilbox
 ./shell.sh
 vim /etc/hosts
-
 ```
 
 Search somethings like this:
