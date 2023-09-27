@@ -62,8 +62,10 @@ When the Devilbox starts up for the first time, it will generate a Certificate A
 
 | Function | Command |
 | --- | --- |
-| ADD | ```bash certutil -addstore -f "ROOT" <new-root-certificate.crt>``` |
-| REMOVE | ```bash certutil -delstore "ROOT" <serial-number-hex>``` |
+| ADD | certutil -addstore -f "ROOT" <new-root-certificate.crt> |
+| REMOVE | bash certutil -delstore "ROOT" <serial-number-hex> |
+
+<br>
 
 <h2>Mac OS</h2>
 
