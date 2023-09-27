@@ -117,7 +117,7 @@ xdebug.log                = /var/log/php/xdebug.log
 
 Install `PHP Debug` extension for vsCode and configure launch.json
 
-```
+```json
 {
     "version": "0.2.0",
     "configurations": [
