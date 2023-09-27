@@ -67,6 +67,8 @@ When the Devilbox starts up for the first time, it will generate a Certificate A
 
 <h2>Mac OS</h2>
 
+In Mac OS you can also use the Keychain Access app.
+
 | Function | Command |
 | --- | --- |
 | ADD | sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <new-root-certificate.crt> |
