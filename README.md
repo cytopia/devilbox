@@ -100,12 +100,12 @@ Search somethings like this:
 
 create xdebug.ini
 
-```
+```bash
 cd devilbox/cfg/php-ini-X.X
 cp devilbox-php.in xdebug.ini
 ```
 
-```
+```ini
 xdebug.mode               = debug
 xdebug.start_with_request = yes
 xdebug.remote_handler     = dbgp
