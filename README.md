@@ -127,7 +127,10 @@ Install `PHP Debug` extension for vsCode and configure launch.json
             "name": "Listen for Xdebug",
             "type": "php",
             "request": "launch",
-            "port": 9003
+            "port": 9003,
+            "pathMappings": {
+                "/shared/httpd/soluzionefad": "${workspaceFolder}/www/soluzionefad"
+            }
         }
     ]
 }
