@@ -4,7 +4,7 @@
 
 <h2>Clone DevilBox and create .env file</h2>
 
-```
+```bash
 git clone https://github.com/rok666/devilbox.git
 cd devilbox
 cp env-example .env
