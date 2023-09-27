@@ -42,6 +42,16 @@ selected containers     ->  docker-compose up -d httpd php mysql
 
 <br>
 
+<h1>Configure HTTPS</h1>
+
+<br>
+
+<br>
+
+---
+
+<br>
+
 <h1>Configure Xdebug</h1>
 
 <br>
