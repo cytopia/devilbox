@@ -65,6 +65,13 @@ When the Devilbox starts up for the first time, it will generate a Certificate A
 | ADD | certutil -addstore -f "ROOT" <new-root-certificate.crt> |
 | REMOVE | certutil -delstore "ROOT" <serial-number-hex> |
 
+<h2>Mac OS</h2>
+
+| Function | Command |
+| --- | --- |
+| ADD | sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <new-root-certificate.crt> |
+| REMOVE | sudo security delete-certificate -c "<name of existing certificate>" |
+
 <br>
 
 ---
