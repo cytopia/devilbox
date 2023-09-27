@@ -60,10 +60,10 @@ When the Devilbox starts up for the first time, it will generate a Certificate A
 
 <h2>Windows</h2>
 
-| Method | Command |
+| Function | Command |
 | --- | --- |
-| git status | List all new or modified files |
-| git diff | Show file differences that haven't been staged |
+| ADD | certutil -addstore -f "ROOT" <new-root-certificate.crt> |
+| REMOVE | certutil -delstore "ROOT" <serial-number-hex> |
 
 <br>
 
