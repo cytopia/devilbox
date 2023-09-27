@@ -12,7 +12,7 @@ cp env-example .env
 
 <h2>Configure .env file</h2>
 
-```config
+```ini
 TLD_SUFFIX=dvl.to
 PHP_SERVER=8.1
 HTTPD_SERVER=apache-2.4
@@ -50,7 +50,7 @@ selected containers     ->  docker-compose up -d httpd php mysql
 
 The option are: both, redir, ssl, plain
 
-```config
+```ini
 HTTPD_VHOST_SSL_TYPE=both
 ```
 
@@ -94,7 +94,7 @@ vim /etc/hosts
 
 Search somethings like this:
 
-```host
+```
 192.168.65.254    host.docker.internal
 ```
 
