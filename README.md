@@ -46,6 +46,14 @@ selected containers     ->  docker-compose up -d httpd php mysql
 
 <br>
 
+<h2>Configure .env file</h2>
+
+The option are: both, redir, ssl, plain
+
+```
+HTTPD_VHOST_SSL_TYPE=both
+```
+
 <br>
 
 ---
