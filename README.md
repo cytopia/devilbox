@@ -70,7 +70,7 @@ When the Devilbox starts up for the first time, it will generate a Certificate A
 | Function | Command |
 | --- | --- |
 | ADD | sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <new-root-certificate.crt> |
-| REMOVE | sudo security delete-certificate -c "name of existing certificate" |
+| REMOVE | sudo security delete-certificate -c "\<name of existing certificate\>" |
 
 <br>
 
