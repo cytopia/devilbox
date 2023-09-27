@@ -112,7 +112,7 @@ xdebug.remote_handler     = dbgp
 xdebug.client_port        = 9003
 xdebug.client_host        = 192.168.65.254
 xdebug.idekey             = vsc
-xdebug.remote_log         = /var/log/php/xdebug.log
+xdebug.log                = /var/log/php/xdebug.log
 ```
 
 Install `PHP Debug` extension for vsCode and configure launch.json
