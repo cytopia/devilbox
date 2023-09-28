@@ -91,7 +91,7 @@ In Mac OS you can also use the Keychain Access app.
 Chose one of these three options
 
 ```
-IP Address extension for vsCode
+`IP Address` extension for vsCode
 ```
 
 ```bash
