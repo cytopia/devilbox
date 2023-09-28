@@ -1,6 +1,6 @@
 
 
-[Install Devilbox](#install-devilbox) - [Configure HTTPS](#configure-https) - [Configure xDebug](#configure-xdebug) - [Run Different PHP version per project](#run-different-php)
+[Install Devilbox](#install-devilbox) - [Configure HTTPS](#configure-https) - [Configure xDebug](#configure-xdebug) - [Configure xDebug](#run-different-php)
 
 ---
 
