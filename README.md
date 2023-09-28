@@ -1,14 +1,14 @@
 
 
-[Install Devilbox](#install_devilbox)
-[configure_https](#configure_https)
+[Install Devilbox](#install-devilbox)
+[configure_https](#configure-https)
 
 ---
 
 <br>
 
-#install_devilbox
-<h1 id="install_devilbox">Install DevilBox</h1>
+#installdevilbox
+<h1 id="install-devilbox">Install DevilBox</h1>
 
 <br>
 
@@ -53,7 +53,7 @@ selected containers     ->  docker-compose up -d httpd php mysql
 <br>
 
 #configure_https
-<h1 id="configure_https">Configure HTTPS</h1>
+<h1 id="configure-https">Configure HTTPS</h1>
 
 <br>
 
