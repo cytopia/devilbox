@@ -1,4 +1,4 @@
-<h1>The DevilBox</h1>
+<h1>Install DevilBox</h1>
 
 <br>
 
