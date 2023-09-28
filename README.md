@@ -49,7 +49,7 @@ selected containers     ->  docker-compose up -d httpd php mysql
 
 <br>
 
-<h1>Configure HTTPS</h1>
+<h1 id="configure_https">Configure HTTPS</h1>
 
 <br>
 
