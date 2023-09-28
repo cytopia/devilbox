@@ -1,6 +1,6 @@
 
 
-[Install Devilbox](#install-devilbox) - [Configure HTTPS](#configure-https) - [Configure xDebug](#configure-xdebug) - [Configure xDebug](#run-different)
+[Install Devilbox](#install-devilbox) - [Configure HTTPS](#configure-https) - [Configure xDebug](#configure-xdebug) - [Run different PHP version per project](#run-different)
 
 ---
 
@@ -153,7 +153,7 @@ Install `PHP Debug` extension for vsCode and configure launch.json
 
 <br>
 
-<h1 id="run-different">Install DevilBox</h1>
+<h1 id="run-different">Run different PHP version per project</h1>
 
 <br>
 
