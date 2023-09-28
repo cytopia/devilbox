@@ -86,19 +86,17 @@ In Mac OS you can also use the Keychain Access app.
 
 <br>
 
-<h2>Retrive vscode IP</h2>
+<h2>Retrive vsCode IP</h2>
+
+Chose one of these three options
+
+```
+IP Address extension for vsCode
+```
 
 ```bash
 ifconfig
 ```
-
-or
-
-```bash
-ifconfig
-```
-
-or
 
 ```bash
 ip addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
