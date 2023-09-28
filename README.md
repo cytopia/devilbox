@@ -157,7 +157,7 @@ Install `PHP Debug` extension for vsCode and configure launch.json
 
 <br>
 
-<h2></h2>
+<h2>Setup, stop and run</h2>
 
 ```bash
 cd devilbox
