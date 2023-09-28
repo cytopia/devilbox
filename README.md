@@ -86,7 +86,7 @@ In Mac OS you can also use the Keychain Access app.
 
 <br>
 
----
+<h1></h1>
 
 <br>
 
@@ -147,9 +147,9 @@ Install `PHP Debug` extension for vsCode and configure launch.json
 }
 ```
 
-<h1></h1>
+<br>
 
----
+<h1></h1>
 
 <br>
 
