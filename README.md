@@ -165,3 +165,9 @@ cp compose/docker-compose.override.yml-php-multi.yml docker-compose.override.yml
 docker-compose up php httpd bind php80
 ```
 
+file: /shared/httpd/<project>/.devilbox/backend.cfg
+
+```bash
+conf:phpfpm:tcp:php80:9000
+```
+
