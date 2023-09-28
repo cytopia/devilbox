@@ -157,6 +157,8 @@ Install `PHP Debug` extension for vsCode and configure launch.json
 
 <h2>Setup, stop and run</h2>
 
+Enable all PHP versions
+
 ```bash
 cd devilbox
 cp compose/docker-compose.override.yml-php-multi.yml docker-compose.override.yml
