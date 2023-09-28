@@ -151,7 +151,7 @@ Install `PHP Debug` extension for vsCode and configure launch.json
 
 <br>
 
-<h1 id="multiple-php">Multiple PHP Versions</h1>
+<h1 id="multiple">Multiple PHP Versions</h1>
 
 <br>
 
