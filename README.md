@@ -1,6 +1,6 @@
 
 
-[Install Devilbox](#install-devilbox) - [Configure HTTPS](#configure-https) - [Configure xDebug](#configure-debug)<br>
+[Install Devilbox](#install-devilbox) - [Configure HTTPS](#configure-https) - [Configure xDebug](#configure-xdebug)<br>
 
 ---
 
