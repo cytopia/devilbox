@@ -2,6 +2,7 @@
 <a href="#configure_https">Configure HTTPS</a>
 
 [Install Devilbox](#install_devilbox)
+[configure_https](#configure_https)
 
 ---
 
