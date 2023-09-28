@@ -112,13 +112,14 @@ cp devilbox-php.in xdebug.ini
 ```
 
 ```ini
-xdebug.mode               = debug
+xdebug.mode               = profile,debug
 xdebug.start_with_request = yes
 xdebug.remote_handler     = dbgp
 xdebug.client_port        = 9003
 xdebug.client_host        = 192.168.65.254
 xdebug.idekey             = vsc
 xdebug.log                = /var/log/php/xdebug.log
+xdebug.output_dir         = /var/log/php
 ```
 
 Install `PHP Debug` extension for vsCode and configure launch.json
