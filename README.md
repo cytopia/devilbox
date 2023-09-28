@@ -86,21 +86,21 @@ In Mac OS you can also use the Keychain Access app.
 
 <br>
 
-<h2>Retrive  IP</h2>
+<h2>Retrive vscode IP</h2>
 
 ```bash
-cd devilbox
-./shell.sh
-vim /etc/hosts
+ifconfig
 ```
 
-Search somethings like this:
+or
 
-```
-192.168.65.254    host.docker.internal
+```bash
+ifconfig
 ```
 
-```
+or
+
+```bash
 ip addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
 ```
 
