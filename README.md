@@ -160,14 +160,19 @@ Install `PHP Debug` extension for vsCode and configure launch.json
 ```bash
 cd devilbox
 cp compose/docker-compose.override.yml-php-multi.yml docker-compose.override.yml
-docker-compose stop
-docker-compose rm
-docker-compose up php httpd bind php80
 ```
 
 file: /shared/httpd/<project>/.devilbox/backend.cfg
 
 ```bash
 conf:phpfpm:tcp:php80:9000
+```
+
+and at the end:
+
+```bash
+docker-compose stop
+docker-compose rm
+docker-compose up php httpd bind php80
 ```
 
