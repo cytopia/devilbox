@@ -1,6 +1,6 @@
 
 
-[Install Devilbox](#install-devilbox) - [Configure HTTPS](#configure-https) - [Configure xDebug](#configure-xdebug) - [Multiple PHP Versions](#multiple-php)
+[Install Devilbox](#install-devilbox) - [Configure HTTPS](#configure-https) - [Configure xDebug](#configure-xdebug)<br> [Multiple PHP Versions](#multiple-php)
 
 <h1></h1>
 
