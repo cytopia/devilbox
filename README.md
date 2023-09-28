@@ -1,10 +1,10 @@
 ---
-
+<a href="#install_devilbox">Install Devilbox</a>
 ---
 
 <br>
 
-<h1>Install DevilBox</h1>
+<h1 id="install_devilbox">Install DevilBox</h1>
 
 <br>
 
