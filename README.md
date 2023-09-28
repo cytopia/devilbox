@@ -2,7 +2,7 @@
 
 [Install Devilbox](#install-devilbox) - [Configure HTTPS](#configure-https) - [Configure xDebug](#configure-xdebug) - [Multiple PHP Versions](#multiple-php)
 
----
+<h1></h1>
 
 <br>
 
@@ -46,7 +46,7 @@ selected containers     ->  docker-compose up -d httpd php mysql
 
 <br>
 
----
+<h1></h1>
 
 <br>
 
