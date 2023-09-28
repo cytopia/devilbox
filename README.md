@@ -147,7 +147,7 @@ Install `PHP Debug` extension for vsCode and configure launch.json
 }
 ```
 
-<br>
+<h1></h1>
 
 ---
 
