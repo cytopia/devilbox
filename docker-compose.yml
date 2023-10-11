@@ -95,7 +95,37 @@ services:
       app_net:
         ipv4_address: 172.16.238.100
 
+  # ------------------------------------------------------------
+  # DNS LAN
+  # ------------------------------------------------------------
+  dnslan:
+    image: cytopia/bind
+    hostname: dnslan
+    restart: always
 
+    ports:
+      # [local-machine:]local-port:docker-port
+      - "53:53/tcp"
+      - "53:53/udp"
+
+    environment:
+      ##
+      ## Bind wildcard/host settings
+      ##
+      - DNS_A=*.${TLD_SUFFIX}=${DNS_LOCAL_ADDRESS}
+
+      ##
+      ## Forwarding
+      ##
+      - DNS_FORWARDER=${BIND_DNS_RESOLVER:-8.8.8.8,8.8.4.4}
+
+      ##
+      ## Allow Query
+      ##
+      - ALLOW_QUERY=any
+
+
+      
   # ------------------------------------------------------------
   # PHP
   # ------------------------------------------------------------
