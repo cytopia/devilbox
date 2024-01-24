@@ -78,7 +78,6 @@ fi
 
 
 ###
-### Rest of the fucking owl
 ###
 ### For all other non-base service, only download the currently enabled one
 ###
