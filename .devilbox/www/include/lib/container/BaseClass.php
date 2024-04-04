@@ -181,7 +181,7 @@ class BaseClass
 	 */
 	public function setConnectErrno($errno)
 	{
-		$this->_connect_erro = $errno;
+		$this->_connect_errno = $errno;
 	}
 
 	/**
