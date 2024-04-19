@@ -11,7 +11,7 @@ Its main intention is to support an unlimited number of projects for any framewo
 and be portable accross all major operating systems, as well as providing any available php version
 with whatever module you require.
 
-To be portable, customizable and as leight weight as possible, the choice fell on a Dockerized
+To be portable, customizable and as light weight as possible, the choice fell on a Dockerized
 setup.
 
 
