@@ -1377,7 +1377,7 @@ Let's have a look how the directory is actually built up:
    total 4
    -rw-r--r-- 1 cytopia cytopia 87 Mar 12 23:05 index.php
 
-By calling your proect url, the ``index.php`` file will be served.
+By calling your project url, the ``index.php`` file will be served.
 
 
 **Directory structure: nested symlink**
