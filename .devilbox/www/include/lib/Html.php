@@ -25,6 +25,10 @@ class Html
 			array(
 				'name' => 'Emails',
 				'path' => '/mail.php'
+			),
+			array(
+				'name' => 'MailHog',
+				'path' => '/mailhog.php'
 			)
 		),
 		array(

@@ -102,7 +102,7 @@ services:
   php:
     image: devilbox/php-fpm:${PHP_SERVER}-work-0.150
     hostname: php
-
+    restart: always
     ##
     ## All .env variables
     ##
@@ -231,6 +231,7 @@ services:
   httpd:
     image: devilbox/${HTTPD_SERVER}:${HTTPD_FLAVOUR:-alpine}-1.0
     hostname: httpd
+    restart: always
 
     environment:
 
@@ -343,6 +344,7 @@ services:
   mysql:
     image: devilbox/mysql:${MYSQL_SERVER}-0.21
     hostname: mysql
+    restart: always
 
     environment:
       - MYSQL_ROOT_PASSWORD
@@ -380,6 +382,7 @@ services:
   pgsql:
     image: postgres:${PGSQL_SERVER}
     hostname: pgsql
+    restart: always
 
     environment:
 
@@ -415,6 +418,7 @@ services:
   redis:
     image: redis:${REDIS_SERVER}
     hostname: redis
+    restart: always
 
     # Apply custom arguments to redis startup
     command: redis-server ${REDIS_ARGS:- }
@@ -441,6 +445,7 @@ services:
   memcd:
     image: memcached:${MEMCD_SERVER}
     hostname: memcd
+    restart: always
 
     ports:
       # [local-machine:]local-port:docker-port
@@ -462,6 +467,7 @@ services:
   mongo:
     image: mongo:${MONGO_SERVER}
     hostname: mongo
+    restart: always
 
     ports:
       # [local-machine:]local-port:docker-port
